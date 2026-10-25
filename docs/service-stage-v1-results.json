@@ -1,0 +1,115 @@
+{
+  "stage": "G4-A",
+  "date": "2026-10-21",
+  "status": "local_service_acceptance_passed",
+  "implementation_commit": "e0062505bbd57f92bb1d40768c336f12020a39af",
+  "live_source_smoke_implementation_commit": "d04f8a5",
+  "full_regression": {
+    "tests": 487,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "seconds": 259.715,
+    "sha256": "af97c6cb9f53eb9277d8051ee0b2dbe5fd80e9b736c8b81dd560bdf3a063a814"
+  },
+  "clean_environment_service_tests": {
+    "tests": 33,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "seconds": 20.487,
+    "sha256": "7370c62d8de2706ce425c206a95083a3dae687daff29567992582f83c9e395f6"
+  },
+  "clean_environment_pip_check": "No broken requirements found.",
+  "offline_source_recovery": {
+    "cancelled_job_state": "cancelled",
+    "deployed": false,
+    "final_test_opened": false,
+    "generation": 2,
+    "hard_exit_code": 75,
+    "job_id": "job-a7583a3f9b364b9280e653a0a49a988d",
+    "new_client_requests_second_attempt": 2,
+    "policy_approved": false,
+    "real_LLM_requests": 0,
+    "replayed_client_responses": 2,
+    "source_sql_proof": {
+      "labels_opened": false,
+      "observations_checked": 3,
+      "projected_rows": 45,
+      "status": "source_sql_verified",
+      "summary_sha256": "68474579c5c07c774c301bc0505670e31eca8471761463e75530cb6a1a6832ea"
+    },
+    "state": "awaiting_review",
+    "status": "offline_source_recovery_verified",
+    "summary_sha256": "68474579c5c07c774c301bc0505670e31eca8471761463e75530cb6a1a6832ea"
+  },
+  "live_source_smoke": {
+    "deployed": false,
+    "first_attempt": {
+      "failure_stage": "answer_format",
+      "findings": null,
+      "status": "answer_rejected"
+    },
+    "format_repair": {
+      "attempted": true,
+      "maximum_attempts": 1,
+      "status": "validated"
+    },
+    "is_independent_evaluation": false,
+    "job_id": "job-ca48678bc1414c93811c67d3fdd21e5e",
+    "policy_approved": false,
+    "project_committed_estimate_cny": "2.706940",
+    "real_requests": 3,
+    "run_committed_estimate_cny": "0.064972",
+    "run_unknown_cost_requests": 0,
+    "source_sql_proof": {
+      "labels_opened": false,
+      "observations_checked": 3,
+      "projected_rows": 45,
+      "status": "source_sql_verified",
+      "summary_sha256": "2c093981ca0e8909f33cf635e5057e03ba358fc594c21e9d77754007fdb9c693"
+    },
+    "state": "awaiting_review",
+    "status": "live_service_smoke_verified",
+    "summary_sha256": "2c093981ca0e8909f33cf635e5057e03ba358fc594c21e9d77754007fdb9c693"
+  },
+  "artifacts": {
+    "offline": {
+      "summary": "runs/service-stage-final-v1/jobs/job-a7583a3f9b364b9280e653a0a49a988d/attempt-2/summary.json",
+      "summary_sha256": "68474579c5c07c774c301bc0505670e31eca8471761463e75530cb6a1a6832ea",
+      "verification_sha256": "7c95d4e6ad0eed1445f2cc0d7cff2e69d80273dde5500d883f6f09fde17fb165",
+      "runtime_fingerprint": "4e990f25feb3ae8a55afda9c97036c7f12bd13f3309b35e1bc502529d1eb9b20"
+    },
+    "live": {
+      "summary": "runs/service-stage-live-v1/jobs/job-ca48678bc1414c93811c67d3fdd21e5e/attempt-1/summary.json",
+      "summary_sha256": "2c093981ca0e8909f33cf635e5057e03ba358fc594c21e9d77754007fdb9c693",
+      "verification_sha256": "0d25a2e1c5d1e9a783375a788f869b85809e21fcfc7389619b572e2b90dcb2dd",
+      "runtime_fingerprint": "a4fde4b4c4c525dacc39e177a897b537da65996ca94c5218503048eec142a3b4"
+    }
+  },
+  "project_ledger_entries": 135,
+  "project_unknown_cost_entries": 1,
+  "financial_candidate": {
+    "candidate_id": "case-467716-rule",
+    "version": 2,
+    "package_hash": "2aa259e7d37e5dcdc97c80711060bd4b68dc87381b0bbfce6a29d9f98c5e24ec",
+    "status": "pending_review",
+    "deployed": false
+  },
+  "review_audit": {
+    "status": "passed",
+    "events": 2,
+    "candidates": 1,
+    "head_hash": "c0f38a617c5f3e5cddde6c3e8aa236048ddac7f4d403ad131e36e1b18c457938",
+    "limits": "Local consistency checks; not tamper-proof storage, authenticated identities or deployment authorization."
+  },
+  "remote_CI_executed": false,
+  "final_2019_test_opened": false,
+  "limits": [
+    "Synthetic development source, not real-world fraud performance.",
+    "Live smoke repeats an existing case; not independent task evaluation.",
+    "Unresolved external calls are blocked, not retried; no exactly-once HTTP guarantee.",
+    "Local bearer token, not enterprise identities/RBAC or tamper-proof audit storage.",
+    "Local tests do not prove remote CI success or an Agent advantage over fixed workflows."
+  ]
+}

@@ -1,0 +1,508 @@
+{
+  "date": "2026-10-21",
+  "milestone": "G2-A source merchant investigation controlled evaluation",
+  "status": "stage_acceptance_completed",
+  "data_kind": "IBM_TabFormer_synthetic",
+  "experiment_code_commit": "7453c5f",
+  "audit_code_commit": "486d2c8",
+  "contract": {
+    "version": 1,
+    "data_kind": "IBM_TabFormer_synthetic",
+    "selection_seed": "source-merchant-v1",
+    "users": 12,
+    "tasks": 24,
+    "cohort_report": "C:\\Users\\18137\\Documents\\ChatGPT\\金融Agent项目\\financial-report-agent\\data\\cohorts\\cohort-3bfdbaab486f\\build-report.json",
+    "cohort_report_sha256": "9ee4bf3f89c13004b9098a0a9cefa374dc29f77608977afffe3cd9829e267b57",
+    "queue_sha256": "71dbc4bc50cdf402bc0ba1a579f25287edcaaee68e4d2742c20b4cf3b4cc8b70",
+    "tasks_sha256": "299359b35d371227f45f78687387d686e8fd37b0a7a98e54883971ea3f38d688",
+    "policy_sha256": "ccf8414324a3910a81d362b8d50c7b346e16d3e7d530f67068cc012f35281602",
+    "code_file_sha256": {
+      "app/risk/source_merchant_pack.py": "bf5da405b7a95bdac500ead1b6b9217911fc13729c5991d31843b888231478ae",
+      "app/cli/merchant_benchmark.py": "c7b9a7adde43f596e87843f20ab98f447b231f0b418b8142a4a7a1b2cbd8fad2",
+      "app/cli/merchant_research.py": "9df31e24c4f7017e9fc4cfc102a2d6b55e558760f8d621cc7632bb2ba5f10d7e",
+      "app/risk/merchant_research.py": "f06e6dc9256e68b47ea5ef4ed8c0dffd56389bb13616668b139257551feb2e33",
+      "app/risk/merchant_stats.py": "ec592300d2349ce5195411620cbccbe1f4b21945c8f3ccfcb4b12955d7d4846d",
+      "app/risk/merchant_evaluation.py": "8ea8c0c0575ba5d049013348fcab0afdd013418dfb5a74435326223b0d4fce3d",
+      "app/tools/case_tools.py": "17848b586385138590d5cf0224773e6d7014606035f86b4369b0f58f13efaef6",
+      "app/risk/case_snapshot.py": "7057acb45960bbcae620f266f846a503eeba4fb2a85656781e0121158e333348",
+      "app/risk/investigation.py": "00fc34819dc59d3bbcdace739808a0272d15ae0bbc8b8fc9e9b45a588941bc36",
+      "app/agent/react_agent.py": "3bc7386fcb9604c1fbe14b0bd821c3100bab28d18209df322433f43e74be61f4",
+      "app/llm/siliconflow_client.py": "fa59d118cfedd56e0ecbfd8cd7097e745caf5553869f2bafc25c8b4ed2063f22",
+      "app/llm/glm_client.py": "e81954ff020d0c12135f5e3a09bea8a9249440dc7aefa70b1a5356cd0aed5c86",
+      "app/llm/cost_ledger.py": "b2f3cd0e17115dc82c90b503952bb13fd0ac953afc2f47e9475650f972532dbe",
+      "scripts/verify_merchant_research.py": "0e4ecd5d272e052df9c709adba9969824b8f3e9b257e0f09b08c3cdfc369ee12"
+    },
+    "arms": [
+      "fixed_scripted",
+      "evidence_only",
+      "agent"
+    ],
+    "per_run_max_requests": 6,
+    "format_correction_maximum": 1,
+    "limits": [
+      "24 correlated questions from 12 users, not 24 independent users.",
+      "Evaluation users are disjoint from development task users, not from detector training users.",
+      "Both partitions use 2018 development-period transactions; 2019 detector final test remains sealed.",
+      "Task references are SQL-derived descriptive comparisons, not fraud labels.",
+      "No prompt tuning after contract freeze; no automatic rerun of failed or interrupted slots."
+    ]
+  },
+  "contract_sha256": "4679dbfe21d20b1f9898d6462b36be8d18804ea3938d410f3f84b1a641c3892e",
+  "tasks": 24,
+  "users": 12,
+  "development_users": 6,
+  "evaluation_users": 6,
+  "test_passed": 412,
+  "source_partitions": {
+    "development": {
+      "report_path": "runs/source-merchant-stage-v1/live-development/report.json",
+      "report_sha256": "4991a93f02f9fae6d01fe648376c6522c96cd38177a69703e78902348ed77542",
+      "verification": {
+        "status": "batch_receipts_verified",
+        "report_sha256": "4991a93f02f9fae6d01fe648376c6522c96cd38177a69703e78902348ed77542",
+        "contract_sha256": "4679dbfe21d20b1f9898d6462b36be8d18804ea3938d410f3f84b1a641c3892e",
+        "slots": 36,
+        "successful_source_sql_proofs": 30,
+        "failed_slots_retained": 6,
+        "estimated_cny": "1.026668",
+        "receipt_sha256": {
+          "u00-168-720-agent.json": "d2e4dc705820e1911055cd9611613a5b3aaa2748a639f1985906b9702ce158da",
+          "u00-168-720-evidence_only.json": "b1322fd8285048027032678ef12d43c4ab096f03f505032a4f6c6fc6c721854c",
+          "u00-168-720-fixed_scripted.json": "80261ef5b8fdeab00c58295f1d3d5b0ddf44b8a4a74a47ac4f18b1fac6c4d1fd",
+          "u00-24-168-agent.json": "6e6b9c10bea71428f8ddac058d0a67855e1ce89968c3eb51da4cf3041a430cef",
+          "u00-24-168-evidence_only.json": "6ea943b94c2f0a240cda5d3babc0e694e9459c6646def3e0367e929470694b7a",
+          "u00-24-168-fixed_scripted.json": "1c4996e096de9576709bfafe26096e5fd1ca7d3eea091cf16740925880a854c3",
+          "u01-168-720-agent.json": "e56702cff104f510cc70cbe6c62d09d40477b4e95883e856a9bc603fe0732480",
+          "u01-168-720-evidence_only.json": "5584f8b3459903b5e9fd592c13101f3d7d868764d9a604babc0cdc077c21ba09",
+          "u01-168-720-fixed_scripted.json": "a84ae10846db1d5a582c97a97ce0414eb605e6f205b7d816cac0055549eaf08f",
+          "u01-24-168-agent.json": "970cc6cf7347d14554835c37f37278cc23aff0e499bebe029439b942f6c62b81",
+          "u01-24-168-evidence_only.json": "f35fb127779bd712d077d8b370db122938bf849f82b0b02f8af4ab4b3fc9b82d",
+          "u01-24-168-fixed_scripted.json": "5e1ef52a7a9dfb1b05ab41c3e64efe8828f8735fc54049c2bd347994611f47a6",
+          "u02-168-720-agent.json": "1acdbb17536ad74db8f7f0a2ac595e269369feeb327157d48e4b9e655159c6d6",
+          "u02-168-720-evidence_only.json": "85a87ae3b36c5d3fc7d727431cc7eaaca1e1fe56e4dc98f4ddce6fb7da2b584c",
+          "u02-168-720-fixed_scripted.json": "82d27763ad7c69eb1740ac5daaabafd5710488654ec1516a50c306f3c9b5fd0c",
+          "u02-24-168-agent.json": "59771c40adbaa8cc328e48225cc98c1eaffa884774128f02fd2eb2800e1ce243",
+          "u02-24-168-evidence_only.json": "4f1c9d5969058f6637bb128e34e334d5c492f8857ccc80d87122b26bc87a3ad1",
+          "u02-24-168-fixed_scripted.json": "538560961b7780108335308c008cf4ef6dfeceb5f52694ab89e567b8e10097eb",
+          "u03-168-720-agent.json": "ee232ddcbc96f3c9c079ce1fab01e003de8ec7f0ad2e768ea520c5f77a746de7",
+          "u03-168-720-evidence_only.json": "152e6dfd5bc10d6f5a52c8ffe74fac04e87f72104b5ed09b14baf595ee278fa8",
+          "u03-168-720-fixed_scripted.json": "078868835287d0c119189b5875cae8fddb11bab52e3ed0b42154bbb961e799d1",
+          "u03-24-168-agent.json": "8aed55b84dbf80bd191a8589802f24f4a0c0db2c38587d19e543ce04772adf0d",
+          "u03-24-168-evidence_only.json": "d87f40e3cf75b514e18f5ce259653100233b7239b3f58f7d7576a8cb8c1dbf2e",
+          "u03-24-168-fixed_scripted.json": "6aa8d571517a9ab3ea0e24a430f6cd7b3f46a448116575c3868bbd671d42722b",
+          "u04-168-720-agent.json": "6c82fe6d8c57429dbbe7202304aa657914ebfaa17408cb83527bfa4d4f07de32",
+          "u04-168-720-evidence_only.json": "64344688c6916e993cf6d9a0a147f9123e7ff7b98e3dc026f78a36170de890eb",
+          "u04-168-720-fixed_scripted.json": "beff8aa00c0f3d2024de61438bb976e6c556c17e08600d3d97baa4ad0c0947e6",
+          "u04-24-168-agent.json": "a506bb73606eeacaac1f68a715d41ed22ccb5790882e6cddec3cb24ea6d7b3a5",
+          "u04-24-168-evidence_only.json": "c6f9779c18325318b261e4453f015c14fe5d7467020583396e35eef509635de6",
+          "u04-24-168-fixed_scripted.json": "12b2a34de0948ddda5b0be9bfc957ef1fd5374aebf4d5b5ecadaaaf8326f0153",
+          "u05-168-720-agent.json": "64c6a7c5f142db8aca0b8f57ef9a8ef9b8983e45992a0a843dc499a5b09e89a2",
+          "u05-168-720-evidence_only.json": "9d756946902ac4bda462963b4183a7f95b7d650fd2914e148a9cbd20f75a43f9",
+          "u05-168-720-fixed_scripted.json": "aa523f6734eeeeeaad5842dc259a1a64c3c62a69c3b5ccb0aaea665ae7547099",
+          "u05-24-168-agent.json": "a5ee1d20b2ad0d07d01f2d46a340ee69075977fa05be2ad3772ee613c14f429a",
+          "u05-24-168-evidence_only.json": "3327af7132ef5e4123688bdc9490567af788a09f893c9108fe8c90857e465be1",
+          "u05-24-168-fixed_scripted.json": "a2f000b308a87b4c28bd53a866dc70b858684c1a42d8b894b723ddd954017f69"
+        },
+        "limits": [
+          "Failed model answers remain failures; their artifact hashes are checked, not reclassified as SQL-validated reports.",
+          "Source is synthetic; this is not an external financial effectiveness audit."
+        ]
+      },
+      "aggregate": {
+        "fixed_scripted": {
+          "tasks": 12,
+          "passed": 12,
+          "first_attempt_passed": 12,
+          "known_requests": 0,
+          "unknown_request_slots": 0,
+          "tool_attempts": 36,
+          "cache_hits": 0,
+          "successful_query_executions": 36,
+          "seconds": 21.38,
+          "statuses": {
+            "completed_validated": 12
+          }
+        },
+        "evidence_only": {
+          "tasks": 12,
+          "passed": 6,
+          "first_attempt_passed": 6,
+          "known_requests": 12,
+          "unknown_request_slots": 0,
+          "tool_attempts": 36,
+          "cache_hits": 0,
+          "successful_query_executions": 36,
+          "seconds": 76.512,
+          "statuses": {
+            "completed_validated": 6,
+            "answer_rejected": 6
+          }
+        },
+        "agent": {
+          "tasks": 12,
+          "passed": 12,
+          "first_attempt_passed": 0,
+          "known_requests": 36,
+          "unknown_request_slots": 0,
+          "tool_attempts": 36,
+          "cache_hits": 0,
+          "successful_query_executions": 36,
+          "seconds": 271.833,
+          "statuses": {
+            "completed_validated": 12
+          }
+        }
+      },
+      "gold_distribution": {
+        "decreased|decreased": 1,
+        "insufficient_evidence|insufficient_evidence": 6,
+        "increased|increased": 5
+      }
+    },
+    "evaluation": {
+      "report_path": "runs/source-merchant-stage-v1/live-evaluation/report.json",
+      "report_sha256": "a181f1de8ed5aad0af3e1f8936d9ead7e96c63d58500f7fbdf0d2349adf5dabf",
+      "verification": {
+        "status": "batch_receipts_verified",
+        "report_sha256": "a181f1de8ed5aad0af3e1f8936d9ead7e96c63d58500f7fbdf0d2349adf5dabf",
+        "contract_sha256": "4679dbfe21d20b1f9898d6462b36be8d18804ea3938d410f3f84b1a641c3892e",
+        "slots": 36,
+        "successful_source_sql_proofs": 31,
+        "failed_slots_retained": 5,
+        "estimated_cny": "1.012572",
+        "receipt_sha256": {
+          "u06-168-720-agent.json": "c2cf636af51de8dac48e992c4db320dcb4488e432371397c42c4d91a70d7b162",
+          "u06-168-720-evidence_only.json": "01d49ce175cd8b48a576d61bf94e310150730ec88662f98f45732e61457a0e3e",
+          "u06-168-720-fixed_scripted.json": "70f3008ca7ef0f0428ab5fedce9ed9066beaa8f928396e8b382dda2449cb234b",
+          "u06-24-168-agent.json": "a57455e09ac8de0bab9f6129b49982b6cec1bed2717500bdef092e201c07cd4a",
+          "u06-24-168-evidence_only.json": "eef1b0b02d8e2a9d71ed5fb74524d9bc5636994feb8b58edc44c0cc24d69c1aa",
+          "u06-24-168-fixed_scripted.json": "66c4aa2fc7d79fcd364456573b727f87946b8bbb9fff99595f0380f9146d49c5",
+          "u07-168-720-agent.json": "c78ed31ad5dd76a48d2ab9892370e52e719a4082bfbb58ddd6d51d8e223f77b5",
+          "u07-168-720-evidence_only.json": "269fe0ea845e627f18534ae935f8b54a704b514a97c02b4d8fe39cd64f3127f0",
+          "u07-168-720-fixed_scripted.json": "d54421b1b4990fe372545d6f2d6e3be9c5924e54240c93622ef701d93dc9b4fa",
+          "u07-24-168-agent.json": "3d807926ed84861ecd5f53c1b4bd4b21a1195240758ed669eeccf28b613c00d9",
+          "u07-24-168-evidence_only.json": "89b09f2cb47919d7cab9082bf1ffecffae428133113d2fd6226120bfa4cfe3d1",
+          "u07-24-168-fixed_scripted.json": "4d1f4e3c5907bc34722e65525cb7db31358ddb819463ea9de70121edb0032ad9",
+          "u08-168-720-agent.json": "43ec5c8adcb6f3a697e28a3d92c65ace8c14f32a1c3dff62189dcbf8a06130f5",
+          "u08-168-720-evidence_only.json": "ff2839a63204f62803f546647480a32a115dd3fa696087310a30f70fc5ac0608",
+          "u08-168-720-fixed_scripted.json": "47a808e6e07035efcb5ecdbdbedda806ac70f329fb621037cd32695bb76a3a1b",
+          "u08-24-168-agent.json": "22f67e20e2a1c28da00a4ab29cd8c0c1c487c1ebf07f4341c91b309362753133",
+          "u08-24-168-evidence_only.json": "bc998c93f0e51edbe540761a1023255b56c3705bdc6378590e7f9d2a35919b08",
+          "u08-24-168-fixed_scripted.json": "3993c916eae3e93f2cd6163a12d36d48ee1d6507cf56684120a6cc282fd91f2c",
+          "u09-168-720-agent.json": "758fa7e0b8bf7dffabdfe1e5492d45dd5a84cf99e39cd622ae633fa3542ba9e9",
+          "u09-168-720-evidence_only.json": "f432915791d4c1c9ff8f7c3d159b62d7392acf0fb287fcf5cc75ca64394b84fe",
+          "u09-168-720-fixed_scripted.json": "a8749acad1e6e72749ee7e332a5fc6b91ed73d75cfccf0ac935005ceab36a8df",
+          "u09-24-168-agent.json": "7162bfc03a0c20ab1524f11f91bc296f36d750677f03cde7270dac910442fbaf",
+          "u09-24-168-evidence_only.json": "5a78c93f9458f30b6f8b40b852817318df2508bd2973653820f56f9ab86e1a7a",
+          "u09-24-168-fixed_scripted.json": "7a24298f200dbc1aa115f051abc6af99d47cc3d9009c5e2f11122cb33495ac5f",
+          "u10-168-720-agent.json": "bc93f0aeb39bac19bcce70a22d0644a544b0ec4e2172a8295cde4f8a8ba3164d",
+          "u10-168-720-evidence_only.json": "deec0927d5aa7ac86b6abbc3649a185b73e996721d787f9caa3882f5eb7eb5a6",
+          "u10-168-720-fixed_scripted.json": "1eddfa534d8b49d145ebe2f670357473fafdcf2881207bb1ddc9df89b9b5800f",
+          "u10-24-168-agent.json": "57f92a5bf8d988b4b85ba6f68550579df935b55d807cb7e98802f8442a5b9dd2",
+          "u10-24-168-evidence_only.json": "533dcd7314b104a7f9ce5e6c0a20cb4ee92bf83944d0d69b80f43de98be9b412",
+          "u10-24-168-fixed_scripted.json": "273d63f4d735308fdc51332f2b5a78c6a69aba85d315f5825ee853247bad7103",
+          "u11-168-720-agent.json": "ef446e6968ab8c11a2a9c571859e5c4ea24df879fdac96f6308b663c0a72e7f6",
+          "u11-168-720-evidence_only.json": "fe481fd7a1617a67f5beaa5134f508ac5f1957b85c9940f95137f5837925ca8d",
+          "u11-168-720-fixed_scripted.json": "b2d490058e1d7d9f3377f31c016c68d6abd1c01f0e52b2aeb52446240e14ea1d",
+          "u11-24-168-agent.json": "59c21332527a58056d9f8b6f86176127eda7389c6e120a66634d2640c33402b4",
+          "u11-24-168-evidence_only.json": "0c619545bf267301280c4280d1cb44af2d5e0c680224949801bacab61f372ef8",
+          "u11-24-168-fixed_scripted.json": "c147d027e8bc6c06f93d06412011724135570f42f17fb7d0da7a675d6840ee83"
+        },
+        "limits": [
+          "Failed model answers remain failures; their artifact hashes are checked, not reclassified as SQL-validated reports.",
+          "Source is synthetic; this is not an external financial effectiveness audit."
+        ]
+      },
+      "aggregate": {
+        "fixed_scripted": {
+          "tasks": 12,
+          "passed": 12,
+          "first_attempt_passed": 12,
+          "known_requests": 0,
+          "unknown_request_slots": 0,
+          "tool_attempts": 36,
+          "cache_hits": 0,
+          "successful_query_executions": 36,
+          "seconds": 22.211,
+          "statuses": {
+            "completed_validated": 12
+          }
+        },
+        "evidence_only": {
+          "tasks": 12,
+          "passed": 7,
+          "first_attempt_passed": 7,
+          "known_requests": 12,
+          "unknown_request_slots": 0,
+          "tool_attempts": 36,
+          "cache_hits": 0,
+          "successful_query_executions": 36,
+          "seconds": 78.104,
+          "statuses": {
+            "completed_validated": 7,
+            "answer_rejected": 5
+          }
+        },
+        "agent": {
+          "tasks": 12,
+          "passed": 12,
+          "first_attempt_passed": 0,
+          "known_requests": 36,
+          "unknown_request_slots": 0,
+          "tool_attempts": 36,
+          "cache_hits": 0,
+          "successful_query_executions": 36,
+          "seconds": 264.145,
+          "statuses": {
+            "completed_validated": 12
+          }
+        }
+      },
+      "gold_distribution": {
+        "increased|increased": 4,
+        "insufficient_evidence|insufficient_evidence": 6,
+        "decreased|decreased": 1,
+        "unchanged|decreased": 1
+      }
+    }
+  },
+  "failure_analysis_posthoc": [
+    {
+      "split": "development",
+      "task_id": "u01-24-168",
+      "arm": "evidence_only",
+      "failure_stage": "answer_evidence_or_contract",
+      "wrong_metrics": [
+        "count_top1",
+        "positive_amount_top1"
+      ],
+      "gold_host_reference": {
+        "count_top1": "insufficient_evidence",
+        "positive_amount_top1": "insufficient_evidence"
+      },
+      "submitted_metrics": {
+        "count_top1": "increased",
+        "positive_amount_top1": "increased"
+      },
+      "summary_sha256": "326dab77e0b38cfa07220a66ad6acbf147d0294179f86fcd2c34ef87f8f3fe53",
+      "reason": "insufficient_sample_ignored"
+    },
+    {
+      "split": "development",
+      "task_id": "u02-24-168",
+      "arm": "evidence_only",
+      "failure_stage": "answer_evidence_or_contract",
+      "wrong_metrics": [
+        "count_top1",
+        "positive_amount_top1"
+      ],
+      "gold_host_reference": {
+        "count_top1": "insufficient_evidence",
+        "positive_amount_top1": "insufficient_evidence"
+      },
+      "submitted_metrics": {
+        "count_top1": "increased",
+        "positive_amount_top1": "increased"
+      },
+      "summary_sha256": "c4853b4a5f6c5b0d27f7a40cdc651a657ed49697b86bc2c0176f90a63175c2d8",
+      "reason": "insufficient_sample_ignored"
+    },
+    {
+      "split": "development",
+      "task_id": "u03-24-168",
+      "arm": "evidence_only",
+      "failure_stage": "answer_evidence_or_contract",
+      "wrong_metrics": [
+        "count_top1",
+        "positive_amount_top1"
+      ],
+      "gold_host_reference": {
+        "count_top1": "insufficient_evidence",
+        "positive_amount_top1": "insufficient_evidence"
+      },
+      "submitted_metrics": {
+        "count_top1": "increased",
+        "positive_amount_top1": "increased"
+      },
+      "summary_sha256": "186b51730b895b70430ff9c7eaf629e39e916f7697a3313e704eeaa529a3d069",
+      "reason": "insufficient_sample_ignored"
+    },
+    {
+      "split": "development",
+      "task_id": "u04-168-720",
+      "arm": "evidence_only",
+      "failure_stage": "answer_evidence_or_contract",
+      "wrong_metrics": [
+        "count_top1"
+      ],
+      "gold_host_reference": {
+        "count_top1": "increased",
+        "positive_amount_top1": "increased"
+      },
+      "submitted_metrics": {
+        "count_top1": "decreased",
+        "positive_amount_top1": "increased"
+      },
+      "summary_sha256": "2a2f103298b877f2d2bd6766b4f1f2c57a436ab9c4e626fcbfe5515770678636",
+      "reason": "comparison_or_reference_error"
+    },
+    {
+      "split": "development",
+      "task_id": "u04-24-168",
+      "arm": "evidence_only",
+      "failure_stage": "answer_evidence_or_contract",
+      "wrong_metrics": [
+        "count_top1",
+        "positive_amount_top1"
+      ],
+      "gold_host_reference": {
+        "count_top1": "insufficient_evidence",
+        "positive_amount_top1": "insufficient_evidence"
+      },
+      "submitted_metrics": {
+        "count_top1": "increased",
+        "positive_amount_top1": "increased"
+      },
+      "summary_sha256": "1499b6eb1c6490f04de87f02282fd8e8f9c2193f308c98dd588649080216384f",
+      "reason": "insufficient_sample_ignored"
+    },
+    {
+      "split": "development",
+      "task_id": "u05-24-168",
+      "arm": "evidence_only",
+      "failure_stage": "answer_evidence_or_contract",
+      "wrong_metrics": [
+        "count_top1",
+        "positive_amount_top1"
+      ],
+      "gold_host_reference": {
+        "count_top1": "insufficient_evidence",
+        "positive_amount_top1": "insufficient_evidence"
+      },
+      "submitted_metrics": {
+        "count_top1": "increased",
+        "positive_amount_top1": "increased"
+      },
+      "summary_sha256": "3186614fa46a3443de184efd1ad52bbcf28d78afe8211fb6171d9b17836c431e",
+      "reason": "insufficient_sample_ignored"
+    },
+    {
+      "split": "evaluation",
+      "task_id": "u07-24-168",
+      "arm": "evidence_only",
+      "failure_stage": "answer_evidence_or_contract",
+      "wrong_metrics": [
+        "count_top1",
+        "positive_amount_top1"
+      ],
+      "gold_host_reference": {
+        "count_top1": "insufficient_evidence",
+        "positive_amount_top1": "insufficient_evidence"
+      },
+      "submitted_metrics": {
+        "count_top1": "increased",
+        "positive_amount_top1": "increased"
+      },
+      "summary_sha256": "548450ea1c5dc54bb30c12863f80a5cdd359ade11dd078937ed859bef1cac7da",
+      "reason": "insufficient_sample_ignored"
+    },
+    {
+      "split": "evaluation",
+      "task_id": "u08-168-720",
+      "arm": "evidence_only",
+      "failure_stage": "answer_evidence_or_contract",
+      "wrong_metrics": [
+        "count_top1",
+        "positive_amount_top1"
+      ],
+      "gold_host_reference": {
+        "count_top1": "unchanged",
+        "positive_amount_top1": "decreased"
+      },
+      "submitted_metrics": {
+        "count_top1": "decreased",
+        "positive_amount_top1": "increased"
+      },
+      "summary_sha256": "ebc53fd8ac3f537eb5ed4c26a387f8dc8185697d7ab931f06c9ab9ae19e5d5ae",
+      "reason": "comparison_or_reference_error"
+    },
+    {
+      "split": "evaluation",
+      "task_id": "u09-168-720",
+      "arm": "evidence_only",
+      "failure_stage": "answer_evidence_or_contract",
+      "wrong_metrics": [
+        "count_top1",
+        "positive_amount_top1"
+      ],
+      "gold_host_reference": {
+        "count_top1": "increased",
+        "positive_amount_top1": "increased"
+      },
+      "submitted_metrics": {
+        "count_top1": "decreased",
+        "positive_amount_top1": "decreased"
+      },
+      "summary_sha256": "fed0f7e97999791a5e01d2ec71d70562594688312502990f661b03eb1403af4e",
+      "reason": "comparison_or_reference_error"
+    },
+    {
+      "split": "evaluation",
+      "task_id": "u09-24-168",
+      "arm": "evidence_only",
+      "failure_stage": "answer_evidence_or_contract",
+      "wrong_metrics": [
+        "count_top1",
+        "positive_amount_top1"
+      ],
+      "gold_host_reference": {
+        "count_top1": "insufficient_evidence",
+        "positive_amount_top1": "insufficient_evidence"
+      },
+      "submitted_metrics": {
+        "count_top1": "increased",
+        "positive_amount_top1": "increased"
+      },
+      "summary_sha256": "c00f260f863824cdb87360226f8aee521c75e4877c1c99b930291a789f695a24",
+      "reason": "insufficient_sample_ignored"
+    },
+    {
+      "split": "evaluation",
+      "task_id": "u10-24-168",
+      "arm": "evidence_only",
+      "failure_stage": "answer_evidence_or_contract",
+      "wrong_metrics": [
+        "count_top1",
+        "positive_amount_top1"
+      ],
+      "gold_host_reference": {
+        "count_top1": "insufficient_evidence",
+        "positive_amount_top1": "insufficient_evidence"
+      },
+      "submitted_metrics": {
+        "count_top1": "increased",
+        "positive_amount_top1": "increased"
+      },
+      "summary_sha256": "a3b967d905b420bb7469411d66c5a81c7840a5dbaaf557ef45b3c720e0e2f143",
+      "reason": "insufficient_sample_ignored"
+    }
+  ],
+  "new_real_requests": 96,
+  "new_estimated_cny": "2.039240",
+  "project_ledger_entries": 132,
+  "project_committed_estimate_cny": "2.641968",
+  "decision": "Deterministic code is preferable for this exact numeric task. Retain Agent as a controlled workflow component; no cost/query advantage claimed.",
+  "limits": [
+    "Evaluation task users disjoint from development task users, not from detector training users.",
+    "Two tasks share each alert/history; 24 tasks are not 24 independent users.",
+    "No 2019 detector final evaluation performed. No external real financial data used.",
+    "All source-case windows have source coverage; insufficiency here is mostly sample-count policy, not ingestion-time proof.",
+    "Agent first-attempt format pass 0/24, final 24/24 after one correction per task; do not conflate.",
+    "Caching passed fault tests but had zero hits in this live batch, so no measured efficiency gain.",
+    "Latency includes process startup, SQL/hash verification and concurrent local workload; not production SLA.",
+    "Prices are local usage estimates; invoice authoritative."
+  ],
+  "target_date_min": "2018-01-03T15:52:00",
+  "target_date_max": "2018-07-28T13:38:00",
+  "unique_alerts": 12
+}

@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-18",
+  "data_kind": "IBM_TabFormer_synthetic",
+  "runs": [
+    {
+      "directory": "runs/merchant-research-offline-v1-5b010bf470be",
+      "summary_sha256": "d3dd76e33958b15e270bef4befd833020861012b7145c4f6209baef79e223fc3",
+      "status": "completed_validated",
+      "client_mode": "SCRIPTED_NOT_REAL_LLM",
+      "question": {
+        "short_hours": 168,
+        "long_hours": 720,
+        "min_records": 10
+      },
+      "real_LLM_requests": 0,
+      "tool_attempts": 3,
+      "code_commit": "2a76f21b45630b78c2f7249e0dad1ca2f9e42ab1",
+      "code_file_sha256": {
+        "app/cli/merchant_research.py": "dff11b83e452648c6c622bcc30a6c1ea7a03681820a87db3dd9043c4b3e52f62",
+        "app/risk/merchant_research.py": "abc58bdd14c6eb25697272eda3029c7bc41b5350b65ec15a7bd8e5ac00cf6496",
+        "app/risk/merchant_stats.py": "ec592300d2349ce5195411620cbccbe1f4b21945c8f3ccfcb4b12955d7d4846d",
+        "app/tools/case_tools.py": "17848b586385138590d5cf0224773e6d7014606035f86b4369b0f58f13efaef6"
+      },
+      "verification": {
+        "status": "source_sql_verified",
+        "summary_sha256": "d3dd76e33958b15e270bef4befd833020861012b7145c4f6209baef79e223fc3",
+        "observations_checked": 3,
+        "projected_rows": 45,
+        "labels_opened": false
+      }
+    },
+    {
+      "directory": "runs/merchant-research-live-v1-1410b210dc4c",
+      "summary_sha256": "b86271f71105e2401a27770b5a67011d62315c8d2888a9139506a47d76ef997b",
+      "status": "answer_rejected",
+      "client_mode": "siliconflow_live",
+      "question": {
+        "short_hours": 168,
+        "long_hours": 720,
+        "min_records": 10
+      },
+      "real_LLM_requests": 2,
+      "tool_attempts": 3,
+      "code_commit": "2a76f21b45630b78c2f7249e0dad1ca2f9e42ab1",
+      "code_file_sha256": {
+        "app/cli/merchant_research.py": "dff11b83e452648c6c622bcc30a6c1ea7a03681820a87db3dd9043c4b3e52f62",
+        "app/risk/merchant_research.py": "abc58bdd14c6eb25697272eda3029c7bc41b5350b65ec15a7bd8e5ac00cf6496",
+        "app/risk/merchant_stats.py": "ec592300d2349ce5195411620cbccbe1f4b21945c8f3ccfcb4b12955d7d4846d",
+        "app/tools/case_tools.py": "17848b586385138590d5cf0224773e6d7014606035f86b4369b0f58f13efaef6"
+      },
+      "estimated_committed_cny": "0.035140",
+      "project_estimated_committed_cny": "0.447660"
+    }
+  ],
+  "tests_passed": 371,
+  "new_tests": 27,
+  "interpretation": "Offline flow and independent source SQL pass. First live answer rejected: extra prose and reversed short-versus-long comparison. No retry-until-success. Same reused development case, not independent held-out evaluation. External real-data search deferred; scope limitations retained."
+}

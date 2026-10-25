@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "name": "large_amount_unseen_merchant",
+  "all": [
+    {"field":"amount_cents","op":"gt","value":32990},
+    {"field":"history_30d_complete","op":"eq","value":1},
+    {"field":"has_history_30d","op":"eq","value":1},
+    {"field":"merchant_seen_30d","op":"eq","value":0}
+  ]
+}

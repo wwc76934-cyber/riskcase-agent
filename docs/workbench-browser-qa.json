@@ -1,0 +1,59 @@
+{
+  "started_at": "2026-10-22T14:01:10.745Z",
+  "target": "http://127.0.0.1:8767",
+  "browser": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+  "isolation": "new_headless_browser_and_context_no_user_profile",
+  "screenshots": [
+    "01-login.png",
+    "02-direct-report.png",
+    "03-scope-confirmation.png",
+    "04-natural-report.png",
+    "05-clarification.png",
+    "06-task-switch-and-cancel.png",
+    "07-mobile-report.png"
+  ],
+  "assertions": [
+    "login_fixture_provenance_and_live_disabled",
+    "five_checks_report_fixture_provenance_and_report_acceptance",
+    "natural_v2_two_item_plan_explicit_confirmation_then_fixture_report",
+    "ambiguous_and_restricted_questions_stop_without_fact_queries",
+    "late_selected_task_response_cannot_replace_current_report_or_actions",
+    "cancel_request_remains_bound_to_original_task_during_selection_change",
+    "narrow_viewport_report_has_no_horizontal_overflow"
+  ],
+  "console_errors": [],
+  "page_errors": [],
+  "request_failures": [],
+  "model_api_key_used": false,
+  "live_enabled": false,
+  "browser_version": "155.0.4283.62",
+  "login_mode_options": [
+    {
+      "value": "offline",
+      "disabled": false
+    },
+    {
+      "value": "live",
+      "disabled": true
+    }
+  ],
+  "jobs": {
+    "direct": "job-ecd52b89bbee470dbfde43d22abe7ff3",
+    "natural": "job-7453b26faefa4f90b982bdd3c9ac689c",
+    "unclear": "job-7b6d66cd6d294356a3f92cca378af7b5",
+    "rejected": "job-1fcbc69ed06441bc92a2be7e21687c57",
+    "cancelled": "job-65b8fd116bec4b179360ded4a6c80124"
+  },
+  "status": "passed",
+  "finished_at": "2026-10-22T14:01:35.153Z",
+  "script_sha256": "2fe30136fb2a353f13ed398996365f6c88c6dd647073242fdb58f20e4b7e3008",
+  "screenshot_sha256": {
+    "01-login.png": "6ccfceb455f7693e7370179ae020d72ab92a4ba5f852480f74849e1bee07040d",
+    "02-direct-report.png": "a39349cdc77ea277fb04fadead4c1e8702e98b8a6330a27471f092052945c059",
+    "03-scope-confirmation.png": "b2cee1f9cbfe5f51db0c6134ce9af8167203ef282f145fe0a64e97778a036b24",
+    "04-natural-report.png": "629369a355827c1142fd96a8fe8d235ce3b60b1b0b659e261e2269eae4f7ecc6",
+    "05-clarification.png": "bd3e9d5d2eaf6699b98b3abf3d3c5acf372335a28eeaf10dfb720732228f6260",
+    "06-task-switch-and-cancel.png": "9bbbf0377e9bc31633263f2f0940b615703f0dd7b04b40f06c7f75da32b5328e",
+    "07-mobile-report.png": "681c05c2100998d04b92613c620b9d790689ea450afd196ff11d5d63a9b14af9"
+  }
+}

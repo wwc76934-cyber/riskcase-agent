@@ -1,0 +1,1052 @@
+{
+  "stage": "G5-A",
+  "date": "2026-10-22",
+  "status": "mixed_task_stage_accepted_with_negative_value_result",
+  "experiment_commit": "6b89832",
+  "post_experiment_guard_fix_commit": "cf8c911",
+  "paid_rerun_after_guard_fix": false,
+  "primary_contract_sha256": "4c7c80b0bbf7fd717999e1bfcfd0a55a9279f02303c943083b1d82f454135e34",
+  "secondary_contract_sha256": "752e88a9b9190df19756450f846ed94a2d9e6362edabe4867709017ec3428e80",
+  "full_regression": {
+    "tests": 521,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 274.003,
+    "sha256": "c48d2466424db2659baae3d51129d916f7fd399289bfcb8bbf0f3ddf53293859"
+  },
+  "clean_service_and_mixed_tests": {
+    "tests": 67,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 79.715,
+    "sha256": "18da2a2cf1921f7fd1ec51f89af42d799f7f6fd47e4c48992002a2b5a1d072ed"
+  },
+  "batches": {
+    "offline_development": {
+      "directory": "runs/mixed-stage-v1/offline-development",
+      "report_sha256": "1eba1854bac6043d6d1fdc4c6de6190150b1e8e058f3a75318d1fa43c3114f83",
+      "verification_sha256": "fd085e574d22b35c5bb1901cef26a0ae080bc7b0e69e0a1bd6d90219f9d94fb3",
+      "aggregate": {
+        "fixed": {
+          "tasks": 16,
+          "passed": 16,
+          "first_attempt_passed": 16,
+          "real_requests": 0,
+          "unknown_request_slots": 0,
+          "tool_attempts": 56,
+          "extra_distinct_queries": 0,
+          "estimated_cny": "0",
+          "statuses": {
+            "completed_validated": 16
+          },
+          "by_family": {
+            "amount_merchant": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "concentration": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "frequency": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "full_counterevidence": {
+              "tasks": 4,
+              "passed": 4
+            }
+          }
+        },
+        "evidence_only": {
+          "tasks": 16,
+          "passed": 16,
+          "first_attempt_passed": 16,
+          "real_requests": 0,
+          "unknown_request_slots": 0,
+          "tool_attempts": 56,
+          "extra_distinct_queries": 0,
+          "estimated_cny": "0",
+          "statuses": {
+            "completed_validated": 16
+          },
+          "by_family": {
+            "amount_merchant": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "concentration": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "frequency": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "full_counterevidence": {
+              "tasks": 4,
+              "passed": 4
+            }
+          }
+        },
+        "agent": {
+          "tasks": 16,
+          "passed": 16,
+          "first_attempt_passed": 16,
+          "real_requests": 0,
+          "unknown_request_slots": 0,
+          "tool_attempts": 56,
+          "extra_distinct_queries": 0,
+          "estimated_cny": "0",
+          "statuses": {
+            "completed_validated": 16
+          },
+          "by_family": {
+            "amount_merchant": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "concentration": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "frequency": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "full_counterevidence": {
+              "tasks": 4,
+              "passed": 4
+            }
+          }
+        }
+      },
+      "audit": {
+        "status": "all_slots_independently_verified",
+        "report_sha256": "1eba1854bac6043d6d1fdc4c6de6190150b1e8e058f3a75318d1fa43c3114f83",
+        "contract_sha256": "4c7c80b0bbf7fd717999e1bfcfd0a55a9279f02303c943083b1d82f454135e34",
+        "expected_slots": 48,
+        "source_sql_verified_slots": 48,
+        "successful_observations_checked": 168,
+        "published_validated_reports": 48,
+        "failed_slots_retained": 0,
+        "counts": {
+          "fixed": {
+            "tasks": 16,
+            "passed": 16,
+            "first_attempt_passed": 16,
+            "real_requests": 0,
+            "unknown_request_slots": 0,
+            "tool_attempts": 56,
+            "extra_distinct_queries": 0,
+            "estimated_cny": "0",
+            "seconds": 15.949
+          },
+          "evidence_only": {
+            "tasks": 16,
+            "passed": 16,
+            "first_attempt_passed": 16,
+            "real_requests": 0,
+            "unknown_request_slots": 0,
+            "tool_attempts": 56,
+            "extra_distinct_queries": 0,
+            "estimated_cny": "0",
+            "seconds": 15.793
+          },
+          "agent": {
+            "tasks": 16,
+            "passed": 16,
+            "first_attempt_passed": 16,
+            "real_requests": 0,
+            "unknown_request_slots": 0,
+            "tool_attempts": 56,
+            "extra_distinct_queries": 0,
+            "estimated_cny": "0",
+            "seconds": 15.718
+          }
+        },
+        "labels_opened": false,
+        "final_2019_test_opened": false,
+        "nonconformant_report_artifacts": []
+      }
+    },
+    "offline_evaluation": {
+      "directory": "runs/mixed-stage-v1/offline-evaluation",
+      "report_sha256": "584f415f24d7714f0623a641c2163e9149b7eed1c2131630cdd1076939fb1f7c",
+      "verification_sha256": "aeffe5fefa47c94ef3484f17f2e16ab595e69fa5ed90c0d473058f131b991eb4",
+      "aggregate": {
+        "fixed": {
+          "tasks": 16,
+          "passed": 16,
+          "first_attempt_passed": 16,
+          "real_requests": 0,
+          "unknown_request_slots": 0,
+          "tool_attempts": 56,
+          "extra_distinct_queries": 0,
+          "estimated_cny": "0",
+          "statuses": {
+            "completed_validated": 16
+          },
+          "by_family": {
+            "amount_merchant": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "concentration": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "frequency": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "full_counterevidence": {
+              "tasks": 4,
+              "passed": 4
+            }
+          }
+        },
+        "evidence_only": {
+          "tasks": 16,
+          "passed": 16,
+          "first_attempt_passed": 16,
+          "real_requests": 0,
+          "unknown_request_slots": 0,
+          "tool_attempts": 56,
+          "extra_distinct_queries": 0,
+          "estimated_cny": "0",
+          "statuses": {
+            "completed_validated": 16
+          },
+          "by_family": {
+            "amount_merchant": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "concentration": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "frequency": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "full_counterevidence": {
+              "tasks": 4,
+              "passed": 4
+            }
+          }
+        },
+        "agent": {
+          "tasks": 16,
+          "passed": 16,
+          "first_attempt_passed": 16,
+          "real_requests": 0,
+          "unknown_request_slots": 0,
+          "tool_attempts": 56,
+          "extra_distinct_queries": 0,
+          "estimated_cny": "0",
+          "statuses": {
+            "completed_validated": 16
+          },
+          "by_family": {
+            "amount_merchant": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "concentration": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "frequency": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "full_counterevidence": {
+              "tasks": 4,
+              "passed": 4
+            }
+          }
+        }
+      },
+      "audit": {
+        "status": "all_slots_independently_verified",
+        "report_sha256": "584f415f24d7714f0623a641c2163e9149b7eed1c2131630cdd1076939fb1f7c",
+        "contract_sha256": "4c7c80b0bbf7fd717999e1bfcfd0a55a9279f02303c943083b1d82f454135e34",
+        "expected_slots": 48,
+        "source_sql_verified_slots": 48,
+        "successful_observations_checked": 168,
+        "published_validated_reports": 48,
+        "failed_slots_retained": 0,
+        "counts": {
+          "fixed": {
+            "tasks": 16,
+            "passed": 16,
+            "first_attempt_passed": 16,
+            "real_requests": 0,
+            "unknown_request_slots": 0,
+            "tool_attempts": 56,
+            "extra_distinct_queries": 0,
+            "estimated_cny": "0",
+            "seconds": 16.121
+          },
+          "evidence_only": {
+            "tasks": 16,
+            "passed": 16,
+            "first_attempt_passed": 16,
+            "real_requests": 0,
+            "unknown_request_slots": 0,
+            "tool_attempts": 56,
+            "extra_distinct_queries": 0,
+            "estimated_cny": "0",
+            "seconds": 15.952
+          },
+          "agent": {
+            "tasks": 16,
+            "passed": 16,
+            "first_attempt_passed": 16,
+            "real_requests": 0,
+            "unknown_request_slots": 0,
+            "tool_attempts": 56,
+            "extra_distinct_queries": 0,
+            "estimated_cny": "0",
+            "seconds": 15.844
+          }
+        },
+        "labels_opened": false,
+        "final_2019_test_opened": false,
+        "nonconformant_report_artifacts": []
+      }
+    },
+    "live_development": {
+      "directory": "runs/mixed-stage-v1/live-development",
+      "report_sha256": "499e7b1941ab74abc1a15c5f71a17aede72ea68aad355e94c24337224937ba90",
+      "verification_sha256": "54832280e1155efd0050281565dc95ff5c9c1498c144f2dfa6c5f3bd3e01d7a9",
+      "aggregate": {
+        "fixed": {
+          "tasks": 16,
+          "passed": 16,
+          "first_attempt_passed": 16,
+          "real_requests": 0,
+          "unknown_request_slots": 0,
+          "tool_attempts": 56,
+          "extra_distinct_queries": 0,
+          "estimated_cny": "0",
+          "statuses": {
+            "completed_validated": 16
+          },
+          "by_family": {
+            "amount_merchant": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "concentration": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "frequency": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "full_counterevidence": {
+              "tasks": 4,
+              "passed": 4
+            }
+          }
+        },
+        "evidence_only": {
+          "tasks": 16,
+          "passed": 14,
+          "first_attempt_passed": 14,
+          "real_requests": 16,
+          "unknown_request_slots": 0,
+          "tool_attempts": 56,
+          "extra_distinct_queries": 0,
+          "estimated_cny": "0.376576",
+          "statuses": {
+            "completed_validated": 14,
+            "answer_rejected": 2
+          },
+          "by_family": {
+            "amount_merchant": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "concentration": {
+              "tasks": 4,
+              "passed": 3
+            },
+            "frequency": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "full_counterevidence": {
+              "tasks": 4,
+              "passed": 3
+            }
+          }
+        },
+        "agent": {
+          "tasks": 16,
+          "passed": 14,
+          "first_attempt_passed": 0,
+          "real_requests": 55,
+          "unknown_request_slots": 0,
+          "tool_attempts": 57,
+          "extra_distinct_queries": 0,
+          "estimated_cny": "1.064520",
+          "statuses": {
+            "completed_validated": 14,
+            "model_or_protocol_error": 1,
+            "failed_or_interrupted": 1
+          },
+          "by_family": {
+            "amount_merchant": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "concentration": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "frequency": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "full_counterevidence": {
+              "tasks": 4,
+              "passed": 2
+            }
+          }
+        }
+      },
+      "audit": {
+        "status": "all_slots_independently_verified",
+        "report_sha256": "499e7b1941ab74abc1a15c5f71a17aede72ea68aad355e94c24337224937ba90",
+        "contract_sha256": "4c7c80b0bbf7fd717999e1bfcfd0a55a9279f02303c943083b1d82f454135e34",
+        "expected_slots": 48,
+        "source_sql_verified_slots": 48,
+        "successful_observations_checked": 168,
+        "published_validated_reports": 44,
+        "failed_slots_retained": 4,
+        "counts": {
+          "fixed": {
+            "tasks": 16,
+            "passed": 16,
+            "first_attempt_passed": 16,
+            "real_requests": 0,
+            "unknown_request_slots": 0,
+            "tool_attempts": 56,
+            "extra_distinct_queries": 0,
+            "estimated_cny": "0",
+            "seconds": 25.239
+          },
+          "evidence_only": {
+            "tasks": 16,
+            "passed": 14,
+            "first_attempt_passed": 14,
+            "real_requests": 16,
+            "unknown_request_slots": 0,
+            "tool_attempts": 56,
+            "extra_distinct_queries": 0,
+            "estimated_cny": "0.376576",
+            "seconds": 161.393
+          },
+          "agent": {
+            "tasks": 16,
+            "passed": 14,
+            "first_attempt_passed": 0,
+            "real_requests": 55,
+            "unknown_request_slots": 0,
+            "tool_attempts": 57,
+            "extra_distinct_queries": 0,
+            "estimated_cny": "1.064520",
+            "seconds": 373.673
+          }
+        },
+        "labels_opened": false,
+        "final_2019_test_opened": false,
+        "nonconformant_report_artifacts": [
+          {
+            "task_id": "u01-full_counterevidence",
+            "arm": "agent",
+            "reason": "tool_attempt_policy_exceeded",
+            "attempts": 7,
+            "successful_queries": 6,
+            "raw_report_exists": true,
+            "frozen_receipt_unchanged": true
+          }
+        ]
+      }
+    },
+    "live_evaluation": {
+      "directory": "runs/mixed-stage-v1/live-evaluation",
+      "report_sha256": "1a33efca9cd3efa30c16747fccb5fad3b6935a9f177a92c5f6ce8348055c86b6",
+      "verification_sha256": "ebb20351807ee962fbe0db28c84bfe0d64a7ecd7e3cd5c666efeadb27e40e843",
+      "aggregate": {
+        "fixed": {
+          "tasks": 16,
+          "passed": 16,
+          "first_attempt_passed": 16,
+          "real_requests": 0,
+          "unknown_request_slots": 0,
+          "tool_attempts": 56,
+          "extra_distinct_queries": 0,
+          "estimated_cny": "0",
+          "statuses": {
+            "completed_validated": 16
+          },
+          "by_family": {
+            "amount_merchant": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "concentration": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "frequency": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "full_counterevidence": {
+              "tasks": 4,
+              "passed": 4
+            }
+          }
+        },
+        "evidence_only": {
+          "tasks": 16,
+          "passed": 14,
+          "first_attempt_passed": 14,
+          "real_requests": 16,
+          "unknown_request_slots": 0,
+          "tool_attempts": 56,
+          "extra_distinct_queries": 0,
+          "estimated_cny": "0.381544",
+          "statuses": {
+            "completed_validated": 14,
+            "answer_rejected": 2
+          },
+          "by_family": {
+            "amount_merchant": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "concentration": {
+              "tasks": 4,
+              "passed": 3
+            },
+            "frequency": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "full_counterevidence": {
+              "tasks": 4,
+              "passed": 3
+            }
+          }
+        },
+        "agent": {
+          "tasks": 16,
+          "passed": 14,
+          "first_attempt_passed": 0,
+          "real_requests": 52,
+          "unknown_request_slots": 0,
+          "tool_attempts": 50,
+          "extra_distinct_queries": 0,
+          "estimated_cny": "1.002692",
+          "statuses": {
+            "completed_validated": 14,
+            "answer_rejected": 1,
+            "model_or_protocol_error": 1
+          },
+          "by_family": {
+            "amount_merchant": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "concentration": {
+              "tasks": 4,
+              "passed": 3
+            },
+            "frequency": {
+              "tasks": 4,
+              "passed": 4
+            },
+            "full_counterevidence": {
+              "tasks": 4,
+              "passed": 3
+            }
+          }
+        }
+      },
+      "audit": {
+        "status": "all_slots_independently_verified",
+        "report_sha256": "1a33efca9cd3efa30c16747fccb5fad3b6935a9f177a92c5f6ce8348055c86b6",
+        "contract_sha256": "4c7c80b0bbf7fd717999e1bfcfd0a55a9279f02303c943083b1d82f454135e34",
+        "expected_slots": 48,
+        "source_sql_verified_slots": 48,
+        "successful_observations_checked": 162,
+        "published_validated_reports": 44,
+        "failed_slots_retained": 4,
+        "counts": {
+          "fixed": {
+            "tasks": 16,
+            "passed": 16,
+            "first_attempt_passed": 16,
+            "real_requests": 0,
+            "unknown_request_slots": 0,
+            "tool_attempts": 56,
+            "extra_distinct_queries": 0,
+            "estimated_cny": "0",
+            "seconds": 25.615
+          },
+          "evidence_only": {
+            "tasks": 16,
+            "passed": 14,
+            "first_attempt_passed": 14,
+            "real_requests": 16,
+            "unknown_request_slots": 0,
+            "tool_attempts": 56,
+            "extra_distinct_queries": 0,
+            "estimated_cny": "0.381544",
+            "seconds": 162.179
+          },
+          "agent": {
+            "tasks": 16,
+            "passed": 14,
+            "first_attempt_passed": 0,
+            "real_requests": 52,
+            "unknown_request_slots": 0,
+            "tool_attempts": 50,
+            "extra_distinct_queries": 0,
+            "estimated_cny": "1.002692",
+            "seconds": 359.597
+          }
+        },
+        "labels_opened": false,
+        "final_2019_test_opened": false,
+        "nonconformant_report_artifacts": []
+      }
+    },
+    "offline_sample_stress": {
+      "directory": "runs/mixed-sample-stress-v1/offline",
+      "report_sha256": "b2ccf5e11b39255ea701d71b618da2736cc7b30644fdecd2129c0fffe96d2336",
+      "verification_sha256": "b411f234195663dc17c400c35fb813d72185fdf7c554cee3d7c472ea85bb65ed",
+      "aggregate": {
+        "fixed": {
+          "tasks": 2,
+          "passed": 2,
+          "first_attempt_passed": 2,
+          "real_requests": 0,
+          "unknown_request_slots": 0,
+          "tool_attempts": 12,
+          "extra_distinct_queries": 0,
+          "estimated_cny": "0",
+          "statuses": {
+            "completed_validated": 2
+          },
+          "by_family": {
+            "sample_stress": {
+              "tasks": 2,
+              "passed": 2
+            }
+          }
+        },
+        "evidence_only": {
+          "tasks": 2,
+          "passed": 2,
+          "first_attempt_passed": 2,
+          "real_requests": 0,
+          "unknown_request_slots": 0,
+          "tool_attempts": 12,
+          "extra_distinct_queries": 0,
+          "estimated_cny": "0",
+          "statuses": {
+            "completed_validated": 2
+          },
+          "by_family": {
+            "sample_stress": {
+              "tasks": 2,
+              "passed": 2
+            }
+          }
+        },
+        "agent": {
+          "tasks": 2,
+          "passed": 2,
+          "first_attempt_passed": 2,
+          "real_requests": 0,
+          "unknown_request_slots": 0,
+          "tool_attempts": 12,
+          "extra_distinct_queries": 0,
+          "estimated_cny": "0",
+          "statuses": {
+            "completed_validated": 2
+          },
+          "by_family": {
+            "sample_stress": {
+              "tasks": 2,
+              "passed": 2
+            }
+          }
+        }
+      },
+      "audit": {
+        "status": "all_slots_independently_verified",
+        "report_sha256": "b2ccf5e11b39255ea701d71b618da2736cc7b30644fdecd2129c0fffe96d2336",
+        "contract_sha256": "752e88a9b9190df19756450f846ed94a2d9e6362edabe4867709017ec3428e80",
+        "expected_slots": 6,
+        "source_sql_verified_slots": 6,
+        "successful_observations_checked": 36,
+        "published_validated_reports": 6,
+        "failed_slots_retained": 0,
+        "counts": {
+          "fixed": {
+            "tasks": 2,
+            "passed": 2,
+            "first_attempt_passed": 2,
+            "real_requests": 0,
+            "unknown_request_slots": 0,
+            "tool_attempts": 12,
+            "extra_distinct_queries": 0,
+            "estimated_cny": "0",
+            "seconds": 3.355
+          },
+          "evidence_only": {
+            "tasks": 2,
+            "passed": 2,
+            "first_attempt_passed": 2,
+            "real_requests": 0,
+            "unknown_request_slots": 0,
+            "tool_attempts": 12,
+            "extra_distinct_queries": 0,
+            "estimated_cny": "0",
+            "seconds": 3.229
+          },
+          "agent": {
+            "tasks": 2,
+            "passed": 2,
+            "first_attempt_passed": 2,
+            "real_requests": 0,
+            "unknown_request_slots": 0,
+            "tool_attempts": 12,
+            "extra_distinct_queries": 0,
+            "estimated_cny": "0",
+            "seconds": 3.346
+          }
+        },
+        "labels_opened": false,
+        "final_2019_test_opened": false,
+        "nonconformant_report_artifacts": []
+      }
+    },
+    "live_sample_stress": {
+      "directory": "runs/mixed-sample-stress-v1/live",
+      "report_sha256": "75cdef17c581d739f3cf0a01ae16fbabfb730734fec6433e5a25c9708c60dab7",
+      "verification_sha256": "93257b54bfd49026decc5f386652cfebd944abe2efb06c0df9d3e234c14cc5f7",
+      "aggregate": {
+        "fixed": {
+          "tasks": 2,
+          "passed": 2,
+          "first_attempt_passed": 2,
+          "real_requests": 0,
+          "unknown_request_slots": 0,
+          "tool_attempts": 12,
+          "extra_distinct_queries": 0,
+          "estimated_cny": "0",
+          "statuses": {
+            "completed_validated": 2
+          },
+          "by_family": {
+            "sample_stress": {
+              "tasks": 2,
+              "passed": 2
+            }
+          }
+        },
+        "evidence_only": {
+          "tasks": 2,
+          "passed": 0,
+          "first_attempt_passed": 0,
+          "real_requests": 2,
+          "unknown_request_slots": 0,
+          "tool_attempts": 12,
+          "extra_distinct_queries": 0,
+          "estimated_cny": "0.080112",
+          "statuses": {
+            "answer_rejected": 2
+          },
+          "by_family": {
+            "sample_stress": {
+              "tasks": 2,
+              "passed": 0
+            }
+          }
+        },
+        "agent": {
+          "tasks": 2,
+          "passed": 1,
+          "first_attempt_passed": 0,
+          "real_requests": 5,
+          "unknown_request_slots": 0,
+          "tool_attempts": 6,
+          "extra_distinct_queries": 0,
+          "estimated_cny": "0.125848",
+          "statuses": {
+            "completed_validated": 1,
+            "model_or_protocol_error": 1
+          },
+          "by_family": {
+            "sample_stress": {
+              "tasks": 2,
+              "passed": 1
+            }
+          }
+        }
+      },
+      "audit": {
+        "status": "all_slots_independently_verified",
+        "report_sha256": "75cdef17c581d739f3cf0a01ae16fbabfb730734fec6433e5a25c9708c60dab7",
+        "contract_sha256": "752e88a9b9190df19756450f846ed94a2d9e6362edabe4867709017ec3428e80",
+        "expected_slots": 6,
+        "source_sql_verified_slots": 6,
+        "successful_observations_checked": 30,
+        "published_validated_reports": 3,
+        "failed_slots_retained": 3,
+        "counts": {
+          "fixed": {
+            "tasks": 2,
+            "passed": 2,
+            "first_attempt_passed": 2,
+            "real_requests": 0,
+            "unknown_request_slots": 0,
+            "tool_attempts": 12,
+            "extra_distinct_queries": 0,
+            "estimated_cny": "0",
+            "seconds": 3.262
+          },
+          "evidence_only": {
+            "tasks": 2,
+            "passed": 0,
+            "first_attempt_passed": 0,
+            "real_requests": 2,
+            "unknown_request_slots": 0,
+            "tool_attempts": 12,
+            "extra_distinct_queries": 0,
+            "estimated_cny": "0.080112",
+            "seconds": 29.438
+          },
+          "agent": {
+            "tasks": 2,
+            "passed": 1,
+            "first_attempt_passed": 0,
+            "real_requests": 5,
+            "unknown_request_slots": 0,
+            "tool_attempts": 6,
+            "extra_distinct_queries": 0,
+            "estimated_cny": "0.125848",
+            "seconds": 44.285
+          }
+        },
+        "labels_opened": false,
+        "final_2019_test_opened": false,
+        "nonconformant_report_artifacts": []
+      }
+    }
+  },
+  "matched_successful_agent_tasks": {
+    "tasks": 28,
+    "agent_tool_attempts": 91,
+    "fixed_tool_attempts_same_tasks": 91
+  },
+  "paired_primary_agent_vs_summary": {
+    "agent_only_pass": 3,
+    "summary_only_pass": 3,
+    "both_pass": 25,
+    "both_fail": 1
+  },
+  "failures": [
+    {
+      "task_id": "u00-full_counterevidence",
+      "arm": "agent",
+      "primary": true,
+      "receipt_status": "model_or_protocol_error",
+      "runtime_status": "model_or_protocol_error",
+      "failure_stage": null,
+      "provider_guard": "unexpected_reasoning_usage",
+      "tool_attempts": 6,
+      "summary_path": "runs/mixed-stage-v1/live-development/runs/u00-full_counterevidence-agent/summary.json",
+      "summary_sha256": "924d40906703960a44159816e9883507f83aba8fcd99797f25d41d16fdf5a679",
+      "raw_report_exists": false
+    },
+    {
+      "task_id": "u01-full_counterevidence",
+      "arm": "agent",
+      "primary": true,
+      "receipt_status": "failed_or_interrupted",
+      "runtime_status": "completed_validated",
+      "failure_stage": null,
+      "provider_guard": null,
+      "tool_attempts": 7,
+      "summary_path": "runs/mixed-stage-v1/live-development/runs/u01-full_counterevidence-agent/summary.json",
+      "summary_sha256": "23edd77e077994fbbbfc1eb64c1dc69a25c60b59e5cdfb9e0e06ced4ae757cad",
+      "raw_report_exists": true
+    },
+    {
+      "task_id": "u03-concentration",
+      "arm": "evidence_only",
+      "primary": true,
+      "receipt_status": "answer_rejected",
+      "runtime_status": "answer_rejected",
+      "failure_stage": "answer_contract_or_evidence",
+      "provider_guard": null,
+      "tool_attempts": 3,
+      "summary_path": "runs/mixed-stage-v1/live-development/runs/u03-concentration-evidence_only/summary.json",
+      "summary_sha256": "589f9c76c16b0c1c2e4e97be071b9b0f455218522202b9af384cee5c1d65b32c",
+      "raw_report_exists": false
+    },
+    {
+      "task_id": "u03-full_counterevidence",
+      "arm": "evidence_only",
+      "primary": true,
+      "receipt_status": "answer_rejected",
+      "runtime_status": "answer_rejected",
+      "failure_stage": "answer_contract_or_evidence",
+      "provider_guard": null,
+      "tool_attempts": 6,
+      "summary_path": "runs/mixed-stage-v1/live-development/runs/u03-full_counterevidence-evidence_only/summary.json",
+      "summary_sha256": "aabd9337d2991891a150aec8561ec917add7efd4edaca39a20a9bac024720631",
+      "raw_report_exists": false
+    },
+    {
+      "task_id": "u04-concentration",
+      "arm": "agent",
+      "primary": true,
+      "receipt_status": "answer_rejected",
+      "runtime_status": "answer_rejected",
+      "failure_stage": "answer_contract_or_evidence",
+      "provider_guard": null,
+      "tool_attempts": 3,
+      "summary_path": "runs/mixed-stage-v1/live-evaluation/runs/u04-concentration-agent/summary.json",
+      "summary_sha256": "f1281a1f40cc64e7690ed21881f3b03d2cfe7111bdd1122194c9bb536e2e5e6d",
+      "raw_report_exists": false
+    },
+    {
+      "task_id": "u04-concentration",
+      "arm": "evidence_only",
+      "primary": true,
+      "receipt_status": "answer_rejected",
+      "runtime_status": "answer_rejected",
+      "failure_stage": "answer_contract_or_evidence",
+      "provider_guard": null,
+      "tool_attempts": 3,
+      "summary_path": "runs/mixed-stage-v1/live-evaluation/runs/u04-concentration-evidence_only/summary.json",
+      "summary_sha256": "64dc12fc2339347699b2b575ca38c81c045d870a85a9e0e85c294549fc92c8d9",
+      "raw_report_exists": false
+    },
+    {
+      "task_id": "u04-full_counterevidence",
+      "arm": "evidence_only",
+      "primary": true,
+      "receipt_status": "answer_rejected",
+      "runtime_status": "answer_rejected",
+      "failure_stage": "answer_contract_or_evidence",
+      "provider_guard": null,
+      "tool_attempts": 6,
+      "summary_path": "runs/mixed-stage-v1/live-evaluation/runs/u04-full_counterevidence-evidence_only/summary.json",
+      "summary_sha256": "ed202942f17fb9d5fcd516318665d2a320b292865dc6c2e145a39c071ed5e2ab",
+      "raw_report_exists": false
+    },
+    {
+      "task_id": "u06-full_counterevidence",
+      "arm": "agent",
+      "primary": true,
+      "receipt_status": "model_or_protocol_error",
+      "runtime_status": "model_or_protocol_error",
+      "failure_stage": null,
+      "provider_guard": null,
+      "tool_attempts": 0,
+      "summary_path": "runs/mixed-stage-v1/live-evaluation/runs/u06-full_counterevidence-agent/summary.json",
+      "summary_sha256": "4717e3abc04cb72aa0737865f2a4bcb70b0427264f946e295a4de065cda02f66",
+      "raw_report_exists": false
+    },
+    {
+      "task_id": "u00-sample_stress",
+      "arm": "evidence_only",
+      "primary": false,
+      "receipt_status": "answer_rejected",
+      "runtime_status": "answer_rejected",
+      "failure_stage": "answer_contract_or_evidence",
+      "provider_guard": null,
+      "tool_attempts": 6,
+      "summary_path": "runs/mixed-sample-stress-v1/live/runs/u00-sample_stress-evidence_only/summary.json",
+      "summary_sha256": "780a1e9d0d5faa07a179848bfd74ba035a49e3e5d77ee4cc80bd468109ab3e77",
+      "raw_report_exists": false
+    },
+    {
+      "task_id": "u01-sample_stress",
+      "arm": "agent",
+      "primary": false,
+      "receipt_status": "model_or_protocol_error",
+      "runtime_status": "model_or_protocol_error",
+      "failure_stage": null,
+      "provider_guard": null,
+      "tool_attempts": 0,
+      "summary_path": "runs/mixed-sample-stress-v1/live/runs/u01-sample_stress-agent/summary.json",
+      "summary_sha256": "b9069b1a4322761e7bf9c9650d86ec78c5a3808a6ac6d7c1c76240c8cf6df667",
+      "raw_report_exists": false
+    },
+    {
+      "task_id": "u01-sample_stress",
+      "arm": "evidence_only",
+      "primary": false,
+      "receipt_status": "answer_rejected",
+      "runtime_status": "answer_rejected",
+      "failure_stage": "answer_contract_or_evidence",
+      "provider_guard": null,
+      "tool_attempts": 6,
+      "summary_path": "runs/mixed-sample-stress-v1/live/runs/u01-sample_stress-evidence_only/summary.json",
+      "summary_sha256": "5a9fe92ddc46697c0617448f361e6768f18b5008285906eb3b75837a74159344",
+      "raw_report_exists": false
+    }
+  ],
+  "real_requests_this_stage": 146,
+  "estimated_cny_this_stage": "3.031292",
+  "project_ledger": {
+    "entries": 281,
+    "committed_estimate_cny": "5.738232",
+    "unknown_entries_including_prior": 1
+  },
+  "example": {
+    "source": "runs/mixed-stage-v1/live-development/runs/u02-full_counterevidence-agent/report.md",
+    "sha256": "60992d51274fdf0f19d53b8b253f4be29a754439fc94af9fbfb07a3152204f98"
+  },
+  "financial_candidate": {
+    "candidate_id": "case-467716-rule",
+    "version": 2,
+    "status": "pending_review",
+    "deployed": false
+  },
+  "review_audit": {
+    "status": "passed",
+    "events": 2,
+    "candidates": 1,
+    "head_hash": "c0f38a617c5f3e5cddde6c3e8aa236048ddac7f4d403ad131e36e1b18c457938",
+    "limits": "Local consistency checks; not tamper-proof storage, authenticated identities or deployment authorization."
+  },
+  "remote_CI_executed": false,
+  "final_2019_detector_test_opened": false,
+  "decision": "No demonstrated advantage over question-aware deterministic workflow; keep numeric assessments in deterministic tools. Do not expand infrastructure to conceal this.",
+  "limits": [
+    "32 primary tasks from 8 correlated users; evaluation has only 4 task users, not independent of detector training.",
+    "No inadequate-history/sample findings in the primary gold; gaps also tested in explicit fixtures and a separate two-case sample-policy stress.",
+    "1000-record stress threshold is intentionally strict, not an industry rule; it reuses two development users.",
+    "One frozen runtime emitted a numerically correct raw report after a denied seventh attempt. Batch audit failed it; current runtime regression prevents publication. Original scores unchanged.",
+    "Time/cost include local subprocess/validation overhead; no controlled production latency or actual billing claim.",
+    "Synthetic source, no fraud labels for task gold, no real-world business efficacy claim."
+  ]
+}

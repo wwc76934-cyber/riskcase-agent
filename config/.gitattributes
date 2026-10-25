@@ -1,0 +1,3 @@
+# Raw SHA-256 of this independently frozen task set must survive Windows checkout.
+acceptance-intent-v2-host-only.json text eol=lf
+acceptance-intent-v2-contract.json text eol=lf

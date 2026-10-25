@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "split": "development_only",
+  "data_kind": "hand_constructed_synthetic_fixtures_NOT_IBM_samples",
+  "cutoff": "2018-02-01T12:00:00",
+  "cases": [
+    {"id":"normal_seen", "amount_cents":1000,"merchant":"old","history":[[-120,2000,"old"]],"gold":["not_supported","not_supported","not_supported"]},
+    {"id":"large_new", "amount_cents":3000,"merchant":"new","history":[[-120,2000,"old"]],"gold":["not_supported","supported","supported"]},
+    {"id":"burst", "amount_cents":3000,"merchant":"new","history":[[-5,2000,"old"],[-10,1000,"old"],[-15,1000,"old"],[-20,1000,"old"]],"gold":["supported","supported","supported"],"required_checks":["high_prior_frequency_1h"]},
+    {"id":"short_coverage", "amount_cents":3000,"merchant":"new","history":[[-10,2000,"old"]],"coverage_start":"2018-02-01T11:30:00","gold":["insufficient_evidence","insufficient_evidence","insufficient_evidence"],"required_checks":["high_prior_frequency_1h"]},
+    {"id":"short_month", "amount_cents":3000,"merchant":"new","history":[[-120,2000,"old"]],"coverage_start":"2018-01-30T12:00:00","gold":["not_supported","insufficient_evidence","insufficient_evidence"]},
+    {"id":"no_history", "amount_cents":3000,"merchant":"new","history":[],"gold":["not_supported","insufficient_evidence","insufficient_evidence"]},
+    {"id":"negative_current", "amount_cents":-100,"merchant":"old","history":[[-120,2000,"old"]],"gold":["not_supported","insufficient_evidence","not_supported"]},
+    {"id":"future_and_other_user_trap", "amount_cents":1000,"merchant":"old","history":[[-120,2000,"old"]],"excluded_records":true,"gold":["not_supported","not_supported","not_supported"]},
+    {"id":"window_edge_and_equal_amount", "amount_cents":3000,"merchant":"new","history":[[-60,2000,"old"],[-60.0166666667,3000,"old"]],"gold":["not_supported","not_supported","supported"]}
+  ]
+}

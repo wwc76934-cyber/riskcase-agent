@@ -1,0 +1,92 @@
+{
+  "scope": "four authored development tasks, not holdout or business validation",
+  "data_kind": "hand_constructed_synthetic_fixtures_NOT_IBM_samples",
+  "results": [
+    {
+      "task_id": "normal_seen",
+      "source_run": "comparison-live-v1-7ca925d807d2",
+      "comparison_sha256": "85972e86eee7f4b4cc86d17a6c72cb7276c212683c1568c93995943b35a6186c",
+      "arms": {
+        "fixed": {
+          "tasks_passed": 1,
+          "tool_attempts": 4,
+          "client_requests": 0,
+          "submitted_checks": 3
+        },
+        "investigator": {
+          "tasks_passed": 1,
+          "tool_attempts": 4,
+          "client_requests": 3,
+          "submitted_checks": 3
+        }
+      },
+      "estimated_usage_cny": "0.036092"
+    },
+    {
+      "task_id": "burst",
+      "source_run": "comparison-live-v1-606e005453c4",
+      "comparison_sha256": "81bee5accbce5182f4b4eba05fe85ff35a3b93b4136f5560ca114726029925a5",
+      "arms": {
+        "fixed": {
+          "tasks_passed": 1,
+          "tool_attempts": 4,
+          "client_requests": 0,
+          "submitted_checks": 3
+        },
+        "investigator": {
+          "tasks_passed": 1,
+          "tool_attempts": 4,
+          "client_requests": 3,
+          "submitted_checks": 3
+        }
+      },
+      "estimated_usage_cny": "0.040388"
+    },
+    {
+      "task_id": "short_coverage",
+      "source_run": "comparison-live-v1-7a1029f44269",
+      "comparison_sha256": "0dfc32dd9b21e3d60a0b3fd2f1a897daa69db2e2a465dfc7ef0906ab9e4e4fea",
+      "arms": {
+        "fixed": {
+          "tasks_passed": 1,
+          "tool_attempts": 4,
+          "client_requests": 0,
+          "submitted_checks": 3
+        },
+        "investigator": {
+          "tasks_passed": 1,
+          "tool_attempts": 4,
+          "client_requests": 4,
+          "submitted_checks": 3
+        }
+      },
+      "estimated_usage_cny": "0.043644"
+    },
+    {
+      "task_id": "short_month",
+      "source_run": "comparison-live-v1-658f3cc615ce",
+      "comparison_sha256": "2a32fcee26ea90148a345651fe8607cc15d026cd941aba29f3a5be59a4dfbc46",
+      "arms": {
+        "fixed": {
+          "tasks_passed": 1,
+          "tool_attempts": 4,
+          "client_requests": 0,
+          "submitted_checks": 3
+        },
+        "investigator": {
+          "tasks_passed": 1,
+          "tool_attempts": 4,
+          "client_requests": 4,
+          "submitted_checks": 3
+        }
+      },
+      "estimated_usage_cny": "0.043436"
+    }
+  ],
+  "fixed_tasks_passed": 4,
+  "model_tasks_passed": 4,
+  "fixed_tool_queries": 16,
+  "model_tool_queries": 16,
+  "real_LLM_requests_across_four_tasks": 14,
+  "limits": "Frozen development tasks and prompt unchanged; no query-count benefit observed, no statistical/generalization claim."
+}
