@@ -58,9 +58,9 @@ class DevelopmentMetric:
                 "precision": float(self.y[selected].sum() / len(selected)), "recall": float(self.y[selected].sum() / self.y.sum())}
 
 
-def train(root, directory):
+def train(root, directory, policy_path=None):
     directory.mkdir(parents=True, exist_ok=False)
-    policy = json.loads((root / "config/neural-experiment-v2.json").read_text(encoding="utf-8"))
+    policy = json.loads((policy_path or root / "config/neural-experiment-v2.json").read_text(encoding="utf-8"))
     code = ["app/risk/neural_v2.py", "app/cli/train_neural_v2.py", "app/risk/ml_data.py", "app/risk/ml_evaluation.py", "app/risk/neural_model.py", "app/risk/rule_baseline.py"]
     write_json(directory / "protocol.json", {"policy": policy, "commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip(),
                "code_sha256": {p: sha256_file(root / p) for p in code}, "python": platform.python_version(), "torch": torch.__version__, "final_test_read": False})
@@ -100,7 +100,8 @@ def train(root, directory):
         write_json(output / "result.json", result); results.append(result)
     chosen = max(results, key=lambda r: (r["best"]["true_positives"], r["best"]["average_precision"], -r["best"]["epoch"], -next(i for i, t in enumerate(policy["recipes"]) if t["id"] == r["recipe"])))
     freeze = {"recipe": chosen["recipe"], "config": chosen["config"], "epochs": chosen["best"]["epoch"], "seeds": policy["confirmation_seeds"],
-              "final_test_read": False, "training_period": "2016-2017 for development comparison; final refit may include 2018 before one-time 2019 test",
+              "final_test_read": False, "training_period": policy["fit_period"],
+              "final_refit_contract": policy["final_refit_contract"],
               "selection_protocol_sha256": sha256_file(directory / "protocol.json")}
     write_json(directory / "selected-recipe.json", freeze)
     print(f"Selected {freeze['recipe']} epoch {freeze['epochs']}; confirming three seeds", flush=True)
@@ -138,8 +139,9 @@ def main():
     root = Path(__file__).resolve().parents[2]
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=root / "runs" / ("neural-v2-" + uuid4().hex[:12]))
+    parser.add_argument("--policy", type=Path, help="Separate development protocol; historical protocol remains unchanged")
     args = parser.parse_args()
-    train(root, args.output)
+    train(root, args.output, args.policy)
 
 
 if __name__ == "__main__": main()

@@ -91,7 +91,7 @@ class JobStore:
                 item.pop("spec")
                 question = spec["question"]
                 item.update(case_id=spec["case_id"], task_type=spec.get("task_type", "merchant"),
-                            question_text=question.get("text", " / ".join(question.get("checks", []))))
+                            question_text='按优先级分步核查' if spec.get('task_type')=='triage' else question.get("text", " / ".join(question.get("checks", []))))
                 rows.append(item)
             return rows
 
