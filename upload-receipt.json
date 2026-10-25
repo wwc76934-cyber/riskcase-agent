@@ -1,0 +1,94 @@
+{
+  "repository": "https://github.com/wwc76934-cyber/riskcase-agent",
+  "visibility": "private",
+  "method": "Repository-scoped GitHub connector imports, not account-wide Git CLI login",
+  "source_mapping": {
+    "accepted_v1": {
+      "local_branch": "main",
+      "original_commit": "1d0433b3cd2b4ac157a8a0891cf81c9f624b6360",
+      "tree": "879d444e98928d827ea329f1b1e3a27e72b56dc2",
+      "remote_commit": "a5ce778b2e7f5deb948cbe771faefa0d3f216aff",
+      "original_import_commit": "a5ce778b2e7f5deb948cbe771faefa0d3f216aff",
+      "current_remote_commit": "52c391360e1a5838fc48405f1b979c74d6a19719",
+      "current_remote_tree": "48c9372b17df4874b7c9b60412cf017ed3d9da06"
+    },
+    "ongoing_upgrades": {
+      "local_branch": "codex/phase01-foundation",
+      "original_commit": "b0eae06c7415017ab1ff3ede34934c2fbf59b08f",
+      "tree": "a932cc6223c417a3f49e1f6004eb500d6d747b80",
+      "remote_branch": "codex/research-upgrades",
+      "remote_commit": "0eb9ae0ffb7c3e5d3d071a90f694c6d2a121ba98",
+      "original_import_commit": "0eb9ae0ffb7c3e5d3d071a90f694c6d2a121ba98",
+      "current_source_commit": "2d4e7e0f2fbb1cd4009fedb81b01b8760fe5c100",
+      "current_remote_commit": "6126f7f899015d7cd556617ac6753c5330bdf0f7",
+      "current_remote_tree": "386ae3875473c8846f92990c36a285cfb483cc68"
+    },
+    "bundle": {
+      "sha": "165fe7bbb1fb0ca1cd7470ea94a3a149a4069788",
+      "sha256": "3662fc40ab41c95aed16edf97c9835a96ca5db35e3c03950a1310cb6680ecebf",
+      "bytes": 1992563
+    },
+    "method": "Repository-scoped connector file-tree imports; original Git commit objects retained in bundle. Local history was not rewritten.",
+    "ci_hotfix": {
+      "source_commit": "2d4e7e0f2fbb1cd4009fedb81b01b8760fe5c100",
+      "changed_files": [
+        "app/service/runtime.py",
+        "tests/test_input_publish_race.py"
+      ],
+      "local_focused_tests_passed": 37,
+      "incremental_bundle": {
+        "file": "riskcase-agent-ci-fix.bundle",
+        "git_blob_sha": "67b6e8e8660c768deff36e0bd872e13e958fb06a",
+        "sha256": "bdffccccba2bf904d3144a466a62800c45323b21c7045de63c4da752d637a12a",
+        "bytes": 1780,
+        "prerequisite": "b0eae06c7415017ab1ff3ede34934c2fbf59b08f"
+      },
+      "original_ci_run": 40183452493,
+      "fix_ci_run": 40184648183
+    }
+  },
+  "verified_refs": {
+    "main": {
+      "commit": "52c391360e1a5838fc48405f1b979c74d6a19719",
+      "tree": "48c9372b17df4874b7c9b60412cf017ed3d9da06"
+    },
+    "codex/research-upgrades": {
+      "commit": "6126f7f899015d7cd556617ac6753c5330bdf0f7",
+      "tree": "386ae3875473c8846f92990c36a285cfb483cc68"
+    },
+    "codex/history-backup": {
+      "commit": "318a03bbe10e67d5076b3ea6429dd5c0e347ff49",
+      "tree": "afd1fba81e933a9f697613f77af284905ca17ac9"
+    }
+  },
+  "file_counts": {
+    "main_after_compatibility_fix": 328,
+    "development_after_fix": 355
+  },
+  "ci": {
+    "run_id": 40184648183,
+    "url": "https://github.com/wwc76934-cyber/riskcase-agent/actions/runs/40184648183",
+    "ubuntu": {
+      "conclusion": "success",
+      "passed": 728
+    },
+    "windows": {
+      "conclusion": "success",
+      "passed": 728
+    },
+    "initial_failure_retained": 40183452493
+  },
+  "history_restore": {
+    "status": "original_and_incremental_git_history_restored",
+    "original_main": "1d0433b3cd2b4ac157a8a0891cf81c9f624b6360",
+    "development_with_fix": "2d4e7e0f2fbb1cd4009fedb81b01b8760fe5c100"
+  },
+  "local_git_history_rewritten": false,
+  "local_upstream_configured": false,
+  "raw_data_and_credentials_uploaded": false,
+  "limits": [
+    "Original and imported commit IDs differ; full original history is restored from the two bundles.",
+    "No force push or repository visibility change was performed.",
+    "Development branch contains ongoing upgrades and is not substituted for V1 acceptance."
+  ]
+}
