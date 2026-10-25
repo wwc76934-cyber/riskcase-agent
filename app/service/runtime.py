@@ -1,6 +1,7 @@
 """Immutable case inputs, journal replay and a separately runnable job worker."""
 
 from dataclasses import asdict, dataclass
+import errno
 import json
 import os
 from pathlib import Path
@@ -81,7 +82,13 @@ class ResearchService:
                 if not "2018-01-01" <= check.manifest["cutoff"] < "2019-01-01":
                     raise ValueError("development_period_only")
                 try: staging.rename(frozen)
-                except FileExistsError: pass  # Another identical submission froze it first.
+                except OSError as exc:
+                    # Windows reports EEXIST; POSIX may report ENOTEMPTY when
+                    # another publisher already installed the same directory.
+                    # All other I/O failures propagate. Hashes below still
+                    # verify the winner before a job can be submitted.
+                    if exc.errno not in (errno.EEXIST, errno.ENOTEMPTY) or not frozen.is_dir():
+                        raise
             finally:
                 # Only the explicitly created staging directory is removed.
                 if staging.exists():
