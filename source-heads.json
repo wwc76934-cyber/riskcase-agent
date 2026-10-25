@@ -1,0 +1,21 @@
+{
+  "accepted_v1": {
+    "local_branch": "main",
+    "original_commit": "1d0433b3cd2b4ac157a8a0891cf81c9f624b6360",
+    "tree": "879d444e98928d827ea329f1b1e3a27e72b56dc2",
+    "remote_commit": "a5ce778b2e7f5deb948cbe771faefa0d3f216aff"
+  },
+  "ongoing_upgrades": {
+    "local_branch": "codex/phase01-foundation",
+    "original_commit": "b0eae06c7415017ab1ff3ede34934c2fbf59b08f",
+    "tree": "a932cc6223c417a3f49e1f6004eb500d6d747b80",
+    "remote_branch": "codex/research-upgrades",
+    "remote_commit": "0eb9ae0ffb7c3e5d3d071a90f694c6d2a121ba98"
+  },
+  "bundle": {
+    "sha": "165fe7bbb1fb0ca1cd7470ea94a3a149a4069788",
+    "sha256": "3662fc40ab41c95aed16edf97c9835a96ca5db35e3c03950a1310cb6680ecebf",
+    "bytes": 1992563
+  },
+  "method": "Repository-scoped connector file-tree imports; original Git commit objects retained in bundle. Local history was not rewritten."
+}

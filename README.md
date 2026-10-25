@@ -1,81 +1,36 @@
-# RiskCase Agent
+# 原始Git历史备份
 
-**支付反欺诈研究与调查工作台。** 将交易预警、只读取证、调查计划、规则回放和版本审阅接成可核对的流程。V1交付范围是本地研究作品；数据来自IBM合成交易及明确标记的自建演示，不代表银行生产系统。
+本仓库通过已授权的单仓库GitHub连接上传，没有新申请全账号CLI权限。
 
-![本地调查报告与审阅页面](docs/assets/workbench.png)
+- `main`：已验收V1，共327文件，原始提交 `1d0433b3cd2b4ac157a8a0891cf81c9f624b6360`。
+- `codex/research-upgrades`：后续开发快照，共354文件，原始提交 `b0eae06c7415017ab1ff3ede34934c2fbf59b08f`。
+- 两个远端快照的完整文件树SHA均与对应本地提交一致。
 
-## 用户完成什么工作
+连接导入产生新的远端提交ID；原始提交作者、时间、父子关系和全部历史保存在本分支的Git bundle中。没有重写原本地仓库历史。实验报告引用的原始提交ID可从bundle恢复，不能误以为它们就是本次API导入提交ID。
 
-风险分析师选择一条预警，输入“只核查频次和新商户”。系统提出调查范围，等待确认，然后用截止时间前的交易记录计算，生成附证据编号、口径、缺口和查询轨迹的报告。分析师可以审阅或拒绝报告。规则候选另行进行固定审核容量的回放，报告接受不会自动批准规则。
+## 恢复原始历史
 
-支持五项明确口径：此前1小时频次、本笔正金额相对30天历史最高值、30天新商户、7天相对30天商户笔数集中度、正金额集中度。窗口不完整或样本不足时保留缺口；不认定交易一定欺诈，不执行冻结或付款。
-
-## 有哪些实际结果
-
-| 核验 | 已保存结果 | 能说明什么 |
-|---|---|---|
-| 深度学习最终时间留出 | 2019年423,189笔、523个源正标签；每天10笔共审核3,650笔，三seed残差网络集成捕获99，旧MLP10、旧树49、匹配输入强树94；AP分别0.02138、0.00729、0.00915、0.01558 | 较旧MLP有明显源内提升；对匹配强树仅多5，日重采样区间跨0，不能宣称确定优越 |
-| Agent独立题集 | 100道中文范围题：新版模型完全正确89，旧版模型82，新关键词77；新版首次87，仍有2题错误执行计划与2题运行失败 | 收窄模型职责后有所改善；必须保留范围确认，数字由代码计算 |
-| 规则同容量研究 | 2018开发期每天10笔：纯新DL捕获122；为候选保留20%名额捕获121，新增5、挤出6 | 当前证据不支持采用该规则，未自动批准或部署 |
-| 整合演示 | 三seed重算对齐 → 无标签选4个不同用户案例 → 敏感性 → 计划 → 模拟确认 → SQL核验 → 待审阅 | 真正模型产物可接到调查页面；不等于真人试用或新样本有效性 |
-
-最终测试及费用回执见[结项报告](docs/FINAL_REPORT.md)和[机器可读汇总](docs/project-final-v1-results.json)。专项证据：[最终检测](docs/FINAL_DETECTOR_RESULTS.md)、[Agent对照](docs/AGENT_V2_RESULTS.md)、[规则实验](docs/CAPACITY_V2_REPORT.md)。失败、较差模型和负结果均保留。
-
-## 先运行一个不花钱的演示
-
-Python 3.12，在仓库根目录创建环境并安装服务依赖：
+下载本分支的 `riskcase-agent-history.bundle`，在文件所在目录执行：
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements-service.txt
-.\.venv\Scripts\python.exe -B -m app.cli.workbench
+git bundle verify .\riskcase-agent-history.bundle
+git clone -b main .\riskcase-agent-history.bundle restored-riskcase-agent
+cd restored-riskcase-agent
+git switch codex/phase01-foundation
 ```
 
-打开 `http://127.0.0.1:8765`，将本机 `runs/workbench-v1/auth.token` 的内容填入页面访问令牌。该令牌用于本地页面访问，不是模型API密钥。默认不开启付费调用。选择案例、直接勾选检查或使用离线自然语言入口；离线入口明确标为关键词脚本。
+最后一条切到包含后续升级的原开发分支；只需要V1可停留在main。
 
-这个干净环境演示使用自建交易、手工分数、无欺诈标签，只验证流程，不能拿来宣传检测成绩。已有本机环境可用 `scripts/run_project.ps1` 启动，完整说明见[运行与演示指南](docs/START_HERE.md)。
+bundle大小：1992563字节。SHA-256：
 
-本机已有模型和数据时，打开已生成的真实神经模型合成源演示：
-
-```powershell
-.\scripts\run_project.ps1 -m app.cli.workbench --directory runs/release-demo-v1/service --catalog runs/release-demo-v1/catalog.json
+```text
+3662fc40ab41c95aed16edf97c9835a96ca5db35e3c03950a1310cb6680ecebf
 ```
 
-页面令牌改用该目录的 `service/auth.token`。准备/核验包见[神经模型整合演示](docs/RELEASE_DEMO.md)。完整重训另需模型依赖和源数据，不包含在轻量页面安装中。
+Windows可运行 `Get-FileHash .\riskcase-agent-history.bundle -Algorithm SHA256` 核对。此备份只包含已经审查的Git跟踪文件与历史，不含原始交易库、模型权重、虚拟环境、访问令牌或API密钥。
 
-## 怎样实现与验证
+## 后续Git使用
 
-```mermaid
-flowchart LR
-  A[固定合成源与事件时间特征] --> B[规则 / LR / HGB / PyTorch残差网络]
-  B --> C[日审核名单与单案例快照]
-  C --> D[结构化检查或模型范围计划]
-  D --> E[显式确认范围]
-  E --> F[只读工具 / 确定性统计 / 证据校验]
-  F --> G[报告待审阅 / 缺口 / 失败]
-  G --> H[受限规则候选与同容量研究]
-  H --> I[版本审阅材料 / 不自动发布]
-```
+原本地库origin已指向本GitHub仓库，但没有给原分支设置远端跟踪，因为API导入的提交ID与原始历史不同。不要直接强制推送覆盖远端。若需要普通Git日常开发，可在仓库级凭据配置完成后另行克隆远端到新目录，保留原目录与本备份。
 
-- 数据与训练：SQLite、Pandas/NumPy、Scikit-learn、PyTorch；训练2016–2017、开发2018、冻结后最终评测2019。源标签不传给调查模型。
-- Agent：原ReAct能力保留；最终推荐“模型计划、确认、代码执行”的受控流程。类型化JSON、原文范围依据、最多一次纠正、独立问题评测，未把任意SQL或命令交给模型。
-- 运行：FastAPI、SQLite任务/租约/响应日志，恢复、取消、幂等、超时及费用估算预算。浏览器只审阅本机资料；本地令牌不是企业身份系统。
-- 测试：Fake、HTTP Mock、数值与时间边界、进程退出恢复、协议/越权/篡改、模型重载、独立SQL及真实无头浏览器。CI已配置，未声称远程已运行。
-
-全量离线测试需同时安装 `requirements-dl.txt` 与 `requirements-service.txt`：
-
-本机最终全仓724项通过；独立干净服务环境相关165项通过，0失败/0跳过。另有真实浏览器与模型/SQL材料核验，测试数不等于欺诈案例数量。
-
-```powershell
-python -B -m pytest -q -p no:cacheprovider
-```
-
-真实模型为硅基流动 `Pro/zai-org/GLM-5.1`，仅显式启用live时使用本地保存的凭据。密钥不进入Git或页面；本地费用估算不等于平台账单。
-
-## 阅读顺序与边界
-
-从[直白项目地图](docs/START_HERE.md)开始，再看[架构与规格](docs/RISK_PROJECT_SPEC.md)、[学习路线](docs/LEARNING_PATH.md)、[面试说明](docs/INTERVIEW_GUIDE.md)、[数据卡](docs/DATA_CARD.md)。[课程来源](ORIGIN.md)区分原有骨架与新增工作；原课程仓库保持独立。
-
-IBM数据是合成交易，币种、时区和标签确认时间未确证，用户选择也有限制。排名分数不是已校准欺诈概率。当前没有真实机构用户效率测量、真实银行外部验证或生产资金处置。不能凭模型名称、Agent数量或测试数称为企业生产级。[来源与发布边界](NOTICE.md)说明数据及课程代码的权利核验事项。
-
-[早期README](README.history.md)与[历史进度](docs/archive/PROJECT_STATUS.pre-final.md)保留研究过程，当前状态以结项报告为准。
+详见 `source-heads.json` 的本地/远端提交映射。
