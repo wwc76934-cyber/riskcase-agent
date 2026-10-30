@@ -1,0 +1,49 @@
+{
+  "batch_id": "7c0a1643b6da41d9930a2681061efc86",
+  "demo_gate_passed": true,
+  "arms": {
+    "all_context": {
+      "demo_gate_passed": true,
+      "n": 6,
+      "passed": 6,
+      "facts_correct": 24,
+      "facts_total": 24,
+      "coverage_cases_passed": true,
+      "policy_pair_passed": true,
+      "human_review_required": true,
+      "first_draft_passed": 6,
+      "draft_review_failures": 0,
+      "requests": 6,
+      "mean_originals": 8.0,
+      "estimated_cny": "0.279988"
+    },
+    "adaptive": {
+      "demo_gate_passed": true,
+      "n": 6,
+      "passed": 6,
+      "facts_correct": 24,
+      "facts_total": 24,
+      "coverage_cases_passed": true,
+      "policy_pair_passed": true,
+      "human_review_required": true,
+      "first_draft_passed": 6,
+      "draft_review_failures": 0,
+      "requests": 30,
+      "mean_originals": 4.0,
+      "estimated_cny": "0.808664"
+    }
+  },
+  "budget_ok": true,
+  "estimated_cny": "1.088652",
+  "original_read_reduction": 0.5,
+  "cost_ratio_adaptive_to_all_context": "2.888209494692629684129319828",
+  "recommendation": "all_context_for_bounded_small_dossiers",
+  "source_comparison": {
+    "fact_originals_unchanged": true,
+    "gold_unchanged": true,
+    "prior_bundle": "runs\\stage5-freeze-v2"
+  },
+  "production_validated": false,
+  "independent_generalization_validated": false,
+  "limitation": "Six author-generated cases already observed during repairs; this gate is a bounded demonstration, not external validation."
+}

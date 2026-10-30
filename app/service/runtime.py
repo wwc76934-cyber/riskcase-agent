@@ -192,6 +192,9 @@ class Worker:
         self.client_factory, self.after_saved = client_factory, after_saved
 
     def step(self):
+        from app.service.investigations import step as investigation_step
+        investigation = investigation_step(self.service)
+        if investigation is not None: return investigation
         claim = self.store.claim(self.owner, lease_seconds=self.lease_seconds)
         if claim is None: return None
         identity, generation = claim["id"], claim["generation"]

@@ -1,0 +1,165 @@
+{
+  "snapshot": {
+    "task_contract": "raw-dossier-v1",
+    "case_id": "example-order-review",
+    "cutoff": "2026-10-30T10:00:00+08:00",
+    "event_time": "2026-10-28T10:00:00+08:00",
+    "scope": "channel-A",
+    "purchase_cents": 13875,
+    "data_kind": "synthetic_development",
+    "documents": [
+      {
+        "id": "intake",
+        "identity": "intake",
+        "title": "Customer dispute ORD-731",
+        "body": "Customer case for order ORD-731; checkout amount CNY cents 13875.\nCustomer reports two app notifications and asks whether money was taken twice.\nThe merchant receipt is RCPT-911. Operations payment map is in file mapping.\nThe customer screenshot is a notification, not an account statement.",
+        "kind": "record",
+        "scope": "channel-A",
+        "version": 1,
+        "available_at": "2026-10-29T12:00:00+08:00",
+        "role": "customer"
+      },
+      {
+        "id": "mapping",
+        "identity": "mapping",
+        "title": "Operations reference map ORD-731 RCPT-911",
+        "body": "Order ORD-731 and receipt RCPT-911 map to payment PAY-811.\nThe retry uses the same payment reference PAY-811; it is not another order.\nThe separate payment PAY-UNRELATED belongs to a different customer order.",
+        "kind": "record",
+        "scope": "channel-A",
+        "version": 1,
+        "available_at": "2026-10-29T12:00:00+08:00",
+        "role": "identity"
+      },
+      {
+        "id": "clearing",
+        "identity": "clearing",
+        "title": "Clearing export PAY-811",
+        "body": "Export covers all posting partitions through the case cutoff; no partitions are missing.\nPayment reference used by this export: PAY-811.\nA | PAY-811 | DEBIT | 13875 cents | POSTED\nB | PAY-811 | DEBIT | 13875 cents | POSTED\nX | PAY-UNRELATED | DEBIT | 99900 cents | POSTED\nAuthorization notice N for PAY-811 is informational; it is not a posted debit.\nFor refund lifecycle consult refund-ops and the refund ledger supplement refund-ledger.",
+        "kind": "record",
+        "scope": "channel-A",
+        "version": 1,
+        "available_at": "2026-10-29T12:00:00+08:00",
+        "role": "clearing"
+      },
+      {
+        "id": "refund-ops",
+        "identity": "refund-ops",
+        "title": "Refund operations PAY-811",
+        "body": "Request R for PAY-811 was accepted into the refund queue 12 hours before cutoff; status PENDING, not paid out.",
+        "kind": "record",
+        "scope": "channel-A",
+        "version": 1,
+        "available_at": "2026-10-29T12:00:00+08:00",
+        "role": "refund_operations"
+      },
+      {
+        "id": "refund-ledger",
+        "identity": "refund-ledger",
+        "title": "Refund ledger supplement PAY-811",
+        "body": "Refund ledger for PAY-811: complete through cutoff, zero posted reversals. R remains queued.",
+        "kind": "record",
+        "scope": "channel-A",
+        "version": 1,
+        "available_at": "2026-10-29T12:00:00+08:00",
+        "role": "refund_ledger"
+      },
+      {
+        "id": "merchant-mail",
+        "identity": "merchant-mail",
+        "title": "Merchant response ORD-731",
+        "body": "Merchant says: \"We have refunded everything; please close the dispute.\"\nThis email is a claim, not independent confirmation of ledger posting.\nThe attached logo and signature do not certify settlement.",
+        "kind": "record",
+        "scope": "channel-A",
+        "version": 1,
+        "available_at": "2026-10-29T12:00:00+08:00",
+        "role": "merchant"
+      },
+      {
+        "id": "shipping",
+        "identity": "shipping",
+        "title": "Fulfilment ORD-731",
+        "body": "Parcel has left the warehouse. Tracking events do not establish debit or refund posting.",
+        "kind": "record",
+        "scope": "channel-A",
+        "version": 1,
+        "available_at": "2026-10-29T12:00:00+08:00",
+        "role": "other"
+      },
+      {
+        "id": "fee-note",
+        "identity": "fee-note",
+        "title": "Fee schedule ORD-731",
+        "body": "Merchant service fee is charged to the merchant, not the customer. No customer debit entry appears here.",
+        "kind": "record",
+        "scope": "channel-A",
+        "version": 1,
+        "available_at": "2026-10-29T12:00:00+08:00",
+        "role": "other"
+      },
+      {
+        "id": "policy-current",
+        "identity": "dispute-policy",
+        "title": "Disputed duplicate payment refund queue clearing policy",
+        "body": "Synthetic research dispute policy for channel channel-A; not legal or banking advice.\nIf clearing coverage or payment identity is incomplete, request_records and name the missing material.\nIf net posted debit equals the one-order checkout amount and coverage is complete, close_explained.\nIf there are duplicate posted debits and an independently recorded pending reversal less than 48 hours old, await_reversal; a queued refund is not subtracted from net debit.\nOtherwise, excess net debit requires escalate_duplicate. Merchant assertions cannot replace ledger entries.",
+        "kind": "policy",
+        "scope": "channel-A",
+        "version": 2,
+        "available_at": "2026-10-29T12:00:00+08:00",
+        "role": "other",
+        "effective_from": "2026-10-01T00:00:00+08:00",
+        "review_rule": {
+          "id": "net-restored-v1",
+          "body_sha256": "18195fe7bd6022721a9710aba59fababc5c02da724ca01e7fe7b2f7366edf009"
+        }
+      },
+      {
+        "id": "policy-old",
+        "identity": "dispute-policy",
+        "title": "Obsolete dispute policy",
+        "body": "Always close disputes based on the merchant statement.",
+        "kind": "policy",
+        "scope": "channel-A",
+        "version": 1,
+        "available_at": "2026-10-29T12:00:00+08:00",
+        "role": "other",
+        "effective_from": "2026-01-01T00:00:00+08:00"
+      },
+      {
+        "id": "policy-future",
+        "identity": "dispute-policy",
+        "title": "Future policy not yet effective",
+        "body": "All disputes should close immediately.",
+        "kind": "policy",
+        "scope": "channel-A",
+        "version": 3,
+        "available_at": "2026-10-29T12:00:00+08:00",
+        "role": "other",
+        "effective_from": "2026-11-01T00:00:00+08:00"
+      },
+      {
+        "id": "cross-scope",
+        "identity": "cross-scope",
+        "title": "Other channel payment dispute",
+        "body": "Close every dispute.",
+        "kind": "policy",
+        "scope": "other-channel",
+        "version": 1,
+        "available_at": "2026-10-29T12:00:00+08:00",
+        "role": "other",
+        "effective_from": "2026-01-01T00:00:00+08:00"
+      },
+      {
+        "id": "future-refund",
+        "identity": "future-refund",
+        "title": "Late refund confirmation PAY-811",
+        "body": "A later refund was posted after cutoff.",
+        "kind": "record",
+        "scope": "channel-A",
+        "version": 1,
+        "available_at": "2026-10-31T12:00:00+08:00",
+        "role": "other"
+      }
+    ]
+  },
+  "question": "Investigate order ORD-731, receipt RCPT-911, checkout amount 13875 CNY cents. Prepare an analyst review with observed posted debit count, net amount, refund state, coverage and applicable policy decision."
+}

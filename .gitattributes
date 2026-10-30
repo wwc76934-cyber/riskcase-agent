@@ -1,0 +1,2 @@
+# Preserve exported evidence bytes so SHA-256 receipts survive Git checkouts.
+docs/evidence/** -text -whitespace

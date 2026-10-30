@@ -103,7 +103,7 @@ def create_app(service):
     @app.middleware("http")
     async def boundary(request: Request, call_next):
         expected = ("Bearer " + service.settings.token).encode()
-        public_page = request.method == "GET" and request.url.path == "/"
+        public_page = request.method == "GET" and request.url.path in ("/", "/investigations/page")
         if not public_page and not hmac.compare_digest(request.headers.get("authorization", "").encode(), expected):
             return JSONResponse({"error": "authentication_required"}, status_code=401)
         if request.method in ("POST", "PUT", "PATCH"):
@@ -154,7 +154,7 @@ def create_app(service):
     @app.get("/", response_class=HTMLResponse)
     def workbench():
         from app.service.workbench import HTML
-        return HTML
+        return HTML.replace('</header>','<p><a style="color:white" href="/investigations/page">进入 Skill 与 Harness 多来源调查（免费演示）</a></p></header>')
 
     @app.get("/health")
     def health(): return {"status": "ok", "live_enabled": service.settings.allow_live, "data_kind": "synthetic"}
@@ -232,4 +232,6 @@ def create_app(service):
     def confirm_plan(identity: str, body: PlanReview, request: Request):
         return service.confirm_plan(identity, request_key=request_key(request), **body.model_dump())
 
+    from app.service.investigations import install
+    install(app,service)
     return app
