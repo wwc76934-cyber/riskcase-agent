@@ -1,0 +1,11 @@
+{
+  "artifact_sha256": {
+    "preflight.json": "242a2ab4e7e13ef2d20288b265a4299cc8e9d1e3bda0744cabb129c87e547749",
+    "frozen-development.json": "f8df7706fe2aecf562000afe6a9868ce04054e2f586f837ea45696f985ee6e51",
+    "holdout.json": "6c3b758f2cbf40236d90cadca808865b7961370679719bdfe78148ac16bc780d",
+    "first-parser-failure.json": "a81c846506ddd7a4aa405b666e8660153eda5321332e2bb2cfaa0fcd646fc00e",
+    "source-receipt.json": "a64f15a82b63dc7a7fd12bebeba912e8e896e1fb33b75994184a3a9f3dfb2db8"
+  },
+  "raw_records_included": false,
+  "model_weights_included": false
+}

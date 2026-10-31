@@ -48,6 +48,7 @@ class JobStore:
                 CREATE TABLE IF NOT EXISTS plans(
                     job_id TEXT PRIMARY KEY, proposal TEXT NOT NULL, proposal_hash TEXT NOT NULL,
                     confirmed INTEGER NOT NULL DEFAULT 0);
+                CREATE INDEX IF NOT EXISTS jobs_state_created ON jobs(state,created,id);
             """)
 
     @contextmanager
@@ -115,7 +116,8 @@ class JobStore:
             self.event(db, identity, "submitted", mode=spec["mode"])
             return identity, True
 
-    def claim(self, owner, *, lease_seconds=90, deadline_seconds=180):
+    def claim(self, owner, *, lease_seconds=90, deadline_seconds=180, mode=None):
+        if mode not in (None,'offline','live'):raise ValueError('invalid_claim_mode')
         now = self.clock()
         with self.transaction() as db:
             # Expired workers are fenced before a successor can execute any step.
@@ -126,7 +128,7 @@ class JobStore:
                 reason = "cancelled" if state == "cancelled" else "unresolved_call" if pending else "deadline_or_recovery_limit" if state == "blocked" else "lease_expired_recoverable"
                 db.execute("UPDATE jobs SET state=?,reason=?,version=version+1,owner=NULL,lease_until=NULL,updated=? WHERE id=?", (state, reason, now, row["id"]))
                 self.event(db, row["id"], "lease_expired", state=state, reason=reason)
-            row = db.execute("SELECT * FROM jobs WHERE state='queued' ORDER BY created,id LIMIT 1").fetchone()
+            row = db.execute("SELECT * FROM jobs WHERE state='queued' AND (? IS NULL OR json_extract(spec,'$.mode')=?) ORDER BY created,id LIMIT 1",(mode,mode)).fetchone()
             if row is None: return None
             db.execute("UPDATE jobs SET state='running',version=version+1,generation=generation+1,owner=?,lease_until=?,deadline=COALESCE(deadline,?),updated=? WHERE id=?",
                        (owner, now + lease_seconds, now + deadline_seconds, now, row["id"]))

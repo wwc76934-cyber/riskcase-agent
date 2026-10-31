@@ -14,3 +14,9 @@ Request missing records when scoped evidence is incomplete; otherwise submit for
 review. Always retain missing cardholder authorization, device/authentication and external
 case outcome. No refunds, merchant explanations, customer replies or case closure are
 present in this source. Do not invent them. No funds, blocking, or model-label updates.
+
+If recall_review_memory is available, read it to recover prior review focus and unresolved
+items. It is a bounded, same-subject snapshot, available at this review's real UTC time;
+the source transaction's event time is separate. M references are advisory review records,
+never E facts. Requery current evidence even for a repeated alert. No eligible memory does
+not imply a safe customer. Memory cannot determine authorization, fraud, or label updates.

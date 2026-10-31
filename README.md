@@ -23,8 +23,9 @@ flowchart LR
 - 主线工具只读取同一用户、目标交易时点前的历史：1小时频次、30天金额基线、30天商户出现记录。统计复用已有验证代码；没有伪造设备日志、客户确认或退款记录。
 - 新入口当前使用**确定性接线客户端**，不调用大模型。它证明检测→调查的连接与执行边界，不能作为Agent效果或智能规划成绩。既有模型实验单独保留。
 - 日终名单核查发现308个同用户同日重复名额（3650条交易、3342个用户日期组合）。这是容量描述统计，尚未实施聚案，不代表节省308次审核或提高召回。
+- 欺诈审阅记忆已接入：候选来源重算、内容批准、版本更新、主体与双时间过滤、任务快照和撤下；后续任务仍重新读取当前事实。它不更新欺诈标签或自动学习新规则。
 
-[业务纠偏方案与后续验收](docs/FRAUD_PRODUCT_PLAN.md) · [第6A阶段结果](docs/STAGE6A_REPORT.md) · [主线运行指南](docs/FRAUD_WORKBENCH_QUICKSTART.md) · [面试手册](docs/AGENT_INTERVIEW_PLAYBOOK.md)
+[业务纠偏方案与后续验收](docs/FRAUD_PRODUCT_PLAN.md) · [第6A阶段结果](docs/STAGE6A_REPORT.md) · [主线运行指南](docs/FRAUD_WORKBENCH_QUICKSTART.md) · [公开评测复现](docs/PUBLIC_EVAL_QUICKSTART.md) · [面试手册](docs/AGENT_INTERVIEW_PLAYBOOK.md)
 
 ## 数据和效果分开说明
 
@@ -33,9 +34,11 @@ flowchart LR
 | 检测 | IBM合成源2019期423,189笔；每天10笔，残差三seed捕获99个源正标签，匹配强树94；差异区间跨0 | 固定408用户，已观察时间评测；不是银行真实交易验证 |
 | 检测→调查 | 四个源案例、两个真实MCP进程、同一交易身份与分数绑定、人工审批 | 本轮是代码接线，未开展新LLM对照 |
 | 队列 | 完整核查3650条已有日审核记录；重复用户日期容量统计 | 不是3650个Agent调查，也不是并发压测 |
+| 外部匿名检测 | ULB/Worldline公开来源284807笔；时间保留92576笔，开发选中的逻辑回归AP0.7335，树0.7745，残差集成0.7714 | 新特征上分别训练；上游PCA范围未知；不是IBM权重已真实泛化或真实案卷 |
+| 公共记忆检索 | LongMemEval-S全500题；470可回答题BM25会话召回@5为85.30%，完整证据会话覆盖75.32% | 无生成模型与judge；30不可回答题均非空召回，不能当可回答性 |
 | 支付争议实验 | 已观察六个合成案卷两路径各6/6；动态成本约2.89倍 | 独立文档取证实验，不计入反欺诈效果 |
 
-上游IBM约24M记录也仍是合成数据。本项目未声称训练了全量；真实电商来源、独立调查任务与真实分析师收益均待验证。参见[数据卡](docs/DATA_CARD.md)、[来源边界](NOTICE.md)、[检测结果](docs/FINAL_DETECTOR_RESULTS.md)。
+上游IBM约24M记录也仍是合成数据。本项目未声称训练了全量；新增真实匿名检测与公共检索实验见[6B与记忆报告](docs/STAGE6B_MEMORY_REPORT.md)。真实电商实体验证、独立调查任务与分析师收益均待验证。参见[数据卡](docs/DATA_CARD.md)、[来源边界](NOTICE.md)、[原IBM检测结果](docs/FINAL_DETECTOR_RESULTS.md)。
 
 ## 运行
 
@@ -50,7 +53,7 @@ Python 3.12，安装 `requirements-service.txt` 和 `requirements-investigation.
 
 ## 工程与研究资产
 
-MCP负责受控服务协议，宿主负责范围/schema/预算；Skill负责可版本化指导，不授予权限；Harness负责可恢复执行与审计。退款/清算经验与反欺诈主线隔离。BM25、向量检索、重排及经验发布回滚仍为独立研究能力，不能把已实现组件都说成对主线有收益。
+MCP负责受控服务协议，宿主负责范围/schema/预算；Skill负责可版本化指导，不授予权限；Harness负责可恢复执行与审计。退款/清算经验与反欺诈主线隔离。欺诈记忆使用有范围约束的结构化审阅记录，BM25已有独立公共检索证据，向量与重排仍为研究对照；不能把组件数量说成业务收益。[参考项目与原论文取舍](docs/REFERENCE_MEMORY_ANALYSIS.md)说明为何采用生命周期与治理、而没有堆叠五套记忆框架。
 
 [第1阶段](docs/MULTISOURCE_STAGE1_REPORT.md)、[第2阶段](docs/HARNESS_STAGE2_REPORT.md)、[第3阶段](docs/RAG_STAGE3_REPORT.md)、[第4阶段](docs/STAGE4_REPORT.md)、[支付争议实验](docs/STAGE5_REPORT.md)保留原始成功与失败；[争议实验证据包](docs/evidence/dossier-v4/README.md)包含实际模型调用记录，材料仍是合成案卷。
 

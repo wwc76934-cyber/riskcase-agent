@@ -70,7 +70,11 @@ class InvestigationService:
         if snapshot.get('task_contract')=='raw-dossier-v1':spec['completion_contract']='citations-checked-semantics-await-review-v1'
         if snapshot.get('task_contract')=='raw-dossier-v1' and 'purchase_cents' in snapshot:
             spec['dossier_review_contract']='support-v3'
-        if snapshot.get('task_contract')=='detector-fraud-review-v1':spec['completion_contract']='fraud-leads-not-adjudication-v1'
+        if snapshot.get('task_contract')=='detector-fraud-review-v1':
+            from app.investigation.fraud_memory import FraudMemory, EMPTY
+            spec['completion_contract']='fraud-leads-not-adjudication-v1'
+            spec['fraud_memory']=FraudMemory(self.store).freeze(snapshot) if features['knowledge'] else deepcopy(EMPTY)
+            spec['fraud_memory_hash']=digest(spec['fraud_memory'])
         return self.store.submit(key,spec)
 
 
@@ -106,12 +110,13 @@ class HarnessWorker:
         self.owner=uuid4().hex
 
     def step(self):
-        claim=self.store.claim(self.owner,lease_seconds=self.lease_seconds)
+        claim=self.store.claim(self.owner,lease_seconds=self.lease_seconds,mode=self.service.execution_mode)
         if claim is None:return None
         spec=json.loads(claim['spec'])
         def checkpoint(): self.store.checkpoint(claim['id'],self.owner,claim['generation'],lease_seconds=self.lease_seconds)
         try:
             if digest(spec)!=claim['spec_hash'] or spec['code']!=fingerprint() or spec['snapshot_hash']!=digest(spec['snapshot']) or spec.get('knowledge_hash')!=digest(spec.get('knowledge')): raise Blocked('frozen_input_or_code_changed')
+            if 'fraud_memory' in spec and digest(spec['fraud_memory'])!=spec.get('fraud_memory_hash'):raise Blocked('frozen_memory_changed')
             state=self.store.load(claim['id']) or dict(phase='model',turn=0,attempts=0,observations=[],evidence={},trace=[],skills={},expanded=[],
                 plan=dict(hypotheses=[],todo=[],unknowns=[]),pending=[],cursor=0,repeats={},repair=False,context_metrics=[])
             checkpoint()
@@ -150,6 +155,7 @@ class HarnessWorker:
         features=PROFILES[spec.get('profile','full')]
         allowed={n:s for n,s in LOCAL.items() if (features['skills'] or n not in ('load_skill','read_skill_resource')) and (features['knowledge'] or n!='search_knowledge')}
         if dossier or fraud:allowed={n:s for n,s in allowed.items() if n not in ('search_knowledge','read_evidence','record_plan')}
+        if fraud and features['knowledge'] and 'fraud_memory' in spec:allowed['recall_review_memory']=obj({},[])
         client=JournalClient(self.store,claim,base,checkpoint,after_saved=lambda ordinal:self.hook('response_saved',ordinal))
         client.calls=state['turn']
         def save():
@@ -210,9 +216,9 @@ class HarnessWorker:
                                 state['attempts']+=1;save()  # Read intent persists before execution; retries count again.
                                 if state['repeats'][identity]>2: raise Blocked('no_progress_repeated_call')
                                 try:
-                                    if name in LOCAL:
+                                    if name in LOCAL or name=='recall_review_memory':
                                         if name not in allowed:raise ValueError('Disabled host operation')
-                                        args=strict_json(arguments);validate(args,LOCAL[name])
+                                        args=strict_json(arguments);validate(args,allowed[name])
                                         if name=='load_skill':
                                             data=read(spec['skills'],args['name']);state['skills'][args['name']]=data
                                             observation=dict(ok=True,kind='skill',name=args['name'],version=data['version'])
@@ -220,6 +226,10 @@ class HarnessWorker:
                                             if args['name'] not in state['skills']: raise ValueError('Activate skill first')
                                             data=read(spec['skills'],**args);state['skills'][args['name']+'/'+args['resource']]=data
                                             observation=dict(ok=True,kind='skill_resource',name=args['name'],resource=args['resource'])
+                                        elif name=='recall_review_memory':
+                                            if features['skills'] and not state['skills']:raise ValueError('Activate a skill first')
+                                            from app.investigation.fraud_memory import recall
+                                            observation=recall(spec['fraud_memory'])
                                         elif name=='record_plan':
                                             state['plan']=args;observation=dict(ok=True,kind='provisional_plan',**args)
                                         elif name=='search_knowledge':
@@ -272,12 +282,16 @@ class HarnessWorker:
                     result=dict(status='citations_checked_awaiting_review' if dossier else 'fraud_leads_awaiting_review' if fraud else 'completed_validated',answer=state['answer'],validation=state['validation'],
                                 turns=state['turn'],attempts=state['attempts'],active_skills={k:v['version'] for k,v in state['skills'].items()},
                                 mode=spec['mode'],new_client_requests=client.new_calls,replayed_client_responses=client.replayed)
+                    result['client_kind']='simulation' if getattr(base,'simulation',False) else 'configured_external_client'
                     result['review_warnings']=state.get('review_warnings',[])
                     result['completion_contract']=spec.get('completion_contract')
                     if dossier:
                         result['draft_reviews']=state.get('draft_reviews',[])
                         result['dossier_review_contract']=spec.get('dossier_review_contract')
                     result['knowledge_snapshot']=dict(hash=spec['knowledge_hash'],release=spec['knowledge']['memory']['release'])
+                    if fraud and 'fraud_memory' in spec:
+                        result['review_memory_snapshot']=dict(hash=spec['fraud_memory_hash'],release=spec['fraud_memory']['release'],
+                            eligible=len(spec['fraud_memory']['records']),recalled=any(o.get('kind')=='review_memory' for o in state['observations']))
                     write_json(directory/'report.json',result)
                     self.store.finish(claim['id'],self.owner,claim['generation'],'awaiting_review',result=result)
         finally:

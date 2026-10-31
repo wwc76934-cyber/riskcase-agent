@@ -61,7 +61,23 @@ class RollbackBody(BaseModel):
     expected_head:str=Field(pattern=r'^[0-9a-f]{64}$')
 
 
+class FraudMemoryBody(BaseModel):
+    model_config=ConfigDict(extra='forbid',strict=True)
+    source_job:str=Field(min_length=1,max_length=64)
+    expected_report_hash:str=Field(pattern=r'^[0-9a-f]{64}$')
+    focus:str=Field(pattern=r'^(none|authorization|coverage|merchant_context)$')
+
+
+class WithdrawMemoryBody(BaseModel):
+    model_config=ConfigDict(extra='forbid',strict=True)
+    expected_head:str=Field(pattern=r'^[0-9a-f]{64}$')
+
+
 def install(app,parent):
+    def fraud_memory():
+        from app.investigation.fraud_memory import FraudMemory
+        return FraudMemory(get_service(parent).store)
+
     def tickets():
         from app.investigation.tickets import Tickets,MockDestination
         s=get_service(parent)
@@ -100,6 +116,27 @@ def install(app,parent):
     @app.get('/investigations')
     def jobs():return {'jobs':get_service(parent).store.list_jobs()}
 
+    @app.get('/fraud-memory')
+    def memory_head():
+        memory=fraud_memory();head=memory.head()
+        return dict(**head,previews=[dict(candidate=r['candidate'],case_id=(b:=memory.get(r['candidate'])['body'])['case_id'],focus=b['focus']) for r in head['records']])
+
+    @app.post('/fraud-memory/candidates')
+    def memory_candidate(body:FraudMemoryBody):
+        return fraud_memory().candidate(body.source_job,body.expected_report_hash,focus=body.focus)
+
+    @app.post('/fraud-memory/candidates/{identity}/assess')
+    def memory_assess(identity:str,body:ApprovalBody):
+        return fraud_memory().assess(identity,body.expected_hash)
+
+    @app.post('/fraud-memory/candidates/{identity}/publish')
+    def memory_publish(identity:str,body:ReleaseBody):
+        return fraud_memory().publish(identity,body.expected_hash,body.expected_head,reviewed_claims=body.reviewed_claims)
+
+    @app.post('/fraud-memory/candidates/{identity}/withdraw')
+    def memory_withdraw(identity:str,body:WithdrawMemoryBody):
+        return fraud_memory().withdraw(identity,body.expected_head)
+
     @app.get('/methods')
     def methods():return get_service(parent).experiences.listing()
 
@@ -132,8 +169,9 @@ def install(app,parent):
     @app.get('/investigations/{identity}')
     def status(identity:str):
         s=get_service(parent);row=s.store.get(identity)
-        return dict(id=identity,state=row['state'],reason=row['reason'],generation=row['generation'],result=row['result'],
+        return dict(id=identity,state=row['state'],reason=row['reason'],generation=row['generation'],result=row['result'],report_hash=row['result_hash'],execution_mode=row['spec']['mode'],
                     checkpoint=s.store.load(identity),events=s.store.events(identity),ticket=tickets().get(identity),
+                    review_memory_snapshot=row['spec'].get('fraud_memory'),
                     knowledge_snapshot=dict(hash=row['spec']['knowledge_hash'],release=row['spec']['knowledge']['memory']['release']))
 
     @app.post('/investigations/{identity}/cancel')

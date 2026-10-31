@@ -33,6 +33,23 @@ async function main(){
  await page.locator('#approve').click();await page.locator('#receipt').filter({hasText:'已批准'}).waitFor();
  await page.locator('#send').click();await page.locator('#receipt').filter({hasText:'已提交'}).waitFor();
  receipt.checks.push('content_bound_review_and_simulated_ticket_complete');
+ await page.locator('#fm-create').click();await page.locator('#fm-candidate').filter({hasText:'候选：'}).waitFor();
+ await page.locator('#fm-assess').click();await page.locator('#fm-candidate').filter({hasText:'检查通过'}).waitFor();
+ await page.locator('#fm-publish').click();await page.locator('#fm-error').filter({hasText:'409'}).waitFor();
+ for(const box of await page.locator('.fm-check').all())await box.check();
+ await page.locator('#fm-publish').click();await page.locator('#fm-error').filter({hasText:'已发布'}).waitFor();
+ receipt.checks.push('memory_source_checks_and_explicit_content_approval');
+ await page.locator('#fraud-start').click();await page.locator('#fm-snapshot').filter({hasText:'可复用记录 1 条'}).waitFor({timeout:45000});
+ await page.locator('#state').filter({hasText:'报告等待审阅'}).waitFor({timeout:45000});
+ const remembered=await page.evaluate(async()=>{const r=await api('/investigations/'+current);return {id:current,memory:r.result.review_memory_snapshot,evidence:Object.keys(r.checkpoint.evidence).length}});
+ assert.equal(remembered.memory.recalled,true);assert.equal(remembered.evidence,5);
+ await page.locator('#fraud-memory-panel').screenshot({path:path.join(output,'fraud-memory.png')});
+ await page.locator('#fm-refresh').click();await page.locator('#fm-withdraw').click();await page.locator('#fm-error').filter({hasText:'已撤下'}).waitFor();
+ await page.locator('#fraud-start').click();await page.locator('#fm-snapshot').filter({hasText:'可复用记录 0 条'}).waitFor({timeout:45000});
+ await page.locator('#state').filter({hasText:'报告等待审阅'}).waitFor({timeout:45000});
+ const previous=await page.evaluate(async id=>(await api('/investigations/'+id)).review_memory_snapshot.records.length,remembered.id);
+ assert.equal(previous,1);receipt.checks.push('followup_reads_memory_and_requeries_five_current_facts','withdraw_blocks_new_tasks_preserves_existing_snapshot');
+
  await page.setViewportSize({width:390,height:900});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
  assert.deepEqual(receipt.page_errors,[]);assert.deepEqual(receipt.external_requests,[]);receipt.status='passed';
 }

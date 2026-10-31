@@ -1,0 +1,103 @@
+{
+  "total": 500,
+  "affected": 13,
+  "examples": [
+    {
+      "index": 3,
+      "lengths": [
+        57,
+        57,
+        57
+      ],
+      "duplicates": [
+        {
+          "id": "07b7a667_1",
+          "count": 2,
+          "same_date": false,
+          "same_content": true
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "lengths": [
+        50,
+        50,
+        50
+      ],
+      "duplicates": [
+        {
+          "id": "d5d1f9c4",
+          "count": 2,
+          "same_date": false,
+          "same_content": true
+        }
+      ]
+    },
+    {
+      "index": 44,
+      "lengths": [
+        51,
+        51,
+        51
+      ],
+      "duplicates": [
+        {
+          "id": "sharegpt_SYbLHTK_0",
+          "count": 2,
+          "same_date": false,
+          "same_content": true
+        }
+      ]
+    },
+    {
+      "index": 91,
+      "lengths": [
+        51,
+        51,
+        51
+      ],
+      "duplicates": [
+        {
+          "id": "334ab2f1",
+          "count": 2,
+          "same_date": false,
+          "same_content": true
+        }
+      ]
+    },
+    {
+      "index": 140,
+      "lengths": [
+        51,
+        51,
+        51
+      ],
+      "duplicates": [
+        {
+          "id": "sharegpt_YCfhENU_0",
+          "count": 2,
+          "same_date": false,
+          "same_content": true
+        }
+      ]
+    },
+    {
+      "index": 188,
+      "lengths": [
+        49,
+        49,
+        49
+      ],
+      "duplicates": [
+        {
+          "id": "sharegpt_fgnzLtE_0",
+          "count": 2,
+          "same_date": false,
+          "same_content": true
+        }
+      ]
+    }
+  ],
+  "all_duplicates_identical": false
+}

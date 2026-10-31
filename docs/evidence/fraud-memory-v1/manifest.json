@@ -1,0 +1,13 @@
+{
+  "artifact_sha256": {
+    "capacity-audit-correction.json": "b829a1868efe2d956cb95102993f6c7df49eb7edbfe1b94a51e3445474348206",
+    "capacity-original.json": "2409dde911fd9cb364adb3e298318f70a3c3e6e9906999dbf3a07e6671bddbf9",
+    "fraud-browser.json": "ff1d194e1eff3776670e74795796da818951ba6a898c38bd2672a41e9c31a845",
+    "legacy-browser.json": "29fbbfe1ab4a6079abe13a13e5b865586e814c6f2d8d3b7a535375afb5ef91cb",
+    "simulation-dryrun.json": "1c53af981ad6441d93d40cf444d57e6222658b6d5044c46dd913479980839fbb",
+    "test-receipts.json": "32f8a4092a816e95c3126c64cb196af02c91bfb997fc4d9ec30fcc7b0d3b8021"
+  },
+  "raw_transactions_included": false,
+  "runtime_database_included": false,
+  "live_model_results_included": false
+}

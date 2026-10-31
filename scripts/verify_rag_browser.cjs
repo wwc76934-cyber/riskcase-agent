@@ -14,9 +14,9 @@ async function main(){
  const context=await browser.newContext({viewport:{width:1280,height:1100},serviceWorkers:'block'});
  await context.route('**/*',async r=>{if(new URL(r.request().url()).origin!==base){receipt.external_requests.push(r.request().url());await r.abort()}else await r.continue()});
  const page=await context.newPage();page.on('pageerror',e=>receipt.page_errors.push(e.message));await page.goto(base+'/investigations/page');
- await page.locator('#token').fill(token);await page.locator('#start').click();
+ await page.locator('#token').fill(token);await page.getByText('历史支付差错实验（非欺诈主线）',{exact:true}).click();await page.locator('#start').click();
  await page.locator('#state').filter({hasText:'报告等待审阅'}).waitFor({timeout:60000});
- await page.locator('#methods-refresh').click();await page.locator('#method-head').filter({hasText:'当前版本：0'}).waitFor();
+ await page.locator('#legacy-methods > summary').click();await page.locator('#methods-refresh').click();await page.locator('#method-head').filter({hasText:'当前版本：0'}).waitFor();
  await page.locator('#method-order').selectOption('merchant,settlement,coverage');await page.locator('#method-create').click();
  await page.waitForFunction(()=>!document.getElementById('method-evaluate').disabled);await page.locator('#method-evaluate').click();
  await page.locator('#method-candidate').filter({hasText:'任务回归：拒绝'}).waitFor();assert.equal(await page.locator('#method-publish').isDisabled(),true);

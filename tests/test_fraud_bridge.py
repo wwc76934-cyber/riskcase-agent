@@ -69,6 +69,27 @@ def test_findings_not_fraud_or_dispute_conclusions(fraud_case):
         with pytest.raises(ValidationError):verify(dict(answer,verdict=verdict),evidence)
 
 
+def test_fraud_prompt_has_one_output_contract_and_external_evidence_namespace(fraud_case):
+    from app.investigation.fraud import messages,POLICY
+    spec=dict(question=dict(text='Review'),skills={})
+    context,_=messages(spec,dict(skills={},observations=[],turn=0))
+    assert 'One to three distinct checks' not in context[0]['content']
+    assert 'First read get_alert_transaction' not in context[0]['content']
+    assert 'OUTER observation.evidence_id' in context[0]['content']
+    assert POLICY['id']=='fraud-leads-research-v2' and 'One to three distinct checks' not in POLICY['rules']
+
+
+def test_offline_workbench_worker_does_not_claim_prepared_live_job(tmp_path,fraud_case):
+    _,snapshot=fraud_case
+    live=FraudService(tmp_path/'mode-routing',execution_mode='live')
+    job,_=live.submit('prepared-live-only',snapshot,'Review')
+    offline=FraudService(live.directory)
+    assert HarnessWorker(offline).step() is None
+    assert live.store.get(job)['state']=='queued'
+    assert live.store.load(job) is None
+    with pytest.raises(ValueError,match='Explicit live'):HarnessWorker(live)
+
+
 def test_all_negative_leads_do_not_clear_alert(fraud_case):
     _,s=fraud_case;s=deepcopy(s)
     target=next(r for r in s['rows'] if r['transaction_id']=='target')

@@ -1,0 +1,70 @@
+{
+  "receipts": [
+    {
+      "source": "fraud-memory-tests-01.xml",
+      "sha256": "8ae373d55de405cea9ada73ea9764500d5f246619380aca2d25688fc780bc169",
+      "tests": 22,
+      "failures": 1,
+      "errors": 0,
+      "seconds": 22.004
+    },
+    {
+      "source": "fraud-memory-tests-02.xml",
+      "sha256": "66b2dde5657e62bc0e74d0d4c0204d63851253210e37ce3797e1c495de31a997",
+      "tests": 22,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 21.994
+    },
+    {
+      "source": "memory-source-scope-tests-03.xml",
+      "sha256": "9fb69689c85ae324649e219cc202c75fb1dcbf7eefc2640e2efb3865a53dbf7a",
+      "tests": 22,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 22.005
+    },
+    {
+      "source": "fraud-contract-tests-04.xml",
+      "sha256": "e667e0f96b6c822fc9ce2707f32868fa188d902d2890505f2bd6fc2ee995e57a",
+      "tests": 24,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 22.093
+    },
+    {
+      "source": "stage6b-regression-tests-01.xml",
+      "sha256": "5385d289c5b6260cd99144dd4f4e4fbbaca79e53cdfcb492ea6bb3503517caf8",
+      "tests": 195,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 160.0
+    },
+    {
+      "source": "stage6b-final-tests-02.xml",
+      "sha256": "ba5e0fce28831de93965573a25e3b222f8bd85491a4d5a64c9f927b2fff0b71a",
+      "tests": 204,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 165.805
+    },
+    {
+      "source": "stage6b-process-tests-01.xml",
+      "sha256": "5f2cb7427fb373d8d10eff7e22a5878b1c784633322431f1385f7e12d5c5ff93",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 7.123
+    },
+    {
+      "source": "stage6b-cli-tests-01.xml",
+      "sha256": "8f574dbc1bd649b556d46127dd3682c0c8efab359d967c9f57bfedb36645cd0f",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 1.026
+    }
+  ],
+  "counts_overlap_do_not_sum": true,
+  "model_requests": 0
+}

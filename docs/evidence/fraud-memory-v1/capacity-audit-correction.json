@@ -1,0 +1,201 @@
+{
+  "original_summary_sha256": "2409dde911fd9cb364adb3e298318f70a3c3e6e9906999dbf3a07e6671bddbf9",
+  "correction": "Auditor used compact job JSON for spaced MCP evidence JSON; original workload, results and timestamps unchanged.",
+  "audit_valid_jobs": 32,
+  "jobs": [
+    {
+      "job": "job-ee13854237264b03993cdd380bdbdb0b",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-bdc48a6bc02d421dbc8c73be7c899d58",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-e74f79787b514551ba83cef4af26bda5",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-06b09ac38cac425a87f2e8a785369142",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-665304f945d34eeeb440a5c1ad1bfba2",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-595c8723f29c431f86a3698bfeaa24b2",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-57ddbf0abf1442cd809d2dbb4f26119d",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-ea50e8062adc4d0f8c872046c6bb8855",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-66261fac9f964ea7aeb2eb55b4cfa5f3",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-b226676dbd21492195d7e43b55df5326",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-dccb0d81535b41c5b2ec9a842a6e0f6e",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-cc95b2e94e3b40c394e67ce850b3143a",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-a0a6da9840b54e618f4db503fd0814ac",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-b9a33af8d4ec42df9cbe1ee06a8176e3",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-834c451396da4dfa85ac3c1b6997c22b",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-d60422a614ef4a0e82c1ac96009b4987",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-a70d5d66f72c49978ea333f49db30f86",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-65f0e92ef6d74bdd8c4fbcac0aed216d",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-cee801b108154a9ba341095c983794a7",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-5a9c67c45e2f416f858395416f473acb",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-668c2617f5334b218fe0ec612ff8b96b",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-442e8230738f479fa16b31fcd31290cd",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-6bb80cb246204235b13641f98dcda715",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-4773d60dbe5f4ec6b9ec71c8d065e6c2",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-6d8be9b009ab46c28893049bcab69d8b",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-2a7b85e5f96342199354cf2f8239ed68",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-e352308adfc04b6faae4a756299423d1",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-8c7ebcffa6a449a8b2cd3f9ebc1f1878",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-627d51c92c43407cb2d679f9657e7c1f",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-884104aef25e4ffdb7c13a4ba9e2f95a",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-332fba779ac741a0bc919fb30ec1ed39",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    },
+    {
+      "job": "job-48d909c493034a169059d88b2d25df77",
+      "audit_valid": true,
+      "evidence": 5,
+      "response_rows": 3
+    }
+  ],
+  "new_workload_runs": 0,
+  "new_model_requests": 0
+}
