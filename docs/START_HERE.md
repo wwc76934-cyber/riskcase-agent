@@ -22,6 +22,14 @@
 
 ## 怎样运行和检查
 
+最快核对本轮真实模型的便携证据（Python 3.10+标准库，无需API密钥、依赖安装或原始交易）：
+
+```powershell
+python scripts/verify_fraud_live_evidence.py
+```
+
+核对11份文件指纹、16次运行的汇总一致性与两批费用；输出明确保留首次失败。它不是提供商签名认证，不重算未上传的原始事实，也不证明业务收益。已核对的公开调查研究与后续数据准入见[公开材料可行性评审](PUBLIC_INVESTIGATION_FEASIBILITY.md)。
+
 - **本机已有IBM源数据和冻结演示包**：按[主线运行指南](FRAUD_WORKBENCH_QUICKSTART.md)准备新的欺诈调查目录，再启动工作台。主线页面是 `/investigations/page`。演示默认确定性客户端、真实MCP、零模型费用；完整记忆发布和撤下步骤也在该指南中。
 - **从干净检出开始**：按[公开评测指南](PUBLIC_EVAL_QUICKSTART.md)下载固定来源并复现检测和检索实验。这条路径不依赖本机IBM权重或模型API密钥。Git中只有代码与汇总证据，原始数据、权重和运行数据库需要另行准备。
 - **准备真实模型功能验收**：按[功能验收协议](FRAUD_LIVE_ACCEPTANCE_PROTOCOL.md)区分准备与发送。普通离线工作台不会领取live任务；发送需明确的本批授权并受批次和项目总账本约束。首次真实运行及同四案修复回归均已完成，见[真实模型验收报告](FRAUD_LIVE_ACCEPTANCE_REPORT.md)；原始失败单列，不把模拟回执当作模型成绩。
