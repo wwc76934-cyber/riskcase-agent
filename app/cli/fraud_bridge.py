@@ -30,7 +30,7 @@ def queue_audit(rows):
         if type(row['day_rank']) is not int:raise ValueError('Integer rank required')
         day=t.date().isoformat();days[day].append(row);groups[(day,row['user_id'])]+=1
     for values in days.values():
-        ordered=sorted(values,key=lambda r:(-r['score'],r['tie_hash']))
+        ordered=sorted(values,key=lambda r:(r['score'],r['tie_hash'],r['transaction_id']),reverse=True)
         if len(values)>10 or [r['day_rank'] for r in ordered]!=list(range(1,len(values)+1)):
             raise ValueError('Queue budget or ordering mismatch')
     return dict(alert_transactions=len(rows),days=len(days),unique_users=len({r['user_id'] for r in rows}),

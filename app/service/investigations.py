@@ -91,14 +91,21 @@ def install(app,parent):
     @app.get('/fraud-alerts')
     def fraud_alerts():
         from app.investigation.fraud import from_case
-        rows=[]
+        from app.risk.review_groups import group_id
+        rows=[];groups={}
         for identity,path in parent.settings.catalog.items():
             try:
                 snapshot=from_case(path,identity)
+                m=snapshot['manifest'];day=snapshot['cutoff'][:10]
+                key=group_id(m['source_facts_sha256'],m['alert']['model_report_sha256'],m['user_id'],day)
+                groups.setdefault(key,dict(group_id=key,user_id=m['user_id'],day=day,
+                                            source_version=m['source_facts_sha256'][:8],model_version=m['alert']['model_report_sha256'][:8],case_ids=[]))['case_ids'].append(identity)
                 rows.append(dict(case_id=identity,alert=snapshot['manifest']['alert'],cutoff=snapshot['cutoff'],
-                                 origin=snapshot['source_origin']))
+                                 origin=snapshot['source_origin'],group_id=key))
             except (ValueError,KeyError,OSError,TypeError):continue
-        return dict(alerts=rows,mode='offline_deterministic_NOT_LLM',source_authentication='local_registered_projection_not_bank_certification')
+        rows.sort(key=lambda r:(r['cutoff'][:10],r['alert']['day_rank'],r['case_id']))
+        return dict(alerts=rows,groups=sorted(groups.values(),key=lambda g:(g['day'],g['group_id'])),group_scope='loaded_catalog_only_NOT_all_selected_alerts',
+                    mode='offline_deterministic_NOT_LLM',source_authentication='local_registered_projection_not_bank_certification')
 
     @app.post('/fraud-investigations')
     def submit_fraud(body:FraudBody,request:Request):

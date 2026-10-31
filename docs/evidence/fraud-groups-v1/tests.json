@@ -1,0 +1,40 @@
+{
+  "overlapping_runs_do_not_sum": true,
+  "runs": [
+    {
+      "file": "stage6d-group-tie-first-failure.xml",
+      "sha256": "9802b6170c960004a8d4eabe9c3a2f79c35d49d587077a771cc0c40a86cdf6f9",
+      "tests": 1,
+      "failures": 1,
+      "errors": 0
+    },
+    {
+      "file": "stage6d-group-tests-02.xml",
+      "sha256": "ec66e117f759566824b88143cd38a2dd717c5388238a0f17a0a83694276c6a9c",
+      "tests": 42,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "file": "stage6d-group-tests-03.xml",
+      "sha256": "6aecd75fe398f110c315195fd208087ad2bb33183443043825dd962714eb2656",
+      "tests": 59,
+      "failures": 1,
+      "errors": 0
+    },
+    {
+      "file": "stage6d-group-tests-04.xml",
+      "sha256": "58c071a71241ed7e233c6471755a3c63e5487a43e0351c8c7120aa55b9de57ef",
+      "tests": 59,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "file": "stage6d-group-api-tests-05.xml",
+      "sha256": "3303c49867a6465a36551ea9cbc8c86d6b4d891bde82d8a33d88556d0cf0f5ac",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0
+    }
+  ]
+}

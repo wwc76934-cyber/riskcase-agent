@@ -1,0 +1,10 @@
+{
+  "status": "failed",
+  "page_errors": [],
+  "external_requests": [],
+  "checks": [],
+  "model_calls": 0,
+  "controller": "browser_test_NOT_independent_human",
+  "group_members": 6,
+  "error": "page.evaluate: Error: 请求失败 404\n    at api (http://127.0.0.1:8781/investigations/page:11:261)\n    at async eval (eval at evaluate (:311:30), <anonymous>:1:21)\n    at async <anonymous>:337:30\n    at start (C:\\Users\\18137\\Documents\\ChatGPT\\金融Agent项目\\financial-report-agent\\scripts\\verify_fraud_groups_browser.cjs:28:27)\n    at async main (C:\\Users\\18137\\Documents\\ChatGPT\\金融Agent项目\\financial-report-agent\\scripts\\verify_fraud_groups_browser.cjs:32:55)"
+}
