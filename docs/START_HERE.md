@@ -32,6 +32,7 @@ python scripts/verify_fraud_live_evidence.py
 
 - **本机已有IBM源数据和冻结演示包**：按[主线运行指南](FRAUD_WORKBENCH_QUICKSTART.md)准备新的欺诈调查目录，再启动工作台。主线页面是 `/investigations/page`。演示默认确定性客户端、真实MCP、零模型费用；完整记忆发布和撤下步骤也在该指南中。
 - **从干净检出开始**：按[公开评测指南](PUBLIC_EVAL_QUICKSTART.md)下载固定来源并复现检测和检索实验。这条路径不依赖本机IBM权重或模型API密钥。Git中只有代码与汇总证据，原始数据、权重和运行数据库需要另行准备。
+- **重建完整欺诈演示来源**：按[IBM源重建指南](FRAUD_REBUILD_GUIDE.md)从固定归档盘点、构建特征、训练到生成告警调查包；显式传递新目录。本轮验证了重建特征及训练输入，未重新验收一台全新机器的完整安装和训练。
 - **准备真实模型功能验收**：按[功能验收协议](FRAUD_LIVE_ACCEPTANCE_PROTOCOL.md)区分准备与发送。普通离线工作台不会领取live任务；发送需明确的本批授权并受批次和项目总账本约束。首次真实运行及同四案修复回归均已完成，见[真实模型验收报告](FRAUD_LIVE_ACCEPTANCE_REPORT.md)；原始失败单列，不把模拟回执当作模型成绩。
 - **面试展示**：使用[当前面试手册](AGENT_INTERVIEW_PLAYBOOK.md)的业务讲述与七分钟演示，按[能力矩阵](AGENT_CAPABILITY_MATRIX.md)区分实现、实测和缺失。参考项目的借鉴与取舍见[记忆方案分析](REFERENCE_MEMORY_ANALYSIS.md)。
 

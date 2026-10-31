@@ -4,6 +4,8 @@
 
 ## 本机已有源数据与模型演示包
 
+新检出没有下列作者本机目录时，先按[从官方归档重建主线](FRAUD_REBUILD_GUIDE.md)生成自己的盘点、群组、特征、权重与告警包。各步骤显式传递新产物路径，不需要手改代码中的历史默认目录。
+
 仓库根目录，Python 3.12；本机使用 `scripts/run_project.ps1`。新环境需要 `requirements-service.txt`、`requirements-investigation.txt`；旧发布包核验模块还会导入检测依赖，因此准备主线包也需 `requirements-dl.txt`。原始数据、训练权重不在Git中，来源及已有发布包准备方式见 [RELEASE_DEMO.md](RELEASE_DEMO.md)。不要用手写交易冒充缺失的模型源案例。
 
 ```powershell

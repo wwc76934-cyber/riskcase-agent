@@ -25,8 +25,9 @@ from app.risk.neural_v2 import NeuralConfig, fit_v2, load_v2
 from app.risk.source_merchant_pack import write_json
 
 
-def load_development(root):
-    manifest_path = root / "data/features/features-b9692149f1c1/manifest.json"
+def load_development(root, *, features_manifest=None):
+    manifest_path = Path(features_manifest if features_manifest is not None else
+                         root / "data/features/features-b9692149f1c1/manifest.json").resolve()
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     cohort_path = Path(manifest["cohort_report"])
     cohort = json.loads(cohort_path.read_text(encoding="utf-8"))
@@ -58,14 +59,14 @@ class DevelopmentMetric:
                 "precision": float(self.y[selected].sum() / len(selected)), "recall": float(self.y[selected].sum() / self.y.sum())}
 
 
-def train(root, directory, policy_path=None):
+def train(root, directory, policy_path=None, *, features_manifest=None):
     directory.mkdir(parents=True, exist_ok=False)
     policy = json.loads((policy_path or root / "config/neural-experiment-v2.json").read_text(encoding="utf-8"))
     code = ["app/risk/neural_v2.py", "app/cli/train_neural_v2.py", "app/risk/ml_data.py", "app/risk/ml_evaluation.py", "app/risk/neural_model.py", "app/risk/rule_baseline.py"]
     write_json(directory / "protocol.json", {"policy": policy, "commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip(),
                "code_sha256": {p: sha256_file(root / p) for p in code}, "python": platform.python_version(), "torch": torch.__version__, "final_test_read": False})
     started = time.monotonic()
-    (X, y, meta), (VX, vy, vmeta) = (loaded := load_development(root))[0]
+    (X, y, meta), (VX, vy, vmeta) = (loaded := load_development(root, features_manifest=features_manifest))[0]
     write_json(directory / "data.json", loaded[1])
     metric = DevelopmentMetric(vmeta, vy)
     results = []
@@ -140,8 +141,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=root / "runs" / ("neural-v2-" + uuid4().hex[:12]))
     parser.add_argument("--policy", type=Path, help="Separate development protocol; historical protocol remains unchanged")
+    parser.add_argument("--features-manifest", type=Path,
+                        help="Manifest from build_features; verifies provenance and loads train/validation only")
     args = parser.parse_args()
-    train(root, args.output, args.policy)
+    train(root, args.output, args.policy, features_manifest=args.features_manifest)
 
 
 if __name__ == "__main__": main()

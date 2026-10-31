@@ -22,6 +22,7 @@ def main():
     root = Path(__file__).resolve().parents[2]
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--cohort-report", type=Path, default=root / "data/cohorts/cohort-3bfdbaab486f/build-report.json")
+    parser.add_argument("--output", type=Path, help="New output directory; existing directories are never overwritten")
     args = parser.parse_args()
     report = json.loads(args.cohort_report.read_text(encoding="utf-8"))
     if report.get("status") != "research_snapshot_built" or not report.get("source_csv_fully_scanned") or not report.get("class_counts_sufficient"):
@@ -30,7 +31,7 @@ def main():
     source = args.cohort_report.parent / "dataset/facts.sqlite"
     if file_sha256(source) != report["artifact_sha256"]["dataset/facts.sqlite"]:
         raise ValueError("Facts hash mismatch")
-    output = root / "data/features" / f"features-{uuid4().hex[:12]}"
+    output = args.output.resolve() if args.output is not None else root / "data/features" / f"features-{uuid4().hex[:12]}"
     output.mkdir(parents=True, exist_ok=False)
     started = time.monotonic()
     code_files = ("app/risk/features.py", "app/cli/build_features.py")
