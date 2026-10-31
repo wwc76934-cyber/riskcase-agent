@@ -1,0 +1,13 @@
+{
+  "artifact_sha256": {
+    "audited-summary.json": "84af9dfbfd09afe07a972e0b0cacd8f22bce10b8812b51ed74aed7371e69fe86",
+    "browser.json": "48a87de5ae7258fb5688e5cdf5d5c33442eebc4752b5788db0f267b21c2c7e41",
+    "fraud-runtime-at-v4.py.txt": "582fdaa954b4778e605c40fd2ca8d49fd12516343a1c5cb92c9afe23ae76b34d",
+    "lifecycle-audit.json": "006305f97bc3e7f7f0d6d09ff7c012b942f9fd41020c6490f7a5659ff12da056",
+    "offline-regression.json": "5d4f6654a1113a11084ffc9f6999a38e8b2040fc0ba73223a3c297967b46057a",
+    "original-summary.json": "5db5d0ad90d701ee56b839393765bb1d32b3803ecd9115e817b0a75eea40388b",
+    "provenance.json": "8c6c18dd91ab4b44df653eb1e26d7b3db55b4e81d0a01e895bbd64995bd7efb2"
+  },
+  "raw_transactions_included": false,
+  "kind": "observed_four_case_provider_regression"
+}

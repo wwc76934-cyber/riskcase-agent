@@ -29,6 +29,23 @@ PROFILES={'full':dict(skills=True,knowledge=True),'no_skill':dict(skills=False,k
           'no_knowledge':dict(skills=True,knowledge=False)}
 
 
+def available_tool_schemas(schemas,spec,state):
+    """Reflect completed activation in each request, without widening permissions.
+
+    Recomputed from the checkpoint so a restored request has the same tool menu.
+    A multi-skill task may still activate its remaining frozen skills.
+    """
+    remaining=sorted(set(spec['skills'])-set(state['skills']))
+    result=[]
+    for schema in schemas:
+        item=deepcopy(schema)
+        if item['function']['name']=='load_skill':
+            if not remaining:continue
+            item['function']['parameters']['properties']['name']['enum']=remaining
+        result.append(item)
+    return result
+
+
 def fingerprint():
     root=Path(__file__).resolve().parents[2]
     paths=list((root/'app/investigation').glob('*.py'))+[root/'app/tools/case_tools.py',root/'app/risk/investigation.py',root/'app/risk/case_snapshot.py']+[root/'app/service/store.py',root/'app/service/runtime.py',root/'app/agent/react_agent.py']
@@ -192,7 +209,7 @@ class HarnessWorker:
                                 context.append(dict(role='user',content='Format correction only, preserve conclusion, no tools. Previous raw answer: '+state['raw']['content']))
                                 if len(json.dumps(context).encode())>24000: raise Blocked('context_budget')
                             final_only=state['repair'] or state.get('force_final',False) or bool(state.get('draft_feedback'))
-                            response=await asyncio.to_thread(client.chat,context,tools=[] if final_only else schemas)
+                            response=await asyncio.to_thread(client.chat,context,tools=[] if final_only else available_tool_schemas(schemas,spec,state))
                             state['raw']=response;state['turn']+=1;state['context_metrics'].append(metric)
                             # Journal already contains raw even if validation below fails.
                             Agent._validate_assistant_message(response)
@@ -220,6 +237,7 @@ class HarnessWorker:
                                         if name not in allowed:raise ValueError('Disabled host operation')
                                         args=strict_json(arguments);validate(args,allowed[name])
                                         if name=='load_skill':
+                                            if args['name'] in state['skills']:raise ValueError('Skill already active')
                                             data=read(spec['skills'],args['name']);state['skills'][args['name']]=data
                                             observation=dict(ok=True,kind='skill',name=args['name'],version=data['version'])
                                         elif name=='read_skill_resource':

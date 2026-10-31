@@ -1,0 +1,132 @@
+[
+  {
+    "case_id": "neural-2018-user-00",
+    "profile": "no_knowledge",
+    "reason": "no_progress_repeated_call",
+    "evidence_count": 0,
+    "responses": [
+      {
+        "file": "response-01.json",
+        "sha256": "a35b6e466b093a61304fd337aa4cc25c0b19e6d4177e759b4273e2efb1892700",
+        "raw_response": {
+          "content": "",
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "function": {
+                "arguments": "{\"name\": \"fraud-alert-review\"}",
+                "name": "load_skill"
+              },
+              "id": "01a19126806c9f22d5b50cd924ea1162",
+              "index": 0,
+              "type": "function"
+            }
+          ]
+        }
+      },
+      {
+        "file": "response-02.json",
+        "sha256": "b0f4a9141ee3fd7e0fe4b3852e336c55f1a5abe9912b76da8a1938d0a4fa3590",
+        "raw_response": {
+          "content": "",
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "function": {
+                "arguments": "{\"name\": \"fraud-alert-review\"}",
+                "name": "load_skill"
+              },
+              "id": "01a1912688bd439f3edd6bf53bd884ba",
+              "index": 0,
+              "type": "function"
+            }
+          ]
+        }
+      },
+      {
+        "file": "response-03.json",
+        "sha256": "68c6782d79696ce935743265c86f33b064f446032370d612afb1aad727b6c9b1",
+        "raw_response": {
+          "content": "",
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "function": {
+                "arguments": "{\"name\": \"fraud-alert-review\"}",
+                "name": "load_skill"
+              },
+              "id": "01a1912690f4c5d7f99976eaed9cf2a9",
+              "index": 0,
+              "type": "function"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "case_id": "neural-2018-user-03",
+    "profile": "no_knowledge",
+    "reason": "no_progress_repeated_call",
+    "evidence_count": 0,
+    "responses": [
+      {
+        "file": "response-01.json",
+        "sha256": "4ed813fd2c850dd52deab7b3914904836ee73f7b009ce2121a447b7e654cdfb9",
+        "raw_response": {
+          "content": "",
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "function": {
+                "arguments": "{\"name\": \"fraud-alert-review\"}",
+                "name": "load_skill"
+              },
+              "id": "01a19128de1660708f552d5b77be988f",
+              "index": 0,
+              "type": "function"
+            }
+          ]
+        }
+      },
+      {
+        "file": "response-02.json",
+        "sha256": "c16859f84abfa006190dcedad2a7431bd66718577c68c4dac781df5a20563be1",
+        "raw_response": {
+          "content": "",
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "function": {
+                "arguments": "{\"name\": \"fraud-alert-review\"}",
+                "name": "load_skill"
+              },
+              "id": "01a19128e697355930b89811968a533f",
+              "index": 0,
+              "type": "function"
+            }
+          ]
+        }
+      },
+      {
+        "file": "response-03.json",
+        "sha256": "218bca20852cfaaae48fa3a912f4ad4f35bf5fe50f97ffaa30f5f136618b39a8",
+        "raw_response": {
+          "content": "",
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "function": {
+                "arguments": "{\"name\": \"fraud-alert-review\"}",
+                "name": "load_skill"
+              },
+              "id": "01a19128ee8de6545669053e4ff9c6d9",
+              "index": 0,
+              "type": "function"
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

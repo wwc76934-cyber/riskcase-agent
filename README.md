@@ -32,7 +32,7 @@ flowchart LR
 | 证据 | 已有结果 | 边界 |
 |---|---|---|
 | 检测 | IBM合成源2019期423,189笔；每天10笔，残差三seed捕获99个源正标签，匹配强树94；差异区间跨0 | 固定408用户，已观察时间评测；不是银行真实交易验证 |
-| 检测→调查 | 四个源案例、两个真实MCP进程、同一交易身份与分数绑定、人工审批 | 本轮是代码接线，未开展新LLM对照 |
+| 检测→调查 | 四个源案例、两个真实MCP进程、同一交易身份与分数绑定、人工审批 | 真实模型首批无/有记忆2/4、4/4；修复后同四案两组各4/4，限已观察功能回归，见[报告](docs/FRAUD_LIVE_ACCEPTANCE_REPORT.md) |
 | 队列 | 完整核查3650条已有日审核记录；重复用户日期容量统计 | 不是3650个Agent调查，也不是并发压测 |
 | 外部匿名检测 | ULB/Worldline公开来源284807笔；时间保留92576笔，开发选中的逻辑回归AP0.7335，树0.7745，残差集成0.7714 | 新特征上分别训练；上游PCA范围未知；不是IBM权重已真实泛化或真实案卷 |
 | 公共记忆检索 | LongMemEval-S全500题；470可回答题BM25会话召回@5为85.30%，完整证据会话覆盖75.32% | 无生成模型与judge；30不可回答题均非空召回，不能当可回答性 |
@@ -57,4 +57,4 @@ MCP负责受控服务协议，宿主负责范围/schema/预算；Skill负责可�
 
 [第1阶段](docs/MULTISOURCE_STAGE1_REPORT.md)、[第2阶段](docs/HARNESS_STAGE2_REPORT.md)、[第3阶段](docs/RAG_STAGE3_REPORT.md)、[第4阶段](docs/STAGE4_REPORT.md)、[支付争议实验](docs/STAGE5_REPORT.md)保留原始成功与失败；[争议实验证据包](docs/evidence/dossier-v4/README.md)包含实际模型调用记录，材料仍是合成案卷。
 
-[历史README](docs/archive/README.before-fraud-correction.md)保留纠偏前叙事，历史数字不可混用分母。项目估算模型费用累计13.048320元，本轮未增加付费调用。当前工程与产品验收分开，未完成的目标见[路线](docs/AGENT_ROADMAP.md)。
+[历史README](docs/archive/README.before-fraud-correction.md)保留纠偏前叙事，历史数字不可混用分母。项目估算模型费用累计14.676868元；本轮两批真实模型共60次请求、估算1.628548元，首次失败及修复回归分别保留。当前工程与产品验收分开，未完成的目标见[路线](docs/AGENT_ROADMAP.md)。
