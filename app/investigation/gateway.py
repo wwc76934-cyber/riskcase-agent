@@ -25,6 +25,9 @@ async def connect(snapshot_path, snapshot, *, errlog):
     if snapshot.get('task_contract') == 'raw-dossier-v1':
         from app.investigation.dossier import INPUTS as inputs, GROUPS as groups
         module = 'app.investigation.dossier_server'
+    if snapshot.get('task_contract') == 'detector-fraud-review-v1':
+        from app.investigation.fraud import INPUTS as inputs, GROUPS as groups
+        module = 'app.investigation.fraud_server'
     sessions, handshakes = {}, {}
     async with AsyncExitStack() as stack:
         for kind in ('transactions', 'documents'):
@@ -66,6 +69,9 @@ class Gateway:
                         'docs_search':['catalog'], 'docs_read':['procedure','merchant','disposition']}
         if snapshot.get('task_contract') == 'raw-dossier-v1':
             from app.investigation.dossier import INPUTS as inputs, DESCRIPTIONS as descriptions, SOURCES as sources
+            self.inputs, self.descriptions, self.sources = inputs, descriptions, sources
+        if snapshot.get('task_contract') == 'detector-fraud-review-v1':
+            from app.investigation.fraud import INPUTS as inputs, DESCRIPTIONS as descriptions, SOURCES as sources
             self.inputs, self.descriptions, self.sources = inputs, descriptions, sources
 
     @property

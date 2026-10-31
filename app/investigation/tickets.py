@@ -69,7 +69,7 @@ class Tickets:
             report=json.loads(source['result'])
             if digest(report)!=source['result_hash']:raise Conflict('report_corrupt')
             if report.get('validation',{}).get('semantic_validation') is False:
-                required={'settled_debits','net_debit_cents','reversal_state','coverage','policy','missing'}
+                required={'findings','scope','missing'} if report['validation'].get('contract')=='detector-fraud-review-v1' else {'settled_debits','net_debit_cents','reversal_state','coverage','policy','missing'}
                 if not isinstance(reviewed_claims,list) or len(reviewed_claims)!=len(required) or set(reviewed_claims)!=required:
                     raise Conflict('explicit_semantic_review_required')
             db.execute('UPDATE ticket_drafts SET approved_hash=?,reviewer=? WHERE job_id=?',(expected_hash,reviewer,job))

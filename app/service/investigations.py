@@ -26,6 +26,12 @@ class RequestBody(BaseModel):
     text:str=Field(min_length=1,max_length=800)
 
 
+class FraudBody(BaseModel):
+    model_config=ConfigDict(extra='forbid',strict=True)
+    case_id:str=Field(min_length=1,max_length=120)
+    text:str=Field(min_length=1,max_length=800)
+
+
 class DraftBody(BaseModel):
     model_config=ConfigDict(extra='forbid',strict=True)
     text:str=Field(min_length=1,max_length=2000)
@@ -65,6 +71,31 @@ def install(app,parent):
     def page():
         from app.service.investigation_page import HTML
         return HTML
+
+    @app.get('/fraud-alerts')
+    def fraud_alerts():
+        from app.investigation.fraud import from_case
+        rows=[]
+        for identity,path in parent.settings.catalog.items():
+            try:
+                snapshot=from_case(path,identity)
+                rows.append(dict(case_id=identity,alert=snapshot['manifest']['alert'],cutoff=snapshot['cutoff'],
+                                 origin=snapshot['source_origin']))
+            except (ValueError,KeyError,OSError,TypeError):continue
+        return dict(alerts=rows,mode='offline_deterministic_NOT_LLM',source_authentication='local_registered_projection_not_bank_certification')
+
+    @app.post('/fraud-investigations')
+    def submit_fraud(body:FraudBody,request:Request):
+        from app.investigation.fraud import from_case
+        from app.investigation.fraud_service import FraudService
+        key=request.headers.get('idempotency-key','')
+        if not 8<=len(key)<=128 or not all(c.isascii() and (c.isalnum() or c in '-_') for c in key):raise ValueError('Idempotency key required')
+        if body.case_id not in parent.settings.catalog:raise ValueError('Registered detector case required')
+        s=get_service(parent)
+        service=FraudService(s.directory,store=s.store)
+        snapshot=from_case(parent.settings.catalog[body.case_id],body.case_id)
+        identity,_=service.submit(key,snapshot,body.text)
+        return dict(id=identity,mode='offline_deterministic_NOT_LLM')
 
     @app.get('/investigations')
     def jobs():return {'jobs':get_service(parent).store.list_jobs()}

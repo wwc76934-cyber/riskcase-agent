@@ -31,7 +31,7 @@ PROFILES={'full':dict(skills=True,knowledge=True),'no_skill':dict(skills=False,k
 
 def fingerprint():
     root=Path(__file__).resolve().parents[2]
-    paths=list((root/'app/investigation').glob('*.py'))+[root/'app/service/store.py',root/'app/service/runtime.py',root/'app/agent/react_agent.py']
+    paths=list((root/'app/investigation').glob('*.py'))+[root/'app/tools/case_tools.py',root/'app/risk/investigation.py',root/'app/risk/case_snapshot.py']+[root/'app/service/store.py',root/'app/service/runtime.py',root/'app/agent/react_agent.py']
     return digest({str(p.relative_to(root)):p.read_text(encoding='utf-8') for p in paths})
 
 
@@ -60,7 +60,7 @@ class InvestigationService:
         from app.investigation.knowledge import corpus,SCOPE,AS_OF
         features=PROFILES[self.profile]
         knowledge=deepcopy(self.knowledge_snapshot) if self.knowledge_snapshot is not None else dict(documents=corpus(),scope=SCOPE,as_of=AS_OF,memory=self.experiences.frozen())
-        if snapshot.get('task_contract')=='raw-dossier-v1':
+        if snapshot.get('task_contract') in ('raw-dossier-v1','detector-fraud-review-v1'):
             knowledge=dict(documents=[],scope=snapshot['scope'],as_of=snapshot['cutoff'],memory=dict(release=0,release_hash=digest(None),lesson=None))
         if not features['knowledge']:knowledge=dict(documents=[],scope=SCOPE,as_of=AS_OF,memory=dict(release=0,release_hash=digest(None),lesson=None))
         spec=dict(case_id=snapshot['case_id'],snapshot=deepcopy(snapshot),snapshot_hash=digest(snapshot),
@@ -70,6 +70,7 @@ class InvestigationService:
         if snapshot.get('task_contract')=='raw-dossier-v1':spec['completion_contract']='citations-checked-semantics-await-review-v1'
         if snapshot.get('task_contract')=='raw-dossier-v1' and 'purchase_cents' in snapshot:
             spec['dossier_review_contract']='support-v3'
+        if snapshot.get('task_contract')=='detector-fraud-review-v1':spec['completion_contract']='fraud-leads-not-adjudication-v1'
         return self.store.submit(key,spec)
 
 
@@ -134,15 +135,21 @@ class HarnessWorker:
         from app.investigation.gateway import connect,Gateway
         directory=self.service.directory/claim['id'];directory.mkdir(exist_ok=True)
         snapshot=directory/'snapshot.json';write_json(snapshot,spec['snapshot'])
-        base=self.client_factory()
+        fraud=spec['snapshot'].get('task_contract')=='detector-fraud-review-v1'
+        if fraud and self.client_factory is SkillScriptedClient:
+            from app.investigation.fraud import FraudScriptedClient
+            base=FraudScriptedClient()
+        else:base=self.client_factory()
         dossier=spec['snapshot'].get('task_contract')=='raw-dossier-v1'
         make_messages, answer_schema, check_answer = messages, ANSWER, verify
         if dossier:
             from app.investigation.dossier import messages as make_messages, ANSWER as answer_schema, verify as raw_verify, DraftReviewError
             check_answer=lambda answer,evidence:raw_verify(answer,evidence,purchase_cents=spec['snapshot'].get('purchase_cents'),support_contract=spec.get('dossier_review_contract') in ('support-v2','support-v3'))
+        if fraud:
+            from app.investigation.fraud import messages as make_messages, ANSWER as answer_schema, verify as check_answer
         features=PROFILES[spec.get('profile','full')]
         allowed={n:s for n,s in LOCAL.items() if (features['skills'] or n not in ('load_skill','read_skill_resource')) and (features['knowledge'] or n!='search_knowledge')}
-        if dossier:allowed={n:s for n,s in allowed.items() if n not in ('search_knowledge','read_evidence','record_plan')}
+        if dossier or fraud:allowed={n:s for n,s in allowed.items() if n not in ('search_knowledge','read_evidence','record_plan')}
         client=JournalClient(self.store,claim,base,checkpoint,after_saved=lambda ordinal:self.hook('response_saved',ordinal))
         client.calls=state['turn']
         def save():
@@ -262,7 +269,7 @@ class HarnessWorker:
                             if state['plan']['todo']:warnings.append(dict(kind='open_plan_items',items=deepcopy(state['plan']['todo'])))
                             if state['plan']['unknowns']:warnings.append(dict(kind='plan_uncertainties',items=deepcopy(state['plan']['unknowns'])))
                             state.update(answer=answer,validation=validation,review_warnings=warnings,phase='done');save()
-                    result=dict(status='citations_checked_awaiting_review' if dossier else 'completed_validated',answer=state['answer'],validation=state['validation'],
+                    result=dict(status='citations_checked_awaiting_review' if dossier else 'fraud_leads_awaiting_review' if fraud else 'completed_validated',answer=state['answer'],validation=state['validation'],
                                 turns=state['turn'],attempts=state['attempts'],active_skills={k:v['version'] for k,v in state['skills'].items()},
                                 mode=spec['mode'],new_client_requests=client.new_calls,replayed_client_responses=client.replayed)
                     result['review_warnings']=state.get('review_warnings',[])

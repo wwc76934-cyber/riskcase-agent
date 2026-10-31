@@ -97,6 +97,7 @@ class Experiences:
     def _source(db,source_job):
         row=db.execute('SELECT * FROM jobs WHERE id=?',(source_job,)).fetchone()
         if row is None:raise KeyError('source_job_missing')
+        if json.loads(row['spec'])['snapshot'].get('task_contract')=='detector-fraud-review-v1':raise Conflict('settlement_methods_not_applicable_to_fraud')
         if row['state'] not in ('awaiting_review','failed','blocked'):raise Conflict('reviewable_source_required')
         spec=json.loads(row['spec']);result=json.loads(row['result']) if row['result'] else None
         if digest(spec)!=row['spec_hash'] or (result is not None and digest(result)!=row['result_hash']):raise Conflict('source_corrupted')

@@ -154,7 +154,7 @@ def create_app(service):
     @app.get("/", response_class=HTMLResponse)
     def workbench():
         from app.service.workbench import HTML
-        return HTML.replace('</header>','<p><a style="color:white" href="/investigations/page">进入 Skill 与 Harness 多来源调查（免费演示）</a></p></header>')
+        return HTML.replace('</header>','<p><a style="color:white" href="/investigations/page">进入欺诈告警调查与历史实验（免费接线）</a></p></header>')
 
     @app.get("/health")
     def health(): return {"status": "ok", "live_enabled": service.settings.allow_live, "data_kind": "synthetic"}

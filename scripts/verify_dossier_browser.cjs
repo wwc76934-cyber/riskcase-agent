@@ -23,7 +23,7 @@ async function main(){
  const answer=await page.locator('#answer').innerText();assert.match(answer,/净扣款/);assert.match(answer,/L3/);assert.match(answer,/policy-current/);assert.match(answer,/人工逐项复核/);
  if(process.env.DOSSIER_QA_CASE==='raw-10'){assert.match(await page.locator('#progress').innerText(),/settlement_coverage/);assert.doesNotMatch(await page.locator('#progress').innerText(),/无已声明缺口/);assert.match(answer,/已观察净扣款/);}
  receipt.checks.push('claim_values_next_to_original_lines_and_policy_with_semantic_warning');
- await page.locator('section').nth(1).screenshot({path:path.join(output,'claims.png')});
+ await page.locator('#answer').screenshot({path:path.join(output,'claims.png')});
  await page.locator('#draft').fill('核对待处理的重复入账及排队退款，不自动关闭。');await page.locator('#save').click();
  await page.locator('#approve').waitFor({state:'visible'});await page.locator('#approve').click();
  await page.locator('#error').filter({hasText:'409'}).waitFor();assert.equal(await page.locator('#send').isDisabled(),true);
