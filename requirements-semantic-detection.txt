@@ -1,5 +1,6 @@
 # Install in an isolated research environment, not the running Agent environment.
 -r requirements-dl.txt
+-r requirements-plots.txt
 transformers==4.57.3
 safetensors==0.8.0
 huggingface-hub==0.36.2

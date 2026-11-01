@@ -1,0 +1,182 @@
+{
+  "status": "Gate_A_matched_independently_verified",
+  "conditions": {
+    "nochannel-original-32": {
+      "model_reloads": 3,
+      "seed_numbers": [
+        42,
+        43,
+        44
+      ],
+      "manual_AP": 0.026187544507204685,
+      "heap_TP": 122,
+      "reviewed": 3650
+    },
+    "nochannel-learned-32": {
+      "model_reloads": 3,
+      "seed_numbers": [
+        42,
+        43,
+        44
+      ],
+      "manual_AP": 0.02984557722421175,
+      "heap_TP": 131,
+      "reviewed": 3650
+    },
+    "nochannel-semantic-32": {
+      "model_reloads": 3,
+      "seed_numbers": [
+        42,
+        43,
+        44
+      ],
+      "manual_AP": 0.028046729179360422,
+      "heap_TP": 126,
+      "reviewed": 3650
+    },
+    "channel-original-32": {
+      "model_reloads": 3,
+      "seed_numbers": [
+        42,
+        43,
+        44
+      ],
+      "manual_AP": 0.027699988057327405,
+      "heap_TP": 52,
+      "reviewed": 3650
+    },
+    "channel-learned-32": {
+      "model_reloads": 3,
+      "seed_numbers": [
+        42,
+        43,
+        44
+      ],
+      "manual_AP": 0.03120837974528341,
+      "heap_TP": 71,
+      "reviewed": 3650
+    },
+    "channel-semantic-32": {
+      "model_reloads": 3,
+      "seed_numbers": [
+        42,
+        43,
+        44
+      ],
+      "manual_AP": 0.02852566834965152,
+      "heap_TP": 55,
+      "reviewed": 3650
+    },
+    "channel-semantic-128": {
+      "model_reloads": 1,
+      "seed_numbers": [
+        42
+      ],
+      "manual_AP": 0.0340678657411588,
+      "heap_TP": 74,
+      "reviewed": 3650
+    },
+    "channel-learned-128": {
+      "model_reloads": 1,
+      "seed_numbers": [
+        42
+      ],
+      "manual_AP": 0.03847510877934382,
+      "heap_TP": 87,
+      "reviewed": 3650
+    },
+    "channel-random-128": {
+      "model_reloads": 1,
+      "seed_numbers": [
+        42
+      ],
+      "manual_AP": 0.037639500269359395,
+      "heap_TP": 79,
+      "reviewed": 3650
+    },
+    "channel-semantic-256": {
+      "model_reloads": 1,
+      "seed_numbers": [
+        42
+      ],
+      "manual_AP": 0.034843603825478214,
+      "heap_TP": 73,
+      "reviewed": 3650
+    },
+    "channel-learned-256": {
+      "model_reloads": 1,
+      "seed_numbers": [
+        42
+      ],
+      "manual_AP": 0.03904395131431383,
+      "heap_TP": 91,
+      "reviewed": 3650
+    },
+    "channel-random-256": {
+      "model_reloads": 1,
+      "seed_numbers": [
+        42
+      ],
+      "manual_AP": 0.036820373101218,
+      "heap_TP": 82,
+      "reviewed": 3650
+    },
+    "channel-industry-32": {
+      "model_reloads": 1,
+      "seed_numbers": [
+        42
+      ],
+      "manual_AP": 0.03192886658446456,
+      "heap_TP": 71,
+      "reviewed": 3650
+    },
+    "channel-description_shuffle-32": {
+      "model_reloads": 1,
+      "seed_numbers": [
+        42
+      ],
+      "manual_AP": 0.03216454040847299,
+      "heap_TP": 61,
+      "reviewed": 3650
+    },
+    "channel-category_shuffle-32": {
+      "model_reloads": 1,
+      "seed_numbers": [
+        42
+      ],
+      "manual_AP": 0.03436597875834607,
+      "heap_TP": 67,
+      "reviewed": 3650
+    },
+    "channel-random-32": {
+      "model_reloads": 1,
+      "seed_numbers": [
+        42
+      ],
+      "manual_AP": 0.03797695974783847,
+      "heap_TP": 77,
+      "reviewed": 3650
+    }
+  },
+  "total_models": 28,
+  "reload_max_abs_diff": 0.0,
+  "original_residual_reproduction_max_abs_diff": 0.0,
+  "report_sha256": "baf331596002aae52f3a64b9f1e83bd6167cccf2d70446bb00beb902b9a95998",
+  "frozen_source_verified": true,
+  "training_only_preprocessing_matched": true,
+  "nochannel_invariance_verified": true,
+  "category_coverage": {
+    "false": {
+      "development_unseen_joint_keys": 0,
+      "development_unseen_joint_positive": 0,
+      "development_rows": 422088
+    },
+    "true": {
+      "development_unseen_joint_keys": 0,
+      "development_unseen_joint_positive": 0,
+      "development_rows": 422088
+    }
+  },
+  "final_2019_read": false,
+  "paid_calls": 0
+}

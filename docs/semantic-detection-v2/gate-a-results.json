@@ -1,0 +1,48 @@
+{
+  "status": "Gate_A_complete",
+  "Gate_B_admitted": true,
+  "larger_IBM_semantic_model_admitted": false,
+  "formal_matrix_models": 18,
+  "single_seed_screens": 10,
+  "confirmation_models": 0,
+  "tests": {
+    "tests": 75,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "receipts": {
+    "matched": {
+      "path": "runs/semantic-v21-a2-01/report.json",
+      "sha256": "baf331596002aae52f3a64b9f1e83bd6167cccf2d70446bb00beb902b9a95998"
+    },
+    "independent_matched": {
+      "path": "runs/semantic-v21-a2-audit-01/report.json",
+      "sha256": "642e8ac0dd491e5f8a0d0285b9a7293c09d9af0560f9fb4ed8d22fd6a4331d27"
+    },
+    "embedding_geometry": {
+      "path": "runs/semantic-v21-embedding-audit-01/report.json",
+      "sha256": "6598d21384ead47d693b3b38f637c38fc4602b4947b497685f208e7336c67efe"
+    },
+    "channel": {
+      "path": "runs/semantic-v21-a1-01/report.json",
+      "sha256": "66c6fe442a1303acd8636d0043a3be0ad63509c14429c1f5988d39272dc12a82"
+    },
+    "tests": {
+      "path": "runs/semantic-v21-initialization/tests-04.xml",
+      "sha256": "f331955658fe682597b25457680a184337beeb3016b1b00a149b6de476c7e71e"
+    }
+  },
+  "daily10_ensemble_matrix": {
+    "nochannel-original-32": 122,
+    "nochannel-learned-32": 131,
+    "nochannel-semantic-32": 126,
+    "channel-original-32": 52,
+    "channel-learned-32": 71,
+    "channel-semantic-32": 55
+  },
+  "no_independent_external_test": true,
+  "default_detector_changed": false,
+  "final_2019_read": false,
+  "paid_calls": 0
+}
