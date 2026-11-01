@@ -1,23 +1,33 @@
 """Optional stage-two routes on the existing authenticated workbench."""
 import importlib.util
+from threading import RLock
 from fastapi.responses import HTMLResponse
 from fastapi import Request
 from pydantic import BaseModel,ConfigDict,Field
+_SERVICE_LOCK=RLock()
 
 
 def get_service(parent):
     if importlib.util.find_spec('mcp') is None or importlib.util.find_spec('jsonschema') is None:
         raise ValueError('Install requirements-investigation.txt')
-    if not hasattr(parent,'investigations'):
-        from app.investigation.harness import InvestigationService
-        parent.investigations=InvestigationService(parent.settings.directory/'investigations',parent.settings.repo/'investigation_skills')
+    with _SERVICE_LOCK:
+        if not hasattr(parent,'investigations'):
+            from app.investigation.harness import InvestigationService
+            parent.investigations=InvestigationService(parent.settings.directory/'investigations',parent.settings.repo/'investigation_skills')
     return parent.investigations
 
 
 def step(parent):
     if not (parent.settings.directory/'investigations/jobs.sqlite').exists():return None
     from app.investigation.harness import HarnessWorker
-    return HarnessWorker(get_service(parent)).step()
+    class OfflineWorkbenchWorker(HarnessWorker):
+        async def execute(self,claim,spec,state,checkpoint):
+            if spec['snapshot'].get('task_contract')=='fraud-world-v1':
+                if spec['mode']!='offline' or spec['strategy']!='all_materials':raise ValueError('Explicit code-control task required')
+                from app.investigation.world_baseline import BaselineProbeClient
+                self.client_factory=BaselineProbeClient
+            return await super().execute(claim,spec,state,checkpoint)
+    return OfflineWorkbenchWorker(get_service(parent)).step()
 
 
 class RequestBody(BaseModel):
@@ -120,13 +130,56 @@ def install(app,parent):
         identity,_=service.submit(key,snapshot,body.text)
         return dict(id=identity,mode='offline_deterministic_NOT_LLM')
 
+    @app.get('/world-cases')
+    def world_cases():
+        from app.service.world_catalog import read_entry
+        from app.investigation.fraud_world import World
+        rows=[]
+        for identity,entry in getattr(parent,'world_catalog',{}).items():
+            snapshot=read_entry(entry);world=World(snapshot)
+            rows.append(dict(case_id=identity,cutoff=snapshot['cutoff'],investigation_as_of=snapshot['investigation_as_of'],
+                             subject_id=world.a.target['user_id'],alert=snapshot['transaction_snapshot']['alert'],
+                             available_originals=len(world.eligible),origin=snapshot['source_origin']))
+        return dict(cases=rows,origin='IBM合成交易 + 独立模拟调查原件',creation_mode='offline_code_control_only')
+
+    @app.post('/world-investigations')
+    def submit_world(body:FraudBody,request:Request):
+        from app.service.world_catalog import read_entry
+        from app.investigation.world_service import WorldService
+        key=request.headers.get('idempotency-key','')
+        if not 8<=len(key)<=128 or not all(c.isascii() and (c.isalnum() or c in '-_') for c in key):raise ValueError('Idempotency key required')
+        registered=getattr(parent,'world_catalog',{})
+        if body.case_id not in registered:raise ValueError('Registered A/B case required')
+        s=get_service(parent);control=WorldService(s.directory,store=s.store,strategy='all_materials')
+        identity,_=control.submit(key,read_entry(registered[body.case_id]),body.text)
+        return dict(id=identity,mode='offline_code_control_NOT_LLM')
+
+    @app.get('/world-methods')
+    def world_methods():
+        from app.investigation.world_memory import WorldMemory
+        memory=WorldMemory(get_service(parent).store);head=memory.head();previews=[]
+        for record in head['records']:
+            item=memory.get(record['candidate']);body=item['body']
+            if body.get('kind')!='reviewed_procedural_method':continue
+            previews.append(dict(candidate=item['id'],topic=body['focus'],lesson=body['lesson'],expires=item['expires'],
+                                 feedback_origin=body['feedback_origin'],source_client_kind=body['source_client_kind']))
+        return dict(release=head['release'],head=head['head'],records=previews,authority='advisory_methods_only')
+
+    @app.post('/world-methods/{identity}/withdraw')
+    def withdraw_world_method(identity:str,body:WithdrawMemoryBody):
+        from app.investigation.world_memory import WorldMemory
+        memory=WorldMemory(get_service(parent).store)
+        if memory.get(identity)['body'].get('kind')!='reviewed_procedural_method':raise ValueError('World method required')
+        return memory.withdraw(identity,body.expected_head)
+
     @app.get('/investigations')
     def jobs():return {'jobs':get_service(parent).store.list_jobs()}
 
     @app.get('/fraud-memory')
     def memory_head():
         memory=fraud_memory();head=memory.head()
-        return dict(**head,previews=[dict(candidate=r['candidate'],case_id=(b:=memory.get(r['candidate'])['body'])['case_id'],focus=b['focus']) for r in head['records']])
+        previews=[dict(candidate=r['candidate'],case_id=b['case_id'],focus=b['focus']) for r in head['records'] if (b:=memory.get(r['candidate'])['body']).get('kind')!='reviewed_procedural_method']
+        return dict(**head,previews=previews)
 
     @app.post('/fraud-memory/candidates')
     def memory_candidate(body:FraudMemoryBody):
@@ -177,8 +230,11 @@ def install(app,parent):
     def status(identity:str):
         s=get_service(parent);row=s.store.get(identity)
         return dict(id=identity,state=row['state'],reason=row['reason'],generation=row['generation'],result=row['result'],report_hash=row['result_hash'],execution_mode=row['spec']['mode'],
+                    question=row['spec']['question']['text'],task_contract=row['spec']['snapshot'].get('task_contract'),strategy=row['spec'].get('strategy'),
                     checkpoint=s.store.load(identity),events=s.store.events(identity),ticket=tickets().get(identity),
                     review_memory_snapshot=row['spec'].get('fraud_memory'),
+                    method_memory_snapshot=row['spec'].get('world_memory'),memory_condition=row['spec'].get('world_memory_mode'),
+                    investigation_scope={k:row['spec']['snapshot'][k] for k in ('cutoff','investigation_as_of','access_budget_units','source_origin')} if row['spec']['snapshot'].get('task_contract')=='fraud-world-v1' else None,
                     knowledge_snapshot=dict(hash=row['spec']['knowledge_hash'],release=row['spec']['knowledge']['memory']['release']))
 
     @app.post('/investigations/{identity}/cancel')

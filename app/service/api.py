@@ -103,7 +103,7 @@ def create_app(service):
     @app.middleware("http")
     async def boundary(request: Request, call_next):
         expected = ("Bearer " + service.settings.token).encode()
-        public_page = request.method == "GET" and request.url.path in ("/", "/investigations/page")
+        public_page = request.method == "GET" and request.url.path in ("/", "/investigations/page", "/baseline/page")
         if not public_page and not hmac.compare_digest(request.headers.get("authorization", "").encode(), expected):
             return JSONResponse({"error": "authentication_required"}, status_code=401)
         if request.method in ("POST", "PUT", "PATCH"):
@@ -153,6 +153,13 @@ def create_app(service):
 
     @app.get("/", response_class=HTMLResponse)
     def workbench():
+        if getattr(service,'world_catalog',{}):
+            from app.service.investigation_page import HTML
+            return HTML
+        return baseline_page()
+
+    @app.get('/baseline/page',response_class=HTMLResponse)
+    def baseline_page():
         from app.service.workbench import HTML
         return HTML.replace('</header>','<p><a style="color:white" href="/investigations/page">进入欺诈告警调查与历史实验（免费接线）</a></p></header>')
 

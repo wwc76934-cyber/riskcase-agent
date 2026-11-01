@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "quality_weights": {
+    "supported_claim_rate": 0.25,
+    "critical_claim_recall": 0.25,
+    "tension_handling": 0.15,
+    "missing_recall": 0.15,
+    "appropriate_recommendation": 0.15,
+    "timeline_coverage": 0.05
+  },
+  "failed_or_host_rejected_quality": 0,
+  "reference_kind": "author-defined source facts and simulated workflow expectations, not external expert judgment",
+  "no_required_unique_tool_trajectory": true,
+  "report_separately": [
+    "source_citation_validation", "unsupported_claim_count", "critical_claim_recall",
+    "reference_over_escalation", "unsafe_draft_actions", "missing_recall",
+    "tool_attempts", "simulated_access_cost", "tokens", "estimated_CNY", "elapsed_seconds",
+    "budget_exhaustion", "memory_admission", "memory_contamination", "stale_memory_rejection"
+  ]
+}

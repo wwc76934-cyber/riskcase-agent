@@ -28,6 +28,12 @@ async def connect(snapshot_path, snapshot, *, errlog):
     if snapshot.get('task_contract') == 'detector-fraud-review-v1':
         from app.investigation.fraud import INPUTS as inputs, GROUPS as groups
         module = 'app.investigation.fraud_server'
+    if snapshot.get('task_contract') == 'fraud-inquiry-v1':
+        from app.investigation.inquiry import INPUTS as inputs, GROUPS as groups
+        module = 'app.investigation.inquiry_server'
+    if snapshot.get('task_contract') == 'fraud-world-v1':
+        from app.investigation.fraud_world import INPUTS as inputs, GROUPS as groups
+        module = 'app.investigation.inquiry_server'
     sessions, handshakes = {}, {}
     async with AsyncExitStack() as stack:
         for kind in ('transactions', 'documents'):
@@ -73,6 +79,14 @@ class Gateway:
         if snapshot.get('task_contract') == 'detector-fraud-review-v1':
             from app.investigation.fraud import INPUTS as inputs, DESCRIPTIONS as descriptions, SOURCES as sources
             self.inputs, self.descriptions, self.sources = inputs, descriptions, sources
+        if snapshot.get('task_contract') == 'fraud-inquiry-v1':
+            from app.investigation.inquiry import INPUTS as inputs, DESCRIPTIONS as descriptions, SOURCES as sources
+            self.inputs, self.descriptions, self.sources = inputs, descriptions, sources
+        self.world=None
+        if snapshot.get('task_contract') == 'fraud-world-v1':
+            from app.investigation.fraud_world import World,INPUTS as inputs,DESCRIPTIONS as descriptions,SOURCES as sources
+            self.inputs,self.descriptions,self.sources=inputs,descriptions,sources
+            self.world=World(snapshot)
 
     @property
     def schemas(self):
@@ -90,13 +104,18 @@ class Gateway:
             phase = 'input'
             args = strict_json(arguments)
             validate(args, self.inputs[name])
+            if self.world:
+                cost=self.world.cost(name,args)
+                if sum(e.get('cost_units',0) for e in self.trace)+cost>self.snapshot['access_budget_units']:
+                    raise ValueError('access_budget')
+                entry['cost_units']=cost  # Started/failed source accesses retain their charge.
             phase = 'execute'
             response = await asyncio.wait_for(self.sessions[name].call_tool(name, args), timeout=self.timeout)
             if response.isError: raise ValueError('source_error')
             phase = 'output'
             result = response.structuredContent
             validate(result, OUTPUT)
-            if len(json.dumps(result, ensure_ascii=False).encode()) > 12000: raise ValueError('result_limit')
+            if len(json.dumps(result, ensure_ascii=False).encode()) > (180000 if self.world else 12000): raise ValueError('result_limit')
             if result['case_id'] != self.snapshot['case_id'] or result['cutoff'] != self.snapshot['cutoff']:
                 raise PermissionError('source_scope_mismatch')
             expected_source = self.sources[name]
@@ -110,6 +129,7 @@ class Gateway:
             category = ('permission_denied' if isinstance(exc, PermissionError) else
                         'timeout' if isinstance(exc, TimeoutError) else
                         'tool_budget' if str(exc) == 'tool_budget' else
+                        'access_budget' if str(exc) == 'access_budget' else
                         'invalid_arguments' if phase == 'input' else
                         'source_unavailable' if phase == 'execute' else
                         'invalid_result')

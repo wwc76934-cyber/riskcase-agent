@@ -54,7 +54,7 @@ class Tickets:
             prior=db.execute('SELECT hash FROM ticket_drafts WHERE job_id=?',(job,)).fetchone()
             if (prior['hash'] if prior else None)!=expected_hash:raise Conflict('draft_version_changed')
             payload=dict(case_id=json.loads(source['spec'])['case_id'],report_hash=source['result_hash'],
-                         verdict=result['answer']['verdict'],text=text,destination='local_mock_review_queue')
+                         verdict=result['answer']['status'] if result.get('validation',{}).get('contract') in ('fraud-inquiry-v1','fraud-world-v1') else result['answer']['verdict'],text=text,destination='local_mock_review_queue')
             db.execute('INSERT INTO ticket_drafts VALUES (?,?,?,NULL,NULL) ON CONFLICT(job_id) DO UPDATE SET payload=excluded.payload,hash=excluded.hash,approved_hash=NULL,reviewer=NULL',
                        (job,encoded(payload),digest(payload)))
             self.store.event(db,job,'ticket_drafted',payload_hash=digest(payload))
@@ -69,7 +69,11 @@ class Tickets:
             report=json.loads(source['result'])
             if digest(report)!=source['result_hash']:raise Conflict('report_corrupt')
             if report.get('validation',{}).get('semantic_validation') is False:
-                required={'findings','scope','missing'} if report['validation'].get('contract')=='detector-fraud-review-v1' else {'settled_debits','net_debit_cents','reversal_state','coverage','policy','missing'}
+                contract=report['validation'].get('contract')
+                required=({'observations','hypotheses','timeline','recommendations','missing'} if contract=='fraud-world-v1' else
+                          {'question_coverage','interpretations','counterevidence','missing'} if contract=='fraud-inquiry-v1' else
+                          {'findings','scope','missing'} if contract=='detector-fraud-review-v1' else
+                          {'settled_debits','net_debit_cents','reversal_state','coverage','policy','missing'})
                 if not isinstance(reviewed_claims,list) or len(reviewed_claims)!=len(required) or set(reviewed_claims)!=required:
                     raise Conflict('explicit_semantic_review_required')
             db.execute('UPDATE ticket_drafts SET approved_hash=?,reviewer=? WHERE job_id=?',(expected_hash,reviewer,job))
