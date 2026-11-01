@@ -1,0 +1,45 @@
+{
+  "version": "semantic-detection-e1-additive-v2",
+  "training": "2016-2017 only",
+  "evaluation": "2018 observed development; no new independent test claim",
+  "forbid_2019": true,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "epochs": 5,
+  "variants": [
+    "B0",
+    "B1",
+    "B2",
+    "B3",
+    "B3_shuffled"
+  ],
+  "dimensions": 32,
+  "primary": "TP at top10 each day, not global yearly top3650",
+  "selection": "Fixed final epoch and mean probabilities across all three declared seeds; no best-seed selection",
+  "positive_evidence": "B2 or B3 must beat B1 in mean ensemble daily TP and paired daily 95% interval lower bound > 0; B3 must also beat B3_shuffled for semantic attribution",
+  "phase2_admission": "Proceed to combined semantic-history experiments only with positive semantic evidence; independent loss/history mechanisms can be delivered as tested research primitives without claiming results",
+  "config": {
+    "width": 64,
+    "blocks": 2,
+    "dropout": 0.15,
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "positive_weight": 20,
+    "batch_size": 4096
+  },
+  "encoder": {
+    "repo": "Qwen/Qwen3-Embedding-0.6B",
+    "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+    "dtype": "float32",
+    "pooling": "last nonpadding token",
+    "first_dimensions": 32,
+    "max_length": 128
+  },
+  "scope_limit": "Only pretrained-category-encoding effect on IBM synthetic development data; source vocabulary and pretrained model postdate transactions; not historical deployment or new future generalization proof",
+  "encoding_contract": "additive-v2",
+  "architecture": "Retain all 12 numerical features and trainable MCC/channel branch in ALL variants; B1 adds trainable joint32, B2 adds frozen semantic32, B3 adds projected semantic32",
+  "prior_pilot": "Replacement-encoding pilot retained in runs/semantic-e1-v1 and incomplete runs/semantic-e3-v1; not the formal PRD result"
+}

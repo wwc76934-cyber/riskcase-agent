@@ -1,0 +1,67 @@
+{
+  "status": "eligible_research_scope_complete_no_promotion",
+  "formal_model_runs": {
+    "semantic-e1-additive-v2": 15,
+    "semantic-e2-history-v1": 6,
+    "semantic-e3-additive-v2": 60
+  },
+  "tests": {
+    "tests": 210,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "tests_junit_sha256": "171c96febb9dbc4f6c7ce368e8e4f156c945f0cb87c7bb459043e78e4ca8f703",
+  "original_preservation": {
+    "all_unchanged": true,
+    "checked_files": 217,
+    "differences": {
+      "runs/neural-v2-development-01": [],
+      "runs/hgb-raw-nochannel-v2-development-01": [],
+      "runs/final-detector-v1": [],
+      "runs/release-demo-v1": []
+    },
+    "scope": "Frozen residual, matched tree, final detector and original release demo; all read-only"
+  },
+  "paid_api_calls": 0,
+  "gpu_rentals": 0,
+  "source_transactions_uploaded": false,
+  "default_detector_changed": false,
+  "E4": "not_admitted_semantic_and_consistency_benefits_not_supported",
+  "specialized_fraud_MCP": "not_integrated_shared_contract_unchanged_separate_integration_PR_required",
+  "generic_challenger_demo": "two_awaiting_review_cases_SQL_and_version_binding_verified",
+  "execution_deviations": [
+    "E1/E3 frozen independently but run concurrently instead of strict gate serialization",
+    "replacement pilot preserved and corrected to additive formal architecture",
+    "v1 cache retained; metadata identity v2 attested with unchanged vectors",
+    "one transient recovery failure preserved; final quiet suite passed, root cause unconfirmed"
+  ],
+  "environment_observed": {
+    "python": "3.12.0",
+    "torch": "2.8.0+cpu",
+    "numpy": "2.2.6",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.7.2",
+    "transformers": "4.57.3",
+    "safetensors": "0.8.0",
+    "huggingface-hub": "0.36.2",
+    "tokenizers": "0.22.2"
+  },
+  "evidence_sha256": {
+    "e1-independent-audit.json": "cc49abaf9adc900cc419023f80f5543b556be63ecbeafcf07ee4ba4935cfac9c",
+    "e3-independent-audit.json": "142b1717253c4121d3f7b501197576cf7589c851b34dff8fbf5ede1ccd17ed86",
+    "history-independent-audit.json": "99885689562bd576ae14552ea8c44691e4d15f5343eb5267fae55b00da19f40c",
+    "original-preservation.json": "b008e19bda56ce8e022033a58dc67ff903591ad2fca6fd391a6bcd962b7ce562",
+    "history-policy-bound-audit.json": "99885689562bd576ae14552ea8c44691e4d15f5343eb5267fae55b00da19f40c"
+  },
+  "summary_sha256": "3efbeac6b1dc2296f807e472e290dc840c84aa7002bd3abf970c75202e386feb",
+  "limits": [
+    "2018 observed development, no new independent future test",
+    "Synthetic source, unknown ingestion and label availability",
+    "Modern reference dictionary/pretraining postdate transactions",
+    "Bounded 2-epoch history and semi-supervised studies",
+    "Mean history gain does not isolate parameter-capacity contribution"
+  ],
+  "new_semantic_tests": 49,
+  "additional_history_budget_policy_check": "passed; epochs, seeds and optimizer/config match full-label E3 BCE; configurable K checked from protocol"
+}
