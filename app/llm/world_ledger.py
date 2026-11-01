@@ -8,8 +8,17 @@ from app.llm.cost_ledger import CostLedger,BudgetExceeded
 from app.investigation.contracts import digest
 
 
+def validate_budget_extension(authorization,amendment,extension):
+    """The separately approved 10/25 -> 13/28 extension changes money only."""
+    keys={'state','grant_message','base_authorization_hash','previous_amendment_hash','max_estimated_cny','project_limit_cny'}
+    if not amendment or amendment.get('state')!='approved' or not amendment.get('grant_message') or amendment.get('max_estimated_cny')!='10' or amendment.get('base_authorization_hash')!=digest(authorization):
+        raise ValueError('Financial extension requires the original bound 10-CNY amendment')
+    if set(extension)!=keys or extension['state']!='approved' or not extension['grant_message'] or extension['base_authorization_hash']!=digest(authorization) or extension['previous_amendment_hash']!=digest(amendment) or extension['max_estimated_cny']!='13' or extension['project_limit_cny']!='28':
+        raise ValueError('Explicit chained 13/28 authorization required; model/data/count scope is unchanged')
+
+
 class WorldLedger(CostLedger):
-    def __init__(self,path,authorization,*,budget_amendment=None):
+    def __init__(self,path,authorization,*,budget_amendment=None,budget_extension=None):
         if authorization.get('state')!='approved' or not authorization.get('grant_message'):
             raise ValueError('Explicit upgrade authorization is required before any reservation')
         if authorization['max_estimated_cny']!='8' or authorization['project_limit_cny']!='25':
@@ -21,17 +30,21 @@ class WorldLedger(CostLedger):
             scope=authorization['groups'][name]
             if scope['max_runs']!=runs or set(scope['conditions'])!=conditions or len(set(scope['case_ids']))!=count or len(scope['case_ids'])!=count:
                 raise ValueError('Authorized group bounds changed')
-        self.authorization=authorization;self.prefix='world-upgrade-'+authorization['id']+':';self.batch_limit=Decimal('8')
+        self.authorization=authorization;self.prefix='world-upgrade-'+authorization['id']+':';self.batch_limit=Decimal('8');self.project_limit=Decimal('25')
         if budget_amendment is not None:
             if set(budget_amendment)!={'state','grant_message','base_authorization_hash','max_estimated_cny'} or budget_amendment['state']!='approved' or not budget_amendment['grant_message'] or budget_amendment['base_authorization_hash']!=digest(authorization) or budget_amendment['max_estimated_cny']!='10':
                 raise ValueError('Explicit bounded 8-to-10 CNY amendment required; other scope cannot change')
             self.batch_limit=Decimal('10')
+        if budget_extension is not None:
+            validate_budget_extension(authorization,budget_amendment,budget_extension)
+            self.batch_limit=Decimal('13');self.project_limit=Decimal('28')
         super().__init__(path)
         with closing(sqlite3.connect(self.path)) as db,db:
             db.execute('CREATE TABLE IF NOT EXISTS world_authorizations(id TEXT PRIMARY KEY,hash TEXT NOT NULL)')
             db.execute('CREATE TABLE IF NOT EXISTS world_execution_slots(run_id TEXT PRIMARY KEY,authorization_id TEXT NOT NULL,group_name TEXT NOT NULL)')
             db.execute('CREATE TABLE IF NOT EXISTS world_uncertain_reviews(reservation_id TEXT PRIMARY KEY,authorization_id TEXT NOT NULL,reservation_hash TEXT NOT NULL,body TEXT NOT NULL)')
             db.execute('CREATE TABLE IF NOT EXISTS world_budget_amendments(id TEXT PRIMARY KEY,hash TEXT NOT NULL,body TEXT NOT NULL)')
+            db.execute('CREATE TABLE IF NOT EXISTS world_budget_extensions(id TEXT PRIMARY KEY,hash TEXT NOT NULL,body TEXT NOT NULL)')
             prior=db.execute('SELECT hash FROM world_authorizations WHERE id=?',(authorization['id'],)).fetchone()
             if prior and prior[0]!=digest(authorization):raise ValueError('Authorization content changed')
             db.execute('INSERT OR IGNORE INTO world_authorizations VALUES (?,?)',(authorization['id'],digest(authorization)))
@@ -39,6 +52,10 @@ class WorldLedger(CostLedger):
                 old=db.execute('SELECT hash FROM world_budget_amendments WHERE id=?',(authorization['id'],)).fetchone()
                 if old and old[0]!=digest(budget_amendment):raise ValueError('Budget amendment changed')
                 db.execute('INSERT OR IGNORE INTO world_budget_amendments VALUES (?,?,?)',(authorization['id'],digest(budget_amendment),json.dumps(budget_amendment,ensure_ascii=False)))
+            if budget_extension is not None:
+                old=db.execute('SELECT hash FROM world_budget_extensions WHERE id=?',(authorization['id'],)).fetchone()
+                if old and old[0]!=digest(budget_extension):raise ValueError('Financial extension changed')
+                db.execute('INSERT OR IGNORE INTO world_budget_extensions VALUES (?,?,?)',(authorization['id'],digest(budget_extension),json.dumps(budget_extension,ensure_ascii=False)))
 
     def register(self,run_id):
         group,_,case,condition=self._parts(run_id)
@@ -96,7 +113,7 @@ class WorldLedger(CostLedger):
         scopes=self.authorization['groups']
         self.register(run_id)
         amount,run_budget,project_budget=map(Decimal,(amount,run_budget,project_budget))
-        if not all(x.is_finite() for x in (amount,run_budget,project_budget)) or not 0<amount or not 0<run_budget<=Decimal('0.5') or project_budget!=Decimal('25') or not 1<=max_requests<=6:
+        if not all(x.is_finite() for x in (amount,run_budget,project_budget)) or not 0<amount or not 0<run_budget<=Decimal('0.5') or project_budget!=self.project_limit or not 1<=max_requests<=6:
             raise ValueError('Invalid bounded reservation')
         with closing(sqlite3.connect(self.path,timeout=5)) as db,db:
             db.execute('BEGIN IMMEDIATE')

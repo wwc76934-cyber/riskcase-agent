@@ -29,6 +29,57 @@ def test_budget_increase_requires_separate_bound_receipt_without_rewriting_origi
     with pytest.raises(ValueError):WorldLedger(tmp_path/'x.sqlite',a)
 
 
+def extended_ledger(path):
+    from app.investigation.contracts import digest
+    a=authorization();amendment=dict(state='approved',grant_message='unit approval 10',base_authorization_hash=digest(a),max_estimated_cny='10')
+    extension=dict(state='approved',grant_message='unit approval 13/28',base_authorization_hash=digest(a),previous_amendment_hash=digest(amendment),max_estimated_cny='13',project_limit_cny='28')
+    return WorldLedger(path,a,budget_amendment=amendment,budget_extension=extension),a,amendment,extension
+
+
+def test_13_28_requires_unchanged_original_and_chained_explicit_grants(tmp_path):
+    ledger,a,amendment,extension=extended_ledger(tmp_path/'extended.sqlite')
+    assert ledger.batch_limit==Decimal('13') and ledger.project_limit==Decimal('28')
+    assert a['max_estimated_cny']=='8' and a['project_limit_cny']=='25' and amendment['max_estimated_cny']=='10'
+    for field,value in [('previous_amendment_hash','0'*64),('project_limit_cny','29'),('grant_message','')]:
+        changed={**extension,field:value}
+        with pytest.raises(ValueError):WorldLedger(tmp_path/'invalid.sqlite',a,budget_amendment=amendment,budget_extension=changed)
+    with pytest.raises(ValueError):WorldLedger(tmp_path/'missing.sqlite',a,budget_extension=extension)
+    run=ledger.prefix+'main_eval:finance:world-031:B2'
+    original=WorldLedger(tmp_path/'original.sqlite',a,budget_amendment=amendment)
+    with pytest.raises(ValueError):original.reserve(run,Decimal('.01'),run_budget='.5',project_budget='28',max_requests=6)
+    with pytest.raises(ValueError):ledger.reserve(run,Decimal('.01'),run_budget='.5',project_budget='28',max_requests=7)
+
+
+def test_extended_round_and_shared_project_limits_still_stop_spending(tmp_path):
+    ledger,_,_,_=extended_ledger(tmp_path/'round.sqlite')
+    import sqlite3
+    with sqlite3.connect(ledger.path) as db:
+        db.execute('INSERT INTO budget_holds VALUES (?,?,?,?)',('prior',ledger.prefix+'development:prior:world-001:B2','12.95','unit conservative risk hold'))
+    run=ledger.prefix+'main_eval:finance:world-031:B2'
+    first=ledger.reserve(run,Decimal('.04'),run_budget='.5',project_budget='28',max_requests=6);ledger.settle(first,estimate='.04',usage={})
+    with pytest.raises(BudgetExceeded,match='upgrade_estimated'):ledger.reserve(run,Decimal('.02'),run_budget='.5',project_budget='28',max_requests=6)
+    shared,_,_,_=extended_ledger(tmp_path/'shared.sqlite')
+    with sqlite3.connect(shared.path) as db:
+        db.execute('INSERT INTO budget_holds VALUES (?,?,?,?)',('legacy','another-project-run','27.95','unit prior project spend'))
+    first=shared.reserve(shared.prefix+'main_eval:finance:world-031:B2',Decimal('.04'),run_budget='.5',project_budget='28',max_requests=6);shared.settle(first,estimate='.04',usage={})
+    with pytest.raises(BudgetExceeded,match='estimated_spend_limit'):shared.reserve(shared.prefix+'main_eval:finance:world-032:B2',Decimal('.02'),run_budget='.5',project_budget='28',max_requests=6)
+
+
+def test_financial_extension_changes_only_project_policy_field(tmp_path):
+    import json
+    from pathlib import Path
+    from app.investigation.contracts import digest
+    from app.evaluation.world_model_runner import execution_policy
+    _,a,amendment,_=extended_ledger(tmp_path/'policy-ledger.sqlite')
+    a['policy']=json.loads((Path(__file__).resolve().parents[1]/'config/siliconflow-world-v2.json').read_text())
+    amendment['base_authorization_hash']=digest(a)
+    extension=dict(state='approved',grant_message='unit approval 13/28',base_authorization_hash=digest(a),previous_amendment_hash=digest(amendment),max_estimated_cny='13',project_limit_cny='28')
+    (tmp_path/'budget-amendment.json').write_text(json.dumps(amendment))
+    (tmp_path/'budget-extension.json').write_text(json.dumps(extension))
+    before=a['policy'];after=execution_policy(tmp_path,a)
+    assert {k for k in before if before[k]!=after[k]}=={'project_budget_cny'} and after['project_budget_cny']=='28'
+
+
 def test_global_existing_spend_scope_and_unknown_cost_are_enforced(tmp_path):
     ledger=WorldLedger(tmp_path/'ledger.sqlite',authorization())
     prefix=ledger.prefix

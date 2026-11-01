@@ -150,7 +150,12 @@ def report(dataset_directory,upgrade_directory,b0_directories,output):
              host_ttl_rejection_is_not_model_reasoning=True,single_model_draw_per_case_condition=True)
     amendment_path=upgrade_directory/'budget-amendment.json'
     amendment=json.loads(amendment_path.read_text()) if amendment_path.exists() else None
-    budget=dict(scope_id=authorization['id'],max_upgrade_cny=amendment['max_estimated_cny'] if amendment else '8',max_project_cny='25',provider_requests=len(batch),
+    extension_path=upgrade_directory/'budget-extension.json'
+    extension=json.loads(extension_path.read_text()) if extension_path.exists() else None
+    if extension is not None:
+        from app.llm.world_ledger import validate_budget_extension
+        validate_budget_extension(authorization,amendment,extension)
+    budget=dict(scope_id=authorization['id'],max_upgrade_cny=extension['max_estimated_cny'] if extension else amendment['max_estimated_cny'] if amendment else '8',max_project_cny=extension['project_limit_cny'] if extension else '25',provider_requests=len(batch),
         registered_case_slots=sum(s['authorization_id']==authorization['id'] for s in slots),
         known_usage_estimate_cny=str(sum((Decimal(r['estimated_cny']) for r in batch if r['estimated_cny'] is not None),Decimal(0))),
         unknown_reservation_cny=str(sum((Decimal(r['reserved_cny']) for r in batch if r['status']=='uncertain_reserved'),Decimal(0))),

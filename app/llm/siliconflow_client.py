@@ -29,7 +29,7 @@ def validate_policy(policy):
     if policy["enable_thinking"] is not False or policy["automatic_retries"] != 0:
         raise ValueError("First experiment disables thinking and automatic retries")
     run, project = Decimal(policy["run_budget_cny"]), Decimal(policy["project_budget_cny"])
-    if not run.is_finite() or not project.is_finite() or not 0 < run <= 1 or not run <= project <= (25 if world else 20):
+    if not run.is_finite() or not project.is_finite() or not 0 < run <= 1 or not run <= project <= (28 if world else 20):
         raise ValueError("Budget exceeds current authorization")
     for key in ("input_rate_cny_per_million", "output_rate_cny_per_million"):
         rate = Decimal(policy[key])

@@ -77,7 +77,7 @@ def record_authorization(output,*,grant_message,explicitly_approved):
 
 
 def execution_policy(output,authorization):
-    """Recorded technical timeout change; cannot widen any paid/data/model scope."""
+    """Frozen request controls plus separately approved financial extensions."""
     policy=deepcopy(authorization['policy']);path=Path(output)/'execution-timeouts.json'
     if path.exists():
         amendment=json.loads(path.read_text())
@@ -86,6 +86,10 @@ def execution_policy(output,authorization):
         policy.update(amendment['overrides'])
         from app.llm.siliconflow_client import validate_policy
         validate_policy(policy)
+    extension=budget_extension(output,authorization)
+    if extension is not None:policy['project_budget_cny']=extension['project_limit_cny']
+    from app.llm.siliconflow_client import validate_policy
+    validate_policy(policy)
     return policy
 
 
@@ -95,6 +99,15 @@ def budget_amendment(output,authorization):
     amendment=json.loads(path.read_text())
     if amendment['base_authorization_hash']!=digest(authorization):raise ValueError('Budget amendment does not bind original scope')
     return amendment
+
+
+def budget_extension(output,authorization):
+    path=Path(output)/'budget-extension.json'
+    if not path.exists():return None
+    extension=json.loads(path.read_text())
+    from app.llm.world_ledger import validate_budget_extension
+    validate_budget_extension(authorization,budget_amendment(output,authorization),extension)
+    return extension
 
 
 def archive_code(directory):
@@ -162,7 +175,7 @@ def execute_phase(output,phase,*,live=False):
     from app.llm.world_ledger import WorldLedger
     key=local_key()
     if not key:raise ValueError('Local credential unavailable; no requests sent')
-    ledger=WorldLedger(ROOT/'runs/llm-budget.sqlite',authorization,budget_amendment=budget_amendment(output,authorization))
+    ledger=WorldLedger(ROOT/'runs/llm-budget.sqlite',authorization,budget_amendment=budget_amendment(output,authorization),budget_extension=budget_extension(output,authorization))
     service=WorldService(output/'service/investigations',execution_mode='live');results=[];stop_reason=None
     for entry in frozen['jobs']:
         if fingerprint()!=frozen['code']:raise ValueError('Runtime code changed during phase')
