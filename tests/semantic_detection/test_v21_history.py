@@ -120,3 +120,41 @@ def test_gate_B_refuses_missing_gate_A_completion(tmp_path):
     with pytest.raises(ValueError,match='Completed measured Gate A'):
         run(tmp_path,gate,tmp_path/'absent-policy.json',tmp_path/'not-created')
     assert not (tmp_path/'not-created').exists()
+
+
+def test_block_bootstrap_preserves_paired_net_and_known_constant():
+    from app.risk.semantic_detection.v2.audit_history import block_interval
+    assert block_interval(np.ones(14,dtype=int))['paired_circular_block_95']==[14.,14.]
+    a=block_interval(np.array([1,0,-1,2,0,1,0]*3));b=block_interval(np.array([1,0,-1,2,0,1,0]*3))
+    assert a==b and a['net']==9 and a['block_days']==7
+
+
+def test_readonly_gate_probe_cannot_change_outputs():
+    from app.risk.semantic_detection.v2.audit_history import GateProbe
+    torch.set_num_threads(1);seed_training(42,1)
+    model=Model(Config(mode='attention',self_control=True),np.zeros((4,32),dtype=np.float32),24,[4]).eval()
+    numeric=torch.randn(4,24);category=torch.zeros(4,1,dtype=torch.long);pairs=torch.zeros(4,dtype=torch.long)
+    with torch.inference_mode():expected=model(numeric,category,pairs)
+    probe=GateProbe(model,np.array([0,1,0,1]))
+    with torch.inference_mode():actual=model(numeric,category,pairs)
+    record=probe.finish()
+    torch.testing.assert_close(expected,actual,atol=0,rtol=0)
+    assert record['0']['rows']==2 and record['1']['rows']==2
+    assert 1<=record['1']['attention_effective_neighbors']<=6.000001
+
+
+def test_broad_statistics_cover_all_inputs_and_mcc_without_labels():
+    from app.risk.semantic_detection.v2.expanded_controls import features
+    from app.risk.semantic_detection.v2.audit_broad import reconstruct
+    numeric=np.array([[1.,2.],[3.,6.],[7.,10.]],dtype=np.float32)
+    categories=np.array([1,2,1]);neighbors=np.array([[-1,-1],[0,-1],[1,0]])
+    mean,std,latest,freq,count=features(numeric,categories,neighbors,3)
+    np.testing.assert_allclose(mean,[[0,0],[1,2],[2,4]])
+    np.testing.assert_allclose(std,[[0,0],[0,0],[1,2]])
+    np.testing.assert_allclose(latest,[[0,0],[1,2],[3,6]])
+    np.testing.assert_allclose(freq,[[0,0,0],[0,1,0],[0,.5,.5]])
+    assert count.tolist()==[0,1,2]
+    independent=reconstruct(numeric,categories,neighbors,3)
+    for actual,expected in zip(independent[:4],(mean,std,latest,freq)):
+        np.testing.assert_allclose(actual,expected,atol=1e-7)
+    assert independent[4].tolist()==[False,True,True]

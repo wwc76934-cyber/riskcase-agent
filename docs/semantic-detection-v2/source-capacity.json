@@ -1,0 +1,1841 @@
+{
+  "status": "daily_capacity_diagnostic_complete",
+  "days": 365,
+  "positive_rows": 683,
+  "oracle_daily10_TP_ceiling": 666,
+  "oracle_precision_ceiling": 0.18246575342465754,
+  "days_without_positives": 174,
+  "days_over10_positives": 5,
+  "max_daily_positives": 16,
+  "daily_counts": [
+    {
+      "day": "2018-01-01",
+      "rows": 1195,
+      "positives": 2
+    },
+    {
+      "day": "2018-01-02",
+      "rows": 1032,
+      "positives": 0
+    },
+    {
+      "day": "2018-01-03",
+      "rows": 1199,
+      "positives": 4
+    },
+    {
+      "day": "2018-01-04",
+      "rows": 1201,
+      "positives": 4
+    },
+    {
+      "day": "2018-01-05",
+      "rows": 1178,
+      "positives": 2
+    },
+    {
+      "day": "2018-01-06",
+      "rows": 1178,
+      "positives": 0
+    },
+    {
+      "day": "2018-01-07",
+      "rows": 1218,
+      "positives": 0
+    },
+    {
+      "day": "2018-01-08",
+      "rows": 1059,
+      "positives": 1
+    },
+    {
+      "day": "2018-01-09",
+      "rows": 1113,
+      "positives": 0
+    },
+    {
+      "day": "2018-01-10",
+      "rows": 1304,
+      "positives": 12
+    },
+    {
+      "day": "2018-01-11",
+      "rows": 1139,
+      "positives": 5
+    },
+    {
+      "day": "2018-01-12",
+      "rows": 1181,
+      "positives": 5
+    },
+    {
+      "day": "2018-01-13",
+      "rows": 1197,
+      "positives": 0
+    },
+    {
+      "day": "2018-01-14",
+      "rows": 1191,
+      "positives": 0
+    },
+    {
+      "day": "2018-01-15",
+      "rows": 1127,
+      "positives": 2
+    },
+    {
+      "day": "2018-01-16",
+      "rows": 1168,
+      "positives": 0
+    },
+    {
+      "day": "2018-01-17",
+      "rows": 1259,
+      "positives": 0
+    },
+    {
+      "day": "2018-01-18",
+      "rows": 1183,
+      "positives": 2
+    },
+    {
+      "day": "2018-01-19",
+      "rows": 1206,
+      "positives": 1
+    },
+    {
+      "day": "2018-01-20",
+      "rows": 1211,
+      "positives": 0
+    },
+    {
+      "day": "2018-01-21",
+      "rows": 1221,
+      "positives": 0
+    },
+    {
+      "day": "2018-01-22",
+      "rows": 1087,
+      "positives": 3
+    },
+    {
+      "day": "2018-01-23",
+      "rows": 1049,
+      "positives": 0
+    },
+    {
+      "day": "2018-01-24",
+      "rows": 1186,
+      "positives": 3
+    },
+    {
+      "day": "2018-01-25",
+      "rows": 1209,
+      "positives": 2
+    },
+    {
+      "day": "2018-01-26",
+      "rows": 1215,
+      "positives": 3
+    },
+    {
+      "day": "2018-01-27",
+      "rows": 1190,
+      "positives": 0
+    },
+    {
+      "day": "2018-01-28",
+      "rows": 1192,
+      "positives": 0
+    },
+    {
+      "day": "2018-01-29",
+      "rows": 1071,
+      "positives": 0
+    },
+    {
+      "day": "2018-01-30",
+      "rows": 1100,
+      "positives": 0
+    },
+    {
+      "day": "2018-01-31",
+      "rows": 1149,
+      "positives": 5
+    },
+    {
+      "day": "2018-02-01",
+      "rows": 1166,
+      "positives": 3
+    },
+    {
+      "day": "2018-02-02",
+      "rows": 1164,
+      "positives": 1
+    },
+    {
+      "day": "2018-02-03",
+      "rows": 1190,
+      "positives": 0
+    },
+    {
+      "day": "2018-02-04",
+      "rows": 1163,
+      "positives": 0
+    },
+    {
+      "day": "2018-02-05",
+      "rows": 1078,
+      "positives": 2
+    },
+    {
+      "day": "2018-02-06",
+      "rows": 1124,
+      "positives": 0
+    },
+    {
+      "day": "2018-02-07",
+      "rows": 1224,
+      "positives": 3
+    },
+    {
+      "day": "2018-02-08",
+      "rows": 1125,
+      "positives": 0
+    },
+    {
+      "day": "2018-02-09",
+      "rows": 1197,
+      "positives": 2
+    },
+    {
+      "day": "2018-02-10",
+      "rows": 1205,
+      "positives": 0
+    },
+    {
+      "day": "2018-02-11",
+      "rows": 1259,
+      "positives": 0
+    },
+    {
+      "day": "2018-02-12",
+      "rows": 1009,
+      "positives": 3
+    },
+    {
+      "day": "2018-02-13",
+      "rows": 1108,
+      "positives": 0
+    },
+    {
+      "day": "2018-02-14",
+      "rows": 1131,
+      "positives": 1
+    },
+    {
+      "day": "2018-02-15",
+      "rows": 1243,
+      "positives": 2
+    },
+    {
+      "day": "2018-02-16",
+      "rows": 1194,
+      "positives": 4
+    },
+    {
+      "day": "2018-02-17",
+      "rows": 1163,
+      "positives": 0
+    },
+    {
+      "day": "2018-02-18",
+      "rows": 1214,
+      "positives": 0
+    },
+    {
+      "day": "2018-02-19",
+      "rows": 973,
+      "positives": 1
+    },
+    {
+      "day": "2018-02-20",
+      "rows": 1083,
+      "positives": 0
+    },
+    {
+      "day": "2018-02-21",
+      "rows": 1229,
+      "positives": 0
+    },
+    {
+      "day": "2018-02-22",
+      "rows": 1141,
+      "positives": 1
+    },
+    {
+      "day": "2018-02-23",
+      "rows": 1219,
+      "positives": 2
+    },
+    {
+      "day": "2018-02-24",
+      "rows": 1179,
+      "positives": 0
+    },
+    {
+      "day": "2018-02-25",
+      "rows": 1196,
+      "positives": 0
+    },
+    {
+      "day": "2018-02-26",
+      "rows": 1059,
+      "positives": 4
+    },
+    {
+      "day": "2018-02-27",
+      "rows": 1091,
+      "positives": 0
+    },
+    {
+      "day": "2018-02-28",
+      "rows": 1180,
+      "positives": 6
+    },
+    {
+      "day": "2018-03-01",
+      "rows": 1157,
+      "positives": 4
+    },
+    {
+      "day": "2018-03-02",
+      "rows": 1196,
+      "positives": 11
+    },
+    {
+      "day": "2018-03-03",
+      "rows": 1159,
+      "positives": 0
+    },
+    {
+      "day": "2018-03-04",
+      "rows": 1154,
+      "positives": 0
+    },
+    {
+      "day": "2018-03-05",
+      "rows": 1029,
+      "positives": 2
+    },
+    {
+      "day": "2018-03-06",
+      "rows": 1098,
+      "positives": 0
+    },
+    {
+      "day": "2018-03-07",
+      "rows": 1204,
+      "positives": 13
+    },
+    {
+      "day": "2018-03-08",
+      "rows": 1225,
+      "positives": 10
+    },
+    {
+      "day": "2018-03-09",
+      "rows": 1171,
+      "positives": 3
+    },
+    {
+      "day": "2018-03-10",
+      "rows": 1183,
+      "positives": 1
+    },
+    {
+      "day": "2018-03-11",
+      "rows": 1201,
+      "positives": 0
+    },
+    {
+      "day": "2018-03-12",
+      "rows": 1027,
+      "positives": 4
+    },
+    {
+      "day": "2018-03-13",
+      "rows": 1096,
+      "positives": 0
+    },
+    {
+      "day": "2018-03-14",
+      "rows": 1123,
+      "positives": 1
+    },
+    {
+      "day": "2018-03-15",
+      "rows": 1235,
+      "positives": 4
+    },
+    {
+      "day": "2018-03-16",
+      "rows": 1208,
+      "positives": 4
+    },
+    {
+      "day": "2018-03-17",
+      "rows": 1145,
+      "positives": 0
+    },
+    {
+      "day": "2018-03-18",
+      "rows": 1131,
+      "positives": 0
+    },
+    {
+      "day": "2018-03-19",
+      "rows": 1025,
+      "positives": 3
+    },
+    {
+      "day": "2018-03-20",
+      "rows": 1073,
+      "positives": 0
+    },
+    {
+      "day": "2018-03-21",
+      "rows": 1169,
+      "positives": 9
+    },
+    {
+      "day": "2018-03-22",
+      "rows": 1202,
+      "positives": 6
+    },
+    {
+      "day": "2018-03-23",
+      "rows": 1176,
+      "positives": 4
+    },
+    {
+      "day": "2018-03-24",
+      "rows": 1195,
+      "positives": 0
+    },
+    {
+      "day": "2018-03-25",
+      "rows": 1185,
+      "positives": 0
+    },
+    {
+      "day": "2018-03-26",
+      "rows": 1026,
+      "positives": 4
+    },
+    {
+      "day": "2018-03-27",
+      "rows": 1067,
+      "positives": 0
+    },
+    {
+      "day": "2018-03-28",
+      "rows": 1203,
+      "positives": 1
+    },
+    {
+      "day": "2018-03-29",
+      "rows": 1236,
+      "positives": 3
+    },
+    {
+      "day": "2018-03-30",
+      "rows": 1171,
+      "positives": 2
+    },
+    {
+      "day": "2018-03-31",
+      "rows": 1226,
+      "positives": 0
+    },
+    {
+      "day": "2018-04-01",
+      "rows": 1174,
+      "positives": 0
+    },
+    {
+      "day": "2018-04-02",
+      "rows": 1031,
+      "positives": 7
+    },
+    {
+      "day": "2018-04-03",
+      "rows": 1083,
+      "positives": 0
+    },
+    {
+      "day": "2018-04-04",
+      "rows": 1193,
+      "positives": 3
+    },
+    {
+      "day": "2018-04-05",
+      "rows": 1208,
+      "positives": 7
+    },
+    {
+      "day": "2018-04-06",
+      "rows": 1192,
+      "positives": 3
+    },
+    {
+      "day": "2018-04-07",
+      "rows": 1204,
+      "positives": 0
+    },
+    {
+      "day": "2018-04-08",
+      "rows": 1175,
+      "positives": 0
+    },
+    {
+      "day": "2018-04-09",
+      "rows": 1040,
+      "positives": 9
+    },
+    {
+      "day": "2018-04-10",
+      "rows": 1062,
+      "positives": 0
+    },
+    {
+      "day": "2018-04-11",
+      "rows": 1194,
+      "positives": 4
+    },
+    {
+      "day": "2018-04-12",
+      "rows": 1147,
+      "positives": 8
+    },
+    {
+      "day": "2018-04-13",
+      "rows": 1196,
+      "positives": 1
+    },
+    {
+      "day": "2018-04-14",
+      "rows": 1141,
+      "positives": 0
+    },
+    {
+      "day": "2018-04-15",
+      "rows": 1195,
+      "positives": 0
+    },
+    {
+      "day": "2018-04-16",
+      "rows": 1070,
+      "positives": 2
+    },
+    {
+      "day": "2018-04-17",
+      "rows": 1083,
+      "positives": 0
+    },
+    {
+      "day": "2018-04-18",
+      "rows": 1222,
+      "positives": 6
+    },
+    {
+      "day": "2018-04-19",
+      "rows": 1223,
+      "positives": 4
+    },
+    {
+      "day": "2018-04-20",
+      "rows": 1232,
+      "positives": 5
+    },
+    {
+      "day": "2018-04-21",
+      "rows": 1180,
+      "positives": 0
+    },
+    {
+      "day": "2018-04-22",
+      "rows": 1180,
+      "positives": 0
+    },
+    {
+      "day": "2018-04-23",
+      "rows": 1105,
+      "positives": 2
+    },
+    {
+      "day": "2018-04-24",
+      "rows": 1099,
+      "positives": 2
+    },
+    {
+      "day": "2018-04-25",
+      "rows": 1201,
+      "positives": 4
+    },
+    {
+      "day": "2018-04-26",
+      "rows": 1163,
+      "positives": 1
+    },
+    {
+      "day": "2018-04-27",
+      "rows": 1162,
+      "positives": 1
+    },
+    {
+      "day": "2018-04-28",
+      "rows": 1186,
+      "positives": 0
+    },
+    {
+      "day": "2018-04-29",
+      "rows": 1200,
+      "positives": 0
+    },
+    {
+      "day": "2018-04-30",
+      "rows": 1050,
+      "positives": 10
+    },
+    {
+      "day": "2018-05-01",
+      "rows": 1066,
+      "positives": 0
+    },
+    {
+      "day": "2018-05-02",
+      "rows": 1145,
+      "positives": 4
+    },
+    {
+      "day": "2018-05-03",
+      "rows": 1215,
+      "positives": 0
+    },
+    {
+      "day": "2018-05-04",
+      "rows": 1212,
+      "positives": 2
+    },
+    {
+      "day": "2018-05-05",
+      "rows": 1196,
+      "positives": 0
+    },
+    {
+      "day": "2018-05-06",
+      "rows": 1244,
+      "positives": 0
+    },
+    {
+      "day": "2018-05-07",
+      "rows": 1131,
+      "positives": 5
+    },
+    {
+      "day": "2018-05-08",
+      "rows": 1031,
+      "positives": 0
+    },
+    {
+      "day": "2018-05-09",
+      "rows": 1202,
+      "positives": 0
+    },
+    {
+      "day": "2018-05-10",
+      "rows": 1169,
+      "positives": 0
+    },
+    {
+      "day": "2018-05-11",
+      "rows": 1223,
+      "positives": 0
+    },
+    {
+      "day": "2018-05-12",
+      "rows": 1235,
+      "positives": 0
+    },
+    {
+      "day": "2018-05-13",
+      "rows": 1228,
+      "positives": 0
+    },
+    {
+      "day": "2018-05-14",
+      "rows": 991,
+      "positives": 0
+    },
+    {
+      "day": "2018-05-15",
+      "rows": 1126,
+      "positives": 0
+    },
+    {
+      "day": "2018-05-16",
+      "rows": 1193,
+      "positives": 1
+    },
+    {
+      "day": "2018-05-17",
+      "rows": 1207,
+      "positives": 1
+    },
+    {
+      "day": "2018-05-18",
+      "rows": 1179,
+      "positives": 2
+    },
+    {
+      "day": "2018-05-19",
+      "rows": 1233,
+      "positives": 0
+    },
+    {
+      "day": "2018-05-20",
+      "rows": 1240,
+      "positives": 0
+    },
+    {
+      "day": "2018-05-21",
+      "rows": 1020,
+      "positives": 3
+    },
+    {
+      "day": "2018-05-22",
+      "rows": 1021,
+      "positives": 0
+    },
+    {
+      "day": "2018-05-23",
+      "rows": 1170,
+      "positives": 0
+    },
+    {
+      "day": "2018-05-24",
+      "rows": 1210,
+      "positives": 0
+    },
+    {
+      "day": "2018-05-25",
+      "rows": 1209,
+      "positives": 0
+    },
+    {
+      "day": "2018-05-26",
+      "rows": 1234,
+      "positives": 0
+    },
+    {
+      "day": "2018-05-27",
+      "rows": 1215,
+      "positives": 0
+    },
+    {
+      "day": "2018-05-28",
+      "rows": 979,
+      "positives": 1
+    },
+    {
+      "day": "2018-05-29",
+      "rows": 1120,
+      "positives": 0
+    },
+    {
+      "day": "2018-05-30",
+      "rows": 1198,
+      "positives": 2
+    },
+    {
+      "day": "2018-05-31",
+      "rows": 1243,
+      "positives": 0
+    },
+    {
+      "day": "2018-06-01",
+      "rows": 1141,
+      "positives": 5
+    },
+    {
+      "day": "2018-06-02",
+      "rows": 1195,
+      "positives": 0
+    },
+    {
+      "day": "2018-06-03",
+      "rows": 1216,
+      "positives": 0
+    },
+    {
+      "day": "2018-06-04",
+      "rows": 1042,
+      "positives": 6
+    },
+    {
+      "day": "2018-06-05",
+      "rows": 1138,
+      "positives": 0
+    },
+    {
+      "day": "2018-06-06",
+      "rows": 1163,
+      "positives": 2
+    },
+    {
+      "day": "2018-06-07",
+      "rows": 1187,
+      "positives": 3
+    },
+    {
+      "day": "2018-06-08",
+      "rows": 1140,
+      "positives": 1
+    },
+    {
+      "day": "2018-06-09",
+      "rows": 1171,
+      "positives": 0
+    },
+    {
+      "day": "2018-06-10",
+      "rows": 1130,
+      "positives": 0
+    },
+    {
+      "day": "2018-06-11",
+      "rows": 1025,
+      "positives": 1
+    },
+    {
+      "day": "2018-06-12",
+      "rows": 1088,
+      "positives": 0
+    },
+    {
+      "day": "2018-06-13",
+      "rows": 1270,
+      "positives": 5
+    },
+    {
+      "day": "2018-06-14",
+      "rows": 1178,
+      "positives": 4
+    },
+    {
+      "day": "2018-06-15",
+      "rows": 1201,
+      "positives": 2
+    },
+    {
+      "day": "2018-06-16",
+      "rows": 1198,
+      "positives": 0
+    },
+    {
+      "day": "2018-06-17",
+      "rows": 1268,
+      "positives": 0
+    },
+    {
+      "day": "2018-06-18",
+      "rows": 1091,
+      "positives": 1
+    },
+    {
+      "day": "2018-06-19",
+      "rows": 1035,
+      "positives": 0
+    },
+    {
+      "day": "2018-06-20",
+      "rows": 1157,
+      "positives": 2
+    },
+    {
+      "day": "2018-06-21",
+      "rows": 1154,
+      "positives": 0
+    },
+    {
+      "day": "2018-06-22",
+      "rows": 1235,
+      "positives": 2
+    },
+    {
+      "day": "2018-06-23",
+      "rows": 1204,
+      "positives": 0
+    },
+    {
+      "day": "2018-06-24",
+      "rows": 1159,
+      "positives": 0
+    },
+    {
+      "day": "2018-06-25",
+      "rows": 1040,
+      "positives": 1
+    },
+    {
+      "day": "2018-06-26",
+      "rows": 1130,
+      "positives": 0
+    },
+    {
+      "day": "2018-06-27",
+      "rows": 1207,
+      "positives": 5
+    },
+    {
+      "day": "2018-06-28",
+      "rows": 1213,
+      "positives": 5
+    },
+    {
+      "day": "2018-06-29",
+      "rows": 1190,
+      "positives": 3
+    },
+    {
+      "day": "2018-06-30",
+      "rows": 1155,
+      "positives": 0
+    },
+    {
+      "day": "2018-07-01",
+      "rows": 1205,
+      "positives": 0
+    },
+    {
+      "day": "2018-07-02",
+      "rows": 1120,
+      "positives": 7
+    },
+    {
+      "day": "2018-07-03",
+      "rows": 1135,
+      "positives": 0
+    },
+    {
+      "day": "2018-07-04",
+      "rows": 1192,
+      "positives": 8
+    },
+    {
+      "day": "2018-07-05",
+      "rows": 1231,
+      "positives": 7
+    },
+    {
+      "day": "2018-07-06",
+      "rows": 1205,
+      "positives": 5
+    },
+    {
+      "day": "2018-07-07",
+      "rows": 1160,
+      "positives": 0
+    },
+    {
+      "day": "2018-07-08",
+      "rows": 1183,
+      "positives": 0
+    },
+    {
+      "day": "2018-07-09",
+      "rows": 1112,
+      "positives": 3
+    },
+    {
+      "day": "2018-07-10",
+      "rows": 1110,
+      "positives": 0
+    },
+    {
+      "day": "2018-07-11",
+      "rows": 1159,
+      "positives": 3
+    },
+    {
+      "day": "2018-07-12",
+      "rows": 1109,
+      "positives": 2
+    },
+    {
+      "day": "2018-07-13",
+      "rows": 1179,
+      "positives": 4
+    },
+    {
+      "day": "2018-07-14",
+      "rows": 1179,
+      "positives": 0
+    },
+    {
+      "day": "2018-07-15",
+      "rows": 1198,
+      "positives": 0
+    },
+    {
+      "day": "2018-07-16",
+      "rows": 1034,
+      "positives": 3
+    },
+    {
+      "day": "2018-07-17",
+      "rows": 1080,
+      "positives": 0
+    },
+    {
+      "day": "2018-07-18",
+      "rows": 1187,
+      "positives": 0
+    },
+    {
+      "day": "2018-07-19",
+      "rows": 1218,
+      "positives": 3
+    },
+    {
+      "day": "2018-07-20",
+      "rows": 1254,
+      "positives": 3
+    },
+    {
+      "day": "2018-07-21",
+      "rows": 1200,
+      "positives": 0
+    },
+    {
+      "day": "2018-07-22",
+      "rows": 1281,
+      "positives": 1
+    },
+    {
+      "day": "2018-07-23",
+      "rows": 1038,
+      "positives": 1
+    },
+    {
+      "day": "2018-07-24",
+      "rows": 1044,
+      "positives": 0
+    },
+    {
+      "day": "2018-07-25",
+      "rows": 1187,
+      "positives": 6
+    },
+    {
+      "day": "2018-07-26",
+      "rows": 1190,
+      "positives": 1
+    },
+    {
+      "day": "2018-07-27",
+      "rows": 1249,
+      "positives": 4
+    },
+    {
+      "day": "2018-07-28",
+      "rows": 1177,
+      "positives": 0
+    },
+    {
+      "day": "2018-07-29",
+      "rows": 1252,
+      "positives": 0
+    },
+    {
+      "day": "2018-07-30",
+      "rows": 1049,
+      "positives": 1
+    },
+    {
+      "day": "2018-07-31",
+      "rows": 1132,
+      "positives": 0
+    },
+    {
+      "day": "2018-08-01",
+      "rows": 1180,
+      "positives": 5
+    },
+    {
+      "day": "2018-08-02",
+      "rows": 1160,
+      "positives": 1
+    },
+    {
+      "day": "2018-08-03",
+      "rows": 1151,
+      "positives": 5
+    },
+    {
+      "day": "2018-08-04",
+      "rows": 1110,
+      "positives": 0
+    },
+    {
+      "day": "2018-08-05",
+      "rows": 1108,
+      "positives": 0
+    },
+    {
+      "day": "2018-08-06",
+      "rows": 1053,
+      "positives": 2
+    },
+    {
+      "day": "2018-08-07",
+      "rows": 1064,
+      "positives": 0
+    },
+    {
+      "day": "2018-08-08",
+      "rows": 1217,
+      "positives": 5
+    },
+    {
+      "day": "2018-08-09",
+      "rows": 1151,
+      "positives": 8
+    },
+    {
+      "day": "2018-08-10",
+      "rows": 1201,
+      "positives": 5
+    },
+    {
+      "day": "2018-08-11",
+      "rows": 1176,
+      "positives": 0
+    },
+    {
+      "day": "2018-08-12",
+      "rows": 1208,
+      "positives": 0
+    },
+    {
+      "day": "2018-08-13",
+      "rows": 1061,
+      "positives": 6
+    },
+    {
+      "day": "2018-08-14",
+      "rows": 1068,
+      "positives": 0
+    },
+    {
+      "day": "2018-08-15",
+      "rows": 1269,
+      "positives": 5
+    },
+    {
+      "day": "2018-08-16",
+      "rows": 1110,
+      "positives": 1
+    },
+    {
+      "day": "2018-08-17",
+      "rows": 1207,
+      "positives": 1
+    },
+    {
+      "day": "2018-08-18",
+      "rows": 1150,
+      "positives": 0
+    },
+    {
+      "day": "2018-08-19",
+      "rows": 1251,
+      "positives": 0
+    },
+    {
+      "day": "2018-08-20",
+      "rows": 1106,
+      "positives": 1
+    },
+    {
+      "day": "2018-08-21",
+      "rows": 1093,
+      "positives": 0
+    },
+    {
+      "day": "2018-08-22",
+      "rows": 1151,
+      "positives": 2
+    },
+    {
+      "day": "2018-08-23",
+      "rows": 1252,
+      "positives": 2
+    },
+    {
+      "day": "2018-08-24",
+      "rows": 1202,
+      "positives": 1
+    },
+    {
+      "day": "2018-08-25",
+      "rows": 1248,
+      "positives": 0
+    },
+    {
+      "day": "2018-08-26",
+      "rows": 1192,
+      "positives": 0
+    },
+    {
+      "day": "2018-08-27",
+      "rows": 1081,
+      "positives": 2
+    },
+    {
+      "day": "2018-08-28",
+      "rows": 998,
+      "positives": 0
+    },
+    {
+      "day": "2018-08-29",
+      "rows": 1234,
+      "positives": 6
+    },
+    {
+      "day": "2018-08-30",
+      "rows": 1241,
+      "positives": 3
+    },
+    {
+      "day": "2018-08-31",
+      "rows": 1136,
+      "positives": 3
+    },
+    {
+      "day": "2018-09-01",
+      "rows": 1177,
+      "positives": 0
+    },
+    {
+      "day": "2018-09-02",
+      "rows": 1200,
+      "positives": 1
+    },
+    {
+      "day": "2018-09-03",
+      "rows": 1063,
+      "positives": 6
+    },
+    {
+      "day": "2018-09-04",
+      "rows": 1070,
+      "positives": 0
+    },
+    {
+      "day": "2018-09-05",
+      "rows": 1188,
+      "positives": 6
+    },
+    {
+      "day": "2018-09-06",
+      "rows": 1190,
+      "positives": 4
+    },
+    {
+      "day": "2018-09-07",
+      "rows": 1133,
+      "positives": 2
+    },
+    {
+      "day": "2018-09-08",
+      "rows": 1198,
+      "positives": 0
+    },
+    {
+      "day": "2018-09-09",
+      "rows": 1190,
+      "positives": 0
+    },
+    {
+      "day": "2018-09-10",
+      "rows": 1083,
+      "positives": 6
+    },
+    {
+      "day": "2018-09-11",
+      "rows": 1084,
+      "positives": 0
+    },
+    {
+      "day": "2018-09-12",
+      "rows": 1198,
+      "positives": 6
+    },
+    {
+      "day": "2018-09-13",
+      "rows": 1123,
+      "positives": 3
+    },
+    {
+      "day": "2018-09-14",
+      "rows": 1190,
+      "positives": 1
+    },
+    {
+      "day": "2018-09-15",
+      "rows": 1182,
+      "positives": 0
+    },
+    {
+      "day": "2018-09-16",
+      "rows": 1222,
+      "positives": 0
+    },
+    {
+      "day": "2018-09-17",
+      "rows": 1061,
+      "positives": 2
+    },
+    {
+      "day": "2018-09-18",
+      "rows": 1053,
+      "positives": 0
+    },
+    {
+      "day": "2018-09-19",
+      "rows": 1143,
+      "positives": 0
+    },
+    {
+      "day": "2018-09-20",
+      "rows": 1144,
+      "positives": 1
+    },
+    {
+      "day": "2018-09-21",
+      "rows": 1144,
+      "positives": 4
+    },
+    {
+      "day": "2018-09-22",
+      "rows": 1205,
+      "positives": 2
+    },
+    {
+      "day": "2018-09-23",
+      "rows": 1194,
+      "positives": 0
+    },
+    {
+      "day": "2018-09-24",
+      "rows": 1042,
+      "positives": 1
+    },
+    {
+      "day": "2018-09-25",
+      "rows": 1078,
+      "positives": 0
+    },
+    {
+      "day": "2018-09-26",
+      "rows": 1179,
+      "positives": 5
+    },
+    {
+      "day": "2018-09-27",
+      "rows": 1240,
+      "positives": 4
+    },
+    {
+      "day": "2018-09-28",
+      "rows": 1210,
+      "positives": 5
+    },
+    {
+      "day": "2018-09-29",
+      "rows": 1173,
+      "positives": 0
+    },
+    {
+      "day": "2018-09-30",
+      "rows": 1238,
+      "positives": 0
+    },
+    {
+      "day": "2018-10-01",
+      "rows": 1054,
+      "positives": 2
+    },
+    {
+      "day": "2018-10-02",
+      "rows": 1110,
+      "positives": 0
+    },
+    {
+      "day": "2018-10-03",
+      "rows": 1133,
+      "positives": 1
+    },
+    {
+      "day": "2018-10-04",
+      "rows": 1189,
+      "positives": 2
+    },
+    {
+      "day": "2018-10-05",
+      "rows": 1149,
+      "positives": 1
+    },
+    {
+      "day": "2018-10-06",
+      "rows": 1207,
+      "positives": 0
+    },
+    {
+      "day": "2018-10-07",
+      "rows": 1168,
+      "positives": 0
+    },
+    {
+      "day": "2018-10-08",
+      "rows": 1061,
+      "positives": 2
+    },
+    {
+      "day": "2018-10-09",
+      "rows": 1017,
+      "positives": 0
+    },
+    {
+      "day": "2018-10-10",
+      "rows": 1181,
+      "positives": 1
+    },
+    {
+      "day": "2018-10-11",
+      "rows": 1133,
+      "positives": 0
+    },
+    {
+      "day": "2018-10-12",
+      "rows": 1215,
+      "positives": 1
+    },
+    {
+      "day": "2018-10-13",
+      "rows": 1180,
+      "positives": 0
+    },
+    {
+      "day": "2018-10-14",
+      "rows": 1166,
+      "positives": 0
+    },
+    {
+      "day": "2018-10-15",
+      "rows": 1074,
+      "positives": 0
+    },
+    {
+      "day": "2018-10-16",
+      "rows": 1050,
+      "positives": 0
+    },
+    {
+      "day": "2018-10-17",
+      "rows": 1191,
+      "positives": 4
+    },
+    {
+      "day": "2018-10-18",
+      "rows": 1174,
+      "positives": 0
+    },
+    {
+      "day": "2018-10-19",
+      "rows": 1210,
+      "positives": 0
+    },
+    {
+      "day": "2018-10-20",
+      "rows": 1137,
+      "positives": 0
+    },
+    {
+      "day": "2018-10-21",
+      "rows": 1162,
+      "positives": 0
+    },
+    {
+      "day": "2018-10-22",
+      "rows": 1035,
+      "positives": 0
+    },
+    {
+      "day": "2018-10-23",
+      "rows": 1074,
+      "positives": 0
+    },
+    {
+      "day": "2018-10-24",
+      "rows": 1169,
+      "positives": 0
+    },
+    {
+      "day": "2018-10-25",
+      "rows": 1211,
+      "positives": 4
+    },
+    {
+      "day": "2018-10-26",
+      "rows": 1172,
+      "positives": 1
+    },
+    {
+      "day": "2018-10-27",
+      "rows": 1208,
+      "positives": 0
+    },
+    {
+      "day": "2018-10-28",
+      "rows": 1241,
+      "positives": 0
+    },
+    {
+      "day": "2018-10-29",
+      "rows": 1055,
+      "positives": 5
+    },
+    {
+      "day": "2018-10-30",
+      "rows": 1084,
+      "positives": 0
+    },
+    {
+      "day": "2018-10-31",
+      "rows": 1125,
+      "positives": 4
+    },
+    {
+      "day": "2018-11-01",
+      "rows": 1177,
+      "positives": 2
+    },
+    {
+      "day": "2018-11-02",
+      "rows": 1251,
+      "positives": 6
+    },
+    {
+      "day": "2018-11-03",
+      "rows": 1170,
+      "positives": 0
+    },
+    {
+      "day": "2018-11-04",
+      "rows": 1185,
+      "positives": 0
+    },
+    {
+      "day": "2018-11-05",
+      "rows": 1147,
+      "positives": 9
+    },
+    {
+      "day": "2018-11-06",
+      "rows": 1093,
+      "positives": 0
+    },
+    {
+      "day": "2018-11-07",
+      "rows": 1142,
+      "positives": 5
+    },
+    {
+      "day": "2018-11-08",
+      "rows": 1132,
+      "positives": 4
+    },
+    {
+      "day": "2018-11-09",
+      "rows": 1165,
+      "positives": 5
+    },
+    {
+      "day": "2018-11-10",
+      "rows": 1196,
+      "positives": 0
+    },
+    {
+      "day": "2018-11-11",
+      "rows": 1243,
+      "positives": 0
+    },
+    {
+      "day": "2018-11-12",
+      "rows": 996,
+      "positives": 7
+    },
+    {
+      "day": "2018-11-13",
+      "rows": 1057,
+      "positives": 1
+    },
+    {
+      "day": "2018-11-14",
+      "rows": 1199,
+      "positives": 4
+    },
+    {
+      "day": "2018-11-15",
+      "rows": 1171,
+      "positives": 8
+    },
+    {
+      "day": "2018-11-16",
+      "rows": 1244,
+      "positives": 6
+    },
+    {
+      "day": "2018-11-17",
+      "rows": 1166,
+      "positives": 0
+    },
+    {
+      "day": "2018-11-18",
+      "rows": 1226,
+      "positives": 0
+    },
+    {
+      "day": "2018-11-19",
+      "rows": 1087,
+      "positives": 3
+    },
+    {
+      "day": "2018-11-20",
+      "rows": 1046,
+      "positives": 0
+    },
+    {
+      "day": "2018-11-21",
+      "rows": 1168,
+      "positives": 5
+    },
+    {
+      "day": "2018-11-22",
+      "rows": 1225,
+      "positives": 4
+    },
+    {
+      "day": "2018-11-23",
+      "rows": 1189,
+      "positives": 6
+    },
+    {
+      "day": "2018-11-24",
+      "rows": 1166,
+      "positives": 4
+    },
+    {
+      "day": "2018-11-25",
+      "rows": 1265,
+      "positives": 0
+    },
+    {
+      "day": "2018-11-26",
+      "rows": 1017,
+      "positives": 15
+    },
+    {
+      "day": "2018-11-27",
+      "rows": 1088,
+      "positives": 0
+    },
+    {
+      "day": "2018-11-28",
+      "rows": 1194,
+      "positives": 2
+    },
+    {
+      "day": "2018-11-29",
+      "rows": 1145,
+      "positives": 2
+    },
+    {
+      "day": "2018-11-30",
+      "rows": 1198,
+      "positives": 16
+    },
+    {
+      "day": "2018-12-01",
+      "rows": 1193,
+      "positives": 3
+    },
+    {
+      "day": "2018-12-02",
+      "rows": 1230,
+      "positives": 0
+    },
+    {
+      "day": "2018-12-03",
+      "rows": 1071,
+      "positives": 2
+    },
+    {
+      "day": "2018-12-04",
+      "rows": 1087,
+      "positives": 2
+    },
+    {
+      "day": "2018-12-05",
+      "rows": 1196,
+      "positives": 3
+    },
+    {
+      "day": "2018-12-06",
+      "rows": 1217,
+      "positives": 0
+    },
+    {
+      "day": "2018-12-07",
+      "rows": 1223,
+      "positives": 0
+    },
+    {
+      "day": "2018-12-08",
+      "rows": 1205,
+      "positives": 0
+    },
+    {
+      "day": "2018-12-09",
+      "rows": 1232,
+      "positives": 0
+    },
+    {
+      "day": "2018-12-10",
+      "rows": 1071,
+      "positives": 2
+    },
+    {
+      "day": "2018-12-11",
+      "rows": 1089,
+      "positives": 0
+    },
+    {
+      "day": "2018-12-12",
+      "rows": 1198,
+      "positives": 3
+    },
+    {
+      "day": "2018-12-13",
+      "rows": 1113,
+      "positives": 0
+    },
+    {
+      "day": "2018-12-14",
+      "rows": 1217,
+      "positives": 2
+    },
+    {
+      "day": "2018-12-15",
+      "rows": 1155,
+      "positives": 0
+    },
+    {
+      "day": "2018-12-16",
+      "rows": 1210,
+      "positives": 0
+    },
+    {
+      "day": "2018-12-17",
+      "rows": 1076,
+      "positives": 3
+    },
+    {
+      "day": "2018-12-18",
+      "rows": 1143,
+      "positives": 0
+    },
+    {
+      "day": "2018-12-19",
+      "rows": 1122,
+      "positives": 2
+    },
+    {
+      "day": "2018-12-20",
+      "rows": 1167,
+      "positives": 0
+    },
+    {
+      "day": "2018-12-21",
+      "rows": 1166,
+      "positives": 1
+    },
+    {
+      "day": "2018-12-22",
+      "rows": 1172,
+      "positives": 0
+    },
+    {
+      "day": "2018-12-23",
+      "rows": 1203,
+      "positives": 0
+    },
+    {
+      "day": "2018-12-24",
+      "rows": 1011,
+      "positives": 2
+    },
+    {
+      "day": "2018-12-25",
+      "rows": 1233,
+      "positives": 0
+    },
+    {
+      "day": "2018-12-26",
+      "rows": 1175,
+      "positives": 0
+    },
+    {
+      "day": "2018-12-27",
+      "rows": 1182,
+      "positives": 1
+    },
+    {
+      "day": "2018-12-28",
+      "rows": 1215,
+      "positives": 1
+    },
+    {
+      "day": "2018-12-29",
+      "rows": 1203,
+      "positives": 0
+    },
+    {
+      "day": "2018-12-30",
+      "rows": 1103,
+      "positives": 0
+    },
+    {
+      "day": "2018-12-31",
+      "rows": 1046,
+      "positives": 1
+    }
+  ],
+  "top7_days_positive_fraction": 0.1273792093704246,
+  "limit": "Outcome-based mathematical ceiling only, not a deployable baseline or a new primary metric",
+  "final_2019_read": false,
+  "optimization": false
+}

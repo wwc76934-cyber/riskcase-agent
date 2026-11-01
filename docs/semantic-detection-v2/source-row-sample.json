@@ -1,0 +1,131 @@
+{
+  "status": "independent_original_CSV_sample_verified",
+  "selected": 128,
+  "strata": [
+    {
+      "year": "2016",
+      "channel": "Chip Transaction",
+      "label": 0,
+      "sampled": 8
+    },
+    {
+      "year": "2016",
+      "channel": "Chip Transaction",
+      "label": 1,
+      "sampled": 8
+    },
+    {
+      "year": "2016",
+      "channel": "Online Transaction",
+      "label": 0,
+      "sampled": 8
+    },
+    {
+      "year": "2016",
+      "channel": "Online Transaction",
+      "label": 1,
+      "sampled": 8
+    },
+    {
+      "year": "2016",
+      "channel": "Swipe Transaction",
+      "label": 0,
+      "sampled": 8
+    },
+    {
+      "year": "2016",
+      "channel": "Swipe Transaction",
+      "label": 1,
+      "sampled": 8
+    },
+    {
+      "year": "2017",
+      "channel": "Chip Transaction",
+      "label": 0,
+      "sampled": 8
+    },
+    {
+      "year": "2017",
+      "channel": "Chip Transaction",
+      "label": 1,
+      "sampled": 8
+    },
+    {
+      "year": "2017",
+      "channel": "Online Transaction",
+      "label": 0,
+      "sampled": 8
+    },
+    {
+      "year": "2017",
+      "channel": "Online Transaction",
+      "label": 1,
+      "sampled": 0
+    },
+    {
+      "year": "2017",
+      "channel": "Swipe Transaction",
+      "label": 0,
+      "sampled": 8
+    },
+    {
+      "year": "2017",
+      "channel": "Swipe Transaction",
+      "label": 1,
+      "sampled": 0
+    },
+    {
+      "year": "2018",
+      "channel": "Chip Transaction",
+      "label": 0,
+      "sampled": 8
+    },
+    {
+      "year": "2018",
+      "channel": "Chip Transaction",
+      "label": 1,
+      "sampled": 8
+    },
+    {
+      "year": "2018",
+      "channel": "Online Transaction",
+      "label": 0,
+      "sampled": 8
+    },
+    {
+      "year": "2018",
+      "channel": "Online Transaction",
+      "label": 1,
+      "sampled": 8
+    },
+    {
+      "year": "2018",
+      "channel": "Swipe Transaction",
+      "label": 0,
+      "sampled": 8
+    },
+    {
+      "year": "2018",
+      "channel": "Swipe Transaction",
+      "label": 1,
+      "sampled": 8
+    }
+  ],
+  "source_archive_sha256": "e9f589a0958f40d60f81b1a2e8428db86e00c05755caf44fb055827976c0efa2",
+  "member": "card_transaction.v1.csv",
+  "selected_fields_verified": [
+    "user",
+    "card",
+    "event_time",
+    "channel",
+    "MCC",
+    "merchant",
+    "amount",
+    "fraud_label"
+  ],
+  "only_selected_2016_2017_2018_rows_parsed": true,
+  "unselected_record_bytes": "Skipped opaquely, not parsed or evaluated",
+  "physical_row_assumption": "All inspected rows match original logical CSV source_row, with exact header field counts",
+  "final_2019_read": false,
+  "optimization": false
+}

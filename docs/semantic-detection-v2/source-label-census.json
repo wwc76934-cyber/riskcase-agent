@@ -1,0 +1,70 @@
+{
+  "status": "all_selected_2016_2018_raw_labels_verified",
+  "selected_records": 1263980,
+  "year_channel_counts": [
+    {
+      "year": 2016,
+      "channel": "Chip Transaction",
+      "rows": 306463,
+      "positives": 65
+    },
+    {
+      "year": 2016,
+      "channel": "Online Transaction",
+      "rows": 50750,
+      "positives": 773
+    },
+    {
+      "year": 2016,
+      "channel": "Swipe Transaction",
+      "rows": 62155,
+      "positives": 66
+    },
+    {
+      "year": 2017,
+      "channel": "Chip Transaction",
+      "rows": 310577,
+      "positives": 63
+    },
+    {
+      "year": 2017,
+      "channel": "Online Transaction",
+      "rows": 50095,
+      "positives": 0
+    },
+    {
+      "year": 2017,
+      "channel": "Swipe Transaction",
+      "rows": 61852,
+      "positives": 0
+    },
+    {
+      "year": 2018,
+      "channel": "Chip Transaction",
+      "rows": 310348,
+      "positives": 564
+    },
+    {
+      "year": 2018,
+      "channel": "Online Transaction",
+      "rows": 50576,
+      "positives": 28
+    },
+    {
+      "year": 2018,
+      "channel": "Swipe Transaction",
+      "rows": 61164,
+      "positives": 91
+    }
+  ],
+  "source_archive_sha256": "e9f589a0958f40d60f81b1a2e8428db86e00c05755caf44fb055827976c0efa2",
+  "verified_fields": [
+    "year",
+    "channel",
+    "fraud_label"
+  ],
+  "unselected_record_bytes": "Skipped opaquely; no decoding, including 2019 records",
+  "limit": "Verifies all extracted cohort records against source; does not independently prove extraction completeness",
+  "final_2019_read": false,
+  "optimization": false
+}
