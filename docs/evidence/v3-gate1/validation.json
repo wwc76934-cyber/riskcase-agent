@@ -1,0 +1,17 @@
+{
+  "full_regression": {
+    "passed": 1024,
+    "errors": 0,
+    "failures": 0,
+    "warning": "FastAPI testclient dependency deprecation",
+    "xml_sha256": "48dca919b2b37371227d005ec9ed974d0872547d38c3707bc6a085dc2155d307"
+  },
+  "new_protocol_tests_passed": 25,
+  "original_model_requests_before_and_after": 1078,
+  "external_model_requests_added": 0,
+  "all_prior_267_result_hashes_unchanged": true,
+  "old_checkpoint_database_unchanged": true,
+  "production_router_changed": false,
+  "detector_weights_features_labels_changed": false,
+  "new_model_quality_verified": false
+}
