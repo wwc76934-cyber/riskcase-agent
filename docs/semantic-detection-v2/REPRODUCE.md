@@ -49,9 +49,10 @@ python -m app.cli.semantic_detection_v21 statistics-tree --source-root ../financ
 python -m app.cli.semantic_detection_observed --resource-output runs/recheck-v21-resources/broad-statistics.resources.json -- broad-statistics --source-root ../financial-report-agent --run runs/recheck-v21-history --output runs/recheck-v21-broad
 python -m app.cli.semantic_detection_observed --resource-output runs/recheck-v21-resources/audit-history.resources.json -- audit-history --source-root ../financial-report-agent --run runs/recheck-v21-history --tree-run runs/recheck-v21-tree14 --output runs/recheck-v21-history-audit
 python -m app.cli.semantic_detection_observed --resource-output runs/recheck-v21-resources/audit-broad.resources.json -- audit-broad --source-root ../financial-report-agent --run runs/recheck-v21-history --tree-run runs/recheck-v21-tree14 --broad-run runs/recheck-v21-broad --history-audit runs/recheck-v21-history-audit --output runs/recheck-v21-broad-audit
+python -m app.cli.semantic_detection_v21 history-cases --source-root ../financial-report-agent --run runs/recheck-v21-history --output runs/recheck-v21-cases
 ```
 
-这组新运行的报告可显式指定：`--run runs/recheck-v21-history --tree-run runs/recheck-v21-tree14 --broad-run runs/recheck-v21-broad --history-audit runs/recheck-v21-history-audit --broad-audit runs/recheck-v21-broad-audit --resource-run runs/recheck-v21-resources --primary-resources runs/recheck-v21-primary-resources.json`。后者可直接接收从主训练起点生成的外层资源JSON，无需再照抄旧PID。
+这组新运行的报告可显式指定：`--run runs/recheck-v21-history --tree-run runs/recheck-v21-tree14 --broad-run runs/recheck-v21-broad --history-audit runs/recheck-v21-history-audit --broad-audit runs/recheck-v21-broad-audit --resource-run runs/recheck-v21-resources --primary-resources runs/recheck-v21-primary-resources.json --case-run runs/recheck-v21-cases`。主资源参数可直接接收从主训练起点生成的外层资源JSON，无需再照抄旧PID。逐笔案例与真实ID映射仅保存本机，聚合与SHA256才提交GitHub。
 
 独立历史审计另引用本轮已验证的canonical A2分数`runs/semantic-v21-a2-01/nochannel-learned-32/ensemble.npy`；复现前须保留该原参照，或先按冻结A协议在该canonical目录重建并验证，不以另一数据源替代。所有原参照要求与开头的数据/权重要求一并适用。
 

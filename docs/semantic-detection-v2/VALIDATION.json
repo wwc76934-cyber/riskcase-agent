@@ -1,5 +1,5 @@
 {
-  "captured_at_UTC": "2026-11-02T03:04:15.060096+00:00",
+  "captured_at_UTC": "2026-11-02T05:08:22.603Z",
   "local_reports": {
     "regression-01": {
       "counts": {
@@ -40,6 +40,17 @@
       },
       "sha256": "430d8c7ab8b11e895fc2a07c2a94f9fc09ac782ddb8051a783a54be244532bca",
       "path": "runs\\semantic-v21-initialization\\history-tests-06.xml"
+    },
+    "admission-tests-03": {
+      "counts": {
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "e2eb70446abd108eb6fc107fa8861053d8f74d4c6f017f16333b51f3be0d74ec",
+      "path": "runs/semantic-v21-initialization/admission-tests-03.xml",
+      "scope": "New C1 conservative admission logic only; not an additional whole-repository run"
     }
   },
   "all_testcase_classname_prefixes": {
@@ -48,7 +59,10 @@
   "source_sha256": {
     "app/risk/semantic_detection/v2/queue_attribution.py": "ce8ba70c88053116bbbcf252f97244a51df753247e7d4928d3beb0b51363705a",
     "app/cli/semantic_detection_observed.py": "d5c375eebc4e86a399f8354fbbb72565d1e8c929dcd967f62441ee23bcfc50fb",
-    "app/risk/semantic_detection/v2/process_observer.py": "822c7fcbbb0c287b1594b6a7af98000e7fa2ea5baa5fd01dfa5e51b058c3c67c"
+    "app/risk/semantic_detection/v2/process_observer.py": "822c7fcbbb0c287b1594b6a7af98000e7fa2ea5baa5fd01dfa5e51b058c3c67c",
+    "app/risk/semantic_detection/v2/data_admission.py": "46553bff13fd102f7c03c48daddd52819c383eaaa211b94a7aebb1fdbb009851",
+    "app/cli/semantic_detection_source_admission.py": "e79606dd24d2301621d03209eb7426ec90b7fa761d70404d5799704332f99b41",
+    "tests/semantic_detection/test_v21_admission.py": "1492f8526d7da589ee3bd9c96e26d4002d13ca9992fb4cf4f9490dfe03392ac8"
   },
   "GitHub": {
     "checked_head": "66134b30ccf25b2be8d01a20d445df9e1a0d7120",
@@ -80,5 +94,13 @@
     "limit": "Whole-process CPU and peak, including data preparation and training/inference; wall time can include host pauses; not per-model memory"
   },
   "model_efficacy_conclusion_from_tests": false,
-  "paid_calls": 0
+  "paid_calls": 0,
+  "C1_source_preparation": {
+    "source_code_files_verified": 28,
+    "notebook_code_cells": 32,
+    "new_candidate_rows_opened": 0,
+    "new_model_experiments": 0,
+    "local_command_output": "runs/semantic-v21-c-admission-01",
+    "report_input_sha256": "98c45020c1e7d7567ed97e59884780290df360d03add73f2940c73506a07713c"
+  }
 }

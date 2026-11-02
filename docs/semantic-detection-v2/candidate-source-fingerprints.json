@@ -1,0 +1,290 @@
+{
+  "stage": "readonly C1 source audit",
+  "protocol_commit": "c8a229dc8ccbbc62bcfa67f3eba50114fb17d6b2",
+  "verified_original_source_files": 28,
+  "entries": [
+    {
+      "repo": "AI4Risk/MS-FFSD",
+      "path": "README.md",
+      "pinned_commit": "2f68bee4a1b7327e745acb49b607df7ad503c100",
+      "git_blob": "5968eb0f8ac71e504a8ef07510ff7d1cd29b40c9",
+      "local": "AI4Risk__MS-FFSD/README.md",
+      "sha256": "fc33382be0b53b914dcd0cbe80422dc4b0482bd34614b64a6501f58377fbc4b8",
+      "bytes": 9932,
+      "url": "https://github.com/AI4Risk/MS-FFSD/blob/2f68bee4a1b7327e745acb49b607df7ad503c100/README.md"
+    },
+    {
+      "repo": "AI4Risk/MS-FFSD",
+      "path": "LICENSE",
+      "pinned_commit": "2f68bee4a1b7327e745acb49b607df7ad503c100",
+      "git_blob": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+      "local": "AI4Risk__MS-FFSD/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357,
+      "url": "https://github.com/AI4Risk/MS-FFSD/blob/2f68bee4a1b7327e745acb49b607df7ad503c100/LICENSE"
+    },
+    {
+      "repo": "AI4Risk/MS-FFSD",
+      "path": "dataset/README.md",
+      "pinned_commit": "2f68bee4a1b7327e745acb49b607df7ad503c100",
+      "git_blob": "65950851c92839c20b2f0241a975eec24935b55f",
+      "local": "AI4Risk__MS-FFSD/dataset/README.md",
+      "sha256": "3ddad1600953ab31f557d77f0ef94913c7a755412eae1124751c96ebf2f56a03",
+      "bytes": 431,
+      "url": "https://github.com/AI4Risk/MS-FFSD/blob/2f68bee4a1b7327e745acb49b607df7ad503c100/dataset/README.md"
+    },
+    {
+      "repo": "AI4Risk/MS-FFSD",
+      "path": "input/README.md",
+      "pinned_commit": "2f68bee4a1b7327e745acb49b607df7ad503c100",
+      "git_blob": "bfca543fe673d6122ae2986e97e96ab354e843c5",
+      "local": "AI4Risk__MS-FFSD/input/README.md",
+      "sha256": "6167ce30c2f4087ce56c4bf58a3f079695a480c12df739ad6bc1e99fee61618e",
+      "bytes": 587,
+      "url": "https://github.com/AI4Risk/MS-FFSD/blob/2f68bee4a1b7327e745acb49b607df7ad503c100/input/README.md"
+    },
+    {
+      "repo": "AI4Risk/MS-FFSD",
+      "path": "consistency_optimization/code/apply_merchant_fraud_semantics.py",
+      "pinned_commit": "2f68bee4a1b7327e745acb49b607df7ad503c100",
+      "git_blob": "68b6b1ad4df643dbaf9e9ab53d4f580609580257",
+      "local": "AI4Risk__MS-FFSD/consistency_optimization/code/apply_merchant_fraud_semantics.py",
+      "sha256": "23ffd4aab6617ae4eeecdf2c2f8bfd5734de9776c90ed2ab8c457c3f16b7e7c3",
+      "bytes": 19973,
+      "url": "https://github.com/AI4Risk/MS-FFSD/blob/2f68bee4a1b7327e745acb49b607df7ad503c100/consistency_optimization/code/apply_merchant_fraud_semantics.py"
+    },
+    {
+      "repo": "AI4Risk/MS-FFSD",
+      "path": "long_text_generation/user_description_prompts.py",
+      "pinned_commit": "2f68bee4a1b7327e745acb49b607df7ad503c100",
+      "git_blob": "1625029187076f4a7d974793e8ab0462306dfdf6",
+      "local": "AI4Risk__MS-FFSD/long_text_generation/user_description_prompts.py",
+      "sha256": "2389f004443b40d5113fae9068a6c30006d2f14f7a050dbf0b5439fefe2b0f87",
+      "bytes": 6810,
+      "url": "https://github.com/AI4Risk/MS-FFSD/blob/2f68bee4a1b7327e745acb49b607df7ad503c100/long_text_generation/user_description_prompts.py"
+    },
+    {
+      "repo": "AI4Risk/MS-FFSD",
+      "path": "long_text_generation/merchant_description_prompts.py",
+      "pinned_commit": "2f68bee4a1b7327e745acb49b607df7ad503c100",
+      "git_blob": "69a4ebd78ed6257f681fb55506b6306b918afc8e",
+      "local": "AI4Risk__MS-FFSD/long_text_generation/merchant_description_prompts.py",
+      "sha256": "bf1d6e9fcd4600e322d265e862d3eb06ddca0bcf696451ad1e7fcf857fc50b8a",
+      "bytes": 7996,
+      "url": "https://github.com/AI4Risk/MS-FFSD/blob/2f68bee4a1b7327e745acb49b607df7ad503c100/long_text_generation/merchant_description_prompts.py"
+    },
+    {
+      "repo": "AI4Risk/MS-FFSD",
+      "path": "long_text_generation/generate_multi_transaction_source_descriptions.py",
+      "pinned_commit": "2f68bee4a1b7327e745acb49b607df7ad503c100",
+      "git_blob": "314a2bcf2cb5fd46d3898b2c57060eb524a88fe6",
+      "local": "AI4Risk__MS-FFSD/long_text_generation/generate_multi_transaction_source_descriptions.py",
+      "sha256": "2b1a5a79c613565288e9c9438cded8944f9d81e041b8ceb3e35afa58a00a3acf",
+      "bytes": 11850,
+      "url": "https://github.com/AI4Risk/MS-FFSD/blob/2f68bee4a1b7327e745acb49b607df7ad503c100/long_text_generation/generate_multi_transaction_source_descriptions.py"
+    },
+    {
+      "repo": "AI4Risk/MS-FFSD",
+      "path": "long_text_generation/generate_target_descriptions.py",
+      "pinned_commit": "2f68bee4a1b7327e745acb49b607df7ad503c100",
+      "git_blob": "c6599b421977ea6ca872e47d892ed7511d42c0a9",
+      "local": "AI4Risk__MS-FFSD/long_text_generation/generate_target_descriptions.py",
+      "sha256": "fb00a38330f37dafeec4b506e331c7c98f52a2a06641755fa555eff01fbba049",
+      "bytes": 19103,
+      "url": "https://github.com/AI4Risk/MS-FFSD/blob/2f68bee4a1b7327e745acb49b607df7ad503c100/long_text_generation/generate_target_descriptions.py"
+    },
+    {
+      "repo": "AI4Risk/MS-FFSD",
+      "path": "initialization/user_information_initialization.py",
+      "pinned_commit": "2f68bee4a1b7327e745acb49b607df7ad503c100",
+      "git_blob": "7702cb3cbd1e6105cad530fc6c430c9e421450db",
+      "local": "AI4Risk__MS-FFSD/initialization/user_information_initialization.py",
+      "sha256": "d2a1fe8981eded36bdce3ffaa97c7ee1a18c2bb85edf365b16fb769c0588c156",
+      "bytes": 20374,
+      "url": "https://github.com/AI4Risk/MS-FFSD/blob/2f68bee4a1b7327e745acb49b607df7ad503c100/initialization/user_information_initialization.py"
+    },
+    {
+      "repo": "AI4Risk/MS-FFSD",
+      "path": "initialization/merchant_initialization.py",
+      "pinned_commit": "2f68bee4a1b7327e745acb49b607df7ad503c100",
+      "git_blob": "a7111810ee438ff3bea901d44890cb5954b25507",
+      "local": "AI4Risk__MS-FFSD/initialization/merchant_initialization.py",
+      "sha256": "b0ae335cd9b33e5cf78cb984dce7ff11c56fecd5eb04c44b7f30c43daa84d0df",
+      "bytes": 81661,
+      "url": "https://github.com/AI4Risk/MS-FFSD/blob/2f68bee4a1b7327e745acb49b607df7ad503c100/initialization/merchant_initialization.py"
+    },
+    {
+      "repo": "AI4Risk/MS-FFSD",
+      "path": "timestamp_synthesis/synthetic_timestamp_generator.py",
+      "pinned_commit": "2f68bee4a1b7327e745acb49b607df7ad503c100",
+      "git_blob": "e82a84f5303241c5aeaa5150e37bf27e95c26384",
+      "local": "AI4Risk__MS-FFSD/timestamp_synthesis/synthetic_timestamp_generator.py",
+      "sha256": "324aafc197b60b682b57383de4b41e2edd97ddc9f897a29e086f07f6ddf99dac",
+      "bytes": 45164,
+      "url": "https://github.com/AI4Risk/MS-FFSD/blob/2f68bee4a1b7327e745acb49b607df7ad503c100/timestamp_synthesis/synthetic_timestamp_generator.py"
+    },
+    {
+      "repo": "namebrandon/Sparkov_Data_Generation",
+      "path": "datagen_customer.py",
+      "pinned_commit": "b5eb45c89d36f2aa4ef16044a42945bed8b96d93",
+      "git_blob": "3982cc0233e964a2a6381af05634f3bbbf8382df",
+      "local": "namebrandon__Sparkov_Data_Generation/datagen_customer.py",
+      "sha256": "cdbe473fe42850fa3e9c043555820af71799a68bd9ac51bb677a38b612bf5bcf",
+      "bytes": 5852,
+      "url": "https://github.com/namebrandon/Sparkov_Data_Generation/blob/b5eb45c89d36f2aa4ef16044a42945bed8b96d93/datagen_customer.py"
+    },
+    {
+      "repo": "namebrandon/Sparkov_Data_Generation",
+      "path": "datagen_transaction.py",
+      "pinned_commit": "b5eb45c89d36f2aa4ef16044a42945bed8b96d93",
+      "git_blob": "3a5a5cb3437a3f6ca61e3ac9e65ef4fc1746b788",
+      "local": "namebrandon__Sparkov_Data_Generation/datagen_transaction.py",
+      "sha256": "c6563e1b55d025721125dce579e075f1c6c1aa36fd8a6c5c019a17f0b1f24e35",
+      "bytes": 6883,
+      "url": "https://github.com/namebrandon/Sparkov_Data_Generation/blob/b5eb45c89d36f2aa4ef16044a42945bed8b96d93/datagen_transaction.py"
+    },
+    {
+      "repo": "namebrandon/Sparkov_Data_Generation",
+      "path": "LICENSE.md",
+      "pinned_commit": "b5eb45c89d36f2aa4ef16044a42945bed8b96d93",
+      "git_blob": "7d33b08ba993dd3fb59bfe09083a5d25f796fc83",
+      "local": "namebrandon__Sparkov_Data_Generation/LICENSE.md",
+      "sha256": "962870cd59ab9a18a34e1554e0b34ebca08576d6e740fa0320edb461e5f5e2f5",
+      "bytes": 1076,
+      "url": "https://github.com/namebrandon/Sparkov_Data_Generation/blob/b5eb45c89d36f2aa4ef16044a42945bed8b96d93/LICENSE.md"
+    },
+    {
+      "repo": "Fraud-Detection-Handbook/fraud-detection-handbook",
+      "path": "LICENSE",
+      "pinned_commit": "81cf7d1714bb7b2f5b496407d9055d91dc68dc25",
+      "git_blob": "8f1d0569c5d7f19124e074ba838df4662e0a912f",
+      "local": "Fraud-Detection-Handbook__fraud-detection-handbook/LICENSE",
+      "sha256": "8928c97ab246d626c36ee2880bd3fcd77558ca57f4b54b2a0f52dc781a0daeee",
+      "bytes": 35254,
+      "url": "https://github.com/Fraud-Detection-Handbook/fraud-detection-handbook/blob/81cf7d1714bb7b2f5b496407d9055d91dc68dc25/LICENSE"
+    },
+    {
+      "repo": "Fraud-Detection-Handbook/fraud-detection-handbook",
+      "path": "Chapter_References/shared_functions.py",
+      "pinned_commit": "81cf7d1714bb7b2f5b496407d9055d91dc68dc25",
+      "git_blob": "0ea888f126244ffee2e6b6ae271e86d16a54f8a4",
+      "local": "Fraud-Detection-Handbook__fraud-detection-handbook/Chapter_References/shared_functions.py",
+      "sha256": "d6b4d646b7b5111566b4fd8b6f2655f79e8a893e1df4f8155c11c905b2f53113",
+      "bytes": 63257,
+      "url": "https://github.com/Fraud-Detection-Handbook/fraud-detection-handbook/blob/81cf7d1714bb7b2f5b496407d9055d91dc68dc25/Chapter_References/shared_functions.py"
+    },
+    {
+      "repo": "AI4Risk/antifraud",
+      "path": "LICENSE",
+      "pinned_commit": "65e583f03ac5c5983e49cc35179fe7a65908b9c1",
+      "git_blob": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
+      "local": "AI4Risk__antifraud/LICENSE",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "bytes": 35149,
+      "url": "https://github.com/AI4Risk/antifraud/blob/65e583f03ac5c5983e49cc35179fe7a65908b9c1/LICENSE"
+    },
+    {
+      "repo": "AI4Risk/antifraud",
+      "path": "README.md",
+      "pinned_commit": "65e583f03ac5c5983e49cc35179fe7a65908b9c1",
+      "git_blob": "5cdb3ddd12004be3b8ba2ff628d409e2a9f9f16f",
+      "local": "AI4Risk__antifraud/README.md",
+      "sha256": "5237782e232cc15fb2ebdb64bbdf64dd9975b368c77c13ff97de6e518cbd5405",
+      "bytes": 10384,
+      "url": "https://github.com/AI4Risk/antifraud/blob/65e583f03ac5c5983e49cc35179fe7a65908b9c1/README.md"
+    },
+    {
+      "repo": "AI4Risk/MS-FFSD",
+      "path": "run_pipeline.py",
+      "git_blob": "f21a0aa51e281d567aa96675e647960e2953ff54",
+      "pinned_commit": "2f68bee4a1b7327e745acb49b607df7ad503c100",
+      "local": "AI4Risk__MS-FFSD/run_pipeline.py",
+      "sha256": "605448faaa21c21882ce15b4c133cb7b93e43b228652c8ca7008dfb6ac8942b0",
+      "url": "https://github.com/AI4Risk/MS-FFSD/blob/2f68bee4a1b7327e745acb49b607df7ad503c100/run_pipeline.py"
+    },
+    {
+      "repo": "AI4Risk/MS-FFSD",
+      "path": "consistency_optimization/code/run_dataset_consistency_optimization.py",
+      "git_blob": "c115499790f4de10ecc9690d5df592893046e08f",
+      "pinned_commit": "2f68bee4a1b7327e745acb49b607df7ad503c100",
+      "local": "AI4Risk__MS-FFSD/consistency_optimization/code/run_dataset_consistency_optimization.py",
+      "sha256": "aef01b11089190b4e2a87c2b406241882db61ec386e13dc5c3b1d10b8025de5d",
+      "url": "https://github.com/AI4Risk/MS-FFSD/blob/2f68bee4a1b7327e745acb49b607df7ad503c100/consistency_optimization/code/run_dataset_consistency_optimization.py"
+    },
+    {
+      "repo": "AI4Risk/MS-FFSD",
+      "path": "long_text_generation/run_long_text_generation.py",
+      "git_blob": "a83b67de886086c82034a8021ad6d7d1fbaa8866",
+      "pinned_commit": "2f68bee4a1b7327e745acb49b607df7ad503c100",
+      "local": "AI4Risk__MS-FFSD/long_text_generation/run_long_text_generation.py",
+      "sha256": "56ecf9117aee0201f799846946235fa8cce433695ace75b940fa535cacfd45d4",
+      "url": "https://github.com/AI4Risk/MS-FFSD/blob/2f68bee4a1b7327e745acb49b607df7ad503c100/long_text_generation/run_long_text_generation.py"
+    },
+    {
+      "repo": "AI4Risk/MS-FFSD",
+      "path": "publish_dataset.py",
+      "git_blob": "2235621feefd2709eb7137703f93623a18f11643",
+      "pinned_commit": "2f68bee4a1b7327e745acb49b607df7ad503c100",
+      "local": "AI4Risk__MS-FFSD/publish_dataset.py",
+      "sha256": "6d53808a3322983fad84c5df6f9484dc3fc500a8fadc2e4c917e7fe2e9a8fee7",
+      "url": "https://github.com/AI4Risk/MS-FFSD/blob/2f68bee4a1b7327e745acb49b607df7ad503c100/publish_dataset.py"
+    },
+    {
+      "repo": "AI4Risk/MS-FFSD",
+      "path": "long_text_generation/generate_single_transaction_source_descriptions.py",
+      "git_blob": "2ea615cae816d39a3917f0923d5aacce0b5dab1d",
+      "pinned_commit": "2f68bee4a1b7327e745acb49b607df7ad503c100",
+      "local": "AI4Risk__MS-FFSD/long_text_generation/generate_single_transaction_source_descriptions.py",
+      "sha256": "fe35bb9eedc81c3ec26886e11402b555ed4f554b7ca350a08e066139d9ec945a",
+      "url": "https://github.com/AI4Risk/MS-FFSD/blob/2f68bee4a1b7327e745acb49b607df7ad503c100/long_text_generation/generate_single_transaction_source_descriptions.py"
+    },
+    {
+      "repo": "AI4Risk/MS-FFSD",
+      "path": "consistency_optimization/code/consistency_alternating_optimizer.py",
+      "git_blob": "902b790c6bed6747feaa4799a3e7cb39d66ca8f7",
+      "pinned_commit": "2f68bee4a1b7327e745acb49b607df7ad503c100",
+      "local": "AI4Risk__MS-FFSD/consistency_optimization/code/consistency_alternating_optimizer.py",
+      "sha256": "22c2b7088adcffe618633d72dddf3854af76d4d92b7c271881b27141cdb52317",
+      "url": "https://github.com/AI4Risk/MS-FFSD/blob/2f68bee4a1b7327e745acb49b607df7ad503c100/consistency_optimization/code/consistency_alternating_optimizer.py"
+    },
+    {
+      "repo": "AI4Risk/MS-FFSD",
+      "path": "timestamp_synthesis/run_ffsd_timestamp_synthesis.py",
+      "git_blob": "4b16313464e5c98593cbb3b01abab4ea34a16f81",
+      "pinned_commit": "2f68bee4a1b7327e745acb49b607df7ad503c100",
+      "sha256": "353f90ac725636e6c9028408f3d01b5c2a73ab955757a99e6284c4a9043ded4e",
+      "local": "AI4Risk__MS-FFSD/timestamp_synthesis/run_ffsd_timestamp_synthesis.py",
+      "url": "https://github.com/AI4Risk/MS-FFSD/blob/2f68bee4a1b7327e745acb49b607df7ad503c100/timestamp_synthesis/run_ffsd_timestamp_synthesis.py"
+    },
+    {
+      "repo": "namebrandon/Sparkov_Data_Generation",
+      "path": "profile_weights.py",
+      "git_blob": "3e519f5bebb3ea390c609f68f609c7c676b64326",
+      "pinned_commit": "b5eb45c89d36f2aa4ef16044a42945bed8b96d93",
+      "sha256": "77f459ca514961291259cdd4e56a973e4b4345fa28ca368c1d83ddf799470ec0",
+      "local": "namebrandon__Sparkov_Data_Generation/profile_weights.py",
+      "url": "https://github.com/namebrandon/Sparkov_Data_Generation/blob/b5eb45c89d36f2aa4ef16044a42945bed8b96d93/profile_weights.py"
+    },
+    {
+      "repo": "namebrandon/Sparkov_Data_Generation",
+      "path": "static_merchant_generator.py",
+      "git_blob": "b97adfd1240df080c9339b9f7ce581b38a5e54ca",
+      "pinned_commit": "b5eb45c89d36f2aa4ef16044a42945bed8b96d93",
+      "sha256": "366768dbe0d75263e7fe331524e5db681be7c9b8a932076c7deca0c5f760d743",
+      "local": "namebrandon__Sparkov_Data_Generation/static_merchant_generator.py",
+      "url": "https://github.com/namebrandon/Sparkov_Data_Generation/blob/b5eb45c89d36f2aa4ef16044a42945bed8b96d93/static_merchant_generator.py"
+    }
+  ],
+  "notebook_code_only_proof": {
+    "repo": "Fraud-Detection-Handbook/fraud-detection-handbook",
+    "pinned_commit": "81cf7d1714bb7b2f5b496407d9055d91dc68dc25",
+    "original_notebook_git_blob": "3af320f0098f23c11e7fb7ff8262d9cca59daffe",
+    "original_blob_verified": true,
+    "extracted_source_sha256": "74963467099f11b22caae665bbb14c1055a1a169d1f7d8d94eab7852553e4b60",
+    "code_cells": 32,
+    "notebook_outputs_not_inspected_or_exported": true,
+    "source_executed": false
+  },
+  "source_executed": false,
+  "candidate_data_rows_opened": 0
+}

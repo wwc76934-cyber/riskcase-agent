@@ -1,9 +1,1166 @@
 {
   "status": "Gate_B_in_progress_snapshot",
-  "generated_at_UTC": "2026-11-02T02:31:49.786320+00:00",
-  "completed_registered_instances": 25,
+  "generated_at_UTC": "2026-11-02T05:08:22.345962+00:00",
+  "completed_registered_instances": 34,
   "planned_registered_instances": 38,
   "completed_condition_summaries": {
+    "attention": {
+      "seeds": [
+        {
+          "config": {
+            "mode": "attention",
+            "self_control": false,
+            "k": 6,
+            "seed": 42,
+            "width": 64,
+            "blocks": 2,
+            "dropout": 0.15,
+            "learning_rate": 0.001,
+            "weight_decay": 0.01,
+            "positive_weight": 20,
+            "batch_size": 4096,
+            "threads": 4
+          },
+          "epochs": 12,
+          "curves": [
+            {
+              "epoch": 1,
+              "loss": 0.07744105588129772,
+              "positive_weighted_loss_mean": 46.51816771959938,
+              "negative_loss_mean": 0.024037740678875406,
+              "positive_abs_logit_gradient_mean": 15.2613466607008,
+              "negative_abs_logit_gradient_mean": 0.021781893052920706,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.001,
+              "max_preclip_gradient_norm": 2.888400077819824,
+              "epoch_seconds": 78.71900000001187,
+              "elapsed_seconds": 78.73499999998603
+            },
+            {
+              "epoch": 2,
+              "loss": 0.054184489089367266,
+              "positive_weighted_loss_mean": 32.992426523963815,
+              "negative_loss_mean": 0.01630800798524272,
+              "positive_abs_logit_gradient_mean": 11.639559946484255,
+              "negative_abs_logit_gradient_mean": 0.013819740690749654,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0009838147674873074,
+              "max_preclip_gradient_norm": 0.4451301395893097,
+              "epoch_seconds": 82.32799999997951,
+              "elapsed_seconds": 161.0779999999795
+            },
+            {
+              "epoch": 3,
+              "loss": 0.04500090894371773,
+              "positive_weighted_loss_mean": 26.596442106591137,
+              "negative_loss_mean": 0.014468764322040856,
+              "positive_abs_logit_gradient_mean": 9.912607256111215,
+              "negative_abs_logit_gradient_mean": 0.011958622924920817,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0009363620667976084,
+              "max_preclip_gradient_norm": 0.48373734951019287,
+              "epoch_seconds": 77.4210000000021,
+              "elapsed_seconds": 238.53099999998813
+            },
+            {
+              "epoch": 4,
+              "loss": 0.04133088848355331,
+              "positive_weighted_loss_mean": 24.33135264739009,
+              "negative_loss_mean": 0.013399204760289283,
+              "positive_abs_logit_gradient_mean": 9.218402540794695,
+              "negative_abs_logit_gradient_mean": 0.010816502400285498,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00086087572106361,
+              "max_preclip_gradient_norm": 0.6050226092338562,
+              "epoch_seconds": 74.56200000000536,
+              "elapsed_seconds": 313.125
+            },
+            {
+              "epoch": 5,
+              "loss": 0.03705375493258113,
+              "positive_weighted_loss_mean": 21.14400638296291,
+              "negative_loss_mean": 0.012782359484575498,
+              "positive_abs_logit_gradient_mean": 8.436711838228133,
+              "negative_abs_logit_gradient_mean": 0.009902527954843704,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0007624999999999999,
+              "max_preclip_gradient_norm": 0.5468374490737915,
+              "epoch_seconds": 74.75,
+              "elapsed_seconds": 387.9059999999881
+            },
+            {
+              "epoch": 6,
+              "loss": 0.0337003415801499,
+              "positive_weighted_loss_mean": 19.360541283344656,
+              "negative_loss_mean": 0.011475939825095238,
+              "positive_abs_logit_gradient_mean": 7.631230579167142,
+              "negative_abs_logit_gradient_mean": 0.00888977927650152,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0006479390464236973,
+              "max_preclip_gradient_norm": 0.5621665120124817,
+              "epoch_seconds": 75.68700000000536,
+              "elapsed_seconds": 463.625
+            },
+            {
+              "epoch": 7,
+              "loss": 0.031390536276775405,
+              "positive_weighted_loss_mean": 17.707098660649656,
+              "negative_loss_mean": 0.011064811831518334,
+              "positive_abs_logit_gradient_mean": 7.11435209089869,
+              "negative_abs_logit_gradient_mean": 0.008421206740387188,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0005249999999999999,
+              "max_preclip_gradient_norm": 0.5715389847755432,
+              "epoch_seconds": 77.18799999999464,
+              "elapsed_seconds": 540.8439999999828
+            },
+            {
+              "epoch": 8,
+              "loss": 0.02928167212762488,
+              "positive_weighted_loss_mean": 16.57299895650845,
+              "negative_loss_mean": 0.010257651711820113,
+              "positive_abs_logit_gradient_mean": 6.801497436235461,
+              "negative_abs_logit_gradient_mean": 0.0078632548777028,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0004020609535763026,
+              "max_preclip_gradient_norm": 0.6281613111495972,
+              "epoch_seconds": 75.67199999999139,
+              "elapsed_seconds": 616.5469999999914
+            },
+            {
+              "epoch": 9,
+              "loss": 0.0269348595304403,
+              "positive_weighted_loss_mean": 14.956510605523604,
+              "negative_loss_mean": 0.009766979102420408,
+              "positive_abs_logit_gradient_mean": 6.258451314352167,
+              "negative_abs_logit_gradient_mean": 0.007275695106725678,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00028750000000000005,
+              "max_preclip_gradient_norm": 0.7399236559867859,
+              "epoch_seconds": 75.48399999999674,
+              "elapsed_seconds": 692.0469999999914
+            },
+            {
+              "epoch": 10,
+              "loss": 0.02558020866720064,
+              "positive_weighted_loss_mean": 14.115482911174768,
+              "negative_loss_mean": 0.009377888643412371,
+              "positive_abs_logit_gradient_mean": 5.9763161310119,
+              "negative_abs_logit_gradient_mean": 0.0069165042725571075,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00018912427893638992,
+              "max_preclip_gradient_norm": 0.9222548007965088,
+              "epoch_seconds": 75.51600000000326,
+              "elapsed_seconds": 767.5939999999828
+            },
+            {
+              "epoch": 11,
+              "loss": 0.024295798352358233,
+              "positive_weighted_loss_mean": 13.243137291539172,
+              "negative_loss_mean": 0.00909513290073669,
+              "positive_abs_logit_gradient_mean": 5.745107685027966,
+              "negative_abs_logit_gradient_mean": 0.006733880454558242,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00011363793320239159,
+              "max_preclip_gradient_norm": 0.5914062857627869,
+              "epoch_seconds": 77.21899999998277,
+              "elapsed_seconds": 844.8439999999828
+            },
+            {
+              "epoch": 12,
+              "loss": 0.023694980053659248,
+              "positive_weighted_loss_mean": 13.121914950019324,
+              "negative_loss_mean": 0.008633019959107589,
+              "positive_abs_logit_gradient_mean": 5.6655788478338485,
+              "negative_abs_logit_gradient_mean": 0.006346070773040801,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 6.61852325126926e-05,
+              "max_preclip_gradient_norm": 1.6118028163909912,
+              "epoch_seconds": 76.34399999998277,
+              "elapsed_seconds": 921.2189999999828
+            }
+          ],
+          "training_seconds": 921.2189999999828,
+          "prediction_seconds": 8.59299999999348,
+          "prediction_rows": 422088,
+          "reload_max_abs_diff": 0.0,
+          "parameters": 63419,
+          "trainable_parameters": 63419,
+          "whole_process_peak_bytes": 3827089408,
+          "metrics": {
+            "tp_daily10": 196,
+            "reviewed": 3650,
+            "positives": 683,
+            "precision": 0.0536986301369863,
+            "recall": 0.2869692532942899,
+            "false_positives": 3454,
+            "false_negatives": 487,
+            "f1_at_daily10": 0.09046849757673667,
+            "ap": 0.08732751906968714,
+            "auroc": 0.8767645804821189,
+            "monthly": {
+              "2018-01": {
+                "rows": 36208,
+                "positives": 56,
+                "reviewed": 310,
+                "tp": 20,
+                "precision": 0.06451612903225806,
+                "recall": 0.35714285714285715
+              },
+              "2018-02": {
+                "rows": 32307,
+                "positives": 35,
+                "reviewed": 280,
+                "tp": 8,
+                "precision": 0.02857142857142857,
+                "recall": 0.22857142857142856
+              },
+              "2018-03": {
+                "rows": 35696,
+                "positives": 89,
+                "reviewed": 310,
+                "tp": 23,
+                "precision": 0.07419354838709677,
+                "recall": 0.25842696629213485
+              },
+              "2018-04": {
+                "rows": 34591,
+                "positives": 79,
+                "reviewed": 300,
+                "tp": 20,
+                "precision": 0.06666666666666667,
+                "recall": 0.25316455696202533
+              },
+              "2018-05": {
+                "rows": 36085,
+                "positives": 21,
+                "reviewed": 310,
+                "tp": 4,
+                "precision": 0.012903225806451613,
+                "recall": 0.19047619047619047
+              },
+              "2018-06": {
+                "rows": 34721,
+                "positives": 48,
+                "reviewed": 300,
+                "tp": 15,
+                "precision": 0.05,
+                "recall": 0.3125
+              },
+              "2018-07": {
+                "rows": 36049,
+                "positives": 62,
+                "reviewed": 310,
+                "tp": 19,
+                "precision": 0.06129032258064516,
+                "recall": 0.3064516129032258
+              },
+              "2018-08": {
+                "rows": 35829,
+                "positives": 64,
+                "reviewed": 310,
+                "tp": 9,
+                "precision": 0.02903225806451613,
+                "recall": 0.140625
+              },
+              "2018-09": {
+                "rows": 34595,
+                "positives": 59,
+                "reviewed": 300,
+                "tp": 16,
+                "precision": 0.05333333333333334,
+                "recall": 0.2711864406779661
+              },
+              "2018-10": {
+                "rows": 35335,
+                "positives": 28,
+                "reviewed": 310,
+                "tp": 12,
+                "precision": 0.03870967741935484,
+                "recall": 0.42857142857142855
+              },
+              "2018-11": {
+                "rows": 34748,
+                "positives": 114,
+                "reviewed": 300,
+                "tp": 38,
+                "precision": 0.12666666666666668,
+                "recall": 0.3333333333333333
+              },
+              "2018-12": {
+                "rows": 35924,
+                "positives": 28,
+                "reviewed": 310,
+                "tp": 12,
+                "precision": 0.03870967741935484,
+                "recall": 0.42857142857142855
+              }
+            },
+            "channel": {
+              "Chip Transaction": {
+                "rows": 310348,
+                "positives": 564,
+                "reviewed": 2529,
+                "tp": 136,
+                "precision": 0.053776196124950576,
+                "recall": 0.24113475177304963
+              },
+              "Online Transaction": {
+                "rows": 50576,
+                "positives": 28,
+                "reviewed": 543,
+                "tp": 19,
+                "precision": 0.034990791896869246,
+                "recall": 0.6785714285714286
+              },
+              "Swipe Transaction": {
+                "rows": 61164,
+                "positives": 91,
+                "reviewed": 578,
+                "tp": 41,
+                "precision": 0.07093425605536333,
+                "recall": 0.45054945054945056
+              }
+            }
+          },
+          "model_artifacts": {
+            "model.pt": "c45fc99485b3103c68211d3068cc5c947d6ec0a7a482f6696e70c662c28de1be",
+            "preprocessor.joblib": "711b9367f32da05a8e349ec23ec176c394d68cca96f1f103437a4d82083c56aa"
+          },
+          "loss": "Fully supervised weighted BCE; no consistency/semantic mechanism",
+          "training_positive_rows": 967,
+          "training_negative_rows": 840925,
+          "representation": "Learned normalized MCC auxiliary + original raw/no-channel residual core",
+          "statistics_fields": null
+        },
+        {
+          "config": {
+            "mode": "attention",
+            "self_control": false,
+            "k": 6,
+            "seed": 43,
+            "width": 64,
+            "blocks": 2,
+            "dropout": 0.15,
+            "learning_rate": 0.001,
+            "weight_decay": 0.01,
+            "positive_weight": 20,
+            "batch_size": 4096,
+            "threads": 4
+          },
+          "epochs": 12,
+          "curves": [
+            {
+              "epoch": 1,
+              "loss": 0.07789391140049422,
+              "positive_weighted_loss_mean": 46.771201992848546,
+              "negative_loss_mean": 0.024200146225986728,
+              "positive_abs_logit_gradient_mean": 15.220748623253272,
+              "negative_abs_logit_gradient_mean": 0.02183323200787312,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.001,
+              "max_preclip_gradient_norm": 3.463540554046631,
+              "epoch_seconds": 74.125,
+              "elapsed_seconds": 74.14100000000326
+            },
+            {
+              "epoch": 2,
+              "loss": 0.05359577921050011,
+              "positive_weighted_loss_mean": 32.52442593467273,
+              "negative_loss_mean": 0.016256786625078446,
+              "positive_abs_logit_gradient_mean": 11.688902394108343,
+              "negative_abs_logit_gradient_mean": 0.013906957807398283,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0009838147674873074,
+              "max_preclip_gradient_norm": 0.46515968441963196,
+              "epoch_seconds": 74.46900000001187,
+              "elapsed_seconds": 148.64100000000326
+            },
+            {
+              "epoch": 3,
+              "loss": 0.04693564902439625,
+              "positive_weighted_loss_mean": 27.894963061735574,
+              "negative_loss_mean": 0.014912528348677146,
+              "positive_abs_logit_gradient_mean": 10.391556422984095,
+              "negative_abs_logit_gradient_mean": 0.012311847824104391,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0009363620667976084,
+              "max_preclip_gradient_norm": 0.46594369411468506,
+              "epoch_seconds": 76.43700000000536,
+              "elapsed_seconds": 225.10899999999674
+            },
+            {
+              "epoch": 4,
+              "loss": 0.041843150707638645,
+              "positive_weighted_loss_mean": 24.502951053731074,
+              "negative_loss_mean": 0.013714731189609726,
+              "positive_abs_logit_gradient_mean": 9.33707360940241,
+              "negative_abs_logit_gradient_mean": 0.011006373459240179,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00086087572106361,
+              "max_preclip_gradient_norm": 0.7036107778549194,
+              "epoch_seconds": 74.73399999999674,
+              "elapsed_seconds": 299.875
+            },
+            {
+              "epoch": 5,
+              "loss": 0.0389122618626253,
+              "positive_weighted_loss_mean": 22.52844052600762,
+              "negative_loss_mean": 0.013051009597912142,
+              "positive_abs_logit_gradient_mean": 8.909883515664685,
+              "negative_abs_logit_gradient_mean": 0.010373068882458827,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0007624999999999999,
+              "max_preclip_gradient_norm": 0.56951904296875,
+              "epoch_seconds": 74.84399999998277,
+              "elapsed_seconds": 374.75
+            },
+            {
+              "epoch": 6,
+              "loss": 0.03551944480770598,
+              "positive_weighted_loss_mean": 20.346836947513342,
+              "negative_loss_mean": 0.01216296972175038,
+              "positive_abs_logit_gradient_mean": 8.066323731283367,
+              "negative_abs_logit_gradient_mean": 0.009443616520321163,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0006479390464236973,
+              "max_preclip_gradient_norm": 0.5241619944572449,
+              "epoch_seconds": 75.21899999998277,
+              "elapsed_seconds": 450.0
+            },
+            {
+              "epoch": 7,
+              "loss": 0.032963733705092355,
+              "positive_weighted_loss_mean": 18.84242023436705,
+              "negative_loss_mean": 0.011334284786293884,
+              "positive_abs_logit_gradient_mean": 7.566153935587271,
+              "negative_abs_logit_gradient_mean": 0.0088098523585391,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0005249999999999999,
+              "max_preclip_gradient_norm": 0.5712795257568359,
+              "epoch_seconds": 75.93799999999464,
+              "elapsed_seconds": 525.9690000000119
+            },
+            {
+              "epoch": 8,
+              "loss": 0.03062588868103699,
+              "positive_weighted_loss_mean": 17.261075700250874,
+              "negative_loss_mean": 0.010812177547224957,
+              "positive_abs_logit_gradient_mean": 7.13349084351154,
+              "negative_abs_logit_gradient_mean": 0.008268667536853281,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0004020609535763026,
+              "max_preclip_gradient_norm": 0.75470370054245,
+              "epoch_seconds": 74.85899999999674,
+              "elapsed_seconds": 600.8589999999967
+            },
+            {
+              "epoch": 9,
+              "loss": 0.028246393714052846,
+              "positive_weighted_loss_mean": 15.778861543046158,
+              "negative_loss_mean": 0.010134380118410344,
+              "positive_abs_logit_gradient_mean": 6.557916653809651,
+              "negative_abs_logit_gradient_mean": 0.007649477770904279,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00028750000000000005,
+              "max_preclip_gradient_norm": 0.6803473830223083,
+              "epoch_seconds": 75.03099999998813,
+              "elapsed_seconds": 675.9219999999914
+            },
+            {
+              "epoch": 10,
+              "loss": 0.027595290581982738,
+              "positive_weighted_loss_mean": 15.45724130686153,
+              "negative_loss_mean": 0.009852367248816407,
+              "positive_abs_logit_gradient_mean": 6.542474270360053,
+              "negative_abs_logit_gradient_mean": 0.007463355403623091,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00018912427893638992,
+              "max_preclip_gradient_norm": 0.6952794790267944,
+              "epoch_seconds": 75.5,
+              "elapsed_seconds": 751.4530000000086
+            },
+            {
+              "epoch": 11,
+              "loss": 0.0263322008837704,
+              "positive_weighted_loss_mean": 14.625469947767357,
+              "negative_loss_mean": 0.00954429921325054,
+              "positive_abs_logit_gradient_mean": 6.180391364161699,
+              "negative_abs_logit_gradient_mean": 0.007117971456635277,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00011363793320239159,
+              "max_preclip_gradient_norm": 1.0570179224014282,
+              "epoch_seconds": 76.29700000002049,
+              "elapsed_seconds": 827.7810000000172
+            },
+            {
+              "epoch": 12,
+              "loss": 0.025351468324845684,
+              "positive_weighted_loss_mean": 14.237408268630443,
+              "negative_loss_mean": 0.00900868045641196,
+              "positive_abs_logit_gradient_mean": 6.035512517378766,
+              "negative_abs_logit_gradient_mean": 0.006676183165787169,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 6.61852325126926e-05,
+              "max_preclip_gradient_norm": 0.6847791075706482,
+              "epoch_seconds": 75.84400000001187,
+              "elapsed_seconds": 903.6560000000172
+            }
+          ],
+          "training_seconds": 903.6719999999914,
+          "prediction_seconds": 8.5,
+          "prediction_rows": 422088,
+          "reload_max_abs_diff": 0.0,
+          "parameters": 63419,
+          "trainable_parameters": 63419,
+          "whole_process_peak_bytes": 3827089408,
+          "metrics": {
+            "tp_daily10": 183,
+            "reviewed": 3650,
+            "positives": 683,
+            "precision": 0.05013698630136986,
+            "recall": 0.2679355783308931,
+            "false_positives": 3467,
+            "false_negatives": 500,
+            "f1_at_daily10": 0.08446803600276945,
+            "ap": 0.07820862978801721,
+            "auroc": 0.8809518784881981,
+            "monthly": {
+              "2018-01": {
+                "rows": 36208,
+                "positives": 56,
+                "reviewed": 310,
+                "tp": 20,
+                "precision": 0.06451612903225806,
+                "recall": 0.35714285714285715
+              },
+              "2018-02": {
+                "rows": 32307,
+                "positives": 35,
+                "reviewed": 280,
+                "tp": 6,
+                "precision": 0.02142857142857143,
+                "recall": 0.17142857142857143
+              },
+              "2018-03": {
+                "rows": 35696,
+                "positives": 89,
+                "reviewed": 310,
+                "tp": 19,
+                "precision": 0.06129032258064516,
+                "recall": 0.21348314606741572
+              },
+              "2018-04": {
+                "rows": 34591,
+                "positives": 79,
+                "reviewed": 300,
+                "tp": 17,
+                "precision": 0.056666666666666664,
+                "recall": 0.21518987341772153
+              },
+              "2018-05": {
+                "rows": 36085,
+                "positives": 21,
+                "reviewed": 310,
+                "tp": 4,
+                "precision": 0.012903225806451613,
+                "recall": 0.19047619047619047
+              },
+              "2018-06": {
+                "rows": 34721,
+                "positives": 48,
+                "reviewed": 300,
+                "tp": 17,
+                "precision": 0.056666666666666664,
+                "recall": 0.3541666666666667
+              },
+              "2018-07": {
+                "rows": 36049,
+                "positives": 62,
+                "reviewed": 310,
+                "tp": 16,
+                "precision": 0.05161290322580645,
+                "recall": 0.25806451612903225
+              },
+              "2018-08": {
+                "rows": 35829,
+                "positives": 64,
+                "reviewed": 310,
+                "tp": 10,
+                "precision": 0.03225806451612903,
+                "recall": 0.15625
+              },
+              "2018-09": {
+                "rows": 34595,
+                "positives": 59,
+                "reviewed": 300,
+                "tp": 13,
+                "precision": 0.043333333333333335,
+                "recall": 0.22033898305084745
+              },
+              "2018-10": {
+                "rows": 35335,
+                "positives": 28,
+                "reviewed": 310,
+                "tp": 11,
+                "precision": 0.035483870967741936,
+                "recall": 0.39285714285714285
+              },
+              "2018-11": {
+                "rows": 34748,
+                "positives": 114,
+                "reviewed": 300,
+                "tp": 41,
+                "precision": 0.13666666666666666,
+                "recall": 0.35964912280701755
+              },
+              "2018-12": {
+                "rows": 35924,
+                "positives": 28,
+                "reviewed": 310,
+                "tp": 9,
+                "precision": 0.02903225806451613,
+                "recall": 0.32142857142857145
+              }
+            },
+            "channel": {
+              "Chip Transaction": {
+                "rows": 310348,
+                "positives": 564,
+                "reviewed": 2479,
+                "tp": 126,
+                "precision": 0.050826946349334406,
+                "recall": 0.22340425531914893
+              },
+              "Online Transaction": {
+                "rows": 50576,
+                "positives": 28,
+                "reviewed": 598,
+                "tp": 17,
+                "precision": 0.028428093645484948,
+                "recall": 0.6071428571428571
+              },
+              "Swipe Transaction": {
+                "rows": 61164,
+                "positives": 91,
+                "reviewed": 573,
+                "tp": 40,
+                "precision": 0.06980802792321117,
+                "recall": 0.43956043956043955
+              }
+            }
+          },
+          "model_artifacts": {
+            "model.pt": "544dfe799ac68b84ecd8487fdda553772c3270004bac19e90a21e6a7755efd2c",
+            "preprocessor.joblib": "4658b2bb4a52013e496ece0fa22f68b1e6c21b89768d2a830c402bf2d76f3343"
+          },
+          "loss": "Fully supervised weighted BCE; no consistency/semantic mechanism",
+          "training_positive_rows": 967,
+          "training_negative_rows": 840925,
+          "representation": "Learned normalized MCC auxiliary + original raw/no-channel residual core",
+          "statistics_fields": null
+        },
+        {
+          "config": {
+            "mode": "attention",
+            "self_control": false,
+            "k": 6,
+            "seed": 44,
+            "width": 64,
+            "blocks": 2,
+            "dropout": 0.15,
+            "learning_rate": 0.001,
+            "weight_decay": 0.01,
+            "positive_weight": 20,
+            "batch_size": 4096,
+            "threads": 4
+          },
+          "epochs": 12,
+          "curves": [
+            {
+              "epoch": 1,
+              "loss": 0.0828961920087979,
+              "positive_weighted_loss_mean": 46.38281373129512,
+              "negative_loss_mean": 0.029654796555092094,
+              "positive_abs_logit_gradient_mean": 15.38060057915231,
+              "negative_abs_logit_gradient_mean": 0.026021137348121406,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.001,
+              "max_preclip_gradient_norm": 4.976748943328857,
+              "epoch_seconds": 76.17199999999139,
+              "elapsed_seconds": 76.18700000000536
+            },
+            {
+              "epoch": 2,
+              "loss": 0.05660010460030574,
+              "positive_weighted_loss_mean": 34.495026695321485,
+              "negative_loss_mean": 0.01699852473543654,
+              "positive_abs_logit_gradient_mean": 12.223988635586855,
+              "negative_abs_logit_gradient_mean": 0.014717086901770912,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0009838147674873074,
+              "max_preclip_gradient_norm": 0.399558961391449,
+              "epoch_seconds": 76.28099999998813,
+              "elapsed_seconds": 152.5
+            },
+            {
+              "epoch": 3,
+              "loss": 0.049548904656231685,
+              "positive_weighted_loss_mean": 29.79902173432347,
+              "negative_loss_mean": 0.015339266464061472,
+              "positive_abs_logit_gradient_mean": 10.870745685255885,
+              "negative_abs_logit_gradient_mean": 0.012785459404401102,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0009363620667976084,
+              "max_preclip_gradient_norm": 0.457093745470047,
+              "epoch_seconds": 78.56299999999464,
+              "elapsed_seconds": 231.09400000001187
+            },
+            {
+              "epoch": 4,
+              "loss": 0.043451441788916606,
+              "positive_weighted_loss_mean": 25.751301461747907,
+              "negative_loss_mean": 0.013889363033683553,
+              "positive_abs_logit_gradient_mean": 9.770616286789618,
+              "negative_abs_logit_gradient_mean": 0.011449107178525507,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00086087572106361,
+              "max_preclip_gradient_norm": 0.41681429743766785,
+              "epoch_seconds": 80.01500000001397,
+              "elapsed_seconds": 311.14000000001397
+            },
+            {
+              "epoch": 5,
+              "loss": 0.03901906959338123,
+              "positive_weighted_loss_mean": 22.73291008622841,
+              "negative_loss_mean": 0.012922815009360187,
+              "positive_abs_logit_gradient_mean": 8.905752452230995,
+              "negative_abs_logit_gradient_mean": 0.010428728498920488,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0007624999999999999,
+              "max_preclip_gradient_norm": 0.4191388487815857,
+              "epoch_seconds": 95.625,
+              "elapsed_seconds": 406.7970000000205
+            },
+            {
+              "epoch": 6,
+              "loss": 0.0361420287596157,
+              "positive_weighted_loss_mean": 20.675569321062596,
+              "negative_loss_mean": 0.012408251832277678,
+              "positive_abs_logit_gradient_mean": 8.306051951776245,
+              "negative_abs_logit_gradient_mean": 0.009820426330557333,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0006479390464236973,
+              "max_preclip_gradient_norm": 0.6236046552658081,
+              "epoch_seconds": 89.29700000002049,
+              "elapsed_seconds": 496.10900000002584
+            },
+            {
+              "epoch": 7,
+              "loss": 0.03277554513628484,
+              "positive_weighted_loss_mean": 18.660806338136172,
+              "negative_loss_mean": 0.011354721801496522,
+              "positive_abs_logit_gradient_mean": 7.579939362921414,
+              "negative_abs_logit_gradient_mean": 0.00881215014291702,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0005249999999999999,
+              "max_preclip_gradient_norm": 0.5611791610717773,
+              "epoch_seconds": 94.79699999999139,
+              "elapsed_seconds": 590.9530000000086
+            },
+            {
+              "epoch": 8,
+              "loss": 0.030877551275317085,
+              "positive_weighted_loss_mean": 17.35069019095481,
+              "negative_loss_mean": 0.010961079678417942,
+              "positive_abs_logit_gradient_mean": 7.22041240226643,
+              "negative_abs_logit_gradient_mean": 0.008421130894402579,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0004020609535763026,
+              "max_preclip_gradient_norm": 0.6268186569213867,
+              "epoch_seconds": 81.375,
+              "elapsed_seconds": 672.3590000000258
+            },
+            {
+              "epoch": 9,
+              "loss": 0.028601497438976456,
+              "positive_weighted_loss_mean": 16.062993579252307,
+              "negative_loss_mean": 0.010163161709315924,
+              "positive_abs_logit_gradient_mean": 6.78015396710882,
+              "negative_abs_logit_gradient_mean": 0.007720087947709937,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00028750000000000005,
+              "max_preclip_gradient_norm": 0.6366745829582214,
+              "epoch_seconds": 80.28100000001723,
+              "elapsed_seconds": 752.6560000000172
+            },
+            {
+              "epoch": 10,
+              "loss": 0.02762031966094383,
+              "positive_weighted_loss_mean": 15.391883540232092,
+              "negative_loss_mean": 0.009952581755899555,
+              "positive_abs_logit_gradient_mean": 6.52104275352336,
+              "negative_abs_logit_gradient_mean": 0.007505691267028803,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00018912427893638992,
+              "max_preclip_gradient_norm": 0.6587879061698914,
+              "epoch_seconds": 79.03100000001723,
+              "elapsed_seconds": 831.7340000000258
+            },
+            {
+              "epoch": 11,
+              "loss": 0.025605399383180783,
+              "positive_weighted_loss_mean": 14.03591874214862,
+              "negative_loss_mean": 0.009494600924016052,
+              "positive_abs_logit_gradient_mean": 6.131445216787392,
+              "negative_abs_logit_gradient_mean": 0.007141976988045884,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00011363793320239159,
+              "max_preclip_gradient_norm": 0.6234394311904907,
+              "epoch_seconds": 90.21899999998277,
+              "elapsed_seconds": 922.0
+            },
+            {
+              "epoch": 12,
+              "loss": 0.02550293415206979,
+              "positive_weighted_loss_mean": 14.10674987887461,
+              "negative_loss_mean": 0.009310567498430363,
+              "positive_abs_logit_gradient_mean": 6.014522557667887,
+              "negative_abs_logit_gradient_mean": 0.0069073248375935365,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 6.61852325126926e-05,
+              "max_preclip_gradient_norm": 0.7142494320869446,
+              "epoch_seconds": 80.28099999998813,
+              "elapsed_seconds": 1002.3280000000086
+            }
+          ],
+          "training_seconds": 1002.3440000000119,
+          "prediction_seconds": 9.155999999988126,
+          "prediction_rows": 422088,
+          "reload_max_abs_diff": 0.0,
+          "parameters": 63419,
+          "trainable_parameters": 63419,
+          "whole_process_peak_bytes": 3827089408,
+          "metrics": {
+            "tp_daily10": 179,
+            "reviewed": 3650,
+            "positives": 683,
+            "precision": 0.04904109589041096,
+            "recall": 0.26207906295754024,
+            "false_positives": 3471,
+            "false_negatives": 504,
+            "f1_at_daily10": 0.08262174013385645,
+            "ap": 0.081982059678685,
+            "auroc": 0.8904252060791618,
+            "monthly": {
+              "2018-01": {
+                "rows": 36208,
+                "positives": 56,
+                "reviewed": 310,
+                "tp": 20,
+                "precision": 0.06451612903225806,
+                "recall": 0.35714285714285715
+              },
+              "2018-02": {
+                "rows": 32307,
+                "positives": 35,
+                "reviewed": 280,
+                "tp": 4,
+                "precision": 0.014285714285714285,
+                "recall": 0.11428571428571428
+              },
+              "2018-03": {
+                "rows": 35696,
+                "positives": 89,
+                "reviewed": 310,
+                "tp": 22,
+                "precision": 0.07096774193548387,
+                "recall": 0.24719101123595505
+              },
+              "2018-04": {
+                "rows": 34591,
+                "positives": 79,
+                "reviewed": 300,
+                "tp": 19,
+                "precision": 0.06333333333333334,
+                "recall": 0.24050632911392406
+              },
+              "2018-05": {
+                "rows": 36085,
+                "positives": 21,
+                "reviewed": 310,
+                "tp": 5,
+                "precision": 0.016129032258064516,
+                "recall": 0.23809523809523808
+              },
+              "2018-06": {
+                "rows": 34721,
+                "positives": 48,
+                "reviewed": 300,
+                "tp": 13,
+                "precision": 0.043333333333333335,
+                "recall": 0.2708333333333333
+              },
+              "2018-07": {
+                "rows": 36049,
+                "positives": 62,
+                "reviewed": 310,
+                "tp": 13,
+                "precision": 0.041935483870967745,
+                "recall": 0.20967741935483872
+              },
+              "2018-08": {
+                "rows": 35829,
+                "positives": 64,
+                "reviewed": 310,
+                "tp": 8,
+                "precision": 0.025806451612903226,
+                "recall": 0.125
+              },
+              "2018-09": {
+                "rows": 34595,
+                "positives": 59,
+                "reviewed": 300,
+                "tp": 13,
+                "precision": 0.043333333333333335,
+                "recall": 0.22033898305084745
+              },
+              "2018-10": {
+                "rows": 35335,
+                "positives": 28,
+                "reviewed": 310,
+                "tp": 14,
+                "precision": 0.04516129032258064,
+                "recall": 0.5
+              },
+              "2018-11": {
+                "rows": 34748,
+                "positives": 114,
+                "reviewed": 300,
+                "tp": 38,
+                "precision": 0.12666666666666668,
+                "recall": 0.3333333333333333
+              },
+              "2018-12": {
+                "rows": 35924,
+                "positives": 28,
+                "reviewed": 310,
+                "tp": 10,
+                "precision": 0.03225806451612903,
+                "recall": 0.35714285714285715
+              }
+            },
+            "channel": {
+              "Chip Transaction": {
+                "rows": 310348,
+                "positives": 564,
+                "reviewed": 2488,
+                "tp": 124,
+                "precision": 0.04983922829581994,
+                "recall": 0.2198581560283688
+              },
+              "Online Transaction": {
+                "rows": 50576,
+                "positives": 28,
+                "reviewed": 546,
+                "tp": 17,
+                "precision": 0.031135531135531136,
+                "recall": 0.6071428571428571
+              },
+              "Swipe Transaction": {
+                "rows": 61164,
+                "positives": 91,
+                "reviewed": 616,
+                "tp": 38,
+                "precision": 0.06168831168831169,
+                "recall": 0.4175824175824176
+              }
+            }
+          },
+          "model_artifacts": {
+            "model.pt": "e286673e63dea283c042e456a49c381aa7734f02a2aa1412d68d26f3461ea617",
+            "preprocessor.joblib": "823bbc27932c6e341e15f69dfec7cc07a50ebee7d0ed85ecb431fa755e37204a"
+          },
+          "loss": "Fully supervised weighted BCE; no consistency/semantic mechanism",
+          "training_positive_rows": 967,
+          "training_negative_rows": 840925,
+          "representation": "Learned normalized MCC auxiliary + original raw/no-channel residual core",
+          "statistics_fields": null
+        }
+      ],
+      "ensemble": {
+        "tp_daily10": 199,
+        "reviewed": 3650,
+        "positives": 683,
+        "precision": 0.05452054794520548,
+        "recall": 0.2913616398243045,
+        "false_positives": 3451,
+        "false_negatives": 484,
+        "f1_at_daily10": 0.09185321947842141,
+        "ap": 0.08786625787586114,
+        "auroc": 0.900247000191422,
+        "monthly": {
+          "2018-01": {
+            "rows": 36208,
+            "positives": 56,
+            "reviewed": 310,
+            "tp": 21,
+            "precision": 0.06774193548387097,
+            "recall": 0.375
+          },
+          "2018-02": {
+            "rows": 32307,
+            "positives": 35,
+            "reviewed": 280,
+            "tp": 5,
+            "precision": 0.017857142857142856,
+            "recall": 0.14285714285714285
+          },
+          "2018-03": {
+            "rows": 35696,
+            "positives": 89,
+            "reviewed": 310,
+            "tp": 24,
+            "precision": 0.07741935483870968,
+            "recall": 0.2696629213483146
+          },
+          "2018-04": {
+            "rows": 34591,
+            "positives": 79,
+            "reviewed": 300,
+            "tp": 20,
+            "precision": 0.06666666666666667,
+            "recall": 0.25316455696202533
+          },
+          "2018-05": {
+            "rows": 36085,
+            "positives": 21,
+            "reviewed": 310,
+            "tp": 5,
+            "precision": 0.016129032258064516,
+            "recall": 0.23809523809523808
+          },
+          "2018-06": {
+            "rows": 34721,
+            "positives": 48,
+            "reviewed": 300,
+            "tp": 17,
+            "precision": 0.056666666666666664,
+            "recall": 0.3541666666666667
+          },
+          "2018-07": {
+            "rows": 36049,
+            "positives": 62,
+            "reviewed": 310,
+            "tp": 19,
+            "precision": 0.06129032258064516,
+            "recall": 0.3064516129032258
+          },
+          "2018-08": {
+            "rows": 35829,
+            "positives": 64,
+            "reviewed": 310,
+            "tp": 9,
+            "precision": 0.02903225806451613,
+            "recall": 0.140625
+          },
+          "2018-09": {
+            "rows": 34595,
+            "positives": 59,
+            "reviewed": 300,
+            "tp": 15,
+            "precision": 0.05,
+            "recall": 0.2542372881355932
+          },
+          "2018-10": {
+            "rows": 35335,
+            "positives": 28,
+            "reviewed": 310,
+            "tp": 13,
+            "precision": 0.041935483870967745,
+            "recall": 0.4642857142857143
+          },
+          "2018-11": {
+            "rows": 34748,
+            "positives": 114,
+            "reviewed": 300,
+            "tp": 39,
+            "precision": 0.13,
+            "recall": 0.34210526315789475
+          },
+          "2018-12": {
+            "rows": 35924,
+            "positives": 28,
+            "reviewed": 310,
+            "tp": 12,
+            "precision": 0.03870967741935484,
+            "recall": 0.42857142857142855
+          }
+        },
+        "channel": {
+          "Chip Transaction": {
+            "rows": 310348,
+            "positives": 564,
+            "reviewed": 2493,
+            "tp": 140,
+            "precision": 0.05615724027276374,
+            "recall": 0.24822695035460993
+          },
+          "Online Transaction": {
+            "rows": 50576,
+            "positives": 28,
+            "reviewed": 566,
+            "tp": 18,
+            "precision": 0.03180212014134275,
+            "recall": 0.6428571428571429
+          },
+          "Swipe Transaction": {
+            "rows": 61164,
+            "positives": 91,
+            "reviewed": 591,
+            "tp": 41,
+            "precision": 0.06937394247038917,
+            "recall": 0.45054945054945056
+          }
+        }
+      }
+    },
     "decay": {
       "seeds": [
         {
@@ -9304,9 +10461,2324 @@
           }
         }
       }
+    },
+    "transformer": {
+      "seeds": [
+        {
+          "config": {
+            "mode": "transformer",
+            "self_control": false,
+            "k": 6,
+            "seed": 42,
+            "width": 64,
+            "blocks": 2,
+            "dropout": 0.15,
+            "learning_rate": 0.001,
+            "weight_decay": 0.01,
+            "positive_weight": 20,
+            "batch_size": 4096,
+            "threads": 4
+          },
+          "epochs": 12,
+          "curves": [
+            {
+              "epoch": 1,
+              "loss": 0.07988284431238583,
+              "positive_weighted_loss_mean": 48.95504945756977,
+              "negative_loss_mean": 0.0236801077511023,
+              "positive_abs_logit_gradient_mean": 15.794940160496898,
+              "negative_abs_logit_gradient_mean": 0.021601361967839197,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.001,
+              "max_preclip_gradient_norm": 2.869978189468384,
+              "epoch_seconds": 134.84399999999732,
+              "elapsed_seconds": 134.86000000000058
+            },
+            {
+              "epoch": 2,
+              "loss": 0.05644440831645894,
+              "positive_weighted_loss_mean": 34.54449579769971,
+              "negative_loss_mean": 0.016785764093436187,
+              "positive_abs_logit_gradient_mean": 12.089615847233533,
+              "negative_abs_logit_gradient_mean": 0.014316374278080591,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0009838147674873074,
+              "max_preclip_gradient_norm": 0.4763467311859131,
+              "epoch_seconds": 138.29699999999139,
+              "elapsed_seconds": 273.18799999999464
+            },
+            {
+              "epoch": 3,
+              "loss": 0.04664469585763212,
+              "positive_weighted_loss_mean": 27.657655819587895,
+              "negative_loss_mean": 0.014894126252243187,
+              "positive_abs_logit_gradient_mean": 10.303196319996262,
+              "negative_abs_logit_gradient_mean": 0.012359692404314613,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0009363620667976084,
+              "max_preclip_gradient_norm": 0.5031321048736572,
+              "epoch_seconds": 139.32799999999406,
+              "elapsed_seconds": 412.56299999999464
+            },
+            {
+              "epoch": 4,
+              "loss": 0.04202506580700164,
+              "positive_weighted_loss_mean": 24.646896146784893,
+              "negative_loss_mean": 0.013731329338082122,
+              "positive_abs_logit_gradient_mean": 9.409695003986851,
+              "negative_abs_logit_gradient_mean": 0.011034512098384788,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00086087572106361,
+              "max_preclip_gradient_norm": 0.6480394005775452,
+              "epoch_seconds": 138.07799999999406,
+              "elapsed_seconds": 550.6719999999914
+            },
+            {
+              "epoch": 5,
+              "loss": 0.03799549659494247,
+              "positive_weighted_loss_mean": 21.833920766658224,
+              "negative_loss_mean": 0.012931834960106447,
+              "positive_abs_logit_gradient_mean": 8.69333573383777,
+              "negative_abs_logit_gradient_mean": 0.010111961191232201,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0007624999999999999,
+              "max_preclip_gradient_norm": 0.4865899085998535,
+              "epoch_seconds": 141.48500000000058,
+              "elapsed_seconds": 692.2039999999979
+            },
+            {
+              "epoch": 6,
+              "loss": 0.0342446201794841,
+              "positive_weighted_loss_mean": 19.49930406059018,
+              "negative_loss_mean": 0.011861277350979065,
+              "positive_abs_logit_gradient_mean": 7.8511567049213875,
+              "negative_abs_logit_gradient_mean": 0.009249682013223064,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0006479390464236973,
+              "max_preclip_gradient_norm": 0.7321893572807312,
+              "epoch_seconds": 42780.609,
+              "elapsed_seconds": 43472.875
+            },
+            {
+              "epoch": 7,
+              "loss": 0.031909363278867404,
+              "positive_weighted_loss_mean": 17.931237896463248,
+              "negative_loss_mean": 0.011326492650474078,
+              "positive_abs_logit_gradient_mean": 7.257274458795447,
+              "negative_abs_logit_gradient_mean": 0.008622826406886754,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0005249999999999999,
+              "max_preclip_gradient_norm": 0.7761898636817932,
+              "epoch_seconds": 137.875,
+              "elapsed_seconds": 43610.78200000001
+            },
+            {
+              "epoch": 8,
+              "loss": 0.029034998401229046,
+              "positive_weighted_loss_mean": 16.281557413652124,
+              "negative_loss_mean": 0.01034582988676526,
+              "positive_abs_logit_gradient_mean": 6.842971251693852,
+              "negative_abs_logit_gradient_mean": 0.00787668464661325,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0004020609535763026,
+              "max_preclip_gradient_norm": 0.7375539541244507,
+              "epoch_seconds": 136.57800000000861,
+              "elapsed_seconds": 43747.391
+            },
+            {
+              "epoch": 9,
+              "loss": 0.027177278151223606,
+              "positive_weighted_loss_mean": 15.064374661864761,
+              "negative_loss_mean": 0.009885640919348515,
+              "positive_abs_logit_gradient_mean": 6.376530652455485,
+              "negative_abs_logit_gradient_mean": 0.007358589339072708,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00028750000000000005,
+              "max_preclip_gradient_norm": 0.7279314994812012,
+              "epoch_seconds": 150.73399999999674,
+              "elapsed_seconds": 43898.141
+            },
+            {
+              "epoch": 10,
+              "loss": 0.02502570614791613,
+              "positive_weighted_loss_mean": 13.597909250220567,
+              "negative_loss_mean": 0.00941791885420886,
+              "positive_abs_logit_gradient_mean": 5.947270571877323,
+              "negative_abs_logit_gradient_mean": 0.006956087950453498,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00018912427893638992,
+              "max_preclip_gradient_norm": 0.6894466876983643,
+              "epoch_seconds": 142.5779999999795,
+              "elapsed_seconds": 44040.734999999986
+            },
+            {
+              "epoch": 11,
+              "loss": 0.023608502836770736,
+              "positive_weighted_loss_mean": 12.85659718787781,
+              "negative_loss_mean": 0.00885153873109164,
+              "positive_abs_logit_gradient_mean": 5.57545682168426,
+              "negative_abs_logit_gradient_mean": 0.006534350791250932,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00011363793320239159,
+              "max_preclip_gradient_norm": 0.6969473958015442,
+              "epoch_seconds": 144.31200000000536,
+              "elapsed_seconds": 44185.09400000001
+            },
+            {
+              "epoch": 12,
+              "loss": 0.022712626983989834,
+              "positive_weighted_loss_mean": 12.377882007983319,
+              "negative_loss_mean": 0.008505119080811018,
+              "positive_abs_logit_gradient_mean": 5.462134872375378,
+              "negative_abs_logit_gradient_mean": 0.006238878952513113,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 6.61852325126926e-05,
+              "max_preclip_gradient_norm": 0.560519814491272,
+              "epoch_seconds": 150.35999999998603,
+              "elapsed_seconds": 44335.484999999986
+            }
+          ],
+          "training_seconds": 44335.5,
+          "prediction_seconds": 13.03200000000652,
+          "prediction_rows": 422088,
+          "reload_max_abs_diff": 0.0,
+          "parameters": 88571,
+          "trainable_parameters": 88571,
+          "whole_process_peak_bytes": 3827089408,
+          "metrics": {
+            "tp_daily10": 189,
+            "reviewed": 3650,
+            "positives": 683,
+            "precision": 0.051780821917808216,
+            "recall": 0.2767203513909224,
+            "false_positives": 3461,
+            "false_negatives": 494,
+            "f1_at_daily10": 0.08723747980613894,
+            "ap": 0.08521036486287496,
+            "auroc": 0.8829180752673857,
+            "monthly": {
+              "2018-01": {
+                "rows": 36208,
+                "positives": 56,
+                "reviewed": 310,
+                "tp": 22,
+                "precision": 0.07096774193548387,
+                "recall": 0.39285714285714285
+              },
+              "2018-02": {
+                "rows": 32307,
+                "positives": 35,
+                "reviewed": 280,
+                "tp": 7,
+                "precision": 0.025,
+                "recall": 0.2
+              },
+              "2018-03": {
+                "rows": 35696,
+                "positives": 89,
+                "reviewed": 310,
+                "tp": 23,
+                "precision": 0.07419354838709677,
+                "recall": 0.25842696629213485
+              },
+              "2018-04": {
+                "rows": 34591,
+                "positives": 79,
+                "reviewed": 300,
+                "tp": 20,
+                "precision": 0.06666666666666667,
+                "recall": 0.25316455696202533
+              },
+              "2018-05": {
+                "rows": 36085,
+                "positives": 21,
+                "reviewed": 310,
+                "tp": 2,
+                "precision": 0.0064516129032258064,
+                "recall": 0.09523809523809523
+              },
+              "2018-06": {
+                "rows": 34721,
+                "positives": 48,
+                "reviewed": 300,
+                "tp": 17,
+                "precision": 0.056666666666666664,
+                "recall": 0.3541666666666667
+              },
+              "2018-07": {
+                "rows": 36049,
+                "positives": 62,
+                "reviewed": 310,
+                "tp": 22,
+                "precision": 0.07096774193548387,
+                "recall": 0.3548387096774194
+              },
+              "2018-08": {
+                "rows": 35829,
+                "positives": 64,
+                "reviewed": 310,
+                "tp": 3,
+                "precision": 0.00967741935483871,
+                "recall": 0.046875
+              },
+              "2018-09": {
+                "rows": 34595,
+                "positives": 59,
+                "reviewed": 300,
+                "tp": 12,
+                "precision": 0.04,
+                "recall": 0.2033898305084746
+              },
+              "2018-10": {
+                "rows": 35335,
+                "positives": 28,
+                "reviewed": 310,
+                "tp": 9,
+                "precision": 0.02903225806451613,
+                "recall": 0.32142857142857145
+              },
+              "2018-11": {
+                "rows": 34748,
+                "positives": 114,
+                "reviewed": 300,
+                "tp": 42,
+                "precision": 0.14,
+                "recall": 0.3684210526315789
+              },
+              "2018-12": {
+                "rows": 35924,
+                "positives": 28,
+                "reviewed": 310,
+                "tp": 10,
+                "precision": 0.03225806451612903,
+                "recall": 0.35714285714285715
+              }
+            },
+            "channel": {
+              "Chip Transaction": {
+                "rows": 310348,
+                "positives": 564,
+                "reviewed": 2417,
+                "tp": 127,
+                "precision": 0.05254447662391394,
+                "recall": 0.225177304964539
+              },
+              "Online Transaction": {
+                "rows": 50576,
+                "positives": 28,
+                "reviewed": 626,
+                "tp": 18,
+                "precision": 0.02875399361022364,
+                "recall": 0.6428571428571429
+              },
+              "Swipe Transaction": {
+                "rows": 61164,
+                "positives": 91,
+                "reviewed": 607,
+                "tp": 44,
+                "precision": 0.07248764415156507,
+                "recall": 0.4835164835164835
+              }
+            }
+          },
+          "model_artifacts": {
+            "model.pt": "c861862944a7d1016c2b923ebd80cdb8df4dafb421d6b37faabf5e8f2d99e79e",
+            "preprocessor.joblib": "711b9367f32da05a8e349ec23ec176c394d68cca96f1f103437a4d82083c56aa"
+          },
+          "loss": "Fully supervised weighted BCE; no consistency/semantic mechanism",
+          "training_positive_rows": 967,
+          "training_negative_rows": 840925,
+          "representation": "Learned normalized MCC auxiliary + original raw/no-channel residual core",
+          "statistics_fields": null
+        },
+        {
+          "config": {
+            "mode": "transformer",
+            "self_control": false,
+            "k": 6,
+            "seed": 43,
+            "width": 64,
+            "blocks": 2,
+            "dropout": 0.15,
+            "learning_rate": 0.001,
+            "weight_decay": 0.01,
+            "positive_weight": 20,
+            "batch_size": 4096,
+            "threads": 4
+          },
+          "epochs": 12,
+          "curves": [
+            {
+              "epoch": 1,
+              "loss": 0.079542134218739,
+              "positive_weighted_loss_mean": 48.1101476783713,
+              "negative_loss_mean": 0.024310578982101472,
+              "positive_abs_logit_gradient_mean": 15.769061842526867,
+              "negative_abs_logit_gradient_mean": 0.022037837535464518,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.001,
+              "max_preclip_gradient_norm": 4.004637241363525,
+              "epoch_seconds": 163.28099999998813,
+              "elapsed_seconds": 163.2960000000021
+            },
+            {
+              "epoch": 2,
+              "loss": 0.05498842820545701,
+              "positive_weighted_loss_mean": 33.135349549299185,
+              "negative_loss_mean": 0.016948521018655547,
+              "positive_abs_logit_gradient_mean": 12.026510524897688,
+              "negative_abs_logit_gradient_mean": 0.014502382269086242,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0009838147674873074,
+              "max_preclip_gradient_norm": 0.627112090587616,
+              "epoch_seconds": 160.40700000000652,
+              "elapsed_seconds": 323.75
+            },
+            {
+              "epoch": 3,
+              "loss": 0.04766928838730472,
+              "positive_weighted_loss_mean": 28.14849776115881,
+              "negative_loss_mean": 0.015355466099887157,
+              "positive_abs_logit_gradient_mean": 10.690207835190545,
+              "negative_abs_logit_gradient_mean": 0.01266076883932468,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0009363620667976084,
+              "max_preclip_gradient_norm": 0.607285737991333,
+              "epoch_seconds": 143.54699999999139,
+              "elapsed_seconds": 467.3429999999935
+            },
+            {
+              "epoch": 4,
+              "loss": 0.04270489495930188,
+              "positive_weighted_loss_mean": 24.891486564059786,
+              "negative_loss_mean": 0.014130679451299734,
+              "positive_abs_logit_gradient_mean": 9.635688837952797,
+              "negative_abs_logit_gradient_mean": 0.011345237269003064,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00086087572106361,
+              "max_preclip_gradient_norm": 0.708736002445221,
+              "epoch_seconds": 148.93700000000536,
+              "elapsed_seconds": 616.3120000000054
+            },
+            {
+              "epoch": 5,
+              "loss": 0.04001415068192869,
+              "positive_weighted_loss_mean": 23.130481081085343,
+              "negative_loss_mean": 0.013461864251537874,
+              "positive_abs_logit_gradient_mean": 9.181695567538352,
+              "negative_abs_logit_gradient_mean": 0.010694420272963691,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0007624999999999999,
+              "max_preclip_gradient_norm": 0.6257174611091614,
+              "epoch_seconds": 163.98500000001513,
+              "elapsed_seconds": 780.3280000000086
+            },
+            {
+              "epoch": 6,
+              "loss": 0.0371032811273569,
+              "positive_weighted_loss_mean": 21.455929094935154,
+              "negative_loss_mean": 0.012473255509828654,
+              "positive_abs_logit_gradient_mean": 8.391916926915545,
+              "negative_abs_logit_gradient_mean": 0.009752432003838343,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0006479390464236973,
+              "max_preclip_gradient_norm": 0.8627275228500366,
+              "epoch_seconds": 187.40599999998813,
+              "elapsed_seconds": 967.7809999999881
+            },
+            {
+              "epoch": 7,
+              "loss": 0.03382911348997087,
+              "positive_weighted_loss_mean": 19.18396721245584,
+              "negative_loss_mean": 0.011807906160485883,
+              "positive_abs_logit_gradient_mean": 7.843321872965626,
+              "negative_abs_logit_gradient_mean": 0.009203328500269043,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0005249999999999999,
+              "max_preclip_gradient_norm": 0.6407280564308167,
+              "epoch_seconds": 172.5470000000205,
+              "elapsed_seconds": 1140.390000000014
+            },
+            {
+              "epoch": 8,
+              "loss": 0.03174914147112858,
+              "positive_weighted_loss_mean": 17.933400756424252,
+              "negative_loss_mean": 0.011163599215184096,
+              "positive_abs_logit_gradient_mean": 7.370521066107449,
+              "negative_abs_logit_gradient_mean": 0.008592563301061703,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0004020609535763026,
+              "max_preclip_gradient_norm": 0.791443407535553,
+              "epoch_seconds": 134.48499999998603,
+              "elapsed_seconds": 1274.9059999999881
+            },
+            {
+              "epoch": 9,
+              "loss": 0.02943852948221414,
+              "positive_weighted_loss_mean": 16.397120196977102,
+              "negative_loss_mean": 0.010616936432881847,
+              "positive_abs_logit_gradient_mean": 6.940346027727334,
+              "negative_abs_logit_gradient_mean": 0.008080105015343909,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00028750000000000005,
+              "max_preclip_gradient_norm": 0.5929595828056335,
+              "epoch_seconds": 165.79699999999139,
+              "elapsed_seconds": 1440.7339999999967
+            },
+            {
+              "epoch": 10,
+              "loss": 0.027608442056420393,
+              "positive_weighted_loss_mean": 15.455701376067815,
+              "negative_loss_mean": 0.009867304154864516,
+              "positive_abs_logit_gradient_mean": 6.587504311702614,
+              "negative_abs_logit_gradient_mean": 0.007410274137833826,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00018912427893638992,
+              "max_preclip_gradient_norm": 0.6810778975486755,
+              "epoch_seconds": 228.28100000001723,
+              "elapsed_seconds": 1669.0620000000054
+            },
+            {
+              "epoch": 11,
+              "loss": 0.026284190228680886,
+              "positive_weighted_loss_mean": 14.501334642827695,
+              "negative_loss_mean": 0.009638979348422734,
+              "positive_abs_logit_gradient_mean": 6.248027520194542,
+              "negative_abs_logit_gradient_mean": 0.007148771245467463,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00011363793320239159,
+              "max_preclip_gradient_norm": 0.7217479348182678,
+              "epoch_seconds": 168.48500000001513,
+              "elapsed_seconds": 1837.5780000000086
+            },
+            {
+              "epoch": 12,
+              "loss": 0.025769206580233267,
+              "positive_weighted_loss_mean": 14.227848240052039,
+              "negative_loss_mean": 0.009437892319675036,
+              "positive_abs_logit_gradient_mean": 6.177172205933863,
+              "negative_abs_logit_gradient_mean": 0.006937368677427735,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 6.61852325126926e-05,
+              "max_preclip_gradient_norm": 0.5779955387115479,
+              "epoch_seconds": 134.35899999999674,
+              "elapsed_seconds": 1971.9679999999935
+            }
+          ],
+          "training_seconds": 1971.9839999999967,
+          "prediction_seconds": 12.48399999999674,
+          "prediction_rows": 422088,
+          "reload_max_abs_diff": 0.0,
+          "parameters": 88571,
+          "trainable_parameters": 88571,
+          "whole_process_peak_bytes": 3827089408,
+          "metrics": {
+            "tp_daily10": 190,
+            "reviewed": 3650,
+            "positives": 683,
+            "precision": 0.052054794520547946,
+            "recall": 0.2781844802342606,
+            "false_positives": 3460,
+            "false_negatives": 493,
+            "f1_at_daily10": 0.08769905377336719,
+            "ap": 0.08282622797381237,
+            "auroc": 0.9012510318311698,
+            "monthly": {
+              "2018-01": {
+                "rows": 36208,
+                "positives": 56,
+                "reviewed": 310,
+                "tp": 21,
+                "precision": 0.06774193548387097,
+                "recall": 0.375
+              },
+              "2018-02": {
+                "rows": 32307,
+                "positives": 35,
+                "reviewed": 280,
+                "tp": 7,
+                "precision": 0.025,
+                "recall": 0.2
+              },
+              "2018-03": {
+                "rows": 35696,
+                "positives": 89,
+                "reviewed": 310,
+                "tp": 24,
+                "precision": 0.07741935483870968,
+                "recall": 0.2696629213483146
+              },
+              "2018-04": {
+                "rows": 34591,
+                "positives": 79,
+                "reviewed": 300,
+                "tp": 17,
+                "precision": 0.056666666666666664,
+                "recall": 0.21518987341772153
+              },
+              "2018-05": {
+                "rows": 36085,
+                "positives": 21,
+                "reviewed": 310,
+                "tp": 4,
+                "precision": 0.012903225806451613,
+                "recall": 0.19047619047619047
+              },
+              "2018-06": {
+                "rows": 34721,
+                "positives": 48,
+                "reviewed": 300,
+                "tp": 21,
+                "precision": 0.07,
+                "recall": 0.4375
+              },
+              "2018-07": {
+                "rows": 36049,
+                "positives": 62,
+                "reviewed": 310,
+                "tp": 17,
+                "precision": 0.054838709677419356,
+                "recall": 0.27419354838709675
+              },
+              "2018-08": {
+                "rows": 35829,
+                "positives": 64,
+                "reviewed": 310,
+                "tp": 5,
+                "precision": 0.016129032258064516,
+                "recall": 0.078125
+              },
+              "2018-09": {
+                "rows": 34595,
+                "positives": 59,
+                "reviewed": 300,
+                "tp": 13,
+                "precision": 0.043333333333333335,
+                "recall": 0.22033898305084745
+              },
+              "2018-10": {
+                "rows": 35335,
+                "positives": 28,
+                "reviewed": 310,
+                "tp": 11,
+                "precision": 0.035483870967741936,
+                "recall": 0.39285714285714285
+              },
+              "2018-11": {
+                "rows": 34748,
+                "positives": 114,
+                "reviewed": 300,
+                "tp": 39,
+                "precision": 0.13,
+                "recall": 0.34210526315789475
+              },
+              "2018-12": {
+                "rows": 35924,
+                "positives": 28,
+                "reviewed": 310,
+                "tp": 11,
+                "precision": 0.035483870967741936,
+                "recall": 0.39285714285714285
+              }
+            },
+            "channel": {
+              "Chip Transaction": {
+                "rows": 310348,
+                "positives": 564,
+                "reviewed": 2417,
+                "tp": 129,
+                "precision": 0.05337194869673149,
+                "recall": 0.22872340425531915
+              },
+              "Online Transaction": {
+                "rows": 50576,
+                "positives": 28,
+                "reviewed": 601,
+                "tp": 16,
+                "precision": 0.026622296173044926,
+                "recall": 0.5714285714285714
+              },
+              "Swipe Transaction": {
+                "rows": 61164,
+                "positives": 91,
+                "reviewed": 632,
+                "tp": 45,
+                "precision": 0.07120253164556962,
+                "recall": 0.4945054945054945
+              }
+            }
+          },
+          "model_artifacts": {
+            "model.pt": "37e7bb387bd7b130595043e86eb2bffab8f3fde3a5deb13c3200a9e3700ad1f4",
+            "preprocessor.joblib": "4658b2bb4a52013e496ece0fa22f68b1e6c21b89768d2a830c402bf2d76f3343"
+          },
+          "loss": "Fully supervised weighted BCE; no consistency/semantic mechanism",
+          "training_positive_rows": 967,
+          "training_negative_rows": 840925,
+          "representation": "Learned normalized MCC auxiliary + original raw/no-channel residual core",
+          "statistics_fields": null
+        },
+        {
+          "config": {
+            "mode": "transformer",
+            "self_control": false,
+            "k": 6,
+            "seed": 44,
+            "width": 64,
+            "blocks": 2,
+            "dropout": 0.15,
+            "learning_rate": 0.001,
+            "weight_decay": 0.01,
+            "positive_weight": 20,
+            "batch_size": 4096,
+            "threads": 4
+          },
+          "epochs": 12,
+          "curves": [
+            {
+              "epoch": 1,
+              "loss": 0.08328277332399991,
+              "positive_weighted_loss_mean": 47.80326951154139,
+              "negative_loss_mean": 0.02840840656266795,
+              "positive_abs_logit_gradient_mean": 15.81468947744912,
+              "negative_abs_logit_gradient_mean": 0.02503794453524486,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.001,
+              "max_preclip_gradient_norm": 5.825104713439941,
+              "epoch_seconds": 133.51500000001397,
+              "elapsed_seconds": 133.53099999998813
+            },
+            {
+              "epoch": 2,
+              "loss": 0.05810224395506294,
+              "positive_weighted_loss_mean": 35.20246097195851,
+              "negative_loss_mean": 0.01768889538920067,
+              "positive_abs_logit_gradient_mean": 12.555560830953572,
+              "negative_abs_logit_gradient_mean": 0.015325564893009257,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0009838147674873074,
+              "max_preclip_gradient_norm": 0.4306469261646271,
+              "epoch_seconds": 135.3279999999795,
+              "elapsed_seconds": 268.89099999997416
+            },
+            {
+              "epoch": 3,
+              "loss": 0.050957878551543254,
+              "positive_weighted_loss_mean": 30.472349537534576,
+              "negative_loss_mean": 0.01597558494087249,
+              "positive_abs_logit_gradient_mean": 11.288017044392836,
+              "negative_abs_logit_gradient_mean": 0.013370043541399375,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0009363620667976084,
+              "max_preclip_gradient_norm": 0.5741956233978271,
+              "epoch_seconds": 135.04699999999139,
+              "elapsed_seconds": 403.96899999998277
+            },
+            {
+              "epoch": 4,
+              "loss": 0.044973391095741055,
+              "positive_weighted_loss_mean": 26.248630817328515,
+              "negative_loss_mean": 0.014841171644791293,
+              "positive_abs_logit_gradient_mean": 10.131788371390863,
+              "negative_abs_logit_gradient_mean": 0.012169208392223118,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00086087572106361,
+              "max_preclip_gradient_norm": 0.4614161550998688,
+              "epoch_seconds": 133.3279999999795,
+              "elapsed_seconds": 537.3279999999795
+            },
+            {
+              "epoch": 5,
+              "loss": 0.03990325621511098,
+              "positive_weighted_loss_mean": 23.099015068675026,
+              "negative_loss_mean": 0.013387025926748,
+              "positive_abs_logit_gradient_mean": 9.193240888362833,
+              "negative_abs_logit_gradient_mean": 0.010754804264461789,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0007624999999999999,
+              "max_preclip_gradient_norm": 0.4939185380935669,
+              "epoch_seconds": 147.70300000000861,
+              "elapsed_seconds": 685.0629999999946
+            },
+            {
+              "epoch": 6,
+              "loss": 0.036406679763889414,
+              "positive_weighted_loss_mean": 20.848192333928555,
+              "negative_loss_mean": 0.012474704078655944,
+              "positive_abs_logit_gradient_mean": 8.382665671385062,
+              "negative_abs_logit_gradient_mean": 0.009829745181098677,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0006479390464236973,
+              "max_preclip_gradient_norm": 0.6291041970252991,
+              "epoch_seconds": 144.06200000000536,
+              "elapsed_seconds": 829.1719999999914
+            },
+            {
+              "epoch": 7,
+              "loss": 0.033897570449895845,
+              "positive_weighted_loss_mean": 19.237471646081268,
+              "negative_loss_mean": 0.01181491609681045,
+              "positive_abs_logit_gradient_mean": 7.838033777974631,
+              "negative_abs_logit_gradient_mean": 0.0092085874659392,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0005249999999999999,
+              "max_preclip_gradient_norm": 0.671667218208313,
+              "epoch_seconds": 139.40700000000652,
+              "elapsed_seconds": 968.609999999986
+            },
+            {
+              "epoch": 8,
+              "loss": 0.031303745221206276,
+              "positive_weighted_loss_mean": 17.547905535738618,
+              "negative_loss_mean": 0.011160981058383323,
+              "positive_abs_logit_gradient_mean": 7.34956940278149,
+              "negative_abs_logit_gradient_mean": 0.008553958631644164,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0004020609535763026,
+              "max_preclip_gradient_norm": 0.6255088448524475,
+              "epoch_seconds": 142.28200000000652,
+              "elapsed_seconds": 1110.9379999999946
+            },
+            {
+              "epoch": 9,
+              "loss": 0.028632004225506824,
+              "positive_weighted_loss_mean": 15.874075096636055,
+              "negative_loss_mean": 0.01041094598317361,
+              "positive_abs_logit_gradient_mean": 6.801215587752065,
+              "negative_abs_logit_gradient_mean": 0.007904028849563895,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00028750000000000005,
+              "max_preclip_gradient_norm": 0.6223061084747314,
+              "epoch_seconds": 134.21900000001187,
+              "elapsed_seconds": 1245.1879999999946
+            },
+            {
+              "epoch": 10,
+              "loss": 0.027223288556630653,
+              "positive_weighted_loss_mean": 15.12389676804503,
+              "negative_loss_mean": 0.009863258239562826,
+              "positive_abs_logit_gradient_mean": 6.49388375351323,
+              "negative_abs_logit_gradient_mean": 0.007355657757209265,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00018912427893638992,
+              "max_preclip_gradient_norm": 0.7071666717529297,
+              "epoch_seconds": 132.90600000001723,
+              "elapsed_seconds": 1378.125
+            },
+            {
+              "epoch": 11,
+              "loss": 0.02577996000828329,
+              "positive_weighted_loss_mean": 13.865263716727032,
+              "negative_loss_mean": 0.009865602602781338,
+              "positive_abs_logit_gradient_mean": 6.151585944805914,
+              "negative_abs_logit_gradient_mean": 0.007305721484030967,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00011363793320239159,
+              "max_preclip_gradient_norm": 0.5549323558807373,
+              "epoch_seconds": 133.375,
+              "elapsed_seconds": 1511.5309999999881
+            },
+            {
+              "epoch": 12,
+              "loss": 0.025127125432344622,
+              "positive_weighted_loss_mean": 13.643777486456957,
+              "negative_loss_mean": 0.009466710250967446,
+              "positive_abs_logit_gradient_mean": 6.017466653342577,
+              "negative_abs_logit_gradient_mean": 0.006997015169104381,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 6.61852325126926e-05,
+              "max_preclip_gradient_norm": 0.9245282411575317,
+              "epoch_seconds": 134.59299999999348,
+              "elapsed_seconds": 1646.1559999999881
+            }
+          ],
+          "training_seconds": 1646.1719999999914,
+          "prediction_seconds": 12.375,
+          "prediction_rows": 422088,
+          "reload_max_abs_diff": 0.0,
+          "parameters": 88571,
+          "trainable_parameters": 88571,
+          "whole_process_peak_bytes": 3827089408,
+          "metrics": {
+            "tp_daily10": 190,
+            "reviewed": 3650,
+            "positives": 683,
+            "precision": 0.052054794520547946,
+            "recall": 0.2781844802342606,
+            "false_positives": 3460,
+            "false_negatives": 493,
+            "f1_at_daily10": 0.08769905377336719,
+            "ap": 0.08093145895989834,
+            "auroc": 0.9062095924212811,
+            "monthly": {
+              "2018-01": {
+                "rows": 36208,
+                "positives": 56,
+                "reviewed": 310,
+                "tp": 20,
+                "precision": 0.06451612903225806,
+                "recall": 0.35714285714285715
+              },
+              "2018-02": {
+                "rows": 32307,
+                "positives": 35,
+                "reviewed": 280,
+                "tp": 5,
+                "precision": 0.017857142857142856,
+                "recall": 0.14285714285714285
+              },
+              "2018-03": {
+                "rows": 35696,
+                "positives": 89,
+                "reviewed": 310,
+                "tp": 22,
+                "precision": 0.07096774193548387,
+                "recall": 0.24719101123595505
+              },
+              "2018-04": {
+                "rows": 34591,
+                "positives": 79,
+                "reviewed": 300,
+                "tp": 19,
+                "precision": 0.06333333333333334,
+                "recall": 0.24050632911392406
+              },
+              "2018-05": {
+                "rows": 36085,
+                "positives": 21,
+                "reviewed": 310,
+                "tp": 5,
+                "precision": 0.016129032258064516,
+                "recall": 0.23809523809523808
+              },
+              "2018-06": {
+                "rows": 34721,
+                "positives": 48,
+                "reviewed": 300,
+                "tp": 16,
+                "precision": 0.05333333333333334,
+                "recall": 0.3333333333333333
+              },
+              "2018-07": {
+                "rows": 36049,
+                "positives": 62,
+                "reviewed": 310,
+                "tp": 14,
+                "precision": 0.04516129032258064,
+                "recall": 0.22580645161290322
+              },
+              "2018-08": {
+                "rows": 35829,
+                "positives": 64,
+                "reviewed": 310,
+                "tp": 8,
+                "precision": 0.025806451612903226,
+                "recall": 0.125
+              },
+              "2018-09": {
+                "rows": 34595,
+                "positives": 59,
+                "reviewed": 300,
+                "tp": 16,
+                "precision": 0.05333333333333334,
+                "recall": 0.2711864406779661
+              },
+              "2018-10": {
+                "rows": 35335,
+                "positives": 28,
+                "reviewed": 310,
+                "tp": 11,
+                "precision": 0.035483870967741936,
+                "recall": 0.39285714285714285
+              },
+              "2018-11": {
+                "rows": 34748,
+                "positives": 114,
+                "reviewed": 300,
+                "tp": 44,
+                "precision": 0.14666666666666667,
+                "recall": 0.38596491228070173
+              },
+              "2018-12": {
+                "rows": 35924,
+                "positives": 28,
+                "reviewed": 310,
+                "tp": 10,
+                "precision": 0.03225806451612903,
+                "recall": 0.35714285714285715
+              }
+            },
+            "channel": {
+              "Chip Transaction": {
+                "rows": 310348,
+                "positives": 564,
+                "reviewed": 2457,
+                "tp": 129,
+                "precision": 0.052503052503052504,
+                "recall": 0.22872340425531915
+              },
+              "Online Transaction": {
+                "rows": 50576,
+                "positives": 28,
+                "reviewed": 566,
+                "tp": 18,
+                "precision": 0.03180212014134275,
+                "recall": 0.6428571428571429
+              },
+              "Swipe Transaction": {
+                "rows": 61164,
+                "positives": 91,
+                "reviewed": 627,
+                "tp": 43,
+                "precision": 0.0685805422647528,
+                "recall": 0.4725274725274725
+              }
+            }
+          },
+          "model_artifacts": {
+            "model.pt": "c977c9560e4e2735d7c126d1f4f75b2ac89ddfa77e83cb473cd4869fc864b7f6",
+            "preprocessor.joblib": "823bbc27932c6e341e15f69dfec7cc07a50ebee7d0ed85ecb431fa755e37204a"
+          },
+          "loss": "Fully supervised weighted BCE; no consistency/semantic mechanism",
+          "training_positive_rows": 967,
+          "training_negative_rows": 840925,
+          "representation": "Learned normalized MCC auxiliary + original raw/no-channel residual core",
+          "statistics_fields": null
+        }
+      ],
+      "ensemble": {
+        "tp_daily10": 207,
+        "reviewed": 3650,
+        "positives": 683,
+        "precision": 0.05671232876712329,
+        "recall": 0.30307467057101023,
+        "false_positives": 3443,
+        "false_negatives": 476,
+        "f1_at_daily10": 0.0955458112162474,
+        "ap": 0.09583191160772624,
+        "auroc": 0.9106132429507976,
+        "monthly": {
+          "2018-01": {
+            "rows": 36208,
+            "positives": 56,
+            "reviewed": 310,
+            "tp": 22,
+            "precision": 0.07096774193548387,
+            "recall": 0.39285714285714285
+          },
+          "2018-02": {
+            "rows": 32307,
+            "positives": 35,
+            "reviewed": 280,
+            "tp": 7,
+            "precision": 0.025,
+            "recall": 0.2
+          },
+          "2018-03": {
+            "rows": 35696,
+            "positives": 89,
+            "reviewed": 310,
+            "tp": 28,
+            "precision": 0.09032258064516129,
+            "recall": 0.3146067415730337
+          },
+          "2018-04": {
+            "rows": 34591,
+            "positives": 79,
+            "reviewed": 300,
+            "tp": 18,
+            "precision": 0.06,
+            "recall": 0.22784810126582278
+          },
+          "2018-05": {
+            "rows": 36085,
+            "positives": 21,
+            "reviewed": 310,
+            "tp": 5,
+            "precision": 0.016129032258064516,
+            "recall": 0.23809523809523808
+          },
+          "2018-06": {
+            "rows": 34721,
+            "positives": 48,
+            "reviewed": 300,
+            "tp": 18,
+            "precision": 0.06,
+            "recall": 0.375
+          },
+          "2018-07": {
+            "rows": 36049,
+            "positives": 62,
+            "reviewed": 310,
+            "tp": 19,
+            "precision": 0.06129032258064516,
+            "recall": 0.3064516129032258
+          },
+          "2018-08": {
+            "rows": 35829,
+            "positives": 64,
+            "reviewed": 310,
+            "tp": 7,
+            "precision": 0.02258064516129032,
+            "recall": 0.109375
+          },
+          "2018-09": {
+            "rows": 34595,
+            "positives": 59,
+            "reviewed": 300,
+            "tp": 15,
+            "precision": 0.05,
+            "recall": 0.2542372881355932
+          },
+          "2018-10": {
+            "rows": 35335,
+            "positives": 28,
+            "reviewed": 310,
+            "tp": 12,
+            "precision": 0.03870967741935484,
+            "recall": 0.42857142857142855
+          },
+          "2018-11": {
+            "rows": 34748,
+            "positives": 114,
+            "reviewed": 300,
+            "tp": 44,
+            "precision": 0.14666666666666667,
+            "recall": 0.38596491228070173
+          },
+          "2018-12": {
+            "rows": 35924,
+            "positives": 28,
+            "reviewed": 310,
+            "tp": 12,
+            "precision": 0.03870967741935484,
+            "recall": 0.42857142857142855
+          }
+        },
+        "channel": {
+          "Chip Transaction": {
+            "rows": 310348,
+            "positives": 564,
+            "reviewed": 2411,
+            "tp": 144,
+            "precision": 0.05972625466611364,
+            "recall": 0.2553191489361702
+          },
+          "Online Transaction": {
+            "rows": 50576,
+            "positives": 28,
+            "reviewed": 615,
+            "tp": 18,
+            "precision": 0.02926829268292683,
+            "recall": 0.6428571428571429
+          },
+          "Swipe Transaction": {
+            "rows": 61164,
+            "positives": 91,
+            "reviewed": 624,
+            "tp": 45,
+            "precision": 0.07211538461538461,
+            "recall": 0.4945054945054945
+          }
+        }
+      }
+    },
+    "transformer-self": {
+      "seeds": [
+        {
+          "config": {
+            "mode": "transformer",
+            "self_control": true,
+            "k": 6,
+            "seed": 42,
+            "width": 64,
+            "blocks": 2,
+            "dropout": 0.15,
+            "learning_rate": 0.001,
+            "weight_decay": 0.01,
+            "positive_weight": 20,
+            "batch_size": 4096,
+            "threads": 4
+          },
+          "epochs": 12,
+          "curves": [
+            {
+              "epoch": 1,
+              "loss": 0.08297341505825997,
+              "positive_weighted_loss_mean": 50.80445719504923,
+              "negative_loss_mean": 0.024647553581670784,
+              "positive_abs_logit_gradient_mean": 16.623245107104392,
+              "negative_abs_logit_gradient_mean": 0.02262007885839446,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.001,
+              "max_preclip_gradient_norm": 2.836223602294922,
+              "epoch_seconds": 72.03100000001723,
+              "elapsed_seconds": 72.04700000002049
+            },
+            {
+              "epoch": 2,
+              "loss": 0.0652940199927103,
+              "positive_weighted_loss_mean": 39.96164781872218,
+              "negative_loss_mean": 0.019416237543145035,
+              "positive_abs_logit_gradient_mean": 14.469546555733114,
+              "negative_abs_logit_gradient_mean": 0.017018284928512675,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0009838147674873074,
+              "max_preclip_gradient_norm": 0.46342024207115173,
+              "epoch_seconds": 72.8289999999979,
+              "elapsed_seconds": 144.90700000000652
+            },
+            {
+              "epoch": 3,
+              "loss": 0.05822607368445481,
+              "positive_weighted_loss_mean": 34.537296896513396,
+              "negative_loss_mean": 0.018577756237841234,
+              "positive_abs_logit_gradient_mean": 13.333829524228591,
+              "negative_abs_logit_gradient_mean": 0.015942733526038484,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0009363620667976084,
+              "max_preclip_gradient_norm": 0.3912515938282013,
+              "epoch_seconds": 71.81200000000536,
+              "elapsed_seconds": 216.75
+            },
+            {
+              "epoch": 4,
+              "loss": 0.05434129301599822,
+              "positive_weighted_loss_mean": 32.20216526832304,
+              "negative_loss_mean": 0.017373732520251255,
+              "positive_abs_logit_gradient_mean": 12.657148938637608,
+              "negative_abs_logit_gradient_mean": 0.014630001022865533,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00086087572106361,
+              "max_preclip_gradient_norm": 0.5226727724075317,
+              "epoch_seconds": 72.65599999998813,
+              "elapsed_seconds": 289.43799999999464
+            },
+            {
+              "epoch": 5,
+              "loss": 0.051598149316256954,
+              "positive_weighted_loss_mean": 30.336842196433967,
+              "negative_loss_mean": 0.01677241482816759,
+              "positive_abs_logit_gradient_mean": 12.203250809317414,
+              "negative_abs_logit_gradient_mean": 0.013945979435236839,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0007624999999999999,
+              "max_preclip_gradient_norm": 0.5269654393196106,
+              "epoch_seconds": 72.04699999999139,
+              "elapsed_seconds": 361.51600000000326
+            },
+            {
+              "epoch": 6,
+              "loss": 0.049478203683490415,
+              "positive_weighted_loss_mean": 28.828875361701943,
+              "negative_loss_mean": 0.01638407881437047,
+              "positive_abs_logit_gradient_mean": 11.715978758781377,
+              "negative_abs_logit_gradient_mean": 0.013543091865932168,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0006479390464236973,
+              "max_preclip_gradient_norm": 0.5296831727027893,
+              "epoch_seconds": 72.90599999998813,
+              "elapsed_seconds": 434.4530000000086
+            },
+            {
+              "epoch": 7,
+              "loss": 0.047201025673459636,
+              "positive_weighted_loss_mean": 27.071363159148127,
+              "negative_loss_mean": 0.016125288130139314,
+              "positive_abs_logit_gradient_mean": 11.1881339130875,
+              "negative_abs_logit_gradient_mean": 0.013121886319275201,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0005249999999999999,
+              "max_preclip_gradient_norm": 0.5242425799369812,
+              "epoch_seconds": 71.75,
+              "elapsed_seconds": 506.23500000001513
+            },
+            {
+              "epoch": 8,
+              "loss": 0.04571157849162845,
+              "positive_weighted_loss_mean": 26.265242031712813,
+              "negative_loss_mean": 0.015561106065140612,
+              "positive_abs_logit_gradient_mean": 11.006794733000147,
+              "negative_abs_logit_gradient_mean": 0.012577909811018593,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0004020609535763026,
+              "max_preclip_gradient_norm": 0.6511200070381165,
+              "epoch_seconds": 72.28100000001723,
+              "elapsed_seconds": 578.5470000000205
+            },
+            {
+              "epoch": 9,
+              "loss": 0.04438920599229801,
+              "positive_weighted_loss_mean": 25.131088420055274,
+              "negative_loss_mean": 0.015541403342587601,
+              "positive_abs_logit_gradient_mean": 10.66603253077573,
+              "negative_abs_logit_gradient_mean": 0.012446230326346128,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00028750000000000005,
+              "max_preclip_gradient_norm": 0.5624639391899109,
+              "epoch_seconds": 71.75,
+              "elapsed_seconds": 650.3129999999946
+            },
+            {
+              "epoch": 10,
+              "loss": 0.04318088960357104,
+              "positive_weighted_loss_mean": 24.605331625785553,
+              "negative_loss_mean": 0.014936278290721236,
+              "positive_abs_logit_gradient_mean": 10.520060394517884,
+              "negative_abs_logit_gradient_mean": 0.01200457653258067,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00018912427893638992,
+              "max_preclip_gradient_norm": 0.49430960416793823,
+              "epoch_seconds": 72.35899999999674,
+              "elapsed_seconds": 722.7030000000086
+            },
+            {
+              "epoch": 11,
+              "loss": 0.041908735896286464,
+              "positive_weighted_loss_mean": 23.584032771259455,
+              "negative_loss_mean": 0.014837078075543323,
+              "positive_abs_logit_gradient_mean": 10.195736265231806,
+              "negative_abs_logit_gradient_mean": 0.011859019066528535,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00011363793320239159,
+              "max_preclip_gradient_norm": 0.6602158546447754,
+              "epoch_seconds": 72.43700000000536,
+              "elapsed_seconds": 795.1720000000205
+            },
+            {
+              "epoch": 12,
+              "loss": 0.040887335023046485,
+              "positive_weighted_loss_mean": 22.990844328129796,
+              "negative_loss_mean": 0.014496623975795347,
+              "positive_abs_logit_gradient_mean": 9.918270146587888,
+              "negative_abs_logit_gradient_mean": 0.011432110238423276,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 6.61852325126926e-05,
+              "max_preclip_gradient_norm": 0.9865987300872803,
+              "epoch_seconds": 72.7039999999979,
+              "elapsed_seconds": 867.9070000000065
+            }
+          ],
+          "training_seconds": 867.9070000000065,
+          "prediction_seconds": 6.452999999979511,
+          "prediction_rows": 422088,
+          "reload_max_abs_diff": 0.0,
+          "parameters": 88571,
+          "trainable_parameters": 88571,
+          "whole_process_peak_bytes": 3827089408,
+          "metrics": {
+            "tp_daily10": 137,
+            "reviewed": 3650,
+            "positives": 683,
+            "precision": 0.03753424657534247,
+            "recall": 0.2005856515373353,
+            "false_positives": 3513,
+            "false_negatives": 546,
+            "f1_at_daily10": 0.06323563351027002,
+            "ap": 0.030494304562766004,
+            "auroc": 0.8622754394275735,
+            "monthly": {
+              "2018-01": {
+                "rows": 36208,
+                "positives": 56,
+                "reviewed": 310,
+                "tp": 11,
+                "precision": 0.035483870967741936,
+                "recall": 0.19642857142857142
+              },
+              "2018-02": {
+                "rows": 32307,
+                "positives": 35,
+                "reviewed": 280,
+                "tp": 8,
+                "precision": 0.02857142857142857,
+                "recall": 0.22857142857142856
+              },
+              "2018-03": {
+                "rows": 35696,
+                "positives": 89,
+                "reviewed": 310,
+                "tp": 18,
+                "precision": 0.05806451612903226,
+                "recall": 0.20224719101123595
+              },
+              "2018-04": {
+                "rows": 34591,
+                "positives": 79,
+                "reviewed": 300,
+                "tp": 15,
+                "precision": 0.05,
+                "recall": 0.189873417721519
+              },
+              "2018-05": {
+                "rows": 36085,
+                "positives": 21,
+                "reviewed": 310,
+                "tp": 2,
+                "precision": 0.0064516129032258064,
+                "recall": 0.09523809523809523
+              },
+              "2018-06": {
+                "rows": 34721,
+                "positives": 48,
+                "reviewed": 300,
+                "tp": 14,
+                "precision": 0.04666666666666667,
+                "recall": 0.2916666666666667
+              },
+              "2018-07": {
+                "rows": 36049,
+                "positives": 62,
+                "reviewed": 310,
+                "tp": 10,
+                "precision": 0.03225806451612903,
+                "recall": 0.16129032258064516
+              },
+              "2018-08": {
+                "rows": 35829,
+                "positives": 64,
+                "reviewed": 310,
+                "tp": 5,
+                "precision": 0.016129032258064516,
+                "recall": 0.078125
+              },
+              "2018-09": {
+                "rows": 34595,
+                "positives": 59,
+                "reviewed": 300,
+                "tp": 14,
+                "precision": 0.04666666666666667,
+                "recall": 0.23728813559322035
+              },
+              "2018-10": {
+                "rows": 35335,
+                "positives": 28,
+                "reviewed": 310,
+                "tp": 4,
+                "precision": 0.012903225806451613,
+                "recall": 0.14285714285714285
+              },
+              "2018-11": {
+                "rows": 34748,
+                "positives": 114,
+                "reviewed": 300,
+                "tp": 28,
+                "precision": 0.09333333333333334,
+                "recall": 0.24561403508771928
+              },
+              "2018-12": {
+                "rows": 35924,
+                "positives": 28,
+                "reviewed": 310,
+                "tp": 8,
+                "precision": 0.025806451612903226,
+                "recall": 0.2857142857142857
+              }
+            },
+            "channel": {
+              "Chip Transaction": {
+                "rows": 310348,
+                "positives": 564,
+                "reviewed": 2489,
+                "tp": 98,
+                "precision": 0.03937324226597027,
+                "recall": 0.17375886524822695
+              },
+              "Online Transaction": {
+                "rows": 50576,
+                "positives": 28,
+                "reviewed": 643,
+                "tp": 14,
+                "precision": 0.02177293934681182,
+                "recall": 0.5
+              },
+              "Swipe Transaction": {
+                "rows": 61164,
+                "positives": 91,
+                "reviewed": 518,
+                "tp": 25,
+                "precision": 0.04826254826254826,
+                "recall": 0.27472527472527475
+              }
+            }
+          },
+          "model_artifacts": {
+            "model.pt": "8468b074b634d340264740d598e1f903c1e77ef106e56fcca1e5ea52426bdd6a",
+            "preprocessor.joblib": "711b9367f32da05a8e349ec23ec176c394d68cca96f1f103437a4d82083c56aa"
+          },
+          "loss": "Fully supervised weighted BCE; no consistency/semantic mechanism",
+          "training_positive_rows": 967,
+          "training_negative_rows": 840925,
+          "representation": "Learned normalized MCC auxiliary + original raw/no-channel residual core",
+          "statistics_fields": null
+        },
+        {
+          "config": {
+            "mode": "transformer",
+            "self_control": true,
+            "k": 6,
+            "seed": 43,
+            "width": 64,
+            "blocks": 2,
+            "dropout": 0.15,
+            "learning_rate": 0.001,
+            "weight_decay": 0.01,
+            "positive_weight": 20,
+            "batch_size": 4096,
+            "threads": 4
+          },
+          "epochs": 12,
+          "curves": [
+            {
+              "epoch": 1,
+              "loss": 0.08346055605646412,
+              "positive_weighted_loss_mean": 50.351943401664094,
+              "negative_loss_mean": 0.025655611116856297,
+              "positive_abs_logit_gradient_mean": 16.825453719777183,
+              "negative_abs_logit_gradient_mean": 0.023393780840744914,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.001,
+              "max_preclip_gradient_norm": 3.8712098598480225,
+              "epoch_seconds": 72.34299999999348,
+              "elapsed_seconds": 72.35899999999674
+            },
+            {
+              "epoch": 2,
+              "loss": 0.06434441887658805,
+              "positive_weighted_loss_mean": 38.944246833055686,
+              "negative_loss_mean": 0.019635478434588342,
+              "positive_abs_logit_gradient_mean": 14.533975792522885,
+              "negative_abs_logit_gradient_mean": 0.017194852883698743,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0009838147674873074,
+              "max_preclip_gradient_norm": 0.4619336426258087,
+              "epoch_seconds": 72.96799999999348,
+              "elapsed_seconds": 145.35899999999674
+            },
+            {
+              "epoch": 3,
+              "loss": 0.05832472492293498,
+              "positive_weighted_loss_mean": 34.604602990254,
+              "negative_loss_mean": 0.018599123745677366,
+              "positive_abs_logit_gradient_mean": 13.515695021342344,
+              "negative_abs_logit_gradient_mean": 0.015930360844590544,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0009363620667976084,
+              "max_preclip_gradient_norm": 0.4853094220161438,
+              "epoch_seconds": 73.10899999999674,
+              "elapsed_seconds": 218.5
+            },
+            {
+              "epoch": 4,
+              "loss": 0.05466164263095511,
+              "positive_weighted_loss_mean": 32.00009465538112,
+              "negative_loss_mean": 0.01792681606961944,
+              "positive_abs_logit_gradient_mean": 12.769030051246178,
+              "negative_abs_logit_gradient_mean": 0.015008431264604744,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00086087572106361,
+              "max_preclip_gradient_norm": 0.5548975467681885,
+              "epoch_seconds": 73.25,
+              "elapsed_seconds": 291.78100000001723
+            },
+            {
+              "epoch": 5,
+              "loss": 0.05254316564150232,
+              "positive_weighted_loss_mean": 30.698814836381757,
+              "negative_loss_mean": 0.017302277063144692,
+              "positive_abs_logit_gradient_mean": 12.473611354334771,
+              "negative_abs_logit_gradient_mean": 0.014407781834628866,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0007624999999999999,
+              "max_preclip_gradient_norm": 0.4524618089199066,
+              "epoch_seconds": 71.84400000001187,
+              "elapsed_seconds": 363.64100000000326
+            },
+            {
+              "epoch": 6,
+              "loss": 0.049813718513531995,
+              "positive_weighted_loss_mean": 28.947972416754467,
+              "negative_loss_mean": 0.01658302636691895,
+              "positive_abs_logit_gradient_mean": 11.80787335260701,
+              "negative_abs_logit_gradient_mean": 0.013620427497931588,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0006479390464236973,
+              "max_preclip_gradient_norm": 0.4561294615268707,
+              "epoch_seconds": 74.75,
+              "elapsed_seconds": 438.4219999999914
+            },
+            {
+              "epoch": 7,
+              "loss": 0.048141073651126236,
+              "positive_weighted_loss_mean": 27.598107528785146,
+              "negative_loss_mean": 0.016460700483197678,
+              "positive_abs_logit_gradient_mean": 11.484642833070646,
+              "negative_abs_logit_gradient_mean": 0.013472816607230348,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0005249999999999999,
+              "max_preclip_gradient_norm": 0.4831406772136688,
+              "epoch_seconds": 71.75,
+              "elapsed_seconds": 510.2030000000086
+            },
+            {
+              "epoch": 8,
+              "loss": 0.046419426839343754,
+              "positive_weighted_loss_mean": 26.66808106425876,
+              "negative_loss_mean": 0.015806534367360126,
+              "positive_abs_logit_gradient_mean": 11.055392520011026,
+              "negative_abs_logit_gradient_mean": 0.01270344964381322,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0004020609535763026,
+              "max_preclip_gradient_norm": 0.6344246864318848,
+              "epoch_seconds": 77.03200000000652,
+              "elapsed_seconds": 587.2660000000033
+            },
+            {
+              "epoch": 9,
+              "loss": 0.04510242335165421,
+              "positive_weighted_loss_mean": 25.59226568679652,
+              "negative_loss_mean": 0.015725122859993505,
+              "positive_abs_logit_gradient_mean": 10.845768509137963,
+              "negative_abs_logit_gradient_mean": 0.012617955697037489,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00028750000000000005,
+              "max_preclip_gradient_norm": 0.5318886041641235,
+              "epoch_seconds": 75.5,
+              "elapsed_seconds": 662.7969999999914
+            },
+            {
+              "epoch": 10,
+              "loss": 0.04378202099050925,
+              "positive_weighted_loss_mean": 24.907933300258946,
+              "negative_loss_mean": 0.015190132073749064,
+              "positive_abs_logit_gradient_mean": 10.620666841933005,
+              "negative_abs_logit_gradient_mean": 0.012193335601101698,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00018912427893638992,
+              "max_preclip_gradient_norm": 0.6756370663642883,
+              "epoch_seconds": 72.46899999998277,
+              "elapsed_seconds": 735.2969999999914
+            },
+            {
+              "epoch": 11,
+              "loss": 0.04290171863920836,
+              "positive_weighted_loss_mean": 24.336027016807368,
+              "negative_loss_mean": 0.014966466382974733,
+              "positive_abs_logit_gradient_mean": 10.39933444228266,
+              "negative_abs_logit_gradient_mean": 0.011897476118718145,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00011363793320239159,
+              "max_preclip_gradient_norm": 0.6242027878761292,
+              "epoch_seconds": 71.40599999998813,
+              "elapsed_seconds": 806.7339999999967
+            },
+            {
+              "epoch": 12,
+              "loss": 0.04249010336181982,
+              "positive_weighted_loss_mean": 23.869665845596803,
+              "negative_loss_mean": 0.015090657556922064,
+              "positive_abs_logit_gradient_mean": 10.293813434233956,
+              "negative_abs_logit_gradient_mean": 0.01183638022806931,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 6.61852325126926e-05,
+              "max_preclip_gradient_norm": 0.5726543068885803,
+              "epoch_seconds": 76.67199999999139,
+              "elapsed_seconds": 883.4219999999914
+            }
+          ],
+          "training_seconds": 883.4370000000054,
+          "prediction_seconds": 6.375,
+          "prediction_rows": 422088,
+          "reload_max_abs_diff": 0.0,
+          "parameters": 88571,
+          "trainable_parameters": 88571,
+          "whole_process_peak_bytes": 3827089408,
+          "metrics": {
+            "tp_daily10": 137,
+            "reviewed": 3650,
+            "positives": 683,
+            "precision": 0.03753424657534247,
+            "recall": 0.2005856515373353,
+            "false_positives": 3513,
+            "false_negatives": 546,
+            "f1_at_daily10": 0.06323563351027002,
+            "ap": 0.028328388151776733,
+            "auroc": 0.8590727042699992,
+            "monthly": {
+              "2018-01": {
+                "rows": 36208,
+                "positives": 56,
+                "reviewed": 310,
+                "tp": 12,
+                "precision": 0.03870967741935484,
+                "recall": 0.21428571428571427
+              },
+              "2018-02": {
+                "rows": 32307,
+                "positives": 35,
+                "reviewed": 280,
+                "tp": 7,
+                "precision": 0.025,
+                "recall": 0.2
+              },
+              "2018-03": {
+                "rows": 35696,
+                "positives": 89,
+                "reviewed": 310,
+                "tp": 19,
+                "precision": 0.06129032258064516,
+                "recall": 0.21348314606741572
+              },
+              "2018-04": {
+                "rows": 34591,
+                "positives": 79,
+                "reviewed": 300,
+                "tp": 15,
+                "precision": 0.05,
+                "recall": 0.189873417721519
+              },
+              "2018-05": {
+                "rows": 36085,
+                "positives": 21,
+                "reviewed": 310,
+                "tp": 3,
+                "precision": 0.00967741935483871,
+                "recall": 0.14285714285714285
+              },
+              "2018-06": {
+                "rows": 34721,
+                "positives": 48,
+                "reviewed": 300,
+                "tp": 12,
+                "precision": 0.04,
+                "recall": 0.25
+              },
+              "2018-07": {
+                "rows": 36049,
+                "positives": 62,
+                "reviewed": 310,
+                "tp": 11,
+                "precision": 0.035483870967741936,
+                "recall": 0.1774193548387097
+              },
+              "2018-08": {
+                "rows": 35829,
+                "positives": 64,
+                "reviewed": 310,
+                "tp": 3,
+                "precision": 0.00967741935483871,
+                "recall": 0.046875
+              },
+              "2018-09": {
+                "rows": 34595,
+                "positives": 59,
+                "reviewed": 300,
+                "tp": 13,
+                "precision": 0.043333333333333335,
+                "recall": 0.22033898305084745
+              },
+              "2018-10": {
+                "rows": 35335,
+                "positives": 28,
+                "reviewed": 310,
+                "tp": 9,
+                "precision": 0.02903225806451613,
+                "recall": 0.32142857142857145
+              },
+              "2018-11": {
+                "rows": 34748,
+                "positives": 114,
+                "reviewed": 300,
+                "tp": 24,
+                "precision": 0.08,
+                "recall": 0.21052631578947367
+              },
+              "2018-12": {
+                "rows": 35924,
+                "positives": 28,
+                "reviewed": 310,
+                "tp": 9,
+                "precision": 0.02903225806451613,
+                "recall": 0.32142857142857145
+              }
+            },
+            "channel": {
+              "Chip Transaction": {
+                "rows": 310348,
+                "positives": 564,
+                "reviewed": 2445,
+                "tp": 103,
+                "precision": 0.04212678936605317,
+                "recall": 0.18262411347517732
+              },
+              "Online Transaction": {
+                "rows": 50576,
+                "positives": 28,
+                "reviewed": 688,
+                "tp": 11,
+                "precision": 0.015988372093023256,
+                "recall": 0.39285714285714285
+              },
+              "Swipe Transaction": {
+                "rows": 61164,
+                "positives": 91,
+                "reviewed": 517,
+                "tp": 23,
+                "precision": 0.04448742746615087,
+                "recall": 0.25274725274725274
+              }
+            }
+          },
+          "model_artifacts": {
+            "model.pt": "10b320b9ef034a717b882b6012851c08ef24c81c3d25a84fadb7fc49e029f747",
+            "preprocessor.joblib": "4658b2bb4a52013e496ece0fa22f68b1e6c21b89768d2a830c402bf2d76f3343"
+          },
+          "loss": "Fully supervised weighted BCE; no consistency/semantic mechanism",
+          "training_positive_rows": 967,
+          "training_negative_rows": 840925,
+          "representation": "Learned normalized MCC auxiliary + original raw/no-channel residual core",
+          "statistics_fields": null
+        },
+        {
+          "config": {
+            "mode": "transformer",
+            "self_control": true,
+            "k": 6,
+            "seed": 44,
+            "width": 64,
+            "blocks": 2,
+            "dropout": 0.15,
+            "learning_rate": 0.001,
+            "weight_decay": 0.01,
+            "positive_weight": 20,
+            "batch_size": 4096,
+            "threads": 4
+          },
+          "epochs": 12,
+          "curves": [
+            {
+              "epoch": 1,
+              "loss": 0.08795330625371658,
+              "positive_weighted_loss_mean": 50.80990311229118,
+              "negative_loss_mean": 0.029626909592745828,
+              "positive_abs_logit_gradient_mean": 16.86808425366817,
+              "negative_abs_logit_gradient_mean": 0.0263540364397647,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.001,
+              "max_preclip_gradient_norm": 5.429320812225342,
+              "epoch_seconds": 72.60999999998603,
+              "elapsed_seconds": 72.625
+            },
+            {
+              "epoch": 2,
+              "loss": 0.06596299992197352,
+              "positive_weighted_loss_mean": 39.933073697686815,
+              "negative_loss_mean": 0.020118845430917312,
+              "positive_abs_logit_gradient_mean": 14.762587149855763,
+              "negative_abs_logit_gradient_mean": 0.017832402451786782,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0009838147674873074,
+              "max_preclip_gradient_norm": 0.3977281451225281,
+              "epoch_seconds": 71.93700000000536,
+              "elapsed_seconds": 144.59299999999348
+            },
+            {
+              "epoch": 3,
+              "loss": 0.0600022805972531,
+              "positive_weighted_loss_mean": 36.10574177995463,
+              "negative_loss_mean": 0.018552413093500437,
+              "positive_abs_logit_gradient_mean": 13.664882539593323,
+              "negative_abs_logit_gradient_mean": 0.01599818947574849,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0009363620667976084,
+              "max_preclip_gradient_norm": 0.4473327100276947,
+              "epoch_seconds": 71.57800000000861,
+              "elapsed_seconds": 216.20300000000861
+            },
+            {
+              "epoch": 4,
+              "loss": 0.055240937656925594,
+              "positive_weighted_loss_mean": 32.47751536919141,
+              "negative_loss_mean": 0.017957780308795322,
+              "positive_abs_logit_gradient_mean": 12.838592318245889,
+              "negative_abs_logit_gradient_mean": 0.015191765111660168,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00086087572106361,
+              "max_preclip_gradient_norm": 0.6068877577781677,
+              "epoch_seconds": 72.20300000000861,
+              "elapsed_seconds": 288.43700000000536
+            },
+            {
+              "epoch": 5,
+              "loss": 0.052300255112764336,
+              "positive_weighted_loss_mean": 30.711435343141762,
+              "negative_loss_mean": 0.01704457444711152,
+              "positive_abs_logit_gradient_mean": 12.31300724945739,
+              "negative_abs_logit_gradient_mean": 0.014302812693047248,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0007624999999999999,
+              "max_preclip_gradient_norm": 0.4247184991836548,
+              "epoch_seconds": 71.28200000000652,
+              "elapsed_seconds": 359.75
+            },
+            {
+              "epoch": 6,
+              "loss": 0.04983374843720975,
+              "positive_weighted_loss_mean": 28.918844686545654,
+              "negative_loss_mean": 0.01663657430569475,
+              "positive_abs_logit_gradient_mean": 11.807642836605257,
+              "negative_abs_logit_gradient_mean": 0.01374009779801879,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0006479390464236973,
+              "max_preclip_gradient_norm": 0.4542725384235382,
+              "epoch_seconds": 72.92200000002049,
+              "elapsed_seconds": 432.7030000000086
+            },
+            {
+              "epoch": 7,
+              "loss": 0.047560486963300175,
+              "positive_weighted_loss_mean": 27.311169918591876,
+              "negative_loss_mean": 0.01620940285240473,
+              "positive_abs_logit_gradient_mean": 11.376266236882175,
+              "negative_abs_logit_gradient_mean": 0.013262640555598072,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0005249999999999999,
+              "max_preclip_gradient_norm": 0.6763448715209961,
+              "epoch_seconds": 71.125,
+              "elapsed_seconds": 503.85899999999674
+            },
+            {
+              "epoch": 8,
+              "loss": 0.04583209787887919,
+              "positive_weighted_loss_mean": 26.287261685023264,
+              "negative_loss_mean": 0.01565644320329687,
+              "positive_abs_logit_gradient_mean": 11.074261347534984,
+              "negative_abs_logit_gradient_mean": 0.01278840688603434,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.0004020609535763026,
+              "max_preclip_gradient_norm": 0.47220149636268616,
+              "epoch_seconds": 72.73499999998603,
+              "elapsed_seconds": 576.625
+            },
+            {
+              "epoch": 9,
+              "loss": 0.044187328202567266,
+              "positive_weighted_loss_mean": 25.415968799911585,
+              "negative_loss_mean": 0.015011703019888233,
+              "positive_abs_logit_gradient_mean": 10.70287857553705,
+              "negative_abs_logit_gradient_mean": 0.012162904798068405,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00028750000000000005,
+              "max_preclip_gradient_norm": 0.5726235508918762,
+              "epoch_seconds": 74.375,
+              "elapsed_seconds": 651.0309999999881
+            },
+            {
+              "epoch": 10,
+              "loss": 0.04309790807741909,
+              "positive_weighted_loss_mean": 24.552172740557324,
+              "negative_loss_mean": 0.014914329828885561,
+              "positive_abs_logit_gradient_mean": 10.512363470821125,
+              "negative_abs_logit_gradient_mean": 0.01202452665419082,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00018912427893638992,
+              "max_preclip_gradient_norm": 0.5493572950363159,
+              "epoch_seconds": 72.46899999998277,
+              "elapsed_seconds": 723.5309999999881
+            },
+            {
+              "epoch": 11,
+              "loss": 0.04191665566549084,
+              "positive_weighted_loss_mean": 23.49292212361017,
+              "negative_loss_mean": 0.014949777177133115,
+              "positive_abs_logit_gradient_mean": 10.20640376484505,
+              "negative_abs_logit_gradient_mean": 0.01198275986645449,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 0.00011363793320239159,
+              "max_preclip_gradient_norm": 0.4444189667701721,
+              "epoch_seconds": 74.8289999999979,
+              "elapsed_seconds": 798.375
+            },
+            {
+              "epoch": 12,
+              "loss": 0.04122122691739483,
+              "positive_weighted_loss_mean": 23.254552353007842,
+              "negative_loss_mean": 0.0145276563118027,
+              "positive_abs_logit_gradient_mean": 10.148867912351653,
+              "negative_abs_logit_gradient_mean": 0.011624980334184873,
+              "rows": 841892,
+              "positive_rows": 967,
+              "learning_rate": 6.61852325126926e-05,
+              "max_preclip_gradient_norm": 0.5556479096412659,
+              "epoch_seconds": 73.71900000001187,
+              "elapsed_seconds": 872.125
+            }
+          ],
+          "training_seconds": 872.140000000014,
+          "prediction_seconds": 6.625,
+          "prediction_rows": 422088,
+          "reload_max_abs_diff": 0.0,
+          "parameters": 88571,
+          "trainable_parameters": 88571,
+          "whole_process_peak_bytes": 3827089408,
+          "metrics": {
+            "tp_daily10": 137,
+            "reviewed": 3650,
+            "positives": 683,
+            "precision": 0.03753424657534247,
+            "recall": 0.2005856515373353,
+            "false_positives": 3513,
+            "false_negatives": 546,
+            "f1_at_daily10": 0.06323563351027002,
+            "ap": 0.031390247086329204,
+            "auroc": 0.8924126210091692,
+            "monthly": {
+              "2018-01": {
+                "rows": 36208,
+                "positives": 56,
+                "reviewed": 310,
+                "tp": 13,
+                "precision": 0.041935483870967745,
+                "recall": 0.23214285714285715
+              },
+              "2018-02": {
+                "rows": 32307,
+                "positives": 35,
+                "reviewed": 280,
+                "tp": 7,
+                "precision": 0.025,
+                "recall": 0.2
+              },
+              "2018-03": {
+                "rows": 35696,
+                "positives": 89,
+                "reviewed": 310,
+                "tp": 14,
+                "precision": 0.04516129032258064,
+                "recall": 0.15730337078651685
+              },
+              "2018-04": {
+                "rows": 34591,
+                "positives": 79,
+                "reviewed": 300,
+                "tp": 17,
+                "precision": 0.056666666666666664,
+                "recall": 0.21518987341772153
+              },
+              "2018-05": {
+                "rows": 36085,
+                "positives": 21,
+                "reviewed": 310,
+                "tp": 3,
+                "precision": 0.00967741935483871,
+                "recall": 0.14285714285714285
+              },
+              "2018-06": {
+                "rows": 34721,
+                "positives": 48,
+                "reviewed": 300,
+                "tp": 11,
+                "precision": 0.03666666666666667,
+                "recall": 0.22916666666666666
+              },
+              "2018-07": {
+                "rows": 36049,
+                "positives": 62,
+                "reviewed": 310,
+                "tp": 12,
+                "precision": 0.03870967741935484,
+                "recall": 0.1935483870967742
+              },
+              "2018-08": {
+                "rows": 35829,
+                "positives": 64,
+                "reviewed": 310,
+                "tp": 4,
+                "precision": 0.012903225806451613,
+                "recall": 0.0625
+              },
+              "2018-09": {
+                "rows": 34595,
+                "positives": 59,
+                "reviewed": 300,
+                "tp": 14,
+                "precision": 0.04666666666666667,
+                "recall": 0.23728813559322035
+              },
+              "2018-10": {
+                "rows": 35335,
+                "positives": 28,
+                "reviewed": 310,
+                "tp": 9,
+                "precision": 0.02903225806451613,
+                "recall": 0.32142857142857145
+              },
+              "2018-11": {
+                "rows": 34748,
+                "positives": 114,
+                "reviewed": 300,
+                "tp": 23,
+                "precision": 0.07666666666666666,
+                "recall": 0.20175438596491227
+              },
+              "2018-12": {
+                "rows": 35924,
+                "positives": 28,
+                "reviewed": 310,
+                "tp": 10,
+                "precision": 0.03225806451612903,
+                "recall": 0.35714285714285715
+              }
+            },
+            "channel": {
+              "Chip Transaction": {
+                "rows": 310348,
+                "positives": 564,
+                "reviewed": 2445,
+                "tp": 94,
+                "precision": 0.03844580777096115,
+                "recall": 0.16666666666666666
+              },
+              "Online Transaction": {
+                "rows": 50576,
+                "positives": 28,
+                "reviewed": 639,
+                "tp": 12,
+                "precision": 0.018779342723004695,
+                "recall": 0.42857142857142855
+              },
+              "Swipe Transaction": {
+                "rows": 61164,
+                "positives": 91,
+                "reviewed": 566,
+                "tp": 31,
+                "precision": 0.054770318021201414,
+                "recall": 0.34065934065934067
+              }
+            }
+          },
+          "model_artifacts": {
+            "model.pt": "90358ca7cfb831c9dcbdddd875359b96b4f66838aa9f5a3101d652468326b493",
+            "preprocessor.joblib": "823bbc27932c6e341e15f69dfec7cc07a50ebee7d0ed85ecb431fa755e37204a"
+          },
+          "loss": "Fully supervised weighted BCE; no consistency/semantic mechanism",
+          "training_positive_rows": 967,
+          "training_negative_rows": 840925,
+          "representation": "Learned normalized MCC auxiliary + original raw/no-channel residual core",
+          "statistics_fields": null
+        }
+      ],
+      "ensemble": {
+        "tp_daily10": 135,
+        "reviewed": 3650,
+        "positives": 683,
+        "precision": 0.036986301369863014,
+        "recall": 0.19765739385065886,
+        "false_positives": 3515,
+        "false_negatives": 548,
+        "f1_at_daily10": 0.06231248557581352,
+        "ap": 0.031646548793891255,
+        "auroc": 0.8857597961139654,
+        "monthly": {
+          "2018-01": {
+            "rows": 36208,
+            "positives": 56,
+            "reviewed": 310,
+            "tp": 11,
+            "precision": 0.035483870967741936,
+            "recall": 0.19642857142857142
+          },
+          "2018-02": {
+            "rows": 32307,
+            "positives": 35,
+            "reviewed": 280,
+            "tp": 7,
+            "precision": 0.025,
+            "recall": 0.2
+          },
+          "2018-03": {
+            "rows": 35696,
+            "positives": 89,
+            "reviewed": 310,
+            "tp": 16,
+            "precision": 0.05161290322580645,
+            "recall": 0.1797752808988764
+          },
+          "2018-04": {
+            "rows": 34591,
+            "positives": 79,
+            "reviewed": 300,
+            "tp": 15,
+            "precision": 0.05,
+            "recall": 0.189873417721519
+          },
+          "2018-05": {
+            "rows": 36085,
+            "positives": 21,
+            "reviewed": 310,
+            "tp": 2,
+            "precision": 0.0064516129032258064,
+            "recall": 0.09523809523809523
+          },
+          "2018-06": {
+            "rows": 34721,
+            "positives": 48,
+            "reviewed": 300,
+            "tp": 12,
+            "precision": 0.04,
+            "recall": 0.25
+          },
+          "2018-07": {
+            "rows": 36049,
+            "positives": 62,
+            "reviewed": 310,
+            "tp": 9,
+            "precision": 0.02903225806451613,
+            "recall": 0.14516129032258066
+          },
+          "2018-08": {
+            "rows": 35829,
+            "positives": 64,
+            "reviewed": 310,
+            "tp": 5,
+            "precision": 0.016129032258064516,
+            "recall": 0.078125
+          },
+          "2018-09": {
+            "rows": 34595,
+            "positives": 59,
+            "reviewed": 300,
+            "tp": 14,
+            "precision": 0.04666666666666667,
+            "recall": 0.23728813559322035
+          },
+          "2018-10": {
+            "rows": 35335,
+            "positives": 28,
+            "reviewed": 310,
+            "tp": 9,
+            "precision": 0.02903225806451613,
+            "recall": 0.32142857142857145
+          },
+          "2018-11": {
+            "rows": 34748,
+            "positives": 114,
+            "reviewed": 300,
+            "tp": 25,
+            "precision": 0.08333333333333333,
+            "recall": 0.21929824561403508
+          },
+          "2018-12": {
+            "rows": 35924,
+            "positives": 28,
+            "reviewed": 310,
+            "tp": 10,
+            "precision": 0.03225806451612903,
+            "recall": 0.35714285714285715
+          }
+        },
+        "channel": {
+          "Chip Transaction": {
+            "rows": 310348,
+            "positives": 564,
+            "reviewed": 2457,
+            "tp": 93,
+            "precision": 0.03785103785103785,
+            "recall": 0.16489361702127658
+          },
+          "Online Transaction": {
+            "rows": 50576,
+            "positives": 28,
+            "reviewed": 660,
+            "tp": 13,
+            "precision": 0.019696969696969695,
+            "recall": 0.4642857142857143
+          },
+          "Swipe Transaction": {
+            "rows": 61164,
+            "positives": 91,
+            "reviewed": 533,
+            "tp": 29,
+            "precision": 0.054409005628517824,
+            "recall": 0.31868131868131866
+          }
+        }
+      }
     }
   },
   "summary_sha256": {
+    "attention": "bd5b7271cd6485fcbf062c2c6e82a47ab5fb44f875bc235134e136f32f2fee3e",
     "decay": "bb6045e64aca7f75a3ccf8267d21e6d3041fa4a3d6f7f0cc2d34618191841a38",
     "decay-self": "5f14bcfab670fb31cf8ae352d3b33e579091b8170069573aeb9f97152859c62d",
     "flat": "c0b2b99364533f3a4a3204c8abd4f6ee469c23696cf11fc62efc4da24336f782",
@@ -9314,7 +12786,9 @@
     "gru-self": "2c57a380dc177bce3fb1fe7f342cd394b327eb8ea6fc11435e7a147cfddbde55",
     "mean": "da6ef17c066547881af36dc89f019d3e0bdfcb421aaec8fdf8ba95a0d51f6ceb",
     "mean-self": "15791bf8d6db1972e5620c3cde003b8236d4d5036b5fe0cd3277072cf8bd1d04",
-    "statistics": "8abeeb4eb72b31af198e655a696edb6e20216d219e52053707ea1ac43dde2161"
+    "statistics": "8abeeb4eb72b31af198e655a696edb6e20216d219e52053707ea1ac43dde2161",
+    "transformer": "1551c25226939fc65f4b8937780c788530654646789bc155572017c4ef807bf6",
+    "transformer-self": "ec5863eea437db3c7cb774e2817a0feccfd7bc86983de043ed09b091099ed4c3"
   },
   "main_training_protocol_sha256": "fec6f4b4faa6df55979318cdf8b21fda260c7e0cebd42f8c45ea8ca187af8207",
   "default_detector_changed": false,

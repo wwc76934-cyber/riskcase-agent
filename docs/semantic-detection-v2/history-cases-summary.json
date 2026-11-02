@@ -1,0 +1,39 @@
+{
+  "status": "descriptive_case_component_complete_not_final_GateB",
+  "case_count": 72,
+  "comparisons": {
+    "frozen_residual": {
+      "added_positive": 114,
+      "displaced_positive": 21,
+      "net": 93
+    },
+    "mean-self": {
+      "added_positive": 103,
+      "displaced_positive": 25,
+      "net": 78
+    },
+    "flat": {
+      "added_positive": 101,
+      "displaced_positive": 24,
+      "net": 77
+    },
+    "statistics": {
+      "added_positive": 96,
+      "displaced_positive": 32,
+      "net": 64
+    }
+  },
+  "local_report": "runs/semantic-v21-history-cases-01/report.json",
+  "local_report_sha256": "aed1cf8398b0fe6214dd520df50362546045f634a56a376d98e827c848955a37",
+  "model_score_sha256": {
+    "mean": "ea9942745bba72a8e6a1bd6145f7dfa56eddd8559d95b347e155bea3601f6acb",
+    "mean-self": "15db99f57e3c1dc4af4998d2498857fd8a870e6f5fe971ece69ae7c11cf7510a",
+    "flat": "0b34d732ff9265c068842ecc17ae20e91dce217525e19bc646cd57dbf7f8406c",
+    "statistics": "12840dfacfac76b01b16c14133c87de850c05777e27315de34d8d98905ab2562",
+    "frozen_residual": "fa9f358116aa6686b0bb7144346b45cca8611e49fcdaf557a998b2358b56025c"
+  },
+  "selection": "Fixed review-tie hash, first6 per outcome stratum; not selected for a persuasive narrative",
+  "limits": "Observed source history is not an attribution of model score. Evaluation positives/negatives from synthetic benchmark, not real investigation verdicts. Original point counts retain user-level scope; new neighbor/statistic scope is user-card.",
+  "raw_case_facts_uploaded": false,
+  "full_model_replay_complete": false
+}

@@ -47,7 +47,7 @@ def progress(history_run, output):
     return result
 
 
-def complete(source_root, history_run, broad_run, history_audit, broad_audit, tree_run, output, tests_xml, *, resource_run, primary_resources):
+def complete(source_root, history_run, broad_run, history_audit, broad_audit, tree_run, output, tests_xml, *, resource_run, primary_resources, case_run):
     """Render only after registered fitting and every independent replay have passed."""
     import os
     import shutil
@@ -72,6 +72,13 @@ def complete(source_root, history_run, broad_run, history_audit, broad_audit, tr
         raise ValueError('All 43 newly trained model instances must be independently replayed')
     if audit['report_sha256'] != digest(history_run/'report.json') or baudit['source_report_sha256'] != digest(broad_run/'report.json') or baudit['primary_audit_sha256'] != digest(history_audit/'report.json'):
         raise ValueError('Independent audits refer to different experiment bytes')
+    cases = read(Path(case_run)/'report.json')
+    if cases['model_score_sha256']['mean'] != digest(history_run/'mean/ensemble.npy'):
+        raise ValueError('Case gallery belongs to different Mean scores')
+    for baseline,value in cases['comparisons'].items():
+        verified = audit['comparisons']['mean_vs_'+baseline]
+        if (value['added_positive'],value['displaced_positive'],value['net']) != (verified['added_positive'],verified['removed_positive'],verified['net']):
+            raise ValueError('Case aggregation differs from complete independent queue audit')
     xml = ET.parse(tests_xml).getroot()
     suites = [xml] if xml.tag == 'testsuite' else list(xml.iter('testsuite'))
     tests = {key: sum(int(s.attrib.get(key, 0)) for s in suites) for key in ('tests', 'failures', 'errors', 'skipped')}
@@ -228,6 +235,10 @@ def complete(source_root, history_run, broad_run, history_audit, broad_audit, tr
 
 全部为逐比较的开发期描述区间。7日循环区块固定5000次、seed1217，作为事后统一时间相关敏感性，未据结果选区块长度。它们不校正架构/历次开发选择，也不能创造独立测试；三seed不是三个独立数据集。99%描述区间保留在审计JSON，不挑较好看的区间报告。
 
+具体案例的聚合见HISTORY_CASES.md：Mean相对原冻结参考新增114、挤出21，净93；相对等参数self新增103、挤出25，净78。每个对照按预先固定哈希顺序各取新增正例、挤出正例、新增负例6条，共72条，均检查严格过去及同用户卡。案例计数已与本次完整独立队列核验逐项对上。
+
+逐笔源时间、金额与历史事实只保存在本机case run，不上传GitHub；仓库仅保留聚合与SHA256。观察到某种历史差异不等于已经识别模型得分原因，标签也仅是合成基准的评测标签，不能包装成真实调查结案。
+
 ## 渠道排序与强统计解释
 
 `history-channels.csv`逐条件给出各渠道审核名额、TP/FP、Precision/Recall，以及在该渠道全部交易内部计算的AP。分渠道AP不是重新给每渠道10名额，主业务队列始终所有渠道合计每日10。配额占比不是要求与交易占比机械相等，须结合捕获和误报看排序失衡是否改善。
@@ -317,6 +328,7 @@ CPU秒是各线程合计，不等于墙钟秒。本次原主进程从启动时�
     fig.tight_layout(); fig.savefig(output/'history-training.png', dpi=160); plt.close(fig)
     result = {'status': 'Gate_B_complete_and_independently_verified', 'registered_models': 38, 'posthoc_models': 5,
               'full_model_replays': 43, 'models': rows, 'within_channel': channels, 'architectures_vs_mean': architectures_vs_mean,
+              'case_gallery_sha256': digest(Path(case_run)/'report.json'), 'case_count': len(cases['cases']),
               'source_reports': {str(p): digest(p) for p in (history_run/'report.json', history_audit/'report.json', broad_run/'report.json', broad_audit/'report.json', tree_run/'report.json')},
               'tests': tests, 'tests_xml_sha256': digest(tests_xml), 'default_detector_changed': False,
               'independent_external_test': False, 'final_2019_read': False, 'paid_calls': 0}
