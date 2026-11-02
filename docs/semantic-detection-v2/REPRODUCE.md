@@ -116,7 +116,31 @@ Windows跨进程只读查询可能需要工具权限；不暂停/终止目标。
 已有这些目录时，必须改用新输出名；`report-supplementary --supplementary-map config/semantic-detection/v21-supplementary.json`可指定六个新run目录的映射，修改映射文件中的目录名使其与本次复现实际输出一致，再生成报告。路径值是runs下的目录名，不是源交易数据。B完整报告在全部独立核验后执行：
 
 ```powershell
-& ..\financial-report-agent\scripts\run_project.ps1 -m app.cli.semantic_detection_v21 queue-attribution --phase b --source-root ..\financial-report-agent --run runs/semantic-v21-b-01 --output runs/semantic-v21-queue-b-01
-& ..\financial-report-agent\scripts\run_project.ps1 -m app.cli.semantic_detection_v21 report-b --source-root ..\financial-report-agent --run runs/semantic-v21-b-01 --tests-xml runs/semantic-v21-initialization/regression-final.xml --output docs/semantic-detection-v2
+& ..\financial-report-agent\scripts\run_project.ps1 -m app.cli.semantic_detection_v21 queue-attribution --phase b --source-root ..\financial-report-agent --run runs/semantic-v21-b-01 --broad-run runs/semantic-v21-b-broad-01 --output runs/semantic-v21-queue-b-01
+& ..\financial-report-agent\scripts\run_project.ps1 -m app.cli.semantic_detection_v21 report-b --source-root ..\financial-report-agent --run runs/semantic-v21-b-01 --tests-xml runs/semantic-v21-initialization/all-tests-01.xml --output docs/semantic-detection-v2
 ```
+
+2026-11-02最新完整离线回归为1046项通过、0失败/错误，XML为`all-tests-02.xml`。B已按该XML重新生成最终报告。全部43模型全分数重载误差0，220维独立特征重建误差0；图像复核与217份原证据保护见history-review.json、preservation-final.json。之前239/240/1014为各原时点记录，不将它们相加成新的测试数。
+
+## C1只读预审
+
+```powershell
+& ..\financial-report-agent\scripts\run_project.ps1 -m app.cli.semantic_detection_source_admission --evidence config/semantic-detection/v21-c-source-evidence.json --output runs/new-c1-admission
+```
+
+只生成来源决定，不下载交易/文本/标签。官方代码版本、Git blob及SHA256在candidate-source-fingerprints.json，代码缓存未执行。IEEE官方登录与规则未接受，C2没有准入，不从镜像补齐。
+
+## D可控研究
+
+必须先复现并完成B全部43实例核验，再复核三份图像和技术判断。history-review.json的结构展示必要记录：history-results SHA及features.json、raw/normalized矩阵、预处理器四份产物SHA。新run不能照抄旧指纹；更新复核记录和v21-d.json中的B_review_sha256，冻结协议、提交代码，保持工作树干净后才能启动。此步骤是研究证据复核，不是批准更换默认检测器。
+
+以下为本次冻结run命令；复现必须使用全新的输出目录，并将后续--run/--audit/资源路径一起改为新目录。优化worker先只读取train，全部拟合完成后才打开本轮开发评分。
+
+```powershell
+& ..\financial-report-agent\scripts\run_project.ps1 -m app.cli.semantic_detection_semi run --source-root ..\financial-report-agent --output runs/semantic-v21-d-01 --resource-output runs/semantic-v21-d-resources-01/run.json
+& ..\financial-report-agent\scripts\run_project.ps1 -m app.cli.semantic_detection_semi audit --source-root ..\financial-report-agent --run runs/semantic-v21-d-01 --output runs/semantic-v21-d-audit-01 --resource-output runs/semantic-v21-d-resources-01/audit.json
+& ..\financial-report-agent\scripts\run_project.ps1 -m app.cli.semantic_detection_semi report --source-root ..\financial-report-agent --run runs/semantic-v21-d-01 --audit runs/semantic-v21-d-audit-01 --tests-xml runs/semantic-v21-initialization/all-tests-02.xml --output docs/semantic-detection-v2 --training-resources runs/semantic-v21-d-resources-01/run.json --audit-resources runs/semantic-v21-d-resources-01/audit.json --resource-output runs/semantic-v21-d-resources-01/report.json
+```
+
+32实例预算与9条件定义见GATE_D_PROTOCOL.md。available_at为假设的7日延迟，不称真实标签发现时间；不复用完整监督权重。常规Focal和类别权重匹配Focal都保留，防止将权重变化误认为调制效果。额外视图只改变内部激活，所有条件仍保留统一网络Dropout。条件草案下CLI拒绝启动的实际检查及16行自建EMA夹具核验保留在VALIDATION.json，不当作模型有效性证据。
 

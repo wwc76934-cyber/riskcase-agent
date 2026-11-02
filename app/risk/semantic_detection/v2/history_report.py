@@ -176,6 +176,37 @@ def complete(source_root, history_run, broad_run, history_audit, broad_audit, tr
     mean = next(r for r in rows if r['condition'] == 'mean')
     flat = next(r for r in rows if r['condition'] == 'flat')
     mself = next(r for r in rows if r['condition'] == 'mean-self')
+    strongest_stat = max((r for r in rows if r['condition'] in (
+        'statistics', 'posthoc_tree14', 'posthoc_broad_neural', 'posthoc_broad_tree')), key=lambda r: r['TP'])
+    history_point_gain = mean['TP']-flat['TP']
+    history_self_gain = mean['TP']-mself['TP']
+    stat_delta = mean['TP']-strongest_stat['TP']
+    statistical_reading = (
+        f"Mean比本轮已实现的最高分统计对照{strongest_stat['condition']}（TP{strongest_stat['TP']}）多{stat_delta}个捕获。"
+        "这只是点估计，须同时阅读上表新增/挤出和区间；不能外推为优于所有可能的历史统计。"
+        if stat_delta > 0 else
+        f"本轮最高分统计对照{strongest_stat['condition']}达到TP{strongest_stat['TP']}，Mean未超过它（差{stat_delta:+d}）。"
+        "这支持继续利用历史信息，但不支持把收益独占归因于神经Mean表示；统计方案的容量、损失与成本差异仍要单列。")
+    attention = next(r for r in rows if r['condition'] == 'attention')
+    attention_self = next(r for r in rows if r['condition'] == 'attention-self')
+    transformer = next(r for r in rows if r['condition'] == 'transformer')
+    technical_reading = (
+        f"Mean相对同预算平面增加{history_point_gain:+d}，相对同参数self增加{history_self_gain:+d}。"
+        "后一个对照削弱了仅增加容量的解释；广覆盖统计挑战进一步检验新增历史信息是否已经能由普通统计表达。"
+        + statistical_reading + "\n\n"
+        + f"Attention在当前设置达到TP{attention['TP']}，同参数self为{attention_self['TP']}，原冻结参考为122。"
+        "因此旧两轮Attention结果不能推广成注意力机制无效；输入、邻域与预算同时变化，也不能把本轮改善全部归因于多训练几轮。"
+        + f"Transformer的AP为{transformer['AP']:.6f}，Mean为{mean['AP']:.6f}，对应每日捕获为{transformer['TP']}与{mean['TP']}。"
+        "全局AP与每日有限名额下的捕获评价不同的排序问题，不能在看到分数后更换主指标。"
+        "架构间相同seed差值和配对日区间均保留，少量种子与已反复开发的数据不足以证明普遍优劣。")
+    wide_comparison = baudit['comparisons']['mean_vs_broad_neural']
+    wide_interval = wide_comparison['block_sensitivity']['paired_circular_block_95']
+    primary_interpretation = (
+        f"历史信息的增量有明确对照支持：Mean相对同参数self净增{audit['comparisons']['mean_vs_mean-self']['net']}，"
+        f"7日区块95%描述区间{audit['comparisons']['mean_vs_mean-self']['block_sensitivity']['paired_circular_block_95']}。"
+        f"但Mean相对220维广统计网络仅净增{wide_comparison['net']}，区间{wide_interval}；"
+        + ("区间包含0，尚不能确认Mean表示具有超出该强统计实现的稳定独立增量。" if wide_interval[0]<=0<=wide_interval[1]
+           else "该逐比较区间仍不校正历次开发与候选选择，不能直接作为外部采用证据。"))
     gate_table = ['| 条件 | 评测标签分组 | 上下文门均值 | 上下文/当前范数 | Attention有效邻居数 | 最近一笔权重 |', '|---|---|---:|---:|---:|---:|']
     for mode in modes:
         for label in ('0', '1'):
@@ -214,6 +245,8 @@ def complete(source_root, history_run, broad_run, history_audit, broad_audit, tr
     text = f'''# Gate B：完整监督历史行为研究
 
 全部38个注册实例、5个明确事后登记的强统计挑战已经训练并逐模型重载。Mean在本开发数据捕获{mean['TP']}，强平面{flat['TP']}，相同参数当前表示控制{mself['TP']}，原冻结开发版122。所有架构与负结果一并列出；不把中间最优值包装成最终独立验证。
+
+{primary_interpretation}
 
 ## 数据、预算与身份
 
@@ -285,9 +318,11 @@ CPU秒是各线程合计，不等于墙钟秒。本次原主进程从启动时�
 
 ## 技术决定
 
+{technical_reading}
+
 本轮只回答此来源、切分、输入和预算下的历史信息与表示比较。若某架构只超过弱旧两轮值、没有超过冻结参考或强控制，保留研究身份。即使在已反复使用的2018明显改善，也只形成候选证据，不能当作新外部留出成功。
 
-源标签available_at全为空，当前完整监督是回顾性比较，不证明2017末已可取得所有训练标签。Gate C接下来仅做独立来源、合法性、文本生成与时点可用性审查；满足条件再开语义实验。Gate D需可靠标签可得性定义，不能把真实未标注直接作负例。
+源标签available_at全为空，当前完整监督是回顾性比较，不证明2017末已可取得所有训练标签。Gate C1已完成只读来源与生成链预审，见CANDIDATE_AUDIT.md；目前没有C2准入数据，不训练更大的LLM补救。Gate D如开展，须先冻结可靠的可得性定义或明确的回顾性可控掩标假设，不能把真实未标注直接作负例。
 
 默认保持neural_v2_ensemble；不改调查Agent合同，不覆盖旧模型、旧RESULTS或失败。若申请实际接入，必须独立集成PR并经用户明确批准。
 
@@ -333,6 +368,9 @@ CPU秒是各线程合计，不等于墙钟秒。本次原主进程从启动时�
               'tests': tests, 'tests_xml_sha256': digest(tests_xml), 'default_detector_changed': False,
               'independent_external_test': False, 'final_2019_read': False, 'paid_calls': 0}
     write_json(output/'history-results.json', result)
+    # This tracked receipt gates later studies; bind the same LF bytes Git stores.
+    receipt_path = output/'history-results.json'
+    receipt_path.write_bytes(receipt_path.read_bytes().replace(b'\r\n', b'\n'))
     write_json(output/'history-process-resources.json', resources)
     write_json(output/'history-long-wall-intervals.json', {'threshold': 'Over10x within-seed median actual epoch duration', 'intervals': long_intervals, 'raw_curves_unchanged': True})
     return result

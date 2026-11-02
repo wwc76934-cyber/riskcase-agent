@@ -1,0 +1,52 @@
+{
+  "status": "Gate_B_technical_and_visual_review_complete",
+  "reviewed_at_UTC": "2026-11-02T07:09:18.263072+00:00",
+  "reviewer": "Codex source/numeric/rendered-figure review; not user approval to replace detector",
+  "history_results_sha256": "4345ae2a8f8a3dcbb3d09fe71c45cb2c8ef479dfc53c4381f56c2352720f6bd5",
+  "reuse_artifacts_sha256": {
+    "runs/semantic-v21-b-broad-01/features.json": "bbb06c7d3dcb5a9b4e791ba12bb3928d7d99e263de70c4f7406eb554e11f3387",
+    "runs/semantic-v21-b-broad-01/broad-normalized.npy": "c14f5a99ce459534ea9e1adb1cfcf7bdcd4407d664fc27da5ac88dfe043f7d5c",
+    "runs/semantic-v21-b-broad-01/broad-raw.npy": "ed391ee3788905d62261037b59decd667e6bf254211c3c192e9c015e23d87f32",
+    "runs/semantic-v21-b-broad-01/neural-seed-42/preprocessor.joblib": "e37bffba72a11ffd254d57855be43e0d32a5f9c8d84867b1dc21013225aeed74"
+  },
+  "rendered_figures_sha256": {
+    "history-channels.png": "6fbbe5f84522aad14201201f919f96a8c5ef32ef889c20ef71bfac3b9f4c8772",
+    "history-top10.png": "247c2ef64e8a9685bdd1ee7bd1b6a278e1a9cfe12054212c3d43711d2c36a655",
+    "history-training.png": "ba9f9aaddde45877fa32b049f27ede63f748a7d3b3fde442bc2e5ec9badaaa36"
+  },
+  "visual_QA": "All3 figures viewed: labels/axes legible, bars and seed dots match receipts, no clipping or misleading independent-test claim",
+  "primary_evidence": {
+    "mean_vs_self_net": 78,
+    "block95": [
+      54,
+      104
+    ],
+    "mean_vs_frozen_net": 93,
+    "block95_vs_frozen": [
+      68,
+      120
+    ],
+    "mean_vs_broad_net": 19,
+    "block95_vs_broad": [
+      -5,
+      45
+    ],
+    "unique_Mean_advantage_confirmed": false
+  },
+  "attention_diagnosis": "TP199; effective neighborhood about3.6, no evidence of universal single-neighbor collapse; activation probes are not causal",
+  "source_preservation": {
+    "status": "original_artifacts_and_frozen_source_preserved",
+    "preexisting_files_checked": 217,
+    "differences": [],
+    "critical_source_checked": 15,
+    "changed_critical_source": [],
+    "baseline_manifest_sha256": "aa30970bc7b5f8d8ec79e5dc43937b371c47f20344de83caa722a7d4a2de3335",
+    "hash_only": true,
+    "records_or_labels_evaluated": false,
+    "limit": "Hashing can include historical 2019 artifact bytes for integrity; no 2019 arrays or outcomes are decoded/evaluated"
+  },
+  "default_detector_changed": false,
+  "independent_external_test": false,
+  "next_D_scope": "Only explicit controlled retrospective train-label masking with cold starts; real available_at and data commercial/redistribution scope not verified",
+  "text_binding": "Tracked result/review receipts use canonical UTF-8 LF bytes identical to Git blobs. Ignored training/data artifacts retain original raw-byte hashes."
+}

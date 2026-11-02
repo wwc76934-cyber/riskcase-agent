@@ -47,7 +47,7 @@ flowchart LR
 
 [官方数据页](https://www.kaggle.com/competitions/ieee-fraud-detection/data)说明TransactionID关联交易和身份表，部分交易没有身份信息，TransactionDT是参考时点偏移。DeviceInfo、id_30、id_31可能含设备或软件事实；匿名字段名和卡属性组合不能直接当经过验证的真实用户身份。[官方主办方字段讨论](https://www.kaggle.com/competitions/ieee-fraud-detection/discussion/100304)
 
-本轮网页读取未得到可审阅的规则正文；内置浏览器初始化失败，备用浏览器授权超时，尚未进入目标页面。没有接受条款、操作登录或从镜像取数。具体文件版本、许可使用范围、身份覆盖率、字段时点、实体隔离方案均保留为未知。未来先完成这些事项，再冻结时间切分、近重复处理、主体外推与已见主体两种问题的区别、文本字段白名单以及TF-IDF/轻量Encoder/Qwen/随机与打乱对照。不能先看新评测标签再宣布外部留出。
+官方数据页的可读缓存列出许可为Subject to Competition Rules，并要求登录、同意规则后访问数据；这支持保留官方获取路径，不能替代阅读条款和核验本账号权限。本轮没有得到可审阅的规则正文；内置浏览器初始化失败，备用浏览器授权超时，尚未进入目标页面。没有接受条款、操作登录或从镜像取数。具体文件版本、许可使用范围、身份覆盖率、字段时点、实体隔离方案均保留为未知。未来先完成这些事项，再冻结时间切分、近重复处理、主体外推与已见主体两种问题的区别、文本字段白名单以及TF-IDF/轻量Encoder/Qwen/随机与打乱对照。不能先看新评测标签再宣布外部留出。[官方数据页及访问条件](https://www.kaggle.com/competitions/ieee-fraud-detection/data)
 
 ## 两个模拟候选能回答什么
 

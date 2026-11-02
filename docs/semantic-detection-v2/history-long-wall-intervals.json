@@ -1,0 +1,14 @@
+{
+  "threshold": "Over10x within-seed median actual epoch duration",
+  "intervals": [
+    {
+      "condition": "transformer",
+      "seed": 42,
+      "epoch": 6,
+      "epoch_seconds": 42780.609,
+      "within_seed_median_epoch_seconds": 140.40649999999732,
+      "meaning": "Observed long wall-clock interval; not assigned to active compute or a specific OS cause"
+    }
+  ],
+  "raw_curves_unchanged": true
+}

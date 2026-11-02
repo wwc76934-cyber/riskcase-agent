@@ -1,7 +1,7 @@
 {
   "stage": "Gate_C_source_feasibility_preparation",
   "scope": "public source/code/terms metadata only",
-  "input_evidence_sha256": "98c45020c1e7d7567ed97e59884780290df360d03add73f2940c73506a07713c",
+  "input_evidence_sha256": "a7b319546eec0c5c8b451abe8440431c4c7d415840092446b7ad8c16c60d2e88",
   "decisions": [
     {
       "source": "AI4Risk/MS-FFSD",

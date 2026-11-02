@@ -1,0 +1,11 @@
+{
+  "status": "original_artifacts_and_frozen_source_preserved",
+  "preexisting_files_checked": 217,
+  "differences": [],
+  "critical_source_checked": 15,
+  "changed_critical_source": [],
+  "baseline_manifest_sha256": "aa30970bc7b5f8d8ec79e5dc43937b371c47f20344de83caa722a7d4a2de3335",
+  "hash_only": true,
+  "records_or_labels_evaluated": false,
+  "limit": "Hashing can include historical 2019 artifact bytes for integrity; no 2019 arrays or outcomes are decoded/evaluated"
+}

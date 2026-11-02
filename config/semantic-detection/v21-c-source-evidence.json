@@ -63,7 +63,8 @@
       "notes": [
         "Official data description: TransactionID joins identity and transaction tables; identity is incomplete; TransactionDT is a reference-time offset. These are documentation-level facts, not local artifact validation.",
         "Official terms and authenticated data access could not be verified: web view returned no rule text; IAB initialization failed; native browser approval timed out before page access. No mirror, terms acceptance, login automation or data download.",
-        "DeviceInfo/id_30/id_31 may encode interpretable device/software facts; actual semantics, missingness, observability, entity keys and split remain to be audited."
+        "DeviceInfo/id_30/id_31 may encode interpretable device/software facts; actual semantics, missingness, observability, entity keys and split remain to be audited.",
+        "Official data-page readable cache names Subject to Competition Rules and sign-in/acceptance requirement. This is not verification of the rule body or this account permissions. Workspace filename search found no IEEE transaction/identity artifacts; no dataset rows opened."
       ]
     },
     {

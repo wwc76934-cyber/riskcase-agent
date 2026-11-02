@@ -1,5 +1,5 @@
 {
-  "captured_at_UTC": "2026-11-02T05:08:22.603Z",
+  "captured_at_UTC": "2026-11-02T07:12:24.350Z",
   "local_reports": {
     "regression-01": {
       "counts": {
@@ -51,10 +51,32 @@
       "sha256": "e2eb70446abd108eb6fc107fa8861053d8f74d4c6f017f16333b51f3be0d74ec",
       "path": "runs/semantic-v21-initialization/admission-tests-03.xml",
       "scope": "New C1 conservative admission logic only; not an additional whole-repository run"
+    },
+    "all-tests-02": {
+      "counts": {
+        "tests": 1046,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "18a535de6c0b56f1e2f0d757f22543ddca9b6496411b056eb6621c86d84c508a",
+      "path": "runs\\semantic-v21-initialization\\all-tests-02.xml",
+      "scope": "complete repository offline suite"
+    },
+    "semi-preparation-tests-05": {
+      "counts": {
+        "tests": 26,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "abdabe867647b7cffc62e26e46086e6341d2cedcffd10724bc7d43ccc86ba281",
+      "path": "runs\\semantic-v21-initialization\\semi-preparation-tests-05.xml",
+      "scope": "loss/gradient/visibility/EMA/cold-roundtrip/gate preparation"
     }
   },
   "all_testcase_classname_prefixes": {
-    "tests": 1014
+    "tests": 1046
   },
   "source_sha256": {
     "app/risk/semantic_detection/v2/queue_attribution.py": "ce8ba70c88053116bbbcf252f97244a51df753247e7d4928d3beb0b51363705a",
@@ -62,7 +84,13 @@
     "app/risk/semantic_detection/v2/process_observer.py": "822c7fcbbb0c287b1594b6a7af98000e7fa2ea5baa5fd01dfa5e51b058c3c67c",
     "app/risk/semantic_detection/v2/data_admission.py": "46553bff13fd102f7c03c48daddd52819c383eaaa211b94a7aebb1fdbb009851",
     "app/cli/semantic_detection_source_admission.py": "e79606dd24d2301621d03209eb7426ec90b7fa761d70404d5799704332f99b41",
-    "tests/semantic_detection/test_v21_admission.py": "1492f8526d7da589ee3bd9c96e26d4002d13ca9992fb4cf4f9490dfe03392ac8"
+    "tests/semantic_detection/test_v21_admission.py": "1492f8526d7da589ee3bd9c96e26d4002d13ca9992fb4cf4f9490dfe03392ac8",
+    "app/cli/semantic_detection_semi.py": "62e8c065a254c630c97d42bc9c5042c42a3e237329139b800cd64d51d19d6561",
+    "app/risk/semantic_detection/v2/semi_audit.py": "7f0374b27776bc86f2d4710e0f4c14dafebb8775b55069ca0c2a11968c66cf7b",
+    "app/risk/semantic_detection/v2/semi_experiment.py": "b5201ff937b748c9bd9f8fb34e9c4575557489565b53e31d94a3b17461f893ea",
+    "app/risk/semantic_detection/v2/semi_fit.py": "371d9a55a6c14bf5b0a9e7e3cd77e684cc5e84800481fc20ce0744b372e34777",
+    "app/risk/semantic_detection/v2/semi_report.py": "f5fe822ad9cfd1ed6fbdb215c670d3cde98e1d03428de205daa056c9b419b588",
+    "app/risk/semantic_detection/v2/semi_supervised.py": "2842cea3456fd9b30b8e94a4287475de0c2c3c649f2e0ec39f1c1df1eb0fbada"
   },
   "GitHub": {
     "checked_head": "66134b30ccf25b2be8d01a20d445df9e1a0d7120",
@@ -100,7 +128,38 @@
     "notebook_code_cells": 32,
     "new_candidate_rows_opened": 0,
     "new_model_experiments": 0,
-    "local_command_output": "runs/semantic-v21-c-admission-01",
-    "report_input_sha256": "98c45020c1e7d7567ed97e59884780290df360d03add73f2940c73506a07713c"
-  }
+    "local_command_output": "runs/semantic-v21-c-admission-02",
+    "report_input_sha256": "a7b319546eec0c5c8b451abe8440431c4c7d415840092446b7ad8c16c60d2e88"
+  },
+  "Gate_B": {
+    "status": "Gate_B_complete_and_independently_verified",
+    "review_sha256": "79af60f711171ad718fb1934b0d2529f4ddd77005205fbe26122225e5f9433a8",
+    "full_replays": 43,
+    "max_full_replay_abs_diff": 0,
+    "feature_reconstruction_abs_diff": 0,
+    "original217_and_frozen15_preserved": true
+  },
+  "D_preparation": {
+    "real_dataset_mask_or_experiments_started": false,
+    "draft_CLI_blocked_before_loading": {
+      "type": "ValueError",
+      "message": "Conditional draft cannot start a D experiment"
+    },
+    "draft_output_directory_absent": true,
+    "EMA_view_fixture": {
+      "scope": "self_authored_16row_fixture_only_no_source_dataset",
+      "epochs": 12,
+      "EMA_view_roundtrip": "passed",
+      "real_dataset_rows_loaded": 0,
+      "source_mask_created": false
+    },
+    "limit": "Fixture training is not benchmark efficacy. Source dataset mask has not been generated.",
+    "protocol_status": "frozen_after_B_verified_not_yet_executed",
+    "protocol_sha256": "c8562028712df2c351f009e24d5af3850e59a1acff1f0596b83e58237b4bb01e",
+    "B_review_sha256": "79af60f711171ad718fb1934b0d2529f4ddd77005205fbe26122225e5f9433a8",
+    "actual_freeze_guard_check": "runs/semantic-v21-initialization/d-freeze-validation-02.log",
+    "actual_freeze_guard_result": "Canonical-LF B result/review binding verified before actual dataset access"
+  },
+  "post_all_tests_02_source_changes": "B renderer interpretation text only, then successfully rerendered against same43 audited model instances; no optimization-code changes",
+  "text_binding": "Tracked result/review receipts use canonical UTF-8 LF bytes identical to Git blobs. Ignored training/data artifacts retain original raw-byte hashes."
 }
