@@ -1,0 +1,13 @@
+{
+  "schema": "v3-free-preflight-evidence-v1",
+  "files": {
+    "candidate-audit.json": "1d6cd03c0dbc89063f7759b942124665c2b3d41cfbc17457161c658540da9816",
+    "offline-probe.json": "10a574ad2e7431b8e62a7dd3c5e7475ac21467a3c15d123b337d65613c78ef07",
+    "pending-proposal.json": "df44cf370080753542f945d3854a8b483f17fa11d9d6d3cb56136938210ea4cf",
+    "pilot-freeze-summary.json": "108013601c6be097b2dfe00a6b44ee8689e86da73278e89abc34c50bfd4d3d54",
+    "preflight-history.json": "7e2a28038b7defcf01bae8a27ac510663ab56c316e72b502ffe8c8702284bb51",
+    "process-recovery.json": "e6c5784c17414ac6ed594bf2982cc8bb7ff8dd6ab362eb135cfe6b7ca8df07b3",
+    "validation.json": "259984e94ac46b13fcf7f676de2e368c615b4f720b763ce028572a518bd64ac6"
+  },
+  "formal_agent_value_claim": false
+}
