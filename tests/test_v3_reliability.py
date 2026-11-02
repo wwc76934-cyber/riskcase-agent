@@ -267,3 +267,37 @@ def test_response_after_deadline_is_rejected_even_with_a_valid_lease(tmp_path):
     def late():now[0]=281;return {'content':'late but retained by caller'}
     with pytest.raises(Blocked,match='task_deadline'):with_lease_heartbeat(store,claim,late,lease_seconds=600,interval=15)
     assert store.get(identity)['lease_until']>now[0]
+
+
+def test_task_extraction_contract_declares_values_required_by_the_final_report(acquired):
+    from jsonschema import Draft202012Validator
+    from app.investigation.v3.task_output import TaskReportContract
+    from app.investigation.v3.output import PREDICATE_ROLES
+    ledger,_,_,_=acquired
+    ref=next(k for k,v in ledger.lines.items() if v['source_type'] in PREDICATE_ROLES['customer_authorization'])
+    line=ledger.lines[ref];target=line['transaction_ids'][0]
+    schema=TaskReportContract(target).extraction_schema(ledger)
+    facts=dict(facts=[dict(id='F1',predicate='customer_authorization',value='denied',transaction_ids=[target],refs=[ref])])
+    assert Draft202012Validator(schema).is_valid(facts)
+    facts['facts'][0]['value']='An arbitrary paraphrase that cannot match the final enum'
+    assert not Draft202012Validator(schema).is_valid(facts)
+
+
+@pytest.mark.parametrize('canonical',[True,False])
+def test_source_bound_task_delivery_checks_real_fact_ids_before_the_report(tmp_path,acquired,canonical):
+    from app.investigation.v3.task_output import TaskReportContract
+    from app.investigation.v3.output import PREDICATE_ROLES
+    ledger,_,_,decision=acquired;target=ledger.target_id
+    ref=next(k for k,v in ledger.lines.items() if v['source_type'] in PREDICATE_ROLES['customer_authorization'] and target in v['transaction_ids'])
+    facts=dict(facts=[dict(id='F1',predicate='customer_authorization',value='denied' if canonical else 'unrestricted paraphrase',transaction_ids=[target],refs=[ref])])
+    report=dict(investigation=decision,source_statement=dict(transaction_id=target,value='denied',fact_ids=['F1'],rationale='Scripted customer-source fixture, not verified fraud'))
+    client=Client([facts,report]);store,identity,claim=job(tmp_path)
+    delivery=StagedDelivery(store,claim,ledger,client,max_requests=2,report_contract=TaskReportContract(target))
+    if canonical:
+        result=delivery.run()
+        assert result['source_statement']['value']=='denied' and result['facts'][0]['transaction_ids']==[target] and client.calls==2
+    else:
+        with pytest.raises(OutputFailure,match='model_schema'):delivery.run()
+        state=store.load(identity)
+        assert client.calls==1 and state['phase']=='failed' and len(state['raw_responses'])==1
+        assert 'unrestricted paraphrase' in state['raw_responses'][0]['content']

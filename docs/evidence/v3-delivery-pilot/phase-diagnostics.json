@@ -1,0 +1,675 @@
+{
+  "rows": [
+    {
+      "case_id": "v3-10476d72a749a8ba01",
+      "repeat": 1,
+      "stage": 0,
+      "delivered": true,
+      "source_statement_correct": true,
+      "error": null,
+      "error_family": null,
+      "recorded_request_reservations": 2,
+      "elapsed_seconds": 21.388,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": null
+    },
+    {
+      "case_id": "v3-10476d72a749a8ba01",
+      "repeat": 1,
+      "stage": 1,
+      "delivered": false,
+      "source_statement_correct": false,
+      "error": "model_schema",
+      "error_family": "model_protocol",
+      "recorded_request_reservations": 1,
+      "elapsed_seconds": 8.142,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": {
+        "code": "model_schema",
+        "detail": {
+          "field": [
+            "facts",
+            1,
+            "value"
+          ],
+          "rule": "enum"
+        }
+      }
+    },
+    {
+      "case_id": "v3-10476d72a749a8ba01",
+      "repeat": 1,
+      "stage": 2,
+      "delivered": true,
+      "source_statement_correct": true,
+      "error": null,
+      "error_family": null,
+      "recorded_request_reservations": 2,
+      "elapsed_seconds": 27.807,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": null
+    },
+    {
+      "case_id": "v3-10476d72a749a8ba01",
+      "repeat": 2,
+      "stage": 0,
+      "delivered": true,
+      "source_statement_correct": true,
+      "error": null,
+      "error_family": null,
+      "recorded_request_reservations": 2,
+      "elapsed_seconds": 19.423,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": null
+    },
+    {
+      "case_id": "v3-10476d72a749a8ba01",
+      "repeat": 2,
+      "stage": 1,
+      "delivered": true,
+      "source_statement_correct": true,
+      "error": null,
+      "error_family": null,
+      "recorded_request_reservations": 2,
+      "elapsed_seconds": 27.57,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": null
+    },
+    {
+      "case_id": "v3-10476d72a749a8ba01",
+      "repeat": 2,
+      "stage": 2,
+      "delivered": true,
+      "source_statement_correct": true,
+      "error": null,
+      "error_family": null,
+      "recorded_request_reservations": 2,
+      "elapsed_seconds": 32.24,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": null
+    },
+    {
+      "case_id": "v3-4095bca60f79290cae",
+      "repeat": 1,
+      "stage": 0,
+      "delivered": true,
+      "source_statement_correct": true,
+      "error": null,
+      "error_family": null,
+      "recorded_request_reservations": 2,
+      "elapsed_seconds": 22.082,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": null
+    },
+    {
+      "case_id": "v3-4095bca60f79290cae",
+      "repeat": 1,
+      "stage": 1,
+      "delivered": false,
+      "source_statement_correct": false,
+      "error": "model_schema",
+      "error_family": "model_protocol",
+      "recorded_request_reservations": 1,
+      "elapsed_seconds": 7.432,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": {
+        "code": "model_schema",
+        "detail": {
+          "field": [
+            "facts",
+            2,
+            "value"
+          ],
+          "rule": "maxLength"
+        }
+      }
+    },
+    {
+      "case_id": "v3-4095bca60f79290cae",
+      "repeat": 1,
+      "stage": 2,
+      "delivered": true,
+      "source_statement_correct": true,
+      "error": null,
+      "error_family": null,
+      "recorded_request_reservations": 2,
+      "elapsed_seconds": 31.058,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": null
+    },
+    {
+      "case_id": "v3-4095bca60f79290cae",
+      "repeat": 2,
+      "stage": 0,
+      "delivered": true,
+      "source_statement_correct": true,
+      "error": null,
+      "error_family": null,
+      "recorded_request_reservations": 2,
+      "elapsed_seconds": 17.377,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": null
+    },
+    {
+      "case_id": "v3-4095bca60f79290cae",
+      "repeat": 2,
+      "stage": 1,
+      "delivered": false,
+      "source_statement_correct": false,
+      "error": "model_schema",
+      "error_family": "model_protocol",
+      "recorded_request_reservations": 1,
+      "elapsed_seconds": 7.455,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": {
+        "code": "model_schema",
+        "detail": {
+          "field": [
+            "facts",
+            3,
+            "value"
+          ],
+          "rule": "maxLength"
+        }
+      }
+    },
+    {
+      "case_id": "v3-4095bca60f79290cae",
+      "repeat": 2,
+      "stage": 2,
+      "delivered": true,
+      "source_statement_correct": true,
+      "error": null,
+      "error_family": null,
+      "recorded_request_reservations": 2,
+      "elapsed_seconds": 28.358,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": null
+    },
+    {
+      "case_id": "v3-0f8ad5c54ab33e3b99",
+      "repeat": 1,
+      "stage": 0,
+      "delivered": false,
+      "source_statement_correct": false,
+      "error": "model_schema",
+      "error_family": "model_protocol",
+      "recorded_request_reservations": 1,
+      "elapsed_seconds": 6.129,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": {
+        "code": "model_schema",
+        "detail": {
+          "field": [
+            "facts",
+            1,
+            "value"
+          ],
+          "rule": "maxLength"
+        }
+      }
+    },
+    {
+      "case_id": "v3-0f8ad5c54ab33e3b99",
+      "repeat": 1,
+      "stage": 1,
+      "delivered": true,
+      "source_statement_correct": true,
+      "error": null,
+      "error_family": null,
+      "recorded_request_reservations": 2,
+      "elapsed_seconds": 28.819,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": null
+    },
+    {
+      "case_id": "v3-0f8ad5c54ab33e3b99",
+      "repeat": 1,
+      "stage": 2,
+      "delivered": false,
+      "source_statement_correct": false,
+      "error": "model_schema",
+      "error_family": "model_protocol",
+      "recorded_request_reservations": 1,
+      "elapsed_seconds": 8.956,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": {
+        "code": "model_schema",
+        "detail": {
+          "field": [
+            "facts",
+            1,
+            "value"
+          ],
+          "rule": "maxLength"
+        }
+      }
+    },
+    {
+      "case_id": "v3-0f8ad5c54ab33e3b99",
+      "repeat": 2,
+      "stage": 0,
+      "delivered": true,
+      "source_statement_correct": true,
+      "error": null,
+      "error_family": null,
+      "recorded_request_reservations": 2,
+      "elapsed_seconds": 22.082,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": null
+    },
+    {
+      "case_id": "v3-0f8ad5c54ab33e3b99",
+      "repeat": 2,
+      "stage": 1,
+      "delivered": false,
+      "source_statement_correct": false,
+      "error": "model_schema",
+      "error_family": "model_protocol",
+      "recorded_request_reservations": 1,
+      "elapsed_seconds": 8.188,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": {
+        "code": "model_schema",
+        "detail": {
+          "field": [
+            "facts",
+            2,
+            "value"
+          ],
+          "rule": "maxLength"
+        }
+      }
+    },
+    {
+      "case_id": "v3-0f8ad5c54ab33e3b99",
+      "repeat": 2,
+      "stage": 2,
+      "delivered": true,
+      "source_statement_correct": true,
+      "error": null,
+      "error_family": null,
+      "recorded_request_reservations": 2,
+      "elapsed_seconds": 34.738,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": null
+    },
+    {
+      "case_id": "v3-0996e2e3733092caed",
+      "repeat": 1,
+      "stage": 0,
+      "delivered": false,
+      "source_statement_correct": false,
+      "error": "model_schema",
+      "error_family": "model_protocol",
+      "recorded_request_reservations": 1,
+      "elapsed_seconds": 7.281,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": {
+        "code": "model_schema",
+        "detail": {
+          "field": [
+            "facts",
+            2,
+            "value"
+          ],
+          "rule": "maxLength"
+        }
+      }
+    },
+    {
+      "case_id": "v3-0996e2e3733092caed",
+      "repeat": 1,
+      "stage": 1,
+      "delivered": false,
+      "source_statement_correct": false,
+      "error": "recommendation_fact_reference",
+      "error_family": "model_protocol",
+      "recorded_request_reservations": 2,
+      "elapsed_seconds": 23.511,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": {
+        "code": "recommendation_fact_reference",
+        "detail": {}
+      }
+    },
+    {
+      "case_id": "v3-0996e2e3733092caed",
+      "repeat": 1,
+      "stage": 2,
+      "delivered": false,
+      "source_statement_correct": false,
+      "error": "model_schema",
+      "error_family": "model_protocol",
+      "recorded_request_reservations": 1,
+      "elapsed_seconds": 7.699,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": {
+        "code": "model_schema",
+        "detail": {
+          "field": [
+            "facts",
+            3,
+            "value"
+          ],
+          "rule": "maxLength"
+        }
+      }
+    },
+    {
+      "case_id": "v3-0996e2e3733092caed",
+      "repeat": 2,
+      "stage": 0,
+      "delivered": true,
+      "source_statement_correct": true,
+      "error": null,
+      "error_family": null,
+      "recorded_request_reservations": 2,
+      "elapsed_seconds": 20.097,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": null
+    },
+    {
+      "case_id": "v3-0996e2e3733092caed",
+      "repeat": 2,
+      "stage": 1,
+      "delivered": false,
+      "source_statement_correct": false,
+      "error": "model_schema",
+      "error_family": "model_protocol",
+      "recorded_request_reservations": 1,
+      "elapsed_seconds": 7.484,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": {
+        "code": "model_schema",
+        "detail": {
+          "field": [
+            "facts",
+            2,
+            "value"
+          ],
+          "rule": "maxLength"
+        }
+      }
+    },
+    {
+      "case_id": "v3-0996e2e3733092caed",
+      "repeat": 2,
+      "stage": 2,
+      "delivered": true,
+      "source_statement_correct": true,
+      "error": null,
+      "error_family": null,
+      "recorded_request_reservations": 2,
+      "elapsed_seconds": 23.493,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": null
+    },
+    {
+      "case_id": "v3-6d35eb9f74124bfa57",
+      "repeat": 1,
+      "stage": 0,
+      "delivered": false,
+      "source_statement_correct": false,
+      "error": "model_schema",
+      "error_family": "model_protocol",
+      "recorded_request_reservations": 1,
+      "elapsed_seconds": 6.639,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": {
+        "code": "model_schema",
+        "detail": {
+          "field": [
+            "facts",
+            1,
+            "value"
+          ],
+          "rule": "maxLength"
+        }
+      }
+    },
+    {
+      "case_id": "v3-6d35eb9f74124bfa57",
+      "repeat": 1,
+      "stage": 1,
+      "delivered": false,
+      "source_statement_correct": false,
+      "error": "model_schema",
+      "error_family": "model_protocol",
+      "recorded_request_reservations": 1,
+      "elapsed_seconds": 9.066,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": {
+        "code": "model_schema",
+        "detail": {
+          "field": [
+            "facts",
+            2,
+            "value"
+          ],
+          "rule": "maxLength"
+        }
+      }
+    },
+    {
+      "case_id": "v3-6d35eb9f74124bfa57",
+      "repeat": 1,
+      "stage": 2,
+      "delivered": false,
+      "source_statement_correct": false,
+      "error": "model_schema",
+      "error_family": "model_protocol",
+      "recorded_request_reservations": 1,
+      "elapsed_seconds": 8.616,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": {
+        "code": "model_schema",
+        "detail": {
+          "field": [
+            "facts",
+            1,
+            "value"
+          ],
+          "rule": "maxLength"
+        }
+      }
+    },
+    {
+      "case_id": "v3-6d35eb9f74124bfa57",
+      "repeat": 2,
+      "stage": 0,
+      "delivered": true,
+      "source_statement_correct": true,
+      "error": null,
+      "error_family": null,
+      "recorded_request_reservations": 2,
+      "elapsed_seconds": 18.428,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": null
+    },
+    {
+      "case_id": "v3-6d35eb9f74124bfa57",
+      "repeat": 2,
+      "stage": 1,
+      "delivered": false,
+      "source_statement_correct": false,
+      "error": "model_schema",
+      "error_family": "model_protocol",
+      "recorded_request_reservations": 1,
+      "elapsed_seconds": 14.865,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": {
+        "code": "model_schema",
+        "detail": {
+          "field": [
+            "facts",
+            2,
+            "value"
+          ],
+          "rule": "maxLength"
+        }
+      }
+    },
+    {
+      "case_id": "v3-6d35eb9f74124bfa57",
+      "repeat": 2,
+      "stage": 2,
+      "delivered": true,
+      "source_statement_correct": true,
+      "error": null,
+      "error_family": null,
+      "recorded_request_reservations": 2,
+      "elapsed_seconds": 24.562,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": null
+    },
+    {
+      "case_id": "v3-696b84e092d689a014",
+      "repeat": 1,
+      "stage": 0,
+      "delivered": true,
+      "source_statement_correct": true,
+      "error": null,
+      "error_family": null,
+      "recorded_request_reservations": 2,
+      "elapsed_seconds": 18.691,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": null
+    },
+    {
+      "case_id": "v3-696b84e092d689a014",
+      "repeat": 1,
+      "stage": 1,
+      "delivered": false,
+      "source_statement_correct": false,
+      "error": "model_schema",
+      "error_family": "model_protocol",
+      "recorded_request_reservations": 1,
+      "elapsed_seconds": 10.114,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": {
+        "code": "model_schema",
+        "detail": {
+          "field": [
+            "facts",
+            3,
+            "refs",
+            0
+          ],
+          "rule": "enum"
+        }
+      }
+    },
+    {
+      "case_id": "v3-696b84e092d689a014",
+      "repeat": 1,
+      "stage": 2,
+      "delivered": false,
+      "source_statement_correct": false,
+      "error": "model_schema",
+      "error_family": "model_protocol",
+      "recorded_request_reservations": 1,
+      "elapsed_seconds": 8.289,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": {
+        "code": "model_schema",
+        "detail": {
+          "field": [
+            "facts",
+            4,
+            "value"
+          ],
+          "rule": "maxLength"
+        }
+      }
+    },
+    {
+      "case_id": "v3-696b84e092d689a014",
+      "repeat": 2,
+      "stage": 0,
+      "delivered": true,
+      "source_statement_correct": true,
+      "error": null,
+      "error_family": null,
+      "recorded_request_reservations": 2,
+      "elapsed_seconds": 18.45,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": null
+    },
+    {
+      "case_id": "v3-696b84e092d689a014",
+      "repeat": 2,
+      "stage": 1,
+      "delivered": false,
+      "source_statement_correct": false,
+      "error": "model_schema",
+      "error_family": "model_protocol",
+      "recorded_request_reservations": 1,
+      "elapsed_seconds": 7.776,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": {
+        "code": "model_schema",
+        "detail": {
+          "field": [
+            "facts",
+            2,
+            "value"
+          ],
+          "rule": "enum"
+        }
+      }
+    },
+    {
+      "case_id": "v3-696b84e092d689a014",
+      "repeat": 2,
+      "stage": 2,
+      "delivered": true,
+      "source_statement_correct": true,
+      "error": null,
+      "error_family": null,
+      "recorded_request_reservations": 2,
+      "elapsed_seconds": 26.3,
+      "recovery_generations": 0,
+      "replayed_responses": 0,
+      "protocol_issue": null
+    }
+  ],
+  "author_references": true,
+  "independent_review": false,
+  "not_formal_agent_value_comparison": true
+}

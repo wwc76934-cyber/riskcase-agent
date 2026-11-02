@@ -4,6 +4,8 @@
 
 审查对象：`runs/v3-author-candidates-v3`的40个evaluation候选案。每案先看runtime原件，再看controller逐阶段参考；这些参考仅供评审，不能给受测模型。数据指纹见[V3候选集说明](V3_TASK_BENCHMARK.md)。
 
+本机已整理可直接阅读的`runs/v3-independent-review-pack-v1/REVIEW.md`，另有待填写的`review-form.json`和文件指纹；40案没有预填通过，材料不作为模型输入。仍须由实际人员审阅，生成文档不等于已经完成审查。
+
 逐案确认：
 
 1. T0/T1/T2允许取得的资料及客户纠正是否符合业务逻辑，是否存在未来信息泄漏。

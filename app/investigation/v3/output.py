@@ -105,7 +105,10 @@ def extraction_schema(ledger):
     if not ledger.lines:
         schema['properties']['facts']['maxItems']=0
         return schema
-    item['properties']['refs']['items']['enum']=sorted(ledger.lines)
+    # deepcopy preserves aliases: refs/items and transaction_ids/items used the
+    # same TEXT object. Replace each node so source handles never become payment IDs.
+    item['properties']['refs']['items']={**deepcopy(TEXT),'enum':sorted(ledger.lines)}
+    item['properties']['transaction_ids']['items']={**deepcopy(TEXT),'enum':sorted(ledger.transaction_ids)}
     available={p:[h for h,line in ledger.lines.items() if line['source_type'] in roles] for p,roles in PREDICATE_ROLES.items()}
     item['properties']['predicate']['enum']=[p for p,handles in available.items() if handles]
     item['allOf']=[dict(**{'if':dict(properties=dict(predicate=dict(const=p)))},then=dict(properties=dict(refs=dict(items=dict(enum=handles))))) for p,handles in available.items() if handles]

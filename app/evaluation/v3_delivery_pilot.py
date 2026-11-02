@@ -31,7 +31,7 @@ def ledger_for(packet):
 
 def byte_bound(ledger,contract):
     """Conservative oversized report context, not an oracle/model answer."""
-    schema=extraction_schema(ledger);fact_schema=schema['properties']['facts']
+    schema=contract.extraction_schema(ledger);fact_schema=schema['properties']['facts']
     count=fact_schema['maxItems'];ref_count=fact_schema['items']['properties']['refs']['maxItems']
     max_value=fact_schema['items']['properties']['value']['maxLength']
     lines=sorted(ledger.lines.items(),key=lambda item:len(json.dumps(item[1],ensure_ascii=False).encode()),reverse=True)[:ref_count]

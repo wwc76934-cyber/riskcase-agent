@@ -1,0 +1,16 @@
+{
+  "full_regression": {
+    "tests": 1063,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "xml_sha256": "24ab613ff1af4bc595565690e63f793beec42cbc593213e1fbbb86749a22e699",
+  "source_protocol_targeted_passed": 54,
+  "targeted_xml_sha256": "c68c2fcef0f271c4faafeea996c39250d9ec6d5a20daba5e0956b095375fc7b1",
+  "all_prior_267_results_unchanged": true,
+  "old_checkpoint_database_sha256": "9ae72a44a30bdde93a6533cb1ba5c47d1d7e4e46ce56175a376c3d9f7ded0f17",
+  "external_model_requests_before_authorized_launch": 0,
+  "authorized_trial_state_at_receipt": "launched_NOT_scored",
+  "new_model_business_value_verified": false
+}
