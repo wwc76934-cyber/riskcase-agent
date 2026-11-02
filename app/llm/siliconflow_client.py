@@ -1,6 +1,6 @@
 """Bounded SiliconFlow HTTP client with sanitized usage audit and no retries."""
 
-from decimal import Decimal
+from decimal import Decimal,InvalidOperation
 import json
 import time
 from uuid import uuid4
@@ -16,7 +16,7 @@ MODEL = "Pro/zai-org/GLM-5.1"
 WORLD_MODEL = "zai-org/GLM-5.3-Flash"
 
 
-def validate_policy(policy):
+def validate_policy(policy,*,authorized_project_limit=None):
     if type(policy.get('version')) is not int or policy['version'] not in (1,2):raise ValueError('Unknown experiment policy version')
     world=policy.get('version')==2
     if policy["endpoint"] != ENDPOINT or policy["model"] != (WORLD_MODEL if world else MODEL):
@@ -29,7 +29,13 @@ def validate_policy(policy):
     if policy["enable_thinking"] is not False or policy["automatic_retries"] != 0:
         raise ValueError("First experiment disables thinking and automatic retries")
     run, project = Decimal(policy["run_budget_cny"]), Decimal(policy["project_budget_cny"])
-    if not run.is_finite() or not project.is_finite() or not 0 < run <= 1 or not run <= project <= (28 if world else 20):
+    ceiling=Decimal(28 if world else 20)
+    if authorized_project_limit is not None:
+        if not world:raise ValueError('Legacy version-one limits cannot be overridden')
+        try:ceiling=Decimal(str(authorized_project_limit))
+        except (InvalidOperation,ValueError,TypeError):raise ValueError('Numeric ledger-validated project authority required') from None
+        if not ceiling.is_finite() or ceiling<=0:raise ValueError('Finite ledger-validated project authority required')
+    if not run.is_finite() or not project.is_finite() or not 0 < run <= 1 or not run <= project <= ceiling:
         raise ValueError("Budget exceeds current authorization")
     for key in ("input_rate_cny_per_million", "output_rate_cny_per_million"):
         rate = Decimal(policy[key])
@@ -61,7 +67,13 @@ def usage_counts(data):
 
 class SiliconFlowClient(GLMClient):
     def __init__(self, api_key, *, policy, ledger, run_id, http_client=None, clock=time.monotonic):
-        validate_policy(policy)
+        # Only a host-supplied ledger can attest a separately validated grant.
+        # Transport still reserves every request atomically through that ledger;
+        # model messages and tool results cannot select a ceiling or grant.
+        authority=getattr(ledger,'validated_project_limit',None) if policy.get('version')==2 else None
+        limit=authority(run_id) if callable(authority) else None
+        if callable(authority) and limit is None:raise ValueError('Explicit ledger authority was not validated')
+        validate_policy(policy,authorized_project_limit=limit)
         if not isinstance(api_key,str) or len(api_key.strip()) < 8 or any(char.isspace() for char in api_key):
             raise ValueError("Valid local API credential required; never print it")
         super().__init__(api_key, policy["model"], base_url=policy["endpoint"])
