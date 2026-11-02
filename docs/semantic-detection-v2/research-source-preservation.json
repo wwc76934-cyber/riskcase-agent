@@ -1,0 +1,31 @@
+{
+  "status": "research_sources_preserved",
+  "checked_at_UTC": "2026-11-02T10:12:14.572Z",
+  "protocols": {
+    "B": {
+      "protocol_sha256": "fec6f4b4faa6df55979318cdf8b21fda260c7e0cebd42f8c45ea8ca187af8207",
+      "files_checked": 15
+    },
+    "D": {
+      "protocol_sha256": "b06b0c216ddf621d68eba1988b08664b06a5411329b2be74c106b92c0aff3415",
+      "files_checked": 19
+    },
+    "D-prior": {
+      "protocol_sha256": "07f3ee37636628ce0b474905b8e80a18a25fa0507bc2d41e61786eb8eb7577a3",
+      "files_checked": 23
+    }
+  },
+  "differences": [],
+  "default_detector_changed": false,
+  "git_scope": {
+    "base": "829bcb14dabe134bb243c8cd5e9ce475c1ef4462",
+    "head": "ff2d49fd9acde474fda70944167ecb0c951f1937",
+    "changed_paths": 147,
+    "outside_research_or_CI_environment_scope": [],
+    "shared_CI_environment_only": [
+      ".github/workflows/tests.yml"
+    ],
+    "Agent_runtime_or_approval_semantic_changes": []
+  },
+  "rechecked_after_all_supplement_fits_and_replays": true
+}

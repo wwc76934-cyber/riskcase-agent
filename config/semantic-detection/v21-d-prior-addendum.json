@@ -1,0 +1,62 @@
+{
+  "version": "riskcase-v21-low-label-prior-addendum-1",
+  "status": "registered_before_primary_D_development_scores",
+  "registration_commit": "a01e131b9d9a5b7ab029e74fcbb69adfea9b3ca6",
+  "implementation_ready": true,
+  "candidate_evidence_criterion": "Positive ensemble net and seven-day block descriptive interval lower bound greater than zero versus each of ordinary/random/TFIDF, and positive Qwen-minus-ordinary TP difference at every matched seed. Never sufficient for default upgrade or a claim of rich-business-text value.",
+  "reason": "Complete the PRD D with/without pretrained representation comparison; original D32 loss/consistency study remains unchanged.",
+  "source_scope": "Existing already-audited IBM MCC category descriptions only; not C2 new-business-text admission; retrospective simulated label availability.",
+  "main_D_run": "runs/semantic-v21-d-01",
+  "mask_sha256": "3172f1b650192444af31717b5b2b08d8b6ca6abd19c716c67e1843eba1720d4c",
+  "main_D_source_commit": "54181f76278187594987bc0f3b4ca1ddafecfdf1",
+  "expected_visible_positive": 91,
+  "expected_visible_negative": 82966,
+  "bank": "runs/semantic-v21-representations-01",
+  "bank_manifest_sha256": "dc0c93ec3917954bd4ec1384280c5986d7c60541502707021da66b00a6029f7a",
+  "text_sha256": "409ad1739182461e04f8e9f416449586feb9fbdb9087c0eedbb8a2f1c7b9999a",
+  "bank_specification": "nochannel-original",
+  "bank_vectors_sha256": "12e45b3c887b46fac53ea997284079a1b4f54e10aedf92b667d8a18b891bd3ed",
+  "representations": [
+    "qwen_frozen32",
+    "random_frozen32",
+    "tfidf_frozen32"
+  ],
+  "ordinary_reference": "Original D bce seed42/43/44; no re-selection or retraining baseline",
+  "dimensions": 32,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "epochs": 12,
+  "new_neural_instances": 9,
+  "random_seed": 20261102,
+  "tfidf": {
+    "lowercase": true,
+    "ngram_range": [
+      1,
+      2
+    ],
+    "sublinear_tf": true,
+    "svd_dimensions": 32,
+    "svd_seed": 20261102,
+    "fit_scope": "Only allowed category texts from training vocabulary, exclude unknown row, no labels or raw transactions"
+  },
+  "initialization": "Copy all non-auxiliary parameters from the ordinary cold initialization for each same seed, then replace and freeze auxiliary32 table; equal downstream shape and initial values. Random and TFIDF frozen controls match Qwen trainable capacity.",
+  "backbone": "Same verified broad220 statistics NN, no explicit channel, same train-X-only preprocessing; no pretrained full-label neural weights",
+  "loss": "WeightedBCE20; no consistency or extra view. Preserve teacher forward/EMA path for matched compute to ordinary D bce.",
+  "optimizer": "AdamW.001/WD.01; batch4096; clip5;12epochcosine to5e-5; fixed final epoch; no tuning",
+  "after_original_D_gate": "Only fit after original D32 full-replay audit succeeds. Registration occurs before any primary D dev scores; execute regardless of primary D performance.",
+  "selection": "All3representations and all3seeds reported; no larger embedding model, no new encoder download/generation/API call; no further IBM semantic search",
+  "evaluation": "Observed2018 development; no new independent test. Load new-model dev scores only after all9 fits. Compare same-text TFIDF, same-dimension frozen random, ordinary trainable embedding.",
+  "new_dataset_rows_allowed": false,
+  "new_paid_calls": 0,
+  "default_detector_changed": false,
+  "limits": [
+    "MCC descriptions are deterministic functions of known category IDs; this tests category priors under91visible positives, not extra real-business facts.",
+    "Public modern dictionary/2026pretrained model on historical synthetic data is retrospective, not evidence of historical operational text availability.",
+    "No claim of independent pretrained knowledge unless it beats ordinary/TFIDF/random robustly; no default upgrade even then without independent validation."
+  ],
+  "registered_at_UTC": "2026-11-02T08:19:35.616Z",
+  "primary_D_development_report_absent_at_registration": true
+}

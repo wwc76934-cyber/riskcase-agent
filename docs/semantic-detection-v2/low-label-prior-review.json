@@ -1,0 +1,28 @@
+{
+  "status": "low_label_prior_technical_and_visual_review_complete",
+  "reviewed_at_UTC": "2026-11-02T10:10:41.046Z",
+  "source_commit": "0a460dd0556d9b5049a2a7e8d127b915398ecf20",
+  "registration_commit": "a01e131b9d9a5b7ab029e74fcbb69adfea9b3ca6",
+  "source_files_unchanged": 23,
+  "full_new_replays": 9,
+  "full_score_error": 0,
+  "pure_scoring_replays": 9,
+  "pure_scoring_error": 0,
+  "source_report_sha256": "245fe9548dfd162385202d3d91c0accab9d5f3da114736e92005572798ccbeea",
+  "audit_sha256": "979e104cebdf0362dc001889ed2b714c9b19762001189b64922ce3833d64c613",
+  "all_positive_candidate_conditions_met": false,
+  "three_same_seed_Qwen_minus_ordinary_TP": [
+    -2,
+    -9,
+    8
+  ],
+  "figure": {
+    "path": "low-label-prior.png",
+    "visually_checked": true,
+    "legible_and_unclipped": true,
+    "sha256": "7ea60b609b9f755f067d26ed3f406a60476733efa8bb13a62d4519c1c3446dd1"
+  },
+  "C2_new_business_text_admitted": false,
+  "default_detector_changed": false,
+  "independent_external_test": false
+}

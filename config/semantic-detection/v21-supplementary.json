@@ -1,0 +1,8 @@
+{
+  "composition": "semantic-v21-composition-01",
+  "clusters": "semantic-v21-clusters-01",
+  "capacity": "semantic-v21-capacity-01",
+  "label-census": "semantic-v21-raw-label-census-01",
+  "row-sample": "semantic-v21-raw-sample-02",
+  "queue-attribution": "semantic-v21-queue-a-03"
+}

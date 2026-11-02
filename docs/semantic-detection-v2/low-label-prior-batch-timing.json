@@ -1,0 +1,90 @@
+{
+  "status": "audited_batch_scoring_timing_complete",
+  "kind": "supplement9",
+  "rows": 422088,
+  "models": [
+    {
+      "model": "qwen_frozen32/seed-42",
+      "rows": 422088,
+      "scoring_wall_seconds": 2.0939999999827705,
+      "scoring_CPU_seconds": 3.25,
+      "max_abs_diff": 0.0,
+      "weights_sha256": "f120f1f85bcc9273ca6c26cfbbd62e4ea176960f155f097e7d05f9eb3c426912"
+    },
+    {
+      "model": "qwen_frozen32/seed-43",
+      "rows": 422088,
+      "scoring_wall_seconds": 2.062999999994645,
+      "scoring_CPU_seconds": 3.40625,
+      "max_abs_diff": 0.0,
+      "weights_sha256": "7458e70f3ace7152f3837d810fbfcd1991a72218bf7ddbb9d4db823d619a38e1"
+    },
+    {
+      "model": "qwen_frozen32/seed-44",
+      "rows": 422088,
+      "scoring_wall_seconds": 2.14000000001397,
+      "scoring_CPU_seconds": 3.46875,
+      "max_abs_diff": 0.0,
+      "weights_sha256": "6eb42ba14591b8a178efaec32c1cb9a347f5dda635a5b5f745d66a1dfabdd30a"
+    },
+    {
+      "model": "random_frozen32/seed-42",
+      "rows": 422088,
+      "scoring_wall_seconds": 2.235000000015134,
+      "scoring_CPU_seconds": 3.53125,
+      "max_abs_diff": 0.0,
+      "weights_sha256": "39baab7362bfec9f100ae062dbabd2e92ae4061e332d887b3d49a9ea246c7cc9"
+    },
+    {
+      "model": "random_frozen32/seed-43",
+      "rows": 422088,
+      "scoring_wall_seconds": 2.1089999999967404,
+      "scoring_CPU_seconds": 3.359375,
+      "max_abs_diff": 0.0,
+      "weights_sha256": "7e6ff02d505786170b16a257f0b496f6dd0140baeb0a6de3a9cebae6aa4389f9"
+    },
+    {
+      "model": "random_frozen32/seed-44",
+      "rows": 422088,
+      "scoring_wall_seconds": 2.1719999999913853,
+      "scoring_CPU_seconds": 3.546875,
+      "max_abs_diff": 0.0,
+      "weights_sha256": "70c149695d9d0dff284723e55cf14a71a41615e7a7bf032a90df27b3d167de14"
+    },
+    {
+      "model": "tfidf_frozen32/seed-42",
+      "rows": 422088,
+      "scoring_wall_seconds": 2.3910000000032596,
+      "scoring_CPU_seconds": 3.90625,
+      "max_abs_diff": 0.0,
+      "weights_sha256": "6777efcc7567ad65c712e00505ed3ba028bb72d573b7b256d0d08ad8871842a5"
+    },
+    {
+      "model": "tfidf_frozen32/seed-43",
+      "rows": 422088,
+      "scoring_wall_seconds": 2.202999999979511,
+      "scoring_CPU_seconds": 3.5625,
+      "max_abs_diff": 0.0,
+      "weights_sha256": "aae4d224b4ca0c29d161902b27e2193cdbd9dd446b4d059cd237da80e128eef7"
+    },
+    {
+      "model": "tfidf_frozen32/seed-44",
+      "rows": 422088,
+      "scoring_wall_seconds": 2.0309999999881256,
+      "scoring_CPU_seconds": 3.28125,
+      "max_abs_diff": 0.0,
+      "weights_sha256": "c9d47c32d24750464c316b3c3928de8a80a769195b86c167d584c042c5cf808d"
+    }
+  ],
+  "max_abs_diff": 0.0,
+  "source_report_sha256": "245fe9548dfd162385202d3d91c0accab9d5f3da114736e92005572798ccbeea",
+  "audit_sha256": "979e104cebdf0362dc001889ed2b714c9b19762001189b64922ce3833d64c613",
+  "code_sha256": "ab21bdda52c29865f89247d6615f5f4a2ada6af1ef5733a3387aed2c7dfab03e",
+  "timing_scope": "One CPU2-thread pass per already-loaded checkpoint; includes model input transformation and prediction; excludes data loading, checkpoint load, AP/queue metrics and replay comparison. Features already constructed; no repeated trial selection, online p99, or isolated-host claim.",
+  "process_CPU_seconds_all_threads": 47.046875,
+  "whole_process_peak_bytes": 1751285760,
+  "whole_process_wall_seconds": 35.015999999974156,
+  "new_training": false,
+  "paid_calls": 0,
+  "default_detector_changed": false
+}

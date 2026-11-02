@@ -1,0 +1,90 @@
+{
+  "status": "MCC_channel_standardization_complete",
+  "decomposition": [
+    {
+      "channel": "Chip Transaction",
+      "train_rate": 0.00020744198107091921,
+      "development_rate": 0.0018173147563380462,
+      "development_mix_with_training_cell_rates": 0.00020937911357206851,
+      "MCC_mix_total_variation": 0.005465160822186801,
+      "composition_component": 1.9371325011492994e-06,
+      "within_cell_rate_component": 0.0016079356427659776,
+      "total_rate_change": 0.001609872775267127,
+      "development_unseen_cells": 0
+    },
+    {
+      "channel": "Online Transaction",
+      "train_rate": 0.00766522881650057,
+      "development_rate": 0.0005536222714330908,
+      "development_mix_with_training_cell_rates": 0.0037834113570298683,
+      "MCC_mix_total_variation": 0.013700795425130278,
+      "composition_component": -0.0038818174594707016,
+      "within_cell_rate_component": -0.0032297890855967773,
+      "total_rate_change": -0.007111606545067479,
+      "development_unseen_cells": 0
+    },
+    {
+      "channel": "Swipe Transaction",
+      "train_rate": 0.0005322280193860024,
+      "development_rate": 0.0014878032829769145,
+      "development_mix_with_training_cell_rates": 0.000520119849638386,
+      "MCC_mix_total_variation": 0.012561081813614745,
+      "composition_component": -1.2108169747616394e-05,
+      "within_cell_rate_component": 0.0009676834333385285,
+      "total_rate_change": 0.0009555752635909121,
+      "development_unseen_cells": 0
+    }
+  ],
+  "dictionary_unknown_MCC_codes": [
+    "5912",
+    "5921"
+  ],
+  "unknown_coverage": [
+    {
+      "year": "2016",
+      "channel": "Chip Transaction",
+      "rows": 22674,
+      "positives": 11
+    },
+    {
+      "year": "2016",
+      "channel": "Online Transaction",
+      "rows": 15,
+      "positives": 15
+    },
+    {
+      "year": "2016",
+      "channel": "Swipe Transaction",
+      "rows": 5964,
+      "positives": 4
+    },
+    {
+      "year": "2017",
+      "channel": "Chip Transaction",
+      "rows": 22970,
+      "positives": 5
+    },
+    {
+      "year": "2017",
+      "channel": "Swipe Transaction",
+      "rows": 5789,
+      "positives": 0
+    },
+    {
+      "year": "2018",
+      "channel": "Chip Transaction",
+      "rows": 23137,
+      "positives": 42
+    },
+    {
+      "year": "2018",
+      "channel": "Swipe Transaction",
+      "rows": 5710,
+      "positives": 2
+    }
+  ],
+  "definition": "Training-cell-rate reference: total change = MCC-mixture change + residual within-cell-rate change",
+  "limit": "Algebraic standardization, not causal identification; residual can include other feature/entity mixtures and label mechanisms",
+  "new_training": false,
+  "final_2019_read": false
+}

@@ -1,0 +1,565 @@
+{
+  "source": {
+    "url": "https://by.visa.com/content/dam/VCOM/download/merchants/visa-merchant-data-standards-manual.pdf",
+    "edition": "October 2026",
+    "retrieved_at": "2026-11-01",
+    "sha256": "62839c2c559ccb59914241315765860015ac6ffc446274b3b03d57399638fa5a",
+    "historical_status": "Modern reference dictionary, NOT proven available in 2016; retrospective research only",
+    "rights": "Copyright Visa; public manual kept locally; only observed category titles extracted"
+  },
+  "entries": {
+    "1711": {
+      "title": "Heating, Plumbing, and Air Conditioning Contractors",
+      "pdf_page": 27,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3000": {
+      "title": "UNITED AIRLINES",
+      "pdf_page": 30,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3001": {
+      "title": "AMERICAN AIRLINES",
+      "pdf_page": 30,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3005": {
+      "title": "BRITISH AIRWAYS",
+      "pdf_page": 30,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3006": {
+      "title": "JAPAN AIRLINES",
+      "pdf_page": 30,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3007": {
+      "title": "AIR FRANCE",
+      "pdf_page": 30,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3008": {
+      "title": "LUFTHANSA",
+      "pdf_page": 30,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3009": {
+      "title": "AIR CANADA",
+      "pdf_page": 30,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3058": {
+      "title": "DELTA",
+      "pdf_page": 31,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3066": {
+      "title": "SOUTHWEST",
+      "pdf_page": 31,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3075": {
+      "title": "SINGAPORE AIRLINES",
+      "pdf_page": 31,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3132": {
+      "title": "FRONTIER AIRLINES",
+      "pdf_page": 32,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3144": {
+      "title": "VIRGIN ATLANTIC",
+      "pdf_page": 33,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3174": {
+      "title": "JETBLUE AIRWAYS",
+      "pdf_page": 33,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3256": {
+      "title": "ALASKA AIRLINES",
+      "pdf_page": 35,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3260": {
+      "title": "SPIRIT AIRLINES",
+      "pdf_page": 35,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3359": {
+      "title": "PAYLESS CAR RENTAL",
+      "pdf_page": 36,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3387": {
+      "title": "ALAMO RENT-A-CAR",
+      "pdf_page": 36,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3389": {
+      "title": "AVIS RENT-A-CAR",
+      "pdf_page": 36,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3390": {
+      "title": "DOLLAR RENT-A-CAR",
+      "pdf_page": 36,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3393": {
+      "title": "NATIONAL CAR RENTAL",
+      "pdf_page": 36,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3395": {
+      "title": "THRIFTY CAR RENTAL",
+      "pdf_page": 36,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3405": {
+      "title": "ENTERPRISE RENT-A-CAR",
+      "pdf_page": 37,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3504": {
+      "title": "HILTON HOTELS",
+      "pdf_page": 38,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3509": {
+      "title": "MARRIOTT",
+      "pdf_page": 38,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3596": {
+      "title": "WYNN LAS VEGAS",
+      "pdf_page": 41,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3640": {
+      "title": "HYATT HOTELS",
+      "pdf_page": 42,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3684": {
+      "title": "BUDGET HOST INNS",
+      "pdf_page": 44,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3722": {
+      "title": "WYNDHAM",
+      "pdf_page": 45,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3730": {
+      "title": "MGM GRAND HOTEL",
+      "pdf_page": 45,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3771": {
+      "title": "CAESAR’S HOTEL AND CASINO",
+      "pdf_page": 47,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3775": {
+      "title": "SANDS RESORT",
+      "pdf_page": 47,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "3780": {
+      "title": "DISNEY RESORTS",
+      "pdf_page": 47,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "4111": {
+      "title": "Local and Suburban Commuter Passenger Transportation, Including Ferries",
+      "pdf_page": 51,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "4112": {
+      "title": "Passenger Railways",
+      "pdf_page": 51,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "4121": {
+      "title": "Taxicabs and Limousines",
+      "pdf_page": 51,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "4131": {
+      "title": "Bus Lines",
+      "pdf_page": 52,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "4214": {
+      "title": "Motor Freight Carriers and Trucking – Local and Long Distance, Moving and Storage Companies, and Local Delivery Services",
+      "pdf_page": 52,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "4411": {
+      "title": "Steamship and Cruise Lines",
+      "pdf_page": 52,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "4511": {
+      "title": "Airlines and Air Carriers (Not Elsewhere Classified)",
+      "pdf_page": 53,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "4722": {
+      "title": "Travel Agencies and Tour Operators",
+      "pdf_page": 53,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "4784": {
+      "title": "Tolls and Bridge Fees",
+      "pdf_page": 54,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "4814": {
+      "title": "Telecommunication Services, including Local and Long-Distance Calls, Credit Card Calls, Calls Through Use of Magnetic-Stripe-Reading Telephones, and Fax Services",
+      "pdf_page": 54,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "4829": {
+      "title": "Money Transfer",
+      "pdf_page": 55,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "4899": {
+      "title": "Cable, Satellite and Other Pay Television/Radio/Streaming Services",
+      "pdf_page": 55,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "4900": {
+      "title": "Utilities – Electric, Gas, Water, and Sanitary",
+      "pdf_page": 55,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5045": {
+      "title": "Computers and Computer Peripheral Equipment and Software",
+      "pdf_page": 56,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5094": {
+      "title": "Precious Stones and Metals, Watches and Jewelry",
+      "pdf_page": 58,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5192": {
+      "title": "Books, Periodicals and Newspapers",
+      "pdf_page": 60,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5193": {
+      "title": "Florists Supplies, Nursery Stock and Flowers",
+      "pdf_page": 60,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5211": {
+      "title": "Lumber and Building Materials Stores",
+      "pdf_page": 61,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5251": {
+      "title": "Hardware Stores",
+      "pdf_page": 61,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5261": {
+      "title": "Nurseries and Lawn and Garden Supply Stores",
+      "pdf_page": 61,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5300": {
+      "title": "Wholesale Clubs",
+      "pdf_page": 62,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5310": {
+      "title": "Discount Stores",
+      "pdf_page": 62,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5311": {
+      "title": "Department Stores",
+      "pdf_page": 63,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5411": {
+      "title": "Grocery Stores and Supermarkets",
+      "pdf_page": 63,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5499": {
+      "title": "Miscellaneous Food Stores – Convenience Stores and Specialty Markets",
+      "pdf_page": 64,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5533": {
+      "title": "Automotive Parts and Accessories Stores",
+      "pdf_page": 66,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5541": {
+      "title": "Service Stations (With or without Ancillary Services)",
+      "pdf_page": 66,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5621": {
+      "title": "Women’s Ready -To-Wear Stores",
+      "pdf_page": 68,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5651": {
+      "title": "Family Clothing Stores",
+      "pdf_page": 69,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5655": {
+      "title": "Sports and Riding Apparel Stores",
+      "pdf_page": 69,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5661": {
+      "title": "Shoe Stores",
+      "pdf_page": 69,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5712": {
+      "title": "Furniture, Home Furnishings, and Equipment Stores, Except Appliances",
+      "pdf_page": 71,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5719": {
+      "title": "Miscellaneous Home Furnishing Specialty Stores",
+      "pdf_page": 71,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5722": {
+      "title": "Household Appliance Stores",
+      "pdf_page": 72,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5732": {
+      "title": "Electronics Stores",
+      "pdf_page": 72,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5733": {
+      "title": "Music Stores – Musical Instruments, Pianos, and Sheet Music",
+      "pdf_page": 72,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5812": {
+      "title": "Eating Places and Restaurants",
+      "pdf_page": 73,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5813": {
+      "title": "Drinking Places (Alcoholic Beverages) – Bars, Taverns, Nightclubs, Cocktail Lounges, and Discotheques",
+      "pdf_page": 73,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5814": {
+      "title": "Fast Food Restaurants",
+      "pdf_page": 74,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5815": {
+      "title": "Digital Goods Media – Books, Movies, Digital artwork/images, Music",
+      "pdf_page": 74,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5816": {
+      "title": "Digital Goods – Games",
+      "pdf_page": 74,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5932": {
+      "title": "Antique Shops – Sales, Repairs, and Restoration Services",
+      "pdf_page": 75,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5941": {
+      "title": "Sporting Goods Stores",
+      "pdf_page": 76,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5942": {
+      "title": "Book Stores",
+      "pdf_page": 76,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5947": {
+      "title": "Gift, Card, Novelty and Souvenir Shops",
+      "pdf_page": 77,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5970": {
+      "title": "Artists’ Supply and Craft Shops",
+      "pdf_page": 80,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "5977": {
+      "title": "Cosmetic Stores",
+      "pdf_page": 80,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "6300": {
+      "title": "Insurance Sales, Underwriting, and Premiums",
+      "pdf_page": 85,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "7011": {
+      "title": "Lodging – Hotels, Motels, Resorts, Central Reservation Services (Not Elsewhere Classified)",
+      "pdf_page": 86,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "7210": {
+      "title": "Laundry, Cleaning, and Garment Services",
+      "pdf_page": 86,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "7230": {
+      "title": "Beauty and Barber Shops",
+      "pdf_page": 87,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "7276": {
+      "title": "Tax Preparation Services",
+      "pdf_page": 88,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "7349": {
+      "title": "Cleaning, Maintenance, and Janitorial Services",
+      "pdf_page": 90,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "7393": {
+      "title": "Detective Agencies, Protective Services, and Security Services, including Armored Cars, and Guard Dogs",
+      "pdf_page": 91,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "7531": {
+      "title": "Automotive Body Repair Shops",
+      "pdf_page": 93,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "7538": {
+      "title": "Automotive Service Shops (Non-Dealer)",
+      "pdf_page": 94,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "7542": {
+      "title": "Car Washes",
+      "pdf_page": 94,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "7549": {
+      "title": "Towing Services",
+      "pdf_page": 94,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "7801": {
+      "title": "Government Licensed On-Line Casinos (On-Line Gambling) (US Region only)",
+      "pdf_page": 95,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "7802": {
+      "title": "Government-Licensed Horse/Dog Racing (US Region only)",
+      "pdf_page": 96,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "7832": {
+      "title": "Motion Picture Theaters",
+      "pdf_page": 96,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "7922": {
+      "title": "Ticket Agencies and Theatrical Producers (Except Motion Pictures)",
+      "pdf_page": 96,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "7995": {
+      "title": "Betting, including Lottery Tickets, Casino Gaming Chips, Off-Track Betting, Wagers at Race Tracks and games of chance to win prizes of monetary value",
+      "pdf_page": 98,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "7996": {
+      "title": "Amusement Parks, Circuses, Carnivals, and Fortune Tellers",
+      "pdf_page": 98,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "8011": {
+      "title": "Doctors and Physicians (Not Elsewhere Classified)",
+      "pdf_page": 100,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "8021": {
+      "title": "Dentists and Orthodontists",
+      "pdf_page": 100,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "8041": {
+      "title": "Chiropractors",
+      "pdf_page": 100,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "8043": {
+      "title": "Opticians, Optical Goods, and Eyeglasses",
+      "pdf_page": 100,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "8049": {
+      "title": "Podiatrists and Chiropodists",
+      "pdf_page": 101,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "8062": {
+      "title": "Hospitals",
+      "pdf_page": 101,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "8099": {
+      "title": "Medical Services and Health Practitioners (Not Elsewhere Classified)",
+      "pdf_page": 101,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "8111": {
+      "title": "Legal Services and Attorneys",
+      "pdf_page": 102,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "8931": {
+      "title": "Accounting, Auditing, and Bookkeeping Services",
+      "pdf_page": 105,
+      "extraction": "first-column code + title-column words; bold general titles"
+    },
+    "9402": {
+      "title": "Postal Services – Government Only",
+      "pdf_page": 106,
+      "extraction": "first-column code + title-column words; bold general titles"
+    }
+  },
+  "conflicting_source_codes": {
+    "5912": [
+      {
+        "title": "Drug Stores and Pharmacies",
+        "pdf_page": 75,
+        "extraction": "first-column code + title-column words; bold general titles"
+      },
+      {
+        "title": "Package Stores – Beer, Wine, and Liquor",
+        "pdf_page": 75,
+        "extraction": "first-column code + title-column words; bold general titles"
+      }
+    ]
+  },
+  "unmapped_training_codes": [
+    "5912",
+    "5921"
+  ]
+}

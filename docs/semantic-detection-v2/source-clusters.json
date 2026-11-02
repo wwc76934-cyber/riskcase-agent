@@ -1,0 +1,774 @@
+{
+  "status": "exploratory_category_cluster_diagnostic_complete",
+  "results": {
+    "32": {
+      "brand_sector_probe": {
+        "qwen": {
+          "brand_mccs": 32,
+          "ARI": 0.892304630249516,
+          "NMI": 0.8960715897501994
+        },
+        "random": {
+          "brand_mccs": 32,
+          "ARI": 0.018263607737291947,
+          "NMI": 0.07379725330607284
+        }
+      },
+      "all_known_mcc_clusters8": [
+        {
+          "cluster": 0,
+          "mccs": 14,
+          "closest_to_centroid": [
+            {
+              "mcc": "3640",
+              "title": "HYATT HOTELS"
+            },
+            {
+              "mcc": "4722",
+              "title": "Travel Agencies and Tour Operators"
+            },
+            {
+              "mcc": "3509",
+              "title": "MARRIOTT"
+            },
+            {
+              "mcc": "5655",
+              "title": "Sports and Riding Apparel Stores"
+            },
+            {
+              "mcc": "3775",
+              "title": "SANDS RESORT"
+            },
+            {
+              "mcc": "3780",
+              "title": "DISNEY RESORTS"
+            }
+          ]
+        },
+        {
+          "cluster": 1,
+          "mccs": 14,
+          "closest_to_centroid": [
+            {
+              "mcc": "7349",
+              "title": "Cleaning, Maintenance, and Janitorial Services"
+            },
+            {
+              "mcc": "5712",
+              "title": "Furniture, Home Furnishings, and Equipment Stores, Except Appliances"
+            },
+            {
+              "mcc": "7538",
+              "title": "Automotive Service Shops (Non-Dealer)"
+            },
+            {
+              "mcc": "5533",
+              "title": "Automotive Parts and Accessories Stores"
+            },
+            {
+              "mcc": "7210",
+              "title": "Laundry, Cleaning, and Garment Services"
+            },
+            {
+              "mcc": "7542",
+              "title": "Car Washes"
+            }
+          ]
+        },
+        {
+          "cluster": 2,
+          "mccs": 10,
+          "closest_to_centroid": [
+            {
+              "mcc": "5815",
+              "title": "Digital Goods Media – Books, Movies, Digital artwork/images, Music"
+            },
+            {
+              "mcc": "5045",
+              "title": "Computers and Computer Peripheral Equipment and Software"
+            },
+            {
+              "mcc": "7276",
+              "title": "Tax Preparation Services"
+            },
+            {
+              "mcc": "8931",
+              "title": "Accounting, Auditing, and Bookkeeping Services"
+            },
+            {
+              "mcc": "8111",
+              "title": "Legal Services and Attorneys"
+            },
+            {
+              "mcc": "5192",
+              "title": "Books, Periodicals and Newspapers"
+            }
+          ]
+        },
+        {
+          "cluster": 3,
+          "mccs": 25,
+          "closest_to_centroid": [
+            {
+              "mcc": "5311",
+              "title": "Department Stores"
+            },
+            {
+              "mcc": "5661",
+              "title": "Shoe Stores"
+            },
+            {
+              "mcc": "5651",
+              "title": "Family Clothing Stores"
+            },
+            {
+              "mcc": "5251",
+              "title": "Hardware Stores"
+            },
+            {
+              "mcc": "5310",
+              "title": "Discount Stores"
+            },
+            {
+              "mcc": "5261",
+              "title": "Nurseries and Lawn and Garden Supply Stores"
+            }
+          ]
+        },
+        {
+          "cluster": 4,
+          "mccs": 10,
+          "closest_to_centroid": [
+            {
+              "mcc": "7996",
+              "title": "Amusement Parks, Circuses, Carnivals, and Fortune Tellers"
+            },
+            {
+              "mcc": "7801",
+              "title": "Government Licensed On-Line Casinos (On-Line Gambling) (US Region only)"
+            },
+            {
+              "mcc": "7995",
+              "title": "Betting, including Lottery Tickets, Casino Gaming Chips, Off-Track Betting, Wagers at Race Tracks and games of chance to win prizes of monetary value"
+            },
+            {
+              "mcc": "3684",
+              "title": "BUDGET HOST INNS"
+            },
+            {
+              "mcc": "7011",
+              "title": "Lodging – Hotels, Motels, Resorts, Central Reservation Services (Not Elsewhere Classified)"
+            },
+            {
+              "mcc": "7922",
+              "title": "Ticket Agencies and Theatrical Producers (Except Motion Pictures)"
+            }
+          ]
+        },
+        {
+          "cluster": 5,
+          "mccs": 12,
+          "closest_to_centroid": [
+            {
+              "mcc": "3405",
+              "title": "ENTERPRISE RENT-A-CAR"
+            },
+            {
+              "mcc": "3389",
+              "title": "AVIS RENT-A-CAR"
+            },
+            {
+              "mcc": "3390",
+              "title": "DOLLAR RENT-A-CAR"
+            },
+            {
+              "mcc": "3393",
+              "title": "NATIONAL CAR RENTAL"
+            },
+            {
+              "mcc": "3395",
+              "title": "THRIFTY CAR RENTAL"
+            },
+            {
+              "mcc": "3359",
+              "title": "PAYLESS CAR RENTAL"
+            }
+          ]
+        },
+        {
+          "cluster": 6,
+          "mccs": 8,
+          "closest_to_centroid": [
+            {
+              "mcc": "8099",
+              "title": "Medical Services and Health Practitioners (Not Elsewhere Classified)"
+            },
+            {
+              "mcc": "8062",
+              "title": "Hospitals"
+            },
+            {
+              "mcc": "8011",
+              "title": "Doctors and Physicians (Not Elsewhere Classified)"
+            },
+            {
+              "mcc": "8041",
+              "title": "Chiropractors"
+            },
+            {
+              "mcc": "8021",
+              "title": "Dentists and Orthodontists"
+            },
+            {
+              "mcc": "6300",
+              "title": "Insurance Sales, Underwriting, and Premiums"
+            }
+          ]
+        },
+        {
+          "cluster": 7,
+          "mccs": 14,
+          "closest_to_centroid": [
+            {
+              "mcc": "3000",
+              "title": "UNITED AIRLINES"
+            },
+            {
+              "mcc": "3001",
+              "title": "AMERICAN AIRLINES"
+            },
+            {
+              "mcc": "3005",
+              "title": "BRITISH AIRWAYS"
+            },
+            {
+              "mcc": "3256",
+              "title": "ALASKA AIRLINES"
+            },
+            {
+              "mcc": "3132",
+              "title": "FRONTIER AIRLINES"
+            },
+            {
+              "mcc": "3174",
+              "title": "JETBLUE AIRWAYS"
+            }
+          ]
+        }
+      ]
+    },
+    "128": {
+      "brand_sector_probe": {
+        "qwen": {
+          "brand_mccs": 32,
+          "ARI": 0.7930070945149057,
+          "NMI": 0.8332679532343772
+        },
+        "random": {
+          "brand_mccs": 32,
+          "ARI": 0.09242282849353169,
+          "NMI": 0.14798072188035477
+        }
+      },
+      "all_known_mcc_clusters8": [
+        {
+          "cluster": 0,
+          "mccs": 10,
+          "closest_to_centroid": [
+            {
+              "mcc": "5815",
+              "title": "Digital Goods Media – Books, Movies, Digital artwork/images, Music"
+            },
+            {
+              "mcc": "8111",
+              "title": "Legal Services and Attorneys"
+            },
+            {
+              "mcc": "5045",
+              "title": "Computers and Computer Peripheral Equipment and Software"
+            },
+            {
+              "mcc": "8931",
+              "title": "Accounting, Auditing, and Bookkeeping Services"
+            },
+            {
+              "mcc": "7276",
+              "title": "Tax Preparation Services"
+            },
+            {
+              "mcc": "5192",
+              "title": "Books, Periodicals and Newspapers"
+            }
+          ]
+        },
+        {
+          "cluster": 1,
+          "mccs": 16,
+          "closest_to_centroid": [
+            {
+              "mcc": "3000",
+              "title": "UNITED AIRLINES"
+            },
+            {
+              "mcc": "3001",
+              "title": "AMERICAN AIRLINES"
+            },
+            {
+              "mcc": "3132",
+              "title": "FRONTIER AIRLINES"
+            },
+            {
+              "mcc": "3005",
+              "title": "BRITISH AIRWAYS"
+            },
+            {
+              "mcc": "3006",
+              "title": "JAPAN AIRLINES"
+            },
+            {
+              "mcc": "3174",
+              "title": "JETBLUE AIRWAYS"
+            }
+          ]
+        },
+        {
+          "cluster": 2,
+          "mccs": 13,
+          "closest_to_centroid": [
+            {
+              "mcc": "7538",
+              "title": "Automotive Service Shops (Non-Dealer)"
+            },
+            {
+              "mcc": "7349",
+              "title": "Cleaning, Maintenance, and Janitorial Services"
+            },
+            {
+              "mcc": "7542",
+              "title": "Car Washes"
+            },
+            {
+              "mcc": "7210",
+              "title": "Laundry, Cleaning, and Garment Services"
+            },
+            {
+              "mcc": "7549",
+              "title": "Towing Services"
+            },
+            {
+              "mcc": "5541",
+              "title": "Service Stations (With or without Ancillary Services)"
+            }
+          ]
+        },
+        {
+          "cluster": 3,
+          "mccs": 19,
+          "closest_to_centroid": [
+            {
+              "mcc": "3780",
+              "title": "DISNEY RESORTS"
+            },
+            {
+              "mcc": "4722",
+              "title": "Travel Agencies and Tour Operators"
+            },
+            {
+              "mcc": "3640",
+              "title": "HYATT HOTELS"
+            },
+            {
+              "mcc": "3504",
+              "title": "HILTON HOTELS"
+            },
+            {
+              "mcc": "3730",
+              "title": "MGM GRAND HOTEL"
+            },
+            {
+              "mcc": "7996",
+              "title": "Amusement Parks, Circuses, Carnivals, and Fortune Tellers"
+            }
+          ]
+        },
+        {
+          "cluster": 4,
+          "mccs": 6,
+          "closest_to_centroid": [
+            {
+              "mcc": "8021",
+              "title": "Dentists and Orthodontists"
+            },
+            {
+              "mcc": "8011",
+              "title": "Doctors and Physicians (Not Elsewhere Classified)"
+            },
+            {
+              "mcc": "8041",
+              "title": "Chiropractors"
+            },
+            {
+              "mcc": "8099",
+              "title": "Medical Services and Health Practitioners (Not Elsewhere Classified)"
+            },
+            {
+              "mcc": "8062",
+              "title": "Hospitals"
+            },
+            {
+              "mcc": "8049",
+              "title": "Podiatrists and Chiropodists"
+            }
+          ]
+        },
+        {
+          "cluster": 5,
+          "mccs": 25,
+          "closest_to_centroid": [
+            {
+              "mcc": "5311",
+              "title": "Department Stores"
+            },
+            {
+              "mcc": "5251",
+              "title": "Hardware Stores"
+            },
+            {
+              "mcc": "5661",
+              "title": "Shoe Stores"
+            },
+            {
+              "mcc": "5722",
+              "title": "Household Appliance Stores"
+            },
+            {
+              "mcc": "5732",
+              "title": "Electronics Stores"
+            },
+            {
+              "mcc": "5942",
+              "title": "Book Stores"
+            }
+          ]
+        },
+        {
+          "cluster": 6,
+          "mccs": 5,
+          "closest_to_centroid": [
+            {
+              "mcc": "5812",
+              "title": "Eating Places and Restaurants"
+            },
+            {
+              "mcc": "5814",
+              "title": "Fast Food Restaurants"
+            },
+            {
+              "mcc": "5411",
+              "title": "Grocery Stores and Supermarkets"
+            },
+            {
+              "mcc": "5499",
+              "title": "Miscellaneous Food Stores – Convenience Stores and Specialty Markets"
+            },
+            {
+              "mcc": "3066",
+              "title": "SOUTHWEST"
+            }
+          ]
+        },
+        {
+          "cluster": 7,
+          "mccs": 13,
+          "closest_to_centroid": [
+            {
+              "mcc": "3390",
+              "title": "DOLLAR RENT-A-CAR"
+            },
+            {
+              "mcc": "3405",
+              "title": "ENTERPRISE RENT-A-CAR"
+            },
+            {
+              "mcc": "3393",
+              "title": "NATIONAL CAR RENTAL"
+            },
+            {
+              "mcc": "3389",
+              "title": "AVIS RENT-A-CAR"
+            },
+            {
+              "mcc": "3395",
+              "title": "THRIFTY CAR RENTAL"
+            },
+            {
+              "mcc": "3359",
+              "title": "PAYLESS CAR RENTAL"
+            }
+          ]
+        }
+      ]
+    },
+    "256": {
+      "brand_sector_probe": {
+        "qwen": {
+          "brand_mccs": 32,
+          "ARI": 0.7930070945149057,
+          "NMI": 0.8332679532343772
+        },
+        "random": {
+          "brand_mccs": 32,
+          "ARI": -0.010257445363964989,
+          "NMI": 0.04951394542883108
+        }
+      },
+      "all_known_mcc_clusters8": [
+        {
+          "cluster": 0,
+          "mccs": 7,
+          "closest_to_centroid": [
+            {
+              "mcc": "3596",
+              "title": "WYNN LAS VEGAS"
+            },
+            {
+              "mcc": "3066",
+              "title": "SOUTHWEST"
+            },
+            {
+              "mcc": "3722",
+              "title": "WYNDHAM"
+            },
+            {
+              "mcc": "3509",
+              "title": "MARRIOTT"
+            },
+            {
+              "mcc": "3144",
+              "title": "VIRGIN ATLANTIC"
+            },
+            {
+              "mcc": "7802",
+              "title": "Government-Licensed Horse/Dog Racing (US Region only)"
+            }
+          ]
+        },
+        {
+          "cluster": 1,
+          "mccs": 13,
+          "closest_to_centroid": [
+            {
+              "mcc": "3780",
+              "title": "DISNEY RESORTS"
+            },
+            {
+              "mcc": "3504",
+              "title": "HILTON HOTELS"
+            },
+            {
+              "mcc": "3640",
+              "title": "HYATT HOTELS"
+            },
+            {
+              "mcc": "4722",
+              "title": "Travel Agencies and Tour Operators"
+            },
+            {
+              "mcc": "3730",
+              "title": "MGM GRAND HOTEL"
+            },
+            {
+              "mcc": "7011",
+              "title": "Lodging – Hotels, Motels, Resorts, Central Reservation Services (Not Elsewhere Classified)"
+            }
+          ]
+        },
+        {
+          "cluster": 2,
+          "mccs": 38,
+          "closest_to_centroid": [
+            {
+              "mcc": "5311",
+              "title": "Department Stores"
+            },
+            {
+              "mcc": "5251",
+              "title": "Hardware Stores"
+            },
+            {
+              "mcc": "5722",
+              "title": "Household Appliance Stores"
+            },
+            {
+              "mcc": "5661",
+              "title": "Shoe Stores"
+            },
+            {
+              "mcc": "5732",
+              "title": "Electronics Stores"
+            },
+            {
+              "mcc": "5942",
+              "title": "Book Stores"
+            }
+          ]
+        },
+        {
+          "cluster": 3,
+          "mccs": 15,
+          "closest_to_centroid": [
+            {
+              "mcc": "3000",
+              "title": "UNITED AIRLINES"
+            },
+            {
+              "mcc": "3001",
+              "title": "AMERICAN AIRLINES"
+            },
+            {
+              "mcc": "3132",
+              "title": "FRONTIER AIRLINES"
+            },
+            {
+              "mcc": "3005",
+              "title": "BRITISH AIRWAYS"
+            },
+            {
+              "mcc": "3174",
+              "title": "JETBLUE AIRWAYS"
+            },
+            {
+              "mcc": "3006",
+              "title": "JAPAN AIRLINES"
+            }
+          ]
+        },
+        {
+          "cluster": 4,
+          "mccs": 7,
+          "closest_to_centroid": [
+            {
+              "mcc": "3405",
+              "title": "ENTERPRISE RENT-A-CAR"
+            },
+            {
+              "mcc": "3390",
+              "title": "DOLLAR RENT-A-CAR"
+            },
+            {
+              "mcc": "3393",
+              "title": "NATIONAL CAR RENTAL"
+            },
+            {
+              "mcc": "3395",
+              "title": "THRIFTY CAR RENTAL"
+            },
+            {
+              "mcc": "3389",
+              "title": "AVIS RENT-A-CAR"
+            },
+            {
+              "mcc": "3359",
+              "title": "PAYLESS CAR RENTAL"
+            }
+          ]
+        },
+        {
+          "cluster": 5,
+          "mccs": 12,
+          "closest_to_centroid": [
+            {
+              "mcc": "4121",
+              "title": "Taxicabs and Limousines"
+            },
+            {
+              "mcc": "5541",
+              "title": "Service Stations (With or without Ancillary Services)"
+            },
+            {
+              "mcc": "4131",
+              "title": "Bus Lines"
+            },
+            {
+              "mcc": "4111",
+              "title": "Local and Suburban Commuter Passenger Transportation, Including Ferries"
+            },
+            {
+              "mcc": "7549",
+              "title": "Towing Services"
+            },
+            {
+              "mcc": "4112",
+              "title": "Passenger Railways"
+            }
+          ]
+        },
+        {
+          "cluster": 6,
+          "mccs": 9,
+          "closest_to_centroid": [
+            {
+              "mcc": "7349",
+              "title": "Cleaning, Maintenance, and Janitorial Services"
+            },
+            {
+              "mcc": "7210",
+              "title": "Laundry, Cleaning, and Garment Services"
+            },
+            {
+              "mcc": "8931",
+              "title": "Accounting, Auditing, and Bookkeeping Services"
+            },
+            {
+              "mcc": "8111",
+              "title": "Legal Services and Attorneys"
+            },
+            {
+              "mcc": "7276",
+              "title": "Tax Preparation Services"
+            },
+            {
+              "mcc": "4900",
+              "title": "Utilities – Electric, Gas, Water, and Sanitary"
+            }
+          ]
+        },
+        {
+          "cluster": 7,
+          "mccs": 6,
+          "closest_to_centroid": [
+            {
+              "mcc": "8011",
+              "title": "Doctors and Physicians (Not Elsewhere Classified)"
+            },
+            {
+              "mcc": "8041",
+              "title": "Chiropractors"
+            },
+            {
+              "mcc": "8021",
+              "title": "Dentists and Orthodontists"
+            },
+            {
+              "mcc": "8099",
+              "title": "Medical Services and Health Practitioners (Not Elsewhere Classified)"
+            },
+            {
+              "mcc": "8062",
+              "title": "Hospitals"
+            },
+            {
+              "mcc": "8049",
+              "title": "Podiatrists and Chiropodists"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "algorithm": "L2 vectors, Euclidean KMeans; fixed K8 all107 known categories, K3 three verified brand sectors; seed731/n_init20",
+  "registered_as": "Additional interpretability diagnostic, no fraud labels or downstream search; not part of28 fraud model runs",
+  "fraud_labels_used": false,
+  "transaction_rows_used": false,
+  "paid_calls": 0
+}

@@ -1,0 +1,358 @@
+{
+  "captured_at_UTC": "2026-11-02T10:17:16.968Z",
+  "local_reports": {
+    "regression-01": {
+      "counts": {
+        "tests": 239,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "6fc400f7ab289730fbea024e653e66228d88590ff67ad6b43082c8f09532ba90",
+      "path": "runs\\semantic-v21-initialization\\regression-01.xml"
+    },
+    "regression-02": {
+      "counts": {
+        "tests": 240,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "5e9f00fddbf97e3515c3d64c7851324b2ad5f4e4af57c5f5c8c016ffc71fef75",
+      "path": "runs\\semantic-v21-initialization\\regression-02.xml"
+    },
+    "all-tests-01": {
+      "counts": {
+        "tests": 1014,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "dd6103bf6733e0406d44710b4cbb7dd20a78a079ac88b20b5d97433b2decbaa9",
+      "path": "runs\\semantic-v21-initialization\\all-tests-01.xml"
+    },
+    "history-tests-06": {
+      "counts": {
+        "tests": 15,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "430d8c7ab8b11e895fc2a07c2a94f9fc09ac782ddb8051a783a54be244532bca",
+      "path": "runs\\semantic-v21-initialization\\history-tests-06.xml"
+    },
+    "admission-tests-03": {
+      "counts": {
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "e2eb70446abd108eb6fc107fa8861053d8f74d4c6f017f16333b51f3be0d74ec",
+      "path": "runs/semantic-v21-initialization/admission-tests-03.xml",
+      "scope": "New C1 conservative admission logic only; not an additional whole-repository run"
+    },
+    "all-tests-02": {
+      "counts": {
+        "tests": 1046,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "18a535de6c0b56f1e2f0d757f22543ddca9b6496411b056eb6621c86d84c508a",
+      "path": "runs\\semantic-v21-initialization\\all-tests-02.xml",
+      "scope": "complete repository offline suite"
+    },
+    "semi-preparation-tests-05": {
+      "counts": {
+        "tests": 26,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "abdabe867647b7cffc62e26e46086e6341d2cedcffd10724bc7d43ccc86ba281",
+      "path": "runs\\semantic-v21-initialization\\semi-preparation-tests-05.xml",
+      "scope": "loss/gradient/visibility/EMA/cold-roundtrip/gate preparation"
+    },
+    "all-tests-03": {
+      "counts": {
+        "tests": 1051,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "be57fbf0f3d1e977466bae5ce0462d51ea1e78126b1f60a12dafa2f3ce4eaefd",
+      "path": "runs\\semantic-v21-initialization\\all-tests-03.xml",
+      "scope": "Complete repository offline suite, including5new prior controls; no API keys"
+    },
+    "prior-tests-05": {
+      "counts": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "10d3e8ff2dcc78c5bff227248d84e6aad2e3c1a2249f3b063d74313144a1e24c",
+      "path": "runs/semantic-v21-initialization/prior-tests-05.xml",
+      "scope": "Targeted5 rerun after exact original-text/cache guard added; full suite1051 passed before this guard-only change"
+    },
+    "resource-and-prior-tests-01": {
+      "counts": {
+        "tests": 22,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "6dfc6892e3f93f61e5cc6baf48538962285b1289e92942326028510afddc48b0",
+      "path": "runs/semantic-v21-initialization/resource-and-prior-tests-01.xml",
+      "scope": "Resource-directory fix, prior and supervised-worker targeted suite; no full-suite count aggregation"
+    },
+    "report-resource-tests-02": {
+      "counts": {
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "dffaa5f0397e54294e00bfd9ce7935f06ee24f49e1cf19f526b65cbddc486cad",
+      "path": "runs/semantic-v21-initialization/report-resource-tests-02.xml",
+      "scope": "Report schema after displaying stronger original Focal/tree context and resource wrapper"
+    },
+    "all-tests-04": {
+      "counts": {
+        "tests": 1052,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "3c08e76a63c263d03ffe3df442b48ccee9b2c6f78a043202261f6ed64d10d694",
+      "path": "runs\\semantic-v21-initialization\\all-tests-04.xml",
+      "scope": "Final complete repository offline suite after resource CLI correction, separate batch timing module, report controls and scientific-context fixes;343.94seconds,1existingStarlettewarning"
+    }
+  },
+  "all_testcase_classname_prefixes": {
+    "tests": 1052
+  },
+  "source_sha256": {
+    "app/risk/semantic_detection/v2/queue_attribution.py": "ce8ba70c88053116bbbcf252f97244a51df753247e7d4928d3beb0b51363705a",
+    "app/cli/semantic_detection_observed.py": "d5c375eebc4e86a399f8354fbbb72565d1e8c929dcd967f62441ee23bcfc50fb",
+    "app/risk/semantic_detection/v2/process_observer.py": "822c7fcbbb0c287b1594b6a7af98000e7fa2ea5baa5fd01dfa5e51b058c3c67c",
+    "app/risk/semantic_detection/v2/data_admission.py": "46553bff13fd102f7c03c48daddd52819c383eaaa211b94a7aebb1fdbb009851",
+    "app/cli/semantic_detection_source_admission.py": "e79606dd24d2301621d03209eb7426ec90b7fa761d70404d5799704332f99b41",
+    "tests/semantic_detection/test_v21_admission.py": "1492f8526d7da589ee3bd9c96e26d4002d13ca9992fb4cf4f9490dfe03392ac8",
+    "app/cli/semantic_detection_semi.py": "acb4f9d57edd952e593ceee9613e87144eb21262f2429b37555f793383f44c27",
+    "app/risk/semantic_detection/v2/semi_audit.py": "7f0374b27776bc86f2d4710e0f4c14dafebb8775b55069ca0c2a11968c66cf7b",
+    "app/risk/semantic_detection/v2/semi_experiment.py": "b5201ff937b748c9bd9f8fb34e9c4575557489565b53e31d94a3b17461f893ea",
+    "app/risk/semantic_detection/v2/semi_fit.py": "371d9a55a6c14bf5b0a9e7e3cd77e684cc5e84800481fc20ce0744b372e34777",
+    "app/risk/semantic_detection/v2/semi_report.py": "8b8de6a9e7e8f87f2e180e49e40b04fe792e8bef84f8a28f0b11a7a8efc54eaf",
+    "app/risk/semantic_detection/v2/semi_supervised.py": "2842cea3456fd9b30b8e94a4287475de0c2c3c649f2e0ec39f1c1df1eb0fbada",
+    "app/cli/semantic_detection_prior.py": "62737c3f355299020e62ceb9c12f94bc6d22c8829e089f315ad0c139f57865bf",
+    "app/risk/semantic_detection/v2/prior_experiment.py": "b4fee268c8103678eec95da2d2c56ad845a7119d111fd3f410c591cea01ff96d",
+    "app/risk/semantic_detection/v2/prior_fit.py": "2da68e11807046b15415bd9074fd805edbd5a52eaec21f8aaaf23402e35f6e68",
+    "app/risk/semantic_detection/v2/prior_report.py": "78daf0a05f0233d283c0a8908d49035f6baf3830c8fe73bece219b56d6f16847",
+    "app/risk/semantic_detection/v2/prior_representations.py": "37ce5c70d2c76917094b6b8b1dd734b2335cf4ce4311b61b034f0faa0cddd475",
+    "tests/semantic_detection/test_v21_prior.py": "dc3dc737b05fbe67c633226fdd6d9042c36ee349bcb6ff4d83bad4601f371d46",
+    "app/cli/semantic_detection_batch_timing.py": "cea8636e19b102c0d17130a062364db051fe2a8a638dc09f45119e3869e64cd0",
+    "app/risk/semantic_detection/v2/batch_timing.py": "ab21bdda52c29865f89247d6615f5f4a2ada6af1ef5733a3387aed2c7dfab03e",
+    "tests/semantic_detection/test_v21_resource_cli.py": "50b429ce41b78ddfb7e45b2c78c2f4dbe034092e528c92f82528b9762b9f361b"
+  },
+  "GitHub": {
+    "checked_head": "66134b30ccf25b2be8d01a20d445df9e1a0d7120",
+    "runs": [
+      "https://github.com/wwc76934-cyber/riskcase-agent/actions/runs/41310373476",
+      "https://github.com/wwc76934-cyber/riskcase-agent/actions/runs/41310369769"
+    ],
+    "status": "failed",
+    "verified_failure": "ModuleNotFoundError: No module named jsonschema",
+    "shared_workflow_unchanged": true,
+    "first_raw_receipt_path": "runs/semantic-v21-initialization/github-ci-661-ubuntu-first.json"
+  },
+  "resource_wrapper_smoke": {
+    "status": "completed",
+    "started_at_UTC": "2026-11-02T02:22:21.419229+00:00",
+    "finished_at_UTC": "2026-11-02T02:22:56.153924+00:00",
+    "arguments": [
+      "capacity",
+      "--source-root",
+      "..\\financial-report-agent",
+      "--output",
+      "runs/semantic-v21-capacity-observed-01"
+    ],
+    "wall_seconds": 34.734004700003425,
+    "process_CPU_seconds_all_threads": 30.578125,
+    "peak_whole_process_bytes": 302837760,
+    "error": null,
+    "observer_sha256": "d5c375eebc4e86a399f8354fbbb72565d1e8c929dcd967f62441ee23bcfc50fb",
+    "limit": "Whole-process CPU and peak, including data preparation and training/inference; wall time can include host pauses; not per-model memory"
+  },
+  "model_efficacy_conclusion_from_tests": false,
+  "paid_calls": 0,
+  "C1_source_preparation": {
+    "source_code_files_verified": 28,
+    "notebook_code_cells": 32,
+    "new_candidate_rows_opened": 0,
+    "new_model_experiments": 0,
+    "local_command_output": "runs/semantic-v21-c-admission-02",
+    "report_input_sha256": "a7b319546eec0c5c8b451abe8440431c4c7d415840092446b7ad8c16c60d2e88"
+  },
+  "Gate_B": {
+    "status": "Gate_B_complete_and_independently_verified",
+    "review_sha256": "79af60f711171ad718fb1934b0d2529f4ddd77005205fbe26122225e5f9433a8",
+    "full_replays": 43,
+    "max_full_replay_abs_diff": 0,
+    "feature_reconstruction_abs_diff": 0,
+    "original217_and_frozen15_preserved": true
+  },
+  "D_preparation": {
+    "real_dataset_mask_or_experiments_started": false,
+    "draft_CLI_blocked_before_loading": {
+      "type": "ValueError",
+      "message": "Conditional draft cannot start a D experiment"
+    },
+    "draft_output_directory_absent": true,
+    "EMA_view_fixture": {
+      "scope": "self_authored_16row_fixture_only_no_source_dataset",
+      "epochs": 12,
+      "EMA_view_roundtrip": "passed",
+      "real_dataset_rows_loaded": 0,
+      "source_mask_created": false
+    },
+    "limit": "Fixture training is not benchmark efficacy. Source dataset mask has not been generated.",
+    "protocol_status": "frozen_after_B_verified_not_yet_executed",
+    "protocol_sha256": "c8562028712df2c351f009e24d5af3850e59a1acff1f0596b83e58237b4bb01e",
+    "B_review_sha256": "79af60f711171ad718fb1934b0d2529f4ddd77005205fbe26122225e5f9433a8",
+    "actual_freeze_guard_check": "runs/semantic-v21-initialization/d-freeze-validation-02.log",
+    "actual_freeze_guard_result": "Canonical-LF B result/review binding verified before actual dataset access"
+  },
+  "post_all_tests_02_source_changes": "B renderer interpretation text only, then successfully rerendered against same43 audited model instances; no optimization-code changes",
+  "text_binding": "Tracked result/review receipts use canonical UTF-8 LF bytes identical to Git blobs. Ignored training/data artifacts retain original raw-byte hashes.",
+  "prior_fixture": {
+    "tests": 5,
+    "source": "prior-tests-04.xml",
+    "real_transaction_rows": 0,
+    "effective_detector_evidence": false
+  },
+  "D32": {
+    "fully_replayed": 32,
+    "max_abs_error": 0,
+    "training_outer_resource_write_failed_after_result_completed": true,
+    "missing_total_CPU_and_final_peak_reported_as_null": true,
+    "optimization_source_files_unchanged": 19,
+    "model_or_score_rewrite": false,
+    "pure_batch_scoring": {
+      "full_replays": 32,
+      "max_abs_error": 0,
+      "first_partial_path_alias_failure_preserved": true
+    }
+  },
+  "GitHub_dependency_diagnosis": {
+    "head": "0a460dd0556d9b5049a2a7e8d127b915398ecf20",
+    "runs": [
+      41420812638,
+      41420801830
+    ],
+    "jobs": [
+      125195627069,
+      125195627998
+    ],
+    "status": "failed_in_test_collection_before_model_efficacy_evaluation",
+    "error": "ModuleNotFoundError: jsonschema",
+    "correction": "Install existing semantic-detection and investigation pinned requirement sets; workflow-only environment fix, no Agent implementation changes",
+    "new_workflow_result": "pending_observation"
+  },
+  "low_label_prior": {
+    "new_models": 9,
+    "full_replays": 9,
+    "max_abs_error": 0,
+    "pure_batch_scoring_replays": 9,
+    "pure_batch_error": 0,
+    "code_files_unchanged": 23,
+    "all_positive_evidence_conditions": false,
+    "main_metric_TP": {
+      "ordinary": 97,
+      "qwen": 98,
+      "random": 93,
+      "tfidf": 99
+    },
+    "training_repeated": false,
+    "new_embedding_encoder_calls": 0,
+    "paid_calls": 0
+  },
+  "GitHub_code_checks_after_dependency_fix": {
+    "head": "ff2d49fd9acde474fda70944167ecb0c951f1937",
+    "push": {
+      "run": 41425913625,
+      "Ubuntu": {
+        "status": "success",
+        "tests_passed": 1052,
+        "seconds": 90.66,
+        "job": 125212354507
+      },
+      "Windows": {
+        "status": "in_progress",
+        "job": 125212354028
+      }
+    },
+    "pull_request_merge_context": {
+      "run": 41425922711,
+      "Ubuntu": {
+        "status": "success",
+        "tests_passed": 1116,
+        "seconds": 103.79,
+        "job": 125212381886
+      },
+      "Windows": {
+        "status": "in_progress",
+        "job": 125212382299
+      }
+    },
+    "scope_note": "Push and PR merge-context counts are separate observed scopes, never summed or substituted for local1052. Windows state is a timestamped snapshot, not a green-matrix claim."
+  },
+  "local_research_complete": true,
+  "C2_new_business_text_admission": false,
+  "no_further_IBM_semantic_search": true,
+  "GitHub_final_code_validation": {
+    "status": "code_validation_complete",
+    "observed_at_UTC": "2026-11-02T10:21:12.397Z",
+    "code_commit": "ff2d49fd9acde474fda70944167ecb0c951f1937",
+    "final_report_commit": "d83ad9e70716ac7eed18afd967d9b792b9d2d8dd",
+    "local_Windows": {
+      "passed": 1052,
+      "failures": 0,
+      "XML": "runs/semantic-v21-initialization/all-tests-04.xml"
+    },
+    "push": {
+      "run": 41425913625,
+      "url": "https://github.com/wwc76934-cyber/riskcase-agent/actions/runs/41425913625",
+      "conclusion": "success",
+      "Ubuntu": {
+        "passed": 1052,
+        "seconds": 90.66,
+        "job": 125212354507
+      },
+      "Windows": {
+        "passed": 1052,
+        "seconds": 343.19,
+        "job": 125212354028
+      }
+    },
+    "pull_request_merge_context": {
+      "run": 41425922711,
+      "url": "https://github.com/wwc76934-cyber/riskcase-agent/actions/runs/41425922711",
+      "conclusion": "success",
+      "Ubuntu": {
+        "passed": 1116,
+        "seconds": 103.79,
+        "job": 125212381886
+      },
+      "Windows": {
+        "passed": 1116,
+        "seconds": 432.13,
+        "job": 125212382299
+      }
+    },
+    "scope": "Counts are separate environments/scopes, never summed. Final reporting commits change only docs and retain identical validated runtime, tests and CI configuration. New documentation-only commit checks may run independently.",
+    "model_efficacy_or_Agent_intelligence_proven_by_test_count": false,
+    "code_and_tests_changed_after_validated_commit": false
+  }
+}

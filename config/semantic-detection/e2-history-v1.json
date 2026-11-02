@@ -1,0 +1,19 @@
+{
+  "version": "causal-history-bounded-v1",
+  "scope": "Independent history question, not a semantic+graph combination claim",
+  "training": "2016-2017 only, all labels",
+  "evaluation": "2018 previously observed development",
+  "encoding_contract": "additive-v2",
+  "seeds": [42, 43, 44],
+  "epochs": 2,
+  "neighbors": 6,
+  "entity": "user_id",
+  "modes": ["mean", "attention"],
+  "variant": "B1",
+  "baseline": "Exact matched 2-epoch B1 weighted-BCE 100% labeled condition from frozen E3; same tensors, optimizer, seeds, batch size and loss",
+  "config": {"width": 64, "blocks": 2, "dropout": 0.15, "learning_rate": 0.001, "weight_decay": 0.01, "positive_weight": 20.0, "batch_size": 4096},
+  "selection": "Fixed last epoch; all seeds and equal-probability ensemble; no K/epoch/mode search",
+  "training_graph": "Only training nodes. No warmup nodes; no validation/test observations or outcomes",
+  "inference": "Gather at most K strictly past same-user inputs for each target before the model call; unknown slots are zero placeholders, not masked future observations",
+  "limits": ["Single-hop single-head lightweight attention with explicit age decay and gate, NOT full TGAT reproduction", "Mean pool is a lightweight last-K history baseline, not an order-aware RNN", "No semantic-history combination unless formal E1 admission supports it", "Two-epoch bounded budget, not exhaustive tuning"]
+}

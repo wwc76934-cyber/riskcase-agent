@@ -1,0 +1,502 @@
+{
+  "status": "read_only_queue_factorization_complete",
+  "phase": "b",
+  "comparisons": {
+    "mean_vs_flat": {
+      "old_TP": 138,
+      "new_TP": 215,
+      "net": 77,
+      "old_order_new_quota_TP": 145,
+      "new_order_old_quota_TP": 199,
+      "quota_effect_at_old_order": 7,
+      "order_effect_at_new_quota": 70,
+      "order_effect_at_old_quota": 61,
+      "quota_effect_at_new_order": 16,
+      "interaction": 9
+    },
+    "mean_vs_frozen_residual": {
+      "old_TP": 122,
+      "new_TP": 215,
+      "net": 93,
+      "old_order_new_quota_TP": 136,
+      "new_order_old_quota_TP": 196,
+      "quota_effect_at_old_order": 14,
+      "order_effect_at_new_quota": 79,
+      "order_effect_at_old_quota": 74,
+      "quota_effect_at_new_order": 19,
+      "interaction": 5
+    },
+    "mean_vs_broad_neural": {
+      "old_TP": 196,
+      "new_TP": 215,
+      "net": 19,
+      "old_order_new_quota_TP": 192,
+      "new_order_old_quota_TP": 205,
+      "quota_effect_at_old_order": -4,
+      "order_effect_at_new_quota": 23,
+      "order_effect_at_old_quota": 9,
+      "quota_effect_at_new_order": 10,
+      "interaction": 14
+    },
+    "mean_vs_broad_tree": {
+      "old_TP": 158,
+      "new_TP": 215,
+      "net": 57,
+      "old_order_new_quota_TP": 168,
+      "new_order_old_quota_TP": 201,
+      "quota_effect_at_old_order": 10,
+      "order_effect_at_new_quota": 47,
+      "order_effect_at_old_quota": 43,
+      "quota_effect_at_new_order": 14,
+      "interaction": 4
+    },
+    "decay_vs_flat": {
+      "old_TP": 138,
+      "new_TP": 196,
+      "net": 58,
+      "old_order_new_quota_TP": 150,
+      "new_order_old_quota_TP": 180,
+      "quota_effect_at_old_order": 12,
+      "order_effect_at_new_quota": 46,
+      "order_effect_at_old_quota": 42,
+      "quota_effect_at_new_order": 16,
+      "interaction": 4
+    },
+    "decay_vs_frozen_residual": {
+      "old_TP": 122,
+      "new_TP": 196,
+      "net": 74,
+      "old_order_new_quota_TP": 137,
+      "new_order_old_quota_TP": 183,
+      "quota_effect_at_old_order": 15,
+      "order_effect_at_new_quota": 59,
+      "order_effect_at_old_quota": 61,
+      "quota_effect_at_new_order": 13,
+      "interaction": -2
+    },
+    "decay_vs_broad_neural": {
+      "old_TP": 196,
+      "new_TP": 196,
+      "net": 0,
+      "old_order_new_quota_TP": 193,
+      "new_order_old_quota_TP": 185,
+      "quota_effect_at_old_order": -3,
+      "order_effect_at_new_quota": 3,
+      "order_effect_at_old_quota": -11,
+      "quota_effect_at_new_order": 11,
+      "interaction": 14
+    },
+    "decay_vs_broad_tree": {
+      "old_TP": 158,
+      "new_TP": 196,
+      "net": 38,
+      "old_order_new_quota_TP": 166,
+      "new_order_old_quota_TP": 179,
+      "quota_effect_at_old_order": 8,
+      "order_effect_at_new_quota": 30,
+      "order_effect_at_old_quota": 21,
+      "quota_effect_at_new_order": 17,
+      "interaction": 9
+    },
+    "gru_vs_flat": {
+      "old_TP": 138,
+      "new_TP": 202,
+      "net": 64,
+      "old_order_new_quota_TP": 146,
+      "new_order_old_quota_TP": 188,
+      "quota_effect_at_old_order": 8,
+      "order_effect_at_new_quota": 56,
+      "order_effect_at_old_quota": 50,
+      "quota_effect_at_new_order": 14,
+      "interaction": 6
+    },
+    "gru_vs_frozen_residual": {
+      "old_TP": 122,
+      "new_TP": 202,
+      "net": 80,
+      "old_order_new_quota_TP": 138,
+      "new_order_old_quota_TP": 186,
+      "quota_effect_at_old_order": 16,
+      "order_effect_at_new_quota": 64,
+      "order_effect_at_old_quota": 64,
+      "quota_effect_at_new_order": 16,
+      "interaction": 0
+    },
+    "gru_vs_broad_neural": {
+      "old_TP": 196,
+      "new_TP": 202,
+      "net": 6,
+      "old_order_new_quota_TP": 194,
+      "new_order_old_quota_TP": 195,
+      "quota_effect_at_old_order": -2,
+      "order_effect_at_new_quota": 8,
+      "order_effect_at_old_quota": -1,
+      "quota_effect_at_new_order": 7,
+      "interaction": 9
+    },
+    "gru_vs_broad_tree": {
+      "old_TP": 158,
+      "new_TP": 202,
+      "net": 44,
+      "old_order_new_quota_TP": 164,
+      "new_order_old_quota_TP": 178,
+      "quota_effect_at_old_order": 6,
+      "order_effect_at_new_quota": 38,
+      "order_effect_at_old_quota": 20,
+      "quota_effect_at_new_order": 24,
+      "interaction": 18
+    },
+    "transformer_vs_flat": {
+      "old_TP": 138,
+      "new_TP": 207,
+      "net": 69,
+      "old_order_new_quota_TP": 150,
+      "new_order_old_quota_TP": 193,
+      "quota_effect_at_old_order": 12,
+      "order_effect_at_new_quota": 57,
+      "order_effect_at_old_quota": 55,
+      "quota_effect_at_new_order": 14,
+      "interaction": 2
+    },
+    "transformer_vs_frozen_residual": {
+      "old_TP": 122,
+      "new_TP": 207,
+      "net": 85,
+      "old_order_new_quota_TP": 138,
+      "new_order_old_quota_TP": 189,
+      "quota_effect_at_old_order": 16,
+      "order_effect_at_new_quota": 69,
+      "order_effect_at_old_quota": 67,
+      "quota_effect_at_new_order": 18,
+      "interaction": 2
+    },
+    "transformer_vs_broad_neural": {
+      "old_TP": 196,
+      "new_TP": 207,
+      "net": 11,
+      "old_order_new_quota_TP": 191,
+      "new_order_old_quota_TP": 204,
+      "quota_effect_at_old_order": -5,
+      "order_effect_at_new_quota": 16,
+      "order_effect_at_old_quota": 8,
+      "quota_effect_at_new_order": 3,
+      "interaction": 8
+    },
+    "transformer_vs_broad_tree": {
+      "old_TP": 158,
+      "new_TP": 207,
+      "net": 49,
+      "old_order_new_quota_TP": 164,
+      "new_order_old_quota_TP": 191,
+      "quota_effect_at_old_order": 6,
+      "order_effect_at_new_quota": 43,
+      "order_effect_at_old_quota": 33,
+      "quota_effect_at_new_order": 16,
+      "interaction": 10
+    },
+    "attention_vs_flat": {
+      "old_TP": 138,
+      "new_TP": 199,
+      "net": 61,
+      "old_order_new_quota_TP": 140,
+      "new_order_old_quota_TP": 190,
+      "quota_effect_at_old_order": 2,
+      "order_effect_at_new_quota": 59,
+      "order_effect_at_old_quota": 52,
+      "quota_effect_at_new_order": 9,
+      "interaction": 7
+    },
+    "attention_vs_frozen_residual": {
+      "old_TP": 122,
+      "new_TP": 199,
+      "net": 77,
+      "old_order_new_quota_TP": 132,
+      "new_order_old_quota_TP": 188,
+      "quota_effect_at_old_order": 10,
+      "order_effect_at_new_quota": 67,
+      "order_effect_at_old_quota": 66,
+      "quota_effect_at_new_order": 11,
+      "interaction": 1
+    },
+    "attention_vs_broad_neural": {
+      "old_TP": 196,
+      "new_TP": 199,
+      "net": 3,
+      "old_order_new_quota_TP": 196,
+      "new_order_old_quota_TP": 198,
+      "quota_effect_at_old_order": 0,
+      "order_effect_at_new_quota": 3,
+      "order_effect_at_old_quota": 2,
+      "quota_effect_at_new_order": 1,
+      "interaction": 1
+    },
+    "attention_vs_broad_tree": {
+      "old_TP": 158,
+      "new_TP": 199,
+      "net": 41,
+      "old_order_new_quota_TP": 166,
+      "new_order_old_quota_TP": 186,
+      "quota_effect_at_old_order": 8,
+      "order_effect_at_new_quota": 33,
+      "order_effect_at_old_quota": 28,
+      "quota_effect_at_new_order": 13,
+      "interaction": 5
+    }
+  },
+  "channel_profiles": {
+    "flat": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 2465,
+        "TP": 98,
+        "within_channel_AP": 0.02815982183805292
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 649,
+        "TP": 13,
+        "within_channel_AP": 0.05094655083116878
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 536,
+        "TP": 27,
+        "within_channel_AP": 0.0819509659640187
+      }
+    },
+    "statistics": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 2481,
+        "TP": 105,
+        "within_channel_AP": 0.034017291974494164
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 635,
+        "TP": 14,
+        "within_channel_AP": 0.055946684061918446
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 534,
+        "TP": 32,
+        "within_channel_AP": 0.1247897905348367
+      }
+    },
+    "mean": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 2424,
+        "TP": 152,
+        "within_channel_AP": 0.06875672919980476
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 615,
+        "TP": 18,
+        "within_channel_AP": 0.1875619045967353
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 611,
+        "TP": 45,
+        "within_channel_AP": 0.22888872884984204
+      }
+    },
+    "decay": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 2483,
+        "TP": 136,
+        "within_channel_AP": 0.05726392718257139
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 568,
+        "TP": 18,
+        "within_channel_AP": 0.11983514727230438
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 599,
+        "TP": 42,
+        "within_channel_AP": 0.21905135175091714
+      }
+    },
+    "gru": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 2454,
+        "TP": 136,
+        "within_channel_AP": 0.05833273398660009
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 586,
+        "TP": 18,
+        "within_channel_AP": 0.15606510526724485
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 610,
+        "TP": 48,
+        "within_channel_AP": 0.27464125505833614
+      }
+    },
+    "transformer": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 2411,
+        "TP": 144,
+        "within_channel_AP": 0.06679442840920985
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 615,
+        "TP": 18,
+        "within_channel_AP": 0.2002457031306715
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 624,
+        "TP": 45,
+        "within_channel_AP": 0.29554759069345327
+      }
+    },
+    "attention": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 2493,
+        "TP": 140,
+        "within_channel_AP": 0.06340072545682465
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 566,
+        "TP": 18,
+        "within_channel_AP": 0.1748754810695303
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 591,
+        "TP": 41,
+        "within_channel_AP": 0.24977350596012282
+      }
+    },
+    "frozen_residual": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 2402,
+        "TP": 83,
+        "within_channel_AP": 0.02475115127515025
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 745,
+        "TP": 13,
+        "within_channel_AP": 0.02752256842425841
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 503,
+        "TP": 26,
+        "within_channel_AP": 0.0695916116872955
+      }
+    },
+    "broad_neural": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 2477,
+        "TP": 140,
+        "within_channel_AP": 0.07043440900080901
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 561,
+        "TP": 12,
+        "within_channel_AP": 0.1105168148822195
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 612,
+        "TP": 44,
+        "within_channel_AP": 0.24289446517807706
+      }
+    },
+    "broad_tree": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 2477,
+        "TP": 115,
+        "within_channel_AP": 0.025654515745216818
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 633,
+        "TP": 13,
+        "within_channel_AP": 0.007548331029973415
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 540,
+        "TP": 30,
+        "within_channel_AP": 0.025414014626993085
+      }
+    }
+  },
+  "model_score_sha256": {
+    "flat": "0b34d732ff9265c068842ecc17ae20e91dce217525e19bc646cd57dbf7f8406c",
+    "statistics": "12840dfacfac76b01b16c14133c87de850c05777e27315de34d8d98905ab2562",
+    "mean": "ea9942745bba72a8e6a1bd6145f7dfa56eddd8559d95b347e155bea3601f6acb",
+    "decay": "c063cbeac69c52fbde8ffd3715d6c1367b1e10c2006db589637833aa699cb29f",
+    "gru": "8f343e38f72404410683973b84f09bf3c4b7ae254012fc8ed98cc35b4e7acb00",
+    "transformer": "322ef579a33d99d566b7505c034e1a33c034e14a6faf110f8783082517ccdc93",
+    "attention": "49b97a23a7a11021c64da8d548d906d683a6f4c6f954da44188c4b9a6dbe2b5a",
+    "frozen_residual": "fa9f358116aa6686b0bb7144346b45cca8611e49fcdaf557a998b2358b56025c",
+    "broad_neural": "3aa1bba9866b9d4213c913e426160f0089c8dfba02a67971d10aad1cc8328494",
+    "broad_tree": "1db021766ed8a039938833f8fea7befb42aa42f801f029277f28f8c217c6fd76"
+  },
+  "data": {
+    "manifest": "C:\\Users\\18137\\Documents\\ChatGPT\\金融Agent项目\\financial-report-agent\\data\\features\\features-b9692149f1c1\\manifest.json",
+    "manifest_sha256": "35f92e16a5fdbb03e49e843eea052f28fd04fda68f2ed81e95af9b59b473a26f",
+    "features_sha256": "520a6b525c7eee6a4304dfa4592ee2799088d6526d7a2d0cf7776c8efe993282",
+    "labels_sha256": "1926a9a2f9399e7be5be2d3989aed18e9c7d31f1b53193ad7279321a2bfab918"
+  },
+  "budget": 10,
+  "new_training": false,
+  "label_based_selection_or_optimization": false,
+  "limit": "Exact queue arithmetic with two reference paths; not causal attribution, a deployable model, or a new candidate selected on evaluation outcomes",
+  "final_2019_read": false,
+  "paid_calls": 0
+}

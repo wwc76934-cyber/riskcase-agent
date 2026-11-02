@@ -1,0 +1,71 @@
+{
+  "version": "semantic-detection-e3-additive-v2",
+  "scope": "Bounded 2-epoch label-budget study on full 2016-2017 training; evaluate 2018 only",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "epochs": 2,
+  "fractions": [
+    0.05,
+    0.1,
+    0.2,
+    1.0
+  ],
+  "mask_seed": 1729,
+  "losses": [
+    {
+      "id": "bce",
+      "variant": "B1",
+      "loss": "bce",
+      "consistency": 0.0
+    },
+    {
+      "id": "focal",
+      "variant": "B1",
+      "loss": "focal",
+      "consistency": 0.0
+    },
+    {
+      "id": "cb_focal",
+      "variant": "B1",
+      "loss": "cb_focal",
+      "consistency": 0.0
+    },
+    {
+      "id": "consistency",
+      "variant": "B1",
+      "loss": "cb_focal",
+      "consistency": 0.4
+    },
+    {
+      "id": "semantic_consistency",
+      "variant": "B3",
+      "loss": "cb_focal",
+      "consistency": 0.4
+    }
+  ],
+  "config": {
+    "width": 64,
+    "blocks": 2,
+    "dropout": 0.15,
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "positive_weight": 20.0,
+    "batch_size": 4096
+  },
+  "focal_gamma": 2.0,
+  "class_balance_beta": 0.999,
+  "consistency": "symmetric Bernoulli KL on unlabeled train rows under independent dropout; temperature=1, no pseudo-labels",
+  "selection": "Fixed final epoch; all seeds, mean ensemble; no epoch/seed search",
+  "limits": [
+    "Short bounded budget; negative finding does not exclude benefits from other budgets",
+    "At 100% labels, consistency term is zero",
+    "Mask stratification uses train labels only; actual exposed counts reported",
+    "2018/2019 never supply unsupervised training nodes"
+  ],
+  "encoding_contract": "additive-v2",
+  "architecture": "Retain all 12 numerical features and trainable MCC/channel branch in ALL variants; B1 adds trainable joint32, B2 adds frozen semantic32, B3 adds projected semantic32",
+  "prior_pilot": "Replacement-encoding pilot retained in runs/semantic-e1-v1 and incomplete runs/semantic-e3-v1; not the formal PRD result"
+}

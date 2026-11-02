@@ -1,0 +1,33 @@
+{
+  "captured_at_UTC": "2026-11-01T13:53:30.734544+00:00",
+  "python": "3.12.0",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "machine": "AMD64",
+  "processor": "AMD64 Family 23 Model 104 Stepping 1, AuthenticAMD",
+  "logical_CPU_count": 12,
+  "total_physical_bytes": 16469520384,
+  "available_physical_bytes_at_snapshot": 4364341248,
+  "sqlite": "3.42.0",
+  "packages": {
+    "torch": "2.8.0+cpu",
+    "numpy": "2.2.6",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.7.2",
+    "scipy": "1.15.3",
+    "joblib": "1.5.1",
+    "threadpoolctl": "3.6.0",
+    "matplotlib": "3.10.6",
+    "transformers": "4.57.3",
+    "tokenizers": "0.22.2",
+    "safetensors": "0.8.0",
+    "huggingface-hub": "0.36.2",
+    "mcp": "1.26.0",
+    "jsonschema": "4.26.0",
+    "pydantic": "2.14.1",
+    "fastapi": "0.156.8",
+    "uvicorn": "0.54.0"
+  },
+  "registered_training_device": "CPU float32,4threads",
+  "posthoc_training_threads": 2,
+  "limit": "Environment snapshot, not a claim of isolated resource conditions"
+}

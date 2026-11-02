@@ -1,0 +1,88 @@
+{
+  "broad-statistics": {
+    "status": "completed",
+    "started_at_UTC": "2026-11-02T06:37:49.951842+00:00",
+    "finished_at_UTC": "2026-11-02T06:48:48.531023+00:00",
+    "arguments": [
+      "broad-statistics",
+      "--source-root",
+      "C:\\Users\\18137\\Documents\\ChatGPT\\金融Agent项目\\financial-report-agent",
+      "--run",
+      "runs/semantic-v21-b-01",
+      "--output",
+      "runs/semantic-v21-b-broad-01"
+    ],
+    "wall_seconds": 658.5786233000108,
+    "process_CPU_seconds_all_threads": 1169.40625,
+    "peak_whole_process_bytes": 8060747776,
+    "error": null,
+    "observer_sha256": "d5c375eebc4e86a399f8354fbbb72565d1e8c929dcd967f62441ee23bcfc50fb",
+    "limit": "Whole-process CPU and peak, including data preparation and training/inference; wall time can include host pauses; not per-model memory"
+  },
+  "audit-history": {
+    "status": "completed",
+    "started_at_UTC": "2026-11-02T06:48:50.463544+00:00",
+    "finished_at_UTC": "2026-11-02T06:56:32.151833+00:00",
+    "arguments": [
+      "audit-history",
+      "--source-root",
+      "C:\\Users\\18137\\Documents\\ChatGPT\\金融Agent项目\\financial-report-agent",
+      "--run",
+      "runs/semantic-v21-b-01",
+      "--output",
+      "runs/semantic-v21-b-audit-01"
+    ],
+    "wall_seconds": 461.68827400001464,
+    "process_CPU_seconds_all_threads": 1037.859375,
+    "peak_whole_process_bytes": 3845496832,
+    "error": null,
+    "observer_sha256": "d5c375eebc4e86a399f8354fbbb72565d1e8c929dcd967f62441ee23bcfc50fb",
+    "limit": "Whole-process CPU and peak, including data preparation and training/inference; wall time can include host pauses; not per-model memory"
+  },
+  "audit-broad": {
+    "status": "completed",
+    "started_at_UTC": "2026-11-02T06:56:33.154568+00:00",
+    "finished_at_UTC": "2026-11-02T06:58:47.903545+00:00",
+    "arguments": [
+      "audit-broad",
+      "--source-root",
+      "C:\\Users\\18137\\Documents\\ChatGPT\\金融Agent项目\\financial-report-agent",
+      "--run",
+      "runs/semantic-v21-b-01",
+      "--output",
+      "runs/semantic-v21-b-broad-audit-01"
+    ],
+    "wall_seconds": 134.7491837000125,
+    "process_CPU_seconds_all_threads": 139.84375,
+    "peak_whole_process_bytes": 7295528960,
+    "error": null,
+    "observer_sha256": "d5c375eebc4e86a399f8354fbbb72565d1e8c929dcd967f62441ee23bcfc50fb",
+    "limit": "Whole-process CPU and peak, including data preparation and training/inference; wall time can include host pauses; not per-model memory"
+  },
+  "primary_process": {
+    "status": "observed_process_exited",
+    "first_observation": {
+      "observed_at_UTC": "2026-11-02T02:24:44.577697+00:00",
+      "pid": 24876,
+      "created_at_UTC": "2026-11-01T10:19:41.716911+00:00",
+      "CPU_seconds_since_process_start": 58864.1875,
+      "whole_process_peak_bytes": 3827089408,
+      "working_set_bytes": 1375551488,
+      "exit_code": 259,
+      "running": true
+    },
+    "final_observation": {
+      "observed_at_UTC": "2026-11-02T06:38:15.647793+00:00",
+      "pid": 24876,
+      "created_at_UTC": "2026-11-01T10:19:41.716911+00:00",
+      "CPU_seconds_since_process_start": 117967.3125,
+      "whole_process_peak_bytes": 3827089408,
+      "working_set_bytes": 45056,
+      "exit_code": 0,
+      "running": false
+    },
+    "exact_total_process_CPU_seconds": 117967.3125,
+    "largest_observed_peak_bytes": 3827089408,
+    "limit": "CPU since original process start includes all its work, not per-model CPU. Peak observed while alive is a lower bound on final peak if memory info is unavailable after exit. No target-process mutation."
+  }
+}

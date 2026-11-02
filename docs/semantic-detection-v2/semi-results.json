@@ -1,0 +1,807 @@
+{
+  "status": "Gate_D_controlled_complete_and_independently_verified",
+  "main_neural_instances": 27,
+  "diagnostic_continuations": 4,
+  "masked_tree_instances": 1,
+  "full_model_replays": 32,
+  "models": [
+    {
+      "condition": "bce",
+      "family": "fixed_masked_primary",
+      "TP": 97,
+      "AP": 0.016622120526979013,
+      "Precision_at_daily10": 0.026575342465753424,
+      "Recall_at_daily10": 0.14202049780380674,
+      "seed_TP": "90,108,74",
+      "student_parameters": 60123,
+      "train_CPU_seconds": 1190.359375,
+      "observed_process_peak_bytes_at_model_end": 2253545472,
+      "train_wall_seconds": 610.8589999999967,
+      "inference_CPU_seconds": 14.015625,
+      "inference_wall_seconds": 9.483999999967637,
+      "Online_slots": 592
+    },
+    {
+      "condition": "focal",
+      "family": "fixed_masked_primary",
+      "TP": 121,
+      "AP": 0.032625613274778226,
+      "Precision_at_daily10": 0.03315068493150685,
+      "Recall_at_daily10": 0.17715959004392387,
+      "seed_TP": "113,126,113",
+      "student_parameters": 60123,
+      "train_CPU_seconds": 1370.5,
+      "observed_process_peak_bytes_at_model_end": 2254520320,
+      "train_wall_seconds": 713.6259999999602,
+      "inference_CPU_seconds": 12.078125,
+      "inference_wall_seconds": 8.014999999984866,
+      "Online_slots": 621
+    },
+    {
+      "condition": "focal_matched",
+      "family": "fixed_masked_primary",
+      "TP": 105,
+      "AP": 0.01795618013993793,
+      "Precision_at_daily10": 0.028767123287671233,
+      "Recall_at_daily10": 0.15373352855051245,
+      "seed_TP": "93,114,83",
+      "student_parameters": 60123,
+      "train_CPU_seconds": 1114.328125,
+      "observed_process_peak_bytes_at_model_end": 2254520320,
+      "train_wall_seconds": 567.0460000000021,
+      "inference_CPU_seconds": 12.109375,
+      "inference_wall_seconds": 8.01600000000326,
+      "Online_slots": 685
+    },
+    {
+      "condition": "cbfocal",
+      "family": "fixed_masked_primary",
+      "TP": 99,
+      "AP": 0.015875508831432017,
+      "Precision_at_daily10": 0.027123287671232878,
+      "Recall_at_daily10": 0.14494875549048317,
+      "seed_TP": "94,107,77",
+      "student_parameters": 60123,
+      "train_CPU_seconds": 1161.0,
+      "observed_process_peak_bytes_at_model_end": 2254520320,
+      "train_wall_seconds": 598.9839999999967,
+      "inference_CPU_seconds": 11.953125,
+      "inference_wall_seconds": 8.014999999984866,
+      "Online_slots": 673
+    },
+    {
+      "condition": "bce_view",
+      "family": "fixed_masked_primary",
+      "TP": 95,
+      "AP": 0.017186082550221162,
+      "Precision_at_daily10": 0.026027397260273973,
+      "Recall_at_daily10": 0.1390922401171303,
+      "seed_TP": "94,108,75",
+      "student_parameters": 60123,
+      "train_CPU_seconds": 1375.328125,
+      "observed_process_peak_bytes_at_model_end": 2254520320,
+      "train_wall_seconds": 711.2509999999893,
+      "inference_CPU_seconds": 12.171875,
+      "inference_wall_seconds": 8.141999999963446,
+      "Online_slots": 596
+    },
+    {
+      "condition": "consistency_01",
+      "family": "fixed_masked_primary",
+      "TP": 98,
+      "AP": 0.016641131302096566,
+      "Precision_at_daily10": 0.02684931506849315,
+      "Recall_at_daily10": 0.14348462664714495,
+      "seed_TP": "92,103,74",
+      "student_parameters": 60123,
+      "train_CPU_seconds": 1091.359375,
+      "observed_process_peak_bytes_at_model_end": 2254520320,
+      "train_wall_seconds": 554.265000000014,
+      "inference_CPU_seconds": 12.53125,
+      "inference_wall_seconds": 8.34299999999348,
+      "Online_slots": 591
+    },
+    {
+      "condition": "consistency_05",
+      "family": "fixed_masked_primary",
+      "TP": 99,
+      "AP": 0.017256891187010917,
+      "Precision_at_daily10": 0.027123287671232878,
+      "Recall_at_daily10": 0.14494875549048317,
+      "seed_TP": "95,106,76",
+      "student_parameters": 60123,
+      "train_CPU_seconds": 1061.59375,
+      "observed_process_peak_bytes_at_model_end": 2254520320,
+      "train_wall_seconds": 537.6410000000033,
+      "inference_CPU_seconds": 12.359375,
+      "inference_wall_seconds": 8.172000000020489,
+      "Online_slots": 606
+    },
+    {
+      "condition": "consistency_view_01",
+      "family": "fixed_masked_primary",
+      "TP": 97,
+      "AP": 0.017325388338553863,
+      "Precision_at_daily10": 0.026575342465753424,
+      "Recall_at_daily10": 0.14202049780380674,
+      "seed_TP": "95,108,75",
+      "student_parameters": 60123,
+      "train_CPU_seconds": 1279.234375,
+      "observed_process_peak_bytes_at_model_end": 2254520320,
+      "train_wall_seconds": 655.4070000000065,
+      "inference_CPU_seconds": 12.546875,
+      "inference_wall_seconds": 8.280999999988126,
+      "Online_slots": 601
+    },
+    {
+      "condition": "consistency_view_05",
+      "family": "fixed_masked_primary",
+      "TP": 100,
+      "AP": 0.017883363252641643,
+      "Precision_at_daily10": 0.0273972602739726,
+      "Recall_at_daily10": 0.14641288433382138,
+      "seed_TP": "93,107,76",
+      "student_parameters": 60123,
+      "train_CPU_seconds": 1149.6875,
+      "observed_process_peak_bytes_at_model_end": 2254520320,
+      "train_wall_seconds": 583.2039999999688,
+      "inference_CPU_seconds": 12.28125,
+      "inference_wall_seconds": 8.078000000008615,
+      "Online_slots": 615
+    },
+    {
+      "condition": "masked_tree",
+      "family": "fixed_visible_tree",
+      "TP": 108,
+      "AP": 0.01478672932761095,
+      "Precision_at_daily10": 0.02958904109589041,
+      "Recall_at_daily10": 0.1581259150805271,
+      "seed_TP": "",
+      "student_parameters": null,
+      "train_CPU_seconds": 17.25,
+      "train_wall_seconds": 9.671999999991385,
+      "inference_CPU_seconds": 6.453125,
+      "inference_wall_seconds": 4.10999999998603,
+      "Online_slots": 636
+    },
+    {
+      "condition": "full_supervised_broad",
+      "family": "full_supervision_context",
+      "TP": 196,
+      "AP": 0.08960792929720214,
+      "Precision_at_daily10": 0.0536986301369863,
+      "Recall_at_daily10": 0.2869692532942899,
+      "seed_TP": "",
+      "student_parameters": null,
+      "train_CPU_seconds": null,
+      "train_wall_seconds": null,
+      "inference_CPU_seconds": null,
+      "inference_wall_seconds": null,
+      "Online_slots": 561
+    },
+    {
+      "condition": "full_supervised_mean",
+      "family": "full_supervision_context",
+      "TP": 215,
+      "AP": 0.09058403987584271,
+      "Precision_at_daily10": 0.0589041095890411,
+      "Recall_at_daily10": 0.31478770131771594,
+      "seed_TP": "",
+      "student_parameters": null,
+      "train_CPU_seconds": null,
+      "train_wall_seconds": null,
+      "inference_CPU_seconds": null,
+      "inference_wall_seconds": null,
+      "Online_slots": 615
+    },
+    {
+      "condition": "frozen_residual",
+      "family": "full_supervision_context",
+      "TP": 122,
+      "AP": 0.026187544507204674,
+      "Precision_at_daily10": 0.033424657534246574,
+      "Recall_at_daily10": 0.17862371888726208,
+      "seed_TP": "",
+      "student_parameters": null,
+      "train_CPU_seconds": null,
+      "train_wall_seconds": null,
+      "inference_CPU_seconds": null,
+      "inference_wall_seconds": null,
+      "Online_slots": 745
+    }
+  ],
+  "channel_metrics": [
+    {
+      "condition": "bce",
+      "channel": "Chip Transaction",
+      "reviewed": 2503,
+      "TP": 72,
+      "FP": 2431,
+      "Precision": 0.028765481422293248,
+      "Recall": 0.1276595744680851,
+      "within_channel_AP": 0.015287348441267251
+    },
+    {
+      "condition": "bce",
+      "channel": "Online Transaction",
+      "reviewed": 592,
+      "TP": 5,
+      "FP": 587,
+      "Precision": 0.008445945945945946,
+      "Recall": 0.17857142857142858,
+      "within_channel_AP": 0.010290028908062805
+    },
+    {
+      "condition": "bce",
+      "channel": "Swipe Transaction",
+      "reviewed": 555,
+      "TP": 20,
+      "FP": 535,
+      "Precision": 0.036036036036036036,
+      "Recall": 0.21978021978021978,
+      "within_channel_AP": 0.054964335361585584
+    },
+    {
+      "condition": "focal",
+      "channel": "Chip Transaction",
+      "reviewed": 2511,
+      "TP": 87,
+      "FP": 2424,
+      "Precision": 0.03464755077658303,
+      "Recall": 0.15425531914893617,
+      "within_channel_AP": 0.024438257020432775
+    },
+    {
+      "condition": "focal",
+      "channel": "Online Transaction",
+      "reviewed": 621,
+      "TP": 10,
+      "FP": 611,
+      "Precision": 0.01610305958132045,
+      "Recall": 0.35714285714285715,
+      "within_channel_AP": 0.032261264703820194
+    },
+    {
+      "condition": "focal",
+      "channel": "Swipe Transaction",
+      "reviewed": 518,
+      "TP": 24,
+      "FP": 494,
+      "Precision": 0.04633204633204633,
+      "Recall": 0.26373626373626374,
+      "within_channel_AP": 0.08345849176676233
+    },
+    {
+      "condition": "focal_matched",
+      "channel": "Chip Transaction",
+      "reviewed": 2460,
+      "TP": 81,
+      "FP": 2379,
+      "Precision": 0.032926829268292684,
+      "Recall": 0.14361702127659576,
+      "within_channel_AP": 0.01724961930020104
+    },
+    {
+      "condition": "focal_matched",
+      "channel": "Online Transaction",
+      "reviewed": 685,
+      "TP": 5,
+      "FP": 680,
+      "Precision": 0.0072992700729927005,
+      "Recall": 0.17857142857142858,
+      "within_channel_AP": 0.009500200390942737
+    },
+    {
+      "condition": "focal_matched",
+      "channel": "Swipe Transaction",
+      "reviewed": 505,
+      "TP": 19,
+      "FP": 486,
+      "Precision": 0.03762376237623762,
+      "Recall": 0.2087912087912088,
+      "within_channel_AP": 0.052030014149830286
+    },
+    {
+      "condition": "cbfocal",
+      "channel": "Chip Transaction",
+      "reviewed": 2473,
+      "TP": 80,
+      "FP": 2393,
+      "Precision": 0.03234937323089365,
+      "Recall": 0.14184397163120568,
+      "within_channel_AP": 0.016202357263075513
+    },
+    {
+      "condition": "cbfocal",
+      "channel": "Online Transaction",
+      "reviewed": 673,
+      "TP": 5,
+      "FP": 668,
+      "Precision": 0.007429420505200594,
+      "Recall": 0.17857142857142858,
+      "within_channel_AP": 0.007636933322426872
+    },
+    {
+      "condition": "cbfocal",
+      "channel": "Swipe Transaction",
+      "reviewed": 504,
+      "TP": 14,
+      "FP": 490,
+      "Precision": 0.027777777777777776,
+      "Recall": 0.15384615384615385,
+      "within_channel_AP": 0.037603662078587306
+    },
+    {
+      "condition": "bce_view",
+      "channel": "Chip Transaction",
+      "reviewed": 2512,
+      "TP": 71,
+      "FP": 2441,
+      "Precision": 0.028264331210191083,
+      "Recall": 0.12588652482269502,
+      "within_channel_AP": 0.015906155134128533
+    },
+    {
+      "condition": "bce_view",
+      "channel": "Online Transaction",
+      "reviewed": 596,
+      "TP": 5,
+      "FP": 591,
+      "Precision": 0.008389261744966443,
+      "Recall": 0.17857142857142858,
+      "within_channel_AP": 0.010657856857070706
+    },
+    {
+      "condition": "bce_view",
+      "channel": "Swipe Transaction",
+      "reviewed": 542,
+      "TP": 19,
+      "FP": 523,
+      "Precision": 0.03505535055350553,
+      "Recall": 0.2087912087912088,
+      "within_channel_AP": 0.05955582693007813
+    },
+    {
+      "condition": "consistency_01",
+      "channel": "Chip Transaction",
+      "reviewed": 2510,
+      "TP": 73,
+      "FP": 2437,
+      "Precision": 0.02908366533864542,
+      "Recall": 0.12943262411347517,
+      "within_channel_AP": 0.015089910827968305
+    },
+    {
+      "condition": "consistency_01",
+      "channel": "Online Transaction",
+      "reviewed": 591,
+      "TP": 5,
+      "FP": 586,
+      "Precision": 0.008460236886632826,
+      "Recall": 0.17857142857142858,
+      "within_channel_AP": 0.010263640554235415
+    },
+    {
+      "condition": "consistency_01",
+      "channel": "Swipe Transaction",
+      "reviewed": 549,
+      "TP": 20,
+      "FP": 529,
+      "Precision": 0.03642987249544627,
+      "Recall": 0.21978021978021978,
+      "within_channel_AP": 0.0551450127000268
+    },
+    {
+      "condition": "consistency_05",
+      "channel": "Chip Transaction",
+      "reviewed": 2509,
+      "TP": 75,
+      "FP": 2434,
+      "Precision": 0.029892387405340774,
+      "Recall": 0.13297872340425532,
+      "within_channel_AP": 0.015564997250594084
+    },
+    {
+      "condition": "consistency_05",
+      "channel": "Online Transaction",
+      "reviewed": 606,
+      "TP": 4,
+      "FP": 602,
+      "Precision": 0.006600660066006601,
+      "Recall": 0.14285714285714285,
+      "within_channel_AP": 0.011701113599984088
+    },
+    {
+      "condition": "consistency_05",
+      "channel": "Swipe Transaction",
+      "reviewed": 535,
+      "TP": 20,
+      "FP": 515,
+      "Precision": 0.037383177570093455,
+      "Recall": 0.21978021978021978,
+      "within_channel_AP": 0.057963753167457555
+    },
+    {
+      "condition": "consistency_view_01",
+      "channel": "Chip Transaction",
+      "reviewed": 2517,
+      "TP": 73,
+      "FP": 2444,
+      "Precision": 0.029002781088597537,
+      "Recall": 0.12943262411347517,
+      "within_channel_AP": 0.015655083807483896
+    },
+    {
+      "condition": "consistency_view_01",
+      "channel": "Online Transaction",
+      "reviewed": 601,
+      "TP": 5,
+      "FP": 596,
+      "Precision": 0.008319467554076539,
+      "Recall": 0.17857142857142858,
+      "within_channel_AP": 0.010720489966609313
+    },
+    {
+      "condition": "consistency_view_01",
+      "channel": "Swipe Transaction",
+      "reviewed": 532,
+      "TP": 19,
+      "FP": 513,
+      "Precision": 0.03571428571428571,
+      "Recall": 0.2087912087912088,
+      "within_channel_AP": 0.05961928967312324
+    },
+    {
+      "condition": "consistency_view_05",
+      "channel": "Chip Transaction",
+      "reviewed": 2501,
+      "TP": 76,
+      "FP": 2425,
+      "Precision": 0.030387844862055178,
+      "Recall": 0.1347517730496454,
+      "within_channel_AP": 0.016174485654555364
+    },
+    {
+      "condition": "consistency_view_05",
+      "channel": "Online Transaction",
+      "reviewed": 615,
+      "TP": 5,
+      "FP": 610,
+      "Precision": 0.008130081300813009,
+      "Recall": 0.17857142857142858,
+      "within_channel_AP": 0.010670387002291112
+    },
+    {
+      "condition": "consistency_view_05",
+      "channel": "Swipe Transaction",
+      "reviewed": 534,
+      "TP": 19,
+      "FP": 515,
+      "Precision": 0.035580524344569285,
+      "Recall": 0.2087912087912088,
+      "within_channel_AP": 0.06254143902491935
+    },
+    {
+      "condition": "masked_tree",
+      "channel": "Chip Transaction",
+      "reviewed": 2497,
+      "TP": 85,
+      "FP": 2412,
+      "Precision": 0.03404084901882259,
+      "Recall": 0.15070921985815602,
+      "within_channel_AP": 0.01698101262286368
+    },
+    {
+      "condition": "masked_tree",
+      "channel": "Online Transaction",
+      "reviewed": 636,
+      "TP": 7,
+      "FP": 629,
+      "Precision": 0.0110062893081761,
+      "Recall": 0.25,
+      "within_channel_AP": 0.007228617177626763
+    },
+    {
+      "condition": "masked_tree",
+      "channel": "Swipe Transaction",
+      "reviewed": 517,
+      "TP": 16,
+      "FP": 501,
+      "Precision": 0.030947775628626693,
+      "Recall": 0.17582417582417584,
+      "within_channel_AP": 0.022267754320099923
+    },
+    {
+      "condition": "full_supervised_broad",
+      "channel": "Chip Transaction",
+      "reviewed": 2477,
+      "TP": 140,
+      "FP": 2337,
+      "Precision": 0.056519983851433184,
+      "Recall": 0.24822695035460993,
+      "within_channel_AP": 0.070434409000809
+    },
+    {
+      "condition": "full_supervised_broad",
+      "channel": "Online Transaction",
+      "reviewed": 561,
+      "TP": 12,
+      "FP": 549,
+      "Precision": 0.0213903743315508,
+      "Recall": 0.42857142857142855,
+      "within_channel_AP": 0.1105168148822195
+    },
+    {
+      "condition": "full_supervised_broad",
+      "channel": "Swipe Transaction",
+      "reviewed": 612,
+      "TP": 44,
+      "FP": 568,
+      "Precision": 0.0718954248366013,
+      "Recall": 0.4835164835164835,
+      "within_channel_AP": 0.24289446517807717
+    },
+    {
+      "condition": "full_supervised_mean",
+      "channel": "Chip Transaction",
+      "reviewed": 2424,
+      "TP": 152,
+      "FP": 2272,
+      "Precision": 0.0627062706270627,
+      "Recall": 0.2695035460992908,
+      "within_channel_AP": 0.06875672919980474
+    },
+    {
+      "condition": "full_supervised_mean",
+      "channel": "Online Transaction",
+      "reviewed": 615,
+      "TP": 18,
+      "FP": 597,
+      "Precision": 0.02926829268292683,
+      "Recall": 0.6428571428571429,
+      "within_channel_AP": 0.18756190459673527
+    },
+    {
+      "condition": "full_supervised_mean",
+      "channel": "Swipe Transaction",
+      "reviewed": 611,
+      "TP": 45,
+      "FP": 566,
+      "Precision": 0.07364975450081833,
+      "Recall": 0.4945054945054945,
+      "within_channel_AP": 0.22888872884984202
+    },
+    {
+      "condition": "frozen_residual",
+      "channel": "Chip Transaction",
+      "reviewed": 2402,
+      "TP": 83,
+      "FP": 2319,
+      "Precision": 0.03455453788509576,
+      "Recall": 0.14716312056737588,
+      "within_channel_AP": 0.02475115127515025
+    },
+    {
+      "condition": "frozen_residual",
+      "channel": "Online Transaction",
+      "reviewed": 745,
+      "TP": 13,
+      "FP": 732,
+      "Precision": 0.0174496644295302,
+      "Recall": 0.4642857142857143,
+      "within_channel_AP": 0.027522568424258414
+    },
+    {
+      "condition": "frozen_residual",
+      "channel": "Swipe Transaction",
+      "reviewed": 503,
+      "TP": 26,
+      "FP": 477,
+      "Precision": 0.05168986083499006,
+      "Recall": 0.2857142857142857,
+      "within_channel_AP": 0.0695916116872955
+    }
+  ],
+  "visibility": {
+    "scope": "explicit_controlled_retrospective_simulation",
+    "event_clock": "source-local synthetic calendar; no timezone inference",
+    "assumed_delay_days": 7,
+    "assumed_training_cutoff": "2017-12-31T23:59:59",
+    "visibility_fraction": 0.1,
+    "hash_seed": 20261102,
+    "integer_hash_threshold": 1844674407370955264,
+    "training_rows": 841892,
+    "eligible_by_assumed_delay": 833645,
+    "visible_rows": 83057,
+    "visible_positive": 91,
+    "visible_negative": 82966,
+    "unlabeled_rows": 758835,
+    "visible_label_vector_sha256": "3172f1b650192444af31717b5b2b08d8b6ca6abd19c716c67e1843eba1720d4c",
+    "real_available_at_verified": false,
+    "unknown_never_assumed_normal": true
+  },
+  "loss_definitions": {
+    "bce": {
+      "name": "weighted_bce",
+      "visible_negative": 82966,
+      "visible_positive": 91,
+      "gamma": 0.0,
+      "effective_number_beta": null,
+      "raw_negative_coefficient": 1.0,
+      "raw_positive_coefficient": 20.0,
+      "fixed_loss_scale": 1.0,
+      "expected_initial_mean_loss_at_p_half": 0.7075764457054254,
+      "logit_gradient_probes": [
+        {
+          "predicted_positive_probability": 0.001,
+          "negative_abs_logit_gradient": 0.0010000000000000009,
+          "positive_abs_logit_gradient": 19.98
+        },
+        {
+          "predicted_positive_probability": 0.01,
+          "negative_abs_logit_gradient": 0.010000000000000009,
+          "positive_abs_logit_gradient": 19.8
+        },
+        {
+          "predicted_positive_probability": 0.1,
+          "negative_abs_logit_gradient": 0.09999999999999998,
+          "positive_abs_logit_gradient": 18.0
+        },
+        {
+          "predicted_positive_probability": 0.5,
+          "negative_abs_logit_gradient": 0.5,
+          "positive_abs_logit_gradient": 10.0
+        },
+        {
+          "predicted_positive_probability": 0.9,
+          "negative_abs_logit_gradient": 0.8999999999999999,
+          "positive_abs_logit_gradient": 2.0000000000000018
+        }
+      ],
+      "limit": "Initial expected loss matching does not equalize derivatives, curvature, class emphasis or convergence"
+    },
+    "focal": {
+      "name": "standard_focal",
+      "visible_negative": 82966,
+      "visible_positive": 91,
+      "gamma": 2.0,
+      "effective_number_beta": null,
+      "raw_negative_coefficient": 0.75,
+      "raw_positive_coefficient": 0.25,
+      "fixed_loss_scale": 5.448337075131833,
+      "expected_initial_mean_loss_at_p_half": 0.7075764457054254,
+      "logit_gradient_probes": [
+        {
+          "predicted_positive_probability": 0.001,
+          "negative_abs_logit_gradient": 1.2254670803476652e-08,
+          "positive_abs_logit_gradient": 1.3767823735022366
+        },
+        {
+          "predicted_positive_probability": 0.01,
+          "negative_abs_logit_gradient": 1.2217758997400203e-05,
+          "positive_abs_logit_gradient": 1.4445850945374588
+        },
+        {
+          "predicted_positive_probability": 0.1,
+          "negative_abs_logit_gradient": 0.011835787456481702,
+          "positive_abs_logit_gradient": 1.5010424510403928
+        },
+        {
+          "predicted_positive_probability": 0.5,
+          "negative_abs_logit_gradient": 1.218875253737581,
+          "positive_abs_logit_gradient": 0.40629175124586037
+        },
+        {
+          "predicted_positive_probability": 0.9,
+          "negative_abs_logit_gradient": 4.503127353121179,
+          "positive_abs_logit_gradient": 0.003945262485493909
+        }
+      ],
+      "limit": "Initial expected loss matching does not equalize derivatives, curvature, class emphasis or convergence"
+    },
+    "focal_matched": {
+      "name": "matched_weight_focal",
+      "visible_negative": 82966,
+      "visible_positive": 91,
+      "gamma": 2.0,
+      "effective_number_beta": null,
+      "raw_negative_coefficient": 0.047619047619047616,
+      "raw_positive_coefficient": 0.9523809523809523,
+      "fixed_loss_scale": 84.0,
+      "expected_initial_mean_loss_at_p_half": 0.7075764457054254,
+      "logit_gradient_probes": [
+        {
+          "predicted_positive_probability": 0.001,
+          "negative_abs_logit_gradient": 1.1995998666001653e-08,
+          "positive_abs_logit_gradient": 80.86327138818872
+        },
+        {
+          "predicted_positive_probability": 0.01,
+          "negative_abs_logit_gradient": 1.1959865995972916e-05,
+          "positive_abs_logit_gradient": 84.8455636788591
+        },
+        {
+          "predicted_positive_probability": 0.1,
+          "negative_abs_logit_gradient": 0.01158595712736349,
+          "positive_abs_logit_gradient": 88.16150280520284
+        },
+        {
+          "predicted_positive_probability": 0.5,
+          "negative_abs_logit_gradient": 1.1931471805599454,
+          "positive_abs_logit_gradient": 23.862943611198908
+        },
+        {
+          "predicted_positive_probability": 0.9,
+          "negative_abs_logit_gradient": 4.408075140260142,
+          "positive_abs_logit_gradient": 0.2317191425472703
+        }
+      ],
+      "limit": "Initial expected loss matching does not equalize derivatives, curvature, class emphasis or convergence"
+    },
+    "cbfocal": {
+      "name": "class_balanced_focal",
+      "visible_negative": 82966,
+      "visible_positive": 91,
+      "gamma": 2.0,
+      "effective_number_beta": 0.9999,
+      "raw_negative_coefficient": 0.8930037770911027,
+      "raw_positive_coefficient": 98.54998494351184,
+      "fixed_loss_scale": 4.083268117076225,
+      "expected_initial_mean_loss_at_p_half": 0.7075764457054254,
+      "logit_gradient_probes": [
+        {
+          "predicted_positive_probability": 0.001,
+          "negative_abs_logit_gradient": 1.0935473964358633e-08,
+          "positive_abs_logit_gradient": 406.74833140977137
+        },
+        {
+          "predicted_positive_probability": 0.01,
+          "negative_abs_logit_gradient": 1.0902535658564896e-05,
+          "positive_abs_logit_gradient": 426.77956087413804
+        },
+        {
+          "predicted_positive_probability": 0.1,
+          "negative_abs_logit_gradient": 0.010561682778236589,
+          "positive_abs_logit_gradient": 443.45898385001453
+        },
+        {
+          "predicted_positive_probability": 0.5,
+          "negative_abs_logit_gradient": 1.0876651700237354,
+          "positive_abs_logit_gradient": 120.03239950292631
+        },
+        {
+          "predicted_positive_probability": 0.9,
+          "negative_abs_logit_gradient": 4.01837248164001,
+          "positive_abs_logit_gradient": 1.1655646991369675
+        }
+      ],
+      "limit": "Initial expected loss matching does not equalize derivatives, curvature, class emphasis or convergence"
+    }
+  },
+  "consistency_vs_bce_net": {
+    "consistency_01": 1,
+    "consistency_05": 2,
+    "consistency_view_01": 0,
+    "consistency_view_05": 3
+  },
+  "tests": {
+    "tests": 1051,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "tests_xml_sha256": "be57fbf0f3d1e977466bae5ce0462d51ea1e78126b1f60a12dafa2f3ce4eaefd",
+  "source_report_sha256": "340fa12c83a26f8a79fd705831e3f9329b7d3a974420289acdd10e4c411aafac",
+  "audit_sha256": "35cfb09ef43f9de120a80b79fe06cc002bb6bbc72e5a8199352bdbddc6abb7f2",
+  "protocol_sha256": "b06b0c216ddf621d68eba1988b08664b06a5411329b2be74c106b92c0aff3415",
+  "resource_receipts": {
+    "runs\\semantic-v21-d-resources-01\\run.json": "0731ae84994f9139c916f71f93a3feb334d920f675b4995965aabb75080e0415",
+    "runs\\semantic-v21-d-resources-01\\audit.json": "59e14c2370194c16e192b39df19778dfcd72d34c6ffab35b3d6ca9fd133b89c4"
+  },
+  "pretrained_semantics_studied": false,
+  "real_label_availability_verified": false,
+  "independent_external_test": false,
+  "default_detector_changed": false,
+  "final_2019_read": false,
+  "paid_calls": 0
+}

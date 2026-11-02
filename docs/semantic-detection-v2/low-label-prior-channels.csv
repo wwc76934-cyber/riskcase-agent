@@ -1,0 +1,13 @@
+representation,channel,slots,TP,FP,within_channel_AP
+ordinary_learned32,Chip Transaction,2503,72,2431,0.015287348441267251
+ordinary_learned32,Online Transaction,592,5,587,0.010290028908062805
+ordinary_learned32,Swipe Transaction,555,20,535,0.054964335361585584
+qwen_frozen32,Chip Transaction,2546,74,2472,0.015547134019087215
+qwen_frozen32,Online Transaction,570,4,566,0.009620296187880972
+qwen_frozen32,Swipe Transaction,534,20,514,0.05600576925918358
+random_frozen32,Chip Transaction,2504,72,2432,0.016512346519632425
+random_frozen32,Online Transaction,611,3,608,0.008638956334180891
+random_frozen32,Swipe Transaction,535,18,517,0.05029998653987653
+tfidf_frozen32,Chip Transaction,2553,74,2479,0.016458624757214636
+tfidf_frozen32,Online Transaction,568,3,565,0.011668341687037308
+tfidf_frozen32,Swipe Transaction,529,22,507,0.05280844129735639

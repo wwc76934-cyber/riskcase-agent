@@ -1,0 +1,33 @@
+{
+  "status": "D32_independent_technical_and_visual_review_complete",
+  "reviewed_at_UTC": "2026-11-02T09:22:38.658Z",
+  "source_commit": "54181f76278187594987bc0f3b4ca1ddafecfdf1",
+  "source_report_sha256": "340fa12c83a26f8a79fd705831e3f9329b7d3a974420289acdd10e4c411aafac",
+  "audit_sha256": "35cfb09ef43f9de120a80b79fe06cc002bb6bbc72e5a8199352bdbddc6abb7f2",
+  "optimized_source_files_unchanged": 19,
+  "full_replays": 32,
+  "full_score_error": 0,
+  "pure_scoring_replays": 32,
+  "pure_scoring_error": 0,
+  "resource_measurement": "Main outer CPU/finalpeak missing; partial receipt explicitly null with observed worker/scoring lower bounds. Audit and timing fully measured.",
+  "figures": {
+    "semi-top10.png": {
+      "sha256": "9d4f0ff06ed5fa0d7c496a0a7287a46007574757c28de3805ac3b207e93d707d",
+      "visually_checked": true,
+      "legible_and_unclipped": true
+    },
+    "semi-training.png": {
+      "sha256": "95c27f394505f247eb2c82848b5b16da6c03060121568883f775db885e551247",
+      "visually_checked": true,
+      "legible_and_unclipped": true
+    },
+    "semi-consistency.png": {
+      "sha256": "c2a0236e7ff761911655d323a2b55b3025ecb06f93f5174d3faed6c8c8045e0a",
+      "visually_checked": true,
+      "legible_and_unclipped": true
+    }
+  },
+  "default_detector_changed": false,
+  "independent_external_test": false,
+  "real_label_available_at_verified": false
+}

@@ -1,0 +1,14 @@
+{
+  "status": "supplementary_source_diagnostics_published",
+  "original_gate_A_results_unchanged": true,
+  "source_report_sha256": {
+    "composition": "9e1727e3391a2308cfaa3422c6b44e62edf4a1b480877de40898d8d594fd48b0",
+    "clusters": "57d6f1c5165c2d60b32c0999e3efd93b07bb3532ad3abd2a1ae20d6bf6e21558",
+    "capacity": "1bdcc1b5f1d95c50c8ce1a9ce68ee9aaed9b1f3413d81fca5eee53468db24f10",
+    "label-census": "2f4b40375437f22bdcd0a221c74e913a08fc9a52bd0657ea1c81c31e7f4fd30c",
+    "row-sample": "078e260503e4b6d9bdc9b5792b5c3d935a956e6802757105f1c208b8fc0daabe",
+    "queue-attribution": "18c8f3614a048c21db86adb223d2f7c94a6c1322ff5758f6d889463fb0f26969"
+  },
+  "new_fraud_model_training": false,
+  "final_2019_read": false
+}

@@ -1,0 +1,142 @@
+{
+  "stage": "Gate_C_source_feasibility_preparation",
+  "scope": "Official public documentation and source-code review only. No candidate transaction/description/evaluation rows downloaded or inspected.",
+  "protocol_commit": "c8a229dc8ccbbc62bcfa67f3eba50114fb17d6b2",
+  "code_was_read_not_executed": true,
+  "sources": [
+    {
+      "source": "AI4Risk/MS-FFSD",
+      "pinned_commit": "2f68bee4a1b7327e745acb49b607df7ad503c100",
+      "evidence": {
+        "official_source": "verified",
+        "pinned_version": "verified",
+        "research_use_rights": "unknown",
+        "artifact_schema_and_fingerprints_verified": "unknown",
+        "feature_allowlist_enforced": "unknown",
+        "text_and_semantic_fields_label_independent": "failed",
+        "all_model_inputs_label_independent": "failed",
+        "business_text_semantics": "verified",
+        "event_time_reliable": "failed",
+        "text_strictly_available_before_target": "failed",
+        "entity_time_split_defined": "unknown",
+        "normal_and_unlabeled_kept_distinct": "verified",
+        "historical_label_availability_known": "unknown",
+        "training_pool_only_optimization": "unknown",
+        "known_training_ground_truth": "unknown",
+        "mask_and_availability_protocol_frozen": "unknown",
+        "cold_start_no_full_label_weight_reuse": "unknown",
+        "experiment_protocol_and_label_seal": "unknown",
+        "explicit_static_scope": "unknown"
+      },
+      "notes": [
+        "Statuses describe the pinned default generator and published schema, not a row-level audit of the unopened release ZIP.",
+        "Root Apache-2.0 does not alone verify upstream S-FFSD/IEEE data terms. Upstream antifraud is GPL-3.0; IEEE access not verified.",
+        "Default run_pipeline unconditionally applies label-conditioned merchant category reassignment; target_final feeds text generation and publication.",
+        "Timestamp wrapper explicitly sets label_aware and generator reports not_real_timestamp. Full-period entity statistics lack per-target as-of cutoff.",
+        "Labels 0/1/2 are documented distinctly and retained by publication code; downstream models must not merge2 into0."
+      ]
+    },
+    {
+      "source": "IEEE-CIS official Kaggle",
+      "pinned_commit": null,
+      "evidence": {
+        "official_source": "verified",
+        "pinned_version": "unknown",
+        "research_use_rights": "unknown",
+        "artifact_schema_and_fingerprints_verified": "unknown",
+        "feature_allowlist_enforced": "unknown",
+        "text_and_semantic_fields_label_independent": "unknown",
+        "all_model_inputs_label_independent": "unknown",
+        "business_text_semantics": "unknown",
+        "event_time_reliable": "unknown",
+        "text_strictly_available_before_target": "unknown",
+        "entity_time_split_defined": "unknown",
+        "normal_and_unlabeled_kept_distinct": "unknown",
+        "historical_label_availability_known": "unknown",
+        "training_pool_only_optimization": "unknown",
+        "known_training_ground_truth": "unknown",
+        "mask_and_availability_protocol_frozen": "unknown",
+        "cold_start_no_full_label_weight_reuse": "unknown",
+        "experiment_protocol_and_label_seal": "unknown",
+        "explicit_static_scope": "unknown"
+      },
+      "notes": [
+        "Official data description: TransactionID joins identity and transaction tables; identity is incomplete; TransactionDT is a reference-time offset. These are documentation-level facts, not local artifact validation.",
+        "Official terms and authenticated data access could not be verified: web view returned no rule text; IAB initialization failed; native browser approval timed out before page access. No mirror, terms acceptance, login automation or data download.",
+        "DeviceInfo/id_30/id_31 may encode interpretable device/software facts; actual semantics, missingness, observability, entity keys and split remain to be audited.",
+        "Official data-page readable cache names Subject to Competition Rules and sign-in/acceptance requirement. This is not verification of the rule body or this account permissions. Workspace filename search found no IEEE transaction/identity artifacts; no dataset rows opened."
+      ]
+    },
+    {
+      "source": "namebrandon/Sparkov_Data_Generation",
+      "pinned_commit": "b5eb45c89d36f2aa4ef16044a42945bed8b96d93",
+      "evidence": {
+        "official_source": "verified",
+        "pinned_version": "verified",
+        "research_use_rights": "verified",
+        "artifact_schema_and_fingerprints_verified": "unknown",
+        "feature_allowlist_enforced": "unknown",
+        "text_and_semantic_fields_label_independent": "unknown",
+        "all_model_inputs_label_independent": "unknown",
+        "business_text_semantics": "unknown",
+        "event_time_reliable": "unknown",
+        "text_strictly_available_before_target": "unknown",
+        "entity_time_split_defined": "unknown",
+        "normal_and_unlabeled_kept_distinct": "unknown",
+        "historical_label_availability_known": "unknown",
+        "training_pool_only_optimization": "unknown",
+        "known_training_ground_truth": "unknown",
+        "mask_and_availability_protocol_frozen": "unknown",
+        "cold_start_no_full_label_weight_reuse": "unknown",
+        "experiment_protocol_and_label_seal": "unknown",
+        "explicit_static_scope": "unknown"
+      },
+      "notes": [
+        "MIT permission verified for the pinned generator code; no third-party Kaggle dump terms asserted. No data generated/downloaded.",
+        "Merchant names come from Faker.company per category, and customer job is independently sampled with Faker.job; profile selection reads age/gender/city population. No verified free-form business description.",
+        "Useful possible future mechanism control after a frozen generator/split/feature protocol; not yet a qualified real-business-text benchmark.",
+        "Do not use generated name/address/card/identity strings as semantic templates or mix synthetic entities into another source."
+      ]
+    },
+    {
+      "source": "Fraud-Detection-Handbook/fraud-detection-handbook",
+      "pinned_commit": "81cf7d1714bb7b2f5b496407d9055d91dc68dc25",
+      "evidence": {
+        "official_source": "verified",
+        "pinned_version": "verified",
+        "research_use_rights": "verified",
+        "artifact_schema_and_fingerprints_verified": "unknown",
+        "feature_allowlist_enforced": "unknown",
+        "text_and_semantic_fields_label_independent": "unknown",
+        "all_model_inputs_label_independent": "unknown",
+        "business_text_semantics": "failed",
+        "event_time_reliable": "unknown",
+        "text_strictly_available_before_target": "unknown",
+        "entity_time_split_defined": "unknown",
+        "normal_and_unlabeled_kept_distinct": "unknown",
+        "historical_label_availability_known": "unknown",
+        "training_pool_only_optimization": "unknown",
+        "known_training_ground_truth": "unknown",
+        "mask_and_availability_protocol_frozen": "unknown",
+        "cold_start_no_full_label_weight_reuse": "unknown",
+        "experiment_protocol_and_label_seal": "unknown",
+        "explicit_static_scope": "unknown"
+      },
+      "notes": [
+        "Permission scope: GPL-3.0 reference generator code; prose/pictures CC-BY-SA4.0 per official foreword. Separate released data terms not inferred.",
+        "Only notebook code cells were read, without outputs or execution; no generated dataset or evaluation labels inspected.",
+        "Reference simulator supplies dated numerical transactions and controlled fraud scenarios, not business description text. TX_FRAUD_SCENARIO is outcome construction metadata and must be excluded.",
+        "The reference validation delay=7 is a modelling assumption, not observed real label-discovery timestamps. Card-level precision is not our transaction-level dailyTop10."
+      ]
+    }
+  ],
+  "conclusions": {
+    "C2_admitted": false,
+    "new_LLM_models_trained": 0,
+    "new_paid_calls": 0,
+    "MS_released_affected_row_counts": "unverified; release ZIP not opened",
+    "external_evaluation_protocol_frozen": false,
+    "external_labels_opened": 0,
+    "D_status": "Not started; await independently verified Gate B. Existing IBM may support an explicitly defined controlled train-label masking study, not a claim of real historical label availability."
+  }
+}

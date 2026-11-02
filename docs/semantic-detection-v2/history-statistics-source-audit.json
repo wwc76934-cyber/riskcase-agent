@@ -1,0 +1,52 @@
+{
+  "status": "independent_SQL_statistics_component_verified",
+  "proof": {
+    "independent_SQL_targets": 256,
+    "max_raw_stat_abs_difference": 3.637978807091713e-12,
+    "statistics": [
+      "lastK_count",
+      "amount_mean",
+      "amount_std",
+      "amount_min",
+      "amount_max",
+      "amount_median",
+      "amount_abs_mean",
+      "current_to_abs_mean",
+      "current_minus_latest_amount",
+      "same_mcc_fraction",
+      "latest_same_mcc",
+      "mean_age_seconds",
+      "newest_age_seconds",
+      "oldest_age_seconds"
+    ],
+    "float32_age_rounding_disclosed": true
+  },
+  "data": {
+    "manifest": "C:\\Users\\18137\\Documents\\ChatGPT\\金融Agent项目\\financial-report-agent\\data\\features\\features-b9692149f1c1\\manifest.json",
+    "manifest_sha256": "35f92e16a5fdbb03e49e843eea052f28fd04fda68f2ed81e95af9b59b473a26f",
+    "features_sha256": "520a6b525c7eee6a4304dfa4592ee2799088d6526d7a2d0cf7776c8efe993282",
+    "labels_sha256": "1926a9a2f9399e7be5be2d3989aed18e9c7d31f1b53193ad7279321a2bfab918",
+    "facts_sha256": "0e434e55043477d119e333730c8688d2e877999877bea683af04995e208dc6de",
+    "card_identity_scope": "(user_id,card_id), never card_id alone",
+    "label_available_at_counts": [
+      {
+        "split": "train",
+        "rows": 841892,
+        "nonnull": 0
+      },
+      {
+        "split": "validation",
+        "rows": 422088,
+        "nonnull": 0
+      }
+    ],
+    "label_time_limit": "Retrospective fully supervised labels; availability not inferred from event timestamps",
+    "base_feature_limit": "Existing point features include user-level prior aggregate counts; new neighbor/statistic features use user-card only"
+  },
+  "statistic_sha256": "093f5fa3e225f8ce026d51052540904cd0f29a1567c99880e5116c93b961ab07",
+  "auditor_sha256": "0934ea1ee6f3c106af1312bded33b0a5d6b04ac1f5bf4ef28db9501a6376e948",
+  "elapsed_seconds": 102.32202610000968,
+  "model_replay_complete": false,
+  "final_2019_read": false,
+  "new_training": false
+}

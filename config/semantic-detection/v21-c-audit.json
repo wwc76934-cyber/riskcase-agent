@@ -1,0 +1,16 @@
+{
+  "stage": "Gate_C_source_feasibility_preparation",
+  "status": "metadata_only_before_any_new_dataset_rows_or_labels",
+  "candidate_order": ["AI4Risk/MS-FFSD", "IEEE-CIS official Kaggle", "namebrandon/Sparkov_Data_Generation", "Fraud-Detection-Handbook/fraud-detection-handbook"],
+  "existing_B_training_protocol_unchanged": true,
+  "model_experiments_wait_for_completed_B_verification": true,
+  "source_review": ["official publisher and pinned revision", "code AND upstream data licenses", "transaction/entity foreign keys", "real versus synthesized event time", "text generation inputs and full-period aggregation", "use of labels/future events/post-outcome descriptions", "normal/fraud/unlabeled definitions", "entity and time overlap of splits"],
+  "no_new_evaluation_labels_opened": true,
+  "no_paid_generation_or_model_calls": true,
+  "unknown_evidence_is_not_pass": true,
+  "temporal_semantic_admission": "Legal source and auditable strictly historical text with no label-derived content; frozen split/selection protocol before opening eval labels",
+  "static_alternative": "If only future behavior aggregation prevents temporal use, an explicitly static study may be considered; label-derived answers remain forbidden even in static study",
+  "required_future_text_controls": ["numeric and ordinary category embeddings", "same text TF-IDF", "same text small encoder", "same text frozen Qwen", "random/shuffled/masked controls and comparable downstream capacity"],
+  "unlabeled_never_assumed_normal": true,
+  "default_detector_changed": false
+}
