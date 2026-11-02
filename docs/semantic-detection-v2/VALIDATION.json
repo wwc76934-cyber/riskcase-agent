@@ -310,5 +310,49 @@
   },
   "local_research_complete": true,
   "C2_new_business_text_admission": false,
-  "no_further_IBM_semantic_search": true
+  "no_further_IBM_semantic_search": true,
+  "GitHub_final_code_validation": {
+    "status": "code_validation_complete",
+    "observed_at_UTC": "2026-11-02T10:21:12.397Z",
+    "code_commit": "ff2d49fd9acde474fda70944167ecb0c951f1937",
+    "final_report_commit": "d83ad9e70716ac7eed18afd967d9b792b9d2d8dd",
+    "local_Windows": {
+      "passed": 1052,
+      "failures": 0,
+      "XML": "runs/semantic-v21-initialization/all-tests-04.xml"
+    },
+    "push": {
+      "run": 41425913625,
+      "url": "https://github.com/wwc76934-cyber/riskcase-agent/actions/runs/41425913625",
+      "conclusion": "success",
+      "Ubuntu": {
+        "passed": 1052,
+        "seconds": 90.66,
+        "job": 125212354507
+      },
+      "Windows": {
+        "passed": 1052,
+        "seconds": 343.19,
+        "job": 125212354028
+      }
+    },
+    "pull_request_merge_context": {
+      "run": 41425922711,
+      "url": "https://github.com/wwc76934-cyber/riskcase-agent/actions/runs/41425922711",
+      "conclusion": "success",
+      "Ubuntu": {
+        "passed": 1116,
+        "seconds": 103.79,
+        "job": 125212381886
+      },
+      "Windows": {
+        "passed": 1116,
+        "seconds": 432.13,
+        "job": 125212382299
+      }
+    },
+    "scope": "Counts are separate environments/scopes, never summed. Final reporting commits change only docs and retain identical validated runtime, tests and CI configuration. New documentation-only commit checks may run independently.",
+    "model_efficacy_or_Agent_intelligence_proven_by_test_count": false,
+    "code_and_tests_changed_after_validated_commit": false
+  }
 }

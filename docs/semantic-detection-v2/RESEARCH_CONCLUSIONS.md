@@ -45,3 +45,5 @@ MS-FFSD默认代码存在全样本标签统计→商户类别改写→文本的�
 本地完整离线回归1052通过。此前线上CI因漏装jsonschema等既有依赖而失败，已仅修复安装清单；线上结果独立记录，不以本地结果冒充。付费模型调用与GPU开销均为0。默认检测器保持neural_v2_ensemble，调查Agent的MCP、Skill、Harness、Memory和人工审批语义未修改。任何将来升级仍需独立集成PR与明确批准。
 
 CI记录补充：修复依赖后的代码提交ff2d49fd，push Ubuntu实际1052通过，PR合并上下文Ubuntu实际1116通过；两者范围分开，不相加。Windows线上任务在本报告快照时仍运行，不能宣称整个矩阵已通过；本机Windows1052通过仍是独立记录。最终CI状态以PR与VALIDATION的对应提交/任务为准。
+
+最终线上状态已确认：代码提交ff2d49fd的push Ubuntu/Windows各1052通过，PR合并上下文Ubuntu/Windows各1116通过，两条workflow均成功。上述“仍运行”为先前快照，最新机器回执见CI_FINAL.json。最终研究报告提交仅改docs，与该已验证提交的运行代码、测试及CI配置相同；不把后续文档提交的自动检查提前称为完成。
