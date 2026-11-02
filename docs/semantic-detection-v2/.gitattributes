@@ -1,0 +1,3 @@
+# Gate hashes must match local working files and published Git blobs on Windows.
+history-results.json text eol=lf
+history-review.json text eol=lf
