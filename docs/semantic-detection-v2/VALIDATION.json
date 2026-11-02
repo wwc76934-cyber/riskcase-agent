@@ -1,5 +1,5 @@
 {
-  "captured_at_UTC": "2026-11-02T07:12:24.350Z",
+  "captured_at_UTC": "2026-11-02T08:49:02.165Z",
   "local_reports": {
     "regression-01": {
       "counts": {
@@ -73,10 +73,32 @@
       "sha256": "abdabe867647b7cffc62e26e46086e6341d2cedcffd10724bc7d43ccc86ba281",
       "path": "runs\\semantic-v21-initialization\\semi-preparation-tests-05.xml",
       "scope": "loss/gradient/visibility/EMA/cold-roundtrip/gate preparation"
+    },
+    "all-tests-03": {
+      "counts": {
+        "tests": 1051,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "be57fbf0f3d1e977466bae5ce0462d51ea1e78126b1f60a12dafa2f3ce4eaefd",
+      "path": "runs\\semantic-v21-initialization\\all-tests-03.xml",
+      "scope": "Complete repository offline suite, including5new prior controls; no API keys"
+    },
+    "prior-tests-05": {
+      "counts": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "10d3e8ff2dcc78c5bff227248d84e6aad2e3c1a2249f3b063d74313144a1e24c",
+      "path": "runs/semantic-v21-initialization/prior-tests-05.xml",
+      "scope": "Targeted5 rerun after exact original-text/cache guard added; full suite1051 passed before this guard-only change"
     }
   },
   "all_testcase_classname_prefixes": {
-    "tests": 1046
+    "tests": 1051
   },
   "source_sha256": {
     "app/risk/semantic_detection/v2/queue_attribution.py": "ce8ba70c88053116bbbcf252f97244a51df753247e7d4928d3beb0b51363705a",
@@ -89,8 +111,14 @@
     "app/risk/semantic_detection/v2/semi_audit.py": "7f0374b27776bc86f2d4710e0f4c14dafebb8775b55069ca0c2a11968c66cf7b",
     "app/risk/semantic_detection/v2/semi_experiment.py": "b5201ff937b748c9bd9f8fb34e9c4575557489565b53e31d94a3b17461f893ea",
     "app/risk/semantic_detection/v2/semi_fit.py": "371d9a55a6c14bf5b0a9e7e3cd77e684cc5e84800481fc20ce0744b372e34777",
-    "app/risk/semantic_detection/v2/semi_report.py": "f5fe822ad9cfd1ed6fbdb215c670d3cde98e1d03428de205daa056c9b419b588",
-    "app/risk/semantic_detection/v2/semi_supervised.py": "2842cea3456fd9b30b8e94a4287475de0c2c3c649f2e0ec39f1c1df1eb0fbada"
+    "app/risk/semantic_detection/v2/semi_report.py": "fd29171715c939138a80623c2f85f2014cab49333742d8f2c5f4bea208e7d534",
+    "app/risk/semantic_detection/v2/semi_supervised.py": "2842cea3456fd9b30b8e94a4287475de0c2c3c649f2e0ec39f1c1df1eb0fbada",
+    "app/cli/semantic_detection_prior.py": "62737c3f355299020e62ceb9c12f94bc6d22c8829e089f315ad0c139f57865bf",
+    "app/risk/semantic_detection/v2/prior_experiment.py": "b4fee268c8103678eec95da2d2c56ad845a7119d111fd3f410c591cea01ff96d",
+    "app/risk/semantic_detection/v2/prior_fit.py": "2da68e11807046b15415bd9074fd805edbd5a52eaec21f8aaaf23402e35f6e68",
+    "app/risk/semantic_detection/v2/prior_report.py": "d9f739a236dc0f94c6b69a9ef0b1d93dc9b08fc19a6c294fcc7798426eb7f6ec",
+    "app/risk/semantic_detection/v2/prior_representations.py": "37ce5c70d2c76917094b6b8b1dd734b2335cf4ce4311b61b034f0faa0cddd475",
+    "tests/semantic_detection/test_v21_prior.py": "6dedc49c57a2b8de626f0f4da9c2b6c3214a91300bf56ad4198861a53cf22388"
   },
   "GitHub": {
     "checked_head": "66134b30ccf25b2be8d01a20d445df9e1a0d7120",
@@ -161,5 +189,11 @@
     "actual_freeze_guard_result": "Canonical-LF B result/review binding verified before actual dataset access"
   },
   "post_all_tests_02_source_changes": "B renderer interpretation text only, then successfully rerendered against same43 audited model instances; no optimization-code changes",
-  "text_binding": "Tracked result/review receipts use canonical UTF-8 LF bytes identical to Git blobs. Ignored training/data artifacts retain original raw-byte hashes."
+  "text_binding": "Tracked result/review receipts use canonical UTF-8 LF bytes identical to Git blobs. Ignored training/data artifacts retain original raw-byte hashes.",
+  "prior_fixture": {
+    "tests": 5,
+    "source": "prior-tests-04.xml",
+    "real_transaction_rows": 0,
+    "effective_detector_evidence": false
+  }
 }

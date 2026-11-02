@@ -144,3 +144,17 @@ Windows跨进程只读查询可能需要工具权限；不暂停/终止目标。
 
 32实例预算与9条件定义见GATE_D_PROTOCOL.md。available_at为假设的7日延迟，不称真实标签发现时间；不复用完整监督权重。常规Focal和类别权重匹配Focal都保留，防止将权重变化误认为调制效果。额外视图只改变内部激活，所有条件仍保留统一网络Dropout。条件草案下CLI拒绝启动的实际检查及16行自建EMA夹具核验保留在VALIDATION.json，不当作模型有效性证据。
 
+
+## D补充：低标签类别先验
+
+原D32实例完整核验成功是硬门槛；先公开登记及提交测试后的实现，再运行三种冻结向量×三seed共9个实例。普通可训练Embedding引用同mask的原D bce。全部9个拟合完成后才统一评分，不能依原D结果改变是否执行。
+
+```powershell
+python -m app.cli.semantic_detection_prior run --source-root ../financial-report-agent --output runs/semantic-v21-prior-01 --resource-output runs/semantic-v21-prior-resources-01/run.json
+python -m app.cli.semantic_detection_prior audit --source-root ../financial-report-agent --run runs/semantic-v21-prior-01 --output runs/semantic-v21-prior-audit-01 --resource-output runs/semantic-v21-prior-resources-01/audit.json
+python -m app.cli.semantic_detection_prior report --source-root ../financial-report-agent --run runs/semantic-v21-prior-01 --audit runs/semantic-v21-prior-audit-01 --output docs/semantic-detection-v2 --resource-output runs/semantic-v21-prior-resources-01/report.json
+```
+
+以上是本轮canonical路径，已有目录时必须换新。复现原D为新路径时，还需显式传入--parent、--parent-audit、--broad-run、--bank，并更新补充policy中的main_D_run、bank及mask来源绑定；只允许等价新run，不改变登记的表示/超参数。原A向量bank的SHA是复用前提；没有缓存必须先按A冻结协议恢复，不能换另一模型的向量冒充。
+
+向量预检只读取109个训练类别描述和旧cache，没有交易、标签或新编码调用。五项针对性测试包括真实12轮自建16行冻结worker往返，以及缺失原D核验时拒绝启动；夹具不构成检测有效性证据。原D19份冻结源文件保持不变。

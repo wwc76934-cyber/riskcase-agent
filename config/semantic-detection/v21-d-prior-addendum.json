@@ -1,6 +1,9 @@
 {
   "version": "riskcase-v21-low-label-prior-addendum-1",
   "status": "registered_before_primary_D_development_scores",
+  "registration_commit": "a01e131b9d9a5b7ab029e74fcbb69adfea9b3ca6",
+  "implementation_ready": true,
+  "candidate_evidence_criterion": "Positive ensemble net and seven-day block descriptive interval lower bound greater than zero versus each of ordinary/random/TFIDF, and positive Qwen-minus-ordinary TP difference at every matched seed. Never sufficient for default upgrade or a claim of rich-business-text value.",
   "reason": "Complete the PRD D with/without pretrained representation comparison; original D32 loss/consistency study remains unchanged.",
   "source_scope": "Existing already-audited IBM MCC category descriptions only; not C2 new-business-text admission; retrospective simulated label availability.",
   "main_D_run": "runs/semantic-v21-d-01",
@@ -9,6 +12,8 @@
   "expected_visible_positive": 91,
   "expected_visible_negative": 82966,
   "bank": "runs/semantic-v21-representations-01",
+  "bank_manifest_sha256": "dc0c93ec3917954bd4ec1384280c5986d7c60541502707021da66b00a6029f7a",
+  "text_sha256": "409ad1739182461e04f8e9f416449586feb9fbdb9087c0eedbb8a2f1c7b9999a",
   "bank_specification": "nochannel-original",
   "bank_vectors_sha256": "12e45b3c887b46fac53ea997284079a1b4f54e10aedf92b667d8a18b891bd3ed",
   "representations": [
