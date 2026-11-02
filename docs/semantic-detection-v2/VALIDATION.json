@@ -117,10 +117,21 @@
       "sha256": "dffaa5f0397e54294e00bfd9ce7935f06ee24f49e1cf19f526b65cbddc486cad",
       "path": "runs/semantic-v21-initialization/report-resource-tests-02.xml",
       "scope": "Report schema after displaying stronger original Focal/tree context and resource wrapper"
+    },
+    "all-tests-04": {
+      "counts": {
+        "tests": 1052,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "3c08e76a63c263d03ffe3df442b48ccee9b2c6f78a043202261f6ed64d10d694",
+      "path": "runs\\semantic-v21-initialization\\all-tests-04.xml",
+      "scope": "Final complete repository offline suite after resource CLI correction, separate batch timing module, report controls and scientific-context fixes;343.94seconds,1existingStarlettewarning"
     }
   },
   "all_testcase_classname_prefixes": {
-    "tests": 1051
+    "tests": 1052
   },
   "source_sha256": {
     "app/risk/semantic_detection/v2/queue_attribution.py": "ce8ba70c88053116bbbcf252f97244a51df753247e7d4928d3beb0b51363705a",
@@ -138,7 +149,7 @@
     "app/cli/semantic_detection_prior.py": "62737c3f355299020e62ceb9c12f94bc6d22c8829e089f315ad0c139f57865bf",
     "app/risk/semantic_detection/v2/prior_experiment.py": "b4fee268c8103678eec95da2d2c56ad845a7119d111fd3f410c591cea01ff96d",
     "app/risk/semantic_detection/v2/prior_fit.py": "2da68e11807046b15415bd9074fd805edbd5a52eaec21f8aaaf23402e35f6e68",
-    "app/risk/semantic_detection/v2/prior_report.py": "f8bd47dcddf401c968a593ba1de8a65611f5fdaaae11b299742f8abaf53ca695",
+    "app/risk/semantic_detection/v2/prior_report.py": "78daf0a05f0233d283c0a8908d49035f6baf3830c8fe73bece219b56d6f16847",
     "app/risk/semantic_detection/v2/prior_representations.py": "37ce5c70d2c76917094b6b8b1dd734b2335cf4ce4311b61b034f0faa0cddd475",
     "tests/semantic_detection/test_v21_prior.py": "dc3dc737b05fbe67c633226fdd6d9042c36ee349bcb6ff4d83bad4601f371d46",
     "app/cli/semantic_detection_batch_timing.py": "cea8636e19b102c0d17130a062364db051fe2a8a638dc09f45119e3869e64cd0",
@@ -233,5 +244,20 @@
       "max_abs_error": 0,
       "first_partial_path_alias_failure_preserved": true
     }
+  },
+  "GitHub_dependency_diagnosis": {
+    "head": "0a460dd0556d9b5049a2a7e8d127b915398ecf20",
+    "runs": [
+      41420812638,
+      41420801830
+    ],
+    "jobs": [
+      125195627069,
+      125195627998
+    ],
+    "status": "failed_in_test_collection_before_model_efficacy_evaluation",
+    "error": "ModuleNotFoundError: jsonschema",
+    "correction": "Install existing semantic-detection and investigation pinned requirement sets; workflow-only environment fix, no Agent implementation changes",
+    "new_workflow_result": "pending_observation"
   }
 }
