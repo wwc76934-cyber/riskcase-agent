@@ -32,6 +32,7 @@ def run(source_root,experiment_run,audit_run,parent,output,training_resources,au
         rows.append({'representation':name,'TP':metrics['tp_daily10'],'P10':metrics['precision'],'R10':metrics['recall'],'AP':metrics['ap'],
             'seed_TP':','.join(str(e['metrics']['tp_daily10']) for e in evaluations),'total_parameters':records[0]['student_parameters'],
             'trainable_parameters':trainable,'Online_slots':metrics['channel']['Online Transaction']['reviewed'],
+            'observed_process_peak_bytes_at_model_end':max(r.get('whole_process_peak_bytes',0) for r in records),
             'train_CPU_seconds':sum(r['training_loop_CPU_seconds'] for r in records),'train_wall_seconds':sum(r['training_loop_wall_seconds'] for r in records),
             'inference_wall_seconds':sum(e['inference_wall_seconds'] for e in evaluations)})
         for record in records:curves.extend({'representation':name,'seed':record['seed'],**c} for c in record['curves'])
@@ -70,7 +71,7 @@ def run(source_root,experiment_run,audit_run,parent,output,training_resources,au
 
 ![固定类别先验比较](low-label-prior.png)
 
-Qwen只复用A已审的无channel原描述缓存，前32维L2后冻结；没有新LLM生成、编码、下载或更大模型。TF-IDF使用完全相同文本、训练类别词表的1/2gram与32维SVD；随机向量固定seed20261102。未知类别行均为零。三个冻结条件可训练参数相同，普通Embedding略多；全部非auxiliary权重从同一seed的普通冷初始化复制，冻结表在训练后仍逐字等于输入表。
+Qwen只复用A已审的无channel原描述缓存，前32维L2后冻结；没有新LLM生成、编码、下载或更大模型。TF-IDF使用完全相同文本、训练类别词表的1/2gram与32维SVD；随机向量固定seed20261102。未知类别行均为零。三个冻结条件可训练参数相同，普通Embedding略多；全部非auxiliary权重从同一seed的普通冷初始化复制，冻结表在训练后仍逐字等于输入表。所有条件保留原数值/类别主干及其中MCC编码，只替换附加32维表；无预训练不等于无MCC信息。
 
 ## 新增、挤出与不确定性
 
@@ -84,7 +85,9 @@ Qwen相对普通Embedding的同seed TP差为{seed_deltas}。全部条件和三�
 
 MCC描述是既有类别ID的确定函数，没有新增逐交易业务事实。此处检验91可见正例时的类别先验，不能替代C2丰富业务文本研究。现代字典与预训练模型用于历史合成数据是回顾性比较，不证明当年线上文本可得。7日标签延迟是假设，原available_at未知，真实未标注未当正常。2018已观察，2019不评测，没有新独立测试。
 
-全部训练CPU、墙钟、推理与参数在low-label-prior-models.csv；整进程资源回执保留。原D bce为路径匹配也有无梯度教师计算，不是最低成本监督实现。输出只用于研究，默认仍为neural_v2_ensemble，不进入调查Agent合同。
+全部训练CPU、墙钟、评分、累计进程观察峰值与参数在low-label-prior-models.csv；补充进程资源回执从起点计量。原D bce的总进程回执缺失另在主报告披露，不影响其逐worker实测。NN字段沿用inference命名，实际包含批预测和AP/队列计算，不是纯前向或线上p99。原D bce为路径匹配也有无梯度教师计算，不是最低成本监督实现。输出只用于研究，默认仍为neural_v2_ensemble，不进入调查Agent合同。
+
+普通参考固定为原D bce，是看到原D开发分数前公开登记的同损失比较，不能事后换成有利参考。原D还登记了标准Focal（集成TP={original['ensembles']['focal']['tp_daily10']}）及可见标签树（TP={original['masked_tree']['metrics']['tp_daily10']}），详见主报告；这是不同损失/模型的完整业务上下文。本页四条件即使超过bce，也不自动代表超过强非LLM方案；本轮不追加Focal×语义搜索。
 
 模型正面候选条件要求：相对三个控制的集成净增均为正且7日区块描述区间下界>0，并且Qwen相对普通模型三个同seed差均>0。即使达到，仍需新的独立来源/协议后验证才能考虑升级；不声称完成普遍的LLM性能提升。
 '''

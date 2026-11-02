@@ -158,3 +158,11 @@ python -m app.cli.semantic_detection_prior report --source-root ../financial-rep
 以上是本轮canonical路径，已有目录时必须换新。复现原D为新路径时，还需显式传入--parent、--parent-audit、--broad-run、--bank，并更新补充policy中的main_D_run、bank及mask来源绑定；只允许等价新run，不改变登记的表示/超参数。原A向量bank的SHA是复用前提；没有缓存必须先按A冻结协议恢复，不能换另一模型的向量冒充。
 
 向量预检只读取109个训练类别描述和旧cache，没有交易、标签或新编码调用。五项针对性测试包括真实12轮自建16行冻结worker往返，以及缺失原D核验时拒绝启动；夹具不构成检测有效性证据。原D19份冻结源文件保持不变。
+
+D纯批评分在独立审计后执行：
+
+```powershell
+python -m app.cli.semantic_detection_batch_timing --source-root ../financial-report-agent --run runs/semantic-v21-d-01 --audit runs/semantic-v21-d-audit-01 --output runs/new-d-batch-timing
+```
+
+原D评分完整成功后资源父目录缺失导致外层写回执失败；本轮保留原日志及明确缺失计量的部分回执。未来CLI已在计时前创建资源目录。不要为补资源回执重训，更不能将模型阶段的测量下界冒充完整进程CPU。原D32独立核验和全部训练曲线仍可复核。新增资源回执测试与相关研究22项通过，后续报告上下文/CLI两项复核通过；它们是针对性范围，不能相加成新的全库测试数。

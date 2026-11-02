@@ -25,6 +25,7 @@ def main():
     args=parser.parse_args()
     resource=Path(args.resource_output)
     if resource.exists():raise FileExistsError('New resource receipt path required')
+    resource.parent.mkdir(parents=True,exist_ok=True)
     started=time.monotonic();cpu=time.process_time();status='failed';error=None
     try:
         if args.command=='run':

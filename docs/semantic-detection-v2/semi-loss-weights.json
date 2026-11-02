@@ -1,0 +1,158 @@
+{
+  "bce": {
+    "name": "weighted_bce",
+    "visible_negative": 82966,
+    "visible_positive": 91,
+    "gamma": 0.0,
+    "effective_number_beta": null,
+    "raw_negative_coefficient": 1.0,
+    "raw_positive_coefficient": 20.0,
+    "fixed_loss_scale": 1.0,
+    "expected_initial_mean_loss_at_p_half": 0.7075764457054254,
+    "logit_gradient_probes": [
+      {
+        "predicted_positive_probability": 0.001,
+        "negative_abs_logit_gradient": 0.0010000000000000009,
+        "positive_abs_logit_gradient": 19.98
+      },
+      {
+        "predicted_positive_probability": 0.01,
+        "negative_abs_logit_gradient": 0.010000000000000009,
+        "positive_abs_logit_gradient": 19.8
+      },
+      {
+        "predicted_positive_probability": 0.1,
+        "negative_abs_logit_gradient": 0.09999999999999998,
+        "positive_abs_logit_gradient": 18.0
+      },
+      {
+        "predicted_positive_probability": 0.5,
+        "negative_abs_logit_gradient": 0.5,
+        "positive_abs_logit_gradient": 10.0
+      },
+      {
+        "predicted_positive_probability": 0.9,
+        "negative_abs_logit_gradient": 0.8999999999999999,
+        "positive_abs_logit_gradient": 2.0000000000000018
+      }
+    ],
+    "limit": "Initial expected loss matching does not equalize derivatives, curvature, class emphasis or convergence"
+  },
+  "focal": {
+    "name": "standard_focal",
+    "visible_negative": 82966,
+    "visible_positive": 91,
+    "gamma": 2.0,
+    "effective_number_beta": null,
+    "raw_negative_coefficient": 0.75,
+    "raw_positive_coefficient": 0.25,
+    "fixed_loss_scale": 5.448337075131833,
+    "expected_initial_mean_loss_at_p_half": 0.7075764457054254,
+    "logit_gradient_probes": [
+      {
+        "predicted_positive_probability": 0.001,
+        "negative_abs_logit_gradient": 1.2254670803476652e-08,
+        "positive_abs_logit_gradient": 1.3767823735022366
+      },
+      {
+        "predicted_positive_probability": 0.01,
+        "negative_abs_logit_gradient": 1.2217758997400203e-05,
+        "positive_abs_logit_gradient": 1.4445850945374588
+      },
+      {
+        "predicted_positive_probability": 0.1,
+        "negative_abs_logit_gradient": 0.011835787456481702,
+        "positive_abs_logit_gradient": 1.5010424510403928
+      },
+      {
+        "predicted_positive_probability": 0.5,
+        "negative_abs_logit_gradient": 1.218875253737581,
+        "positive_abs_logit_gradient": 0.40629175124586037
+      },
+      {
+        "predicted_positive_probability": 0.9,
+        "negative_abs_logit_gradient": 4.503127353121179,
+        "positive_abs_logit_gradient": 0.003945262485493909
+      }
+    ],
+    "limit": "Initial expected loss matching does not equalize derivatives, curvature, class emphasis or convergence"
+  },
+  "focal_matched": {
+    "name": "matched_weight_focal",
+    "visible_negative": 82966,
+    "visible_positive": 91,
+    "gamma": 2.0,
+    "effective_number_beta": null,
+    "raw_negative_coefficient": 0.047619047619047616,
+    "raw_positive_coefficient": 0.9523809523809523,
+    "fixed_loss_scale": 84.0,
+    "expected_initial_mean_loss_at_p_half": 0.7075764457054254,
+    "logit_gradient_probes": [
+      {
+        "predicted_positive_probability": 0.001,
+        "negative_abs_logit_gradient": 1.1995998666001653e-08,
+        "positive_abs_logit_gradient": 80.86327138818872
+      },
+      {
+        "predicted_positive_probability": 0.01,
+        "negative_abs_logit_gradient": 1.1959865995972916e-05,
+        "positive_abs_logit_gradient": 84.8455636788591
+      },
+      {
+        "predicted_positive_probability": 0.1,
+        "negative_abs_logit_gradient": 0.01158595712736349,
+        "positive_abs_logit_gradient": 88.16150280520284
+      },
+      {
+        "predicted_positive_probability": 0.5,
+        "negative_abs_logit_gradient": 1.1931471805599454,
+        "positive_abs_logit_gradient": 23.862943611198908
+      },
+      {
+        "predicted_positive_probability": 0.9,
+        "negative_abs_logit_gradient": 4.408075140260142,
+        "positive_abs_logit_gradient": 0.2317191425472703
+      }
+    ],
+    "limit": "Initial expected loss matching does not equalize derivatives, curvature, class emphasis or convergence"
+  },
+  "cbfocal": {
+    "name": "class_balanced_focal",
+    "visible_negative": 82966,
+    "visible_positive": 91,
+    "gamma": 2.0,
+    "effective_number_beta": 0.9999,
+    "raw_negative_coefficient": 0.8930037770911027,
+    "raw_positive_coefficient": 98.54998494351184,
+    "fixed_loss_scale": 4.083268117076225,
+    "expected_initial_mean_loss_at_p_half": 0.7075764457054254,
+    "logit_gradient_probes": [
+      {
+        "predicted_positive_probability": 0.001,
+        "negative_abs_logit_gradient": 1.0935473964358633e-08,
+        "positive_abs_logit_gradient": 406.74833140977137
+      },
+      {
+        "predicted_positive_probability": 0.01,
+        "negative_abs_logit_gradient": 1.0902535658564896e-05,
+        "positive_abs_logit_gradient": 426.77956087413804
+      },
+      {
+        "predicted_positive_probability": 0.1,
+        "negative_abs_logit_gradient": 0.010561682778236589,
+        "positive_abs_logit_gradient": 443.45898385001453
+      },
+      {
+        "predicted_positive_probability": 0.5,
+        "negative_abs_logit_gradient": 1.0876651700237354,
+        "positive_abs_logit_gradient": 120.03239950292631
+      },
+      {
+        "predicted_positive_probability": 0.9,
+        "negative_abs_logit_gradient": 4.01837248164001,
+        "positive_abs_logit_gradient": 1.1655646991369675
+      }
+    ],
+    "limit": "Initial expected loss matching does not equalize derivatives, curvature, class emphasis or convergence"
+  }
+}

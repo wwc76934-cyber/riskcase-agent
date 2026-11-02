@@ -89,7 +89,7 @@ def test_prior_report_complete_schema_and_pairing(tmp_path,monkeypatch):
         'training_loop_CPU_seconds':1.,'training_loop_wall_seconds':1.,'curves':[{'epoch':1,'supervised_mean_loss':.2}]}
     evaluation={'metrics':metrics,'inference_wall_seconds':1.}
     record={'ensembles':dict.fromkeys(names,metrics),'records':{},'evaluations':{}}
-    original={'seed_evaluations':{}}
+    original={'seed_evaluations':{},'ensembles':{'focal':metrics},'masked_tree':{'metrics':metrics}}
     for name in names:
         directory=parent/'bce' if name=='ordinary_learned32' else experiment/name
         directory.mkdir(parents=True);np.save(directory/'ensemble.npy',scores)

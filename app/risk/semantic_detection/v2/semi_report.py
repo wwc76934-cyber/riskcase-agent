@@ -26,7 +26,11 @@ def run(source_root,experiment_run,audit_run,history_run,broad_run,tests_xml,out
     tests={key:sum(int(s.attrib.get(key,0)) for s in suites) for key in ('tests','failures','errors','skipped')}
     if not tests['tests'] or tests['failures'] or tests['errors']:raise ValueError('Passing regression evidence required')
     resources={name:read(path) for name,path in [('training',training_resources),('audit',audit_resources)]}
-    if any(r['status']!='completed' for r in resources.values()):raise ValueError('Successful training and replay resource receipts required')
+    training=resources['training'];training_valid=training['status']=='completed' or (
+        training['status']=='partial_resource_reconstructed' and training.get('model_training_and_evaluation_completed') is True
+        and training.get('report_sha256')==digest(experiment_run/'report.json') and training['process_CPU_seconds_all_threads'] is None
+        and training['whole_process_peak_bytes'] is None)
+    if not training_valid or resources['audit']['status']!='completed':raise ValueError('Completed models/audit and honestly scoped resource receipts required')
     output.mkdir(parents=True,exist_ok=True)
     (_,_,_),(VX,vy,vmeta)=load_data(source_root)[0];ranking=Ranking(vmeta,vy)
     rows=[];channels=[];curves=[];losses={};scores={}
@@ -39,6 +43,7 @@ def run(source_root,experiment_run,audit_run,history_run,broad_run,tests_xml,out
             'Precision_at_daily10':metrics['precision'],'Recall_at_daily10':metrics['recall'],
             'seed_TP':','.join(str(e['metrics']['tp_daily10']) for e in seed_eval),
             'student_parameters':records[0]['student_parameters'],'train_CPU_seconds':sum(r['training_loop_CPU_seconds'] for r in records),
+            'observed_process_peak_bytes_at_model_end':max(r['whole_process_peak_bytes'] for r in records),
             'train_wall_seconds':sum(r['training_loop_wall_seconds'] for r in records),
             'inference_CPU_seconds':sum(e['inference_CPU_seconds'] for e in seed_eval),
             'inference_wall_seconds':sum(e['inference_wall_seconds'] for e in seed_eval),
@@ -95,7 +100,11 @@ def run(source_root,experiment_run,audit_run,history_run,broad_run,tests_xml,out
         (f"其中{improved}为正差，须结合逐seed、额外视图基线和配对区间判断；不把点估计当稳定采用证据。" if improved else
          "本轮没有一致性条件超过同架构bce，不据此宣称其他权重、数据或半监督方法普遍无效。"))
     visibility=report['visibility'];cost=['| 进程 | 实际CPU秒（线程合计） | 整进程峰值GiB |','|---|---:|---:|']
-    for name,receipt in resources.items():cost.append(f"| {name} | {receipt['process_CPU_seconds_all_threads']:.2f} | {receipt['whole_process_peak_bytes']/1024**3:.2f} |")
+    for name,receipt in resources.items():
+        cpu=receipt['process_CPU_seconds_all_threads'];peak=receipt['whole_process_peak_bytes']
+        cpu_text=f'{cpu:.2f}' if cpu is not None else '总量未记录；见逐模型实测'
+        peak_text=f'{peak/1024**3:.2f}' if peak is not None else '总峰值未记录；见逐模型观察'
+        cost.append(f"| {name} | {cpu_text} | {peak_text} |")
     text=f'''# Gate D｜既有合成数据的可控标签隐藏研究
 
 本轮完成27个冷启动主神经模型、4个固定延训诊断和1个可见标签强树，并独立重算每实例全部422,088笔开发分数。**这是回顾性可控实验；真实标签发现时间未验证，2018不是独立测试。** 默认检测器保持`neural_v2_ensemble`，没有接入调查Agent。
@@ -122,7 +131,7 @@ semi-loss-weights.json另保留p=.001/.01/.1/.5/.9处的正负导数。训练CSV
 
 为匹配计算路径，λ=0条件也计算无梯度教师前向；这是计算路径匹配的监督对照，并非最高效率的监督训练实现。固定强树只拟合可见标签，另提供业务备选，容量/类别权重与神经网络不同，不作单一因素因果对照。
 
-Gate A没有稳定IBM语义增益，C1没有准入新文本数据，因此本轮没有预训练语义分支。这是条件未满足，不伪造“有无LLM”的实验结果，也不把旧全监督权重带进低标签训练。
+此处原32实例不混入预训练语义。PRD要求的有无预训练对照另在原D开发评分前公开登记为固定9实例补充，见LOW_LABEL_PRIOR_PROTOCOL.md；只复用A已审核MCC类别文本和缓存，不代表C2新业务文本准入。本报告只对应原32实例，不预写补充结果，也不复用完整监督权重。
 
 ## 业务成绩
 
@@ -164,7 +173,7 @@ Gate A没有稳定IBM语义增益，C1没有准入新文本数据，因此本轮
 
 '''+ '\n'.join(cost)+f'''
 
-semi-models.csv给出各条件全部seed的训练循环CPU/墙钟、推理CPU/墙钟和参数；semi-training-curves.csv保留逐轮资源。CPU为线程合计，整进程峰值含数据/先前模型，不是隔离单模型内存。D复用B已构建统计矩阵，构建代价没有变成零；当前批量推理计时也不代表线上单请求p99。GPU/付费模型调用均为0。
+semi-models.csv给出各条件全部seed的训练循环CPU/墙钟、评分CPU/墙钟、参数及模型结束时观察到的累计进程峰值；semi-training-curves.csv保留逐轮资源。CPU为线程合计，累计进程峰值含数据/先前模型，不是隔离单模型内存。NN字段仍沿用inference命名，但实际计时包括批预测及AP/队列指标计算，不能冒充纯前向延迟。原训练CLI在全部评分成功后因资源父目录不存在而写回执失败；原模型/分数/曲线完整保留，未重训。总进程CPU与最终峰值不能事后恢复，明确留空；资源回执只另列逐worker和评分计量求和的下界，不冒充完整进程测量。审计阶段从起点完整计量。D复用B已构建统计矩阵，构建代价没有变成零；当前批量计时也不代表线上单请求p99。GPU/付费模型调用均为0。
 
 本地回归{tests['tests']}项，失败{tests['failures']}、错误{tests['errors']}；XML SHA256 `{digest(tests_xml)}`。不冒充GitHub共享CI通过。来源协议、失败日志和复现命令分别见GATE_D_PROTOCOL.md、FAILURES.md与REPRODUCE.md。
 

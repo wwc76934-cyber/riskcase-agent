@@ -1,5 +1,5 @@
 {
-  "captured_at_UTC": "2026-11-02T08:49:02.165Z",
+  "captured_at_UTC": "2026-11-02T09:23:52.493Z",
   "local_reports": {
     "regression-01": {
       "counts": {
@@ -95,6 +95,28 @@
       "sha256": "10d3e8ff2dcc78c5bff227248d84e6aad2e3c1a2249f3b063d74313144a1e24c",
       "path": "runs/semantic-v21-initialization/prior-tests-05.xml",
       "scope": "Targeted5 rerun after exact original-text/cache guard added; full suite1051 passed before this guard-only change"
+    },
+    "resource-and-prior-tests-01": {
+      "counts": {
+        "tests": 22,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "6dfc6892e3f93f61e5cc6baf48538962285b1289e92942326028510afddc48b0",
+      "path": "runs/semantic-v21-initialization/resource-and-prior-tests-01.xml",
+      "scope": "Resource-directory fix, prior and supervised-worker targeted suite; no full-suite count aggregation"
+    },
+    "report-resource-tests-02": {
+      "counts": {
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "dffaa5f0397e54294e00bfd9ce7935f06ee24f49e1cf19f526b65cbddc486cad",
+      "path": "runs/semantic-v21-initialization/report-resource-tests-02.xml",
+      "scope": "Report schema after displaying stronger original Focal/tree context and resource wrapper"
     }
   },
   "all_testcase_classname_prefixes": {
@@ -107,18 +129,21 @@
     "app/risk/semantic_detection/v2/data_admission.py": "46553bff13fd102f7c03c48daddd52819c383eaaa211b94a7aebb1fdbb009851",
     "app/cli/semantic_detection_source_admission.py": "e79606dd24d2301621d03209eb7426ec90b7fa761d70404d5799704332f99b41",
     "tests/semantic_detection/test_v21_admission.py": "1492f8526d7da589ee3bd9c96e26d4002d13ca9992fb4cf4f9490dfe03392ac8",
-    "app/cli/semantic_detection_semi.py": "62e8c065a254c630c97d42bc9c5042c42a3e237329139b800cd64d51d19d6561",
+    "app/cli/semantic_detection_semi.py": "acb4f9d57edd952e593ceee9613e87144eb21262f2429b37555f793383f44c27",
     "app/risk/semantic_detection/v2/semi_audit.py": "7f0374b27776bc86f2d4710e0f4c14dafebb8775b55069ca0c2a11968c66cf7b",
     "app/risk/semantic_detection/v2/semi_experiment.py": "b5201ff937b748c9bd9f8fb34e9c4575557489565b53e31d94a3b17461f893ea",
     "app/risk/semantic_detection/v2/semi_fit.py": "371d9a55a6c14bf5b0a9e7e3cd77e684cc5e84800481fc20ce0744b372e34777",
-    "app/risk/semantic_detection/v2/semi_report.py": "fd29171715c939138a80623c2f85f2014cab49333742d8f2c5f4bea208e7d534",
+    "app/risk/semantic_detection/v2/semi_report.py": "8b8de6a9e7e8f87f2e180e49e40b04fe792e8bef84f8a28f0b11a7a8efc54eaf",
     "app/risk/semantic_detection/v2/semi_supervised.py": "2842cea3456fd9b30b8e94a4287475de0c2c3c649f2e0ec39f1c1df1eb0fbada",
     "app/cli/semantic_detection_prior.py": "62737c3f355299020e62ceb9c12f94bc6d22c8829e089f315ad0c139f57865bf",
     "app/risk/semantic_detection/v2/prior_experiment.py": "b4fee268c8103678eec95da2d2c56ad845a7119d111fd3f410c591cea01ff96d",
     "app/risk/semantic_detection/v2/prior_fit.py": "2da68e11807046b15415bd9074fd805edbd5a52eaec21f8aaaf23402e35f6e68",
-    "app/risk/semantic_detection/v2/prior_report.py": "d9f739a236dc0f94c6b69a9ef0b1d93dc9b08fc19a6c294fcc7798426eb7f6ec",
+    "app/risk/semantic_detection/v2/prior_report.py": "f8bd47dcddf401c968a593ba1de8a65611f5fdaaae11b299742f8abaf53ca695",
     "app/risk/semantic_detection/v2/prior_representations.py": "37ce5c70d2c76917094b6b8b1dd734b2335cf4ce4311b61b034f0faa0cddd475",
-    "tests/semantic_detection/test_v21_prior.py": "6dedc49c57a2b8de626f0f4da9c2b6c3214a91300bf56ad4198861a53cf22388"
+    "tests/semantic_detection/test_v21_prior.py": "dc3dc737b05fbe67c633226fdd6d9042c36ee349bcb6ff4d83bad4601f371d46",
+    "app/cli/semantic_detection_batch_timing.py": "cea8636e19b102c0d17130a062364db051fe2a8a638dc09f45119e3869e64cd0",
+    "app/risk/semantic_detection/v2/batch_timing.py": "ab21bdda52c29865f89247d6615f5f4a2ada6af1ef5733a3387aed2c7dfab03e",
+    "tests/semantic_detection/test_v21_resource_cli.py": "50b429ce41b78ddfb7e45b2c78c2f4dbe034092e528c92f82528b9762b9f361b"
   },
   "GitHub": {
     "checked_head": "66134b30ccf25b2be8d01a20d445df9e1a0d7120",
@@ -195,5 +220,18 @@
     "source": "prior-tests-04.xml",
     "real_transaction_rows": 0,
     "effective_detector_evidence": false
+  },
+  "D32": {
+    "fully_replayed": 32,
+    "max_abs_error": 0,
+    "training_outer_resource_write_failed_after_result_completed": true,
+    "missing_total_CPU_and_final_peak_reported_as_null": true,
+    "optimization_source_files_unchanged": 19,
+    "model_or_score_rewrite": false,
+    "pure_batch_scoring": {
+      "full_replays": 32,
+      "max_abs_error": 0,
+      "first_partial_path_alias_failure_preserved": true
+    }
   }
 }

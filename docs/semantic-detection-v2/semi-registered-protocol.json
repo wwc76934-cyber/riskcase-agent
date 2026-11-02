@@ -1,0 +1,156 @@
+{
+  "version": "riskcase-v21-gate-d-1",
+  "status": "frozen_after_B_verified",
+  "execution_allowed": true,
+  "B_review_sha256": "79af60f711171ad718fb1934b0d2529f4ddd77005205fbe26122225e5f9433a8",
+  "source_archive_sha256": "e9f589a0958f40d60f81b1a2e8428db86e00c05755caf44fb055827976c0efa2",
+  "source_official_commit": "ebb7cd68ee1897599568107740bc452104bbbaf8",
+  "source_usage_scope": "existing_private_synthetic_research_no_raw_redistribution",
+  "source_rights_limit": "Continue the already authorized local project research scope; specific data commercial and redistribution rights remain unverified.",
+  "simulation_acknowledged": true,
+  "evaluation_scope": "previously_observed_2018_development",
+  "visibility": {
+    "fraction": 0.1,
+    "seed": 20261102,
+    "delay_days": 7,
+    "cutoff": "2017-12-31T23:59:59"
+  },
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "main_epochs": 12,
+  "conditions": [
+    {
+      "name": "bce",
+      "loss": "weighted_bce",
+      "consistency_weight": 0,
+      "view_probability": 0
+    },
+    {
+      "name": "focal",
+      "loss": "standard_focal",
+      "consistency_weight": 0,
+      "view_probability": 0
+    },
+    {
+      "name": "focal_matched",
+      "loss": "matched_weight_focal",
+      "consistency_weight": 0,
+      "view_probability": 0
+    },
+    {
+      "name": "cbfocal",
+      "loss": "class_balanced_focal",
+      "consistency_weight": 0,
+      "view_probability": 0
+    },
+    {
+      "name": "bce_view",
+      "loss": "weighted_bce",
+      "consistency_weight": 0,
+      "view_probability": 0.1
+    },
+    {
+      "name": "consistency_01",
+      "loss": "weighted_bce",
+      "consistency_weight": 0.1,
+      "view_probability": 0
+    },
+    {
+      "name": "consistency_05",
+      "loss": "weighted_bce",
+      "consistency_weight": 0.5,
+      "view_probability": 0
+    },
+    {
+      "name": "consistency_view_01",
+      "loss": "weighted_bce",
+      "consistency_weight": 0.1,
+      "view_probability": 0.1
+    },
+    {
+      "name": "consistency_view_05",
+      "loss": "weighted_bce",
+      "consistency_weight": 0.5,
+      "view_probability": 0.1
+    }
+  ],
+  "loss_definitions": {
+    "weighted_bce_positive_weight": 20,
+    "standard_focal_positive_alpha": 0.25,
+    "matched_focal_positive_alpha": 0.9523809523809523,
+    "focal_gamma": 2,
+    "class_balanced_effective_number_beta": 0.9999,
+    "normalization": "Fixed per-method scale matching expected visible-label loss at initial p=.5; not gradient or curvature equality"
+  },
+  "teacher": {
+    "type": "EMA student parameters",
+    "decay": 0.99,
+    "requires_grad": false,
+    "warmup_epochs": 2,
+    "ramp_epochs": 3,
+    "teacher_forwards_for_zero_weight_controls": true
+  },
+  "view": "Optional internal 64-dimensional context activation dropout .1, independent RNG; source transaction facts and input arrays unchanged. All conditions retain base network dropout .15.",
+  "backbone": "Same complete-supervision-verified broad220 statistic NN; ordinary category embeddings, width64/two blocks. No full-supervision neural weights reused. Train-X-only preprocessing/features reused.",
+  "diagnostic_conditions": [
+    "bce",
+    "focal",
+    "focal_matched",
+    "cbfocal"
+  ],
+  "diagnostic_seed": 42,
+  "diagnostic_extra_epochs": 6,
+  "diagnostic_rule": "All four seed42 own low-label checkpoints continue12->18 at fixed finalLR5e-5 before any development scores are read. Diagnostic single-seed results never replace primary12epoch three-seed results.",
+  "masked_tree": "One fixed known-label-only HGB:100iterations/15leaves/.1/minleaf50/L2=1/balanced/seed42, same broad raw feature dictionary. Business comparator with different loss/capacity, not matched causal control.",
+  "main_neural_instances": 27,
+  "diagnostic_continuations": 4,
+  "masked_tree_instances": 1,
+  "expected_full_replays": 32,
+  "pretrained_semantic_branch_admitted": false,
+  "semantic_limit": "Gate A found no stable IBM semantic gain; C1 admitted no new text dataset, so no pretrained branch is smuggled into D.",
+  "new_dataset_rows_allowed": false,
+  "no_development_load_until_all_training_finishes": true,
+  "default_detector_changed": false,
+  "final_2019_read": false,
+  "paid_calls": 0,
+  "frozen_at_UTC": "2026-11-02T07:15:19.940Z",
+  "freeze_disclosure": "All2018 development outcomes already observed in prior stages. This freezes this controlled-study grid before its real-data visibility mask or models, not an unseen-test preregistration.",
+  "receipt_binding": "Canonical LF for tracked B result/review; raw-byte hashes for ignored model/data artifacts",
+  "source_commit": "54181f76278187594987bc0f3b4ca1ddafecfdf1",
+  "policy_sha256": "c8562028712df2c351f009e24d5af3850e59a1acff1f0596b83e58237b4bb01e",
+  "source_code_sha256": {
+    "app/risk/semantic_detection/v2/history.py": "bb10699cc694c15fdf60a521ff91f6b8bae9dc244b4538d431de2db7e2c6164c",
+    "app/risk/semantic_detection/v2/history_data.py": "c9bb38fe21dba5ae9e238b867cf93c4bfc199dfe9d1d6d4b6d39e36d8d431492",
+    "app/risk/semantic_detection/v2/history_experiment.py": "d5a1532dbaa1a4ba925d70f002e4f0bbfc5b36fcb0746d2ca69aaad00cba4d54",
+    "app/risk/semantic_detection/v2/matched.py": "e183f2748c7953f7631ef7c9c0c8948ee652eea880909342bbf47e9ba9adcffa",
+    "app/risk/semantic_detection/temporal.py": "d65b3751df8a1d5abd18d5a09df43c024b8c0edcc84b79cde22b229ce79f6128",
+    "app/risk/semantic_detection/history_experiment.py": "80c16cc1894359fbaa9541622060f0a4effcdae97fc483270887269e0efb4c26",
+    "app/risk/neural_v2.py": "b7626dfc7bd1dc75106f7f81d25bb4f7b36187040827c68cab656d08d5bc8f56",
+    "app/risk/neural_model.py": "0256825cee9dae38dd0820d41448600db5db5d79decc5b0a869bdad8b879d5ab",
+    "app/risk/ml_data.py": "9c323be6aa3334fa8f0a820bc338e4e02b7be900fd3a30298e1531ec0482ce12",
+    "app/risk/ml_models.py": "5da1bf89a20d49f99b9ad8f6a3f2a9bfb4b3aefb9501ccc10ffa39c3d594bccc",
+    "app/risk/semantic_detection/data.py": "3a248abac38955e1a5e601287a113fbacb540d2773161293d254bf7712e44e0f",
+    "app/risk/semantic_detection/common.py": "71a1bb2a4f71919a1c8f4f7ecea111d702c7b4d2471652d0365dd0f43063045f",
+    "app/risk/semantic_detection/evaluation.py": "b94084067f986b71a9dc5ced73f9eb4e666b9c758588523730ea1d0bee7ea09c",
+    "app/risk/semantic_detection/semantics.py": "e470eb8639bb9a120f60f0277741e1b8c9ecadad43d8f7fe78f4c4409d784750",
+    "app/cli/train_neural_v2.py": "1983c0d9f0e1fa143e485a208fb71a0903e30223d1c298cf02097b6f60bb47cf",
+    "app/risk/semantic_detection/v2/expanded_controls.py": "9c8a9d495f9101d733e69efecc69e452ddf6d8294912d30d3ba7370c15a9c464",
+    "app/risk/semantic_detection/v2/semi_supervised.py": "2842cea3456fd9b30b8e94a4287475de0c2c3c649f2e0ec39f1c1df1eb0fbada",
+    "app/risk/semantic_detection/v2/semi_fit.py": "371d9a55a6c14bf5b0a9e7e3cd77e684cc5e84800481fc20ce0744b372e34777",
+    "app/risk/semantic_detection/v2/semi_experiment.py": "b5201ff937b748c9bd9f8fb34e9c4575557489565b53e31d94a3b17461f893ea"
+  },
+  "B_evidence": {
+    "history_results_sha256": "4345ae2a8f8a3dcbb3d09fe71c45cb2c8ef479dfc53c4381f56c2352720f6bd5",
+    "review_sha256": "79af60f711171ad718fb1934b0d2529f4ddd77005205fbe26122225e5f9433a8",
+    "source_reports": {
+      "runs\\semantic-v21-b-01\\report.json": "98502507669fefd491b2e24691dd85d85d8f4d08cd17e1037f2d0f9727211600",
+      "runs\\semantic-v21-b-audit-01\\report.json": "f2e555efa31542c0887dc87ed136f594e1d31f769b74dc625763974fd4ae0c1d",
+      "runs\\semantic-v21-b-broad-01\\report.json": "9c7dacf72a7fd7e67c443a4d72090d4f0d8d7ba471933a668e6ff5b42aa705cf",
+      "runs\\semantic-v21-b-broad-audit-01\\report.json": "aa9701430017d036f261e16cbe6571f8c487c3b20d146393a147892b73436974",
+      "runs\\semantic-v21-b-statistics-tree-01\\report.json": "73598ebf41676a9d9290e86166b04d3f8f61148beeb4bd5030f2ee612d5d0d64"
+    }
+  }
+}

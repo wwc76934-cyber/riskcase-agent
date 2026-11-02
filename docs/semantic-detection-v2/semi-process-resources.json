@@ -1,0 +1,29 @@
+{
+  "training": {
+    "status": "partial_resource_reconstructed",
+    "command": "run",
+    "model_training_and_evaluation_completed": true,
+    "cli_exit_status": "failed_after_results_complete_due_to_missing_resource_parent_directory",
+    "report_sha256": "340fa12c83a26f8a79fd705831e3f9329b7d3a974420289acdd10e4c411aafac",
+    "process_CPU_seconds_all_threads": null,
+    "whole_process_peak_bytes": null,
+    "wall_seconds": null,
+    "known_worker_and_scoring_CPU_seconds_lower_bound": 11737.375,
+    "known_worker_and_scoring_wall_seconds_lower_bound": 6068.640999999829,
+    "observed_process_peak_bytes_during_workers_lower_bound": 2254520320,
+    "timing_scope": "Retained per-worker measured totals plus disjoint post-fit scoring; excludes controller/source load/hash/aggregate overhead. NN scoring timers include AP/queue calculation. Not a recovered full-process measurement. Peak only observed through saved workers, not final process peak.",
+    "source_records": 31,
+    "model_or_score_bytes_changed": false,
+    "training_repeated": false
+  },
+  "audit": {
+    "status": "completed",
+    "command": "audit",
+    "finished_at_UTC": "2026-11-02T09:14:05.922618+00:00",
+    "wall_seconds": 214.79699999999139,
+    "process_CPU_seconds_all_threads": 253.984375,
+    "whole_process_peak_bytes": 4616114176,
+    "error": null,
+    "timing_scope": "CLI main including experiment imports; CPU sums all threads; memory is cumulative whole-process peak"
+  }
+}

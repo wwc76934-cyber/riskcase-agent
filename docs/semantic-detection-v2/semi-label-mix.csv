@@ -1,0 +1,13 @@
+year,channel,label_view,rows,simulator_positive_after_fit_audit_only
+2016,Chip Transaction,visible,30399,9
+2016,Chip Transaction,unlabeled,276064,56
+2016,Online Transaction,visible,5008,73
+2016,Online Transaction,unlabeled,45742,700
+2016,Swipe Transaction,visible,6210,7
+2016,Swipe Transaction,unlabeled,55945,59
+2017,Chip Transaction,visible,30359,2
+2017,Chip Transaction,unlabeled,280218,61
+2017,Online Transaction,visible,4987,0
+2017,Online Transaction,unlabeled,45108,0
+2017,Swipe Transaction,visible,6094,0
+2017,Swipe Transaction,unlabeled,55758,0
