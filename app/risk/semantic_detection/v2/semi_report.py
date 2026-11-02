@@ -106,7 +106,7 @@ def run(source_root,experiment_run,audit_run,history_run,broad_run,tests_xml,out
 
 训练841,892笔，其中按假设可暴露标签{visibility['eligible_by_assumed_delay']}笔；最终可见{visibility['visible_rows']}笔，正类{visibility['visible_positive']}、负类{visibility['visible_negative']}；未标注{visibility['unlabeled_rows']}笔。宿主在全部拟合结束后核验：隐藏部分实际含{audit['hidden_positive_simulator_audit_only']}个合成正例；这些真值没有传入训练worker，不能把未知当正常。逐年份、渠道的可见/隐藏结构见semi-label-mix.csv。
 
-训练只加载train分区，归一化/类别词表可使用训练池内无标签X；不读取开发样本来更新模型、教师或预处理。全部主拟合、延训和树结束并写入权重指纹后，才加载开发X/y评分。主模型只接收-1/0/1标签向量；监督损失仅取0/1子集，一致性目标是停止梯度的软概率。
+优化只加载train分区行，归一化/类别词表可使用训练池内无标签X；不将开发样本送入模型、教师或预处理更新。共享缓存的整文件指纹读取和内存映射不等于开发训练，实际worker只接收训练前缀。全部主拟合、延训和树结束并写入权重指纹后，才加载本轮开发X/y评分；既有B汇总指标此前已观察。主模型只接收-1/0/1标签向量；监督损失仅取0/1子集，一致性目标是停止梯度的软概率。范围详见TRAINING_SCOPE_NOTES.md。
 
 ## 固定输入、损失和扰动
 
@@ -118,7 +118,7 @@ def run(source_root,experiment_run,audit_run,history_run,broad_run,tests_xml,out
 
 semi-loss-weights.json另保留p=.001/.01/.1/.5/.9处的正负导数。训练CSV记录实际正负损失、逐样本监督logit导数、batch归约后的导数总量、整网裁剪前范数和裁剪比例。logit导数不是整网参数梯度；标准α=.25正负比为1:3，不能将它的结果直接解释成与BCE20只有γ不同。
 
-一致性用EMA教师衰减.99，前2轮权重0，再3轮升到预定.1或.5；不做置信阈值搜索。所有主条件保留统一的网络Dropout.15。“无额外视图”仍有该模型噪声；额外视图只对内部上下文激活做.1 Dropout，使用独立RNG，不改交易金额、类别、时间或邻居身份。bce_view的λ=0控制用于区分普通正则化和一致性增量。
+一致性用EMA教师衰减.99，前2轮权重0，再3轮升到预定.1或.5；不做置信阈值搜索。教师sigmoid是加权目标下的未校准模型分数，其均值不能当作真实隐藏欺诈率。所有主条件保留统一的网络Dropout.15。“无额外视图”仍有该模型噪声；额外视图只对内部上下文激活做.1 Dropout，使用独立RNG，不改交易金额、类别、时间或邻居身份。bce_view的λ=0控制用于区分普通正则化和一致性增量。
 
 为匹配计算路径，λ=0条件也计算无梯度教师前向；这是计算路径匹配的监督对照，并非最高效率的监督训练实现。固定强树只拟合可见标签，另提供业务备选，容量/类别权重与神经网络不同，不作单一因素因果对照。
 
