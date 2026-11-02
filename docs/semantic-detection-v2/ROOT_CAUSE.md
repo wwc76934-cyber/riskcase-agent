@@ -92,3 +92,7 @@ Gate A已提供渠道失衡及语义无稳定收益的可复核证据。继续�
 ## Gate B完成后的补充
 
 [HISTORY_DECISION.md](HISTORY_DECISION.md)与[HISTORY_RESULTS.md](HISTORY_RESULTS.md)给出43实例独立核验后的结论：历史信息有明确的同参数控制增量，但Mean215对广统计196的区块区间[-5,45]包含0，尚未证明神经Mean表示独有的稳定优势。当前Attention199也不能继续概括为“没有增量”。这些后续证据不改写本报告的LLM负结果，不触发默认替换。
+
+## 后续阶段最终核对
+
+Gate B已完成43实例与强统计挑战：Mean215、广统计196，二者差19的七日区块区间[-5,45]，不能确认Mean的独立稳定架构优势。固定低标签语义补充也已完成：Qwen98、普通97、随机93、同文本TF-IDF99，未获得预训练独立增量。本轮停止IBM语义搜索；C1无合格新文本准入，不以更大模型补救。两个独立结论与阶段证据索引见[RESEARCH_CONCLUSIONS](RESEARCH_CONCLUSIONS.md)，不改写原研究负结果。

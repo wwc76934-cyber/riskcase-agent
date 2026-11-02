@@ -166,3 +166,11 @@ python -m app.cli.semantic_detection_batch_timing --source-root ../financial-rep
 ```
 
 原D评分完整成功后资源父目录缺失导致外层写回执失败；本轮保留原日志及明确缺失计量的部分回执。未来CLI已在计时前创建资源目录。不要为补资源回执重训，更不能将模型阶段的测量下界冒充完整进程CPU。原D32独立核验和全部训练曲线仍可复核。新增资源回执测试与相关研究22项通过，后续报告上下文/CLI两项复核通过；它们是针对性范围，不能相加成新的全库测试数。
+
+最终全库离线回归：1052通过、0失败/错误/跳过，343.94秒，1条既有Starlette弃用警告；all-tests-04.xml。补充9实例、9次独立全分数重算及9次排除指标开销的批评分均完成，误差0。纯批评分补充命令：
+
+```powershell
+python -m app.cli.semantic_detection_batch_timing --source-root ../financial-report-agent --run runs/semantic-v21-prior-01 --audit runs/semantic-v21-prior-audit-01 --output runs/new-prior-batch-timing
+```
+
+全部原权重/分数仍在本机runs下，未提交原始交易、模型缓存或身份映射。最终总判断见RESEARCH_CONCLUSIONS.md；历史进度与首次失败保留，不用后来的成功覆盖原记录。

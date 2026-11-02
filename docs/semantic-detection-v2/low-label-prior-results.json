@@ -1,0 +1,100 @@
+{
+  "status": "low_label_prior_complete_and_independently_verified",
+  "new_model_replays": 9,
+  "models": [
+    {
+      "representation": "ordinary_learned32",
+      "TP": 97,
+      "P10": 0.026575342465753424,
+      "R10": 0.14202049780380674,
+      "AP": 0.016622120526979013,
+      "seed_TP": "90,108,74",
+      "total_parameters": 60123,
+      "trainable_parameters": 60123,
+      "Online_slots": 592,
+      "observed_process_peak_bytes_at_model_end": 2253545472,
+      "train_CPU_seconds": 1190.359375,
+      "train_wall_seconds": 610.8589999999967,
+      "inference_wall_seconds": 9.483999999967637
+    },
+    {
+      "representation": "qwen_frozen32",
+      "TP": 98,
+      "P10": 0.02684931506849315,
+      "R10": 0.14348462664714495,
+      "AP": 0.019008547926159552,
+      "seed_TP": "88,99,82",
+      "total_parameters": 60123,
+      "trainable_parameters": 56603,
+      "Online_slots": 570,
+      "observed_process_peak_bytes_at_model_end": 2291027968,
+      "train_CPU_seconds": 1144.359375,
+      "train_wall_seconds": 581.6710000000312,
+      "inference_wall_seconds": 8.9210000000312
+    },
+    {
+      "representation": "random_frozen32",
+      "TP": 93,
+      "P10": 0.02547945205479452,
+      "R10": 0.13616398243045388,
+      "AP": 0.016850517468639102,
+      "seed_TP": "91,103,72",
+      "total_parameters": 60123,
+      "trainable_parameters": 56603,
+      "Online_slots": 611,
+      "observed_process_peak_bytes_at_model_end": 2292551680,
+      "train_CPU_seconds": 1026.78125,
+      "train_wall_seconds": 520.6100000000151,
+      "inference_wall_seconds": 8.001000000018394
+    },
+    {
+      "representation": "tfidf_frozen32",
+      "TP": 99,
+      "P10": 0.027123287671232878,
+      "R10": 0.14494875549048317,
+      "AP": 0.017763103419185404,
+      "seed_TP": "91,108,82",
+      "total_parameters": 60123,
+      "trainable_parameters": 56603,
+      "Online_slots": 568,
+      "observed_process_peak_bytes_at_model_end": 2292551680,
+      "train_CPU_seconds": 1037.109375,
+      "train_wall_seconds": 992.4539999999979,
+      "inference_wall_seconds": 8.608999999967637
+    }
+  ],
+  "qwen_vs_ordinary_same_seed_TP_differences": [
+    -2,
+    -9,
+    8
+  ],
+  "all_prespecified_positive_conditions_met": false,
+  "source_report_sha256": "245fe9548dfd162385202d3d91c0accab9d5f3da114736e92005572798ccbeea",
+  "audit_sha256": "979e104cebdf0362dc001889ed2b714c9b19762001189b64922ce3833d64c613",
+  "protocol_sha256": "07f3ee37636628ce0b474905b8e80a18a25fa0507bc2d41e61786eb8eb7577a3",
+  "registration_commit": "a01e131b9d9a5b7ab029e74fcbb69adfea9b3ca6",
+  "resources": {
+    "training": {
+      "status": "completed",
+      "command": "run",
+      "finished_at_UTC": "2026-11-02T10:04:11.609099+00:00",
+      "wall_seconds": 2188.094000000012,
+      "process_CPU_seconds_all_threads": 3313.828125,
+      "whole_process_peak_bytes": 3325911040,
+      "error": null
+    },
+    "audit": {
+      "status": "completed",
+      "command": "audit",
+      "finished_at_UTC": "2026-11-02T10:05:24.924822+00:00",
+      "wall_seconds": 72.10899999999674,
+      "process_CPU_seconds_all_threads": 81.234375,
+      "whole_process_peak_bytes": 2034216960,
+      "error": null
+    }
+  },
+  "default_detector_changed": false,
+  "independent_external_test": false,
+  "new_business_text_data": false,
+  "paid_calls": 0
+}

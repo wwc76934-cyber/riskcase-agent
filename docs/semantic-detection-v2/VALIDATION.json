@@ -1,5 +1,5 @@
 {
-  "captured_at_UTC": "2026-11-02T09:23:52.493Z",
+  "captured_at_UTC": "2026-11-02T10:17:16.968Z",
   "local_reports": {
     "regression-01": {
       "counts": {
@@ -259,5 +259,56 @@
     "error": "ModuleNotFoundError: jsonschema",
     "correction": "Install existing semantic-detection and investigation pinned requirement sets; workflow-only environment fix, no Agent implementation changes",
     "new_workflow_result": "pending_observation"
-  }
+  },
+  "low_label_prior": {
+    "new_models": 9,
+    "full_replays": 9,
+    "max_abs_error": 0,
+    "pure_batch_scoring_replays": 9,
+    "pure_batch_error": 0,
+    "code_files_unchanged": 23,
+    "all_positive_evidence_conditions": false,
+    "main_metric_TP": {
+      "ordinary": 97,
+      "qwen": 98,
+      "random": 93,
+      "tfidf": 99
+    },
+    "training_repeated": false,
+    "new_embedding_encoder_calls": 0,
+    "paid_calls": 0
+  },
+  "GitHub_code_checks_after_dependency_fix": {
+    "head": "ff2d49fd9acde474fda70944167ecb0c951f1937",
+    "push": {
+      "run": 41425913625,
+      "Ubuntu": {
+        "status": "success",
+        "tests_passed": 1052,
+        "seconds": 90.66,
+        "job": 125212354507
+      },
+      "Windows": {
+        "status": "in_progress",
+        "job": 125212354028
+      }
+    },
+    "pull_request_merge_context": {
+      "run": 41425922711,
+      "Ubuntu": {
+        "status": "success",
+        "tests_passed": 1116,
+        "seconds": 103.79,
+        "job": 125212381886
+      },
+      "Windows": {
+        "status": "in_progress",
+        "job": 125212382299
+      }
+    },
+    "scope_note": "Push and PR merge-context counts are separate observed scopes, never summed or substituted for local1052. Windows state is a timestamped snapshot, not a green-matrix claim."
+  },
+  "local_research_complete": true,
+  "C2_new_business_text_admission": false,
+  "no_further_IBM_semantic_search": true
 }

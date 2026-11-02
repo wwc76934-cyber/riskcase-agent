@@ -109,5 +109,12 @@
     }
   ],
   "reason_for_different_commit_ids": "GitHub connector creates its own commit author/timestamp; exact file blobs and whole checkpoint trees were verified. Local evidence refs and source snapshots retain original identities.",
-  "critical_training_source_unchanged": true
+  "critical_training_source_unchanged": true,
+  "v21_source_commits": {
+    "D32_optimization": "54181f76278187594987bc0f3b4ca1ddafecfdf1",
+    "low_label_prior_registration": "a01e131b9d9a5b7ab029e74fcbb69adfea9b3ca6",
+    "low_label_prior_initial_implementation": "2c0ed309bfa07d21745e708217068484a86beef7",
+    "low_label_prior_actual_fitting_source": "0a460dd0556d9b5049a2a7e8d127b915398ecf20",
+    "CI_environment_only_correction": "ff2d49fd9acde474fda70944167ecb0c951f1937"
+  }
 }
