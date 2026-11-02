@@ -118,3 +118,22 @@ def test_uncertain_transport_needs_individual_review_and_keeps_full_case_hold(tm
     with pytest.raises(BudgetExceeded,match='unknown'):ledger.reserve(next_run,Decimal('.01'),run_budget='.5',project_budget='25',max_requests=6)
     receipt['request_audit'][0]['error_code']='returned_model_changed_unknown_pricing'
     with pytest.raises(ValueError):ledger.review_transport_uncertainty(other,receipt,reason='Cannot approve an unexpected returned model as if it were the agreed model',reviewer='test-operator')
+
+
+@pytest.mark.parametrize('extended,prior,allowed',[(False,'24.6',False),(True,'26.8',True),(True,'27.6',False)])
+def test_uncertainty_review_uses_approved_shared_project_limit(tmp_path,extended,prior,allowed):
+    import sqlite3
+    ledger=extended_ledger(tmp_path/'review.sqlite')[0] if extended else WorldLedger(tmp_path/'review.sqlite',authorization())
+    with sqlite3.connect(ledger.path) as db:
+        db.execute('INSERT INTO budget_holds VALUES (?,?,?,?)',('prior','prior-project',prior,'Independent prior project spend'))
+    run=ledger.prefix+'memory_eval:review:world-071:wrong'
+    reservation=ledger.reserve(run,Decimal('.06'),run_budget='.5',project_budget=str(ledger.project_limit),max_requests=6)
+    ledger.settle(reservation)
+    receipt=dict(request_audit=[dict(reservation_id=reservation,error_code='transport_error_unknown_charge')])
+    kwargs=dict(reason='Individually inspect the terminal timeout; retain unknown usage and full conservative case hold',reviewer='unit-operator')
+    if allowed:
+        ledger.review_transport_uncertainty(reservation,receipt,**kwargs)
+        assert ledger.summary(run)['run_committed_estimate_cny']=='0.50'
+    else:
+        with pytest.raises(BudgetExceeded):ledger.review_transport_uncertainty(reservation,receipt,**kwargs)
+        assert ledger.summary(run)['additional_risk_hold_cny']=='0'

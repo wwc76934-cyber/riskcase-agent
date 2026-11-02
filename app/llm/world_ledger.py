@@ -102,7 +102,7 @@ class WorldLedger(CostLedger):
                 return body
             batch=db.execute('SELECT reserved_cny,estimated_cny FROM reservations WHERE run_id LIKE ?',(self.prefix+'%',)).fetchall()
             total=db.execute('SELECT reserved_cny,estimated_cny FROM reservations').fetchall()
-            if self.committed(batch)+self.holds(db,prefix=self.prefix)+buffer>self.batch_limit or self.committed(total)+self.holds(db)+buffer>Decimal('25'):
+            if self.committed(batch)+self.holds(db,prefix=self.prefix)+buffer>self.batch_limit or self.committed(total)+self.holds(db)+buffer>self.project_limit:
                 raise BudgetExceeded('Insufficient budget for conservative uncertainty hold')
             db.execute('INSERT INTO world_uncertain_reviews VALUES (?,?,?,?)',(reservation_id,self.authorization['id'],reservation_hash,json.dumps(body,ensure_ascii=False)))
             db.execute('INSERT INTO budget_holds VALUES (?,?,?,?)',('uncertain:'+reservation_id,row[1],str(buffer),reason))

@@ -18,12 +18,18 @@ from app.tools.case_tools import CaseTools
 
 def write_json(path, value):
     path = Path(path)
-    temp = path.with_name(path.name + "." + uuid4().hex + ".tmp")
-    with temp.open("w", encoding="utf-8") as stream:
-        stream.write(encoded(value) + "\n")
-        stream.flush()
-        os.fsync(stream.fileno())
-    os.replace(temp, path)
+    # Keep the temporary basename bounded even for a valid long destination.
+    temp = path.with_name("." + uuid4().hex + ".tmp")
+    try:
+        with temp.open("w", encoding="utf-8") as stream:
+            stream.write(encoded(value) + "\n")
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(temp, path)
+    except BaseException:
+        try:temp.unlink(missing_ok=True)
+        except OSError:pass  # Preserve the original write/replace exception.
+        raise
 
 
 @dataclass(frozen=True)

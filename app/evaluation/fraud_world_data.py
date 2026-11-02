@@ -8,8 +8,6 @@ import json
 from pathlib import Path
 import sqlite3
 
-from app.cli.fraud_queue import inspect_queue
-from app.cli.release_demo import checked_file
 from app.investigation.contracts import digest
 from app.investigation.inquiry import CONTRACT as A_CONTRACT
 from app.investigation.fraud_world import World,CONTRACT,ORIGIN
@@ -182,6 +180,9 @@ def make_case(a,family,variant,case_id):
 
 
 def build(release,cohort_report,output):
+    # Only full detector-source construction needs the ML/data stack.
+    from app.cli.fraud_queue import inspect_queue
+    from app.cli.release_demo import checked_file
     release,cohort_report,output=map(lambda p:Path(p).resolve(),(release,cohort_report,output))
     if output.exists():raise FileExistsError('New dataset directory required')
     root=Path(__file__).resolve().parents[2]
