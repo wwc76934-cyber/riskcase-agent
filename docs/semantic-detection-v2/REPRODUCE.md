@@ -6,6 +6,8 @@
 
 标准独立环境安装`requirements-semantic-detection.txt`。本机复用原项目环境时，从当前worktree调用：
 
+全库离线回归还需要原仓库的`requirements-service.txt`和`requirements-investigation.txt`，检测训练本身不因此加载或修改调查Agent。共享GitHub工作流目前只安装DL/service而漏掉调查依赖，不能把相应CI失败当作本地全库测试通过。
+
 ```powershell
 & ../financial-report-agent/scripts/run_project.ps1 -m app.cli.semantic_detection_v21 --help
 ```
@@ -35,7 +37,7 @@ python -m app.cli.semantic_detection_v21 audit-matched --source-root ../financia
 必须先有通过独立核验的`docs/semantic-detection-v2/gate-a-results.json`，再运行冻结的38实例主协议：
 
 ```powershell
-python -m app.cli.semantic_detection_v21 history --source-root ../financial-report-agent --gate-a docs/semantic-detection-v2/gate-a-results.json --policy config/semantic-detection/v21-b.json --output runs/recheck-v21-history
+python -m app.cli.semantic_detection_observed --resource-output runs/recheck-v21-primary-resources.json -- history --source-root ../financial-report-agent --gate-a docs/semantic-detection-v2/gate-a-results.json --policy config/semantic-detection/v21-b.json --output runs/recheck-v21-history
 ```
 
 程序核验原始用户卡关联、全部24邻居缓存边及256个源SQL样例；模型只取注册K前缀。12轮固定末轮，不因2018更好看而早停。全部优化器检查点、曲线和模型保留，不能直接将中间阶段完成标志当作最终科研验收。
@@ -44,8 +46,14 @@ python -m app.cli.semantic_detection_v21 history --source-root ../financial-repo
 
 ```powershell
 python -m app.cli.semantic_detection_v21 statistics-tree --source-root ../financial-report-agent --run runs/recheck-v21-history --output runs/recheck-v21-tree14
-python -m app.cli.semantic_detection_v21 broad-statistics --source-root ../financial-report-agent --run runs/recheck-v21-history --output runs/recheck-v21-broad
+python -m app.cli.semantic_detection_observed --resource-output runs/recheck-v21-resources/broad-statistics.resources.json -- broad-statistics --source-root ../financial-report-agent --run runs/recheck-v21-history --output runs/recheck-v21-broad
+python -m app.cli.semantic_detection_observed --resource-output runs/recheck-v21-resources/audit-history.resources.json -- audit-history --source-root ../financial-report-agent --run runs/recheck-v21-history --tree-run runs/recheck-v21-tree14 --output runs/recheck-v21-history-audit
+python -m app.cli.semantic_detection_observed --resource-output runs/recheck-v21-resources/audit-broad.resources.json -- audit-broad --source-root ../financial-report-agent --run runs/recheck-v21-history --tree-run runs/recheck-v21-tree14 --broad-run runs/recheck-v21-broad --history-audit runs/recheck-v21-history-audit --output runs/recheck-v21-broad-audit
 ```
+
+这组新运行的报告可显式指定：`--run runs/recheck-v21-history --tree-run runs/recheck-v21-tree14 --broad-run runs/recheck-v21-broad --history-audit runs/recheck-v21-history-audit --broad-audit runs/recheck-v21-broad-audit --resource-run runs/recheck-v21-resources --primary-resources runs/recheck-v21-primary-resources.json`。后者可直接接收从主训练起点生成的外层资源JSON，无需再照抄旧PID。
+
+独立历史审计另引用本轮已验证的canonical A2分数`runs/semantic-v21-a2-01/nochannel-learned-32/ensemble.npy`；复现前须保留该原参照，或先按冻结A协议在该canonical目录重建并验证，不以另一数据源替代。所有原参照要求与开头的数据/权重要求一并适用。
 
 ## 只读补充诊断与测试
 
@@ -69,6 +77,7 @@ python -m pytest -q -p no:cacheprovider tests/semantic_detection --basetemp=.tes
 & ..\financial-report-agent\scripts\run_project.ps1 -m app.cli.semantic_detection_v21 raw-sample --source-root ..\financial-report-agent --output runs/semantic-v21-raw-sample-02
 & ..\financial-report-agent\scripts\run_project.ps1 -m app.cli.semantic_detection_v21 raw-label-census --source-root ..\financial-report-agent --output runs/semantic-v21-raw-label-census-01
 & ..\financial-report-agent\scripts\run_project.ps1 -m app.cli.semantic_detection_v21 composition --source-root ..\financial-report-agent --audit runs/semantic-v21-a1-01 --output runs/semantic-v21-composition-01
+& ..\financial-report-agent\scripts\run_project.ps1 -m app.cli.semantic_detection_v21 queue-attribution --source-root ..\financial-report-agent --output runs/semantic-v21-queue-a-03
 & ..\financial-report-agent\scripts\run_project.ps1 -m app.cli.semantic_detection_v21 report-supplementary --source-root ..\financial-report-agent --output docs/semantic-detection-v2
 & ..\financial-report-agent\scripts\run_project.ps1 -m app.cli.semantic_detection_v21 progress-b --source-root ..\financial-report-agent --run runs/semantic-v21-b-01 --output docs/semantic-detection-v2
 ```
@@ -76,10 +85,37 @@ python -m pytest -q -p no:cacheprovider tests/semantic_detection --basetemp=.tes
 下列重型步骤在主38个训练实例全部结束后**顺序**执行。不得在原失败或不完整目录上覆盖重跑。
 
 ```powershell
-& ..\financial-report-agent\scripts\run_project.ps1 -m app.cli.semantic_detection_v21 broad-statistics --source-root ..\financial-report-agent --run runs/semantic-v21-b-01 --output runs/semantic-v21-b-broad-01
-& ..\financial-report-agent\scripts\run_project.ps1 -m app.cli.semantic_detection_v21 audit-history --source-root ..\financial-report-agent --run runs/semantic-v21-b-01 --output runs/semantic-v21-b-audit-01
-& ..\financial-report-agent\scripts\run_project.ps1 -m app.cli.semantic_detection_v21 audit-broad --source-root ..\financial-report-agent --run runs/semantic-v21-b-01 --output runs/semantic-v21-b-broad-audit-01
+& ..\financial-report-agent\scripts\run_project.ps1 -m app.cli.semantic_detection_observed --resource-output runs/semantic-v21-continuation-03/broad-statistics.resources.json -- broad-statistics --source-root ..\financial-report-agent --run runs/semantic-v21-b-01 --output runs/semantic-v21-b-broad-01
+& ..\financial-report-agent\scripts\run_project.ps1 -m app.cli.semantic_detection_observed --resource-output runs/semantic-v21-continuation-03/audit-history.resources.json -- audit-history --source-root ..\financial-report-agent --run runs/semantic-v21-b-01 --output runs/semantic-v21-b-audit-01
+& ..\financial-report-agent\scripts\run_project.ps1 -m app.cli.semantic_detection_observed --resource-output runs/semantic-v21-continuation-03/audit-broad.resources.json -- audit-broad --source-root ..\financial-report-agent --run runs/semantic-v21-b-01 --output runs/semantic-v21-b-broad-audit-01
 ```
 
 当前本地完整回归：239项通过，XML在`runs/semantic-v21-initialization/regression-01.xml`；最后新增的独立宽统计重建又通过14项针对性检查。来源标签全量核对、聚类和容量诊断未产生新的欺诈训练实例。GitHub共享CI缺少调查依赖的既有失败仍须单独说明，不以本地结果冒充线上CI通过。
+
+补充队列分解后，针对性检查为15项通过（history-tests-05.xml）；全量回归待最终统一运行，不把增加的检查预先算进239。原队列分解01保留，02固定追加两项语义/普通Embedding的同输入交换比较，没有新增模型训练或标签优化。
+
+队列分解03补齐15模型的分渠道AP/全局队列TP与名额，不改变01/02的交换结果；source-channel-AP.csv给出45个模型×渠道组的完整数字。报告不把渠道内AP高误当作总体每日预算有效。
+
+2026-11-02已完成更新后的完整本地回归：240项通过、0失败/错误、1条既有库弃用警告，XML为runs/semantic-v21-initialization/regression-02.xml。前述239是原时点记录，保留历史。长墙钟停顿另行标注，不删除曲线。后续每一步可用如下外层命令记录实际CPU与总峰值，不改变底层模型CLI：
+
+随后按GitHub同一测试范围完成全库离线测试：**1014通过，0失败/错误/跳过**，1条既有库弃用警告，耗时463.49秒；XML为`runs/semantic-v21-initialization/all-tests-01.xml`，所有testcase均来自tests命名空间。240项是前一轮选定兼容性范围，1014是完整库范围；`VALIDATION.json`保留各自范围、SHA256、来源与CI区别。
+
+```powershell
+python -m app.cli.semantic_detection_observed --resource-output runs/new-broad-resources.json -- broad-statistics --source-root ../financial-report-agent --run runs/semantic-v21-b-01 --output runs/new-broad-run
+```
+
+主进程在完成前的只读资源观察（PID必须换成本次实际核实的主进程，不能照抄旧PID）：
+
+```powershell
+python -m app.risk.semantic_detection.v2.process_observer --pid ACTUAL_VERIFIED_PID --output runs/new-primary-resources
+```
+
+Windows跨进程只读查询可能需要工具权限；不暂停/终止目标。观察器保留原启动以来累计CPU，墙钟停顿不会被当作计算；内存是整进程峰值，不能包装成隔离单模型占用。
+
+已有这些目录时，必须改用新输出名；`report-supplementary --supplementary-map config/semantic-detection/v21-supplementary.json`可指定六个新run目录的映射，修改映射文件中的目录名使其与本次复现实际输出一致，再生成报告。路径值是runs下的目录名，不是源交易数据。B完整报告在全部独立核验后执行：
+
+```powershell
+& ..\financial-report-agent\scripts\run_project.ps1 -m app.cli.semantic_detection_v21 queue-attribution --phase b --source-root ..\financial-report-agent --run runs/semantic-v21-b-01 --output runs/semantic-v21-queue-b-01
+& ..\financial-report-agent\scripts\run_project.ps1 -m app.cli.semantic_detection_v21 report-b --source-root ..\financial-report-agent --run runs/semantic-v21-b-01 --tests-xml runs/semantic-v21-initialization/regression-final.xml --output docs/semantic-detection-v2
+```
 

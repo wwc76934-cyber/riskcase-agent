@@ -1,0 +1,538 @@
+{
+  "status": "read_only_queue_factorization_complete",
+  "phase": "a",
+  "comparisons": {
+    "strong_tree_vs_frozen_residual": {
+      "old_TP": 122,
+      "new_TP": 109,
+      "net": -13,
+      "old_order_new_quota_TP": 123,
+      "new_order_old_quota_TP": 111,
+      "quota_effect_at_old_order": 1,
+      "order_effect_at_new_quota": -14,
+      "order_effect_at_old_quota": -11,
+      "quota_effect_at_new_order": -2,
+      "interaction": -3
+    },
+    "B0_vs_frozen_residual": {
+      "old_TP": 122,
+      "new_TP": 48,
+      "net": -74,
+      "old_order_new_quota_TP": 51,
+      "new_order_old_quota_TP": 120,
+      "quota_effect_at_old_order": -71,
+      "order_effect_at_new_quota": -3,
+      "order_effect_at_old_quota": -2,
+      "quota_effect_at_new_order": -72,
+      "interaction": -1
+    },
+    "B1_vs_frozen_residual": {
+      "old_TP": 122,
+      "new_TP": 59,
+      "net": -63,
+      "old_order_new_quota_TP": 51,
+      "new_order_old_quota_TP": 124,
+      "quota_effect_at_old_order": -71,
+      "order_effect_at_new_quota": 8,
+      "order_effect_at_old_quota": 2,
+      "quota_effect_at_new_order": -65,
+      "interaction": 6
+    },
+    "B2_vs_frozen_residual": {
+      "old_TP": 122,
+      "new_TP": 45,
+      "net": -77,
+      "old_order_new_quota_TP": 42,
+      "new_order_old_quota_TP": 120,
+      "quota_effect_at_old_order": -80,
+      "order_effect_at_new_quota": 3,
+      "order_effect_at_old_quota": -2,
+      "quota_effect_at_new_order": -75,
+      "interaction": 5
+    },
+    "B3_vs_frozen_residual": {
+      "old_TP": 122,
+      "new_TP": 53,
+      "net": -69,
+      "old_order_new_quota_TP": 50,
+      "new_order_old_quota_TP": 117,
+      "quota_effect_at_old_order": -72,
+      "order_effect_at_new_quota": 3,
+      "order_effect_at_old_quota": -5,
+      "quota_effect_at_new_order": -64,
+      "interaction": 8
+    },
+    "B3_shuffled_vs_frozen_residual": {
+      "old_TP": 122,
+      "new_TP": 55,
+      "net": -67,
+      "old_order_new_quota_TP": 53,
+      "new_order_old_quota_TP": 125,
+      "quota_effect_at_old_order": -69,
+      "order_effect_at_new_quota": 2,
+      "order_effect_at_old_quota": 3,
+      "quota_effect_at_new_order": -70,
+      "interaction": -1
+    },
+    "mean_vs_frozen_residual": {
+      "old_TP": 122,
+      "new_TP": 66,
+      "net": -56,
+      "old_order_new_quota_TP": 49,
+      "new_order_old_quota_TP": 120,
+      "quota_effect_at_old_order": -73,
+      "order_effect_at_new_quota": 17,
+      "order_effect_at_old_quota": -2,
+      "quota_effect_at_new_order": -54,
+      "interaction": 19
+    },
+    "attention_vs_frozen_residual": {
+      "old_TP": 122,
+      "new_TP": 51,
+      "net": -71,
+      "old_order_new_quota_TP": 54,
+      "new_order_old_quota_TP": 103,
+      "quota_effect_at_old_order": -68,
+      "order_effect_at_new_quota": -3,
+      "order_effect_at_old_quota": -19,
+      "quota_effect_at_new_order": -52,
+      "interaction": 16
+    },
+    "channel-original_vs_nochannel-original": {
+      "old_TP": 122,
+      "new_TP": 52,
+      "net": -70,
+      "old_order_new_quota_TP": 49,
+      "new_order_old_quota_TP": 124,
+      "quota_effect_at_old_order": -73,
+      "order_effect_at_new_quota": 3,
+      "order_effect_at_old_quota": 2,
+      "quota_effect_at_new_order": -72,
+      "interaction": 1
+    },
+    "channel-learned_vs_nochannel-learned": {
+      "old_TP": 131,
+      "new_TP": 71,
+      "net": -60,
+      "old_order_new_quota_TP": 67,
+      "new_order_old_quota_TP": 131,
+      "quota_effect_at_old_order": -64,
+      "order_effect_at_new_quota": 4,
+      "order_effect_at_old_quota": 0,
+      "quota_effect_at_new_order": -60,
+      "interaction": 4
+    },
+    "channel-semantic_vs_nochannel-semantic": {
+      "old_TP": 126,
+      "new_TP": 55,
+      "net": -71,
+      "old_order_new_quota_TP": 56,
+      "new_order_old_quota_TP": 124,
+      "quota_effect_at_old_order": -70,
+      "order_effect_at_new_quota": -1,
+      "order_effect_at_old_quota": -2,
+      "quota_effect_at_new_order": -69,
+      "interaction": 1
+    },
+    "nochannel-semantic_vs_nochannel-learned": {
+      "old_TP": 131,
+      "new_TP": 126,
+      "net": -5,
+      "old_order_new_quota_TP": 133,
+      "new_order_old_quota_TP": 128,
+      "quota_effect_at_old_order": 2,
+      "order_effect_at_new_quota": -7,
+      "order_effect_at_old_quota": -3,
+      "quota_effect_at_new_order": -2,
+      "interaction": -4
+    },
+    "channel-semantic_vs_channel-learned": {
+      "old_TP": 71,
+      "new_TP": 55,
+      "net": -16,
+      "old_order_new_quota_TP": 59,
+      "new_order_old_quota_TP": 63,
+      "quota_effect_at_old_order": -12,
+      "order_effect_at_new_quota": -4,
+      "order_effect_at_old_quota": -8,
+      "quota_effect_at_new_order": -8,
+      "interaction": 4
+    }
+  },
+  "channel_profiles": {
+    "frozen_residual": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 2402,
+        "TP": 83,
+        "within_channel_AP": 0.02475115127515025
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 745,
+        "TP": 13,
+        "within_channel_AP": 0.02752256842425841
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 503,
+        "TP": 26,
+        "within_channel_AP": 0.0695916116872955
+      }
+    },
+    "strong_tree": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 2499,
+        "TP": 83,
+        "within_channel_AP": 0.013557004674083934
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 608,
+        "TP": 11,
+        "within_channel_AP": 0.0031268002526572912
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 543,
+        "TP": 15,
+        "within_channel_AP": 0.007827953511370509
+      }
+    },
+    "B0": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 234,
+        "TP": 8,
+        "within_channel_AP": 0.018593339384329166
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 3129,
+        "TP": 25,
+        "within_channel_AP": 0.538090663518933
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 287,
+        "TP": 15,
+        "within_channel_AP": 0.025978403560719107
+      }
+    },
+    "B1": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 356,
+        "TP": 23,
+        "within_channel_AP": 0.022315719368574526
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 2971,
+        "TP": 23,
+        "within_channel_AP": 0.5793237175022922
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 323,
+        "TP": 13,
+        "within_channel_AP": 0.015389771799079145
+      }
+    },
+    "B2": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 101,
+        "TP": 5,
+        "within_channel_AP": 0.018706577785506988
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 3350,
+        "TP": 25,
+        "within_channel_AP": 0.5693336101290646
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 199,
+        "TP": 15,
+        "within_channel_AP": 0.03534061118133426
+      }
+    },
+    "B3": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 242,
+        "TP": 11,
+        "within_channel_AP": 0.018546333250069585
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 3046,
+        "TP": 25,
+        "within_channel_AP": 0.5462557632888693
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 362,
+        "TP": 17,
+        "within_channel_AP": 0.025248615240152837
+      }
+    },
+    "B3_shuffled": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 264,
+        "TP": 10,
+        "within_channel_AP": 0.01862512749593172
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 3012,
+        "TP": 25,
+        "within_channel_AP": 0.5315027678869932
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 374,
+        "TP": 20,
+        "within_channel_AP": 0.028627572821455432
+      }
+    },
+    "mean": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 280,
+        "TP": 23,
+        "within_channel_AP": 0.024432172998155973
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 3143,
+        "TP": 26,
+        "within_channel_AP": 0.7286619190735747
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 227,
+        "TP": 17,
+        "within_channel_AP": 0.03277438474664936
+      }
+    },
+    "attention": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 311,
+        "TP": 15,
+        "within_channel_AP": 0.018749895725757554
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 3027,
+        "TP": 26,
+        "within_channel_AP": 0.6866011909046595
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 312,
+        "TP": 10,
+        "within_channel_AP": 0.013588571109302163
+      }
+    },
+    "nochannel-original": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 2402,
+        "TP": 83,
+        "within_channel_AP": 0.02475115127515025
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 745,
+        "TP": 13,
+        "within_channel_AP": 0.02752256842425841
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 503,
+        "TP": 26,
+        "within_channel_AP": 0.0695916116872955
+      }
+    },
+    "channel-original": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 285,
+        "TP": 14,
+        "within_channel_AP": 0.0188799768095021
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 3070,
+        "TP": 25,
+        "within_channel_AP": 0.4302837850459648
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 295,
+        "TP": 13,
+        "within_channel_AP": 0.02157763225878093
+      }
+    },
+    "nochannel-learned": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 2408,
+        "TP": 94,
+        "within_channel_AP": 0.02695580670096423
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 736,
+        "TP": 13,
+        "within_channel_AP": 0.03744337372713972
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 506,
+        "TP": 24,
+        "within_channel_AP": 0.09224660106165584
+      }
+    },
+    "channel-learned": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 503,
+        "TP": 33,
+        "within_channel_AP": 0.02486235879796364
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 2885,
+        "TP": 25,
+        "within_channel_AP": 0.4635988900433449
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 262,
+        "TP": 13,
+        "within_channel_AP": 0.016764368779700264
+      }
+    },
+    "nochannel-semantic": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 2417,
+        "TP": 87,
+        "within_channel_AP": 0.026062828128987924
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 730,
+        "TP": 13,
+        "within_channel_AP": 0.0314010976470448
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 503,
+        "TP": 26,
+        "within_channel_AP": 0.08608456456664423
+      }
+    },
+    "channel-semantic": {
+      "Chip Transaction": {
+        "rows": 310348,
+        "positives": 564,
+        "reviewed": 249,
+        "TP": 15,
+        "within_channel_AP": 0.019615437982178966
+      },
+      "Online Transaction": {
+        "rows": 50576,
+        "positives": 28,
+        "reviewed": 3075,
+        "TP": 25,
+        "within_channel_AP": 0.4485473797185456
+      },
+      "Swipe Transaction": {
+        "rows": 61164,
+        "positives": 91,
+        "reviewed": 326,
+        "TP": 15,
+        "within_channel_AP": 0.025450095893457297
+      }
+    }
+  },
+  "model_score_sha256": {
+    "frozen_residual": "fa9f358116aa6686b0bb7144346b45cca8611e49fcdaf557a998b2358b56025c",
+    "strong_tree": "3b1e07730d9cbc99e6fa421651f7ba727352b1b35a2c35e7608b77f208503a85",
+    "B0": "c8b5b57a5227e1b654b3bf22b8e85cc7a4824fe654b3ccdcc02df6b01c3b6f31",
+    "B1": "3a1f7be778ccb3449d4ecfe02503c4bc2a6e4649c1e18cc61b4cbbaae6704263",
+    "B2": "5c21540445f220bdcdec1c4193423504581912cd68cb72efaf6d7fcd6499dba5",
+    "B3": "84ad04b22873216785800b93c89353a6b27a30d3a80defe407063d8c7e7468f7",
+    "B3_shuffled": "01559fb1ecad2676ee2ee27b758825989bbf37d3de25ef16942cce9441311a9a",
+    "mean": "fb0a6cf677ecaf98a964a5f089acf240c2e76283010d74425d6bcea011c7acf1",
+    "attention": "a78bc77e46cd3d92ed34c5383fddf0a9bad6d71c30f013423961131c1c195b0d",
+    "nochannel-original": "fa9f358116aa6686b0bb7144346b45cca8611e49fcdaf557a998b2358b56025c",
+    "channel-original": "773a75c50c41096ec41cce20ce59e0c99d895cd358d16dc0491470b767b4603f",
+    "nochannel-learned": "648aff6ddb2b68bdc37a077ea859c5bd81730bcab8aef39c9cae6f4b9d540c0b",
+    "channel-learned": "745ef3173170c0078006c792284ff606484dd05e812dd1f04a2a9c071dc7b53c",
+    "nochannel-semantic": "ce699b616763486ed5e6e32b6762de62c7ee79e5519815e864ecef8414c9906b",
+    "channel-semantic": "e8009ca8ba0de6d1a77adb002bbedaecc6d4792fe970eac8d88175908edcf900"
+  },
+  "data": {
+    "manifest": "C:\\Users\\18137\\Documents\\ChatGPT\\金融Agent项目\\financial-report-agent\\data\\features\\features-b9692149f1c1\\manifest.json",
+    "manifest_sha256": "35f92e16a5fdbb03e49e843eea052f28fd04fda68f2ed81e95af9b59b473a26f",
+    "features_sha256": "520a6b525c7eee6a4304dfa4592ee2799088d6526d7a2d0cf7776c8efe993282",
+    "labels_sha256": "1926a9a2f9399e7be5be2d3989aed18e9c7d31f1b53193ad7279321a2bfab918"
+  },
+  "budget": 10,
+  "new_training": false,
+  "label_based_selection_or_optimization": false,
+  "limit": "Exact queue arithmetic with two reference paths; not causal attribution, a deployable model, or a new candidate selected on evaluation outcomes",
+  "final_2019_read": false,
+  "paid_calls": 0
+}

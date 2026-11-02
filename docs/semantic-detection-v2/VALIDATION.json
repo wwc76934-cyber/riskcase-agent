@@ -1,0 +1,84 @@
+{
+  "captured_at_UTC": "2026-11-02T03:04:15.060096+00:00",
+  "local_reports": {
+    "regression-01": {
+      "counts": {
+        "tests": 239,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "6fc400f7ab289730fbea024e653e66228d88590ff67ad6b43082c8f09532ba90",
+      "path": "runs\\semantic-v21-initialization\\regression-01.xml"
+    },
+    "regression-02": {
+      "counts": {
+        "tests": 240,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "5e9f00fddbf97e3515c3d64c7851324b2ad5f4e4af57c5f5c8c016ffc71fef75",
+      "path": "runs\\semantic-v21-initialization\\regression-02.xml"
+    },
+    "all-tests-01": {
+      "counts": {
+        "tests": 1014,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "dd6103bf6733e0406d44710b4cbb7dd20a78a079ac88b20b5d97433b2decbaa9",
+      "path": "runs\\semantic-v21-initialization\\all-tests-01.xml"
+    },
+    "history-tests-06": {
+      "counts": {
+        "tests": 15,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "sha256": "430d8c7ab8b11e895fc2a07c2a94f9fc09ac782ddb8051a783a54be244532bca",
+      "path": "runs\\semantic-v21-initialization\\history-tests-06.xml"
+    }
+  },
+  "all_testcase_classname_prefixes": {
+    "tests": 1014
+  },
+  "source_sha256": {
+    "app/risk/semantic_detection/v2/queue_attribution.py": "ce8ba70c88053116bbbcf252f97244a51df753247e7d4928d3beb0b51363705a",
+    "app/cli/semantic_detection_observed.py": "d5c375eebc4e86a399f8354fbbb72565d1e8c929dcd967f62441ee23bcfc50fb",
+    "app/risk/semantic_detection/v2/process_observer.py": "822c7fcbbb0c287b1594b6a7af98000e7fa2ea5baa5fd01dfa5e51b058c3c67c"
+  },
+  "GitHub": {
+    "checked_head": "66134b30ccf25b2be8d01a20d445df9e1a0d7120",
+    "runs": [
+      "https://github.com/wwc76934-cyber/riskcase-agent/actions/runs/41310373476",
+      "https://github.com/wwc76934-cyber/riskcase-agent/actions/runs/41310369769"
+    ],
+    "status": "failed",
+    "verified_failure": "ModuleNotFoundError: No module named jsonschema",
+    "shared_workflow_unchanged": true,
+    "first_raw_receipt_path": "runs/semantic-v21-initialization/github-ci-661-ubuntu-first.json"
+  },
+  "resource_wrapper_smoke": {
+    "status": "completed",
+    "started_at_UTC": "2026-11-02T02:22:21.419229+00:00",
+    "finished_at_UTC": "2026-11-02T02:22:56.153924+00:00",
+    "arguments": [
+      "capacity",
+      "--source-root",
+      "..\\financial-report-agent",
+      "--output",
+      "runs/semantic-v21-capacity-observed-01"
+    ],
+    "wall_seconds": 34.734004700003425,
+    "process_CPU_seconds_all_threads": 30.578125,
+    "peak_whole_process_bytes": 302837760,
+    "error": null,
+    "observer_sha256": "d5c375eebc4e86a399f8354fbbb72565d1e8c929dcd967f62441ee23bcfc50fb",
+    "limit": "Whole-process CPU and peak, including data preparation and training/inference; wall time can include host pauses; not per-model memory"
+  },
+  "model_efficacy_conclusion_from_tests": false,
+  "paid_calls": 0
+}

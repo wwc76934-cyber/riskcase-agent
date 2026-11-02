@@ -111,6 +111,9 @@ def test_twelve_epoch_history_fit_roundtrip_without_future_context(tmp_path):
     assert len(list((tmp_path/'fit').glob('epoch-*.pt')))==12
     replay=load(tmp_path/'fit/model').predict(X,np.arange(6),neighborhood=(n,a))
     np.testing.assert_allclose(replay,scores,atol=1e-6)
+    from app.risk.semantic_detection.v2.audit_broad import registered_preprocessor
+    saved_prep=registered_preprocessor(tmp_path/'fit/model/preprocessor.joblib')
+    assert saved_prep.numeric.categories==('mcc',)
 
 
 def test_gate_B_refuses_missing_gate_A_completion(tmp_path):
@@ -158,3 +161,16 @@ def test_broad_statistics_cover_all_inputs_and_mcc_without_labels():
     for actual,expected in zip(independent[:4],(mean,std,latest,freq)):
         np.testing.assert_allclose(actual,expected,atol=1e-7)
     assert independent[4].tolist()==[False,True,True]
+
+
+def test_queue_exchange_reports_interaction_instead_of_a_unique_causal_share():
+    from app.risk.semantic_detection.v2.queue_attribution import Queues
+    meta=pd.DataFrame({'transaction_id':['a1','a0','b0','b1'],'split':['validation']*4,'event_time':['2018-01-01']*4})
+    queues=Queues(meta,np.array([1,0,0,1]),np.array(['A','A','B','B']),budget=2)
+    old=queues.profile(np.array([.9,.8,.7,.6]));new=queues.profile(np.array([.7,.1,.6,.95]))
+    result=queues.compare(old,new)
+    assert result['old_TP']==1 and result['new_TP']==2 and result['net']==1
+    assert result['old_order_new_quota_TP']==result['new_order_old_quota_TP']==1
+    assert result['quota_effect_at_old_order']==0 and result['quota_effect_at_new_order']==1
+    assert result['interaction']==1
+    assert queues.compare(old,old)['net']==queues.compare(old,old)['interaction']==0

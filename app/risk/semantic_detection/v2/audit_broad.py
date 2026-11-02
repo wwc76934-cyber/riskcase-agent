@@ -19,6 +19,13 @@ from .history_data import load_with_cards
 from .matched import Config
 
 
+def registered_preprocessor(path):
+    wrapped = joblib.load(path)
+    if not isinstance(wrapped, dict) or set(wrapped) != {'preprocessor', 'statistics_scaler'}:
+        raise ValueError('Expected registered history-predictor preprocessing bundle')
+    return wrapped['preprocessor']
+
+
 def reconstruct(numeric, categories, neighbors, category_size):
     """Use per-position sums and row/category bincount, independently of trainer."""
     n, width = len(neighbors), numeric.shape[1]
@@ -63,7 +70,7 @@ def run(source_root, history_run, broad_run, history_audit, output, *, tree_run)
         if digest(broad_run/f'broad-{name}.npy') != stored[name+'_sha256']:
             raise ValueError('Feature matrix changed')
     prep = joblib.load(broad_run/'neural-seed-42/preprocessor.joblib')
-    primary_prep = joblib.load(history_run/'flat/seed-42/model/preprocessor.joblib')
+    primary_prep = registered_preprocessor(history_run/'flat/seed-42/model/preprocessor.joblib')
     if not np.array_equal(prep.numeric.median, primary_prep.numeric.median) or not np.array_equal(prep.numeric.scale, primary_prep.numeric.scale) or prep.numeric.vocabularies != primary_prep.numeric.vocabularies:
         raise ValueError('Broad and registered point preprocessing differ')
     tensors = prep.transform(context)

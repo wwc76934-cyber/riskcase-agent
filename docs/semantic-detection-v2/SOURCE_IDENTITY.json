@@ -1,0 +1,113 @@
+{
+  "local_training_commit": "700556bfd2248d85ace42df8e948982a1cdc7eb6",
+  "published_equivalent_source_commit": "66134b30ccf25b2be8d01a20d445df9e1a0d7120",
+  "canonical_source_files": [
+    {
+      "path": "app/risk/semantic_detection/v2/history.py",
+      "training_working_bytes_sha256": "bb10699cc694c15fdf60a521ff91f6b8bae9dc244b4538d431de2db7e2c6164c",
+      "canonical_git_blob": "772af0445fed0b206caa90a34ffdf471bfcacd96",
+      "line_endings": "LF",
+      "canonical_blobs_identical_in_published_checkpoint": true
+    },
+    {
+      "path": "app/risk/semantic_detection/v2/history_data.py",
+      "training_working_bytes_sha256": "c9bb38fe21dba5ae9e238b867cf93c4bfc199dfe9d1d6d4b6d39e36d8d431492",
+      "canonical_git_blob": "f3c43cf66c8d2a3d6ac8bf0e61cafbbfe214af58",
+      "line_endings": "LF",
+      "canonical_blobs_identical_in_published_checkpoint": true
+    },
+    {
+      "path": "app/risk/semantic_detection/v2/history_experiment.py",
+      "training_working_bytes_sha256": "d5a1532dbaa1a4ba925d70f002e4f0bbfc5b36fcb0746d2ca69aaad00cba4d54",
+      "canonical_git_blob": "0321f9403341d5ead93ebcc77ffd0cb26c6ad6e8",
+      "line_endings": "LF",
+      "canonical_blobs_identical_in_published_checkpoint": true
+    },
+    {
+      "path": "app/risk/semantic_detection/v2/matched.py",
+      "training_working_bytes_sha256": "e183f2748c7953f7631ef7c9c0c8948ee652eea880909342bbf47e9ba9adcffa",
+      "canonical_git_blob": "464795bd2574ec7586f6ac1d8c16aab2168f81c4",
+      "line_endings": "LF",
+      "canonical_blobs_identical_in_published_checkpoint": true
+    },
+    {
+      "path": "app/risk/semantic_detection/temporal.py",
+      "training_working_bytes_sha256": "d65b3751df8a1d5abd18d5a09df43c024b8c0edcc84b79cde22b229ce79f6128",
+      "canonical_git_blob": "8677492df2ae8d6b5af2125efb40a2e62c527a42",
+      "line_endings": "LF",
+      "canonical_blobs_identical_in_published_checkpoint": true
+    },
+    {
+      "path": "app/risk/semantic_detection/history_experiment.py",
+      "training_working_bytes_sha256": "80c16cc1894359fbaa9541622060f0a4effcdae97fc483270887269e0efb4c26",
+      "canonical_git_blob": "a00dcd818feeaa56a59e6c00d4169f387f7001eb",
+      "line_endings": "LF",
+      "canonical_blobs_identical_in_published_checkpoint": true
+    },
+    {
+      "path": "app/risk/neural_v2.py",
+      "training_working_bytes_sha256": "b7626dfc7bd1dc75106f7f81d25bb4f7b36187040827c68cab656d08d5bc8f56",
+      "canonical_git_blob": "4812c0b2c97f49a6eff237758cb87d1d562f2514",
+      "line_endings": "CRLF",
+      "canonical_blobs_identical_in_published_checkpoint": true
+    },
+    {
+      "path": "app/risk/neural_model.py",
+      "training_working_bytes_sha256": "0256825cee9dae38dd0820d41448600db5db5d79decc5b0a869bdad8b879d5ab",
+      "canonical_git_blob": "06bece71c48df269a292bf93ef940bd2948f7771",
+      "line_endings": "CRLF",
+      "canonical_blobs_identical_in_published_checkpoint": true
+    },
+    {
+      "path": "app/risk/ml_data.py",
+      "training_working_bytes_sha256": "9c323be6aa3334fa8f0a820bc338e4e02b7be900fd3a30298e1531ec0482ce12",
+      "canonical_git_blob": "aa57d7fda4e04aa4c3fe287468c464466db6fc8e",
+      "line_endings": "CRLF",
+      "canonical_blobs_identical_in_published_checkpoint": true
+    },
+    {
+      "path": "app/risk/ml_models.py",
+      "training_working_bytes_sha256": "5da1bf89a20d49f99b9ad8f6a3f2a9bfb4b3aefb9501ccc10ffa39c3d594bccc",
+      "canonical_git_blob": "b2f6cf1924b9d9264c1e5079b79057499696e95f",
+      "line_endings": "CRLF",
+      "canonical_blobs_identical_in_published_checkpoint": true
+    },
+    {
+      "path": "app/risk/semantic_detection/data.py",
+      "training_working_bytes_sha256": "3a248abac38955e1a5e601287a113fbacb540d2773161293d254bf7712e44e0f",
+      "canonical_git_blob": "50d2729ae301941c9aa51d9ea78577ff7d5bddaa",
+      "line_endings": "LF",
+      "canonical_blobs_identical_in_published_checkpoint": true
+    },
+    {
+      "path": "app/risk/semantic_detection/common.py",
+      "training_working_bytes_sha256": "71a1bb2a4f71919a1c8f4f7ecea111d702c7b4d2471652d0365dd0f43063045f",
+      "canonical_git_blob": "821a85a47ed13372ff9521bdc0dd1d5bf5cfde23",
+      "line_endings": "LF",
+      "canonical_blobs_identical_in_published_checkpoint": true
+    },
+    {
+      "path": "app/risk/semantic_detection/evaluation.py",
+      "training_working_bytes_sha256": "b94084067f986b71a9dc5ced73f9eb4e666b9c758588523730ea1d0bee7ea09c",
+      "canonical_git_blob": "e1e2167c379d91a0d5339eaf1e51f27510f0c138",
+      "line_endings": "LF",
+      "canonical_blobs_identical_in_published_checkpoint": true
+    },
+    {
+      "path": "app/risk/semantic_detection/semantics.py",
+      "training_working_bytes_sha256": "e470eb8639bb9a120f60f0277741e1b8c9ecadad43d8f7fe78f4c4409d784750",
+      "canonical_git_blob": "54615b7807c3d741d5f638260f08b7e097ce0683",
+      "line_endings": "LF",
+      "canonical_blobs_identical_in_published_checkpoint": true
+    },
+    {
+      "path": "app/cli/train_neural_v2.py",
+      "training_working_bytes_sha256": "1983c0d9f0e1fa143e485a208fb71a0903e30223d1c298cf02097b6f60bb47cf",
+      "canonical_git_blob": "a5c3fb6f70f80a242b7b5f88dee3f149e93ae4ec",
+      "line_endings": "CRLF",
+      "canonical_blobs_identical_in_published_checkpoint": true
+    }
+  ],
+  "reason_for_different_commit_ids": "GitHub connector creates its own commit author/timestamp; exact file blobs and whole checkpoint trees were verified. Local evidence refs and source snapshots retain original identities.",
+  "critical_training_source_unchanged": true
+}

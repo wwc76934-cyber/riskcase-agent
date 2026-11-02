@@ -5,7 +5,7 @@ import json
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('command', choices=['channel-audit','source-audit','prepare-a','geometry','matched','report-a1','embedding-audit','audit-matched','report-a','history','statistics-tree','capacity','clusters','raw-sample','raw-label-census','broad-statistics','composition','audit-history','audit-broad','report-supplementary','progress-b'])
+    parser.add_argument('command', choices=['channel-audit','source-audit','prepare-a','geometry','matched','report-a1','embedding-audit','audit-matched','report-a','history','statistics-tree','capacity','clusters','raw-sample','raw-label-census','broad-statistics','composition','audit-history','audit-broad','report-supplementary','progress-b','report-b','audit-preservation','queue-attribution'])
     parser.add_argument('--source-root', required=True)
     parser.add_argument('--research-root', default='.')
     parser.add_argument('--output', required=True)
@@ -25,6 +25,11 @@ def main():
     parser.add_argument('--tree-run',default='runs/semantic-v21-b-statistics-tree-01')
     parser.add_argument('--broad-run',default='runs/semantic-v21-b-broad-01')
     parser.add_argument('--history-audit',default='runs/semantic-v21-b-audit-01')
+    parser.add_argument('--broad-audit',default='runs/semantic-v21-b-broad-audit-01')
+    parser.add_argument('--phase',choices=['a','b'],default='a')
+    parser.add_argument('--supplementary-map')
+    parser.add_argument('--resource-run',default='runs/semantic-v21-continuation-03')
+    parser.add_argument('--primary-resources',default='runs/semantic-v21-primary-process-resources-01')
     args = parser.parse_args()
     if args.command=='channel-audit':
         from app.risk.semantic_detection.v2.channel_audit import run
@@ -36,13 +41,24 @@ def main():
     elif args.command=='geometry':
         from app.risk.semantic_detection.v2.representations import geometry
         result=geometry(args.cache,args.output)
+    elif args.command=='queue-attribution':
+        from app.risk.semantic_detection.v2.queue_attribution import run
+        result=run(args.source_root,args.research_root,args.audit or 'runs/semantic-v21-a1-01',args.run,args.broad_run,args.phase,args.output)
+    elif args.command=='audit-preservation':
+        from app.risk.semantic_detection.v2.preservation import run
+        if not args.run:parser.error('--run required')
+        result=run(args.source_root,args.research_root,args.run,args.output)
+    elif args.command=='report-b':
+        from app.risk.semantic_detection.v2.history_report import complete
+        if not args.run:parser.error('--run required')
+        result=complete(args.source_root,args.run,args.broad_run,args.history_audit,args.broad_audit,args.tree_run,args.output,args.tests_xml,resource_run=args.resource_run,primary_resources=args.primary_resources)
     elif args.command=='progress-b':
         from app.risk.semantic_detection.v2.history_report import progress
         if not args.run:parser.error('--run required')
         result=progress(args.run,args.output)
     elif args.command=='report-supplementary':
         from app.risk.semantic_detection.v2.supplementary_report import run
-        result=run(args.research_root,args.output)
+        result=run(args.research_root,args.output,args.supplementary_map)
     elif args.command=='composition':
         from app.risk.semantic_detection.v2.supplementary import composition
         if not args.audit:parser.error('--audit required')

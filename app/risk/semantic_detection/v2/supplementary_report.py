@@ -1,5 +1,6 @@
 """Publish read-only supplementary evidence without altering original Gate A results."""
 import json
+import csv
 import os
 from pathlib import Path
 import shutil
@@ -7,12 +8,17 @@ import shutil
 from app.risk.semantic_detection.common import digest, write_json
 
 
-def run(research_root, output):
+def run(research_root, output, mapping=None):
     root, output = Path(research_root), Path(output)
     output.mkdir(parents=True, exist_ok=True)
     sources = {'composition': 'semantic-v21-composition-01', 'clusters': 'semantic-v21-clusters-01',
                'capacity': 'semantic-v21-capacity-01', 'label-census': 'semantic-v21-raw-label-census-01',
-               'row-sample': 'semantic-v21-raw-sample-02'}
+               'row-sample': 'semantic-v21-raw-sample-02', 'queue-attribution': 'semantic-v21-queue-a-03'}
+    if mapping is not None:
+        configured = json.loads(Path(mapping).read_text(encoding='utf8'))
+        if set(configured) != set(sources):
+            raise ValueError('Supplementary run mapping must specify all six evidence sources')
+        sources = configured
     records, fingerprints = {}, {}
     for name, folder in sources.items():
         path = root/'runs'/folder/'report.json'
@@ -32,6 +38,47 @@ def run(research_root, output):
     for dimension, record in clusters['results'].items():
         q, r = (record['brand_sector_probe'][k] for k in ('qwen', 'random'))
         cluster_rows.append(f'| {dimension} | {q["ARI"]:.6f} / {q["NMI"]:.6f} | {r["ARI"]:.6f} / {r["NMI"]:.6f} |')
+    queue = records['queue-attribution']['comparisons']
+    channel_profiles = records['queue-attribution']['channel_profiles']
+    b2 = queue['B2_vs_frozen_residual']
+    queue_rows = ['| 比较/新模型相对旧模型 | 旧TP | 新TP | 旧排序+新配额 | 新排序+旧配额 | 净变化 | 交互项 |', '|---|---:|---:|---:|---:|---:|---:|']
+    for name, row in queue.items():
+        queue_rows.append(f'| {name} | {row["old_TP"]} | {row["new_TP"]} | {row["old_order_new_quota_TP"]} | {row["new_order_old_quota_TP"]} | {row["net"]:+d} | {row["interaction"]:+d} |')
+    ap_rows = ['| 模型/条件 | Chip内部AP | Online内部AP | Swipe内部AP |', '|---|---:|---:|---:|']
+    flat_channels = []
+    for name, values in channel_profiles.items():
+        aps = [values[c]['within_channel_AP'] for c in ('Chip Transaction', 'Online Transaction', 'Swipe Transaction')]
+        ap_rows.append('| '+name+' | '+' | '.join(f'{v:.6f}' if v is not None else '无正例' for v in aps)+' |')
+        flat_channels.extend({'model': name, 'channel': c, **r} for c,r in values.items())
+    with (output/'source-channel-AP.csv').open('w', encoding='utf8', newline='') as stream:
+        writer = csv.DictWriter(stream, fieldnames=['model','channel','rows','positives','reviewed','TP','within_channel_AP'])
+        writer.writeheader(); writer.writerows(flat_channels)
+    queue_text = '''## 交换配额与渠道内排序：直接核验失衡环节
+
+对每个模型和每一天，分别固定渠道名额与渠道内排序，交换这两个队列构件；不重新训练，不根据评测标签挑配额。以下两列交换结果均保持每天总计10个名额。
+
+'''+'\n'.join(queue_rows)+f'''
+
+B2的两条路径是：
+
+- 原模型122 → 保留原渠道内排序、改用B2每日配额{b2['old_order_new_quota_TP']} → 再换B2渠道内排序45。
+- 原模型122 → 保留原每日配额、改用B2渠道内排序{b2['new_order_old_quota_TP']} → 再换B2配额45。
+
+两条路径都显示，此处主要工程损失发生在跨渠道分数竞争所形成的审核名额分配上，而不是B2在每个渠道内部都无法排序。匹配2×3矩阵的channel开启/关闭也呈现同样的现象，不能把失衡直接归为“LLM语义质量差”。
+
+**分解依赖参考路径，具有交互项，不是唯一因果贡献份额。** 交换结果是对既有开发分数的只读核验，不作为新候选、配额优化或模型发布方案。A阶段表中的mean/attention是旧两轮模型，不与B阶段12轮新模型混用。完整两路径增减项见`source-queue-attribution.json`，其channel_profiles还保存各模型在各渠道全部交易上的AP和全局每日队列内TP/名额；没有把每渠道另给10名额当主指标。
+
+![两条配额交换路径](source-queue-attribution.png)
+
+### 分渠道AP与总体业务捕获为何不同
+
+'''+'\n'.join(ap_rows)+'''
+
+B2的Online内部AP约0.569334，普通附加Embedding的B1约0.579324，数值上远高于原模型的0.027523；但B2仍把3350名额分给Online，只有25个Online正例，留下3325个评测负例，整体捕获45。这不是矛盾：在一个渠道内部能排序，不代表不同渠道的分数可以直接形成有效的全局名额竞争。
+
+这也不意味着“channel没有信息”。匹配模型加channel后，Online内部排序可提升，而总体每日容量利用变差；普通附加Embedding也有同一现象。不能把Online高AP当作LLM独有价值，也不能把无channel在此开发期较好外推为所有数据都应删除channel。各渠道基准正率不同、Online只有28个正例，跨渠道AP值不作等难度比较。
+
+'''
     text = '''# Gate A补充：原始标签、MCC组合、文本覆盖与容量
 
 这些是不新增欺诈模型训练的补充诊断，在A主实验之后完成。原28个匹配/筛查实例、原指标、向量和失败记录保持原样。它们补强和限定归因，不是新的候选选择或独立测试。
@@ -76,8 +123,9 @@ Qwen向量有明显产业结构，随机向量没有。这仅确认有限模板�
 
 ## 复现和证据
 
-命令见`REPRODUCE.md`。五份`source-*.json`保留原报告字节，`source-diagnostics.json`记录其SHA256。没有新增交易或身份上传，没有训练新LLM，没有改写原Gate A成绩。
+命令见`REPRODUCE.md`。六份`source-*.json`保留原报告字节，`source-diagnostics.json`记录其SHA256。没有新增交易或身份上传，没有训练新LLM，没有改写原Gate A成绩。
 '''
+    text = text.replace('## 语义覆盖的边界', queue_text+'## 语义覆盖的边界')
     (output/'SOURCE_DIAGNOSTICS.md').write_text(text, encoding='utf8')
     os.environ.setdefault('MPLCONFIGDIR', str((root/'runs/semantic-v21-initialization/mpl-cache').resolve()))
     import matplotlib
@@ -91,12 +139,34 @@ Qwen向量有明显产业结构，随机向量没有。这仅确认有限模板�
     ax.set_xticks(range(3), channels); ax.set_ylabel('Positive rate (%)')
     ax.set_title('Descriptive MCC-composition standardization; not causal attribution')
     ax.legend(fontsize=8); fig.tight_layout(); fig.savefig(output/'source-composition.png', dpi=160); plt.close(fig)
+    fig, axes = plt.subplots(1, 2, figsize=(10, 4.5), sharey=True)
+    for ax, values, title in [(axes[0], [122, b2['old_order_new_quota_TP'], 45], 'Quota first / old within-channel order'),
+                              (axes[1], [122, b2['new_order_old_quota_TP'], 45], 'Order first / old daily channel quota')]:
+        ax.bar(range(3), values, color=['#5e81ac', '#d08770', '#81a1c1'])
+        ax.set_xticks(range(3), ['Frozen122', 'One component swapped', 'B2 actual45'], fontsize=8)
+        ax.set_title(title, fontsize=10)
+        for index, value in enumerate(values): ax.text(index, value+2, str(value), ha='center')
+    axes[0].set_ylabel('Captured positives / daily Top10')
+    fig.suptitle('Two reference paths; exact queue arithmetic, not causal shares', fontsize=11)
+    fig.tight_layout(); fig.savefig(output/'source-queue-attribution.png', dpi=160); plt.close(fig)
     for name in ('ROOT_CAUSE.md', 'CHANNEL_AUDIT.md'):
         path = output/name
         if path.exists():
             previous = path.read_text(encoding='utf8')
+            gate = json.loads((output/'gate-a-results.json').read_text(encoding='utf8'))
+            if gate['status'] == 'Gate_A_complete':
+                previous = previous.replace('Gate A1完成；Gate A整体尚须完成A2和A3后才能进入Gate B训练。默认检测器不变。',
+                    'Gate A已完成：A1全分数/来源核验、A2公平2×3及A3有界文本/维度/随机对照均已完成，28模型独立重载通过。无channel原类别/普通附加/语义TP为122/131/126，有channel为52/71/55；语义未提供超过普通Embedding的稳定增量。最终汇总见ROOT_CAUSE.md，准入Gate B，默认检测器不变。')
+                previous = previous.replace('B2较B1进一步失衡的机制仍需A2/A3匹配对照，不能由这张表作因果定论。',
+                    'A2/A3及后续配额交换已补充匹配证据；不能仅由本节旧模型表把全部差距归因于语义。')
+                previous = previous.replace('新A2保持原残差核心及共同初始化，逐项开关channel和附加表示。',
+                    'A2已保持原残差核心及共同初始化，逐项开关channel和附加表示。')
+                path.write_text(previous, encoding='utf8')
             if '[SOURCE_DIAGNOSTICS.md]' not in previous:
                 path.write_text(previous+'\n\n## 原始来源与组合变化补充核验\n\n见[SOURCE_DIAGNOSTICS.md](SOURCE_DIAGNOSTICS.md)：全部1,263,980笔选定2016–2018记录的源标签核对通过；MCC组合标准化进一步区分组成变化与单元内残差，同时列明语义字典覆盖和不可部署的审核容量上限。原A主实验成绩不变。\n', encoding='utf8')
+            previous = path.read_text(encoding='utf8')
+            if '## 每日配额交换的只读核验' not in previous:
+                path.write_text(previous+f'\n\n## 每日配额交换的只读核验\n\n保留原模型渠道内排序、换成B2每日配额：122→{b2["old_order_new_quota_TP"]}；保留原每日配额、换成B2渠道内排序：122→{b2["new_order_old_quota_TP"]}，B2实际45。两条参考路径都把主要损失定位到跨渠道名额竞争，不能笼统归为每个渠道内部排序失效。该分解有交互、依赖参考路径，不是唯一因果份额，也未当作新候选优化；全矩阵与两路径增减见[SOURCE_DIAGNOSTICS.md](SOURCE_DIAGNOSTICS.md)。\n', encoding='utf8')
     result = {'status': 'supplementary_source_diagnostics_published', 'original_gate_A_results_unchanged': True,
               'source_report_sha256': fingerprints, 'new_fraud_model_training': False, 'final_2019_read': False}
     write_json(output/'source-diagnostics.json', result)
