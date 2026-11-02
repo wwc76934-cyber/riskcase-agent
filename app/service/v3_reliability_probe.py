@@ -48,7 +48,7 @@ def main():
     if claim is None:raise ValueError('No claimable job; wait for lease expiry')
     def hook(kind,ordinal):
         if args.exit_after_response and kind=='response_saved' and ordinal==1:os._exit(86)
-    client=OfflineProbeClient(ledger);report=StagedDelivery(store,claim,ledger,client,max_requests=2,hook=hook).run()
+    client=OfflineProbeClient(ledger);report=StagedDelivery(store,claim,ledger,client,max_requests=2,hook=hook,lease_seconds=30).run()
     state=store.load(job);store.finish(job,claim['owner'],claim['generation'],'awaiting_review',result=report)
     receipt=dict(generation=claim['generation'],replayed_responses=state['replayed_responses'],new_client_requests=client.calls,
         external_model_requests=0,simulated=True,authored_installation_fixture=True,model_planning_evidence=False,

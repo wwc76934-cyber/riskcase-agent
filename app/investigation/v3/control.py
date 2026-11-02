@@ -1,5 +1,6 @@
 """Request scheduling and immutable reads. Host budgeting cannot add evidence."""
 from copy import deepcopy
+import threading
 from app.investigation.contracts import digest
 from app.investigation.v3.output import OutputFailure
 
@@ -55,3 +56,30 @@ def journaled_response(store,claim,ordinal,request,invoke,*,audit_snapshot=lambd
     # request. Save before parsing, including a provider's invalid response.
     store.complete_call(claim['id'],claim['owner'],claim['generation'],ordinal,dict(raw_response=response),audit_snapshot())
     return response,False
+
+
+def with_lease_heartbeat(store,claim,invoke,*,lease_seconds=120,interval=15):
+    """Keep the existing lease fenced during synchronous transport, not a retry.
+
+    A heartbeat error cannot cancel an already-sent provider request. Its returned
+    response/cost remains in RecordedClient's archive; committing is then blocked.
+    """
+    if type(lease_seconds) is not int or not 3<=lease_seconds<=600 or not 0<interval<lease_seconds/2:
+        raise ValueError('Bounded heartbeat shorter than lease required')
+    store.checkpoint(claim['id'],claim['owner'],claim['generation'],lease_seconds=lease_seconds)
+    stop=threading.Event();errors=[]
+    def renew():
+        while not stop.wait(interval):
+            try:store.checkpoint(claim['id'],claim['owner'],claim['generation'],lease_seconds=lease_seconds)
+            except BaseException as exc:errors.append(exc);return
+    thread=threading.Thread(target=renew,name='v3-lease-heartbeat',daemon=True);thread.start()
+    try:
+        response=invoke()
+    finally:
+        stop.set();thread.join(timeout=12)
+        if thread.is_alive():raise OutputFailure('heartbeat_shutdown_incomplete')
+    if errors:raise errors[0]
+    # Check the task deadline even when the lease itself is still valid, and
+    # after any last heartbeat has finished. A late response stays archived.
+    store.checkpoint(claim['id'],claim['owner'],claim['generation'],lease_seconds=lease_seconds)
+    return response

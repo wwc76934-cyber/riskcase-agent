@@ -125,7 +125,7 @@ def test_interruption_replays_or_parses_saved_response_without_duplicate_call(tm
     class Crash(BaseException):pass
     def hook(kind,ordinal):
         if kind==crash_point and ordinal==1:raise Crash()
-    with pytest.raises(Crash):StagedDelivery(store,claim,ledger,client,max_requests=2,hook=hook).run()
+    with pytest.raises(Crash):StagedDelivery(store,claim,ledger,client,max_requests=2,hook=hook,lease_seconds=30).run()
     now[0]=131;replacement=store.claim('second',lease_seconds=30,deadline_seconds=180,mode='offline')
     assert replacement['generation']==2
     resumed=Client([decision]);report=StagedDelivery(store,replacement,ledger,resumed,max_requests=2).run()
@@ -165,7 +165,7 @@ def test_late_response_and_cost_snapshot_survive_expired_lease(tmp_path,acquired
         def chat(self,messages,tools=None):
             response=super().chat(messages,tools);now[0]=131;return response
     client=LateClient([facts])
-    with pytest.raises(LeaseLost):StagedDelivery(store,claim,ledger,client).run()
+    with pytest.raises(LeaseLost):StagedDelivery(store,claim,ledger,client,lease_seconds=30).run()
     directory=tmp_path/'v3-model-records'/identity
     assert json.loads((directory/'response-01.json').read_text())['content']
     assert json.loads((directory/'usage-01.json').read_text())['requests']==1
@@ -226,3 +226,44 @@ def test_two_stage_delivery_consumes_real_mcp_acquisitions(tmp_path,inquiry_snap
         tensions=[],timeline_refs=[],recommendations=[dict(action='analyst_review',fact_ids=['F1'],reason='Review')],missing=['confirmed_case_outcome'],stop_reason='unavailable_evidence',summary='MCP probe')
     store,_,claim=job(tmp_path/'delivery');report=StagedDelivery(store,claim,ledger,Client([facts,decision])).run()
     assert report['facts'][0]['citations'][0]['source_id']==ledger.lines[ref]['source_id']
+
+
+def test_task_assessment_cannot_turn_authentication_into_customer_authorization(acquired):
+    from app.investigation.v3.task_output import TaskReportContract
+    ledger,_,facts,decision=acquired;target=facts['facts'][0]['transaction_ids'][0];contract=TaskReportContract(target)
+    payload=dict(investigation=decision,source_statement=dict(transaction_id=target,value='authorized',fact_ids=['F1'],rationale='Not supported by authentication alone'))
+    with pytest.raises(OutputFailure,match='statement_inconsistent'):contract.assemble(payload,extract(facts,ledger),ledger)
+    payload['source_statement']['value']='unresolved'
+    assert contract.assemble(payload,extract(facts,ledger),ledger)['source_statement']['value']=='unresolved'
+
+
+def test_changed_delivery_contract_cannot_resume_a_saved_request(tmp_path,acquired):
+    from app.investigation.v3.task_output import TaskReportContract
+    ledger,_,facts,_=acquired;store,_,claim=job(tmp_path);client=Client([facts])
+    class Crash(BaseException):pass
+    def hook(kind,ordinal):
+        if kind=='raw_checkpoint_saved':raise Crash()
+    with pytest.raises(Crash):StagedDelivery(store,claim,ledger,client,hook=hook).run()
+    with pytest.raises(OutputFailure,match='delivery_snapshot_changed'):
+        StagedDelivery(store,claim,ledger,Client([]),report_contract=TaskReportContract('target')).run()
+    assert client.calls==1
+
+
+def test_heartbeat_keeps_lease_during_transport_without_another_request(tmp_path):
+    import time
+    from app.investigation.v3.control import with_lease_heartbeat
+    now=[100];store,identity,claim=job(tmp_path,lambda:now[0]);calls=[]
+    def invoke():
+        calls.append(1)
+        for _ in range(4):now[0]+=10;time.sleep(.025)
+        return {'content':'saved'}
+    response=with_lease_heartbeat(store,claim,invoke,lease_seconds=30,interval=.005)
+    assert response['content']=='saved' and len(calls)==1 and store.get(identity)['lease_until']>now[0]
+
+
+def test_response_after_deadline_is_rejected_even_with_a_valid_lease(tmp_path):
+    from app.investigation.v3.control import with_lease_heartbeat
+    now=[100];store,identity,claim=job(tmp_path,lambda:now[0])
+    def late():now[0]=281;return {'content':'late but retained by caller'}
+    with pytest.raises(Blocked,match='task_deadline'):with_lease_heartbeat(store,claim,late,lease_seconds=600,interval=15)
+    assert store.get(identity)['lease_until']>now[0]
