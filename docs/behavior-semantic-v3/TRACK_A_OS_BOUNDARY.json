@@ -1,0 +1,1 @@
+{"uid": 65534, "memory_limit_bytes": 2147483648, "pids_limit": 64, "CPU_cores": 2, "capabilities": "none", "no_new_privileges": true, "credential_environment": false, "network_probe_connected": false}

@@ -1,0 +1,70 @@
+{
+  "status": "frozen_before_A2_training",
+  "permission_source": "https://github.com/pboulieris/FraudNLP/issues/4#issuecomment-2514497586",
+  "conversion_independently_verified": true,
+  "records": "runs/track-a-convert-01/converted/records.jsonl",
+  "records_sha256": "b532f53c5d952dc27d66257383ac9bc55cfbbb5968aab1074e49970073bc4016",
+  "split": "runs/track-a-static-split-01/split.npz",
+  "split_sha256": "98e2c46872ec89e5a238f1a9ef4ca51f8a458c8eed862470adda75d9b9e798e5",
+  "models": [
+    "numeric_lr",
+    "numeric_tree",
+    "tfidf_lr",
+    "tfidf_svm",
+    "combined_lr",
+    "gru",
+    "transformer"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "C": [
+    0.1,
+    1.0,
+    10.0
+  ],
+  "epochs": 30,
+  "patience": 5,
+  "neural_batch": 256,
+  "label_free_length_bucketing": 4096,
+  "positive_weight": 20.0,
+  "public_event_vocabulary": 1916,
+  "max_length_suffix": 256,
+  "primary_metric": "average_precision_score on development; final test stays sealed",
+  "review_budget": "1percent of static batch, not daily",
+  "release_final_test": false,
+  "selected_instances": 21,
+  "classical_candidate_fits": 78,
+  "max_neural_training_epochs_total": 180,
+  "split_counts": {
+    "train": {
+      "rows": 63410,
+      "positive": 60
+    },
+    "development": {
+      "rows": 21219,
+      "positive": 23
+    },
+    "test": {
+      "rows": 20673,
+      "positive": 18
+    }
+  },
+  "near_similarity_limit": {
+    "complete_candidate_screen": false,
+    "reason": "pair_budget",
+    "pairs_checked": 2000000,
+    "cross_split_near_pairs": 3991,
+    "overflow_buckets": 6
+  },
+  "scope": "Static grouped by exact flattened event sequence; no unseen-user/time claim; partial near-duplicate screen found cross-split similarity; upstream published RFM not independently reconstructible",
+  "code_sha256": {
+    "app/risk/behavior_semantic/baselines.py": "414a93888225d08a302418312232d4b196663dec4cf1b91e08d359b9157b33df",
+    "app/risk/behavior_semantic/study.py": "a6def348299047ba31892e3b74d63efe9454ac6bf67cd5aa23e7a325b1382c1a",
+    "scripts/behavior_v3/run_baselines.py": "de14d33074bbcafab50fd12cd60772279d885a051e4c7be99aebd4fb0cbd75c8"
+  },
+  "default_detector_changed": false,
+  "paid_calls": 0
+}

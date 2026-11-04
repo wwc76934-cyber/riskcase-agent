@@ -1,0 +1,60 @@
+{
+  "rows": 105303,
+  "positives": 101,
+  "bad_rows": 1,
+  "valid_rows": 105302,
+  "observed_events": 609,
+  "event_count": 6294484,
+  "min": 1,
+  "median": 34.0,
+  "max": 3085,
+  "mean": 59.775540825435414,
+  "negative_intervals": 0,
+  "empty_sequences": 0,
+  "non_singleton_groups": 16,
+  "group_sizes": {
+    "1": 6294484,
+    "0": 22
+  },
+  "field_types": {
+    "actions": {
+      "str": 1,
+      "list": 105302
+    },
+    "times": {
+      "str": 1,
+      "list": 105302
+    },
+    "execution_time": {
+      "int": 105303
+    },
+    "Amount": {
+      "int": 105303
+    },
+    "device_freq": {
+      "float": 105303
+    },
+    "ip_freq": {
+      "float": 105303
+    },
+    "beneficiary_freq": {
+      "float": 105303
+    },
+    "application_freq": {
+      "float": 105303
+    },
+    "is_fraud": {
+      "int": 105303
+    },
+    "row_id": {
+      "str": 105303
+    },
+    "valid_sequence": {
+      "bool": 105303
+    }
+  },
+  "status": "independent_JSONL_aggregate_verification_passed",
+  "jsonl_sha256": "b532f53c5d952dc27d66257383ac9bc55cfbbb5968aab1074e49970073bc4016",
+  "source_comparison": "Original nonexecuting symbolic audit, not another DataFrame load",
+  "dynamic_pickle_loads": 0
+}

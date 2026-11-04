@@ -1,0 +1,36 @@
+{
+  "status": "split_created_before_training",
+  "records_sha256": "b532f53c5d952dc27d66257383ac9bc55cfbbb5968aab1074e49970073bc4016",
+  "raw_rows": 105303,
+  "retained_valid_rows": 105302,
+  "dropped_bad_rows": 1,
+  "split_sha256": "98e2c46872ec89e5a238f1a9ef4ca51f8a458c8eed862470adda75d9b9e798e5",
+  "membership_sha256": "e8557da221f5fe7711be678d26864401dd24e9694794b02492435f2ecb302a91",
+  "seed": 20261104,
+  "rule": "StratifiedGroupKFold5 fold0=test;remaining StratifiedGroupKFold4 fold0=development;groups=exact ordered sequence hash",
+  "counts": {
+    "train": {
+      "rows": 63410,
+      "positive": 60
+    },
+    "development": {
+      "rows": 21219,
+      "positive": 23
+    },
+    "test": {
+      "rows": 20673,
+      "positive": 18
+    }
+  },
+  "multi_event_groups": 16,
+  "near_similarity": {
+    "complete_candidate_screen": false,
+    "reason": "pair_budget",
+    "pairs_checked": 2000000,
+    "cross_split_near_pairs": 3991,
+    "overflow_buckets": 6
+  },
+  "user_disjoint_verified": false,
+  "temporal_extrapolation": false,
+  "model_training_done": false
+}
