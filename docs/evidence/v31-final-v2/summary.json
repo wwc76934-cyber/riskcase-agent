@@ -1,0 +1,63 @@
+{
+  "schema": "v31-development-final-result-v1",
+  "trial": "Observed authored six development cases, two planned repeats",
+  "original_proposal_sha256": "f9e1ed9aeb45aabb4c7926f1ffcc7d3eb3def0c00104bac22e3d2bd7766a059f",
+  "original_grant_sha256": "4649239cac83a742157224c5f6652836bb2dd744efab4d3a41675531b38f17f0",
+  "source_ci_commit": "afbce4e4768048052ff69770d7b52f8266828ca3",
+  "all_slots_accounted": true,
+  "planned_case_runs": 12,
+  "planned_stages": 36,
+  "attempted_stages": 34,
+  "unattempted_due_to_first_authentication_interruption": 2,
+  "delivered_stages": 28,
+  "fully_delivered_case_runs": 7,
+  "target_correct_T1_T2": 19,
+  "target_T1_T2_denominator": 24,
+  "delivered_later_stages": 19,
+  "delivery_conditioned_target_quality_NOT_overall": "19/19; overall remains 19/24",
+  "original_strict_author_reference_stages": 1,
+  "original_strict_metric_has_reference_coverage_limitation": true,
+  "external_requests": 67,
+  "new_requests_after_configuration": 66,
+  "extraction_responses": 33,
+  "final_report_responses": 33,
+  "extraction_schema_failures": 0,
+  "report_schema_failures": 5,
+  "model_autonomous_tool_calls": 0,
+  "host_source_tool_attempts": 68,
+  "delivered_wrong_alert_closes": 0,
+  "delivered_unproven_fraud_confirmations": 0,
+  "process_latency_seconds": {
+    "sum": 770.814482,
+    "minimum": 1.127152,
+    "maximum": 33.673789,
+    "note": "Sum of recorded stage wall durations, not measured analyst time"
+  },
+  "known_usage_estimated_cny": "0.2614732",
+  "unknown_fee_requests": 1,
+  "retained_unknown_case_allowance_cny": ".50",
+  "batch_committed_estimate_and_risk_hold_cny": "0.7614732",
+  "project_committed_estimate_and_risk_hold_cny": "28.7480308",
+  "provider_actual_bill_known": false,
+  "development_thresholds": {
+    "delivery_threshold_passed": false,
+    "complete_cases_threshold_passed": false,
+    "source_correct_threshold_passed": false
+  },
+  "default_product": "B0",
+  "formal_agent_value_proven": false,
+  "memory_value_proven": false,
+  "supplemental_fact_coverage_partition": {
+    "matches_author_reference": 55,
+    "source_metadata_matches": 27,
+    "not_covered_by_author_reference": 18
+  },
+  "original_interruption_files_unchanged": {
+    "summary-001.json": true,
+    "summary.json": true,
+    "v3-10476d72a749a8ba01-r1-mcp.log": true,
+    "cases\\v3-10476d72a749a8ba01-r1.json": true,
+    "v3-model-records\\job-b7c9241963f345458c77df78e916a9f5-delivery-T0\\request-01.json": true,
+    "v3-model-records\\job-b7c9241963f345458c77df78e916a9f5-delivery-T0\\usage-01.json": true
+  }
+}

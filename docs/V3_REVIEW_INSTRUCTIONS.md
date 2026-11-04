@@ -2,9 +2,11 @@
 
 这份任务不能由作者再次自评、机械检查或另一个自动模型代替。非专家也可以审查语言逻辑，但应如实记录知识背景，不能称外部专家真值。
 
-审查对象：`runs/v3-author-candidates-v3`的40个evaluation候选案。每案先看runtime原件，再看controller逐阶段参考；这些参考仅供评审，不能给受测模型。数据指纹见[V3候选集说明](V3_TASK_BENCHMARK.md)。
+当前审查对象：v4作者候选中的40个evaluation案件，指纹为`f8af041607e6f3c94c6f689f0f00f7db0f4ca18cf6876c73f3242fbd37a89329`。原v3及早期审查包保留，不把不同版本的签署混用。每案先看runtime原件，再看controller逐阶段参考；这些参考仅供评审，不能给受测模型。
 
-本机已整理可直接阅读的`runs/v3-independent-review-pack-v1/REVIEW.md`，另有待填写的`review-form.json`和文件指纹；40案没有预填通过，材料不作为模型输入。仍须由实际人员审阅，生成文档不等于已经完成审查。
+当前工作区已整理可离线打开的`runs/v31-independent-review-v1/review.html`，另有待填写的`review-form.json`、原件和参考指纹；40案没有预填通过，材料不作为模型输入。仍须由实际人员审阅，生成文档不等于已经完成审查。
+
+2026-11-04用户要求开发Agent代为审阅，已另存[40案AI作者复审](V31_AI_REVIEW.md)。该复审发现任务及参考机制问题，不是独立人员审查，不生成虚假的人工签名。当前独立审阅仍未完成，原PRD门禁未被移除。
 
 逐案确认：
 

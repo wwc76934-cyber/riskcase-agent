@@ -2,11 +2,12 @@
 from pathlib import Path
 from collections import Counter
 from decimal import Decimal
-import hashlib, json
+import hashlib, json, sys
 from jsonschema import Draft202012Validator
-from app.evaluation.v3_fact_coverage import diagnose
 
 ROOT=Path(__file__).resolve().parents[3]
+sys.path.insert(0,str(ROOT))
+from app.evaluation.v3_fact_coverage import diagnose
 
 def load(p): return json.loads(p.read_text(encoding='utf-8-sig'))
 def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
