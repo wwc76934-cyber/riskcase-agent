@@ -1,0 +1,628 @@
+{
+  "scope": "First extraction responses only, not final-report or business regrading",
+  "extraction_responses": 36,
+  "parsed_responses": 36,
+  "old_accepted": 20,
+  "direct_new_wire_accepted": 0,
+  "lossless_conversion_accepted": 0,
+  "original_db_sha256": "45434a50b91debb9b4b753077f9e75ed7bb9041ebab5a5f7d791ce2e2cce2182",
+  "original_db_unchanged": true,
+  "semantic_correctness_evaluated": false,
+  "new_model_behavior_measured": false,
+  "new_delivery_rate_measured": false,
+  "external_model_requests": 0,
+  "rows": [
+    {
+      "key": "v3-0996e2e3733092caed-r1-T0",
+      "parse": true,
+      "raw_response_sha256": "42a42313ed7a8ed8c18f0d7bf5f71da730a0d4ef0efc099ec0a1f5f9f5591703",
+      "old_contract": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-0996e2e3733092caed-r1-T1",
+      "parse": true,
+      "raw_response_sha256": "00bf68faf953ac87fc187cc031de9dbdc9a44a255f3dd72fb638388660afac63",
+      "old_contract": {
+        "accepted": true,
+        "error": null
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-0996e2e3733092caed-r1-T2",
+      "parse": true,
+      "raw_response_sha256": "609c7984185969bc7c86e97f1a85429b7caa3e3aff6c800d30226171fdcadbcf",
+      "old_contract": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-0996e2e3733092caed-r2-T0",
+      "parse": true,
+      "raw_response_sha256": "7639b2a61baafd59912b3361289a3cb8b4c61cc77a1fd784bbf1f772f7ae8570",
+      "old_contract": {
+        "accepted": true,
+        "error": null
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-0996e2e3733092caed-r2-T1",
+      "parse": true,
+      "raw_response_sha256": "45d602cbe33314516e948464858c38056a19a3ae2a8fe1e5c6265e543dca63d7",
+      "old_contract": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-0996e2e3733092caed-r2-T2",
+      "parse": true,
+      "raw_response_sha256": "f8fb67d2fe922609bde1b703b43285e2c834c928f7a91692ba32ece5beef3272",
+      "old_contract": {
+        "accepted": true,
+        "error": null
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-0f8ad5c54ab33e3b99-r1-T0",
+      "parse": true,
+      "raw_response_sha256": "b4512bce73b5c7c0e625c415b3f7a123243e3833a48367d1e8c028a58c4f41aa",
+      "old_contract": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-0f8ad5c54ab33e3b99-r1-T1",
+      "parse": true,
+      "raw_response_sha256": "ed9403561fffa7e67c956f6cfaac97abb48d5d9af0e6cac48653f006703a9537",
+      "old_contract": {
+        "accepted": true,
+        "error": null
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-0f8ad5c54ab33e3b99-r1-T2",
+      "parse": true,
+      "raw_response_sha256": "5939923741ad45301bea717ee65ceca56a47ab2f5118f59464af1559c21be30c",
+      "old_contract": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-0f8ad5c54ab33e3b99-r2-T0",
+      "parse": true,
+      "raw_response_sha256": "b25d69950a316aefff295c58cfffec8e0d34eb8c10f72fe30da4db481e9f69e6",
+      "old_contract": {
+        "accepted": true,
+        "error": null
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-0f8ad5c54ab33e3b99-r2-T1",
+      "parse": true,
+      "raw_response_sha256": "bb1c649854cdb511edc727b062fb1dfddb7bf2b5375d390dd71fad85f2d909b7",
+      "old_contract": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-0f8ad5c54ab33e3b99-r2-T2",
+      "parse": true,
+      "raw_response_sha256": "06fa34aace920d704d97c7f32499cbf80c2e1e82d7c02cec61fdf2cadb3b67e2",
+      "old_contract": {
+        "accepted": true,
+        "error": null
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-10476d72a749a8ba01-r1-T0",
+      "parse": true,
+      "raw_response_sha256": "84c5dd6d18eb31250c6e02ec8e2fbb6939d961ecc618d0946cf39d4204e2d866",
+      "old_contract": {
+        "accepted": true,
+        "error": null
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-10476d72a749a8ba01-r1-T1",
+      "parse": true,
+      "raw_response_sha256": "8d7b135a1439f316f0295e07909cc9d071b2262a8f0e671cda2b74f30cd77b5f",
+      "old_contract": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-10476d72a749a8ba01-r1-T2",
+      "parse": true,
+      "raw_response_sha256": "cda995717bbf63300a018feb9cad84adbe3744d024a62436016eb1ad0b42480a",
+      "old_contract": {
+        "accepted": true,
+        "error": null
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-10476d72a749a8ba01-r2-T0",
+      "parse": true,
+      "raw_response_sha256": "ce89f22f6fdb54964be3762cbf249e1c64c4bd38496df63d87fa3d804f34ab02",
+      "old_contract": {
+        "accepted": true,
+        "error": null
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-10476d72a749a8ba01-r2-T1",
+      "parse": true,
+      "raw_response_sha256": "49a391b29cf05fec52ca510655dbde824951f401ced1b2026068cd9ea15f2bb8",
+      "old_contract": {
+        "accepted": true,
+        "error": null
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-10476d72a749a8ba01-r2-T2",
+      "parse": true,
+      "raw_response_sha256": "ac691e1baafb8c2ebdbdd820d4202db6487268d9dfecabbb3421a270fb9ce012",
+      "old_contract": {
+        "accepted": true,
+        "error": null
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-4095bca60f79290cae-r1-T0",
+      "parse": true,
+      "raw_response_sha256": "91b637dfbc52ba8ce3a38839fde3f2d1af21992ebdacc0f7dc43b383f019fc5a",
+      "old_contract": {
+        "accepted": true,
+        "error": null
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-4095bca60f79290cae-r1-T1",
+      "parse": true,
+      "raw_response_sha256": "ca460a2a1bc019edfb7fa46bdc8e1a16dbb535e1de7922471a6c1a16cf8760d5",
+      "old_contract": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-4095bca60f79290cae-r1-T2",
+      "parse": true,
+      "raw_response_sha256": "95ddc44ae5da8a1c760e54a51fb3663a603fe2ce17ea104e6cbe9cccf328e345",
+      "old_contract": {
+        "accepted": true,
+        "error": null
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-4095bca60f79290cae-r2-T0",
+      "parse": true,
+      "raw_response_sha256": "cca16a1c7f3a54f70069409e3368d5b736400c41e04472b9de1ff8b2011af9c5",
+      "old_contract": {
+        "accepted": true,
+        "error": null
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-4095bca60f79290cae-r2-T1",
+      "parse": true,
+      "raw_response_sha256": "26c481d83ce5030fa2c9abdae5c4c2bb237e8ab8aca47a7480f5ae830e316051",
+      "old_contract": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-4095bca60f79290cae-r2-T2",
+      "parse": true,
+      "raw_response_sha256": "e151da8f65dd5f8fe8f7a07bb796e093d0d133c6e2f50be7bbb67a88cfb2c3cf",
+      "old_contract": {
+        "accepted": true,
+        "error": null
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-696b84e092d689a014-r1-T0",
+      "parse": true,
+      "raw_response_sha256": "90537ce24c905ada422d904fb648f5f84b4580b9c2decb95b9997186f9d35439",
+      "old_contract": {
+        "accepted": true,
+        "error": null
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-696b84e092d689a014-r1-T1",
+      "parse": true,
+      "raw_response_sha256": "e67249850b636d07267815b273f3ed741960dc04e915e839601332d243798164",
+      "old_contract": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-696b84e092d689a014-r1-T2",
+      "parse": true,
+      "raw_response_sha256": "8bb77abb375b029175147ebade02c6940944518acd64d7dfe94722976ac48b7a",
+      "old_contract": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-696b84e092d689a014-r2-T0",
+      "parse": true,
+      "raw_response_sha256": "90537ce24c905ada422d904fb648f5f84b4580b9c2decb95b9997186f9d35439",
+      "old_contract": {
+        "accepted": true,
+        "error": null
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-696b84e092d689a014-r2-T1",
+      "parse": true,
+      "raw_response_sha256": "84171d615a16f1541e52d663c4ff6125a9ded8718826f6d652803b97dae476df",
+      "old_contract": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-696b84e092d689a014-r2-T2",
+      "parse": true,
+      "raw_response_sha256": "669f1607399d89d0f2641760ae7526d92b388c5228c08ebafc9617f1b8f0abf5",
+      "old_contract": {
+        "accepted": true,
+        "error": null
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-6d35eb9f74124bfa57-r1-T0",
+      "parse": true,
+      "raw_response_sha256": "638c492ad41c08a6a92fef2412720355cb0ea934038ef461093bd93edf30b2e1",
+      "old_contract": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-6d35eb9f74124bfa57-r1-T1",
+      "parse": true,
+      "raw_response_sha256": "06f680e8e6be260497cc1bf2ba0a0bba8c52dce594d7231fe112daa3e945a62f",
+      "old_contract": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-6d35eb9f74124bfa57-r1-T2",
+      "parse": true,
+      "raw_response_sha256": "974c620230c77e660253ce733b7a791c1e8b9f6e73294f0548fbde3b7632e58b",
+      "old_contract": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-6d35eb9f74124bfa57-r2-T0",
+      "parse": true,
+      "raw_response_sha256": "eb85638baef3c8ec9cdc38b1209587b64b0f673995889f752951dd27a012c83d",
+      "old_contract": {
+        "accepted": true,
+        "error": null
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-6d35eb9f74124bfa57-r2-T1",
+      "parse": true,
+      "raw_response_sha256": "524d897c5b61d0bec08e96f72fe75b9c1b016cb1c44d3329ebf483285c6baef2",
+      "old_contract": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    },
+    {
+      "key": "v3-6d35eb9f74124bfa57-r2-T2",
+      "parse": true,
+      "raw_response_sha256": "6b708fc6fa10ab6fb8b16e7333809f429a64069596585869010afdd6cc6022ce",
+      "old_contract": {
+        "accepted": true,
+        "error": null
+      },
+      "new_wire_without_conversion": {
+        "accepted": false,
+        "error": "model_schema"
+      },
+      "deterministic_conversion": {
+        "accepted": false,
+        "error": "ValueError"
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "runtime_originals_identical": 70,
+  "total_cases": 70,
+  "primary_stage_labels_identical": 210,
+  "total_stage_labels": 210,
+  "reference_revisions": 70,
+  "additional_cases_created": 0,
+  "old_results_rescored": 0,
+  "external_model_requests": 0,
+  "formal_frozen": false
+}

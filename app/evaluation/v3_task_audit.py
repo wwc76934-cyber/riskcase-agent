@@ -3,6 +3,7 @@ from collections import Counter
 import hashlib,json,re
 from pathlib import Path
 from app.investigation.v3.world import InvestigationWorld
+from app.investigation.fraud_world import ACTIONS,MISSING_TYPES
 
 
 def load(path):return json.loads(Path(path).read_text(encoding='utf-8'))
@@ -44,6 +45,12 @@ def audit(directory,output):
             if expected['expected_source_statement']['value'] not in ('authorized','denied','unresolved'):raise ValueError('Unbounded source-statement reference')
             if expected['expected_source_statement']['transaction_id']!=runtime['alert']['transaction_id']:raise ValueError('Reference target changed')
             if 'confirmed_case_outcome' not in expected['required_missing']:raise ValueError('Outcome was improperly confirmed')
+            if reference.get('reference_schema')=='v3-author-reference-v2':
+                if not set(expected['critical_sources'])<=eligible or not set(expected['required_fact_source_ids'])<=set(expected['critical_sources']):raise ValueError('Critical/reference fact source mismatch')
+                if not set(expected['required_missing'])<=set(MISSING_TYPES) or not set(expected['acceptable_actions'])<=set(ACTIONS):raise ValueError('Reference cannot be expressed by the output contract')
+                if set(expected['acceptable_dispositions'])&set(expected['prohibited_dispositions']):raise ValueError('Disposition both allowed and prohibited')
+                if expected['reopen_on_new_material'] is not True:raise ValueError('Evaluation cutoff must not permanently prevent reopening')
+                if any(f['source_id'] not in eligible or f['transaction_id']!=runtime['alert']['transaction_id'] for f in expected['expected_observations']):raise ValueError('Expected observation scope')
             total_possible_cost.append(sum(r['cost_units'] for r in world.eligible().values()))
         required=reference['stages'][2]['critical_sources'];oracle=InvestigationWorld(runtime)
         oracle.advance(1)

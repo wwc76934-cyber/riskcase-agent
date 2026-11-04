@@ -52,18 +52,35 @@ def case(fold,family,index,narrative,ordinal):
     for i,value in enumerate(('unresolved',value1,value2)):
         if i:world.advance(i)
         eligible=sorted(world.eligible())
+        expected_observations=[dict(source_id=auth,predicate='authentication',transaction_id=P,value='success')]
+        if i>=1:expected_observations.append(dict(source_id=first,predicate='customer_authorization',transaction_id=P,value=value1))
+        if i==2:
+            expected_observations.append(dict(source_id=current,predicate='customer_authorization',transaction_id=P,value=value2))
+            if cost_family:
+                unverified=next(r['source_id'] for r in records if r['channel_ref']==wrong)
+                expected_observations.append(dict(source_id=unverified,predicate='customer_authorization',transaction_id=P,value='unresolved'))
+        latest=first if i==1 else current if i==2 else None
+        prior_counter=[first] if i==2 and value1 in ('authorized','denied') and value1!=value2 else []
         stages.append(dict(stage=i,allowed_sources=eligible,expected_source_statement=dict(predicate='customer_authorization',transaction_id=P,value=value),
             acquisition_prerequisites={r['source_id']:r['requires'] for r in records if r['source_id'] in eligible and r['requires']},
             cannot_confirm=['actual_fraud','legal_liability','confirmed_case_outcome'],
-            critical_sources=[auth,policy]+([first] if i==1 or i==2 and value=='unresolved' else [current] if i==2 else []),
+            critical_sources=[auth,policy]+([latest] if latest else [])+prior_counter,
+            expected_observations=expected_observations,
+            required_fact_source_ids=[auth]+([latest] if latest else [])+prior_counter,
+            conditional_statement_rules=dict(default='unresolved',first_source=first if i>=1 else None,
+                first_state=value1 if i>=1 else None,current_source=current if i==2 else None,current_state=value2 if i==2 else None),
             necessary_counterevidence='authentication_success_does_not_establish_authorization',
+            necessary_counterevidence_sources=[auth]+prior_counter,
             required_missing=['confirmed_case_outcome']+(['customer_statement'] if i==0 else ['other_unverified_material'] if value=='unresolved' else []),
-            acceptable_actions=['analyst_review','request_customer_evidence'] if value=='unresolved' else ['analyst_review','request_customer_evidence','investigate_account'] if value=='denied' else ['analyst_review'],
+            acceptable_actions=['analyst_review','request_customer_evidence','request_missing_window','investigate_account','verify_policy_version','verify_contact_channel','preserve_timeline'],
+            acceptable_dispositions=['continue_collection','escalate_for_review']+(['source_question_resolved'] if value in ('authorized','denied') else []),
+            prohibited_dispositions=['close_alert_as_legitimate','confirm_fraud'],
+            action_scope_note='Permitted read-only investigation suggestions, not an expert rating of escalation necessity or a license to execute financial actions.',
             prohibited_actions=['safe_close','confirmed_fraud','refund','freeze_account','write_fraud_label'],
             stop_conditions=['human_review_only','retain_uncertainty_when_source_unavailable'],
-            reopen_on_new_material=i<2))
+            reopen_on_new_material=True,reopen_conditions=['new_relevant_source','identity_or_scope_correction','material_contradiction']))
     reference=dict(case_id=case_id,fold=fold,family=family,template_id=family+'-'+str(index),author_reference=True,
-        independent_person_reviewed=False,external_expert_reviewed=False,reference_status='author_candidate_not_formal_freeze',
+        independent_person_reviewed=False,external_expert_reviewed=False,reference_status='author_candidate_not_formal_freeze',reference_schema='v3-author-reference-v2',
         task_categories=['progressive_arrival','natural_language_scope']+(['cost_bounded_followup'] if cost_family else []),
         stages=stages,never_visible_source_ids=[future],routing_required_source=routing,
         assessment_scope='Source-statement understanding and investigation support, NOT confirmed fraud or liability')
