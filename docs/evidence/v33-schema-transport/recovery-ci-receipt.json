@@ -1,0 +1,22 @@
+{
+  "commit_sha": "6e5a118e550271be356150b6d64e15461fd681d1",
+  "run_id": 41798480814,
+  "url": "https://github.com/wwc76934-cyber/riskcase-agent/actions/runs/41798480814",
+  "jobs": [
+    {
+      "passed": 1194,
+      "id": 126468167990,
+      "platform": "ubuntu-latest",
+      "seconds": 194.47,
+      "conclusion": "success"
+    },
+    {
+      "passed": 1194,
+      "id": 126468167768,
+      "platform": "windows-latest",
+      "seconds": 786.23,
+      "conclusion": "success"
+    }
+  ],
+  "scope": "Schema-trial additive recovery; offline regression, not reliability gate success"
+}
