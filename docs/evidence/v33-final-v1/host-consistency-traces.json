@@ -1,0 +1,231 @@
+[
+  {
+    "request_path": "v3-model-records\\job-238bfb99e8ae4221bbb1131067c60dea-delivery-T0\\request-02.json",
+    "request_sha256": "61b856de6e79f04a4f89cc39a9ae730757910968d889d0d432c7aa7ad0089804",
+    "response_sha256": "60f55d0bb467115db2ab5152877c919bb0e980ad3b0c294c234dc6981c5539f2",
+    "target": "v3-0f8ad5c54ab33e3b99-payment-P",
+    "observations": {
+      "F1": {
+        "id": "F1",
+        "predicate": "authentication",
+        "value": "success",
+        "transaction_ids": [
+          "v3-0f8ad5c54ab33e3b99-payment-P"
+        ],
+        "source_handles": [
+          "C1"
+        ]
+      },
+      "F2": {
+        "id": "F2",
+        "predicate": "policy_version",
+        "value": 1,
+        "transaction_ids": [
+          "v3-0f8ad5c54ab33e3b99-payment-P"
+        ],
+        "source_handles": [
+          "C2"
+        ]
+      }
+    },
+    "source_statement": {
+      "fact_ids": [
+        "F1"
+      ],
+      "rationale": "The only customer-relevant source is the authentication log, which explicitly does not record payment intent; no customer observation recognizing or denying the target payment exists, so the qualified source position is unresolved.",
+      "value": "unresolved"
+    },
+    "statement_inconsistent_with_selected_observations": false,
+    "hypotheses_without_required_references": [
+      {
+        "counterevidence": [],
+        "description": "Authentication challenge succeeded for the target payment, but the authentication source itself states it does not record cardholder payment intent, so the success cannot establish willingness.",
+        "status": "weakened",
+        "support": [
+          "F1"
+        ],
+        "unknowns": [
+          "Whether the cardholder initiated or authorized payment-P",
+          "Any customer statement recognizing or denying payment-P",
+          "Whether payment-Q is related to payment-P or independent",
+          "Whether any fraud outcome evidence exists"
+        ]
+      }
+    ],
+    "read_line_handles": {
+      "C1": {
+        "source_id": "v3-src-1fa58a759e98ead3ef4c",
+        "source_type": "authentication",
+        "line": 1,
+        "text": "模拟认证服务：v3-0f8ad5c54ab33e3b99-payment-P challenge_result=success；该日志没有记录持卡人的付款意愿。",
+        "event_time": "2026-01-12T10:00:00",
+        "available_at": "2026-01-12T10:10:00",
+        "transaction_ids": [
+          "v3-0f8ad5c54ab33e3b99-payment-P",
+          "v3-0f8ad5c54ab33e3b99-payment-Q"
+        ],
+        "version": 1,
+        "coverage": {
+          "complete": true,
+          "end": "2026-01-12T10:10:00",
+          "note": "Only declared simulated source coverage",
+          "start": "2026-01-12T10:00:00"
+        },
+        "supersedes_id": null,
+        "origin": "fully_author_simulated_NOT_IBM_NOT_bank",
+        "evidence_id": "E2",
+        "original_sha256": "5a542bd9218f63a8e403335b4665f5c29bc5c8c2eafabbd1ec4856c926b699f7"
+      },
+      "C2": {
+        "source_id": "v3-src-27a72c0a2f4de58e592f",
+        "source_type": "procedure",
+        "line": 1,
+        "text": "项目模拟调查规范：认证结果不是持卡人意愿；逐笔记录来源声明，后来更正不得倒填历史。保留未确认结案，禁止自动关闭、认定欺诈、退款、冻结或改标签。",
+        "event_time": "2026-01-12T10:10:00",
+        "available_at": "2026-01-12T10:10:00",
+        "transaction_ids": [
+          "v3-0f8ad5c54ab33e3b99-payment-P",
+          "v3-0f8ad5c54ab33e3b99-payment-Q"
+        ],
+        "version": 1,
+        "coverage": {
+          "complete": true,
+          "end": "2026-01-12T10:10:00",
+          "note": "Only declared simulated source coverage",
+          "start": "2026-01-12T10:00:00"
+        },
+        "supersedes_id": null,
+        "origin": "fully_author_simulated_NOT_IBM_NOT_bank",
+        "evidence_id": "E2",
+        "original_sha256": "299dca6f07bc299fb7dcbddddf106c652d03fb621f846a2eebccf1086e5a4c7f"
+      }
+    },
+    "report_schema_already_valid": true,
+    "semantic_truth_validated": false,
+    "original_files_modified": false
+  },
+  {
+    "request_path": "v3-model-records\\job-69afc18604ea4329826aca66cc69c8e2-delivery-T1\\request-02.json",
+    "request_sha256": "22ca8300873b750e33f2602febd66acc5a7d03f8eec6c43fa8bb9e46237a88e2",
+    "response_sha256": "e3041f695fcefbe096a6f88e6b6dbfbe84a0fc482af2897069d709d33bb26e4d",
+    "target": "v3-4095bca60f79290cae-payment-P",
+    "observations": {
+      "F1": {
+        "id": "F1",
+        "predicate": "authentication",
+        "value": "success",
+        "transaction_ids": [
+          "v3-4095bca60f79290cae-payment-P"
+        ],
+        "source_handles": [
+          "C2"
+        ]
+      },
+      "F2": {
+        "id": "F2",
+        "predicate": "customer_authorization",
+        "value": "unresolved",
+        "transaction_ids": [
+          "v3-4095bca60f79290cae-payment-P"
+        ],
+        "source_handles": [
+          "C3"
+        ]
+      },
+      "F3": {
+        "id": "F3",
+        "predicate": "policy_version",
+        "value": 1,
+        "transaction_ids": [
+          "v3-4095bca60f79290cae-payment-P"
+        ],
+        "source_handles": [
+          "C1"
+        ]
+      }
+    },
+    "source_statement": {
+      "fact_ids": [
+        "F2"
+      ],
+      "rationale": "The customer explicitly states they never said they agreed to the target payment, which is a clear negation of acknowledged consent from the customer source. Authentication success does not establish intent, and no confirmed case outcome is available, so the qualified source position is recorded while independent corroboration remains missing.",
+      "value": "denied"
+    },
+    "statement_inconsistent_with_selected_observations": true,
+    "hypotheses_without_required_references": [],
+    "read_line_handles": {
+      "C1": {
+        "source_id": "v3-src-8f48e683eceb5cedee6e",
+        "source_type": "procedure",
+        "line": 1,
+        "text": "项目模拟调查规范：认证结果不是持卡人意愿；逐笔记录来源声明，后来更正不得倒填历史。保留未确认结案，禁止自动关闭、认定欺诈、退款、冻结或改标签。",
+        "event_time": "2026-01-07T10:10:00",
+        "available_at": "2026-01-07T10:10:00",
+        "transaction_ids": [
+          "v3-4095bca60f79290cae-payment-P",
+          "v3-4095bca60f79290cae-payment-Q"
+        ],
+        "version": 1,
+        "coverage": {
+          "complete": true,
+          "end": "2026-01-07T10:10:00",
+          "note": "Only declared simulated source coverage",
+          "start": "2026-01-07T10:00:00"
+        },
+        "supersedes_id": null,
+        "origin": "fully_author_simulated_NOT_IBM_NOT_bank",
+        "evidence_id": "E2",
+        "original_sha256": "1bcd7434809c8473f94541ca9c149cdd2fa33606fc1b98fd8b8d0cb180132c45"
+      },
+      "C2": {
+        "source_id": "v3-src-bd2286f5f81020a52fd9",
+        "source_type": "authentication",
+        "line": 1,
+        "text": "模拟认证服务：v3-4095bca60f79290cae-payment-P challenge_result=success；该日志没有记录持卡人的付款意愿。",
+        "event_time": "2026-01-07T10:00:00",
+        "available_at": "2026-01-07T10:10:00",
+        "transaction_ids": [
+          "v3-4095bca60f79290cae-payment-P",
+          "v3-4095bca60f79290cae-payment-Q"
+        ],
+        "version": 1,
+        "coverage": {
+          "complete": true,
+          "end": "2026-01-07T10:10:00",
+          "note": "Only declared simulated source coverage",
+          "start": "2026-01-07T10:00:00"
+        },
+        "supersedes_id": null,
+        "origin": "fully_author_simulated_NOT_IBM_NOT_bank",
+        "evidence_id": "E2",
+        "original_sha256": "3788d1bfc16e2d54a80c568df3a8ec0b7a1e63d3740a3650af5f892e2148d4ae"
+      },
+      "C3": {
+        "source_id": "v3-src-7787f505a3c09faae0f4",
+        "source_type": "customer",
+        "line": 1,
+        "text": "我没有说我同意了v3-4095bca60f79290cae-payment-P，请不要把“没有说”漏掉。",
+        "event_time": "2026-01-07T11:00:00",
+        "available_at": "2026-01-07T11:00:00",
+        "transaction_ids": [
+          "v3-4095bca60f79290cae-payment-P",
+          "v3-4095bca60f79290cae-payment-Q"
+        ],
+        "version": 1,
+        "coverage": {
+          "complete": true,
+          "end": "2026-01-07T11:00:00",
+          "note": "Only declared simulated source coverage",
+          "start": "2026-01-07T10:00:00"
+        },
+        "supersedes_id": null,
+        "origin": "fully_author_simulated_NOT_IBM_NOT_bank",
+        "evidence_id": "E3",
+        "original_sha256": "51a25da94f712e20796f6dba966603ff6e69dbbbedce3106598f49ab50a221f0"
+      }
+    },
+    "report_schema_already_valid": true,
+    "semantic_truth_validated": false,
+    "original_files_modified": false
+  }
+]

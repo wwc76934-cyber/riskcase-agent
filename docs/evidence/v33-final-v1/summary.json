@@ -1,0 +1,61 @@
+{
+  "schema": "v33-schema-development-result-v1",
+  "source_ci_commit": "5ba39b3508b5acd28136b74b43f2775207244b05",
+  "proposal_sha256": "651f671c3a43d043a00376cf3ade797879da783db04c0929fe59567409a91d9f",
+  "grant_sha256": "2df066f73c89e7023ef773221aab76c7b841f4453a85996f2c6a97acdd8e6710",
+  "planned_case_runs": 12,
+  "recorded_case_runs": 12,
+  "planned_stages": 36,
+  "attempted_stages": 34,
+  "unattempted_stages": 2,
+  "delivered_stages": 31,
+  "fully_delivered_case_runs": 9,
+  "target_correct_T1_T2": 21,
+  "target_T1_T2_denominator": 24,
+  "delivered_later_stages": 21,
+  "original_strict_author_reference_stages": 0,
+  "original_strict_metric_has_reference_coverage_limitation": true,
+  "external_requests": 67,
+  "unknown_fee_requests": 1,
+  "known_usage_estimated_cny": "0.2817188",
+  "batch_committed_estimate_and_risk_hold_cny": "0.7817188",
+  "project_committed_estimate_and_risk_hold_cny": "30.3091064",
+  "provider_actual_bill_known": false,
+  "response_counts": {
+    "extract": 33,
+    "report": 33
+  },
+  "model_autonomous_tool_calls": 0,
+  "host_source_tool_attempts": 68,
+  "delivered_wrong_alert_closes": 0,
+  "delivered_unproven_fraud_confirmations": 0,
+  "latency_seconds": {
+    "sum": 863.517837,
+    "minimum": 1.32763,
+    "maximum": 33.117987,
+    "not_analyst_time": true
+  },
+  "development_thresholds": {
+    "delivery_threshold_passed": false,
+    "complete_cases_threshold_passed": false,
+    "source_correct_threshold_passed": true
+  },
+  "stop_reason": null,
+  "supplemental_fact_coverage_partition": {
+    "matches_author_reference": 61,
+    "source_metadata_matches": 30,
+    "not_covered_by_author_reference": 24
+  },
+  "same_observed_development_cases": true,
+  "original_interruption_files_unchanged": {
+    "summary-001.json": true,
+    "summary.json": true,
+    "v3-10476d72a749a8ba01-r1-mcp.log": true,
+    "cases\\v3-10476d72a749a8ba01-r1.json": true,
+    "v3-model-records\\job-4d49882767d24e0f9ac3c3625b32ec6c-delivery-T0\\request-01.json": true,
+    "v3-model-records\\job-4d49882767d24e0f9ac3c3625b32ec6c-delivery-T0\\usage-01.json": true
+  },
+  "default_product": "B0",
+  "formal_agent_value_proven": false,
+  "memory_value_proven": false
+}

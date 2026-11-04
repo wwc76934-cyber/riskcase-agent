@@ -1,0 +1,32 @@
+[
+  {
+    "case_id": "v3-0f8ad5c54ab33e3b99",
+    "repeat": 1,
+    "stage": 0,
+    "error": {
+      "type": "OutputFailure",
+      "code": "hypothesis_status_without_reference",
+      "reason": "hypothesis_status_without_reference"
+    }
+  },
+  {
+    "case_id": "v3-10476d72a749a8ba01",
+    "repeat": 1,
+    "stage": 0,
+    "error": {
+      "type": "LLMError",
+      "code": null,
+      "reason": "http_401"
+    }
+  },
+  {
+    "case_id": "v3-4095bca60f79290cae",
+    "repeat": 1,
+    "stage": 1,
+    "error": {
+      "type": "OutputFailure",
+      "code": "statement_inconsistent_with_extraction",
+      "reason": "statement_inconsistent_with_extraction"
+    }
+  }
+]

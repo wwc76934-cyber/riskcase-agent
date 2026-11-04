@@ -116,13 +116,18 @@ def execute(directory,*,live=False,client_factory=None):
         contract_factory=contracts[proposal['delivery_contract']]
     grant=load(directory/'authorization.json')  # Never infer from remaining money.
     ledger=PilotLedger(Path(frozen['project_ledger_path']),directory/'proposal.json',grant)
-    policy=load(ROOT/'config/siliconflow-world-v2.json');policy.update(max_requests=2,max_input_bytes=20000,run_budget_cny='.50',
+    transport=proposal.get('transport_contract')
+    if transport not in (None,'v33-strict-json-schema-v1'):raise ValueError('Unknown frozen transport')
+    policy=load(ROOT/'config/siliconflow-world-v2.json');policy.update(max_requests=2,max_input_bytes=(24000 if transport else 20000),run_budget_cny='.50',
         project_budget_cny='34',request_timeout_seconds=90,run_deadline_seconds=480,
         pricing_checked_on=proposal['price']['checked_on'],pricing_source=proposal['price']['source'])
     kind='injected_transport_test_NOT_model_evidence' if client_factory else 'separately_authorized_external_client'
     if client_factory is None:
         from app.cli.investigate_live import local_key
         from app.llm.siliconflow_client import SiliconFlowClient
+        if transport:
+            from app.investigation.v3.schema_client import SchemaDeliveryClient
+            SiliconFlowClient=SchemaDeliveryClient
         key=local_key()
         if not key:raise ValueError('Credential unavailable; no requests sent')
         client_factory=lambda scope,run,settings:SiliconFlowClient(key,policy=settings,ledger=scope,run_id=run)

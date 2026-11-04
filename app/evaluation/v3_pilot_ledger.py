@@ -12,16 +12,16 @@ from app.llm.cost_ledger import CostLedger,BudgetExceeded
 
 def validate_grant(proposal,grant,proposal_sha256):
     kind=proposal.get('schema')
-    if kind not in ('v3-new-development-delivery-pilot-v1','v3-typed-repair-amendment-v1','v32-report-plan-development-v1'):raise ValueError('New V3 pilot proposal required')
+    if kind not in ('v3-new-development-delivery-pilot-v1','v3-typed-repair-amendment-v1','v32-report-plan-development-v1','v33-schema-development-v1'):raise ValueError('New V3 pilot proposal required')
     required={'state','grant_message','proposal_sha256','max_estimated_cny','project_limit_cny'}
     if set(grant)!=required or grant['state']!='approved' or not grant['grant_message'] or grant['proposal_sha256']!=proposal_sha256:
         raise ValueError('Explicit new user grant bound to this proposal required')
     if proposal['state']!='pending_user_authorization' or proposal['grant_message'] is not None:raise ValueError('Original pending proposal is immutable')
-    limits=('3','34') if kind=='v32-report-plan-development-v1' else ('6','34')
+    limits=('3','34') if kind in ('v32-report-plan-development-v1','v33-schema-development-v1') else ('6','34')
     if grant['max_estimated_cny']!=proposal['max_estimated_cny'] or grant['project_limit_cny']!=proposal['project_limit_cny'] or (grant['max_estimated_cny'],grant['project_limit_cny'])!=limits:
         raise ValueError('This pilot needs the separately approved '+('/'.join(limits))+' scope')
     bounds=({'max_case_runs':12,'max_phase_jobs':36,'max_requests':72,'repeats':2,'max_requests_per_phase':2,'max_requests_per_case_run':6}
-        if kind in ('v3-new-development-delivery-pilot-v1','v32-report-plan-development-v1') else {'max_case_runs':6,'max_phase_jobs':18,'max_requests':36,'repeats':1,'max_requests_per_phase':2,'max_requests_per_case_run':6})
+        if kind in ('v3-new-development-delivery-pilot-v1','v32-report-plan-development-v1','v33-schema-development-v1') else {'max_case_runs':6,'max_phase_jobs':18,'max_requests':36,'repeats':1,'max_requests_per_phase':2,'max_requests_per_case_run':6})
     if any(proposal[k]!=v for k,v in bounds.items()) or len(set(proposal['case_ids']))!=6 or len(proposal['case_ids'])!=6:
         raise ValueError('Frozen pilot counts required')
     if proposal['model']!='zai-org/GLM-5.3-Flash' or proposal['max_case_estimated_cny']!='.50':raise ValueError('Model/case allowance changed')
@@ -29,6 +29,8 @@ def validate_grant(proposal,grant,proposal_sha256):
         raise ValueError('Frozen repair request and unchanged whole-round bounds required')
     if kind=='v32-report-plan-development-v1' and (proposal.get('max_input_bytes')!=20000 or proposal.get('max_request_reservation_cny')!='0.031104' or proposal.get('delivery_contract')!='v32-coded-report-plan-v1'):
         raise ValueError('Frozen coded-plan profile required')
+    if kind=='v33-schema-development-v1' and (proposal.get('max_input_bytes')!=24000 or proposal.get('max_request_reservation_cny')!='0.034304' or proposal.get('delivery_contract')!='v32-coded-report-plan-v1' or proposal.get('transport_contract')!='v33-strict-json-schema-v1'):
+        raise ValueError('Frozen schema transport profile required')
 
 
 class PilotLedger(CostLedger):

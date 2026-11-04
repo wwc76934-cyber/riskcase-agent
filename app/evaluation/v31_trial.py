@@ -10,7 +10,7 @@ from app.service.store import JobStore
 from app.service.v3_sources import SourceAccess
 from app.investigation.v3.rule_workflow import collect_rule_workflow
 
-def bound(ledger,*,report_contract_factory=V31ReviewContract):
+def bound(ledger,*,report_contract_factory=V31ReviewContract,response_format_factory=None):
     contract=report_contract_factory(ledger.target_id);schema=contract.extraction_schema(ledger);facts=[]
     for branch in schema['properties']['facts']['items'].get('anyOf',[]):
         p=branch['properties'];handles=p['refs']['items']['enum'];fact=dict(predicate=p['predicate']['const'],refs=handles[:3])
@@ -20,6 +20,8 @@ def bound(ledger,*,report_contract_factory=V31ReviewContract):
     import json
     requests=[request_for('extract',schema,ledger.model_context(),rules=contract.rules_for('extract')),
         request_for('report',contract.schema_for(extraction,ledger),contract.context_for(extraction,ledger),rules=contract.rules_for('report'))]
+    if response_format_factory:
+        requests=[dict(r,response_format=response_format_factory(r['messages'],r.get('tools'))) for r in requests]
     return max(len(json.dumps(r,ensure_ascii=False).encode())+1024 for r in requests)
 
 def prepare(parent,dataset,output,book,*,report_contract_factory=V31ReviewContract):
