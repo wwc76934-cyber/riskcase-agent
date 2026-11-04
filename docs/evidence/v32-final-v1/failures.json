@@ -1,0 +1,72 @@
+[
+  {
+    "case_id": "v3-0f8ad5c54ab33e3b99",
+    "repeat": 1,
+    "stage": 1,
+    "error": {
+      "type": "OutputFailure",
+      "code": "model_schema",
+      "reason": "model_schema"
+    }
+  },
+  {
+    "case_id": "v3-0f8ad5c54ab33e3b99",
+    "repeat": 2,
+    "stage": 0,
+    "error": {
+      "type": "OutputFailure",
+      "code": "model_schema",
+      "reason": "model_schema"
+    }
+  },
+  {
+    "case_id": "v3-10476d72a749a8ba01",
+    "repeat": 1,
+    "stage": 0,
+    "error": {
+      "type": "LLMError",
+      "code": null,
+      "reason": "http_401"
+    }
+  },
+  {
+    "case_id": "v3-4095bca60f79290cae",
+    "repeat": 1,
+    "stage": 2,
+    "error": {
+      "type": "OutputFailure",
+      "code": "model_schema",
+      "reason": "model_schema"
+    }
+  },
+  {
+    "case_id": "v3-696b84e092d689a014",
+    "repeat": 2,
+    "stage": 1,
+    "error": {
+      "type": "OutputFailure",
+      "code": "model_schema",
+      "reason": "model_schema"
+    }
+  },
+  {
+    "case_id": "v3-6d35eb9f74124bfa57",
+    "repeat": 1,
+    "stage": 2,
+    "error": {
+      "type": "OutputFailure",
+      "code": "model_schema",
+      "reason": "model_schema"
+    }
+  },
+  {
+    "case_id": "v3-6d35eb9f74124bfa57",
+    "repeat": 2,
+    "stage": 0,
+    "error": {
+      "type": "OutputFailure",
+      "code": "model_schema",
+      "reason": "model_schema"
+    }
+  }
+]

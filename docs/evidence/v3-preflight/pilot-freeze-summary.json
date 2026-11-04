@@ -1,0 +1,9 @@
+{
+  "proposal_sha256": "df44cf370080753542f945d3854a8b483f17fa11d9d6d3cb56136938210ea4cf",
+  "freeze_sha256": "361ce472209f4480e4c5c164ac40e84374a17eae17b059fc038e06f928c46051",
+  "source_files": 46,
+  "controller_references_sent_to_model": false,
+  "user_authorization_file_exists": false,
+  "state": "frozen_preflight_NOT_authorized",
+  "formal_test_started": false
+}

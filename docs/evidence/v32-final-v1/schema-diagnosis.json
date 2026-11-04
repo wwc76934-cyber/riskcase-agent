@@ -1,0 +1,126 @@
+[
+  {
+    "path": "v3-model-records\\job-050bacb8a59942f381b953c12a2bac6f-delivery-T2\\response-02.json",
+    "stage": "report",
+    "errors": [
+      {
+        "path": [
+          "investigation",
+          "summary"
+        ],
+        "rule": "maxLength",
+        "message": "'Authentication succeeded on the target payment but that log records no cardholder intent. The customer first denied authorization citing a missing order, then retracted the certainty of that denial in a later superseding statement while still unable to confirm approval, leaving the customer-source position unresolved. The retraction is conditional and does not affirm the charge, so the case needs analyst review plus order-document recovery; no fraud finding or closure is possible without outcome evidence.' is too long"
+      }
+    ]
+  },
+  {
+    "path": "v3-model-records\\job-206d25eeded642c78f8931520796c639-delivery-T0\\response-02.json",
+    "stage": "report",
+    "errors": [
+      {
+        "path": [
+          "investigation",
+          "recommendations",
+          3
+        ],
+        "rule": "anyOf",
+        "message": "{'fact_ids': ['V1', 'V2'], 'reason': 'payment-Q 与目标支付时间相邻，应保留完整时间线供人工比对', 'action_code': 'A7'} is not valid under any of the given schemas"
+      }
+    ]
+  },
+  {
+    "path": "v3-model-records\\job-3f1ba7f757614e988175211ed6c26e4a-delivery-T0\\response-02.json",
+    "stage": "report",
+    "errors": [
+      {
+        "path": [
+          "investigation",
+          "recommendations",
+          3
+        ],
+        "rule": "anyOf",
+        "message": "{'fact_ids': ['V1', 'V2'], 'reason': '目标支付前存在同用户另一笔支付，应保留完整时间线以便关联分析。', 'action_code': 'A7'} is not valid under any of the given schemas"
+      }
+    ]
+  },
+  {
+    "path": "v3-model-records\\job-e700648dca614f9ca887c070a3b46a49-delivery-T1\\response-02.json",
+    "stage": "report",
+    "errors": [
+      {
+        "path": [
+          "investigation",
+          "recommendations",
+          3
+        ],
+        "rule": "anyOf",
+        "message": "{'fact_ids': ['F2'], 'reason': 'Collect related transaction context and merchant-side records to corroborate or weaken the transaction-specific denial.', 'action_code': 'G7'} is not valid under any of the given schemas"
+      }
+    ]
+  },
+  {
+    "path": "v3-model-records\\job-e70ef432a1564459a82755d638d2607c-delivery-T1\\response-02.json",
+    "stage": "report",
+    "errors": [
+      {
+        "path": [
+          "investigation",
+          "hypotheses",
+          0
+        ],
+        "rule": "additionalProperties",
+        "message": "Additional properties are not allowed ('timeline_refs' was unexpected)"
+      },
+      {
+        "path": [
+          "investigation",
+          "hypotheses",
+          1
+        ],
+        "rule": "additionalProperties",
+        "message": "Additional properties are not allowed ('timeline_refs' was unexpected)"
+      },
+      {
+        "path": [
+          "investigation",
+          "hypotheses",
+          2
+        ],
+        "rule": "additionalProperties",
+        "message": "Additional properties are not allowed ('timeline_refs' was unexpected)"
+      },
+      {
+        "path": [
+          "investigation",
+          "recommendations",
+          1,
+          "action_code"
+        ],
+        "rule": "const",
+        "message": "'A1' was expected"
+      }
+    ]
+  },
+  {
+    "path": "v3-model-records\\job-ec85d6293d984030b48dbdad6cd626dd-delivery-T2\\response-02.json",
+    "stage": "report",
+    "errors": [
+      {
+        "path": [
+          "investigation",
+          "summary"
+        ],
+        "rule": "maxLength",
+        "message": "\"For the target payment, authentication succeeded but the authentication source records no cardholder intent. The customer's latest statement (version 2, superseding version 1) denies authorizing it and explicitly does not evaluate the earlier payment; the earlier statement also denied having agreed. The customer-source position is therefore a denial of authorization, historically retaining the earlier unresolved reading. No retraction exists in the acquired text, and no outcome evidence is available, so the case goes to an analyst with corrobo"
+      },
+      {
+        "path": [
+          "source_statement",
+          "rationale"
+        ],
+        "rule": "maxLength",
+        "message": "'The latest applicable customer source (C4, version 2, superseding C3) states the target payment was not permitted by the customer, which is a matching customer_authorization observation for this target. The earlier version-1 statement likewise denied having agreed. Authentication success (F1) is recorded but does not prove intent, per the authentication source itself. Historical versions are retained without backfilling; the denial is the qualified customer-source position, not proof of actual fraud.' is too long"
+      }
+    ]
+  }
+]

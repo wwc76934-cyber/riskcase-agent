@@ -1,0 +1,20 @@
+{
+  "commit_sha": "39a5baf06b2b19a1bb56531edecd32969bc4dc89",
+  "run_id": 41790665213,
+  "url": "https://github.com/wwc76934-cyber/riskcase-agent/actions/runs/41790665213",
+  "jobs": [
+    {
+      "conclusion": "success",
+      "platform": "ubuntu-latest",
+      "passed": 1173,
+      "id": 126443026783
+    },
+    {
+      "conclusion": "success",
+      "platform": "windows-latest",
+      "passed": 1173,
+      "id": 126443026364
+    }
+  ],
+  "scope": "Additive coded-report recovery controller, offline full regression; not real model reliability success"
+}

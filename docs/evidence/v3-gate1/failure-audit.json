@@ -1,0 +1,565 @@
+{
+  "schema": "v3-historical-readonly-audit-v1",
+  "total": 180,
+  "failed": 108,
+  "accepted": 72,
+  "groups": {
+    "B1": {
+      "runs": 60,
+      "delivered": 24,
+      "delivery_rate": 0.4,
+      "full_sample_Q": 0.37705358333333333,
+      "delivered_only_Q": 0.9426339583333333,
+      "strict_full": 0.23333333333333334,
+      "strict_given_delivery": 0.5833333333333334
+    },
+    "B2": {
+      "runs": 60,
+      "delivered": 24,
+      "delivery_rate": 0.4,
+      "full_sample_Q": 0.35526783333333334,
+      "delivered_only_Q": 0.8881695833333333,
+      "strict_full": 0.15,
+      "strict_given_delivery": 0.375
+    },
+    "B3": {
+      "runs": 60,
+      "delivered": 24,
+      "delivery_rate": 0.4,
+      "full_sample_Q": 0.3736011833333333,
+      "delivered_only_Q": 0.9340029583333334,
+      "strict_full": 0.23333333333333334,
+      "strict_given_delivery": 0.5833333333333334
+    }
+  },
+  "primary_counts": {
+    "citation_or_source_role": 67,
+    "request_or_tool_budget": 17,
+    "provider_timeout_or_empty": 12,
+    "repetition_no_progress": 6,
+    "json_schema": 6
+  },
+  "multilabel_counts": {
+    "json_schema": 22,
+    "citation_or_source_role": 69,
+    "business_reference_mismatch": 30,
+    "missing_key_evidence": 10,
+    "invalid_tool_selection": 51,
+    "repetition_no_progress": 6,
+    "provider_timeout_or_empty": 12,
+    "request_or_tool_budget": 17,
+    "recovery_or_transport": 0
+  },
+  "representatives": {
+    "json_schema": {
+      "case_id": "world-031",
+      "condition": "B3",
+      "reason": "request_limit",
+      "primary": "request_or_tool_budget",
+      "issues": [],
+      "schema_error": {
+        "path": [],
+        "rule": "required"
+      },
+      "unread_required_original_count": 0,
+      "phase": "model",
+      "turn": 6,
+      "tool_trace": [
+        {
+          "tool": "inquiry_overview",
+          "ok": true
+        },
+        {
+          "tool": "world_sources",
+          "ok": true
+        },
+        {
+          "tool": "world_materials",
+          "ok": true
+        },
+        {
+          "tool": "inquiry_rows",
+          "ok": true
+        }
+      ],
+      "provider_stop_code": null,
+      "original_result_sha256": "7f70af64e3f6ce7e5ca55e4de7954ac1289b29a353ea3dd567a6f9dc27d3c2be",
+      "content_omitted_for_minimal_disclosure": true
+    },
+    "citation_or_source_role": {
+      "case_id": "world-031",
+      "condition": "B1",
+      "reason": "DraftError",
+      "primary": "citation_or_source_role",
+      "issues": [
+        {
+          "kind": "timeline",
+          "message": "Timeline transaction was not read"
+        },
+        {
+          "kind": "timeline",
+          "message": "Timeline transaction was not read"
+        },
+        {
+          "kind": "timeline",
+          "message": "Timeline transaction was not read"
+        },
+        {
+          "kind": "timeline",
+          "message": "Timeline transaction was not read"
+        }
+      ],
+      "schema_error": null,
+      "unread_required_original_count": 0,
+      "phase": "finalize",
+      "turn": 2,
+      "tool_trace": [
+        {
+          "tool": "inquiry_overview",
+          "ok": true
+        },
+        {
+          "tool": "world_materials",
+          "ok": true
+        }
+      ],
+      "provider_stop_code": null,
+      "original_result_sha256": "f7e977a20ec3296b419279f33067d28af9b2752c68010a39f707b9e1a8fa59a0",
+      "content_omitted_for_minimal_disclosure": true
+    },
+    "business_reference_mismatch": {
+      "case_id": "world-031",
+      "condition": "B2",
+      "reason": "DraftError",
+      "primary": "citation_or_source_role",
+      "issues": [
+        {
+          "kind": "citation",
+          "message": "Read original; catalog entry is not a content citation"
+        }
+      ],
+      "schema_error": null,
+      "unread_required_original_count": 0,
+      "phase": "finalize",
+      "turn": 6,
+      "tool_trace": [
+        {
+          "tool": "inquiry_overview",
+          "ok": true
+        },
+        {
+          "tool": "world_sources",
+          "ok": true
+        },
+        {
+          "tool": "world_read",
+          "ok": true
+        },
+        {
+          "tool": "world_read",
+          "ok": true
+        },
+        {
+          "tool": "world_read",
+          "ok": true
+        },
+        {
+          "tool": "world_read",
+          "ok": true
+        },
+        {
+          "tool": "world_read",
+          "ok": true
+        },
+        {
+          "tool": "world_materials",
+          "ok": true
+        }
+      ],
+      "provider_stop_code": null,
+      "original_result_sha256": "d629fab4215ce9c737c8a0b28e7bb50ae6cd2bfcad9d7c247820c6909253b439",
+      "content_omitted_for_minimal_disclosure": true
+    },
+    "missing_key_evidence": {
+      "case_id": "world-042",
+      "condition": "B2",
+      "reason": "no_progress_repeated_call",
+      "primary": "repetition_no_progress",
+      "issues": [],
+      "schema_error": null,
+      "unread_required_original_count": 3,
+      "phase": "tools",
+      "turn": 5,
+      "tool_trace": [
+        {
+          "tool": "inquiry_overview",
+          "ok": true
+        },
+        {
+          "tool": "world_sources",
+          "ok": true
+        }
+      ],
+      "provider_stop_code": null,
+      "original_result_sha256": "837ec34b0c44a82e65dba0da8256be5eb8bf1ecd8e96259448370f72c441bb23",
+      "content_omitted_for_minimal_disclosure": true
+    },
+    "invalid_tool_selection": {
+      "case_id": "world-031",
+      "condition": "B2",
+      "reason": "DraftError",
+      "primary": "citation_or_source_role",
+      "issues": [
+        {
+          "kind": "citation",
+          "message": "Read original; catalog entry is not a content citation"
+        }
+      ],
+      "schema_error": null,
+      "unread_required_original_count": 0,
+      "phase": "finalize",
+      "turn": 6,
+      "tool_trace": [
+        {
+          "tool": "inquiry_overview",
+          "ok": true
+        },
+        {
+          "tool": "world_sources",
+          "ok": true
+        },
+        {
+          "tool": "world_read",
+          "ok": true
+        },
+        {
+          "tool": "world_read",
+          "ok": true
+        },
+        {
+          "tool": "world_read",
+          "ok": true
+        },
+        {
+          "tool": "world_read",
+          "ok": true
+        },
+        {
+          "tool": "world_read",
+          "ok": true
+        },
+        {
+          "tool": "world_materials",
+          "ok": true
+        }
+      ],
+      "provider_stop_code": null,
+      "original_result_sha256": "d629fab4215ce9c737c8a0b28e7bb50ae6cd2bfcad9d7c247820c6909253b439",
+      "content_omitted_for_minimal_disclosure": true
+    },
+    "repetition_no_progress": {
+      "case_id": "world-042",
+      "condition": "B2",
+      "reason": "no_progress_repeated_call",
+      "primary": "repetition_no_progress",
+      "issues": [],
+      "schema_error": null,
+      "unread_required_original_count": 3,
+      "phase": "tools",
+      "turn": 5,
+      "tool_trace": [
+        {
+          "tool": "inquiry_overview",
+          "ok": true
+        },
+        {
+          "tool": "world_sources",
+          "ok": true
+        }
+      ],
+      "provider_stop_code": null,
+      "original_result_sha256": "837ec34b0c44a82e65dba0da8256be5eb8bf1ecd8e96259448370f72c441bb23",
+      "content_omitted_for_minimal_disclosure": true
+    },
+    "provider_timeout_or_empty": {
+      "case_id": "world-032",
+      "condition": "B3",
+      "reason": "unresolved_call",
+      "primary": "provider_timeout_or_empty",
+      "issues": [],
+      "schema_error": null,
+      "unread_required_original_count": 0,
+      "phase": "model",
+      "turn": 3,
+      "tool_trace": [
+        {
+          "tool": "inquiry_overview",
+          "ok": true
+        },
+        {
+          "tool": "world_sources",
+          "ok": true
+        },
+        {
+          "tool": "world_read",
+          "ok": true
+        },
+        {
+          "tool": "world_read",
+          "ok": true
+        },
+        {
+          "tool": "world_read",
+          "ok": true
+        },
+        {
+          "tool": "world_read",
+          "ok": true
+        },
+        {
+          "tool": "world_read",
+          "ok": true
+        },
+        {
+          "tool": "world_read",
+          "ok": true
+        }
+      ],
+      "provider_stop_code": "Assistant message has no content or tool calls",
+      "original_result_sha256": "256d599f3d964d1a4de85dac17d3080e400a6265de8d60d24b23ccfae4df7e0b",
+      "content_omitted_for_minimal_disclosure": true
+    },
+    "request_or_tool_budget": {
+      "case_id": "world-031",
+      "condition": "B3",
+      "reason": "request_limit",
+      "primary": "request_or_tool_budget",
+      "issues": [],
+      "schema_error": {
+        "path": [],
+        "rule": "required"
+      },
+      "unread_required_original_count": 0,
+      "phase": "model",
+      "turn": 6,
+      "tool_trace": [
+        {
+          "tool": "inquiry_overview",
+          "ok": true
+        },
+        {
+          "tool": "world_sources",
+          "ok": true
+        },
+        {
+          "tool": "world_materials",
+          "ok": true
+        },
+        {
+          "tool": "inquiry_rows",
+          "ok": true
+        }
+      ],
+      "provider_stop_code": null,
+      "original_result_sha256": "7f70af64e3f6ce7e5ca55e4de7954ac1289b29a353ea3dd567a6f9dc27d3c2be",
+      "content_omitted_for_minimal_disclosure": true
+    },
+    "recovery_or_transport": {
+      "observed": false,
+      "reason": "No attributable record; do not fabricate an example"
+    }
+  },
+  "original_db_sha256": "9ae72a44a30bdde93a6533cb1ba5c47d1d7e4e46ce56175a376c3d9f7ded0f17",
+  "original_inputs_unchanged": true,
+  "external_model_requests": 0,
+  "external_expert_validation": false,
+  "limits": [
+    "primary is observed stop mechanism, not proven causal root cause",
+    "tags overlap; counts must not be added",
+    "business mismatch uses old finite author reference only",
+    "missing required source is not proof of irrational planning",
+    "draft diagnostics are not accepted reports"
+  ],
+  "source_result_hashes": {
+    "phases\\main-01\\job-1577089b7f2f483e9d58f3c40898a3f0-result.json": "f7e977a20ec3296b419279f33067d28af9b2752c68010a39f707b9e1a8fa59a0",
+    "phases\\main-01\\job-245e2ae1268f4e90a8803c8d472ad63e-result.json": "d629fab4215ce9c737c8a0b28e7bb50ae6cd2bfcad9d7c247820c6909253b439",
+    "phases\\main-01\\job-0474acf3e9524749b3622814d7cea0e0-result.json": "7f70af64e3f6ce7e5ca55e4de7954ac1289b29a353ea3dd567a6f9dc27d3c2be",
+    "phases\\main-01\\job-9ad96d11db6740be9bbfabc2a0ae0191-result.json": "7b726cdf269d8ae3bf60a4eb29c953e1b9b28490050040e4fa35b6c0af66cf6b",
+    "phases\\main-01\\job-e22cec9219424aaea32723697426b281-result.json": "6f82be12308d3aec7031c6acc5d42b26cc85eae02810c7902e93d269ed51a694",
+    "phases\\main-01\\job-177e606ba8184f28b34de7ca89d239aa-result.json": "256d599f3d964d1a4de85dac17d3080e400a6265de8d60d24b23ccfae4df7e0b",
+    "phases\\main-01\\job-021b32d439e74020ab581840acfd0739-result.json": "d8c06965c95e30cc7c9a149cf58da52633b864ab9b7be73f9fb882d5f90445e9",
+    "phases\\main-01\\job-76191a0106c5411abc5ccc60859ce9f4-result.json": "5ca94e3c04f450a6f9bb41277430458e1066151404206ac90cbf175b531bc5e7",
+    "phases\\main-01\\job-90f81acafd4f40eeb9edb4dcf7da05a2-result.json": "55f3394ac5f6592e0095993a5bf6ce2c2f2336ba19f1e1a4ede31904b5baa5ac",
+    "phases\\main-01\\job-effb96f741624c80b45cb53543b5f83f-result.json": "f61f42b6e78fca9e6cfdb7e138bef02009997055f620a983366eec77ff215762",
+    "phases\\main-01\\job-4652b021d7654272857abb46f46d3cfa-result.json": "de821c2a227e774881db874139a0bb6e4738642815e6f7c9066e2dba468666a3",
+    "phases\\main-01\\job-e89f5dd5a2934a4eb6156bf93d2f8893-result.json": "56824175c2a6bec24498582c6ba7df1f193316c18e10e1fc17229ba1c6651dcd",
+    "phases\\main-01\\job-a7db5df4fd8d43ae8f634a29b81d5bd1-result.json": "a6c425b183f34466f1fbf263d3446863404a52a73f8a48a4d19f0c3b9aa8fefa",
+    "phases\\main-01\\job-f0a083ea0d3047599bf98f0e521cbeaf-result.json": "34e91e2316e42676b3c6acccb638ec6202bdd2aabfd0df77dd3dbbd95c0776de",
+    "phases\\main-01\\job-07aba34f32bd4c56ad6417c5b3ca08f3-result.json": "29c2ace01831471666b13903a2d1aeae49026a75f56f345c185f02dd6c38e3c6",
+    "phases\\main-01\\job-8c89f335567540b2b9c7ff80c39623cb-result.json": "63c1793e197857ff026c36712b8fe0a1c88345f2cb817ad8a2cae7d5f2190024",
+    "phases\\main-01\\job-82ff6eb518744f35ae645ee51d8da273-result.json": "585a3236e25ba004dacbd007173c5cdee0b133ef654dc4d25a4a73839e3eed9b",
+    "phases\\main-01\\job-c502eed71e4f4bdfb4cce1addb17feb4-result.json": "23f5c2f4e7615b6ef3ab85f46cab2d63737b28b566a500725b7ebe507a83d6e7",
+    "phases\\main-01\\job-331c0109c2d94c8abef97243490bf488-result.json": "7a713b42afbecd339b245c092db8f2686e13ff7ba2024ddc9b19d93dbbe1aedf",
+    "phases\\main-01\\job-c3be65f6e8e246a7929a4f41b098ff16-result.json": "639315f400e933402e5f38715926469b17c51e52b0e309f5723de6ddf86bd729",
+    "phases\\main-01\\job-af18569cade24c11984b369939ca7bb5-result.json": "e6eef5a24002ab92f2d77144cb22532883d58e033f644efd593b6b2fff01a784",
+    "phases\\main-01\\job-1dd95e042f3f44948e1bdf64aa7065eb-result.json": "4f7ed336e1b12318908975bcf3ba7452f873777fe6b8dcc9eafee07d28048a78",
+    "phases\\main-01\\job-61ac72ef5b90463981bc4c315f786dbe-result.json": "23bb31f62d9119648ff1b301e141a29f6a889001afffdbb509e5cc621f26649a",
+    "phases\\main-01\\job-4ed6516913144fdea185f0194d0da1f9-result.json": "8c0c0668fadd4b2f7393e87dc87f0bff5df674dfe1c729f00da693f2031845c7",
+    "phases\\main-01\\job-05cb6fe047d149e98db1552e3687f061-result.json": "309cb5cc537b18b8dd4173ba10aa401062f98930efe4c5a11de7cd54ec0007cc",
+    "phases\\main-01\\job-3371f481ade742839348789a0fd69fcc-result.json": "dd5231021c7dd0d955288ab3e7b69dacaa5e53211a3c2c45feb4defe2afb7699",
+    "phases\\main-01\\job-11e8be47954341ba840b7c9f954416a3-result.json": "0afbbe45dc7a7d4e99e824d8ff89abeb84c58bb143c26e4ac659209ffdc32f1a",
+    "phases\\main-01\\job-01fb75bf305c4f939001589117f5bc05-result.json": "e3ea5dc592df0c900c9f4f1d99594bd9907e77bde349f2e77a665c9cda4175c2",
+    "phases\\main-01\\job-5c9faad3cd104c0b830b39797d80f6ef-result.json": "260847f64c742d583a072e0a4e42c48675b22fe7aade98636c45f73e85c41a7a",
+    "phases\\main-01\\job-0611b39d4584431e9962b4ab0a873818-result.json": "a131dc5b6bdd4077135d9d8ca41b05c1e6ec33ff14278cfaf4e7954c57ef6981",
+    "phases\\main-01\\job-19761ba3c0a94007b47f4cbf936d4a1e-result.json": "bfae5f9cc4938a62ba43518913e1919c8114b1e0b68c562e24070ee85155ee5a",
+    "phases\\main-01\\job-7bc362f28e59408d85ed54dadc25a466-result.json": "a7ed79a23f3f6ee05893a0717bb0b80abec95d9b9d3224632e6037be3b2178b8",
+    "phases\\main-01\\job-ea2fbb751c544e7db76a2ad2cbdede77-result.json": "41f6ac4f42c8374f29b6a5f886268a159fef4229d2fd1b9fb15870bdec2a7bbf",
+    "phases\\main-01\\job-14ee5bc2f4214b5f850204624d3afbff-result.json": "45541e7f8c9b9024eab767c88b224201cd4cdcc69c1b7299095f019d08bd3ea1",
+    "phases\\main-01\\job-60dc6b94f3c74bcc95108fa45b301995-result.json": "837ec34b0c44a82e65dba0da8256be5eb8bf1ecd8e96259448370f72c441bb23",
+    "phases\\main-01\\job-d9051040a1994ab5aed3998b4ea037a6-result.json": "815ab1dc756b71f624f9ad8ee27703a35152ce04fabc97014164e67acd5b44b2",
+    "phases\\main-01\\job-36ef25db70734ebc8112cc08c2b7454f-result.json": "eb7760a669641f44df59bf355a9adad01eee679f0aef0134b880fc468b53587f",
+    "phases\\main-01\\job-52821816ef6540ccbed6396f748e04dd-result.json": "f75cc4027df4c9ca6335ad09b73f6ac3d09e326b8df06f38d2ba53e374aec3ba",
+    "phases\\main-01\\job-ded122e1e4b0472692397939cdea9729-result.json": "2022efd72349c8273b53f204fc1b5fc386864c3805d965094f8b83e2cbb118a4",
+    "phases\\main-01\\job-d7035f5640f04fef8a8bf369e423587b-result.json": "9fa738549299b2a6fe319c0a059b747508e2e5f8631465dde0fce8cec5f9a80e",
+    "phases\\main-01\\job-4621b5d8f5d54921b50954515b47f0a2-result.json": "d21613e2ef48863c16ae585ac4bf11197386ab75e502aeef4acfb3c30318bcae",
+    "phases\\main-01\\job-3e764326cbf74e60b7a3e7e27b26b2cb-result.json": "820e3faa194cbf92521e80ae0cdb1e9b9fe1a049507a1729ca774ace354b6e3a",
+    "phases\\main-01\\job-45e360b69c6c469489ee2189b80db660-result.json": "51ae434fc17670100ece2c8bbf21d242e57f19eca2e63de2f800ba304528e346",
+    "phases\\main-01\\job-a99d9f70dc6f41e7b9534618ebad3895-result.json": "a110890d8c530afeeba7b5796bb3513abd3393b9d501589890adb5a97d02c417",
+    "phases\\main-01\\job-5f169ff30c4448568c683fbb597f386d-result.json": "9d2b35318f1b8054b3e006fc2d80e16632ecfef9c8471f58156974a43ebda4e5",
+    "phases\\main-01\\job-00a81e9a161d4f828b305265a63d686b-result.json": "4886b732cc1ad9d960286d4548972c21745e4d427674e3f6e3bc6cd73d032913",
+    "phases\\main-01\\job-ecb833df6ffe4bcdbf521d8bf91cbf22-result.json": "8f0adbe587b68a6a035383d1b1b22c9128afcce273782a7d9a8aed54c51c777e",
+    "phases\\main-01\\job-74771a779cd541e5b649cf11f19463f5-result.json": "ccf31232d481768cda7248d690208152cfdcd0b09c71867df3e5f1f523554c8b",
+    "phases\\main-01\\job-332aedf224c04f25904c45350376d606-result.json": "27060f9c80f201d8b914ef56725c56a45b21ddf5eff314358643c171a9208312",
+    "phases\\main-01\\job-fb31daa263e34161b5820cdb35c71c18-result.json": "1db01471fa299b7911beedfafdd1b19492b0d211e1c86edd8ab6481bc88eceed",
+    "phases\\main-01\\job-b9b0ba35956a4a7c863c74ef5851cfd2-result.json": "a72a01fb26ef3c35b94670b5a0cf0fc2ba2e9d2bcf9b61da9ad929117b409c8d",
+    "phases\\main-01\\job-7164de6e7b604d3b8dad0fc5a3f8351d-result.json": "1913fa1cd6e7941d20f8abe62af2d739ad23ce05021818b22f9c48e12a716010",
+    "phases\\main-01\\job-ab400be60c8042a3b348a690d37c5e22-result.json": "b65def31ee55f6ea84d534cbc563654f9e2b667c17abf9eb91e77dff23709a12",
+    "phases\\main-01\\job-95f4265ac26d44a98237ed7df1bbc012-result.json": "8e4d41154fe3717144811190495c07664aba1ed14ea6a721282d7c148455001c",
+    "phases\\main-01\\job-3e6feeb20d284e75aff61fabbc7bb5bb-result.json": "6e27ce80cc7facea03f894fcc577e86a396ec278000177eae1bbef630bfd2e37",
+    "phases\\main-01\\job-0842df892acf43798f37047ecfdb207f-result.json": "0a53252b0b8b531e0107d54d05bd75d0842e151420507fc7ac39ba4a71108202",
+    "phases\\main-01\\job-b173b468845e4fcbb27444357bc7f7c0-result.json": "e93abeeae0c05b13f0391b0611656d796d277ed63f6d8bdfb29b4d3943aca97a",
+    "phases\\main-01\\job-816793c51f7e46908f4bc53f5788c7e0-result.json": "37696e6c5a59b5160a7b845881742a423a1847c6bec0c85afc5a62f9eab37220",
+    "phases\\main-01\\job-1da06e2d3f3e45e99c802c43e93089f1-result.json": "67bdef7e244572520b9437b452e71ae98da2abf0587e355eded4a252bd47d394",
+    "phases\\main-01\\job-651c98f53ab045fab54e9be39fc405aa-result.json": "ae9d2ad348a199d368ef5f580aed8789e284620a609acf96f1cdec01f1c9a8e2",
+    "phases\\main-01\\job-5b0fa5673bf7420b938ccdff95038124-result.json": "d33c6efcfaa94ee4424e0da2e3d889bf6394ceda34e0a480e7b116ca921c90a6",
+    "phases\\main-01\\job-e120cea3817c431da03104db68cbf490-result.json": "da7324c3bb2f469a068ef0612c67f95ad63fd8ad2f227a0d3a2db04c6f1ff1b2",
+    "phases\\main-01\\job-37f2484f59774c389005a812e3b37668-result.json": "735093c0c4f1f7f8270afa521fbd69fdd503be3b5498ed60d066b7c8400929c4",
+    "phases\\main-01\\job-3376d2d48b694ca9b1a87d8e1d39fa2a-result.json": "6063bc2f349f21933b9f7a57ac2f1a6e2bd49b50902b8cf03dd1160c45f5ae36",
+    "phases\\main-01\\job-478ba7c393714a9b847e29bcf29aad25-result.json": "57748218122cdcb22c9bb5957e37eb7d8688f94c9264c86de23fbbcb246ae612",
+    "phases\\main-01\\job-0a19e26e98ee43e39e7646edca2d1b47-result.json": "4f0061bc40590cfdf0a9c02f65349099fe97d1295cf312970b17f931efe84e18",
+    "phases\\main-01\\job-a1df104cff7b4a909249fa2f6c234b80-result.json": "056441635c525ae5de40831cbf42b1c1461c2792adf5d6e93e0bc8270de81334",
+    "phases\\main-01\\job-7f0b1af127234c1abef61653fe0be238-result.json": "204d71d3c4b7eabd8abc3237498aca41f35c127d3bc483cf3bc66353f6574587",
+    "phases\\main-01\\job-7382c600519a4ab59abe88f3488be6e6-result.json": "bbb339b1a0680a55f01c3abd82d212e7e2584785c03852b5334a554327d52a77",
+    "phases\\main-01\\job-5fcfa9417681406382970e065937ec56-result.json": "6fa91a44a9c338d1b49bd54226054d52a1bba4e9a09e364d9434cf30117607a6",
+    "phases\\main-01\\job-104fa1cc7e364b4584f1442e52d22a9e-result.json": "3d36de31b86d109125853e52f2b66483e04ac91a689e1229858891ce82270ba9",
+    "phases\\main-01\\job-5c932757b6224bbb8f30ce7ce30df836-result.json": "b39bc4fc87040d9a11d8183ede8477008dcd32305ac657951be9b0749acd23b5",
+    "phases\\main-01\\job-170042cc313a4980b60749413c55f1e6-result.json": "7324b07ce6063e1b6304a038f045d4857ff3a80a907db67d9c6cbbfee35dcb8e",
+    "phases\\main-01\\job-574e48189dd84afc8bbfcc9cced9ad54-result.json": "2caf46be4412f5c2f0d2f35d66a73c08af56bf3f83db3f23d4dba6af3bb444c3",
+    "phases\\main-01\\job-11254b4caf044324a733f8d68c0269ec-result.json": "99b409d7ea575d01960bbd4cade5f5e793b6f6cd7c9646b26b088f28eacd9b29",
+    "phases\\main-01\\job-80d34cbe88214334bc498f6633d7f2d9-result.json": "f0f400c9b4207a613045c0d963c9860abe957ace5e7606db4cc2f0af4f0f811e",
+    "phases\\main-01\\job-cc1b63851c4b4c2da5b0bf45e57484d9-result.json": "66a1c254f834b7472928476f199a077e030ccc82cc1ae9a20bbdf7e0525eebef",
+    "phases\\main-01\\job-80ce6f787b3f4ef28587e5cdd4c74a71-result.json": "90fa1670d638ff042e0fae9b9476ab84b4ae1dca6c8a73ba6456ae18659e59ee",
+    "phases\\main-01\\job-36b176f6893f421987d49d4f08df2208-result.json": "44ff9e898a3fc7b72d32953a7cbdad136e6981c9e4c095d5be3bf99d4dbef58a",
+    "phases\\main-01\\job-07da12fc55da4b2f8619ad8570399129-result.json": "b179b27ddccfe944e422946906efa48002a2fdac46c5362bfa09fce4cc0a37e5",
+    "phases\\main-01\\job-4e84c817c3b04fd5b4d9609b23de8abf-result.json": "cfb673e5cc02171eafef7958c80011ee45b722b476652a0895581334b1a74c74",
+    "phases\\main-01\\job-481dbfa5be7147e4b0e8db605d81f673-result.json": "3fc71aee1e46919cbb5d838f11bf40ea25ddb08c184bf1278abd550d7dafe0bf",
+    "phases\\main-01\\job-145c7855d3544c7cab974d2653a7e5f2-result.json": "8682b059179a69bf7474dfb959338780a7554e9964f2b607e3e72b54dc4a4d00",
+    "phases\\main-01\\job-d6b7a19ae81040b59195ff6e8931443f-result.json": "695bb78c6ab65457b2a41a6572966f5287bd53e36e5a54ac78fde42df6a5e1e1",
+    "phases\\main-01\\job-c3ea9c05ab04451f8f95a775ab752142-result.json": "1946d21a28e2dd92c2d6de97fb2649443b87ec144d37a832d92625dc09cdc697",
+    "phases\\main-01\\job-79df8ab047b84b958ff0b6ba0270a083-result.json": "dfa41dcec0e0cbed9d78e0cad090ce8c0e18bdf4c1f00e96f01e7583f2d6d41d",
+    "phases\\main-01\\job-871cb345bac94112a0b581886492b351-result.json": "59e31a5a2dcdc5b88c71428eda0afc69c8a877111ff486d03f3863efc42519f1",
+    "phases\\main-01\\job-c0d44e3df07b4c0c9e754568a21c3d8c-result.json": "34589dcac5ce9bdfb596955a910da09f41a77924c0211510baa388a4163e4013",
+    "phases\\main-01\\job-26c602a056f24e3284def6ea668d228a-result.json": "53a5df72b1205c6fa010e740be37d975d00f79e81f145c2daa7a673243c5442f",
+    "phases\\main-01\\job-efa19aca2345492e83c54588787443f7-result.json": "3aca5c765d55fe7fdfd12feab5baec130688c759f2948972be623f15ad9abdb0",
+    "phases\\main-01\\job-3691c2b6603247d08e3892dcf8b51061-result.json": "03fca76439522993fba7504a32d7881b31a060ef126402369e5cb02f35f45235",
+    "phases\\main-01\\job-8a443fc416d649fd90dd9a0d97ac6ac0-result.json": "a6aeb588138647fa7ed10c441ef17f9e942b200f53fa75c5818b2e3a864f94b2",
+    "phases\\main-01\\job-f9e6c1a6fd6a43f5a8c90e57eac9c08e-result.json": "7ca6178be2a75bf7fbddd15a854ae2d7bedebf8e3b67470106b67b7c46ed4e5c",
+    "phases\\main-01\\job-599e3dceabe64f869a986b50738a771f-result.json": "316bc3c87e83bd872638497977f928ff729a7fd04dc32e0f2a815a3db5a30482",
+    "phases\\main-01\\job-4b80280e6f974c18af197a21c9571d18-result.json": "e8d4ac512740b50a524d823cf6117780f2cfb1ca0fe02ce655b064bcf267732f",
+    "phases\\main-01\\job-64491dea9dee43c1bcaf326f838215a1-result.json": "ef8868bc86d4d281b1708e0de5d75fb8f63680d61fc2ef731278d5b9a28881cb",
+    "phases\\main-01\\job-f88bbffd953a4b739138fdae1d5fcd13-result.json": "831a239fc738447649d03fcd2fda169ff97a13a5a4f7f799817b657dc48b0893",
+    "phases\\main-01\\job-f8cb5a54c2b1472b91a1ce444d0fc8c9-result.json": "db862f9b3f1389b22b935d81ccf64c1f04ae84663a11c8ce1971882bd52bf786",
+    "phases\\main-finance-02\\job-e4e10c6a33924daab2f1629aea86e25d-result.json": "853d4330a515a1162f091f6142d3aed5a34675c781b842be441bdd32dbdebe58",
+    "phases\\main-finance-02\\job-c3e0f4a5194348abaa4164a4adcdc74d-result.json": "04a8648d24dfed0c212ca0f1137d91297c24c430f9b14fbdbfce79579e203571",
+    "phases\\main-finance-02\\job-e61af097d40e474bbf0db83d6f018a38-result.json": "2539541ab7adc651668e05fa7903ee711b91f18f33c73c11018f7555b2613311",
+    "phases\\main-finance-02\\job-0dfc4d5467d24830a42dd5614369b5e5-result.json": "227044e36554f414f2604ff5e56aef0fe909488f4df79f518087a7b4618f409b",
+    "phases\\main-finance-02\\job-580b49a293ce431b90fe7c95daaca496-result.json": "d9d89f1d4cb67bfde4e4063b3bf978a4568ef0bea051e03d7eb8398144ee7ec3",
+    "phases\\main-finance-02\\job-bd2496d890f344eb8949e88c414e4ea7-result.json": "79e7a7a1e8e152b4bf7047ffce772165ad42eac51973752327fe232e40c48843",
+    "phases\\main-finance-02\\job-fcbce6010f6d48728909318f27d4273e-result.json": "3cb0ef0aca13f74bebd0803cb1e0c61d64ccd0d066206c5f85ffff63208f6bf8",
+    "phases\\main-finance-02\\job-45e1b2c31dfa4e4088298a0b4ed9f6da-result.json": "f91954cbe9d6d2bb35b9347b672d54ddee95694c97727d6a981453818aea9290",
+    "phases\\main-finance-02\\job-2cd7dc9e8e024109966f0724caa38a4d-result.json": "decd2ed348fc7b2602a98de14bd212c6ebd4a9682322620c4d1bb833996b709c",
+    "phases\\main-finance-02\\job-2ec0db25eaf2478898b2d2f1fe47b61a-result.json": "0987a5e34a617fb7b1fde40d62339aa4ca90b11155acc0d4bb4f6af39ec38b95",
+    "phases\\main-finance-02\\job-cc2b6c38b4b441108572e07bd5bde590-result.json": "726efbc425ec305c7bacb98ae6be35721e169a199fb5ec27d2fb9cb6c6d8a45b",
+    "phases\\main-finance-02\\job-8e9d550ed8824b95a088a5388a79df8c-result.json": "b7d948b486e2547acc2027e904ec10c688edb56f3caa430b874b60412f5fd672",
+    "phases\\main-finance-02\\job-9c4de46de1a441b6ba7979c50b1fdc24-result.json": "9aedc6089122609a464c04f8638f7059545bd1591b10796ce3e0f93a669d397e",
+    "phases\\main-finance-02\\job-de381ff9bb414ee3bf44f895f4d0b5d2-result.json": "1485b1d48e57578e2d2886fadbe7f26ba361cc6c25016af236e347ff0f2768f2",
+    "phases\\main-finance-02\\job-5104fdba773d4729af36a6149879898a-result.json": "109126b87eb38233e9c68041be6dba0ed045b8491175dd887de50b76b973d050",
+    "phases\\main-finance-02\\job-f25c187c5a0d4867b832025a60cce929-result.json": "ddb822a9f612ae28963866c4ae26bbf6e70a5311a5c797e3d16c6cdbce49ef2c",
+    "phases\\main-finance-02\\job-9c3b072e45894137857f7236bad913bd-result.json": "1abecae517e07ed6df28a8c7a910b4676124c46832e941771d7911f5493fb489",
+    "phases\\main-finance-02\\job-60ce0972ac7d403e8bc7dfc2a1505e53-result.json": "c209a0dfae5631ea1a5ecd466bac57cc00716cb8b26e6821cb5bd3ac184dfa26",
+    "phases\\main-finance-02\\job-0629e24867e547fc9509ffeaebe4b76d-result.json": "3d1d1235cf5fa93375e2ca12cb56d50d30bf31c165a0c4bf21d011fc620713f4",
+    "phases\\main-finance-02\\job-9e3310117f1c48b0bde231cd4193cfe7-result.json": "f8d9cea408c296dba3d070d1b983fe6ae45db7ede8d00172af6ec9d86b1b7af9",
+    "phases\\main-finance-02\\job-6e8318fba63e45a5b8dcc0089aed9656-result.json": "dbd4cd8d6c8869ec15a15eee24d231a2eb717d130ea69b3d91d2aef60101739a",
+    "phases\\main-finance-02\\job-2adf9b0f68ab4ffa8344b67e68835e2e-result.json": "55b42f733b1cef666557466d197182bbfb6534545be24f64a8b68e73d1780398",
+    "phases\\main-finance-02\\job-6ffa3291586e444881bc3786e32c8f4a-result.json": "a09fb6d960c808aecdde635f97548b6154883bf7f6b80e2f95f3ac4f4cfc69dc",
+    "phases\\main-finance-02\\job-e252a96f199d4b3ba7de531c7c4fb8de-result.json": "14521b9407a07e2445912b4d25b157aa159761b801f919d4a5a022fbd02705f9",
+    "phases\\main-finance-02\\job-dd73d34f04d547f8b569df5d7af93a48-result.json": "f3d1454a18c2e61feb78a0243174cfa92b3325ca2e070714592386640d3f398f",
+    "phases\\main-finance-02\\job-f425516320ec45e7bd82428918f671db-result.json": "3a84925aa353a8e9e93ca7730d362247779dc1ada728b8a76f97e30c615ab606",
+    "phases\\main-finance-02\\job-70fb929938794b0486933f160cad3ec5-result.json": "500aabcc576c413dc5203f9515566777287d68ca1ae933a4123d08d7c2545944",
+    "phases\\main-finance-02\\job-eb5f40af33e14f42b9634d5741afd8f7-result.json": "1407306210f7aea04cf1e4321d898fe212d1a95c16c5f45bb7856057d203d2c3",
+    "phases\\main-finance-02\\job-03a986f78b434b8590408f51561f40bd-result.json": "95d765cc16254e6c45cec655cbab9e48e55b153589599f1acefade4ff00b2694",
+    "phases\\main-finance-02\\job-b3be792e52c34ea1895f8678955a5ede-result.json": "91fcfb7fb75fc7b5f3c888c26f00e374f5170ab0e0d2335d3426cc3bc449730d",
+    "phases\\main-finance-02\\job-fa10e03de6e145ff9960047ac9d24c6b-result.json": "35e687d6ae3a30154544a898ee8fc528fdd230b0fd113de7771480ab251098ff",
+    "phases\\main-finance-02\\job-af57284ef75d465984b2467ee3a63024-result.json": "3a96f4a875d6c485f588441aed842c0c9ce3c52f74c5e0c19e4b8b2a1e1fc466",
+    "phases\\main-finance-02\\job-8b0f91c23d6843498d1efd0887d08607-result.json": "19b46e349855d57665e1393c47680ffdc6fc7f811b09356de06a218f91f0a2a8",
+    "phases\\main-finance-02\\job-308136ce646c401fafbea8775f19827d-result.json": "ecc6148f597bdac52f0c80740aa0d6cecddc2dda8f70d5e84b19d754926c6e58",
+    "phases\\main-finance-02\\job-f0855ed6f0e941aa99a51f5d07ca12bb-result.json": "e8d799deead1e71ff34db426e870dc317a42eb495d976f6949fdfc1f8551f7b9",
+    "phases\\main-finance-02\\job-c75b73093f064aa1a62fb5c8b6b7dfe1-result.json": "ffbcaa78d2dceea1dfc2b8264fcacdecab7f53dd7d7dc945ff6e5d4088fb7ca8",
+    "phases\\main-finance-02\\job-a3d10efae496412ea9f3cc10193e1874-result.json": "b7875efe1d96844d0fcb10e8e76fc3261e1547d83f7d7fef637f2f5f70c03820",
+    "phases\\main-finance-02\\job-bb6599c85db845a08ab6362052262bbd-result.json": "edb4818df30a5f1ffe317c6277db85c9cd4537132735a77acbeb5946905d645e",
+    "phases\\main-finance-02\\job-121c72d4f20d45a68465df724457eba5-result.json": "99cbe9d257e75e66bb1154430865302a9f1179f6575b58f382ca287448d3b7ef",
+    "phases\\main-finance-02\\job-8c840a42e23047a4b47543aec9439110-result.json": "e460253c4e4b51da12af5885d5c19fd478ec89e177996f6943a790b128e82880",
+    "phases\\main-finance-02\\job-6d805961002e49ef8217eebe394bbd13-result.json": "9df682a165fd05aa506b65c97726dc0668e80588b3664956e7c0ba592028caec",
+    "phases\\main-finance-02\\job-0e99773062954b23a4f01e21514dfb82-result.json": "4c69865c5babacdfc2dbd44f86c79d4079c47cef4ba7ce6b9165ea861d95ce50",
+    "phases\\main-finance-02\\job-beb1cfb5cb074cd89349783095ee3459-result.json": "8e798251e15d95301285f7ee89f5a704389bb97aeb794fb2e31781390e471d1c",
+    "phases\\main-finance-02\\job-79a2ab3fccf14b21a79e27361b9edcff-result.json": "5b301278699e6116b73a9d3c12ac0e2a9b9347e5d901afb2861c36a13ef2b18f",
+    "phases\\main-finance-02\\job-dc4952cf0d6f45bb82087a01157048de-result.json": "b5718d8065308381f4bc47a3021488a45f1eee8abea1eb024ffbe4cde30c5ee0",
+    "phases\\main-finance-02\\job-4f5e6379765a40cfae21b6b9e5bd05ee-result.json": "67e338e12d3c1a4997361a9d72f3e8ae46b6e6b9ebd279213ca90964f469eeb8",
+    "phases\\main-finance-02\\job-bc534ab8310a4499bd18ae3580440965-result.json": "3ccbe2eb8022fafe6cf46500ce6e84318ecc5452c95ab5d9b0c87d7336a29e96",
+    "phases\\main-finance-02\\job-7b96f535a20d4803aba52289019419a8-result.json": "b9c973decfac9b27a7146bdd8b71f35cc75736c707acd06db71483810742f86b",
+    "phases\\main-finance-02\\job-118ca78fb976436eb8612050402f87d7-result.json": "7922f81091c9d758609499f9995bf70c78769b19d6f5886f2beab9f1109c4bca",
+    "phases\\main-finance-02\\job-0af5c65b29454fbd97835787cb0faf0e-result.json": "cd9c74c22fd465fdf5b50080227385c6807b64b69f3a3a6b86f0b6a17fc0f2a8",
+    "phases\\main-finance-02\\job-6d69a5fce1c54c418cc1125c3a501cb7-result.json": "ab03d08ea80077d17b26829e07768bd84fbe5d9e33c6bcc6a692b62e3c2cdebe",
+    "phases\\main-finance-02\\job-7bb65114aae84d5997fdc1bb45e41147-result.json": "4a9683a679c40b7bc31d8723610e727d6e9e0d57e410ef56fe8c68f439123230",
+    "phases\\main-finance-02\\job-0c203e2eb32e44df8bb5f4cf0a37fe4e-result.json": "c31718fb9faa0551f72d91b79d2001fe6bec58dd468774fb573ea5cce6f76e9a",
+    "phases\\main-finance-02\\job-3f9c6feeb6cd4b6b91f9b08cc7c85dbd-result.json": "85b6aa76f05aa3acf409efaa0d846e6def18e31032043d34d9412850ab29b291",
+    "phases\\main-finance-02\\job-9c60fa9f516d46b2a64963fa5e38f5dd-result.json": "678f9491a6191f560eac6aabb4b752c5d23d67f2ba6517a96cc400c0aadee8c1",
+    "phases\\main-finance-02\\job-79c73885377f4d618959da044c482a48-result.json": "f2a049c904825323cef873d6366b118a7cc4197780828ba4c593ec45372bc042",
+    "phases\\main-finance-02\\job-f9d86784808c49b2a035d1ff915f5dad-result.json": "5f5a6fee6697d8c96ee11970aff6aedc06aa281fdcc54be05769970577d34265",
+    "phases\\main-finance-02\\job-9a44a04d4370461f9fe51ea1227e669c-result.json": "66b8607adfc618c2ec0dedb762fdc9a8bd786ed561eed1cd78c1f05a148b5e6f",
+    "phases\\main-finance-02\\job-473ae9a076604940a040a5405e76e115-result.json": "6ea15aaf6d3de708b693d298c19bbd264eef03bab3f47545615195485d5947fc",
+    "phases\\main-finance-02\\job-e13d681f89ec4a4496e551ce4f7329d1-result.json": "b44e58a9868705401133aefa6d89384ba32a08377ad0c385e19b5fc055f9a2f8",
+    "phases\\main-finance-02\\job-341ec7cf105140168f8b42072a8dde02-result.json": "69af5380844e0fc33fe4dccfc7c2c0e5a8a76c6a89c07f368b0ea2e62c88dedb",
+    "phases\\main-finance-02\\job-7214764413244334a238ade09d0ae21a-result.json": "11c8d1c1b7df439512a78af09697cb5a2ae46239051b25de54e814adc22f4a0f",
+    "phases\\main-finance-02\\job-3ab97481491e4edebd07d3390ec5a752-result.json": "783402b80d852333351f516377104cc21d6c09461e97aa4491e00e2d623c480a",
+    "phases\\main-finance-02\\job-d534e60c83204441b6e82e0d258e99e2-result.json": "2266c3def43fcd3f488ab24d36d2d04adaab8a4c246bee733abfd167a435ca67",
+    "phases\\main-finance-02\\job-fad7064789be4fe9b31fe45ea76c871a-result.json": "4795be9394f7f7dedd2b2f8e55e55ebde465e1501c7fae6e237b169a21b2d706",
+    "phases\\main-finance-02\\job-24e79964c5154c069cde75e08f481002-result.json": "f464b0ba3d7a703c81f08beabd76fb412d89022482f7af2c957fd67cd1585433",
+    "phases\\main-finance-02\\job-f5035c90c76449e58becb1bf89826353-result.json": "5eb537df664f59b3335c32da725d5ea979fbc53549bb83621ea3694be4292c72",
+    "phases\\main-finance-02\\job-29e67cd489904c089d2b56bd8581663e-result.json": "c43c25e6e4673e012330e5c7a5ec2e6424b31c4409f1cfc5f41f8d3e190d1141",
+    "phases\\main-finance-02\\job-d237981946f140149afad6a81e3eb8ed-result.json": "c80823e15862460eeb7cc461f0121058ce83d03987eb4e984fd261c0d24e7bc1",
+    "phases\\main-finance-02\\job-7132e30504224b52b1a0207ac666932c-result.json": "282b62e27565c285d4b75562c2c0ba6e1e7463552e070eb361348b088038b197",
+    "phases\\main-finance-02\\job-4e061afd5a9a44a59412bc103b8251f3-result.json": "3d7c9c3f6c7a542702018e752ca6d47a2d98e17c0d493a3ac821a180eed0232b",
+    "phases\\main-finance-02\\job-f24aea909df74da0b95f899cad1efde7-result.json": "6a1cf1ac3072e6703947d14faa06f83dc433b9691e0d965a39e528a45990240b",
+    "phases\\main-finance-02\\job-d27b4e1f7ea84ea685ec389fa78863b2-result.json": "29cfd01c785a5aa42fce17671464ad49a7297dc4f6d5b91bd9496c93e725226b",
+    "phases\\main-finance-02\\job-30e31b4774ad46fa9181d76c1bef3d4a-result.json": "bf5dd6685cc8a766ea8da75e7a3f6ad58d6338a292c863fc0f818421a3795a59",
+    "phases\\main-finance-02\\job-ce18ccb81f694785a4c346dd8bd153cf-result.json": "3cee1dbbec2a751b1593373b031fa972980a967ae0a2f08bbd141838577b5284",
+    "phases\\main-finance-02\\job-4165dcd3211c470ba6d5a98f2c296af6-result.json": "6956401dc4c59dc025c5ae8d3559eb80ce191bc3d29c747a10ab9f71600f6c5b",
+    "phases\\main-finance-02\\job-530b1e19c07342599631008e3aaa2fbc-result.json": "2ec189a1409f91bba00ce77e0e0a5c252371be2c38c6a7395b4bd1b6d1b070de",
+    "phases\\main-finance-02\\job-36950f49ce9d4988b7c4e44c5a583976-result.json": "cb2a4e329ff8ef3459b54e806da3783b073422694f2a0f13baf02e82f49d7761",
+    "phases\\main-finance-02\\job-e63044a61ace40e78e2028d699a3e692-result.json": "823ce19d5d4417e2452a963238216dec8ea647fe2c5e991f4f1b2d3a05eb2b05",
+    "phases\\main-finance-02\\job-be43a648e1f6413f852bed438301f9c1-result.json": "5ce194b65851e74631f243fe73214bb9c61ede80cba6fd8751b2d42cb605ecb8",
+    "phases\\main-finance-02\\job-08f578b24636417b99e21a9404a4ea4d-result.json": "3b86b7748d0dccdf1effa511cf88d8de5c40ba08ef38db5fe4a6e9ca6568a043",
+    "phases\\main-finance-02\\job-fedcb1022546494291e40b7ac2893a96-result.json": "4347fe127428fbcf73f4567f43783c00de3a8c02d6b184393fd114de3c6eff28"
+  }
+}

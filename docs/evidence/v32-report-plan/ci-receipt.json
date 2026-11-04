@@ -1,0 +1,22 @@
+{
+  "commit_sha": "fdc0c1a81a6168fd8eb667ab25f8201ca16b27ea",
+  "run_id": 41775457884,
+  "url": "https://github.com/wwc76934-cyber/riskcase-agent/actions/runs/41775457884",
+  "jobs": [
+    {
+      "seconds": 192.64,
+      "conclusion": "success",
+      "platform": "ubuntu-latest",
+      "id": 126394639909,
+      "passed": 1166
+    },
+    {
+      "seconds": 674.01,
+      "conclusion": "success",
+      "platform": "windows-latest",
+      "id": 126394640197,
+      "passed": 1166
+    }
+  ],
+  "scope": "Offline engineering regression only; zero paid model requests; no model reliability or business-value claim"
+}

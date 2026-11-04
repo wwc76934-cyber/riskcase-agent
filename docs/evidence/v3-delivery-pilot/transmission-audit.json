@@ -1,0 +1,10 @@
+{
+  "recorded_requests": 56,
+  "reference_field_or_controller_path_found": false,
+  "tool_calls_enabled": false,
+  "model_selected_tool_calls": 0,
+  "all_materials_author_simulated": true,
+  "known_usage_requests": 56,
+  "unknown_cost_requests": 0,
+  "limits": "Field/path scan plus frozen input projection; not an independent security certification"
+}

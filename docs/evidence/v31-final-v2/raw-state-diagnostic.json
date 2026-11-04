@@ -1,0 +1,276 @@
+{
+  "diagnostic_only": true,
+  "accepted_delivery_score_unchanged": true,
+  "raw_reports": 33,
+  "raw_T1_T2_values_available": 22,
+  "raw_T1_T2_enum_matches": 21,
+  "planned_T1_T2_denominator": 24,
+  "not_full_business_validation": true,
+  "not_evidence_or_citation_validation": true,
+  "rows": [
+    {
+      "case_id": "v3-0996e2e3733092caed",
+      "repeat": 1,
+      "stage": 0,
+      "raw_value": "unresolved",
+      "expected": "unresolved",
+      "match": true
+    },
+    {
+      "case_id": "v3-0996e2e3733092caed",
+      "repeat": 1,
+      "stage": 1,
+      "raw_value": "denied",
+      "expected": "denied",
+      "match": true
+    },
+    {
+      "case_id": "v3-0996e2e3733092caed",
+      "repeat": 1,
+      "stage": 2,
+      "raw_value": "authorized",
+      "expected": "authorized",
+      "match": true
+    },
+    {
+      "case_id": "v3-696b84e092d689a014",
+      "repeat": 1,
+      "stage": 0,
+      "raw_value": "unresolved",
+      "expected": "unresolved",
+      "match": true
+    },
+    {
+      "case_id": "v3-696b84e092d689a014",
+      "repeat": 1,
+      "stage": 1,
+      "raw_value": "unresolved",
+      "expected": "unresolved",
+      "match": true
+    },
+    {
+      "case_id": "v3-696b84e092d689a014",
+      "repeat": 1,
+      "stage": 2,
+      "raw_value": "unresolved",
+      "expected": "unresolved",
+      "match": true
+    },
+    {
+      "case_id": "v3-6d35eb9f74124bfa57",
+      "repeat": 1,
+      "stage": 0,
+      "raw_value": "unresolved",
+      "expected": "unresolved",
+      "match": true
+    },
+    {
+      "case_id": "v3-6d35eb9f74124bfa57",
+      "repeat": 1,
+      "stage": 1,
+      "raw_value": "denied",
+      "expected": "denied",
+      "match": true
+    },
+    {
+      "case_id": "v3-6d35eb9f74124bfa57",
+      "repeat": 1,
+      "stage": 2,
+      "raw_value": "unresolved",
+      "expected": "unresolved",
+      "match": true
+    },
+    {
+      "case_id": "v3-696b84e092d689a014",
+      "repeat": 2,
+      "stage": 0,
+      "raw_value": "unresolved",
+      "expected": "unresolved",
+      "match": true
+    },
+    {
+      "case_id": "v3-696b84e092d689a014",
+      "repeat": 2,
+      "stage": 1,
+      "raw_value": "unresolved",
+      "expected": "unresolved",
+      "match": true
+    },
+    {
+      "case_id": "v3-696b84e092d689a014",
+      "repeat": 2,
+      "stage": 2,
+      "raw_value": "unresolved",
+      "expected": "unresolved",
+      "match": true
+    },
+    {
+      "case_id": "v3-0f8ad5c54ab33e3b99",
+      "repeat": 1,
+      "stage": 0,
+      "raw_value": "unresolved",
+      "expected": "unresolved",
+      "match": true
+    },
+    {
+      "case_id": "v3-0f8ad5c54ab33e3b99",
+      "repeat": 1,
+      "stage": 1,
+      "raw_value": "denied",
+      "expected": "denied",
+      "match": true
+    },
+    {
+      "case_id": "v3-0f8ad5c54ab33e3b99",
+      "repeat": 1,
+      "stage": 2,
+      "raw_value": "denied",
+      "expected": "denied",
+      "match": true
+    },
+    {
+      "case_id": "v3-4095bca60f79290cae",
+      "repeat": 1,
+      "stage": 0,
+      "raw_value": "unresolved",
+      "expected": "unresolved",
+      "match": true
+    },
+    {
+      "case_id": "v3-4095bca60f79290cae",
+      "repeat": 1,
+      "stage": 1,
+      "raw_value": "unresolved",
+      "expected": "unresolved",
+      "match": true
+    },
+    {
+      "case_id": "v3-4095bca60f79290cae",
+      "repeat": 1,
+      "stage": 2,
+      "raw_value": "denied",
+      "expected": "denied",
+      "match": true
+    },
+    {
+      "case_id": "v3-0996e2e3733092caed",
+      "repeat": 2,
+      "stage": 0,
+      "raw_value": "unresolved",
+      "expected": "unresolved",
+      "match": true
+    },
+    {
+      "case_id": "v3-0996e2e3733092caed",
+      "repeat": 2,
+      "stage": 1,
+      "raw_value": "denied",
+      "expected": "denied",
+      "match": true
+    },
+    {
+      "case_id": "v3-0996e2e3733092caed",
+      "repeat": 2,
+      "stage": 2,
+      "raw_value": "unresolved",
+      "expected": "authorized",
+      "match": false
+    },
+    {
+      "case_id": "v3-0f8ad5c54ab33e3b99",
+      "repeat": 2,
+      "stage": 0,
+      "raw_value": "unresolved",
+      "expected": "unresolved",
+      "match": true
+    },
+    {
+      "case_id": "v3-0f8ad5c54ab33e3b99",
+      "repeat": 2,
+      "stage": 1,
+      "raw_value": "denied",
+      "expected": "denied",
+      "match": true
+    },
+    {
+      "case_id": "v3-0f8ad5c54ab33e3b99",
+      "repeat": 2,
+      "stage": 2,
+      "raw_value": "denied",
+      "expected": "denied",
+      "match": true
+    },
+    {
+      "case_id": "v3-6d35eb9f74124bfa57",
+      "repeat": 2,
+      "stage": 0,
+      "raw_value": "unresolved",
+      "expected": "unresolved",
+      "match": true
+    },
+    {
+      "case_id": "v3-6d35eb9f74124bfa57",
+      "repeat": 2,
+      "stage": 1,
+      "raw_value": "denied",
+      "expected": "denied",
+      "match": true
+    },
+    {
+      "case_id": "v3-6d35eb9f74124bfa57",
+      "repeat": 2,
+      "stage": 2,
+      "raw_value": "unresolved",
+      "expected": "unresolved",
+      "match": true
+    },
+    {
+      "case_id": "v3-4095bca60f79290cae",
+      "repeat": 2,
+      "stage": 0,
+      "raw_value": "unresolved",
+      "expected": "unresolved",
+      "match": true
+    },
+    {
+      "case_id": "v3-4095bca60f79290cae",
+      "repeat": 2,
+      "stage": 1,
+      "raw_value": "unresolved",
+      "expected": "unresolved",
+      "match": true
+    },
+    {
+      "case_id": "v3-4095bca60f79290cae",
+      "repeat": 2,
+      "stage": 2,
+      "raw_value": "denied",
+      "expected": "denied",
+      "match": true
+    },
+    {
+      "case_id": "v3-10476d72a749a8ba01",
+      "repeat": 2,
+      "stage": 0,
+      "raw_value": "unresolved",
+      "expected": "unresolved",
+      "match": true
+    },
+    {
+      "case_id": "v3-10476d72a749a8ba01",
+      "repeat": 2,
+      "stage": 1,
+      "raw_value": "unresolved",
+      "expected": "unresolved",
+      "match": true
+    },
+    {
+      "case_id": "v3-10476d72a749a8ba01",
+      "repeat": 2,
+      "stage": 2,
+      "raw_value": "authorized",
+      "expected": "authorized",
+      "match": true
+    }
+  ]
+}

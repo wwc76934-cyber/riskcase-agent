@@ -1,0 +1,83 @@
+[
+  {
+    "path": "v3-model-records\\job-02b25a88fbe4432d84b3ed29d1e9a890-delivery-T0\\response-02.json",
+    "stage": "report",
+    "errors": [
+      {
+        "path": [
+          "investigation",
+          "recommendations",
+          2
+        ],
+        "rule": "anyOf",
+        "message": "{'action': 'related_transactions', 'fact_ids': ['F1'], 'reason': 'Payment-Q (4016 CNY at 09:50) precedes target payment-P (9016 CNY at 10:00) for the same user; its relationship to the target is unverified and needs review.'} is not valid under any of the given schemas"
+      }
+    ]
+  },
+  {
+    "path": "v3-model-records\\job-02b25a88fbe4432d84b3ed29d1e9a890-delivery-T2\\response-02.json",
+    "stage": "report",
+    "errors": [
+      {
+        "path": [
+          "investigation",
+          "hypotheses"
+        ],
+        "rule": "maxItems",
+        "message": "[{'description': \"Customer's latest applicable statement (C4, version 2, supersedes C3) retracts the denial and affirms payment-P was self-ordered and approved; the earlier denial was a recognition error.\", 'status': 'supported', 'support': ['F3', 'F5', 'F2', 'F4'], 'counterevidence': [], 'unknowns': ['Whether the self-order record the customer cites can be independently verified', \"Whether the customer's retraction was made freely or under pressure\", 'Whether payment-Q (4016 CNY, 09:50) was also self-authorized']}, {'description': 'Initial den"
+      },
+      {
+        "path": [
+          "investigation",
+          "missing",
+          1
+        ],
+        "rule": "enum",
+        "message": "'customer_statement_verification' is not one of ['confirmed_case_outcome', 'customer_statement', 'authentication_window', 'authentication_record_as_of', 'contact_change_identity', 'sim_change_identity', 'related_transactions', 'other_unverified_material']"
+      }
+    ]
+  },
+  {
+    "path": "v3-model-records\\job-44f7bd4c319d4f2c87c8b46407f622f8-delivery-T0\\response-02.json",
+    "stage": "report",
+    "errors": [
+      {
+        "path": [
+          "investigation",
+          "recommendations",
+          2
+        ],
+        "rule": "anyOf",
+        "message": "{'action': 'related_transactions', 'fact_ids': ['F1'], 'reason': 'Payment-Q occurred ten minutes before the target; reviewing related transactions may clarify attribution, though it cannot establish intent.'} is not valid under any of the given schemas"
+      }
+    ]
+  },
+  {
+    "path": "v3-model-records\\job-59e272fc4c2b47588537efe3487a6e73-delivery-T1\\response-02.json",
+    "stage": "report",
+    "errors": [
+      {
+        "path": [
+          "investigation",
+          "hypotheses"
+        ],
+        "rule": "maxItems",
+        "message": "[{'description': \"Payment-P was authenticated (F2) but the customer's intent to authorize it remains unresolved (F3); authentication alone does not establish cardholder consent, so the payment could be either legitimate or unauthorized.\", 'status': 'open', 'support': ['F2', 'F3'], 'counterevidence': [], 'unknowns': ['Whether the cardholder actually initiated or approved payment-P', 'Whether payment-Q (V1, 09:50) was also customer-initiated and what it shows about account activity', 'Whether any customer statement exists for payment-P', 'Whether"
+      }
+    ]
+  },
+  {
+    "path": "v3-model-records\\job-b3c97a3548bf4fc68e5003fff6446e43-delivery-T2\\response-02.json",
+    "stage": "report",
+    "errors": [
+      {
+        "path": [
+          "investigation",
+          "hypotheses"
+        ],
+        "rule": "maxItems",
+        "message": "[{'description': 'Customer initially denied payment-P (F2) but later retracted the denial, stating they found their own order record and approved the payment (F3). The later customer statement (F3, version 2, supersedes C3) is the most recent expression of intent, so the source question trends toward authorized, pending verification of the claimed order record.', 'status': 'open', 'support': ['F3'], 'counterevidence': ['F2'], 'unknowns': [\"The customer's claimed self-placed order record has not been provided or verified\", 'Whether the retractio"
+      }
+    ]
+  }
+]
