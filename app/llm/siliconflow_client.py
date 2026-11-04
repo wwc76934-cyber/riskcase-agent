@@ -100,16 +100,21 @@ class SiliconFlowClient(GLMClient):
         return (Decimal(prompt)*Decimal(self.policy["input_rate_cny_per_million"])
             +Decimal(completion)*Decimal(self.policy["output_rate_cny_per_million"]))/Decimal(1000000)
 
+    def request_payload(self, messages, tools=None):
+        """Host extension point; chat meters the complete returned wire payload."""
+        payload = {"model":self.model,"messages":messages,"tools":tools or [],"stream":False,
+            "max_tokens":self.policy["max_tokens"],"enable_thinking":False,
+            "thinking_budget":self.policy["thinking_budget"],"temperature":self.policy["temperature"],"n":1}
+        if self.policy.get('version')==2 and not tools:payload['response_format']={'type':'json_object'}
+        return payload
+
     def chat(self, messages, tools=None):
         self.last_response_capture = None
         remaining = self.policy["run_deadline_seconds"]-(self.clock()-self.started)
         if remaining <= 0:
             self.last_error_code = "run_deadline"
             raise BudgetExceeded(self.last_error_code)
-        payload = {"model":self.model,"messages":messages,"tools":tools or [],"stream":False,
-            "max_tokens":self.policy["max_tokens"],"enable_thinking":False,
-            "thinking_budget":self.policy["thinking_budget"],"temperature":self.policy["temperature"],"n":1}
-        if self.policy.get('version')==2 and not tools:payload['response_format']={'type':'json_object'}
+        payload = self.request_payload(messages, tools)
         encoded = json.dumps(payload,ensure_ascii=False,allow_nan=False).encode("utf-8")
         if self.api_key in encoded.decode("utf-8"):
             self.last_error_code = "credential_in_payload"
