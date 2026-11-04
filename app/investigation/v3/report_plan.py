@@ -11,10 +11,13 @@ from app.investigation.v3.output import DECISION, checked, OutputFailure
 
 ACTION_CODES = {'A'+str(i+1):value for i,value in enumerate(ACTIONS)}
 GAP_CODES = {'G'+str(i+1):value for i,value in enumerate(MISSING_TYPES)}
+# Numeric CNY amounts are rendered only from acquired host metadata. This
+# narrow protocol rule is not a general semantic/prose truth checker.
+MONETARY_LITERAL = r'(?:[0-9][0-9.,]*\s*(?:CNY|cny|元|人民币)|(?:CNY|cny|人民币|[¥￥])\s*[0-9])'
 
 
 class ReportPlanContract(V31ReviewContract):
-    name = 'v32-coded-report-plan-UNMEASURED-v1'
+    name = 'v32-coded-report-plan-v1'
 
     def schema_for(self, extraction, ledger):
         schema = super().schema_for(extraction, ledger)
@@ -29,6 +32,13 @@ class ReportPlanContract(V31ReviewContract):
             branch['properties']['action_code'] = (dict(const=inverse[action['const']])
                 if 'const' in action else dict(enum=[inverse[v] for v in action['enum']]))
         p['missing']['items'] = dict(enum=list(GAP_CODES))
+        prose = [p['hypotheses']['items']['properties']['description'],
+                 p['hypotheses']['items']['properties']['unknowns']['items'],
+                 p['tensions']['items']['properties']['explanation'], p['summary'],
+                 schema['properties']['source_statement']['properties']['rationale']]
+        prose += [b['properties']['reason'] for b in branches]
+        for field in prose:
+            field['not'] = dict(pattern=MONETARY_LITERAL)
         return schema
 
     def context_for(self, extraction, ledger):
@@ -50,7 +60,8 @@ class ReportPlanContract(V31ReviewContract):
         if stage == 'report':
             rules += ['Recommendations use action_code from the A codebook only. Missing evidence uses G codes only. Never interchange them or invent a code. The host decodes only codes you explicitly select.',
                       'Provide one to six hypotheses; every hypothesis and its references will be preserved, never truncated. Final report prose is unverified and cannot execute a financial action.',
-                      'amount_cents is a minor-unit integer, never a CNY major-unit amount. Use the supplied host amount display if discussing money; do not invent transaction amounts.']
+                      'source_statement records the qualified customer source position, not whether independent corroboration proves it true. A clear recognition or denial can be recorded while its supporting order documents remain missing; uncertainty about actual fraud is separate from ambiguity in what the customer said.',
+                      'Do not write monetary amounts in model-generated prose. Refer readers to the separate host transaction amount display. Source citations remain verbatim; numeric CNY prose is rejected rather than silently edited.']
         return rules
 
     def assemble(self, payload, extraction, ledger):

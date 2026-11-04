@@ -110,8 +110,10 @@ def execute(directory,*,live=False,client_factory=None):
     contract_factory=None
     if proposal.get('delivery_contract'):
         from app.investigation.v3.v31_output import V31ReviewContract
-        if proposal['delivery_contract']!=V31ReviewContract.name:raise ValueError('Unknown frozen delivery contract')
-        contract_factory=V31ReviewContract
+        from app.investigation.v3.report_plan import ReportPlanContract
+        contracts={c.name:c for c in (V31ReviewContract,ReportPlanContract)}
+        if proposal['delivery_contract'] not in contracts:raise ValueError('Unknown frozen delivery contract')
+        contract_factory=contracts[proposal['delivery_contract']]
     grant=load(directory/'authorization.json')  # Never infer from remaining money.
     ledger=PilotLedger(Path(frozen['project_ledger_path']),directory/'proposal.json',grant)
     policy=load(ROOT/'config/siliconflow-world-v2.json');policy.update(max_requests=2,max_input_bytes=20000,run_budget_cny='.50',

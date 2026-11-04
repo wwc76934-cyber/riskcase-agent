@@ -1,16 +1,20 @@
 import json
 import httpx
+import pytest
 from tests.test_v3_typed_repair import prepared
 from tests.test_v3_phase_store import probe_report
 from app.evaluation.v31_trial import prepare
 from app.evaluation.v3_typed_repair import execute,load,save,sha
 from app.llm.siliconflow_client import SiliconFlowClient
+from app.investigation.v3.v31_output import V31ReviewContract
+from app.investigation.v3.report_plan import ReportPlanContract
 
-def test_v31_two_repeats_are_distinct_and_old_scope_cannot_authorize_them(tmp_path):
-    _,book=prepared(tmp_path);out=tmp_path/'v31';p=prepare(tmp_path/'parent',tmp_path/'data',out,book)
+@pytest.mark.parametrize('report_contract_factory',[V31ReviewContract,ReportPlanContract])
+def test_v31_two_repeats_are_distinct_and_old_scope_cannot_authorize_them(tmp_path,report_contract_factory):
+    _,book=prepared(tmp_path);out=tmp_path/'v31';p=prepare(tmp_path/'parent',tmp_path/'data',out,book,report_contract_factory=report_contract_factory)
     assert p['max_requests']==72 and p['repeats']==2 and p['thresholds']['delivered_at_least']==33
     assert not (out/'authorization.json').exists() and p['largest_preflight_context_bound_bytes']<=20000
-    save(out/'authorization.json',dict(state='approved',grant_message='UNIT TEST ONLY, not actual consent',proposal_sha256=sha(out/'proposal.json'),max_estimated_cny='6',project_limit_cny='34'))
+    save(out/'authorization.json',dict(state='approved',grant_message='UNIT TEST ONLY, not actual consent',proposal_sha256=sha(out/'proposal.json'),max_estimated_cny=p['max_estimated_cny'],project_limit_cny='34'))
     clients=[];requests=[]
     def factory(ledger,run,policy):
         def transport(request):
@@ -22,7 +26,11 @@ def test_v31_two_repeats_are_distinct_and_old_scope_cannot_authorize_them(tmp_pa
                     if 'value' in props:fact['value']='success' if fact['predicate']=='authentication' else 'unresolved'
                     facts.append(fact)
                 payload=dict(facts=facts)
-            else:payload=probe_report()
+            else:
+                payload=probe_report()
+                if report_contract_factory is ReportPlanContract:
+                    for step in payload['investigation']['recommendations']:
+                        step.pop('action');step['action_code']='A1'
             return httpx.Response(200,json=dict(model=policy['model'],choices=[dict(message=dict(role='assistant',content=json.dumps(payload)))],usage=dict(prompt_tokens=20,completion_tokens=20,total_tokens=40)))
         client=httpx.Client(transport=httpx.MockTransport(transport));clients.append(client)
         return SiliconFlowClient('unit-key-not-real',policy=policy,ledger=ledger,run_id=run,http_client=client)

@@ -61,3 +61,10 @@ def test_cny_display_uses_minor_units_without_changing_sources_or_claiming_prose
     context=c.context_for(e,ledger)
     assert context['host_transaction_amount_display'][0]['amount_display']=='40.16 CNY'
     assert context['acquired']['read_line_handles']==before['read_line_handles']
+
+
+@pytest.mark.parametrize('money',['4016 CNY','40.16元','CNY 4016','￥4016'])
+def test_monetary_amounts_in_model_prose_are_rejected_not_corrected(acquired,money):
+    ledger,c,e,p=plan(acquired);p['investigation']['summary']='Target payment '+money
+    with pytest.raises(OutputFailure,match='model_schema'):c.assemble(p,e,ledger)
+    assert p['investigation']['summary'].endswith(money)
