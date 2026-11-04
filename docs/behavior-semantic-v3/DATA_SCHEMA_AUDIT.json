@@ -1,0 +1,126 @@
+{
+  "status": "NOT_ADMITTED_TRAINING_PAUSED",
+  "source_commit": "76bf718418e80549c49ac615857f8edda352ec99",
+  "archive": {
+    "file": "Fraud Detection with Natural Language Processing.rar",
+    "url": "https://raw.githubusercontent.com/pboulieris/FraudNLP/76bf718418e80549c49ac615857f8edda352ec99/Fraud%20Detection%20with%20Natural%20Language%20Processing.rar",
+    "bytes": 20829776,
+    "sha256": "b160f433d4384c7cdd821fb63d03b17ceeb9bd1a58a371aae44a1a7bffafced5",
+    "git_blob_sha1": "17afe45cc550cd1c80f7cc3788e1141fad3d7101"
+  },
+  "archive_members": [
+    {
+      "name": "Fraud Detection with Natural Language Processing.pkl",
+      "uncompressed_bytes_from_header": 101085533,
+      "sha256": "bce10b36225447861e5e85a679f01e5d5319320b4a3d7c91066e63b2f47cf5cd",
+      "decrypted": true
+    }
+  ],
+  "vocabulary": {
+    "rows": 1916,
+    "unique_names": 1916,
+    "duplicate_names": 0,
+    "empty_names": 0,
+    "sha256": "e25161ab2f1626aaab8fbc0ae3f25d1a0603e32a7b759fc0406bb50783f70ba0"
+  },
+  "released_columns_referenced_by_notebook": [
+    "actions",
+    "times",
+    "Amount",
+    "is_fraud"
+  ],
+  "actual_dataframe_schema_verified": false,
+  "paper_reported_only": {
+    "transactions": 105303,
+    "confirmed_fraud": 101,
+    "reported_nonfraud_complement_not_verified": 105202,
+    "period": "2020-02-01 through2020-10-31",
+    "selection": "2000 filtered no-reported-fraud users plus97 fraud-associated users; reconcile abstract population wording before entity claims"
+  },
+  "row_level_measurements": {
+    "status": "nonexecuting_symbolic_static_audit",
+    "rows": 105303,
+    "columns": [
+      "actions",
+      "times",
+      "execution_time",
+      "Amount",
+      "device_freq",
+      "ip_freq",
+      "beneficiary_freq",
+      "application_freq",
+      "is_fraud"
+    ],
+    "label_counts": {
+      "0": 105202,
+      "1": 101
+    },
+    "missing": {
+      "device_freq": 0,
+      "ip_freq": 0,
+      "beneficiary_freq": 0,
+      "application_freq": 0,
+      "Amount": 0,
+      "execution_time": 0,
+      "is_fraud": 0,
+      "actions": 0,
+      "times": 0
+    },
+    "duplicate_rows_all_released_columns_excluding_index": 0,
+    "sequence_valid_rows": 105302,
+    "invalid_sequence_or_times_rows": 1,
+    "invalid_row_label_counts": {
+      "0": 1
+    },
+    "empty_sequences": 0,
+    "sequence_lengths": {
+      "min": 1,
+      "median": 34.0,
+      "max": 3085,
+      "mean": 59.775540825435414
+    },
+    "observed_event_ids": 609,
+    "event_id_min": 1,
+    "event_id_max": 1912,
+    "event_count": 6294484,
+    "nested_actions_times_length_mismatches": 0,
+    "negative_intervals": 0,
+    "user_id_released": false,
+    "absolute_transaction_timestamp_released": false,
+    "unpickled": false,
+    "GLOBAL_or_REDUCE_targets_invoked": false
+  },
+  "source_time_semantics": "relative event intervals claimed; absolute transaction timestamp and identity availability not verified",
+  "label_available_at": null,
+  "negative_label_is_verified_normal": false,
+  "license": {
+    "article": "CC-BY-4.0",
+    "separate_repository_or_dataset_license": "not found at pinned root or README; archive only lists pickle",
+    "data_training_use_cleared": false
+  },
+  "security": {
+    "archive_only_listed": false,
+    "unpickled": false,
+    "external_notebook_executed": false,
+    "extractor_error": "Windows tar cannot read encrypted RAR member; first zero-byte quarantine file retained, never treated as data",
+    "extractor_error_resolved": "Official7Zip26.05 portable, release SHA256 verified; installer unpacked not installed",
+    "symbolic_static_parse": true,
+    "OS_sandbox_used": false,
+    "dynamic_unpickling_permitted": false
+  },
+  "training_permitted": false,
+  "default_detector_changed": false,
+  "paid_calls": 0,
+  "static_released_columns": [
+    "actions",
+    "times",
+    "execution_time",
+    "Amount",
+    "device_freq",
+    "ip_freq",
+    "beneficiary_freq",
+    "application_freq",
+    "is_fraud"
+  ],
+  "schema_verification_scope": "Symbolic byte-layout/column extraction; no DataFrame instantiated, dtypes reconstructed only from inert symbols"
+}

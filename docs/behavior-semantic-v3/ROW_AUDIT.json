@@ -1,0 +1,53 @@
+{
+  "status": "nonexecuting_symbolic_static_audit",
+  "rows": 105303,
+  "columns": [
+    "actions",
+    "times",
+    "execution_time",
+    "Amount",
+    "device_freq",
+    "ip_freq",
+    "beneficiary_freq",
+    "application_freq",
+    "is_fraud"
+  ],
+  "label_counts": {
+    "0": 105202,
+    "1": 101
+  },
+  "missing": {
+    "device_freq": 0,
+    "ip_freq": 0,
+    "beneficiary_freq": 0,
+    "application_freq": 0,
+    "Amount": 0,
+    "execution_time": 0,
+    "is_fraud": 0,
+    "actions": 0,
+    "times": 0
+  },
+  "duplicate_rows_all_released_columns_excluding_index": 0,
+  "sequence_valid_rows": 105302,
+  "invalid_sequence_or_times_rows": 1,
+  "invalid_row_label_counts": {
+    "0": 1
+  },
+  "empty_sequences": 0,
+  "sequence_lengths": {
+    "min": 1,
+    "median": 34.0,
+    "max": 3085,
+    "mean": 59.775540825435414
+  },
+  "observed_event_ids": 609,
+  "event_id_min": 1,
+  "event_id_max": 1912,
+  "event_count": 6294484,
+  "nested_actions_times_length_mismatches": 0,
+  "negative_intervals": 0,
+  "user_id_released": false,
+  "absolute_transaction_timestamp_released": false,
+  "unpickled": false,
+  "GLOBAL_or_REDUCE_targets_invoked": false
+}

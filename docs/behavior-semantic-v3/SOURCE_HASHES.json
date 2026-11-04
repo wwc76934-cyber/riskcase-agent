@@ -1,0 +1,35 @@
+{
+  "commit": "76bf718418e80549c49ac615857f8edda352ec99",
+  "files": [
+    {
+      "file": "README.md",
+      "url": "https://raw.githubusercontent.com/pboulieris/FraudNLP/76bf718418e80549c49ac615857f8edda352ec99/README.md",
+      "bytes": 2194,
+      "sha256": "c67d23b4000a5ffe7333c30fd261777f7b7ff804b096e3ecba63cab068a81c76",
+      "git_blob_sha1": "f9d9f7838996da130793c5c068ba7e3bcf5a0c8f"
+    },
+    {
+      "file": "vocab.csv",
+      "url": "https://raw.githubusercontent.com/pboulieris/FraudNLP/76bf718418e80549c49ac615857f8edda352ec99/vocab.csv",
+      "bytes": 57245,
+      "sha256": "e25161ab2f1626aaab8fbc0ae3f25d1a0603e32a7b759fc0406bb50783f70ba0",
+      "git_blob_sha1": "7cf9f85092500784db8a8239edb7619895898e86"
+    },
+    {
+      "file": "Fraud Detection with NLP.ipynb",
+      "url": "https://raw.githubusercontent.com/pboulieris/FraudNLP/76bf718418e80549c49ac615857f8edda352ec99/Fraud%20Detection%20with%20NLP.ipynb",
+      "bytes": 2798,
+      "sha256": "0bc83fdd9706f9f2d00274ec9207cb49d114af0a2e135774ffee3f4534770a21",
+      "git_blob_sha1": "be60a0a2ba04311bc82f102e3d1f1809101c25b4"
+    },
+    {
+      "file": "Fraud Detection with Natural Language Processing.rar",
+      "url": "https://raw.githubusercontent.com/pboulieris/FraudNLP/76bf718418e80549c49ac615857f8edda352ec99/Fraud%20Detection%20with%20Natural%20Language%20Processing.rar",
+      "bytes": 20829776,
+      "sha256": "b160f433d4384c7cdd821fb63d03b17ceeb9bd1a58a371aae44a1a7bffafced5",
+      "git_blob_sha1": "17afe45cc550cd1c80f7cc3788e1141fad3d7101"
+    }
+  ],
+  "executed_external_code": false,
+  "unpickled": false
+}

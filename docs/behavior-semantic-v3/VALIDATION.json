@@ -1,0 +1,17 @@
+{
+  "targeted_tests": 6,
+  "failures": 0,
+  "whole_project_suite_rerun": false,
+  "static_aggregate_replay_matches": true,
+  "tests_xml_sha256": "4e8fc7ea757fd60451adc0f5e9fa02191d910b3ab3afdfc7045c697d3cb22b5d",
+  "training_runs": 0,
+  "paid_calls": 0,
+  "data_uploads": 0,
+  "untrusted_pickle_dynamic_loads": 0,
+  "data_admitted_for_training": false,
+  "limits": [
+    "No OS-isolated dynamic conversion performed",
+    "Rights not cleared; no actual split/training/scores",
+    "No user identity or absolute transaction date released"
+  ]
+}
