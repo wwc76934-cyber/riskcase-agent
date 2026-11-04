@@ -111,7 +111,8 @@ def execute(directory,*,live=False,client_factory=None):
     if proposal.get('delivery_contract'):
         from app.investigation.v3.v31_output import V31ReviewContract
         from app.investigation.v3.report_plan import ReportPlanContract
-        contracts={c.name:c for c in (V31ReviewContract,ReportPlanContract)}
+        from app.investigation.v3.selected_fact_report import SelectedFactReportContract
+        contracts={c.name:c for c in (V31ReviewContract,ReportPlanContract,SelectedFactReportContract)}
         if proposal['delivery_contract'] not in contracts:raise ValueError('Unknown frozen delivery contract')
         contract_factory=contracts[proposal['delivery_contract']]
     grant=load(directory/'authorization.json')  # Never infer from remaining money.
@@ -130,6 +131,12 @@ def execute(directory,*,live=False,client_factory=None):
             SiliconFlowClient=SchemaDeliveryClient
         key=local_key()
         if not key:raise ValueError('Credential unavailable; no requests sent')
+        if proposal.get('credential_preflight'):
+            from app.investigation.v3.auth_preflight import probe_project_credential
+            check=probe_project_credential(key)
+            save(directory/('auth-preflight-'+str(len(list(directory.glob('auth-preflight-*.json')))+1).zfill(3)+'.json'),check)
+            if not check['permit_separately_authorized_attempt']:
+                raise ValueError('Read-only authentication check rejected or inconclusive; no generation request sent')
         client_factory=lambda scope,run,settings:SiliconFlowClient(key,policy=settings,ledger=scope,run_id=run)
     live_dir=directory/'live';live_dir.mkdir(exist_ok=True);(live_dir/'cases').mkdir(exist_ok=True)
     store=JobStore(live_dir/'jobs.sqlite');results=[];stop=None
