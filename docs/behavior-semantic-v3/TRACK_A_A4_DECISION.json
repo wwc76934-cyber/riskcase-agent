@@ -1,0 +1,13 @@
+{
+  "decision": "C_stop_fusion",
+  "scope": "Frozen 32-dimensional Qwen3-Embedding-0.6B on public API descriptions, tested on the anonymous FraudNLP static development split",
+  "analysis_sha256": "cd6cd6a79a0e0cf66e0601b64ea583e1e9c56aef9602ea325ef01f55b3f826b3",
+  "qwen_AP": 0.014334498818888333,
+  "qwen_minus_gru_same_seed_AP": [-0.16888783390063866, -0.09287623552538726, -0.19512849546481334],
+  "convergence_review": "All Qwen fits reduced training loss under the registered stopping rule. The best development checkpoints occur at epochs 3, 21, and 4. The result is specific to the registered budget and representation.",
+  "similarity_review": "Removing 2293 development negatives with detected near-training sequences preserves all four primary contrast directions. Residual linkage is not identified at user level.",
+  "rare_event_review": "The three overlapping strata contain 0, 1, and 2 positives. They cannot support a stable rare-event benefit claim.",
+  "model_scope": "All 21 A2 and 14 A3 development-frozen checkpoints; no new fits admitted",
+  "final_test_predictions_generated": false,
+  "next_gate": "Submit blind final-scoring permission check"
+}
