@@ -7,6 +7,7 @@ from copy import deepcopy
 from app.investigation.contracts import obj
 from app.investigation.v3.output import PREDICATE_ROLES,extract,checked,OutputFailure
 from app.investigation.v3.task_output import TaskReportContract
+from app.investigation.v3.source_roles import customer_statement_role
 
 
 def refs(values,*,minimum=0,maximum=32):
@@ -56,7 +57,8 @@ class TypedReviewContract(TaskReportContract):
                 if line['source_type'] in PREDICATE_ROLES[predicate] and self.target_id in line['transaction_ids']:
                     originals.setdefault(line['source_id'],[]).append(handle)
             for identity,handles in originals.items():
-                branch=obj(dict(predicate=dict(const=predicate),value=dict(enum=values),
+                allowed=['unresolved'] if predicate=='customer_authorization' and not customer_statement_role(ledger.lines[handles[0]]) else values
+                branch=obj(dict(predicate=dict(const=predicate),value=dict(enum=allowed),
                     refs=refs(handles,minimum=1,maximum=3)),['predicate','value','refs'])
                 branch['description']='One observation for original '+identity+'; do not mix contradictory originals into one factual value.'
                 branches.append(branch)

@@ -70,7 +70,11 @@ class NativePlanner:
     def feasible_sources(self):
         catalog=self.source.position()['catalog'];known=acquired_ids(self.source)
         return sorted(s['source_id'] for s in catalog['sources'] if s['source_id'] not in known and set(s['requires'])<=known
-            and s['cost_units']<=catalog['remaining_cost_units'] and s['latency_minutes']<=catalog['remaining_minutes'])
+            and s.get('readable',True) and s['cost_units']<=catalog['remaining_cost_units'] and s['latency_minutes']<=catalog['remaining_minutes'])
+
+    def observed_source_ids(self):
+        position=self.source.position()
+        return set(position.get('queried_source_ids',position['acquired_source_ids']))
 
     def run(self):
         state=self.load()
@@ -78,7 +82,7 @@ class NativePlanner:
             if 'pending_request' not in state:
                 if not self.feasible_sources():
                     state['phase']='ready';state['stop_reason']='no_feasible_unread_source';self.save(state);break
-                state['pending_request']=self.request(state);state['input_acquired']=sorted(acquired_ids(self.source));self.save(state)
+                state['pending_request']=self.request(state);state['input_acquired']=sorted(self.observed_source_ids());self.save(state)
             if 'pending_response' not in state:
                 ordinal=state['turn']+1
                 def invoke():
@@ -115,10 +119,13 @@ class NativePlanner:
                 state['trace'].append(dict(model_turn=state['turn'],tool_index=index,tool='v3_read',purpose=purpose,hypothesis_to_test=hypothesis,
                     source_ids=arguments.get('source_ids',[]) if isinstance(arguments,dict) else [],ok=error is None,error=error,
                     evidence_id=result['evidence_id'] if result else None,operation_replayed=result['operation_replayed'] if result else False))
+                queries=((result or {}).get('frame') or {}).get('data',{}).get('query_results')
+                if queries is not None:
+                    state['trace'][-1]['query_outcomes']={q['source_id']:q['status'] for q in queries}
                 state['tool_index']+=1;self.save(state)
                 if self.mode=='single_batch' and result and result['ok']:
                     state['phase']='ready';state['stop_reason']='single_batch_acquired';break
-            progress=bool(acquired_ids(self.source)-set(state['input_acquired']))
+            progress=bool(self.observed_source_ids()-set(state['input_acquired']))
             state['no_progress']=0 if progress else state['no_progress']+1
             for key in ('pending_request','pending_response','tool_index','input_acquired'):state.pop(key,None)
             if state['no_progress']>=2:state['phase']='ready';state['stop_reason']='no_progress'

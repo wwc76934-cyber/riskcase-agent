@@ -19,7 +19,9 @@ class CompositeDelivery:
         self.directory=native_archive_path(phase.path.parent/'v3-model-records'/phase.identity)
         self.client=RecordedClient(client,self.directory)
         placeholders=dict(facts={'F'+str(i):None for i in range(1,13)})
-        self.schema=obj(dict(extraction=contract.extraction_schema(ledger),report=contract.schema_for(placeholders,ledger)),['extraction','report'])
+        composite_schema=getattr(contract,'composite_schema_for',None)
+        report_schema=composite_schema(ledger) if composite_schema else contract.schema_for(placeholders,ledger)
+        self.schema=obj(dict(extraction=contract.extraction_schema(ledger),report=report_schema),['extraction','report'])
         self.binding=digest([self.schema,ledger.model_context(),contract.name,contract.rules_for('extract'),contract.rules_for('report')])
 
     def run(self):
@@ -34,6 +36,8 @@ class CompositeDelivery:
                     'Use only acquired originals. A protocol repair does not authorize new facts, source acquisition, or a different target.']
                 context=dict(acquired=self.ledger.model_context(),protocol_errors=state['protocol_errors'],
                     previous_model_response=state['raw_responses'][-1] if state['raw_responses'] else None)
+                extra_context=getattr(self.contract,'composite_context_for',None)
+                if extra_context:context.update(extra_context(self.ledger))
                 state['pending_request']=request_for('extract_and_report',self.schema,context,rules=rules);self.phase.save(self.phase.claim,state)
             if 'pending_response' not in state:
                 ordinal=state['turn']+1

@@ -12,6 +12,7 @@ from app.service.runtime import write_json
 def parse(response):
     if not isinstance(response,dict):raise OutputFailure('model_response_shape')
     if response.get('tool_calls'):raise OutputFailure('unexpected_tool_call_in_delivery')
+    if response.get('known_provider_outcome')=='empty_content':raise OutputFailure('model_empty_content')
     try: value=json.loads(response.get('content') or '')
     except (ValueError,TypeError):raise OutputFailure('model_json') from None
     if not isinstance(value,dict):raise OutputFailure('model_json_object')

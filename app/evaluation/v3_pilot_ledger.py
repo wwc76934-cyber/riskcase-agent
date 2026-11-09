@@ -9,19 +9,22 @@ from uuid import uuid4
 from app.investigation.contracts import digest
 from app.llm.cost_ledger import CostLedger,BudgetExceeded
 
+V35='v35-observed-customer-development-v1'
 
 def validate_grant(proposal,grant,proposal_sha256):
     kind=proposal.get('schema')
-    if kind not in ('v3-new-development-delivery-pilot-v1','v3-typed-repair-amendment-v1','v32-report-plan-development-v1','v33-schema-development-v1','v34-selected-fact-development-v1'):raise ValueError('New V3 pilot proposal required')
+    if kind not in ('v3-new-development-delivery-pilot-v1','v3-typed-repair-amendment-v1','v32-report-plan-development-v1','v33-schema-development-v1','v34-selected-fact-development-v1',V35):raise ValueError('New V3 pilot proposal required')
     required={'state','grant_message','proposal_sha256','max_estimated_cny','project_limit_cny'}
     if set(grant)!=required or grant['state']!='approved' or not grant['grant_message'] or grant['proposal_sha256']!=proposal_sha256:
         raise ValueError('Explicit new user grant bound to this proposal required')
     if proposal['state']!='pending_user_authorization' or proposal['grant_message'] is not None:raise ValueError('Original pending proposal is immutable')
     limits=('3','34') if kind in ('v32-report-plan-development-v1','v33-schema-development-v1','v34-selected-fact-development-v1') else ('6','34')
+    if kind==V35:limits=('2.60','34')
     if grant['max_estimated_cny']!=proposal['max_estimated_cny'] or grant['project_limit_cny']!=proposal['project_limit_cny'] or (grant['max_estimated_cny'],grant['project_limit_cny'])!=limits:
         raise ValueError('This pilot needs the separately approved '+('/'.join(limits))+' scope')
     bounds=({'max_case_runs':12,'max_phase_jobs':36,'max_requests':72,'repeats':2,'max_requests_per_phase':2,'max_requests_per_case_run':6}
-        if kind in ('v3-new-development-delivery-pilot-v1','v32-report-plan-development-v1','v33-schema-development-v1','v34-selected-fact-development-v1') else {'max_case_runs':6,'max_phase_jobs':18,'max_requests':36,'repeats':1,'max_requests_per_phase':2,'max_requests_per_case_run':6})
+        if kind in ('v3-new-development-delivery-pilot-v1','v32-report-plan-development-v1','v33-schema-development-v1','v34-selected-fact-development-v1',V35) else {'max_case_runs':6,'max_phase_jobs':18,'max_requests':36,'repeats':1,'max_requests_per_phase':2,'max_requests_per_case_run':6})
+    if kind==V35:bounds.update(max_requests=60,max_requests_per_case_run=5)
     if any(proposal[k]!=v for k,v in bounds.items()) or len(set(proposal['case_ids']))!=6 or len(proposal['case_ids'])!=6:
         raise ValueError('Frozen pilot counts required')
     if proposal['model']!='zai-org/GLM-5.3-Flash' or proposal['max_case_estimated_cny']!='.50':raise ValueError('Model/case allowance changed')
@@ -35,7 +38,15 @@ def validate_grant(proposal,grant,proposal_sha256):
         raise ValueError('Frozen selected-fact profile required')
     if proposal.get('delivery_contract')=='v31-selected-customer-fact-report-v1' and kind!='v34-selected-fact-development-v1':
         raise ValueError('Selected-fact contract requires its own newly authorized profile')
-    if proposal.get('credential_preflight') and kind!='v34-selected-fact-development-v1':
+    if kind==V35 and (proposal.get('max_input_bytes')!=24000 or proposal.get('max_request_reservation_cny')!='0.034304'
+        or proposal.get('delivery_contract')!='v35-observed-customer-review-v1'
+        or proposal.get('transport_contract')!='v35-known-response-schema-v1'
+        or proposal.get('credential_preflight')!='v31-negative-control-auth-v1'
+        or proposal.get('thresholds')!=dict(delivered_at_least=33,complete_cases_at_least=10,source_correct_T1_T2_at_least=20)):
+        raise ValueError('Frozen customer semantics development profile required')
+    if (proposal.get('transport_contract')=='v35-known-response-schema-v1' or proposal.get('delivery_contract')=='v35-observed-customer-review-v1') and kind!=V35:
+        raise ValueError('Customer semantics development requires fresh scope')
+    if proposal.get('credential_preflight') and kind not in ('v34-selected-fact-development-v1',V35):
         raise ValueError('Unexpected credential probe in historical proposal')
 
 
@@ -134,7 +145,8 @@ class PilotLedger(CostLedger):
                 reviewed=db.execute('SELECT reservation_hash FROM v3_pilot_reviews WHERE reservation_id=? AND grant_id=?',(row[0],self.identity)).fetchone()
                 if row[4]!='uncertain_reserved' or not reviewed or reviewed[0]!=digest(list(row)):
                     raise BudgetExceeded('uncertain_pilot_request_requires_review')
-            if len(own)>=2 or len(case)>=6 or len(batch)>=self.proposal['max_requests']:raise BudgetExceeded('pilot_request_limit')
+            stage_limit=1 if self.proposal['schema']==V35 and run_id.endswith(':T0') else 2
+            if len(own)>=stage_limit or len(case)>=self.proposal['max_requests_per_case_run'] or len(batch)>=self.proposal['max_requests']:raise BudgetExceeded('pilot_request_limit')
             def committed(rows):return self.committed([(r[2],r[3]) for r in rows])
             if committed(case)+self.holds(db,prefix=case_key)+amount>Decimal('.50'):raise BudgetExceeded('pilot_case_limit')
             if committed(batch)+self.holds(db,prefix=self.prefix)+amount>self.batch_limit:raise BudgetExceeded('pilot_round_limit')
