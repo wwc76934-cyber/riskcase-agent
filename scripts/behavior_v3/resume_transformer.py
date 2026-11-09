@@ -4,6 +4,7 @@ import copy
 import json
 from pathlib import Path
 import random
+import shutil
 import time
 
 import joblib
@@ -30,12 +31,14 @@ def schedule(rng, sequences):
     return batches
 
 
-def resume(train, y, dev, dy, seed, policy, partial, folder):
+def resume(train, y, dev, dy, seed, policy, partial, folder, fallback=None):
     curves = read(partial / 'curves.json')
     epoch = len(curves)
     source = partial / f'epoch-{epoch:02d}.pt'
     best_index = max(range(epoch), key=lambda i: curves[i]['development_AP'])
     best_source = partial / f'epoch-{best_index + 1:02d}.pt'
+    if not best_source.is_file() and fallback is not None:
+        best_source = fallback / best_source.name
     source_hashes = {str(p): sha(p) for p in {source, best_source, partial / 'curves.json'}}
     random.seed(seed)
     np.random.seed(seed)
@@ -60,6 +63,7 @@ def resume(train, y, dev, dy, seed, policy, partial, folder):
     reloaded = average_precision_score(dy, score_net(model, ds, dt, dn))
     if abs(reloaded - curves[-1]['development_AP']) > 1e-12:
         raise ValueError('Interrupted checkpoint does not reproduce logged development AP')
+    print(f'transformer seed{seed} reloaded epoch{epoch} AP={reloaded:.6f}',flush=True)
     rng = np.random.default_rng(seed)
     for _ in range(epoch):
         schedule(rng, sequences)
@@ -103,8 +107,11 @@ def main():
     parser.add_argument('--protocol', type=Path, required=True)
     parser.add_argument('--partial', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--previous', type=Path, action='append', default=[])
     args = parser.parse_args()
     policy = read(args.protocol)
+    if any(read(run/'protocol.json') != policy for run in args.previous):
+        raise ValueError('Previous partial attempt used different settings')
     if policy['release_final_test'] or policy['models'] != ['transformer'] or policy['seeds'] != [42, 43, 44]:
         raise ValueError('Frozen Transformer-only development protocol required')
     for path, digest in policy['code_sha256'].items():
@@ -125,8 +132,24 @@ def main():
         key = f'transformer/seed-{seed}'
         folder = out / key
         folder.mkdir(parents=True)
-        if seed == 42:
-            model, lookup, prep, record = resume(train, y, dev, dy, seed, policy, args.partial, folder)
+        previous = [root/key for root in reversed(args.previous)]
+        complete = next((path for path in previous if (path/'training.json').is_file()),None)
+        if complete is not None:
+            record = read(complete/'training.json')
+            if record['test_seen_by_trainer'] or record['seed'] != seed:
+                raise ValueError('Previous completed attempt did not match ' + key)
+            for name in ('training.json','model.pt','preparation.joblib','development-scores.npy'):
+                shutil.copy2(complete/name,folder/name)
+            score = np.load(folder/'development-scores.npy',allow_pickle=False)
+            artifacts[key] = {'kind':'torch','folder':str(folder),'reused_from':str(complete)}
+            records[key] = record
+            scores.append(score)
+            print('reused completed checkpoint',key,flush=True)
+            continue
+        partial = next((path for path in previous if (path/'curves.json').is_file()),None)
+        fallback = args.partial if seed == 42 else None
+        if partial is not None or fallback is not None:
+            model, lookup, prep, record = resume(train,y,dev,dy,seed,policy,partial or fallback,folder,fallback=fallback)
         else:
             model, lookup, prep, record = fit_net(train, y, dev, dy, kind='transformer', seed=seed,
                 max_epochs=policy['epochs'], patience=policy['patience'], vocab_ids=range(1916), checkpoint_dir=folder)
