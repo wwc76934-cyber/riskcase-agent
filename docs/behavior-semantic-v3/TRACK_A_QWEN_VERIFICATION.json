@@ -1,0 +1,10 @@
+{
+  "repo": "Qwen/Qwen3-Embedding-0.6B",
+  "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+  "license": "apache-2.0",
+  "weights_sha256": "0437e45c94563b09e13cb7a64478fc406947a93cb34a7e05870fc8dcd48e23fd",
+  "cached_weights_match_official_LFS": true,
+  "metadata_url": "https://huggingface.co/api/models/Qwen/Qwen3-Embedding-0.6B/revision/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3?blobs=true",
+  "metadata_sha256": "426865ad105dec537450d8d689e59fa8b0e9eff0e615fb42130b19d99f4437fd",
+  "bank_records_sent": 0
+}
