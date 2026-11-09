@@ -1,5 +1,6 @@
 """One-shot A2 -> public ontology encoding -> registered A3; no final-test release."""
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -13,6 +14,7 @@ parser=argparse.ArgumentParser()
 parser.add_argument('--protocol',default='config/behavior-semantic/track-a-a3.json')
 parser.add_argument('--output',default='runs/track-a-continuation-01')
 parser.add_argument('--a2-transformer-retry')
+parser.add_argument('--input-audit',required=True)
 cli=parser.parse_args()
 root=Path.cwd();site.addsitedir(str(root.parent/'financial-report-agent/.venv-service-addons'));sys.path.insert(0,str(root))
 env=os.environ.copy();env['PYTHONPATH']=os.pathsep.join(str(p) for p in sys.path if p)
@@ -21,13 +23,26 @@ folder=root/cli.output;folder.mkdir(parents=True,exist_ok=False)
 read=lambda p:json.loads(Path(p).read_text(encoding='utf8'))
 write=lambda name,obj:(folder/name).write_text(json.dumps(obj,indent=2,ensure_ascii=False)+'\n',encoding='utf8')
 python=getattr(sys,'_base_executable',sys.executable)
-steps=[('encode',['scripts/behavior_v3/encode_public_events.py','--dictionary','runs/behavior-v3-source-01/vocab.csv','--encoder',str(root.parent/'semantic-detector-v2/runs/semantic-detection-models/qwen3-0.6b'),'--output','runs/track-a-public-event-bank-01']),
-       ('A3',['scripts/behavior_v3/run_semantic.py','--protocol',cli.protocol,'--output','runs/track-a-a3-01']),
-       ('development-analysis',['scripts/behavior_v3/analyze_development.py','--A2',read(cli.protocol)['A2_run'],
-           '--A3','runs/track-a-a3-01','--output','runs/track-a-development-analysis-01'])]
+policy=read(cli.protocol)
+if policy.get('history_control_revision')!='truncate_suffix_then_shuffle_keep_terminal':
+    raise ValueError('The original order-control protocol is preserved and suspended')
+a3='runs/track-a-a3-suffix-01'
+bank=policy['bank']
+steps=[('A2-replay',['-m','scripts.behavior_v3.replay_development','--run',policy['A2_run'],
+           '--input-audit',cli.input_audit,'--expected-instances','21','--output','runs/track-a-a2-replay-01']),
+       ('encode',['-m','scripts.behavior_v3.encode_public_events','--dictionary','runs/behavior-v3-source-01/vocab.csv','--encoder',str(root.parent/'semantic-detector-v2/runs/semantic-detection-models/qwen3-0.6b'),'--output',bank]),
+       ('A3',['-m','scripts.behavior_v3.run_semantic_suffix_control','--protocol',cli.protocol,'--output',a3,
+           '--a2-replay','runs/track-a-a2-replay-01/replay.json','--input-audit',str(Path(cli.input_audit)/'audit.json')]),
+       ('A3-replay',['-m','scripts.behavior_v3.replay_development','--run',a3,
+           '--input-audit',cli.input_audit,'--expected-instances','14','--output','runs/track-a-a3-replay-01']),
+       ('development-analysis',['-m','scripts.behavior_v3.analyze_development','--A2',policy['A2_run'],
+           '--A3',a3,'--output','runs/track-a-development-analysis-01']),
+       ('reports',['-m','scripts.behavior_v3.report_development','--a2','runs/track-a-a2-replay-01/replay.json',
+           '--a3','runs/track-a-a3-replay-01/replay.json','--analysis','runs/track-a-development-analysis-01/report.json',
+           '--bank',str(Path(bank)/'manifest.json'),'--output','runs/track-a-development-reports-01'])]
 write('protocol.json',{'steps':steps,'wait_for':'A2 development-only results and completed all-training marker','release_final_test':False,'paid_calls':0})
 try:
-    parent=root/read(cli.protocol)['A2_run']
+    parent=root/policy['A2_run']
     if cli.a2_transformer_retry:
         retry=Path(cli.a2_transformer_retry)
         deadline=time.monotonic()+8*3600
@@ -35,10 +50,12 @@ try:
             if (folder/'stop.request').exists():
                 write('cancelled.json',{'status':'stopped during A2 recovery'});raise SystemExit(0)
             if time.monotonic()>deadline:raise TimeoutError('Transformer retry did not finish within the coordinator wait')
+            if (retry/'failure.json').exists():raise RuntimeError('Transformer recovery failed; see its retained log')
             time.sleep(30)
         with (folder/'merge-A2.log').open('x',encoding='utf8') as stream:
             subprocess.run([python,'-X','utf8','-B','-m','scripts.behavior_v3.merge_a2_recovery',
-                '--original','runs/track-a-a2-01','--retry',str(retry),'--output',str(parent)],
+                '--original','runs/track-a-a2-01','--retry',str(retry),'--output',str(parent),
+                '--original-fingerprints','runs/track-a-recovery-01/original-18-sha256.json'],
                 cwd=root,env=env,stdout=stream,stderr=subprocess.STDOUT,check=True)
     while not (parent/'development-results.json').is_file():
         if (folder/'stop.request').exists():write('cancelled.json',{'status':'stopped before next stage'});raise SystemExit(0)
@@ -49,6 +66,12 @@ try:
     if prior['status']!='A2_development_comparison_complete_test_still_sealed' or prior['final_test_predictions_generated']:
         raise ValueError('A2 stage gate mismatch')
     if read(parent/'all-training-complete.json')['instances']!=21:raise ValueError('Incomplete A2 model matrix')
+    audit=read(Path(cli.input_audit)/'audit.json')
+    dictionary=Path('runs/behavior-v3-source-01/vocab.csv')
+    if (audit['status']!='development_input_contract_verified' or audit['test_predictions_generated']
+            or audit['dictionary_sha256']!=hashlib.sha256(dictionary.read_bytes()).hexdigest()
+            or audit['records_sha256']!=policy['records_sha256'] or audit['split_sha256']!=policy['split_sha256']):
+        raise ValueError('Frozen A3 input audit failed')
     for name,args in steps:
         if (folder/'stop.request').exists():write('cancelled.json',{'status':'stopped before '+name});raise SystemExit(0)
         print(name,'start',time.strftime('%Y-%m-%d %H:%M:%S'),flush=True);tick=time.monotonic()

@@ -17,12 +17,14 @@ def main():
     parser.add_argument('--original', type=Path, required=True)
     parser.add_argument('--retry', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--original-fingerprints', type=Path)
     args = parser.parse_args()
     original, retry, output = args.original, args.retry, args.output
     policy = read(original / 'protocol.json')
     retry_policy = read(retry / 'protocol.json')
     retry_result = read(retry / 'development-results.json')
     retry_manifest = read(retry / 'all-training-complete.json')
+    original_fingerprints = read(args.original_fingerprints)['original_instances'] if args.original_fingerprints else None
     subset_fields = {'models', 'selected_instances', 'classical_candidate_fits',
                      'max_neural_training_epochs_total', 'recovery_of', 'recovery_reason'}
     if any(retry_policy[key] != value for key, value in policy.items() if key not in subset_fields):
@@ -48,6 +50,8 @@ def main():
             neural = family in {'gru', 'transformer'}
             model_names = ['model.pt', 'preparation.joblib'] if neural else ['model.joblib']
             hashes = {name: sha(folder / name) for name in [*model_names, 'development-scores.npy', 'training.json']}
+            if family != 'transformer' and original_fingerprints is not None and original_fingerprints[key] != hashes:
+                raise ValueError('Original checkpoint fingerprint changed: ' + key)
             artifacts[key] = {'kind': 'torch' if neural else 'classical', 'folder': str(folder), 'sha256': hashes}
             records[key] = record
             scores[key] = np.load(folder / 'development-scores.npy', allow_pickle=False)

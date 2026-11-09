@@ -1,0 +1,119 @@
+{
+  "status": "registered_development_only_A3",
+  "A2_run": "runs/track-a-a2-recovered-01",
+  "records": "runs/track-a-convert-01/converted/records.jsonl",
+  "records_sha256": "b532f53c5d952dc27d66257383ac9bc55cfbbb5968aab1074e49970073bc4016",
+  "split": "runs/track-a-static-split-01/split.npz",
+  "split_sha256": "98e2c46872ec89e5a238f1a9ef4ca51f8a458c8eed862470adda75d9b9e798e5",
+  "bank": "runs/track-a-public-event-bank-01",
+  "conditions": [
+    {
+      "name": "qwen",
+      "table": "qwen",
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "use_intervals": true,
+      "shuffle": false
+    },
+    {
+      "name": "random",
+      "table": "random",
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "use_intervals": true,
+      "shuffle": false
+    },
+    {
+      "name": "tfidf_svd",
+      "table": "tfidf_svd",
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "use_intervals": true,
+      "shuffle": false
+    },
+    {
+      "name": "description_shuffle",
+      "table": "description_shuffle",
+      "seeds": [
+        42
+      ],
+      "use_intervals": true,
+      "shuffle": false
+    },
+    {
+      "name": "learned_nointerval",
+      "table": null,
+      "seeds": [
+        42
+      ],
+      "use_intervals": false,
+      "shuffle": false
+    },
+    {
+      "name": "learned_order_shuffle_nointerval",
+      "table": null,
+      "seeds": [
+        42
+      ],
+      "use_intervals": false,
+      "shuffle": true
+    },
+    {
+      "name": "qwen_nointerval",
+      "table": "qwen",
+      "seeds": [
+        42
+      ],
+      "use_intervals": false,
+      "shuffle": false
+    },
+    {
+      "name": "qwen_order_shuffle_nointerval",
+      "table": "qwen",
+      "seeds": [
+        42
+      ],
+      "use_intervals": false,
+      "shuffle": true
+    }
+  ],
+  "new_neural_instances": 14,
+  "epochs_cap": 30,
+  "patience": 5,
+  "positive_weight": 20.0,
+  "fixed_backbone": "GRU64 with32 event table; not selected from test or best architecture",
+  "primary_multiseed_conditions": [
+    "qwen",
+    "random",
+    "tfidf_svd"
+  ],
+  "diagnostic_seed42_only": [
+    "description_shuffle",
+    "learned_nointerval",
+    "learned_order_shuffle_nointerval",
+    "qwen_nointerval",
+    "qwen_order_shuffle_nointerval"
+  ],
+  "order_control": "First take the frozen last 256 aligned slots; then shuffle only visible historical slots and retain terminal slot. Zero intervals for both order comparison arms.",
+  "final_test_predictions_generated": false,
+  "A4_entry": "No complex fusion unless primary semantics beats strong A2 combined baseline and ordinary/frozen controls stably on development, with paired uncertainty and convergence/correlation diagnostics; single-seed order/time screens cannot establish stable mechanism",
+  "code_sha256": {
+    "app/risk/behavior_semantic/baselines.py": "414a93888225d08a302418312232d4b196663dec4cf1b91e08d359b9157b33df",
+    "app/risk/behavior_semantic/study.py": "a6def348299047ba31892e3b74d63efe9454ac6bf67cd5aa23e7a325b1382c1a",
+    "app/risk/behavior_semantic/semantics.py": "563a7c8a5b0ead73c15b31a967cd2a90a3884764f84a31c9bb7f7b764db06947",
+    "scripts/behavior_v3/run_semantic.py": "5be1e21ca9e8ed1e2bb0c8e379a49edf9a84daeb69332511f2f1948b802c9f96",
+    "scripts/behavior_v3/encode_public_events.py": "a354732500d84821c3fedd2f0f0fd80139a452d7e73de49ddaeb6578973e3983",
+    "scripts/behavior_v3/run_semantic_suffix_control.py": "ce5e89c399432b162e6cc728ea29287adede765754abb0a7339753c177e4680a"
+  },
+  "paid_calls": 0,
+  "history_control_revision": "truncate_suffix_then_shuffle_keep_terminal"
+}

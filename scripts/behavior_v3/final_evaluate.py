@@ -20,7 +20,13 @@ def manual_ap(y,s):
 
 def predict_artifact(spec,rows):
     folder=Path(spec['folder']);condition=spec.get('condition',{})
-    rr=history_shuffle(rows) if condition.get('shuffle') else rows
+    rr=rows
+    if condition.get('shuffle'):
+        if spec.get('history_control_revision')=='truncate_suffix_then_shuffle_keep_terminal':
+            from scripts.behavior_v3.run_semantic_suffix_control import shuffle_visible_suffix
+            rr=shuffle_visible_suffix(rows)
+        else:
+            rr=history_shuffle(rows)
     if (folder/'model.joblib').is_file():return joblib.load(folder/'model.joblib').predict(rr)
     state=torch.load(folder/'model.pt',weights_only=True,map_location='cpu');prep=joblib.load(folder/'preparation.joblib')
     table=np.zeros((state['vocab'],32),np.float32) if state.get('frozen_vectors') else None

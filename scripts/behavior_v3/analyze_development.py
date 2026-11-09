@@ -53,9 +53,17 @@ def main():
     seed_deltas={}
     for control in ('gru','random','tfidf_svd'):
         seed_deltas[control]=[float(average_precision_score(y,seed_scores[f'qwen/seed-{s}'])-average_precision_score(y,seed_scores[f'{control}/seed-{s}'])) for s in (42,43,44)]
-    positive=all(comparisons['qwen_minus_'+control]['paired_exact_sequence_cluster_95'][0]>0 for control in ('gru','random','tfidf_svd','combined_lr')) and all(min(v)>0 for v in seed_deltas.values())
+    controls=('gru','random','tfidf_svd','combined_lr')
+    positive=all(comparisons['qwen_minus_'+control]['paired_exact_sequence_cluster_95'][0]>0 for control in controls) and all(min(v)>0 for v in seed_deltas.values())
+    some_signal=any(comparisons['qwen_minus_'+control]['paired_exact_sequence_cluster_95'][0]>0 for control in controls[:3]) or any(min(v)>0 for v in seed_deltas.values())
+    if positive:
+        decision='A_manual_review_then_bounded_matched_numeric_GRU_fusion'
+    elif some_signal:
+        decision='B_no_fusion_review_description_coverage_and_rare_event_evidence'
+    else:
+        decision='C_no_reliable_semantic_increment_stop_fusion'
     result={'status':'development_decision_evidence_complete_test_still_sealed','development_summary':summary,'comparisons':comparisons,'Qwen_same_seed_AP_deltas':seed_deltas,
-        'A4_status':'manual_convergence_and_correlation_review_required' if positive else 'not_admitted_no_credible_semantic_increment',
+        'A4_status':decision,'A4_requires_human_review_of_convergence_and_residual_correlation':True,
         'automatic_fusion_or_LoRA_allowed':False,'final_test_predictions_generated':False,
         'A2_source_sha256':sha(A2/'development-results.json'),'A3_source_sha256':sha(A3/'development-results.json')}
     out=Path(a.output);out.mkdir(parents=True,exist_ok=False);write(out/'report.json',result);print(json.dumps({'status':result['status'],'A4_status':result['A4_status']}))
