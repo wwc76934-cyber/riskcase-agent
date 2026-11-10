@@ -18,7 +18,7 @@ from app.investigation.contracts import digest
 from app.investigation.v3.gate4_provider import Gate4Policy, Gate4ProviderClient
 from app.investigation.v3.mcp_trajectory import run_case_mcp
 from app.investigation.v3.output import AcquiredEvidence
-from app.investigation.v3.study_delivery import StudyReviewContract
+from app.investigation.v3.study_delivery import StudyHybridReviewContract, StudyReviewContract
 from app.llm.cost_ledger import BudgetExceeded, CostLedger
 from app.llm.credentials import load_key
 from app.service.runtime import write_json
@@ -29,6 +29,7 @@ from app.service.v3_sources import SourceAccess
 PROJECT_CAP = Decimal("34")
 UNKNOWN_HOLD = Decimal(".50")
 MAX_REQUESTS = 12
+MAX_COMPATIBILITY_REQUESTS = 15
 ROOT = Path(__file__).resolve().parents[2]
 
 
@@ -40,7 +41,7 @@ class CandidateBudget(CostLedger):
         self.request_limit = request_limit
         self.project_cap = Decimal(project_cap)
         self.bound = policy.estimate(policy.max_input_bytes + 4096, policy.max_output_tokens)
-        if (type(request_limit) is not int or not 1 <= request_limit <= MAX_REQUESTS
+        if (type(request_limit) is not int or not 1 <= request_limit <= MAX_COMPATIBILITY_REQUESTS
                 or not self.baseline.is_finite() or self.baseline < 0
                 or not self.project_cap.is_finite() or self.project_cap < PROJECT_CAP
                 or self.cap != self.bound * request_limit + UNKNOWN_HOLD):
@@ -98,7 +99,9 @@ def plan_for(policy, baseline, *, project_cap=PROJECT_CAP):
                 estimated_cap_cny=str(cap), prior_project_commitment_cny=str(baseline), project_cap_cny=str(project_cap))
 
 
-async def run_candidate(directory, snapshot, policy, budget, http, key, *, evidence_kind):
+async def run_candidate(directory, snapshot, policy, budget, http, key, *, evidence_kind, condition="B2"):
+    if condition not in ("B1", "B4", "B2"):
+        raise ValueError("Registered development model condition required")
     directory = Path(directory)
     directory.mkdir(parents=True, exist_ok=False)
     runtime = directory / "runtime.json"
@@ -109,10 +112,11 @@ async def run_candidate(directory, snapshot, policy, budget, http, key, *, evide
     mode = "live" if evidence_kind == "separately_authorized_external_client" else "offline"
     claim = store.claim("gate4-candidate", lease_seconds=120, deadline_seconds=1800, mode=mode)
     source = SourceAccess(store.path, claim, snapshot, max_tools=40)
+    contract = StudyHybridReviewContract if condition == "B4" else StudyReviewContract
     with (directory / "mcp.log").open("x", encoding="utf-8") as log:
-        result = await run_case_mcp(source, runtime, "B2",
+        result = await run_case_mcp(source, runtime, condition,
             lambda stage: Gate4ProviderClient(policy, key, budget=budget, http=http),
-            errlog=log, evidence_kind=evidence_kind, report_contract_factory=StudyReviewContract)
+            errlog=log, evidence_kind=evidence_kind, report_contract_factory=contract)
     store.finish(claim["id"], claim["owner"], claim["generation"], "awaiting_review", result=result)
     write_json(directory / "trajectory.json", result)
     return result

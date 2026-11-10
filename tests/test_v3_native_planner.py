@@ -53,3 +53,14 @@ def test_single_batch_baseline_uses_one_batch_and_does_not_hide_any_original(tmp
     _,_,source=start(tmp_path,runtime);ids=[s['source_id'] for s in source.position()['catalog']['sources']]
     client=NativeClient([read_call(ids)]);result=NativePlanner(source,0,client,mode='single_batch').run()
     assert result['stop_reason']=='single_batch_acquired' and len(source.evidence()['E2']['result']['data']['B'])==len(ids)
+
+
+def test_single_batch_invalid_selection_does_not_start_another_model_turn(tmp_path, runtime):
+    _, _, source = start(tmp_path, runtime)
+    invalid = read_call(["unregistered-source"])
+    client = NativeClient([invalid])
+    result = NativePlanner(source, 0, client, mode="single_batch").run()
+
+    assert client.calls == result["model_requests"] == 1
+    assert result["trace"][0]["error"] == "invalid_tool_selection_or_arguments"
+    assert source.position()["acquired_source_ids"] == []
