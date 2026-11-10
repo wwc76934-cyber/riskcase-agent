@@ -1,6 +1,11 @@
+import json
+import sys
+
 import numpy as np
+import pytest
 import torch
 
+from scripts.behavior_v3 import score_approved_v3
 from scripts.behavior_v4.run_study import Adapter, SIZE, count_bands, fit_one, make_batch, transitions
 
 
@@ -32,3 +37,14 @@ def test_next_event_counts_are_directional():
     assert values[2,3] == 2
     assert values[3,2] == 1
     assert values.sum() == 3
+
+
+def test_pending_approval_stops_before_data_or_output(monkeypatch,tmp_path):
+    approval = tmp_path/'approval.json'
+    approval.write_text(json.dumps({'status':'pending_explicit_final_scoring_approval'}),encoding='utf8')
+    output = tmp_path/'output'
+    monkeypatch.setattr(sys,'argv',['score_approved_v3','--proposal',str(tmp_path/'unreadable-proposal.json'),
+                                    '--approval',str(approval),'--output',str(output)])
+    with pytest.raises(ValueError,match='Explicit user approval'):
+        score_approved_v3.main()
+    assert not output.exists()
