@@ -30,6 +30,7 @@ PROJECT_CAP = Decimal("34")
 UNKNOWN_HOLD = Decimal(".50")
 MAX_REQUESTS = 12
 MAX_COMPATIBILITY_REQUESTS = 15
+MAX_FORMAL_CASE_REQUESTS = 18
 ROOT = Path(__file__).resolve().parents[2]
 
 
@@ -41,7 +42,7 @@ class CandidateBudget(CostLedger):
         self.request_limit = request_limit
         self.project_cap = Decimal(project_cap)
         self.bound = policy.estimate(policy.max_input_bytes + 4096, policy.max_output_tokens)
-        if (type(request_limit) is not int or not 1 <= request_limit <= MAX_COMPATIBILITY_REQUESTS
+        if (type(request_limit) is not int or not 1 <= request_limit <= MAX_FORMAL_CASE_REQUESTS
                 or not self.baseline.is_finite() or self.baseline < 0
                 or not self.project_cap.is_finite() or self.project_cap < PROJECT_CAP
                 or self.cap != self.bound * request_limit + UNKNOWN_HOLD):
@@ -100,7 +101,7 @@ def plan_for(policy, baseline, *, project_cap=PROJECT_CAP):
 
 
 async def run_candidate(directory, snapshot, policy, budget, http, key, *, evidence_kind, condition="B2"):
-    if condition not in ("B1", "B4", "B2"):
+    if condition not in ("B0", "B1", "B4", "B2"):
         raise ValueError("Registered development model condition required")
     directory = Path(directory)
     directory.mkdir(parents=True, exist_ok=False)
@@ -108,14 +109,16 @@ async def run_candidate(directory, snapshot, policy, budget, http, key, *, evide
     write_json(runtime, snapshot)
     store = JobStore(directory / "job.sqlite")
     store.submit(snapshot["case_id"], dict(mode="live" if evidence_kind == "separately_authorized_external_client" else "offline",
-        case_id=snapshot["case_id"], question=dict(text="Gate 4 development trajectory"), model_binding=policy.binding))
+        case_id=snapshot["case_id"], question=dict(text="Gate 4 development trajectory"), model_binding=policy.binding if condition != "B0" else "deterministic_B0"))
     mode = "live" if evidence_kind == "separately_authorized_external_client" else "offline"
     claim = store.claim("gate4-candidate", lease_seconds=120, deadline_seconds=1800, mode=mode)
     source = SourceAccess(store.path, claim, snapshot, max_tools=40)
     contract = StudyHybridReviewContract if condition == "B4" else StudyReviewContract
+    factory = lambda stage: Gate4ProviderClient(policy, key, budget=budget, http=http)
+    if condition == "B0":
+        contract = factory = None
     with (directory / "mcp.log").open("x", encoding="utf-8") as log:
-        result = await run_case_mcp(source, runtime, condition,
-            lambda stage: Gate4ProviderClient(policy, key, budget=budget, http=http),
+        result = await run_case_mcp(source, runtime, condition, factory,
             errlog=log, evidence_kind=evidence_kind, report_contract_factory=contract)
     store.finish(claim["id"], claim["owner"], claim["generation"], "awaiting_review", result=result)
     write_json(directory / "trajectory.json", result)

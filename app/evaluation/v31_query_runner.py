@@ -88,14 +88,19 @@ async def run_offline_case(dataset, preregistration, output, case_id, *, scripte
 
 
 def summarize(dataset, preregistration, rows):
+    rows = list(rows)
+    if any(row["evidence_kind"] != "scripted_protocol_probe" or row["external_model_requests"] != 0 for row in rows):
+        raise ValueError("Offline controller cannot combine live evidence")
+    return summarize_registered(dataset, preregistration, rows, scope="offline_protocol_check_only")
+
+
+def summarize_registered(dataset, preregistration, rows, *, scope):
     protocol,schedule,cases=registered_plan(dataset,preregistration)
     rows_by_slot={}
     for row in rows:
         slot=row['case_id'],row['condition'],row['repeat']
         if slot in rows_by_slot:
             raise ValueError('Duplicate row')
-        if row['evidence_kind']!='scripted_protocol_probe' or row['external_model_requests']!=0:
-            raise ValueError('Offline controller cannot combine live evidence')
         if row['condition']=='B0' and row['repeat']!=1:
             raise ValueError('B0 is one deterministic run per case')
         rows_by_slot[slot]=row
@@ -149,5 +154,5 @@ def summarize(dataset, preregistration, rows):
             evidence_support=counts['supported_fact_count']/counts['fact_count'] if counts['fact_count'] else None,
             strict_given_delivery=counts['strict_stages']/counts['delivered_stages'] if counts['delivered_stages'] else None,
             independent_cases=len(cases),known_committed_estimate_cny=str(cost))
-    return dict(scope='offline_protocol_check_only',conditions=by_condition,paired_contrasts=contrasts,
-                external_model_requests=0,formal_agent_value_claim=False)
+    return dict(scope=scope,conditions=by_condition,paired_contrasts=contrasts,
+                external_model_requests=sum(row['external_model_requests'] for row in rows),formal_agent_value_claim=False)
