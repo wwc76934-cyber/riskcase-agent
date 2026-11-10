@@ -1,5 +1,7 @@
 # Gate 4 当前进度与审核入口
 
+Gate 4.1 的实际源码、测试和版本对应关系见 [源码复现与差异审查](G4_SOURCE_REPRODUCIBILITY.md)。以下保留审核基点的状态。
+
 更新于 2026-11-10。旧 Gate 3 按用户决定记为 `WAIVED_BY_USER_FOR_RESEARCH_CONTINUATION`，原成绩和费用继续留档。当前默认流程为 B0。
 
 | 工作 | 当前结果 |
