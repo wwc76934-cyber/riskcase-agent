@@ -10,12 +10,12 @@ from app.llm.siliconflow_client import SiliconFlowClient
 from app.llm.glm_client import ProtocolError
 
 
-def delivery_format(messages, tools=None):
+def delivery_format(messages, tools=None, *, stages=('extract','report')):
     if tools:raise ProtocolError('schema_delivery_requires_v2_without_tools')
     try:
         if not messages or messages[0]['role']!='system':raise ValueError()
         host=json.loads(messages[0]['content'])
-        if host['stage'] not in ('extract','report'):raise ValueError()
+        if host['stage'] not in stages:raise ValueError()
         schema=host['schema']
         if not isinstance(schema,dict) or schema.get('type')!='object' or schema.get('additionalProperties') is not False:
             raise ValueError()

@@ -99,10 +99,23 @@ def checked(directory):
     return frozen
 
 
+def gate_still_reachable(results, total, thresholds):
+    remaining=total-len(results)
+    delivered=complete=correct=0
+    for result in results:
+        phases=result['assessments']
+        delivered+=sum(p['assessment']['delivered'] for p in phases)
+        complete+=int(len(phases)==3 and all(p['assessment']['delivered'] for p in phases))
+        correct+=sum(p['assessment']['full_information_target_correct'] for p in phases if p['stage'] in (1,2))
+    return (delivered+remaining*3>=thresholds['delivered_at_least']
+        and complete+remaining>=thresholds['complete_cases_at_least']
+        and correct+remaining*2>=thresholds['source_correct_T1_T2_at_least'])
+
+
 def execute(directory,*,live=False,client_factory=None):
     if not live:raise ValueError('Explicit live invocation and a NEW scope amendment required')
     import asyncio
-    from app.evaluation.v3_pilot_ledger import PilotLedger
+    from app.evaluation.v3_pilot_ledger import PilotLedger,V35
     from app.investigation.v3.mcp_trajectory import run_case_mcp
     from app.service.store import digest as stored_result_digest
     from app.evaluation.v3_score import score_stage
@@ -112,13 +125,14 @@ def execute(directory,*,live=False,client_factory=None):
         from app.investigation.v3.v31_output import V31ReviewContract
         from app.investigation.v3.report_plan import ReportPlanContract
         from app.investigation.v3.selected_fact_report import SelectedFactReportContract
-        contracts={c.name:c for c in (V31ReviewContract,ReportPlanContract,SelectedFactReportContract)}
+        from app.investigation.v3.study_delivery import ReliabilityReviewContract
+        contracts={c.name:c for c in (V31ReviewContract,ReportPlanContract,SelectedFactReportContract,ReliabilityReviewContract)}
         if proposal['delivery_contract'] not in contracts:raise ValueError('Unknown frozen delivery contract')
         contract_factory=contracts[proposal['delivery_contract']]
     grant=load(directory/'authorization.json')  # Never infer from remaining money.
     ledger=PilotLedger(Path(frozen['project_ledger_path']),directory/'proposal.json',grant)
     transport=proposal.get('transport_contract')
-    if transport not in (None,'v33-strict-json-schema-v1'):raise ValueError('Unknown frozen transport')
+    if transport not in (None,'v33-strict-json-schema-v1','v35-known-response-schema-v1'):raise ValueError('Unknown frozen transport')
     policy=load(ROOT/'config/siliconflow-world-v2.json');policy.update(max_requests=2,max_input_bytes=(24000 if transport else 20000),run_budget_cny='.50',
         project_budget_cny='34',request_timeout_seconds=90,run_deadline_seconds=480,
         pricing_checked_on=proposal['price']['checked_on'],pricing_source=proposal['price']['source'])
@@ -126,7 +140,9 @@ def execute(directory,*,live=False,client_factory=None):
     if client_factory is None:
         from app.cli.investigate_live import local_key
         from app.llm.siliconflow_client import SiliconFlowClient
-        if transport:
+        if transport=='v35-known-response-schema-v1':
+            from app.investigation.v3.known_response_client import KnownResponseDeliveryClient as SiliconFlowClient
+        elif transport:
             from app.investigation.v3.schema_client import SchemaDeliveryClient
             SiliconFlowClient=SchemaDeliveryClient
         key=local_key()
@@ -147,6 +163,8 @@ def execute(directory,*,live=False,client_factory=None):
             saved=load(result_path);results.append(saved)
             if saved['runtime']['blocked_uncertain_request']:stop='recorded_uncertain_execution_requires_review';break
             continue
+        if proposal['schema']==V35 and not gate_still_reachable(results,len(case_specs),proposal['thresholds']):
+            stop='development_gate_mathematically_unreachable';break
         runtime=load(directory/spec['runtime'])
         identity,_=store.submit('typed-repair-'+key,dict(mode='live',case_id=case_id,question=dict(text='Observed development repair only'),
             runtime_sha256=spec['runtime_sha256'],proposal_sha256=frozen['proposal_sha256']))

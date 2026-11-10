@@ -3,6 +3,7 @@ from copy import deepcopy
 from app.investigation.contracts import obj
 from app.investigation.v3.typed_review import TypedReviewContract,refs
 from app.investigation.v3.output import checked,extract,OutputFailure,PREDICATE_ROLES
+from app.investigation.v3.source_roles import customer_statement_role
 
 VALUES={'authentication':['success','failure','unresolved'],
         'customer_authorization':['authorized','denied','unresolved'],
@@ -26,7 +27,11 @@ class V31ReviewContract(TypedReviewContract):
                 if predicate=='policy_version':
                     version=ledger.lines[handles[0]]['version']
                     if type(version) is not int or not 1<=version<=100:continue
-                else:properties['value']=dict(enum=VALUES[predicate])
+                else:
+                    allowed=VALUES[predicate]
+                    if predicate in ('customer_authorization','customer_retraction') and not customer_statement_role(ledger.lines[handles[0]]):
+                        allowed=['unresolved']
+                    properties['value']=dict(enum=allowed)
                 branch=obj(properties,list(properties));branch['description']='One observation from selected original '+identity
                 branches.append(branch)
         return obj(dict(facts=dict(type='array',maxItems=12 if branches else 0,uniqueItems=True,items=dict(anyOf=branches) if branches else dict(type='object'))),['facts'])

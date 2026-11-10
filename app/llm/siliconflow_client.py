@@ -108,6 +108,9 @@ class SiliconFlowClient(GLMClient):
         if self.policy.get('version')==2 and not tools:payload['response_format']={'type':'json_object'}
         return payload
 
+    def _capture_rejection(self, response, entry):
+        """Optional provider diagnostics. The default leaves error bodies unread."""
+
     def chat(self, messages, tools=None):
         self.last_response_capture = None
         remaining = self.policy["run_deadline_seconds"]-(self.clock()-self.started)
@@ -142,6 +145,7 @@ class SiliconFlowClient(GLMClient):
                 timeout=timeout,follow_redirects=False) as response:
                 entry["http_status"] = response.status_code
                 if response.status_code != 200:
+                    self._capture_rejection(response, entry)
                     raise LLMError(f"http_{response.status_code}")
                 for chunk in response.iter_bytes():
                     size += len(chunk)

@@ -7,14 +7,14 @@ from copy import deepcopy
 import json
 from app.service.store import JobStore,Blocked,digest as state_digest,encoded
 from app.investigation.contracts import digest as content_digest
-from app.investigation.v3.world import InvestigationWorld
+from app.investigation.v3.query_world import SourceQueryWorld,world_type
 from app.investigation.v3.output import OutputFailure
 
 
 class SourceAccess(JobStore):
     def __init__(self,path,claim,snapshot,*,max_tools=20,**kwargs):
         if type(max_tools) is not int or not 1<=max_tools<=40:raise ValueError('Bounded source tool allowance')
-        initial=InvestigationWorld(snapshot)
+        initial=world_type(snapshot)(snapshot)
         self.claim=deepcopy(claim);self.snapshot=deepcopy(snapshot);self.max_tools=max_tools
         super().__init__(path,**kwargs)
         with self.transaction() as db:
@@ -52,10 +52,14 @@ class SourceAccess(JobStore):
 
     def _verified_world(self,state):
         if type(state['attempts']) is not int or not 0<=state['attempts']<=self.max_tools:raise Blocked('source_attempt_state')
-        try:world=InvestigationWorld.restore(self.snapshot,state['world'])
+        try:world=world_type(self.snapshot).restore(self.snapshot,state['world'])
         except (ValueError,KeyError,TypeError,OutputFailure):raise Blocked('source_receipt_invalid') from None
         evidence=state['evidence']
         if set(evidence)!={'E'+str(i) for i in range(1,len(evidence)+1)} or evidence['E1']['result']!=world.overview():raise Blocked('source_evidence_scope')
+        if isinstance(world,SourceQueryWorld):
+            try:world.verify_evidence(evidence,state['source_evidence'],state['world'])
+            except (ValueError,KeyError,TypeError):raise Blocked('source_evidence_not_acquired') from None
+            return world
         if set(state['source_evidence'])!=set(world.acquired):raise Blocked('source_acquisition_index')
         stages={r['source_id']:r['stage'] for r in world.receipts if r['dispatched']};seen=set()
         for key in sorted(evidence,key=lambda k:int(k[1:])):
@@ -94,8 +98,11 @@ class SourceAccess(JobStore):
     def position(self):
         with self.transaction() as db:
             state,world=self._load(db)
-            return dict(stage=world.stage,as_of=self.snapshot['stage_times'][world.stage],tool_attempts=state['attempts'],
+            position=dict(stage=world.stage,as_of=self.snapshot['stage_times'][world.stage],tool_attempts=state['attempts'],
                         acquired_source_ids=sorted(world.acquired),catalog=world.catalog())
+            if isinstance(world,SourceQueryWorld):
+                position['queried_source_ids']=sorted(world.queried)
+            return position
 
     def call(self,name,arguments,*,operation_key=None):
         if operation_key is not None and (not isinstance(operation_key,str) or not 1<=len(operation_key)<=128):raise Blocked('invalid_host_operation_key')

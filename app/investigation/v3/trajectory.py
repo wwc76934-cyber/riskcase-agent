@@ -9,7 +9,8 @@ import json,time
 from app.service.store import Blocked,digest as state_digest,encoded
 from app.service.v3_phase_store import DeliveryPhase
 from app.investigation.contracts import digest as content_digest
-from app.investigation.v3.rule_workflow import collect_rule_workflow,collect_free_and_prerequisites,compile_ledger,acquired_ids,checked_call,rule_report
+from app.investigation.v3.rule_workflow import collect_rule_workflow,collect_free_and_prerequisites,compile_ledger,acquired_ids,checked_call,rule_report,readable_batch
+from app.investigation.v3.query_world import CONTRACT as QUERY_SIMULATION
 from app.investigation.v3.typed_review import TypedReviewContract
 from app.investigation.v3.hybrid_review import HybridReviewContract
 from app.investigation.v3.native_planner import NativePlanner
@@ -21,9 +22,10 @@ CONDITIONS={'B0','B1','B1_staged','B2','B4'}
 
 def collect_full_budgeted(source,stage,client,prior):
     context=collect_free_and_prerequisites(source);catalog=context['catalog'];known=acquired_ids(source)
-    remaining=[s for s in catalog['sources'] if s['source_id'] not in known]
-    if remaining and all(set(s['requires'])<=known for s in remaining) and sum(s['cost_units'] for s in remaining)<=catalog['remaining_cost_units'] and sum(s['latency_minutes'] for s in remaining)<=catalog['remaining_minutes']:
-        for start in range(0,len(remaining),12):checked_call(source,'v3_read',dict(source_ids=[s['source_id'] for s in remaining[start:start+12]]))
+    remaining=[s for s in catalog['sources'] if s['source_id'] not in known and s.get('readable',True)]
+    batch=readable_batch(catalog,remaining)
+    if remaining and len(batch)==len(remaining) and all(set(s['requires'])<=known for s in remaining) and sum(s['cost_units'] for s in remaining)<=catalog['remaining_cost_units'] and sum(s['latency_minutes'] for s in remaining)<=catalog['remaining_minutes']:
+        for start in range(0,len(batch),12):checked_call(source,'v3_read',dict(source_ids=[s['source_id'] for s in batch[start:start+12]]))
         plan=dict(mode='full_current_materials',model_requests=0,trace=[])
     elif remaining:
         plan=NativePlanner(source,stage,client,mode='single_batch',prior_assessments=prior).run()
@@ -39,7 +41,8 @@ def run_case(source,condition,client_factory=None,*,evidence_kind='scripted_prot
     if evidence_kind not in ('scripted_protocol_probe','separately_authorized_external_client'):raise ValueError('Declared execution evidence kind')
     binding=content_digest([source.snapshot,condition,evidence_kind,'v3-reference-free-trajectory-v1'])
     if report_contract_factory is not None:
-        if condition!='B1_staged':raise ValueError('Opt-in delivery contract is restricted to the reliability path')
+        study_model=source.snapshot['contract']==QUERY_SIMULATION and condition in ('B1','B2','B4')
+        if condition!='B1_staged' and not study_model:raise ValueError('Opt-in delivery requires a declared research path')
         binding=content_digest([binding,report_contract_factory.name])
     with source.transaction() as db:
         source._load(db)
@@ -71,15 +74,20 @@ def run_case(source,condition,client_factory=None,*,evidence_kind='scripted_prot
             elif saved and saved.get('phase')=='failed':
                 error=dict(type='saved_terminal_protocol_failure',detail=saved.get('error') or saved.get('protocol_errors'))
             elif condition=='B0':
-                report=rule_report(collect_rule_workflow(source));plan=dict(mode='deterministic_workflow',model_requests=0)
+                report=rule_report(collect_rule_workflow(source),study=source.snapshot['contract']==QUERY_SIMULATION)
+                plan=dict(mode='deterministic_workflow',model_requests=0)
             else:
                 client=client_factory(stage)
                 if condition=='B2':
                     plan=NativePlanner(source,stage,client,prior_assessments=prior).run()
                     context=dict(frame=source.evidence()['E1']['result'],catalog=source.position()['catalog'])
                     ledger=compile_ledger(source,context)
+                elif condition=='B4' and source.snapshot['contract']==QUERY_SIMULATION:
+                    ledger=collect_rule_workflow(source)
+                    plan=dict(mode='deterministic_workflow',model_requests=0)
                 else:ledger,plan=collect_full_budgeted(source,stage,client,prior)
-                contract=HybridReviewContract(ledger.target_id) if condition=='B4' else (report_contract_factory or TypedReviewContract)(ledger.target_id)
+                factory=report_contract_factory or (HybridReviewContract if condition=='B4' else TypedReviewContract)
+                contract=factory(ledger.target_id)
                 if condition=='B1':report=CompositeDelivery(phase,ledger,client,contract).run()
                 else:report=StagedDelivery(phase,phase.claim,ledger,client,max_requests=2,report_contract=contract).run()
         except (KeyboardInterrupt,SystemExit):raise
