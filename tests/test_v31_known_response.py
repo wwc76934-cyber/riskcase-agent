@@ -5,13 +5,13 @@ import sqlite3
 import httpx
 import pytest
 
-from app.investigation.v3.delivery import StagedDelivery
+from app.investigation.v3.delivery import StagedDelivery,request_for
 from app.investigation.contracts import digest
 from app.investigation.v3.known_response_client import KnownResponseDeliveryClient
 from app.investigation.v3.output import OutputFailure
 from app.investigation.v3.selected_fact_report import SelectedFactReportContract
 from app.investigation.v3.trajectory import run_case
-from app.llm.glm_client import ProtocolError
+from app.llm.glm_client import LLMError,ProtocolError
 from app.service.v3_phase_store import DeliveryPhase
 from app.service.v3_sources import SourceAccess
 from tests.test_v3_pilot_ledger import ledger as funding
@@ -92,3 +92,50 @@ def test_unknown_usage_or_model_is_not_promoted_to_completed(tmp_path,runtime,mi
         assert client.snapshot()['ledger']['unknown_cost_requests']==1
     with sqlite3.connect(source.path) as db:
         assert db.execute('SELECT DISTINCT state FROM v3_phase_calls').fetchall()==[('uncertain',)]
+
+
+def test_401_audit_retains_only_structured_diagnostics_and_no_retry(tmp_path,runtime):
+    _,_,source=start(tmp_path,runtime);book,proposal,_=funding(tmp_path)
+    acquired=ledger(runtime,source);phase=DeliveryPhase(source,0)
+    trace='ti_0123456789abcdef0123456789abcdef'
+    calls=[]
+    def reject(request):
+        calls.append(request)
+        return httpx.Response(401,headers={'x-siliconcloud-trace-id':trace},
+            json={'code':30001,'message':'unit-test-key raw message must not be retained',
+                  'data':{'usage':{'total_tokens':0}}})
+    with httpx.Client(transport=httpx.MockTransport(reject)) as transport:
+        client=client_factory(book,proposal,transport)(0)
+        with pytest.raises(LLMError,match='^http_401$'):
+            StagedDelivery(phase,phase.claim,acquired,client,max_requests=2,
+                report_contract=SelectedFactReportContract(acquired.target_id)).run()
+    assert len(calls)==1
+    with sqlite3.connect(source.path) as db:
+        state,saved=db.execute('SELECT state,audit FROM v3_phase_calls').fetchone()
+    audit=json.loads(saved)
+    assert state=='uncertain' and audit['ledger']['unknown_cost_requests']==1
+    assert audit['request_audit'][0]['provider_trace_id']==trace
+    assert audit['request_audit'][0]['provider_error_code']==30001
+    assert 'unit-test-key' not in saved and 'raw message' not in saved
+
+
+@pytest.mark.parametrize('read_failure',[False,True])
+def test_optional_rejection_body_does_not_change_http_outcome(tmp_path,read_failure):
+    book,proposal,_=funding(tmp_path)
+    class Body(httpx.SyncByteStream):
+        def __iter__(self):
+            if read_failure:
+                raise httpx.ReadTimeout('unit-test-key')
+            pytest.fail('Oversized rejection body must remain unread')
+    response=httpx.Response(401,headers={'content-type':'application/json',
+        'content-length':'128' if read_failure else '4097',
+        'x-siliconcloud-trace-id':'unit-test-key'},stream=Body())
+    with httpx.Client(transport=httpx.MockTransport(lambda _:response)) as transport:
+        client=client_factory(book,proposal,transport)(0)
+        request=request_for('extract',dict(type='object',properties={},additionalProperties=False),{})
+        with pytest.raises(LLMError,match='^http_401$'):
+            client.chat(**request)
+    audit=client.snapshot()
+    assert audit['ledger']['unknown_cost_requests']==1
+    assert 'provider_error_code' not in audit['request_audit'][0]
+    assert 'provider_trace_id' not in audit['request_audit'][0]
