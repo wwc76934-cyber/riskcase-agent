@@ -1,5 +1,7 @@
 # V3.1执行记录
 
+最新阶段进度见 [V3.1 Gate 3 状态](V31_GATE3_STATUS.md)。本页保留早期执行记录。
+
 基准为远端codex/v3-reliability的800451dd38976af8c854766abaf20d36cabba611；本地cb7c86d源码树与其一致。本轮从该树新建codex/v3-1-ci工作区，未混入检测分支或后续类型化开发分支。
 
 ## Gate 0
