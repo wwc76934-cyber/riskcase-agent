@@ -135,6 +135,9 @@ def test_adapter_preserves_outcome_and_stops_unknown(policy, tmp_path, scenario)
             with pytest.raises(BudgetExceeded):
                 client.chat(**request)
             assert Decimal(budget.summary(budget.prefix)["run_committed_estimate_cny"]) == UNKNOWN_HOLD
+        if scenario == "timeout":
+            assert client.audit[0]["transport_timeout_type"] == "ReadTimeout"
+            assert client.audit[0]["transport_timeout_after_headers"] is False
         assert len(called) == 1
         assert "mock-credential" not in json.dumps(client.snapshot())
 

@@ -1,5 +1,5 @@
 """Re-submit only archived simulated Qwen reports under an independently approved wire change."""
-from dataclasses import asdict, replace
+from dataclasses import asdict
 from decimal import Decimal
 from hashlib import sha256
 import json
@@ -53,14 +53,21 @@ def replay_inputs(archive):
     return snapshot, reference, contract, rows
 
 
-def prepare(archive, baseline):
+REPORT_PROFILES = {"layout_only": ((0, 1, 2), 60), "unstarted_t2_extended_timeout": ((2,), 90)}
+
+
+def prepare(archive, baseline, *, profile="layout_only"):
     snapshot, _, _, rows = replay_inputs(archive)
+    stages, timeout = REPORT_PROFILES[profile]
+    rows = [row for row in rows if row[0]["stage"] in stages]
     policy = Gate4Policy("siliconflow-cn", "Qwen/Qwen3.8-27B", "json_schema", "3", "12",
-                         "https://www.siliconflow.cn/pricing", "2026-11-10", expand_hypothesis_branches=True)
+                         "https://www.siliconflow.cn/pricing", "2026-11-10", timeout_seconds=timeout,
+                         expand_hypothesis_branches=True)
     maximum = policy.estimate(policy.max_input_bytes + 4096, policy.max_output_tokens) * len(rows) + UNKNOWN_HOLD
     if Decimal(baseline) + maximum > PROJECT_CAP:
         raise ValueError("Project headroom unavailable")
     return dict(contract="gate4-report-schema-replay-v1", policy=asdict(policy), code_sha256=source_fingerprint(),
+                profile=profile, stages=list(stages),
                 runtime_sha256=digest(snapshot), requests_sha256=digest([row[1] for row in rows]),
                 max_requests=len(rows), cap_cny=str(maximum), baseline_cny=str(baseline))
 
@@ -69,7 +76,7 @@ def execute(archive, plan_path, grant_path, ledger_path, output):
     raw = Path(plan_path).read_bytes()
     plan, grant = json.loads(raw), json.loads(Path(grant_path).read_bytes())
     scope = sha256(raw).hexdigest()
-    if (plan != prepare(archive, plan["baseline_cny"]) or grant.get("plan_sha256") != scope
+    if (plan != prepare(archive, plan["baseline_cny"], profile=plan["profile"]) or grant.get("plan_sha256") != scope
             or grant.get("state") != "approved" or not grant.get("user_message")
             or grant.get("cap_cny") != plan["cap_cny"]):
         raise ValueError("New replay grant must bind the unchanged plan")
@@ -81,6 +88,7 @@ def execute(archive, plan_path, grant_path, ledger_path, output):
     budget = CandidateBudget(ledger_path, policy=policy, scope=scope, baseline=plan["baseline_cny"],
                              cap=plan["cap_cny"], request_limit=plan["max_requests"])
     snapshot, reference, contract, rows = replay_inputs(archive)
+    rows = [row for row in rows if row[0]["stage"] in plan["stages"]]
     budget.start()
     output.mkdir()
     results = []
@@ -108,5 +116,9 @@ def execute(archive, plan_path, grant_path, ledger_path, output):
                   blocked_uncertain_request=blocked, phases=results)
     summary = summarize_candidate(snapshot, reference, result, budget.summary(budget.prefix))
     summary["scope"] = "observed_report_only_replay"
+    summary["planned_stages"] = len(plan["stages"])
+    summary["planned_stage_ids"] = plan["stages"]
+    summary["all_planned_reports_delivered"] = (len(results) == len(plan["stages"])
+        and all(row["report"] is not None for row in results))
     write_json(output / "summary.json", summary)
     return summary

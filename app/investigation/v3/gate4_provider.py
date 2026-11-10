@@ -215,6 +215,11 @@ class Gate4ProviderClient(GLMClient):
                 return dict(role="assistant", content="", known_provider_outcome=outcome)
             entry["outcome"] = "metered_response"
             return self.scrub({k: parsed[k] for k in ("role", "content", "tool_calls") if k in parsed})
+        except httpx.TimeoutException as exc:
+            entry["transport_timeout_type"] = type(exc).__name__
+            entry["transport_timeout_after_headers"] = "http_status" in entry
+            entry["error"] = "transport_unknown"
+            raise LLMError("transport_unknown") from None
         except httpx.HTTPError:
             entry["error"] = "transport_unknown"
             raise LLMError("transport_unknown") from None
