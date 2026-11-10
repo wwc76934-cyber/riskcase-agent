@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 import sqlite3
 
-from app.evaluation.gate4_candidate import UNKNOWN_HOLD, source_fingerprint
+from app.evaluation.gate4_candidate import ROOT, UNKNOWN_HOLD, source_fingerprint
 from app.evaluation.v31_query_runner import registered_plan
 from app.investigation.contracts import digest
 from app.llm.cost_ledger import CostLedger
@@ -20,11 +20,24 @@ def committed(project_ledger):
         return CostLedger.committed(rows) + CostLedger.holds(db)
 
 
-def freeze_tranche(dataset, preregistration, envelope, *, start, count, baseline_cny, cap_cny, project_cap_cny):
+def _frozen_source(original_controller):
+    if original_controller is None:
+        return source_fingerprint()
+    original = Path(original_controller).read_bytes()
+    controller = Path(__file__).resolve()
+    return digest([(path.relative_to(ROOT).as_posix(),
+                    sha256(original if path == controller else path.read_bytes()).hexdigest())
+                   for path in sorted((ROOT / "app").rglob("*.py"))])
+
+
+def freeze_tranche(dataset, preregistration, envelope, *, start, count, baseline_cny,
+                   cap_cny, project_cap_cny, recovery=None, original_controller=None):
+    if (recovery is None) != (original_controller is None):
+        raise ValueError("Reviewed recovery and original controller must be supplied together")
     protocol, schedule, _ = registered_plan(dataset, preregistration)
     if (envelope["scope"] != "formal_cost_envelope_only" or envelope["live_baselines_compatible"] is not True
             or envelope["external_generation_authorized"] is not False
-            or envelope["code_sha256"] != source_fingerprint()
+            or envelope["code_sha256"] != _frozen_source(original_controller)
             or envelope["dataset_sha256"] != protocol["dataset_sha256"]
             or envelope["protocol_sha256"] != protocol["protocol_sha256"]
             or envelope["schedule_digest"] != digest(schedule)):
@@ -43,7 +56,7 @@ def freeze_tranche(dataset, preregistration, envelope, *, start, count, baseline
         raise ValueError("Approved cap must fund any one scheduled trajectory plus unknown protection")
     counts = Counter(row["condition"] for row in slots)
     maximum_requests = sum(bounds[c] * n for c, n in counts.items())
-    return dict(scope="gate4_formal_tranche_pending_approval", envelope_digest=digest(envelope),
+    plan = dict(scope="gate4_formal_tranche_pending_approval", envelope_digest=digest(envelope),
         dataset_sha256=protocol["dataset_sha256"], protocol_sha256=protocol["protocol_sha256"],
         schedule_digest=digest(schedule), start_model_slot=start, planned_model_slots=slots,
         planned_conditions=dict(counts), request_caps_by_trajectory=bounds, max_requests=maximum_requests,
@@ -51,6 +64,11 @@ def freeze_tranche(dataset, preregistration, envelope, *, start, count, baseline
         largest_next_slot_reserve_cny=str(largest),
         full_tranche_usage_upper_cny=str(unit * maximum_requests + UNKNOWN_HOLD),
         budget_stop_preserves_denominator=True, external_generation_authorized=False)
+    if recovery is not None:
+        if start <= recovery["slot_index"] or recovery["execution_binding"] != digest(envelope):
+            raise ValueError("Recovery cannot start at or before the reviewed slot")
+        plan.update(recovery=recovery, controller_revision_sha256=source_fingerprint())
+    return plan
 
 
 def next_slot_admission(tranche, envelope, index, project_committed):
@@ -92,7 +110,48 @@ def _read_result(folder):
     return json.loads(raw)
 
 
-def _completed_prefix(output, envelope_digest):
+def review_timeout(output, envelope, project_ledger, index):
+    """Bind a stopped, metering-unknown timeout without settling or replaying it."""
+    output = Path(output)
+    binding = digest(envelope)
+    folder = output / f"slot-{index:04}"
+    result = _read_result(folder)
+    if (result["execution_binding"] != binding or result["slot_index"] != index or not result["blocked"]
+            or Decimal(result["risk_hold_cny"]) != UNKNOWN_HOLD):
+        raise ValueError("Expected a terminal slot with its full unknown hold")
+    timeouts = []
+    for path in folder.rglob("usage-*.json"):
+        audit = json.loads(path.read_bytes())["request_audit"][-1]
+        if (audit.get("transport_timeout_type") == "ReadTimeout"
+                and audit.get("transport_timeout_after_headers") is False
+                and audit.get("outcome") == "unknown" and audit.get("http_status") is None):
+            timeouts.append((path, audit))
+    if len(timeouts) != 1:
+        raise ValueError("Exactly one pre-header read timeout is required")
+    path, audit = timeouts[0]
+    prefix = "g4-smoke:" + digest([binding, index]) + ":"
+    with closing(sqlite3.connect(Path(project_ledger).resolve().as_uri() + "?mode=ro", uri=True)) as db:
+        reserved = db.execute("SELECT id,reserved_cny,estimated_cny,status FROM reservations "
+                              "WHERE run_id=? AND status!='estimated_from_usage'", (prefix,)).fetchall()
+    if (len(reserved) != 1 or reserved[0][0] != audit["reservation_id"]
+            or Decimal(reserved[0][1]) != UNKNOWN_HOLD
+            or reserved[0][2:] != (None, "uncertain_reserved")):
+        raise ValueError("The original unknown reservation must remain intact")
+    stops = [p for p in output.glob("tranche-*/summary.json") if (
+        (summary := json.loads(p.read_bytes()))["execution_binding"] == binding
+        and summary["stop_reason"] == "uncertain_execution_or_fees"
+        and summary["first_slot"] + summary["started_slots"] == index + 1)]
+    if len(stops) != 1:
+        raise ValueError("Expected one recorded terminal tranche stop")
+    return dict(slot_index=index, execution_binding=binding,
+        decision="retain_unknown_hold_and_terminal_failure",
+        result_sha256=sha256((folder / "result.json").read_bytes()).hexdigest(),
+        timeout_audit_sha256=sha256(path.read_bytes()).hexdigest(),
+        tranche_stop_sha256=sha256(stops[0].read_bytes()).hexdigest(),
+        retained_unknown_cny=str(UNKNOWN_HOLD))
+
+
+def _completed_prefix(output, envelope_digest, recovery=None):
     """Any unfinished or unsafe started slot fences subsequent dispatch."""
     previous = sorted(output.glob("slot-*"))
     for index, folder in enumerate(previous):
@@ -102,12 +161,16 @@ def _completed_prefix(output, envelope_digest):
         if not terminal.is_file():
             raise ValueError("An earlier formal slot is unresolved")
         record = _read_result(folder)
-        if record["execution_binding"] != envelope_digest or record["slot_index"] != index or record["blocked"]:
+        if record["execution_binding"] != envelope_digest or record["slot_index"] != index:
+            raise ValueError("An earlier formal slot changed execution scope")
+        if record["blocked"] and (not recovery or index != recovery["slot_index"]
+                or sha256(terminal.read_bytes()).hexdigest() != recovery["result_sha256"]):
             raise ValueError("An earlier formal slot needs independent review")
     return len(previous)
 
 
-def execute_tranche(dataset, preregistration, envelope_path, tranche_path, grant_path, project_ledger, output):
+def execute_tranche(dataset, preregistration, envelope_path, tranche_path, grant_path, project_ledger, output,
+                    *, original_controller=None):
     """Run approved contiguous slots and stop before a slot without headroom."""
     import asyncio
     import httpx
@@ -121,9 +184,15 @@ def execute_tranche(dataset, preregistration, envelope_path, tranche_path, grant
     tranche, grant = json.loads(raw), json.loads(Path(grant_path).read_bytes())
     grant_binding = sha256(raw).hexdigest()
     start = tranche["start_model_slot"]
+    recovery = tranche.get("recovery")
+    if recovery is not None:
+        if (grant.get("approved_recovery_digest") != digest(recovery)
+                or recovery != review_timeout(output, envelope, project_ledger, recovery["slot_index"])):
+            raise ValueError("Explicit review of the unchanged blocked slot required")
     verified = freeze_tranche(dataset, preregistration, envelope, start=start,
         count=len(tranche["planned_model_slots"]), baseline_cny=tranche["baseline_cny"],
-        cap_cny=tranche["cap_cny"], project_cap_cny=tranche["project_cap_cny"])
+        cap_cny=tranche["cap_cny"], project_cap_cny=tranche["project_cap_cny"],
+        recovery=recovery, original_controller=original_controller)
     if (tranche != verified or grant.get("state") != "approved" or grant.get("tranche_sha256") != grant_binding
             or grant.get("cap_cny") != tranche["cap_cny"] or grant.get("project_cap_cny") != tranche["project_cap_cny"]
             or not grant.get("user_message")):
@@ -138,7 +207,7 @@ def execute_tranche(dataset, preregistration, envelope_path, tranche_path, grant
         raise ValueError("Historical project commitments disappeared")
     execution_binding = digest(envelope)
     output.mkdir(parents=True, exist_ok=True)
-    if _completed_prefix(output, execution_binding) != start:
+    if _completed_prefix(output, execution_binding, recovery) != start:
         raise ValueError("New tranche must start at the next unstarted slot")
     batch = output / ("tranche-" + grant_binding)
     batch.mkdir()
