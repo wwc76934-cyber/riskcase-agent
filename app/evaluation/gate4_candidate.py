@@ -33,14 +33,16 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 class CandidateBudget(CostLedger):
-    def __init__(self, path, *, policy, scope, baseline, cap, request_limit=MAX_REQUESTS):
+    def __init__(self, path, *, policy, scope, baseline, cap, request_limit=MAX_REQUESTS, project_cap=PROJECT_CAP):
         self.policy_binding = policy.binding
         self.prefix = "g4-smoke:" + scope + ":"
         self.baseline, self.cap = Decimal(baseline), Decimal(cap)
         self.request_limit = request_limit
+        self.project_cap = Decimal(project_cap)
         self.bound = policy.estimate(policy.max_input_bytes + 4096, policy.max_output_tokens)
         if (type(request_limit) is not int or not 1 <= request_limit <= MAX_REQUESTS
                 or not self.baseline.is_finite() or self.baseline < 0
+                or not self.project_cap.is_finite() or self.project_cap < PROJECT_CAP
                 or self.cap != self.bound * request_limit + UNKNOWN_HOLD):
             raise ValueError("Candidate budget must match frozen bounds")
         super().__init__(path)
@@ -53,7 +55,7 @@ class CandidateBudget(CostLedger):
                 raise ValueError("Approved candidate already started")
             rows = db.execute("SELECT reserved_cny,estimated_cny FROM reservations").fetchall()
             committed = self.committed(rows) + self.holds(db)
-            if committed < self.baseline or committed + self.cap > PROJECT_CAP:
+            if committed < self.baseline or committed + self.cap > self.project_cap:
                 raise BudgetExceeded("candidate_project_headroom")
             db.execute("INSERT INTO g4_candidate_started VALUES (?)", (self.prefix,))
 
@@ -69,7 +71,7 @@ class CandidateBudget(CostLedger):
                 raise BudgetExceeded("candidate_exhausted_or_uncertain")
             committed = self.committed([r[1:3] for r in rows]) + self.holds(db)
             prior = committed - self.committed([r[1:3] for r in own])
-            if (prior < self.baseline or committed + UNKNOWN_HOLD > PROJECT_CAP
+            if (prior < self.baseline or committed + UNKNOWN_HOLD > self.project_cap
                     or self.committed([r[1:3] for r in own]) + UNKNOWN_HOLD > self.cap):
                 raise BudgetExceeded("candidate_budget_limit")
             db.execute("INSERT INTO reservations VALUES (?,?,?,NULL,'reserved',NULL)",
@@ -82,16 +84,18 @@ def source_fingerprint():
                    for p in sorted((ROOT / "app").rglob("*.py"))])
 
 
-def plan_for(policy, baseline):
-    snapshot, _ = callback_and_capture(callback_available=False)
+def plan_for(policy, baseline, *, project_cap=PROJECT_CAP):
+    snapshot, reference = callback_and_capture(callback_available=False)
     cost_bound = policy.estimate(policy.max_input_bytes + 4096, policy.max_output_tokens)
     cap = cost_bound * MAX_REQUESTS + UNKNOWN_HOLD
-    if Decimal(baseline) + cap > PROJECT_CAP:
+    project_cap = Decimal(project_cap)
+    if not project_cap.is_finite() or project_cap < PROJECT_CAP or Decimal(baseline) + cap > project_cap:
         raise ValueError("Insufficient project room for the candidate upper bound")
     return dict(contract="gate4-development-smoke-v1", policy=asdict(policy), policy_binding=policy.binding,
-                code_sha256=source_fingerprint(), runtime_sha256=digest(snapshot), case_id=snapshot["case_id"],
+                code_sha256=source_fingerprint(), runtime_sha256=digest(snapshot), reference_sha256=digest(reference),
+                case_id=snapshot["case_id"], qualification="complete_supported_safe_with_current_customer_sources_v1",
                 condition="B2", case_count=1, max_requests=MAX_REQUESTS, unknown_hold_cny=str(UNKNOWN_HOLD),
-                estimated_cap_cny=str(cap), prior_project_commitment_cny=str(baseline), project_cap_cny=str(PROJECT_CAP))
+                estimated_cap_cny=str(cap), prior_project_commitment_cny=str(baseline), project_cap_cny=str(project_cap))
 
 
 async def run_candidate(directory, snapshot, policy, budget, http, key, *, evidence_kind):
@@ -136,12 +140,21 @@ def summarize_candidate(snapshot, reference, result, financial):
             and any(next_step.get("query_outcomes", {}).get(fallback) == "available" for next_step in trace[index + 1:])
             for index, step in enumerate(trace))
         rows.append(dict(stage=stage, delivered=report is not None,
+            current_customer_original_acquired=original is None or any(
+                line["source_id"] == original for line in ledger.lines.values()),
+            safe_review_only=bool(report and report.get("human_review_required") is True
+                                  and report.get("disposition_executed") is False),
             customer_state_correct=state_check(report, ledger, {"values": [value], "sources": [original]}, coverage),
             supported_facts=len(supported), proposed_facts=len(facts),
             tool_calls=len(trace), tool_calls_accepted=sum(bool(step.get("ok")) for step in trace),
             replanned_after_unavailable=failed_then_alternate, error=phase["error"],
             elapsed_seconds=phase["process_elapsed_seconds_including_recovery"]))
+    qualified = (len(rows) == 3 and not result["blocked_uncertain_request"] and all(
+        row["delivered"] and row["customer_state_correct"] and row["current_customer_original_acquired"]
+        and row["safe_review_only"] and row["supported_facts"] == row["proposed_facts"]
+        for row in rows))
     return dict(planned_cases=1, planned_stages=3, evidence_kind=result["evidence_kind"],
+        development_qualification_pass=qualified,
         complete_delivery=len(rows) == 3 and all(row["delivered"] for row in rows),
         blocked_uncertain_request=result["blocked_uncertain_request"], phases=rows,
         model_requests=len(financial["entries"]), estimated_and_reserved_cny=financial["run_committed_estimate_cny"],
@@ -155,11 +168,14 @@ def execute(plan_path, grant_path, project_ledger, output):
     plan, grant = json.loads(raw), json.loads(grant_path.read_bytes())
     plan_hash = sha256(raw).hexdigest()
     policy = Gate4Policy(**plan["policy"])
-    if plan != plan_for(policy, plan["prior_project_commitment_cny"]):
+    if plan != plan_for(policy, plan["prior_project_commitment_cny"], project_cap=plan["project_cap_cny"]):
         raise ValueError("Frozen case, code or candidate policy changed")
     if (grant.get("plan_sha256") != plan_hash or not grant.get("user_message")
             or grant.get("state") != "approved" or grant.get("cap_cny") != plan["estimated_cap_cny"]):
         raise ValueError("Explicit new candidate authorization required")
+    project_cap = Decimal(plan["project_cap_cny"])
+    if project_cap > PROJECT_CAP and grant.get("project_cap_cny") != plan["project_cap_cny"]:
+        raise ValueError("Explicit increased project cap required")
     if not project_ledger.is_file() or Path(output).exists():
         raise ValueError("Existing project ledger and fresh output directory required")
     key = ((os.environ.get("SILICONFLOW_API_KEY") or load_key())
@@ -167,7 +183,7 @@ def execute(plan_path, grant_path, project_ledger, output):
     if not key or len(key) < 8 or any(c.isspace() for c in key):
         raise ValueError("Configure the selected provider's local credential")
     budget = CandidateBudget(project_ledger, policy=policy, scope=plan_hash,
-        baseline=plan["prior_project_commitment_cny"], cap=plan["estimated_cap_cny"])
+        baseline=plan["prior_project_commitment_cny"], cap=plan["estimated_cap_cny"], project_cap=project_cap)
     budget.start()
     snapshot, reference = callback_and_capture(callback_available=False)
     with httpx.Client(transport=httpx.HTTPTransport(retries=0), follow_redirects=False, trust_env=False) as http:
