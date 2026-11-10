@@ -9,7 +9,7 @@ import pytest
 from app.evaluation.gate4_candidate import CandidateBudget, MAX_REQUESTS, UNKNOWN_HOLD, run_candidate, summarize_candidate
 from app.evaluation.v31_query_development import callback_and_capture
 from app.investigation.v3.delivery import request_for
-from app.investigation.v3.gate4_provider import Gate4Policy, Gate4ProviderClient
+from app.investigation.v3.gate4_provider import Gate4Policy, Gate4ProviderClient, expanded_hypothesis_schema
 from app.llm.cost_ledger import BudgetExceeded
 from app.llm.glm_client import LLMError
 from tests.test_v31_query_study import ScriptedClient
@@ -38,7 +38,9 @@ def response(policy, message, *, metered=True):
     return httpx.Response(200, json=data)
 
 
-def test_full_development_mcp_trajectory_uses_provider_specific_wire(policy, tmp_path):
+@pytest.mark.parametrize("expanded", [False, True])
+def test_full_development_mcp_trajectory_uses_provider_specific_wire(policy, tmp_path, expanded):
+    policy = replace(policy, expand_hypothesis_branches=expanded)
     snapshot, reference = callback_and_capture(callback_available=False)
     wire = []
 
@@ -53,7 +55,10 @@ def test_full_development_mcp_trajectory_uses_provider_specific_wire(policy, tmp
             assert packet["thinking"] == {"type": "disabled"} and "enable_thinking" not in packet
         messages, tools = packet["messages"], packet.get("tools")
         if not tools:
-            assert packet["response_format"]["json_schema"]["schema"] == json.loads(messages[0]["content"])["schema"]
+            host = json.loads(messages[0]["content"])
+            expected = (expanded_hypothesis_schema(host["schema"], "report")
+                        if expanded and host["stage"] == "report" else host["schema"])
+            assert packet["response_format"]["json_schema"]["schema"] == expected
             return response(policy, ScriptedClient().chat(messages))
         assert "response_format" not in packet
         context = json.loads(messages[1]["content"])
@@ -132,3 +137,40 @@ def test_adapter_preserves_outcome_and_stops_unknown(policy, tmp_path, scenario)
             assert Decimal(budget.summary(budget.prefix)["run_committed_estimate_cny"]) == UNKNOWN_HOLD
         assert len(called) == 1
         assert "mock-credential" not in json.dumps(client.snapshot())
+
+
+def test_expanded_hypothesis_keeps_original_contract(policy, tmp_path):
+    from itertools import product
+
+    from jsonschema import Draft202012Validator
+
+    schema = {
+        "type": "object", "additionalProperties": False,
+        "properties": {"investigation": {"properties": {"hypotheses": {"items": {
+            "type": "object", "additionalProperties": False,
+            "properties": {"description": {"type": "string", "minLength": 1},
+                "status": {"enum": ["open", "supported", "weakened"]},
+                "support": {"type": "array", "minItems": 0, "maxItems": 1},
+                "counterevidence": {"type": "array", "minItems": 0, "maxItems": 1},
+                "unknowns": {"type": "array"}},
+            "required": ["description", "status", "support", "counterevidence", "unknowns"],
+            "anyOf": [{"properties": {"status": {"const": "open"}}},
+                {"properties": {"status": {"const": "supported"}, "support": {"minItems": 1}}},
+                {"properties": {"status": {"const": "weakened"}, "counterevidence": {"minItems": 1}}}],
+        }}}}},
+    }
+    policy = replace(policy, expand_hypothesis_branches=True)
+    client = Gate4ProviderClient(policy, "mock-credential", budget=budget_for(tmp_path, policy), http=None)
+    request = request_for("report", schema, {})
+    payload = client.request_payload(**request)
+    assert json.loads(payload["messages"][0]["content"])["schema"] == schema
+    expanded = payload["response_format"]["json_schema"]["schema"]
+    path = lambda value: value["properties"]["investigation"]["properties"]["hypotheses"]["items"]
+    base, updated = map(Draft202012Validator, map(path, (schema, expanded)))
+    keys = path(schema)["required"]
+    absent = object()
+    for values in product((absent, "", "evidence"), (absent, "open", "supported", "weakened", "invalid"),
+                          (absent, [], ["F1"]), (absent, [], ["F2"]), (absent, [], ["gap"])):
+        row = {key: value for key, value in zip(keys, values) if value is not absent}
+        assert base.is_valid(row) == updated.is_valid(row)
+        assert not updated.is_valid(dict(row, foreign=True))

@@ -1,4 +1,5 @@
 """Opt-in transport for frozen Gate 4 candidate policies."""
+from copy import deepcopy
 from dataclasses import asdict, dataclass
 from decimal import Decimal
 import json
@@ -42,12 +43,16 @@ class Gate4Policy:
     max_requests: int = 6
     timeout_seconds: int = 60
     deadline_seconds: int = 360
+    expand_hypothesis_branches: bool = False
 
     def __post_init__(self):
         if self.provider not in PROVIDERS or self.model not in PROVIDERS[self.provider][1]:
             raise ValueError("Unregistered Gate 4 provider or model")
         if self.json_mode not in ("json_schema", "json_object"):
             raise ValueError("Freeze one structured output mode per candidate")
+        if type(self.expand_hypothesis_branches) is not bool or (
+                self.expand_hypothesis_branches and self.json_mode != "json_schema"):
+            raise ValueError("Expanded hypothesis layout requires strict Schema mode")
         for value, ceiling in ((self.max_input_bytes, 180000), (self.max_output_tokens, 4096),
                                (self.max_requests, 6), (self.timeout_seconds, 90),
                                (self.deadline_seconds, 480)):
@@ -70,6 +75,32 @@ class Gate4Policy:
 
     def estimate(self, prompt, completion):
         return (prompt * Decimal(self.input_rate) + completion * Decimal(self.output_rate)) / 1000000
+
+
+def expanded_hypothesis_schema(schema, stage):
+    """Distribute the shared object constraints over the existing anyOf branches."""
+    schema = deepcopy(schema)
+    report = schema["properties"]["report"] if stage == "extract_and_report" else schema
+    items = report["properties"]["investigation"]["properties"]["hypotheses"]["items"]
+    branches = items.pop("anyOf")
+    complete = []
+    for branch in branches:
+        if set(branch) != {"properties"}:
+            raise ProtocolError("unsupported_hypothesis_branch")
+        variant = deepcopy(items)
+        for field, constraints in branch["properties"].items():
+            shared = variant["properties"][field]
+            for name, value in constraints.items():
+                if name == "minItems":
+                    shared[name] = max(shared.get(name, 0), value)
+                elif name == "const" and name not in shared:
+                    shared[name] = value
+                else:
+                    raise ProtocolError("unsupported_hypothesis_constraint")
+        complete.append(variant)
+    items.clear()
+    items["anyOf"] = complete
+    return schema
 
 
 class Gate4ProviderClient(GLMClient):
@@ -108,6 +139,11 @@ class Gate4ProviderClient(GLMClient):
             payload["tool_choice"] = "auto"
         else:
             strict = delivery_format(messages, stages=DELIVERY_STAGES)
+            if self.policy.expand_hypothesis_branches:
+                spec = strict["json_schema"]
+                stage = spec["name"].removeprefix("riskcase_")
+                if stage in ("report", "extract_and_report"):
+                    spec["schema"] = expanded_hypothesis_schema(spec["schema"], stage)
             payload["response_format"] = strict if self.policy.json_mode == "json_schema" else {"type": "json_object"}
         return payload
 
