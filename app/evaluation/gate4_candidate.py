@@ -33,12 +33,15 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 class CandidateBudget(CostLedger):
-    def __init__(self, path, *, policy, scope, baseline, cap):
+    def __init__(self, path, *, policy, scope, baseline, cap, request_limit=MAX_REQUESTS):
         self.policy_binding = policy.binding
         self.prefix = "g4-smoke:" + scope + ":"
         self.baseline, self.cap = Decimal(baseline), Decimal(cap)
+        self.request_limit = request_limit
         self.bound = policy.estimate(policy.max_input_bytes + 4096, policy.max_output_tokens)
-        if not self.baseline.is_finite() or self.baseline < 0 or self.cap != self.bound * MAX_REQUESTS + UNKNOWN_HOLD:
+        if (type(request_limit) is not int or not 1 <= request_limit <= MAX_REQUESTS
+                or not self.baseline.is_finite() or self.baseline < 0
+                or self.cap != self.bound * request_limit + UNKNOWN_HOLD):
             raise ValueError("Candidate budget must match frozen bounds")
         super().__init__(path)
 
@@ -62,7 +65,7 @@ class CandidateBudget(CostLedger):
             db.execute("BEGIN IMMEDIATE")
             rows = db.execute("SELECT id,reserved_cny,estimated_cny,status FROM reservations").fetchall()
             own = [r for r in rows if r[0].startswith(self.prefix)]
-            if len(own) >= MAX_REQUESTS or any(r[3] != "estimated_from_usage" for r in own):
+            if len(own) >= self.request_limit or any(r[3] != "estimated_from_usage" for r in own):
                 raise BudgetExceeded("candidate_exhausted_or_uncertain")
             committed = self.committed([r[1:3] for r in rows]) + self.holds(db)
             prior = committed - self.committed([r[1:3] for r in own])
