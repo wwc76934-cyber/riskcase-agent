@@ -16,6 +16,7 @@ from app.investigation.v3.control import journaled_response,with_lease_heartbeat
 from app.investigation.v3.output import OutputFailure
 from app.investigation.v3.rule_workflow import compile_ledger,acquired_ids
 from app.investigation.v3.source_mcp import MODEL_INPUTS
+from app.investigation.v3.tier_gate import split_batch
 from app.tools.case_tools import strict_json
 
 READ_PARAMETERS=deepcopy(MODEL_INPUTS['v3_read'])
@@ -25,15 +26,18 @@ TOOLS=[dict(type='function',function=dict(name='v3_read',description='Acquire cu
 
 
 class NativePlanner:
-    def __init__(self,source,stage,client,*,mode='dynamic',prior_assessments=(),hook=lambda *args:None):
+    def __init__(self,source,stage,client,*,mode='dynamic',prior_assessments=(),hook=lambda *args:None,tier_gate=False):
         if mode not in ('dynamic','single_batch'):raise ValueError('Declared planner mode')
-        self.source,self.stage,self.mode,self.hook=source,stage,mode,hook
+        if type(tier_gate) is not bool or (tier_gate and mode!='dynamic'):raise ValueError('Tier gate applies to dynamic mode only')
+        self.source,self.stage,self.mode,self.hook,self.tier_gate=source,stage,mode,hook,tier_gate
         self.turn_limit=1 if mode=='single_batch' else 4
         self.lane=DeliveryPhase(source,stage,lane='planner')
         self.directory=native_archive_path(source.path.parent/'v3-model-records'/self.lane.identity)
         self.client=RecordedClient(client,self.directory)
         self.prior=deepcopy(list(prior_assessments))
-        self.binding=content_digest([source.snapshot,stage,mode,TOOLS,self.prior])
+        parts=[source.snapshot,stage,mode,TOOLS,self.prior]
+        # Appended only when enabled so bindings of existing frozen runs are unchanged.
+        self.binding=content_digest(parts+['tier-gate-v1'] if tier_gate else parts)
         with source.transaction() as db:
             self.lane._live(db)
             db.execute('CREATE TABLE IF NOT EXISTS v3_planner_state(job_id TEXT NOT NULL,stage INTEGER NOT NULL,body TEXT NOT NULL,hash TEXT NOT NULL,PRIMARY KEY(job_id,stage))')
@@ -63,6 +67,7 @@ class NativePlanner:
                 'Use only v3_read and catalogued current IDs. State a purpose and hypothesis for each read.',
                 'Return nonempty content without tool calls when ready for delivery. Do not execute financial actions.',
                 'In single_batch mode choose one affordable batch after the host collected free originals and prerequisites; no adaptive second batch.'])
+        if self.tier_gate:task['rules'].append('Paid sources run cheapest tier first. A dearer source requested in the same call is deferred at no cost; read the cheaper result, then request it again only if still needed.')
         context=dict(acquired=ledger.model_context(),catalog=position['catalog'],prior_assessments=self.prior,planning_trace=state['trace'])
         tools=deepcopy(TOOLS)
         tools[0]['function']['parameters']['properties']['source_ids']['items']['enum']=self.feasible_sources()
@@ -112,6 +117,11 @@ class NativePlanner:
                     arguments=strict_json(call['function']['arguments']);validate(arguments,state['pending_request']['tools'][0]['function']['parameters'])
                     purpose=arguments.pop('purpose');hypothesis=arguments.pop('hypothesis_to_test')
                 except (ValueError,TypeError,KeyError,ValidationError):error='invalid_tool_selection_or_arguments'
+                deferred=[]
+                if error is None and self.tier_gate:
+                    sources=self.source.position()['catalog']['sources']
+                    allowed,deferred=split_batch(arguments['source_ids'],sources,self.observed_source_ids())
+                    arguments['source_ids']=allowed
                 if error is None:
                     operation_key=content_digest([self.stage,state['turn'],index,call.get('id')])
                     result=self.source.call('v3_read',arguments,operation_key=operation_key)
@@ -120,6 +130,7 @@ class NativePlanner:
                 state['trace'].append(dict(model_turn=state['turn'],tool_index=index,tool='v3_read',purpose=purpose,hypothesis_to_test=hypothesis,
                     source_ids=arguments.get('source_ids',[]) if isinstance(arguments,dict) else [],ok=error is None,error=error,
                     evidence_id=result['evidence_id'] if result else None,operation_replayed=result['operation_replayed'] if result else False))
+                if deferred:state['trace'][-1]['deferred_source_ids']=deferred
                 queries=((result or {}).get('frame') or {}).get('data',{}).get('query_results')
                 if queries is not None:
                     state['trace'][-1]['query_outcomes']={q['source_id']:q['status'] for q in queries}

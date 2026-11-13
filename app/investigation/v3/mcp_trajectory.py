@@ -25,10 +25,10 @@ class MCPSourcePort:
         except Exception:raise SourceTransportUncertain(operation_key) from None
 
 
-async def run_case_mcp(source,snapshot_path,condition,client_factory=None,*,errlog,evidence_kind='scripted_protocol_probe',report_contract_factory=None):
+async def run_case_mcp(source,snapshot_path,condition,client_factory=None,*,errlog,evidence_kind='scripted_protocol_probe',report_contract_factory=None,tier_gate=False):
     # SDK cancellation scopes enter and exit on this same task. Synchronous
     # model work runs in another thread; MCP calls stay on the owning loop.
     async with connect(snapshot_path,source.snapshot,source.path,source.claim,errlog=errlog,max_tools=source.max_tools) as (session,handshake):
         port=MCPSourcePort(source,session,asyncio.get_running_loop())
-        result=await asyncio.to_thread(run_case,port,condition,client_factory,evidence_kind=evidence_kind,report_contract_factory=report_contract_factory)
+        result=await asyncio.to_thread(run_case,port,condition,client_factory,evidence_kind=evidence_kind,report_contract_factory=report_contract_factory,tier_gate=tier_gate)
         return dict(result,source_transport='official_mcp_stdio',mcp_handshake=handshake)

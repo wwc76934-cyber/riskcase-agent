@@ -118,6 +118,17 @@ class Gate4ProviderClient(GLMClient):
         self.last_response_capture = None
         self.terminal = False
 
+    streaming = False
+
+    def transport_timeout(self, remaining):
+        return httpx.Timeout(min(remaining, self.policy.timeout_seconds), connect=min(remaining, 10))
+
+    def total_deadline(self, remaining):
+        return min(remaining, self.policy.timeout_seconds)
+
+    def decode_body(self, body):
+        return json.loads(body)
+
     def scrub(self, value):
         if isinstance(value, str):
             return value.replace(self.api_key, "[REDACTED]")
@@ -128,8 +139,10 @@ class Gate4ProviderClient(GLMClient):
         return value
 
     def request_payload(self, messages, tools=None):
-        payload = dict(model=self.model, messages=messages, stream=False,
+        payload = dict(model=self.model, messages=messages, stream=self.streaming,
                        max_tokens=self.policy.max_output_tokens, temperature=0.2)
+        if self.streaming:
+            payload["stream_options"] = {"include_usage": True}
         if self.policy.provider == "siliconflow-cn":
             payload["enable_thinking"] = False
         else:
@@ -170,7 +183,7 @@ class Gate4ProviderClient(GLMClient):
             headers = {"Authorization": "Bearer " + self.api_key, "Content-Type": "application/json"}
             if self.policy.provider == "siliconflow-cn":
                 headers["X-Trace-Id"] = trace
-            timeout = httpx.Timeout(min(remaining, self.policy.timeout_seconds), connect=min(remaining, 10))
+            timeout = self.transport_timeout(remaining)
             with self.http.stream("POST", self.policy.endpoint, headers=headers, content=wire,
                                   timeout=timeout, follow_redirects=False) as response:
                 entry["http_status"] = response.status_code
@@ -182,10 +195,10 @@ class Gate4ProviderClient(GLMClient):
                     raise LLMError(f"http_{response.status_code}")
                 body = bytearray()
                 for chunk in response.iter_bytes():
-                    if len(body) + len(chunk) > 524288 or self.clock() - begin > timeout.read:
+                    if len(body) + len(chunk) > 524288 or self.clock() - begin > self.total_deadline(remaining):
                         raise ProtocolError("response_limit_or_deadline")
                     body.extend(chunk)
-            data = json.loads(body)
+            data = self.decode_body(bytes(body))
             if not isinstance(data, dict):
                 raise ProtocolError("invalid_response_object")
             choices = data.get("choices")

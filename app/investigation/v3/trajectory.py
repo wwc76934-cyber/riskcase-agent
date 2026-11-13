@@ -34,12 +34,14 @@ def collect_full_budgeted(source,stage,client,prior):
     return compile_ledger(source,context),plan
 
 
-def run_case(source,condition,client_factory=None,*,evidence_kind='scripted_protocol_probe',report_contract_factory=None):
+def run_case(source,condition,client_factory=None,*,evidence_kind='scripted_protocol_probe',report_contract_factory=None,tier_gate=False):
+    if tier_gate and condition!='B2':raise ValueError('Tier gate applies to the dynamic B2 condition only')
     if condition=='B3':raise Blocked('memory_gate_not_ready')
     if condition not in CONDITIONS:raise ValueError('Registered condition required')
     if condition!='B0' and client_factory is None:raise ValueError('Caller must supply a separately authorized client factory')
     if evidence_kind not in ('scripted_protocol_probe','separately_authorized_external_client'):raise ValueError('Declared execution evidence kind')
     binding=content_digest([source.snapshot,condition,evidence_kind,'v3-reference-free-trajectory-v1'])
+    if tier_gate:binding=content_digest([binding,'tier-gate-v1'])
     if report_contract_factory is not None:
         study_model=source.snapshot['contract']==QUERY_SIMULATION and condition in ('B1','B2','B4')
         if condition!='B1_staged' and not study_model:raise ValueError('Opt-in delivery requires a declared research path')
@@ -79,7 +81,7 @@ def run_case(source,condition,client_factory=None,*,evidence_kind='scripted_prot
             else:
                 client=client_factory(stage)
                 if condition=='B2':
-                    plan=NativePlanner(source,stage,client,prior_assessments=prior).run()
+                    plan=NativePlanner(source,stage,client,prior_assessments=prior,tier_gate=tier_gate).run()
                     context=dict(frame=source.evidence()['E1']['result'],catalog=source.position()['catalog'])
                     ledger=compile_ledger(source,context)
                 elif condition=='B4' and source.snapshot['contract']==QUERY_SIMULATION:
