@@ -119,6 +119,7 @@ class Gate4ProviderClient(GLMClient):
         self.terminal = False
 
     streaming = False
+    max_body_bytes = 524288
 
     def transport_timeout(self, remaining):
         return httpx.Timeout(min(remaining, self.policy.timeout_seconds), connect=min(remaining, 10))
@@ -195,7 +196,7 @@ class Gate4ProviderClient(GLMClient):
                     raise LLMError(f"http_{response.status_code}")
                 body = bytearray()
                 for chunk in response.iter_bytes():
-                    if len(body) + len(chunk) > 524288 or self.clock() - begin > self.total_deadline(remaining):
+                    if len(body) + len(chunk) > self.max_body_bytes or self.clock() - begin > self.total_deadline(remaining):
                         raise ProtocolError("response_limit_or_deadline")
                     body.extend(chunk)
             data = self.decode_body(bytes(body))

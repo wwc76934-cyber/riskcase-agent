@@ -15,8 +15,9 @@ from app.investigation.v3.gate4_provider import Gate4ProviderClient
 from app.llm.glm_client import ProtocolError
 
 CONNECT_TIMEOUT = 10.0
-CHUNK_READ_TIMEOUT = 30.0
-TOTAL_TIMEOUT = 120.0
+CHUNK_READ_TIMEOUT = 120.0  # 30 s and then 60 s were too short: time to first token exceeded them in held-out runs
+TOTAL_TIMEOUT = 300.0       # one streamed generation took 155 s, over the earlier 120 s cap
+MAX_BODY_BYTES = 4 * 1024 * 1024  # SSE framing makes the body several times the size of the text
 
 
 def aggregate_sse(body):
@@ -67,6 +68,7 @@ def aggregate_sse(body):
 
 class Gate4StreamingClient(Gate4ProviderClient):
     streaming = True
+    max_body_bytes = MAX_BODY_BYTES
 
     def transport_timeout(self, remaining):
         return httpx.Timeout(CHUNK_READ_TIMEOUT, connect=min(remaining, CONNECT_TIMEOUT))

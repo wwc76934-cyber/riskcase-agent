@@ -47,3 +47,21 @@ Details: `docs/V4_GATE_STUDY.md`.
 
 * Local ledger estimate after the smoke and gate studies: 41.04 CNY of the 50 CNY project limit. Provider billing is authoritative.
 * Every paid batch ran from a written grant, stopped at a batch cap, and stopped on any uncertain request.
+
+## 8. Held-out semantic cases
+
+* Twelve new cases (`app/evaluation/v4_heldout.py`), written after the guard table was frozen. Hashes of the guard, scorer and cases were recorded before the first request (`docs/evidence/heldout-freeze.json`). Full tables: `docs/FINAL_BENCHMARK_REPORT.md`.
+* Six semantic cases, 18 stages per condition. Customer state read correctly: rules 9, one-shot 18, rule evidence plus model 15, dynamic agent 15. Tier 1 pass with the guard: 14 to 15 of 18, against 3 to 5 raw.
+* Expected question: "You wrote the cases and the rules, so isn't the rule baseline a strawman?" Answer: partly. The semantic cases were written knowing B0's keywords. The result shows the model handles paraphrase, not how common paraphrase is. The plain cases are the control: rules were correct on 18 of 18 stages there.
+* Expected question: "Does the agent beat the fixed flow?" Answer: not in this data. One-shot synthesis read the state best, and the dynamic agent used no fewer evidence credits than the fixed rule collection.
+
+## 9. Failures during the held-out runs
+
+* Eight runs failed and were repeated (parallel processes breaking the ledger check, a 524,288-byte body limit on streamed bodies, first-byte timeouts, a 120 s stream cap). Each fix is in the report. Failed folders are kept and excluded from scoring.
+* Each uncertain request holds 0.50 CNY in the ledger by design. Six holds remain. The runner stops after an uncertain request instead of retrying a paid call.
+* Lesson: the one-process-at-a-time rule is a property of the ledger, not of the provider. Document it before anyone parallelises the runs.
+
+## 10. Security and privacy modules
+
+* `app/investigation/v3/untrusted_text.py` flags instruction-like source text; `pii.py` masks mobile numbers, ID numbers, Luhn-valid card numbers and e-mail addresses. Both have unit tests. Neither is wired into the live request path.
+* The Policy Guard does not depend on either: a hijacked report that proposes freezing an account or closing the alert has the unsafe action removed and the disposition recomputed. It does not repair `human_review_required` or `disposition_executed`; the Tier 1 gate catches those.

@@ -26,12 +26,14 @@ from app.service.runtime import write_json
 from app.service.store import JobStore
 from app.service.v3_sources import SourceAccess
 
+RUN_REQUESTS = 14  # per case run; the ledger needs the run cap to fit in the remaining project headroom
 LABELS = {"B1S": ("B1", False), "B4N": ("B4", False), "B2V4": ("B2", True),
           "B2S": ("B2", False)}  # B2S: dynamic agent, streaming, no cost-tier gate (ablation of the gate)
 POLICY = dict(provider="siliconflow-cn", model="Qwen/Qwen3.8-27B", json_mode="json_schema",
               input_rate="3", output_rate="12", price_source="https://www.siliconflow.cn/pricing",
               price_date="2026-11-10", timeout_seconds=90, expand_hypothesis_branches=True,
-              max_input_bytes=64000)  # B1 one-shot stage-2 requests exceeded the 32000-byte default
+              max_input_bytes=48000,  # B1 stage-2 needs about 36000 bytes; 32000 default was too small
+              deadline_seconds=480)   # 360 s per stage client ran out when the provider was slow
 
 
 def policy():
@@ -39,7 +41,7 @@ def policy():
 
 
 def run_cap(pol):
-    return pol.estimate(pol.max_input_bytes + 4096, pol.max_output_tokens) * MAX_FORMAL_CASE_REQUESTS + UNKNOWN_HOLD
+    return pol.estimate(pol.max_input_bytes + 4096, pol.max_output_tokens) * RUN_REQUESTS + UNKNOWN_HOLD
 
 
 def project_committed(ledger_path):
@@ -50,7 +52,7 @@ async def run_one(directory, snapshot, label, key, ledger_path, *, scope, projec
     condition, gate = LABELS[label]
     pol = policy()
     budget = CandidateBudget(ledger_path, policy=pol, scope=scope, baseline=baseline, cap=run_cap(pol),
-                             request_limit=MAX_FORMAL_CASE_REQUESTS, project_cap=project_cap)
+                             request_limit=RUN_REQUESTS, project_cap=project_cap)
     budget.start()
     directory = Path(directory)
     directory.mkdir(parents=True, exist_ok=False)

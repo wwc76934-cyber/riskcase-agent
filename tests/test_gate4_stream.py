@@ -57,4 +57,5 @@ def test_streaming_client_requests_a_stream_with_usage():
     client.model, client.policy = "m", Policy()
     payload = client.request_payload([{"role": "user", "content": "{}"}], tools=[{"type": "function"}])
     assert payload["stream"] is True and payload["stream_options"] == {"include_usage": True}
-    assert client.transport_timeout(500).read == 30.0 and client.total_deadline(500) == 120.0
+    assert client.transport_timeout(500).read == 120.0 and client.total_deadline(500) == 300.0
+    assert client.max_body_bytes == 4 * 1024 * 1024
