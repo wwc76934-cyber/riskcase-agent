@@ -15,6 +15,14 @@ from app.investigation.v3.policy_guard import apply_policy_guard
 from app.investigation.v3.tier_gate import planning_metrics
 
 
+def load_cases(dataset):
+    """``dataset`` is a registered dataset directory, or the literal ``heldout``."""
+    if str(dataset) == "heldout":
+        from app.evaluation.v4_heldout import candidates
+        return {s["case_id"]: (s, r) for s, r in candidates()}
+    return {e["case_id"]: (s, r) for _, e, s, r in read_dataset(dataset)}
+
+
 def credits_used(phase, snapshot):
     return snapshot["access_budget_units"] - phase["source_state"]["catalog"]["remaining_cost_units"]
 
@@ -47,8 +55,8 @@ def score_run(snapshot, reference, trajectory):
     return rows
 
 
-def main(dataset, study, out=None):
-    cases = {e["case_id"]: (s, r) for _, e, s, r in read_dataset(dataset)}
+def main(dataset, study, out=None, audit_db=None):
+    cases = load_cases(dataset)
     by_label, runs = defaultdict(lambda: dict(raw=[], guarded=[], undelivered=0, credits=[])), []
     for folder in sorted(Path(study).glob("*__*")):
         path = folder / "trajectory.json"
@@ -58,6 +66,11 @@ def main(dataset, study, out=None):
         snapshot, reference = cases[trajectory["case_id"]]
         rows = score_run(snapshot, reference, trajectory)
         label = trajectory["label"]
+        if audit_db:
+            from app.investigation.v3.guard_audit import record
+            for row in rows:
+                if row["delivered"]:
+                    record(audit_db, folder.name, trajectory["case_id"], label, row["stage"], row["guard_audit"])
         bucket = by_label[label]
         for row in rows:
             if row["delivered"]:
@@ -84,5 +97,6 @@ if __name__ == "__main__":
     parser.add_argument("dataset", type=Path)
     parser.add_argument("study", type=Path)
     parser.add_argument("out", type=Path, nargs="?")
+    parser.add_argument("--audit-db", type=Path)
     a = parser.parse_args()
-    print(json.dumps(main(a.dataset, a.study, a.out)["summary"], indent=2, sort_keys=True))
+    print(json.dumps(main(a.dataset, a.study, a.out, a.audit_db)["summary"], indent=2, sort_keys=True))

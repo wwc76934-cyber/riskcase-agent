@@ -58,7 +58,33 @@ def canonical_decision(report, ledger):
                 state_used=state if resolved else "unresolved")
 
 
-def apply_policy_guard(report, ledger):
+def derive_predicates(report, ledger, *, exhausted=None):
+    """Host-computed structured predicates from the model's cited report.
+
+    The model's output schema is unchanged. These values are read from its
+    validated source statement and facts, so each is checked against the ledger.
+    """
+    statement = report.get("source_statement") or {}
+    claimed = statement.get("value")
+    supported = statement_supported(report, ledger)
+    customer_values = {f.get("value") for f in report.get("facts", [])
+                       if f.get("predicate") in CUSTOMER_PREDICATES and f.get("value") in RESOLVED_STATES}
+    if supported:
+        sufficiency = "SUFFICIENT_FOR_FINAL_DECISION"
+    elif exhausted:
+        sufficiency = "BUDGET_OR_CHANNEL_EXHAUSTED"
+    else:
+        sufficiency = "AWAITING_INCREMENTAL_EVIDENCE"
+    return dict(
+        customer_statement_state=claimed if supported else "unresolved",
+        claimed_state=claimed,
+        claim_supported_by_ledger=supported,
+        key_conflict_detected=len(customer_values) > 1,
+        evidence_sufficiency=sufficiency,
+        missing_required_sources=list(report.get("missing", [])))
+
+
+def apply_policy_guard(report, ledger, *, exhausted=None):
     """Return ``(guarded_report, audit)``. The input report is not modified."""
     raw = dict(proposed_disposition=report.get("proposed_disposition"), stop_reason=report.get("stop_reason"),
                actions=[r.get("action") for r in report.get("recommendations", [])])
@@ -95,5 +121,6 @@ def apply_policy_guard(report, ledger):
                  policy_guard_decision=dict(proposed_disposition=decision["proposed_disposition"],
                                             stop_reason=decision["stop_reason"],
                                             actions=decision["mandatory_actions"]),
-                 guard_interventions=interventions, state_used=decision["state_used"])
+                 guard_interventions=interventions, state_used=decision["state_used"],
+                 structured_predicates=derive_predicates(report, ledger, exhausted=exhausted))
     return guarded, audit

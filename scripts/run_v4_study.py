@@ -29,7 +29,11 @@ def main(dataset, ledger, grant_path, out):
     key = load_key()
     if not key:
         raise SystemExit("No local credential")
-    cases = {entry["case_id"]: snapshot for _, entry, snapshot, _ in read_dataset(dataset)}
+    if str(dataset) == "heldout":
+        from app.evaluation.v4_heldout import candidates
+        cases = {s["case_id"]: s for s, _ in candidates()}
+    else:
+        cases = {entry["case_id"]: snapshot for _, entry, snapshot, _ in read_dataset(dataset)}
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
     start = project_committed(ledger)

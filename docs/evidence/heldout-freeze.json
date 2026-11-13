@@ -1,0 +1,12 @@
+{
+  "frozen_at_utc": "2026-11-13T13:03:46+00:00",
+  "files_sha256_lf": {
+    "app/investigation/v3/policy_guard.py": "1915600c1374939a236158a713ad0c4e9b530ac276623d75da0417f809deb272",
+    "app/evaluation/v4_score.py": "5396742e4bc1487aa364d9596d553cc2640b513d487fff8bda01f52d17e158cf",
+    "app/evaluation/v4_heldout.py": "fc962f6c57352374ffc8e779636e74c6958f064e473ad459b44f5ac6853d8ec2",
+    "app/investigation/v3/tier_gate.py": "b0df531e00c08587969e3a0d2e2a8ab1ec4fa9e8b4aa641958896606adec7add"
+  },
+  "cases": 12,
+  "case_digest": "037f3d0171e550c2668eaa4f4320bf4d543f939544bd3361cdf27c622e1e21b9",
+  "note": "Guard table and scorer frozen before the first held-out model request."
+}

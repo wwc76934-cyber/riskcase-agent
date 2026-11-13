@@ -109,7 +109,7 @@ def semantic_case(family, index, narrative, ordinal):
                                    source=dict(kind='revised_v4_author_candidate',previous_runtime_digest=old_sha))
 
 
-def query_case(entry, ordinal):
+def query_case(entry, ordinal, extra_fallback_states=None):
     family, name, route, primary_text, fallback_text, corroboration, later, outcome, primary_state, follow, final=entry
     case_id='v31-eval-'+name; subject='simulated-'+case_id
     target,related=case_id+'-p',case_id+'-q'
@@ -143,7 +143,7 @@ def query_case(entry, ordinal):
         access_budget_units=6, records=sorted(records,key=lambda r:r['source_id']),query_rules=rules)
     snapshot['records_sha256']=digest(snapshot['records'])
     follow_id=corroborate if follow=='corroborate' else alternate
-    fallback_states={'recording_rotation':'unresolved','partial_invoice':'authorized'}
+    fallback_states={'recording_rotation':'unresolved','partial_invoice':'authorized',**(extra_fallback_states or {})}
     alternate_state=fallback_states.get(name,final)
     source=primary if follow=='corroborate' else alternate
     first_value=primary_state if follow=='corroborate' else alternate_state
