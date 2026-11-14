@@ -24,8 +24,8 @@ def main(dataset, ledger, grant_path, out):
     if grant.get("state") != "approved" or not grant.get("user_message"):
         raise SystemExit("Explicit approved grant with the user's message is required")
     project_cap, batch_cap = Decimal(grant["project_cap_cny"]), Decimal(grant["batch_cap_cny"])
-    if project_cap > Decimal("50") or not set(grant["labels"]) <= set(LABELS):
-        raise SystemExit("Grant outside the 50 CNY project limit or unknown condition label")
+    if project_cap > Decimal("55") or not set(grant["labels"]) <= set(LABELS):
+        raise SystemExit("Grant outside the 55 CNY project limit or unknown condition label")
     key = load_key()
     if not key:
         raise SystemExit("No local credential")

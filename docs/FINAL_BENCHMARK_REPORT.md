@@ -9,11 +9,11 @@ Raw data: `docs/evidence/heldout-score.json`, per-stage three-state audit in `do
 | Condition | Meaning | Semantic cases (6) | Plain cases (6) |
 |---|---|---|---|
 | B0 | Deterministic rules and regex, no model | 6 | 6 |
-| B1S | One-shot synthesis, streaming | 6 | not run |
-| B4N | Rule evidence collection, model report | 6 | 3 (h07 to h09) |
-| B2V4 | Dynamic agent with cost-tier gate | 6 | not run |
+| B1S | One-shot synthesis, streaming | 6 | 1 (h07 only) |
+| B4N | Rule evidence collection, model report | 6 | 6 |
+| B2V4 | Dynamic agent with cost-tier gate | 6 | 6 |
 
-The plain-case runs for B1S and B2V4 and three for B4N are missing. The local ledger reached 46.77 of 50 CNY, and the ledger's per-run cap no longer fit in the remaining headroom.
+The B1S plain-case runs h08 to h12 are missing: h08 ended in a read timeout and the batch stopped. The project limit was raised from 50 to 55 CNY on the user's instruction (可以提高上限) for these runs; the local ledger is at 49.71 CNY.
 
 ## Results on the six semantic cases (18 stages per condition)
 
@@ -24,7 +24,7 @@ The plain-case runs for B1S and B2V4 and three for B4N are missing. The local le
 | B4N rule evidence + model | 15 / 18 | 3 | 15 | 12 | 4.00 |
 | B2V4 dynamic + gate | 15 / 18 | 5 | 15 | 10 | 4.33 |
 
-Plain cases: B0 correct on 18 of 18 stages. B4N correct on 9 of 9 and Tier 1 pass 9 of 9 after the guard (1 of 9 raw).
+Plain cases (18 stages per condition unless noted): rules correct on 18 of 18. Customer state correct: B4N 17 of 18, B2V4 16 of 18, B1S 3 of 3 (one run). Tier 1 pass raw / after guard: B4N 2 / 17, B2V4 3 / 15, B1S 1 / 3. The model conditions do not beat the rules on plain wording and miss a stage or two.
 
 ## What the numbers say
 
@@ -46,6 +46,6 @@ Plain cases: B0 correct on 18 of 18 stages. B4N correct on 9 of 9 and Tier 1 pas
 ## Run failures and spend
 
 * Eight held-out runs failed and were repeated: two because processes ran in parallel (the ledger's baseline check breaks when another process settles a reservation, no spend), two from a 524,288-byte body limit that a streamed response exceeded, three from read timeouts before the first byte (30 s, 30 s, 60 s), and one from a 120 s total-stream cap. The failed run folders are kept with a `_failed` suffix and excluded from scoring.
-* Fixes made along the way: first-byte read timeout 30 s then 60 s then 120 s, total stream deadline 120 s then 300 s, response body limit 4 MiB for streams, per-stage client deadline 480 s, input cap 48,000 bytes.
+* Fixes made along the way: first-byte read timeout 30 s, 60 s, 120 s, then 180 s, total stream deadline 120 s, 300 s, then 420 s, response body limit 4 MiB for streams, per-stage client deadline 480 s, input cap 48,000 bytes.
 * Each uncertain request keeps a 0.50 CNY hold in the ledger. Six such holds (3.00 CNY) remain. Real provider cost for those requests is likely far below that. Provider billing is authoritative.
-* Local ledger after all studies: 46.77 CNY of the 50 CNY project limit. Run spend is about 0.10 CNY per one-shot or rule run and 0.17 CNY per dynamic run.
+* Local ledger after all studies: 49.71 CNY, against a limit of 50 CNY raised to 55 CNY on the user's instruction. Run spend is about 0.10 CNY per one-shot or rule run and 0.17 CNY per dynamic run.
