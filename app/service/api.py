@@ -12,7 +12,7 @@ from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 from app.risk.merchant_research import MerchantQuestion
 from app.risk.mixed_investigation import CHECKS, MixedQuestion as MixedContract
-from app.service.store import Conflict
+from app.service.store import Conflict, digest
 from app.risk.intent_router import NaturalQuestion as NaturalContract
 
 
@@ -49,16 +49,21 @@ class NaturalQuestion(BaseModel):
         return self
 
 
+class TriageQuestion(BaseModel):
+    model_config = ConfigDict(extra='forbid', strict=True)
+    policy_version: Literal['first-lead-v1'] = 'first-lead-v1'
+
+
 class Submission(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
     case_id: str = Field(min_length=1, max_length=64, pattern=r"^[a-zA-Z0-9_-]+$")
     mode: Literal["offline", "live"] = "offline"
-    task_type: Literal["merchant", "mixed", "natural", "natural_v2"] = "merchant"
-    question: Question | MixedQuestion | NaturalQuestion = Field(default_factory=Question)
+    task_type: Literal["merchant", "mixed", "natural", "natural_v2", "triage"] = "merchant"
+    question: Question | MixedQuestion | NaturalQuestion | TriageQuestion = Field(default_factory=Question)
 
     @model_validator(mode="after")
     def matching_type(self):
-        if not isinstance(self.question, {"mixed": MixedQuestion, "merchant": Question, "natural": NaturalQuestion, "natural_v2": NaturalQuestion}[self.task_type]): raise ValueError("Question must match task type")
+        if not isinstance(self.question, {"mixed": MixedQuestion, "merchant": Question, "natural": NaturalQuestion, "natural_v2": NaturalQuestion,'triage':TriageQuestion}[self.task_type]): raise ValueError("Question must match task type")
         return self
 
 
@@ -77,6 +82,20 @@ class PlanReview(BaseModel):
     decision: Literal["confirm_plan", "reject_plan"]
 
 
+class LessonProposal(BaseModel):
+    model_config = ConfigDict(extra='forbid', strict=True)
+    source_job: str = Field(min_length=1, max_length=100)
+    result_hash: str = Field(pattern=r'^[0-9a-f]{64}$')
+    identity: Literal['coverage', 'amount', 'merchant']
+    body: str = Field(min_length=1, max_length=4000)
+    feedback: str = Field(min_length=1, max_length=1000)
+
+
+class Promotion(BaseModel):
+    model_config = ConfigDict(extra='forbid', strict=True)
+    evaluation_hash: str = Field(pattern=r'^[0-9a-f]{64}$')
+
+
 def create_app(service):
     app = FastAPI(title="RiskCase research tasks", version="1", docs_url=None, redoc_url=None, openapi_url=None)
     app.add_middleware(TrustedHostMiddleware, allowed_hosts=["127.0.0.1", "localhost", "testserver"])
@@ -84,7 +103,7 @@ def create_app(service):
     @app.middleware("http")
     async def boundary(request: Request, call_next):
         expected = ("Bearer " + service.settings.token).encode()
-        public_page = request.method == "GET" and request.url.path == "/"
+        public_page = request.method == "GET" and request.url.path in ("/", "/investigations/page", "/baseline/page")
         if not public_page and not hmac.compare_digest(request.headers.get("authorization", "").encode(), expected):
             return JSONResponse({"error": "authentication_required"}, status_code=401)
         if request.method in ("POST", "PUT", "PATCH"):
@@ -134,8 +153,15 @@ def create_app(service):
 
     @app.get("/", response_class=HTMLResponse)
     def workbench():
+        if getattr(service,'world_catalog',{}):
+            from app.service.investigation_page import HTML
+            return HTML
+        return baseline_page()
+
+    @app.get('/baseline/page',response_class=HTMLResponse)
+    def baseline_page():
         from app.service.workbench import HTML
-        return HTML
+        return HTML.replace('</header>','<p><a style="color:white" href="/investigations/page">进入欺诈告警调查与历史实验（免费接线）</a></p></header>')
 
     @app.get("/health")
     def health(): return {"status": "ok", "live_enabled": service.settings.allow_live, "data_kind": "synthetic"}
@@ -156,6 +182,35 @@ def create_app(service):
 
     @app.get("/jobs")
     def jobs(limit: int = 25): return {"jobs": service.store.list_jobs(limit)}
+
+    @app.get('/knowledge/search')
+    def knowledge_search(query: str):
+        from app.tools.knowledge_tools import FrozenKnowledge
+        rows = service.experience.corpus()
+        return {'corpus_hash': digest(rows), 'advisory_only': True, 'hits': FrozenKnowledge(rows).search(query)}
+
+    @app.post('/knowledge/candidates')
+    def propose_lesson(body: LessonProposal):
+        job = service.store.get(body.source_job)
+        if job['state'] != 'rejected' or job['result_hash'] != body.result_hash:
+            raise Conflict('rejected_report_with_current_hash_required')
+        service.artifact(body.source_job, 'report.md')
+        return service.experience.propose(**body.model_dump())
+
+    @app.get('/knowledge/candidates/{identity}')
+    def lesson(identity: str): return service.experience.get(identity)
+
+    @app.post('/knowledge/candidates/{identity}/evaluate')
+    def evaluate_lesson(identity: str): return service.experience.evaluate(identity)
+
+    @app.post('/knowledge/candidates/{identity}/promote')
+    def promote_lesson(identity: str, body: Promotion):
+        record = service.experience.get(identity)
+        source = service.store.get(record['candidate']['source_job'])
+        if source['state'] != 'rejected' or source['result_hash'] != record['candidate']['result_hash']:
+            raise Conflict('feedback_source_changed')
+        service.artifact(source['id'], 'report.md')
+        return service.experience.promote(identity, **body.model_dump())
 
     @app.post("/jobs")
     def submit(body: Submission, request: Request):
@@ -184,4 +239,6 @@ def create_app(service):
     def confirm_plan(identity: str, body: PlanReview, request: Request):
         return service.confirm_plan(identity, request_key=request_key(request), **body.model_dump())
 
+    from app.service.investigations import install
+    install(app,service)
     return app

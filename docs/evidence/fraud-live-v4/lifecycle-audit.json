@@ -1,0 +1,50 @@
+[
+  {
+    "case_id": "neural-2018-user-00",
+    "profile": "no_knowledge",
+    "skill_activation_requests": 1,
+    "invalid_observations": 0
+  },
+  {
+    "case_id": "neural-2018-user-00",
+    "profile": "full",
+    "skill_activation_requests": 1,
+    "invalid_observations": 0
+  },
+  {
+    "case_id": "neural-2018-user-01",
+    "profile": "no_knowledge",
+    "skill_activation_requests": 1,
+    "invalid_observations": 0
+  },
+  {
+    "case_id": "neural-2018-user-01",
+    "profile": "full",
+    "skill_activation_requests": 1,
+    "invalid_observations": 0
+  },
+  {
+    "case_id": "neural-2018-user-02",
+    "profile": "no_knowledge",
+    "skill_activation_requests": 1,
+    "invalid_observations": 0
+  },
+  {
+    "case_id": "neural-2018-user-02",
+    "profile": "full",
+    "skill_activation_requests": 1,
+    "invalid_observations": 0
+  },
+  {
+    "case_id": "neural-2018-user-03",
+    "profile": "no_knowledge",
+    "skill_activation_requests": 1,
+    "invalid_observations": 0
+  },
+  {
+    "case_id": "neural-2018-user-03",
+    "profile": "full",
+    "skill_activation_requests": 1,
+    "invalid_observations": 0
+  }
+]

@@ -1,0 +1,65 @@
+{
+  "schema": "v3-new-development-delivery-pilot-v1",
+  "state": "pending_user_authorization",
+  "grant_message": null,
+  "provider": "SiliconFlow China",
+  "endpoint": "https://api.siliconflow.cn/v1/chat/completions",
+  "model": "zai-org/GLM-5.3-Flash",
+  "dataset_sha256": "1c447cdaa3b49a4e57f2c610ab78f3d71996ad6b3ff9e1ce9d40eda51eb67ec3",
+  "case_ids": [
+    "v3-10476d72a749a8ba01",
+    "v3-4095bca60f79290cae",
+    "v3-0f8ad5c54ab33e3b99",
+    "v3-0996e2e3733092caed",
+    "v3-6d35eb9f74124bfa57",
+    "v3-696b84e092d689a014"
+  ],
+  "repeats": 2,
+  "max_case_runs": 12,
+  "max_phase_jobs": 36,
+  "max_requests": 72,
+  "max_requests_per_phase": 2,
+  "max_requests_per_case_run": 6,
+  "max_input_bytes": 60000,
+  "max_tokens": 4096,
+  "thinking_budget": 128,
+  "temperature": 0.2,
+  "max_case_estimated_cny": ".50",
+  "max_estimated_cny": "6",
+  "project_limit_cny": "34",
+  "project_before_pilot_committed_cny": "27.6490780",
+  "price": {
+    "input_rate_cny_per_million": "0.80",
+    "output_rate_cny_per_million": "2.80",
+    "checked_on": "2026-11-02",
+    "source": "https://www.siliconflow.cn/news/ok5ja7brf921kgf1644yyedz",
+    "cache_discounts_assumed": false
+  },
+  "max_request_reservation_cny": "0.063104",
+  "all_known_usage_reservation_upper_cny": "4.543488",
+  "all_case_allowances_cny": "6.00",
+  "largest_preflight_context_bound_bytes": 47829,
+  "automatic_retries": 0,
+  "purpose": "New-development two-stage delivery reliability pilot only; NOT Gate 3 formal value comparison, NOT memory experiment",
+  "sent_materials": [
+    "Six new entirely authored simulated alert/transaction/authentication/customer/procedure packets at current T0/T1/T2",
+    "Source-bound schemas, model outputs and protocol feedback; no reference answers"
+  ],
+  "excluded_materials": [
+    "Old90 cases",
+    "40 evaluation candidates",
+    "controller references",
+    "IBM/ULB transactions",
+    "LongMemEval",
+    "public complaint narratives",
+    "credentials"
+  ],
+  "independent_person_reviewed": false,
+  "formal_test_started": false,
+  "execution_prerequisites": [
+    "Offline source and protocol checks",
+    "Explicit new grant",
+    "Shared-project financial integration separately checked",
+    "Source/prompt/reference/code freeze and original ledger binding before first live request"
+  ]
+}

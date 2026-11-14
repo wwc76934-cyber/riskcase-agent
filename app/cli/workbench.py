@@ -15,6 +15,7 @@ def main():
     parser.add_argument("--directory", type=Path, default=Path("runs/workbench-v1"))
     parser.add_argument("--demo-data", type=Path, default=Path("runs/public-demo-data-v1"))
     parser.add_argument("--catalog", type=Path)
+    parser.add_argument("--world-catalog",type=Path,help="Trusted A/B runtime catalog; never a reference/score file")
     parser.add_argument("--allow-live", action="store_true")
     parser.add_argument("--port", type=int, default=8765)
     args = parser.parse_args()
@@ -22,6 +23,8 @@ def main():
     if not args.catalog: args.catalog = ensure(args.demo_data)
     settings = settings_from_args(args)
     service, stop = ResearchService(settings), threading.Event()
+    from app.service.world_catalog import configure
+    configure(service,args.world_catalog)
     def work():
         worker = Worker(service)
         while not stop.is_set():

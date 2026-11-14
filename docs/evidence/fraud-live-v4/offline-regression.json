@@ -1,0 +1,34 @@
+{
+  "simulation_not_provider_results": true,
+  "tests": [
+    {
+      "file": "skill-lifecycle-first-failure.xml",
+      "sha256": "db2e4c9f19b14fe40995ccfda911b523ab686f0417c696c8e146b423e1987463",
+      "tests": 1,
+      "failures": 1,
+      "errors": 0
+    },
+    {
+      "file": "skill-lifecycle-regression-02.xml",
+      "sha256": "daf6e5d94ee63e609927570c93ea34147031aa6afeeb25448604449cbfb9daa3",
+      "tests": 90,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "file": "no-skill-control-first-failure.xml",
+      "sha256": "2260cf6485c02720deeb8a9d3d064a3767f738afcdef57305e21f79c83dc269a",
+      "tests": 1,
+      "failures": 1,
+      "errors": 0
+    },
+    {
+      "file": "no-skill-control-regression-02.xml",
+      "sha256": "ecaab63b094ee3b193289fb6fb495528c36c17d4a2919271cc3294498a9998e6",
+      "tests": 30,
+      "failures": 0,
+      "errors": 0
+    }
+  ],
+  "overlapping_runs_do_not_sum": true
+}

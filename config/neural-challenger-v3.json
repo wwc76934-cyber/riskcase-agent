@@ -1,0 +1,48 @@
+{
+  "version": 3,
+  "fit_period": "2016-01-01 inclusive to 2018-01-01 exclusive",
+  "development_period": "2018, previously observed development data, used for recipe and epoch selection",
+  "final_2019_access": "forbidden in this command",
+  "selection": "maximum daily top10 true positives, AP breaks ties, then earliest epoch and declared recipe order",
+  "daily_budget": 10,
+  "tie_seed": "riskcase-review-ties-v1",
+  "max_epochs": 2,
+  "seed": 42,
+  "confirmation_seeds": [
+    42,
+    43,
+    44
+  ],
+  "recipes": [
+    {
+      "architecture": "residual",
+      "id": "matched_residual"
+    },
+    {
+      "architecture": "feature_transformer",
+      "id": "feature_transformer"
+    }
+  ],
+  "base_config": {
+    "architecture": "residual",
+    "width": 32,
+    "blocks": 1,
+    "dropout": 0.15,
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "positive_weight": 20.0,
+    "batch_size": 256,
+    "include_channel": false,
+    "engineered": false,
+    "threads": 4
+  },
+  "final_refit_contract": "2019 is already observed. Never treat it as a fresh holdout or select challengers on it.",
+  "limits": [
+    "Synthetic data; event-time features do not prove ingestion availability.",
+    "No identifier or label features; historical signed means are numeric predictors, not positive spending claims.",
+    "Weighted neural scores are not calibrated fraud probabilities.",
+    "No architecture superiority unless matched ablation results support it.",
+    "Two epochs are a feasibility experiment, not converged model selection or official reproduction.",
+    "All 2018 results are previously observed development results; two recipes and two epochs searched."
+  ]
+}

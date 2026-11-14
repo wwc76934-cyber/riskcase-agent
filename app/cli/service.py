@@ -31,6 +31,7 @@ def main(argv=None):
     parser.add_argument("action", choices=("serve", "worker", "status"))
     parser.add_argument("--directory", type=Path, default=Path("runs/service-v1"))
     parser.add_argument("--catalog", type=Path, help="Trusted host configuration; never supplied by an HTTP client")
+    parser.add_argument("--world-catalog",type=Path,help="Trusted, hash-bound A/B runtime catalog")
     parser.add_argument("--allow-live", action="store_true", help="Enable saved-credential jobs; same frozen 1/20 CNY budgets")
     parser.add_argument("--port", type=int, default=8765)
     parser.add_argument("--once", action="store_true", help="Process at most one job")
@@ -43,6 +44,8 @@ def main(argv=None):
         parser.error("Fault injection is offline-only")
     settings = settings_from_args(args)
     service = ResearchService(settings)
+    from app.service.world_catalog import configure
+    configure(service,args.world_catalog)
     if args.action == "serve":
         import uvicorn
         from app.service.api import create_app

@@ -1,0 +1,16 @@
+{
+  "dataset_sha256": "f8af041607e6f3c94c6f689f0f00f7db0f4ca18cf6876c73f3242fbd37a89329",
+  "files_sha256": {
+    "packet.json": "6cebf83ff80c3281096d457f9973afb2b177bb8a64b3dd16749ea2418090dc5d",
+    "review.html": "4b4efd213db05574feda8635a179fd8f5e7a13fcae06eec2c10a534191025bdd",
+    "review-form.json": "c90ff58e2292822ed9259e88718eae69ceb2b87810180063bae2c8adf3d375df",
+    "README.md": "272db3276d6f9dbe2f628445eed4f6574b8467b7b3de81edfb30f6a9c2d2fb1c"
+  },
+  "cases": 40,
+  "decisions": {
+    "pending": 40
+  },
+  "independent_person_reviewed": false,
+  "formal_frozen": false,
+  "external_model_requests": 0
+}

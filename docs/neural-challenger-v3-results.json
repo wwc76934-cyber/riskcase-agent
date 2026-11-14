@@ -1,0 +1,800 @@
+{
+  "status": "neural_v2_development_complete",
+  "final_test_read": false,
+  "fit_rows": 841892,
+  "development_rows": 422088,
+  "recipes": [
+    {
+      "recipe": "matched_residual",
+      "config": {
+        "architecture": "residual",
+        "width": 32,
+        "blocks": 1,
+        "dropout": 0.15,
+        "learning_rate": 0.001,
+        "weight_decay": 0.01,
+        "positive_weight": 20.0,
+        "batch_size": 256,
+        "include_channel": false,
+        "engineered": false,
+        "threads": 4,
+        "attention_heads": 4
+      },
+      "best": {
+        "epoch": 2,
+        "loss": 0.062371425750208175,
+        "rows": 841892,
+        "batches": 3289,
+        "max_preclip_gradient_norm": 3.8973426818847656,
+        "average_precision": 0.01663766791681737,
+        "true_positives": 103,
+        "reviewed": 3650,
+        "positives": 683,
+        "precision": 0.028219178082191782,
+        "recall": 0.15080527086383602,
+        "elapsed_seconds": 67.25
+      },
+      "metrics": {
+        "average_precision": 0.01663766791681737,
+        "roc_auc": 0.854028044613985,
+        "positive_fraction": 0.0016181459790375466,
+        "daily_review": {
+          "rows": 422088,
+          "positives": 683,
+          "reviewed_or_alerted": 3650,
+          "true_positives": 103,
+          "false_positives": 3547,
+          "false_negatives": 580,
+          "true_negatives": 417858,
+          "precision": 0.028219178082191782,
+          "recall": 0.15080527086383602,
+          "false_positive_rate": 0.00841708095537547,
+          "observed_days": 365,
+          "daily_budget": 10,
+          "reviewed_without_threshold_hit": null
+        },
+        "error_groups": {
+          "channel": {
+            "Chip Transaction": {
+              "rows": 310348,
+              "positives": 564,
+              "reviewed_or_alerted": 2536,
+              "true_positives": 77,
+              "false_positives": 2459,
+              "false_negatives": 487,
+              "true_negatives": 307325,
+              "precision": 0.03036277602523659,
+              "recall": 0.13652482269503546,
+              "false_positive_rate": 0.007937788910983137
+            },
+            "Online Transaction": {
+              "rows": 50576,
+              "positives": 28,
+              "reviewed_or_alerted": 576,
+              "true_positives": 8,
+              "false_positives": 568,
+              "false_negatives": 20,
+              "true_negatives": 49980,
+              "precision": 0.013888888888888888,
+              "recall": 0.2857142857142857,
+              "false_positive_rate": 0.011236844187702778
+            },
+            "Swipe Transaction": {
+              "rows": 61164,
+              "positives": 91,
+              "reviewed_or_alerted": 538,
+              "true_positives": 18,
+              "false_positives": 520,
+              "false_negatives": 73,
+              "true_negatives": 60553,
+              "precision": 0.03345724907063197,
+              "recall": 0.1978021978021978,
+              "false_positive_rate": 0.008514400799043767
+            }
+          },
+          "observed_in_training": {
+            "seen": {
+              "rows": 421483,
+              "positives": 683,
+              "reviewed_or_alerted": 3641,
+              "true_positives": 103,
+              "false_positives": 3538,
+              "false_negatives": 580,
+              "true_negatives": 417262,
+              "precision": 0.02828893161219445,
+              "recall": 0.15080527086383602,
+              "false_positive_rate": 0.008407794676806083
+            },
+            "unseen": {
+              "rows": 605,
+              "positives": 0,
+              "reviewed_or_alerted": 9,
+              "true_positives": 0,
+              "false_positives": 9,
+              "false_negatives": 0,
+              "true_negatives": 596,
+              "precision": 0.0,
+              "recall": null,
+              "false_positive_rate": 0.01487603305785124
+            }
+          },
+          "prior_30d_events": {
+            "none": {
+              "rows": 4,
+              "positives": 0,
+              "reviewed_or_alerted": 0,
+              "true_positives": 0,
+              "false_positives": 0,
+              "false_negatives": 0,
+              "true_negatives": 4,
+              "precision": null,
+              "recall": null,
+              "false_positive_rate": 0.0
+            },
+            "present": {
+              "rows": 422084,
+              "positives": 683,
+              "reviewed_or_alerted": 3650,
+              "true_positives": 103,
+              "false_positives": 3547,
+              "false_negatives": 580,
+              "true_negatives": 417854,
+              "precision": 0.028219178082191782,
+              "recall": 0.15080527086383602,
+              "false_positive_rate": 0.008417160851540456
+            }
+          }
+        }
+      },
+      "reload_max_abs_diff": 0.0,
+      "epochs_attempted": 2,
+      "parameter_count": 6715,
+      "elapsed_seconds": 72.625
+    },
+    {
+      "recipe": "feature_transformer",
+      "config": {
+        "architecture": "feature_transformer",
+        "width": 32,
+        "blocks": 1,
+        "dropout": 0.15,
+        "learning_rate": 0.001,
+        "weight_decay": 0.01,
+        "positive_weight": 20.0,
+        "batch_size": 256,
+        "include_channel": false,
+        "engineered": false,
+        "threads": 4,
+        "attention_heads": 4
+      },
+      "best": {
+        "epoch": 2,
+        "loss": 0.06825449774000311,
+        "rows": 841892,
+        "batches": 3289,
+        "max_preclip_gradient_norm": 6.515801906585693,
+        "average_precision": 0.015695389416040807,
+        "true_positives": 90,
+        "reviewed": 3650,
+        "positives": 683,
+        "precision": 0.024657534246575342,
+        "recall": 0.13177159590043924,
+        "elapsed_seconds": 718.172
+      },
+      "metrics": {
+        "average_precision": 0.015695389416040807,
+        "roc_auc": 0.800286787264308,
+        "positive_fraction": 0.0016181459790375466,
+        "daily_review": {
+          "rows": 422088,
+          "positives": 683,
+          "reviewed_or_alerted": 3650,
+          "true_positives": 90,
+          "false_positives": 3560,
+          "false_negatives": 593,
+          "true_negatives": 417845,
+          "precision": 0.024657534246575342,
+          "recall": 0.13177159590043924,
+          "false_positive_rate": 0.008447930138465372,
+          "observed_days": 365,
+          "daily_budget": 10,
+          "reviewed_without_threshold_hit": null
+        },
+        "error_groups": {
+          "channel": {
+            "Chip Transaction": {
+              "rows": 310348,
+              "positives": 564,
+              "reviewed_or_alerted": 2424,
+              "true_positives": 68,
+              "false_positives": 2356,
+              "false_negatives": 496,
+              "true_negatives": 307428,
+              "precision": 0.028052805280528052,
+              "recall": 0.12056737588652482,
+              "false_positive_rate": 0.007605299176200191
+            },
+            "Online Transaction": {
+              "rows": 50576,
+              "positives": 28,
+              "reviewed_or_alerted": 745,
+              "true_positives": 9,
+              "false_positives": 736,
+              "false_negatives": 19,
+              "true_negatives": 49812,
+              "precision": 0.012080536912751677,
+              "recall": 0.32142857142857145,
+              "false_positive_rate": 0.01456041782068529
+            },
+            "Swipe Transaction": {
+              "rows": 61164,
+              "positives": 91,
+              "reviewed_or_alerted": 481,
+              "true_positives": 13,
+              "false_positives": 468,
+              "false_negatives": 78,
+              "true_negatives": 60605,
+              "precision": 0.02702702702702703,
+              "recall": 0.14285714285714285,
+              "false_positive_rate": 0.00766296071913939
+            }
+          },
+          "observed_in_training": {
+            "seen": {
+              "rows": 421483,
+              "positives": 683,
+              "reviewed_or_alerted": 3645,
+              "true_positives": 90,
+              "false_positives": 3555,
+              "false_negatives": 593,
+              "true_negatives": 417245,
+              "precision": 0.024691358024691357,
+              "recall": 0.13177159590043924,
+              "false_positive_rate": 0.00844819391634981
+            },
+            "unseen": {
+              "rows": 605,
+              "positives": 0,
+              "reviewed_or_alerted": 5,
+              "true_positives": 0,
+              "false_positives": 5,
+              "false_negatives": 0,
+              "true_negatives": 600,
+              "precision": 0.0,
+              "recall": null,
+              "false_positive_rate": 0.008264462809917356
+            }
+          },
+          "prior_30d_events": {
+            "none": {
+              "rows": 4,
+              "positives": 0,
+              "reviewed_or_alerted": 0,
+              "true_positives": 0,
+              "false_positives": 0,
+              "false_negatives": 0,
+              "true_negatives": 4,
+              "precision": null,
+              "recall": null,
+              "false_positive_rate": 0.0
+            },
+            "present": {
+              "rows": 422084,
+              "positives": 683,
+              "reviewed_or_alerted": 3650,
+              "true_positives": 90,
+              "false_positives": 3560,
+              "false_negatives": 593,
+              "true_negatives": 417841,
+              "precision": 0.024657534246575342,
+              "recall": 0.13177159590043924,
+              "false_positive_rate": 0.008448010327455322
+            }
+          }
+        }
+      },
+      "reload_max_abs_diff": 0.0,
+      "epochs_attempted": 2,
+      "parameter_count": 13729,
+      "elapsed_seconds": 723.953
+    }
+  ],
+  "selected": {
+    "recipe": "matched_residual",
+    "config": {
+      "architecture": "residual",
+      "width": 32,
+      "blocks": 1,
+      "dropout": 0.15,
+      "learning_rate": 0.001,
+      "weight_decay": 0.01,
+      "positive_weight": 20.0,
+      "batch_size": 256,
+      "include_channel": false,
+      "engineered": false,
+      "threads": 4,
+      "attention_heads": 4
+    },
+    "epochs": 2,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "final_test_read": false,
+    "training_period": "2016-2017 for development comparison; final refit may include 2018 before one-time 2019 test",
+    "selection_protocol_sha256": "9bf36098b163b0fc9d3e66173fef1573b48fd9120718d985ad51bb2c8184dce5"
+  },
+  "seeds": [
+    {
+      "seed": 42,
+      "metrics": {
+        "average_precision": 0.01663766791681737,
+        "roc_auc": 0.854028044613985,
+        "positive_fraction": 0.0016181459790375466,
+        "daily_review": {
+          "rows": 422088,
+          "positives": 683,
+          "reviewed_or_alerted": 3650,
+          "true_positives": 103,
+          "false_positives": 3547,
+          "false_negatives": 580,
+          "true_negatives": 417858,
+          "precision": 0.028219178082191782,
+          "recall": 0.15080527086383602,
+          "false_positive_rate": 0.00841708095537547,
+          "observed_days": 365,
+          "daily_budget": 10,
+          "reviewed_without_threshold_hit": null
+        },
+        "error_groups": {
+          "channel": {
+            "Chip Transaction": {
+              "rows": 310348,
+              "positives": 564,
+              "reviewed_or_alerted": 2536,
+              "true_positives": 77,
+              "false_positives": 2459,
+              "false_negatives": 487,
+              "true_negatives": 307325,
+              "precision": 0.03036277602523659,
+              "recall": 0.13652482269503546,
+              "false_positive_rate": 0.007937788910983137
+            },
+            "Online Transaction": {
+              "rows": 50576,
+              "positives": 28,
+              "reviewed_or_alerted": 576,
+              "true_positives": 8,
+              "false_positives": 568,
+              "false_negatives": 20,
+              "true_negatives": 49980,
+              "precision": 0.013888888888888888,
+              "recall": 0.2857142857142857,
+              "false_positive_rate": 0.011236844187702778
+            },
+            "Swipe Transaction": {
+              "rows": 61164,
+              "positives": 91,
+              "reviewed_or_alerted": 538,
+              "true_positives": 18,
+              "false_positives": 520,
+              "false_negatives": 73,
+              "true_negatives": 60553,
+              "precision": 0.03345724907063197,
+              "recall": 0.1978021978021978,
+              "false_positive_rate": 0.008514400799043767
+            }
+          },
+          "observed_in_training": {
+            "seen": {
+              "rows": 421483,
+              "positives": 683,
+              "reviewed_or_alerted": 3641,
+              "true_positives": 103,
+              "false_positives": 3538,
+              "false_negatives": 580,
+              "true_negatives": 417262,
+              "precision": 0.02828893161219445,
+              "recall": 0.15080527086383602,
+              "false_positive_rate": 0.008407794676806083
+            },
+            "unseen": {
+              "rows": 605,
+              "positives": 0,
+              "reviewed_or_alerted": 9,
+              "true_positives": 0,
+              "false_positives": 9,
+              "false_negatives": 0,
+              "true_negatives": 596,
+              "precision": 0.0,
+              "recall": null,
+              "false_positive_rate": 0.01487603305785124
+            }
+          },
+          "prior_30d_events": {
+            "none": {
+              "rows": 4,
+              "positives": 0,
+              "reviewed_or_alerted": 0,
+              "true_positives": 0,
+              "false_positives": 0,
+              "false_negatives": 0,
+              "true_negatives": 4,
+              "precision": null,
+              "recall": null,
+              "false_positive_rate": 0.0
+            },
+            "present": {
+              "rows": 422084,
+              "positives": 683,
+              "reviewed_or_alerted": 3650,
+              "true_positives": 103,
+              "false_positives": 3547,
+              "false_negatives": 580,
+              "true_negatives": 417854,
+              "precision": 0.028219178082191782,
+              "recall": 0.15080527086383602,
+              "false_positive_rate": 0.008417160851540456
+            }
+          }
+        }
+      },
+      "elapsed_seconds": 64.141
+    },
+    {
+      "seed": 43,
+      "metrics": {
+        "average_precision": 0.021189426422453736,
+        "roc_auc": 0.848388977936754,
+        "positive_fraction": 0.0016181459790375466,
+        "daily_review": {
+          "rows": 422088,
+          "positives": 683,
+          "reviewed_or_alerted": 3650,
+          "true_positives": 105,
+          "false_positives": 3545,
+          "false_negatives": 578,
+          "true_negatives": 417860,
+          "precision": 0.028767123287671233,
+          "recall": 0.15373352855051245,
+          "false_positive_rate": 0.008412334927207794,
+          "observed_days": 365,
+          "daily_budget": 10,
+          "reviewed_without_threshold_hit": null
+        },
+        "error_groups": {
+          "channel": {
+            "Chip Transaction": {
+              "rows": 310348,
+              "positives": 564,
+              "reviewed_or_alerted": 2420,
+              "true_positives": 75,
+              "false_positives": 2345,
+              "false_negatives": 489,
+              "true_negatives": 307439,
+              "precision": 0.030991735537190084,
+              "recall": 0.13297872340425532,
+              "false_positive_rate": 0.007569790563747644
+            },
+            "Online Transaction": {
+              "rows": 50576,
+              "positives": 28,
+              "reviewed_or_alerted": 725,
+              "true_positives": 12,
+              "false_positives": 713,
+              "false_negatives": 16,
+              "true_negatives": 49835,
+              "precision": 0.016551724137931035,
+              "recall": 0.42857142857142855,
+              "false_positive_rate": 0.014105404763788874
+            },
+            "Swipe Transaction": {
+              "rows": 61164,
+              "positives": 91,
+              "reviewed_or_alerted": 505,
+              "true_positives": 18,
+              "false_positives": 487,
+              "false_negatives": 73,
+              "true_negatives": 60586,
+              "precision": 0.03564356435643564,
+              "recall": 0.1978021978021978,
+              "false_positive_rate": 0.007974063825258297
+            }
+          },
+          "observed_in_training": {
+            "seen": {
+              "rows": 421483,
+              "positives": 683,
+              "reviewed_or_alerted": 3632,
+              "true_positives": 105,
+              "false_positives": 3527,
+              "false_negatives": 578,
+              "true_negatives": 417273,
+              "precision": 0.028909691629955946,
+              "recall": 0.15373352855051245,
+              "false_positive_rate": 0.008381653992395438
+            },
+            "unseen": {
+              "rows": 605,
+              "positives": 0,
+              "reviewed_or_alerted": 18,
+              "true_positives": 0,
+              "false_positives": 18,
+              "false_negatives": 0,
+              "true_negatives": 587,
+              "precision": 0.0,
+              "recall": null,
+              "false_positive_rate": 0.02975206611570248
+            }
+          },
+          "prior_30d_events": {
+            "none": {
+              "rows": 4,
+              "positives": 0,
+              "reviewed_or_alerted": 0,
+              "true_positives": 0,
+              "false_positives": 0,
+              "false_negatives": 0,
+              "true_negatives": 4,
+              "precision": null,
+              "recall": null,
+              "false_positive_rate": 0.0
+            },
+            "present": {
+              "rows": 422084,
+              "positives": 683,
+              "reviewed_or_alerted": 3650,
+              "true_positives": 105,
+              "false_positives": 3545,
+              "false_negatives": 578,
+              "true_negatives": 417856,
+              "precision": 0.028767123287671233,
+              "recall": 0.15373352855051245,
+              "false_positive_rate": 0.008412414778322785
+            }
+          }
+        }
+      },
+      "elapsed_seconds": 65.219
+    },
+    {
+      "seed": 44,
+      "metrics": {
+        "average_precision": 0.01481962986379092,
+        "roc_auc": 0.8376262264126788,
+        "positive_fraction": 0.0016181459790375466,
+        "daily_review": {
+          "rows": 422088,
+          "positives": 683,
+          "reviewed_or_alerted": 3650,
+          "true_positives": 91,
+          "false_positives": 3559,
+          "false_negatives": 592,
+          "true_negatives": 417846,
+          "precision": 0.02493150684931507,
+          "recall": 0.13323572474377746,
+          "false_positive_rate": 0.008445557124381534,
+          "observed_days": 365,
+          "daily_budget": 10,
+          "reviewed_without_threshold_hit": null
+        },
+        "error_groups": {
+          "channel": {
+            "Chip Transaction": {
+              "rows": 310348,
+              "positives": 564,
+              "reviewed_or_alerted": 2484,
+              "true_positives": 69,
+              "false_positives": 2415,
+              "false_negatives": 495,
+              "true_negatives": 307369,
+              "precision": 0.027777777777777776,
+              "recall": 0.12234042553191489,
+              "false_positive_rate": 0.007795754461172946
+            },
+            "Online Transaction": {
+              "rows": 50576,
+              "positives": 28,
+              "reviewed_or_alerted": 660,
+              "true_positives": 8,
+              "false_positives": 652,
+              "false_negatives": 20,
+              "true_negatives": 49896,
+              "precision": 0.012121212121212121,
+              "recall": 0.2857142857142857,
+              "false_positive_rate": 0.012898631004194033
+            },
+            "Swipe Transaction": {
+              "rows": 61164,
+              "positives": 91,
+              "reviewed_or_alerted": 506,
+              "true_positives": 14,
+              "false_positives": 492,
+              "false_negatives": 77,
+              "true_negatives": 60581,
+              "precision": 0.02766798418972332,
+              "recall": 0.15384615384615385,
+              "false_positive_rate": 0.008055933063710642
+            }
+          },
+          "observed_in_training": {
+            "seen": {
+              "rows": 421483,
+              "positives": 683,
+              "reviewed_or_alerted": 3632,
+              "true_positives": 91,
+              "false_positives": 3541,
+              "false_negatives": 592,
+              "true_negatives": 417259,
+              "precision": 0.025055066079295155,
+              "recall": 0.13323572474377746,
+              "false_positive_rate": 0.008414923954372624
+            },
+            "unseen": {
+              "rows": 605,
+              "positives": 0,
+              "reviewed_or_alerted": 18,
+              "true_positives": 0,
+              "false_positives": 18,
+              "false_negatives": 0,
+              "true_negatives": 587,
+              "precision": 0.0,
+              "recall": null,
+              "false_positive_rate": 0.02975206611570248
+            }
+          },
+          "prior_30d_events": {
+            "none": {
+              "rows": 4,
+              "positives": 0,
+              "reviewed_or_alerted": 0,
+              "true_positives": 0,
+              "false_positives": 0,
+              "false_negatives": 0,
+              "true_negatives": 4,
+              "precision": null,
+              "recall": null,
+              "false_positive_rate": 0.0
+            },
+            "present": {
+              "rows": 422084,
+              "positives": 683,
+              "reviewed_or_alerted": 3650,
+              "true_positives": 91,
+              "false_positives": 3559,
+              "false_negatives": 592,
+              "true_negatives": 417842,
+              "precision": 0.02493150684931507,
+              "recall": 0.13323572474377746,
+              "false_positive_rate": 0.008445637290846486
+            }
+          }
+        }
+      },
+      "elapsed_seconds": 67.531
+    }
+  ],
+  "ensemble": {
+    "average_precision": 0.01923815189404787,
+    "roc_auc": 0.8573324875721204,
+    "positive_fraction": 0.0016181459790375466,
+    "daily_review": {
+      "rows": 422088,
+      "positives": 683,
+      "reviewed_or_alerted": 3650,
+      "true_positives": 106,
+      "false_positives": 3544,
+      "false_negatives": 577,
+      "true_negatives": 417861,
+      "precision": 0.02904109589041096,
+      "recall": 0.15519765739385066,
+      "false_positive_rate": 0.008409961913123954,
+      "observed_days": 365,
+      "daily_budget": 10,
+      "reviewed_without_threshold_hit": null
+    },
+    "error_groups": {
+      "channel": {
+        "Chip Transaction": {
+          "rows": 310348,
+          "positives": 564,
+          "reviewed_or_alerted": 2449,
+          "true_positives": 79,
+          "false_positives": 2370,
+          "false_negatives": 485,
+          "true_negatives": 307414,
+          "precision": 0.03225806451612903,
+          "recall": 0.1400709219858156,
+          "false_positive_rate": 0.007650491955685252
+        },
+        "Online Transaction": {
+          "rows": 50576,
+          "positives": 28,
+          "reviewed_or_alerted": 690,
+          "true_positives": 10,
+          "false_positives": 680,
+          "false_negatives": 18,
+          "true_negatives": 49868,
+          "precision": 0.014492753623188406,
+          "recall": 0.35714285714285715,
+          "false_positive_rate": 0.013452559943024451
+        },
+        "Swipe Transaction": {
+          "rows": 61164,
+          "positives": 91,
+          "reviewed_or_alerted": 511,
+          "true_positives": 17,
+          "false_positives": 494,
+          "false_negatives": 74,
+          "true_negatives": 60579,
+          "precision": 0.033268101761252444,
+          "recall": 0.18681318681318682,
+          "false_positive_rate": 0.008088680759091579
+        }
+      },
+      "observed_in_training": {
+        "seen": {
+          "rows": 421483,
+          "positives": 683,
+          "reviewed_or_alerted": 3634,
+          "true_positives": 106,
+          "false_positives": 3528,
+          "false_negatives": 577,
+          "true_negatives": 417272,
+          "precision": 0.029168959823885527,
+          "recall": 0.15519765739385066,
+          "false_positive_rate": 0.00838403041825095
+        },
+        "unseen": {
+          "rows": 605,
+          "positives": 0,
+          "reviewed_or_alerted": 16,
+          "true_positives": 0,
+          "false_positives": 16,
+          "false_negatives": 0,
+          "true_negatives": 589,
+          "precision": 0.0,
+          "recall": null,
+          "false_positive_rate": 0.026446280991735537
+        }
+      },
+      "prior_30d_events": {
+        "none": {
+          "rows": 4,
+          "positives": 0,
+          "reviewed_or_alerted": 0,
+          "true_positives": 0,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "true_negatives": 4,
+          "precision": null,
+          "recall": null,
+          "false_positive_rate": 0.0
+        },
+        "present": {
+          "rows": 422084,
+          "positives": 683,
+          "reviewed_or_alerted": 3650,
+          "true_positives": 106,
+          "false_positives": 3544,
+          "false_negatives": 577,
+          "true_negatives": 417857,
+          "precision": 0.02904109589041096,
+          "recall": 0.15519765739385066,
+          "false_positive_rate": 0.008410041741713949
+        }
+      }
+    }
+  },
+  "elapsed_seconds": 1040.875,
+  "limits": [
+    "Synthetic data; event-time features do not prove ingestion availability.",
+    "All 2018 results are development results; six recipes and ten epochs explicitly searched.",
+    "No identifier or label features; historical signed means are numeric predictors, not positive spending claims.",
+    "Weighted neural scores are not calibrated fraud probabilities.",
+    "No architecture superiority unless matched ablation results support it.",
+    "Two epochs are a feasibility experiment, not converged model selection or official reproduction."
+  ],
+  "report_sha256": "f4bd3dee34d49d65f34458445921770613610bda14718c66ed59d0225104127f"
+}

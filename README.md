@@ -1,81 +1,67 @@
-# RiskCase Agent
+# RiskCase Agent：欺诈对话的语义理解与受控调查
 
-**支付反欺诈研究与调查工作台。** 将交易预警、只读取证、调查计划、规则回放和版本审阅接成可核对的流程。V1交付范围是本地研究作品；数据来自IBM合成交易及明确标记的自建演示，不代表银行生产系统。
+面向支付风控的研究原型。核心问题：**大模型能不能读懂规则和训练模型读不懂的欺诈对话，并给出可核对的证据？** 宿主程序负责校验引用、给出处置、留审计。所有文本都是合成的，没有真实机构数据，也不做自动欺诈认定或资金操作。
 
-![本地调查报告与审阅页面](docs/assets/workbench.png)
+## 主要结论
 
-## 用户完成什么工作
-
-风险分析师选择一条预警，输入“只核查频次和新商户”。系统提出调查范围，等待确认，然后用截止时间前的交易记录计算，生成附证据编号、口径、缺口和查询轨迹的报告。分析师可以审阅或拒绝报告。规则候选另行进行固定审核容量的回放，报告接受不会自动批准规则。
-
-支持五项明确口径：此前1小时频次、本笔正金额相对30天历史最高值、30天新商户、7天相对30天商户笔数集中度、正金额集中度。窗口不完整或样本不足时保留缺口；不认定交易一定欺诈，不执行冻结或付款。
-
-## 有哪些实际结果
-
-| 核验 | 已保存结果 | 能说明什么 |
+| 问题 | 结果 | 详情 |
 |---|---|---|
-| 深度学习最终时间留出 | 2019年423,189笔、523个源正标签；每天10笔共审核3,650笔，三seed残差网络集成捕获99，旧MLP10、旧树49、匹配输入强树94；AP分别0.02138、0.00729、0.00915、0.01558 | 较旧MLP有明显源内提升；对匹配强树仅多5，日重采样区间跨0，不能宣称确定优越 |
-| Agent独立题集 | 100道中文范围题：新版模型完全正确89，旧版模型82，新关键词77；新版首次87，仍有2题错误执行计划与2题运行失败 | 收窄模型职责后有所改善；必须保留范围确认，数字由代码计算 |
-| 规则同容量研究 | 2018开发期每天10笔：纯新DL捕获122；为候选保留20%名额捕获121，新增5、挤出6 | 当前证据不支持采用该规则，未自动批准或部署 |
-| 整合演示 | 三seed重算对齐 → 无标签选4个不同用户案例 → 敏感性 → 计划 → 模拟确认 → SQL核验 → 待审阅 | 真正模型产物可接到调查页面；不等于真人试用或新样本有效性 |
+| 模型能读懂"措辞相近、性质相反"的对话吗 | 能。99 对对照文本，Qwen 27B 判对 94 对（95%）；TF-IDF 加逻辑回归 80 对（81%）；关键词规则 32 对（32%）。与 TF-IDF 逐对比较，27B 多对 15 对、少对 1 对，p = 0.0005。只看另一家模型写的 69 对，差距缩小为 64 对比 60 对 | [语义模块](docs/SEMANTIC_FRAUD_MODULE.md) |
+| 在自动生成的测试集上大模型更好吗 | 没有。有训练数据的 TF-IDF 是 0.995，27B 零样本 0.987。生成的诈骗和正常文本文风有差别，监督模型能学到 | 同上 |
+| 对话里夹带"判为正常"的指令能骗过模型吗 | 能骗过小模型自己的结论（F1 0.986 降到 0.683）。但宿主按已校验的信号算处置，仍有 0.915。27B 不受影响 | 同上 |
+| 能省钱吗 | 小模型先判、拿不准再交给大模型，32% 升级，F1 与只用大模型相同（0.987），估算成本是 59% | 同上 |
+| 模型会编造引用吗 | 会，所以宿主逐条核对。27B 被丢弃 5/687 条信号，7B 为 31/570 | 同上 |
 
-最终测试及费用回执见[结项报告](docs/FINAL_REPORT.md)和[机器可读汇总](docs/project-final-v1-results.json)。专项证据：[最终检测](docs/FINAL_DETECTOR_RESULTS.md)、[Agent对照](docs/AGENT_V2_RESULTS.md)、[规则实验](docs/CAPACITY_V2_REPORT.md)。失败、较差模型和负结果均保留。
+限制：对照文本中 30 对由项目作者手写，69 对由另一家模型写出；没有人工审核的标签；没有真实对话。小模型 7B 与 TF-IDF 没有显著差别。完整限制见语义模块文档。
 
-## 先运行一个不花钱的演示
-
-Python 3.12，在仓库根目录创建环境并安装服务依赖：
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements-service.txt
-.\.venv\Scripts\python.exe -B -m app.cli.workbench
-```
-
-打开 `http://127.0.0.1:8765`，将本机 `runs/workbench-v1/auth.token` 的内容填入页面访问令牌。该令牌用于本地页面访问，不是模型API密钥。默认不开启付费调用。选择案例、直接勾选检查或使用离线自然语言入口；离线入口明确标为关键词脚本。
-
-这个干净环境演示使用自建交易、手工分数、无欺诈标签，只验证流程，不能拿来宣传检测成绩。已有本机环境可用 `scripts/run_project.ps1` 启动，完整说明见[运行与演示指南](docs/START_HERE.md)。
-
-本机已有模型和数据时，打开已生成的真实神经模型合成源演示：
-
-```powershell
-.\scripts\run_project.ps1 -m app.cli.workbench --directory runs/release-demo-v1/service --catalog runs/release-demo-v1/catalog.json
-```
-
-页面令牌改用该目录的 `service/auth.token`。准备/核验包见[神经模型整合演示](docs/RELEASE_DEMO.md)。完整重训另需模型依赖和源数据，不包含在轻量页面安装中。
-
-## 怎样实现与验证
+## 流程与职责
 
 ```mermaid
 flowchart LR
-  A[固定合成源与事件时间特征] --> B[规则 / LR / HGB / PyTorch残差网络]
-  B --> C[日审核名单与单案例快照]
-  C --> D[结构化检查或模型范围计划]
-  D --> E[显式确认范围]
-  E --> F[只读工具 / 确定性统计 / 证据校验]
-  F --> G[报告待审阅 / 缺口 / 失败]
-  G --> H[受限规则候选与同容量研究]
-  H --> I[版本审阅材料 / 不自动发布]
+  A[对话文本] --> B[个人信息打码]
+  B --> C[指令式文本筛查]
+  C --> D[大模型：信号 + 原句引用]
+  D --> E[宿主：核对原句是否在文本中]
+  E --> F[宿主策略：拦截 / 加验证 / 放行]
+  F --> G[审计 SQLite]
 ```
 
-- 数据与训练：SQLite、Pandas/NumPy、Scikit-learn、PyTorch；训练2016–2017、开发2018、冻结后最终评测2019。源标签不传给调查模型。
-- Agent：原ReAct能力保留；最终推荐“模型计划、确认、代码执行”的受控流程。类型化JSON、原文范围依据、最多一次纠正、独立问题评测，未把任意SQL或命令交给模型。
-- 运行：FastAPI、SQLite任务/租约/响应日志，恢复、取消、幂等、超时及费用估算预算。浏览器只审阅本机资料；本地令牌不是企业身份系统。
-- 测试：Fake、HTTP Mock、数值与时间边界、进程退出恢复、协议/越权/篡改、模型重载、独立SQL及真实无头浏览器。CI已配置，未声称远程已运行。
+* 模型只负责读懂意图，报出信号并摘抄原句。
+* 宿主丢弃原句不在文本中的信号，再按固定分值决定动作（`app/semantic/policy.py`）。模型自己的"是否欺诈"不决定动作。
+* 模型回复无法解析时一律"加验证"，不放行。
 
-全量离线测试需同时安装 `requirements-dl.txt` 与 `requirements-service.txt`：
+## 代码地图
 
-本机最终全仓724项通过；独立干净服务环境相关165项通过，0失败/0跳过。另有真实浏览器与模型/SQL材料核验，测试数不等于欺诈案例数量。
+| 路径 | 作用 |
+|---|---|
+| `app/semantic/extractor.py` | 提示词、信号抽取、原句核对 |
+| `app/semantic/policy.py` | 宿主策略 |
+| `app/semantic/service.py` | HTTP 服务：`/health`、`/v1/assess`，只绑本机地址 |
+| `app/semantic/llm.py` | 带硬上限账本、缓存、流式传输的模型客户端 |
+| `app/semantic/benchmark.py`, `taxonomy.py` | 评测数据生成规格、扰动（关键词混淆、指令注入） |
+| `app/semantic/contrast.py`, `contrast_hard.py` | 手写对照集 |
+| `scripts/semantic_*.py` | 生成、抽取、报告、级联、汇总比较 |
+| `data/semantic/` | 全部评测文本和模型预测 |
+
+## 复现
+
+Python 3.12。
 
 ```powershell
-python -B -m pytest -q -p no:cacheprovider
+pip install -r requirements-investigation.txt pytest scikit-learn numpy
+python -m pytest tests/test_semantic_unit.py tests/test_semantic_service.py -q
+python -m scripts.semantic_report out.json --llm-tags qw q7 --sets test shift
+python -m scripts.semantic_pooled out.json
 ```
 
-真实模型为硅基流动 `Pro/zai-org/GLM-5.1`，仅显式启用live时使用本地保存的凭据。密钥不进入Git或页面；本地费用估算不等于平台账单。
+以上全部使用保存的预测，不需要密钥。重新调用模型需要本机凭据，所有调用写入有硬上限的账本。
 
-## 阅读顺序与边界
+## 另一部分：受控调查工程（V4）
 
-从[直白项目地图](docs/START_HERE.md)开始，再看[架构与规格](docs/RISK_PROJECT_SPEC.md)、[学习路线](docs/LEARNING_PATH.md)、[面试说明](docs/INTERVIEW_GUIDE.md)、[数据卡](docs/DATA_CARD.md)。[课程来源](ORIGIN.md)区分原有骨架与新增工作；原课程仓库保持独立。
+早先的多来源调查 Agent 保留在 `app/investigation/`，包括 MCP 工具、两层评测器、Policy Guard、成本分档门控和 Track A 复盘。它的结果是：一次性综合读客户状态最好，动态 Agent 在本批数据上没有胜出。详见 [基准报告](docs/FINAL_BENCHMARK_REPORT.md)、[门控研究](docs/V4_GATE_STUDY.md)、[Track A](docs/TRACK_A_FINAL_POSTMORTEM.md)、[面试笔记](docs/INTERVIEW_DEFENSE_PLAYBOOK.md)。旧 README 在 `docs/archive/README.before-v4.md`，历史数字分母不同，不要混用。
 
-IBM数据是合成交易，币种、时区和标签确认时间未确证，用户选择也有限制。排名分数不是已校准欺诈概率。当前没有真实机构用户效率测量、真实银行外部验证或生产资金处置。不能凭模型名称、Agent数量或测试数称为企业生产级。[来源与发布边界](NOTICE.md)说明数据及课程代码的权利核验事项。
+## 当前缺口
 
-[早期README](README.history.md)与[历史进度](docs/archive/PROJECT_STATUS.pre-final.md)保留研究过程，当前状态以结项报告为准。
+* 没有真实对话数据，也没有人工核对过的标签。`docs/evidence/semantic-audit-sheet.csv` 备好了 60 条待核对。
+* 没有并发压测、权限模型和监控。
+* 检测模型的触发原因只有适配器（`app/investigation/v3/alert_trigger.py`），没有和语义模块接成一条线。

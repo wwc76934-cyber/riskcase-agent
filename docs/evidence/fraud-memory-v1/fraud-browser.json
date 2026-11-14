@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "page_errors": [],
+  "external_requests": [],
+  "checks": [
+    "registered_neural_alert_to_live_mcp_to_review_without_llm",
+    "source_identity_cutoff_score_missing_evidence_visible",
+    "server_rejects_approval_without_explicit_semantic_review",
+    "content_bound_review_and_simulated_ticket_complete",
+    "memory_source_checks_and_explicit_content_approval",
+    "followup_reads_memory_and_requeries_five_current_facts",
+    "withdraw_blocks_new_tasks_preserves_existing_snapshot"
+  ],
+  "model_calls": 0
+}

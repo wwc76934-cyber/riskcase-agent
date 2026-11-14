@@ -1,0 +1,26 @@
+{
+  "checks": [
+    {
+      "module": "app.cli.profile_data",
+      "exit_code": 1,
+      "existing_output_rejected": true
+    },
+    {
+      "module": "app.cli.build_cohort",
+      "exit_code": 1,
+      "existing_output_rejected": true
+    },
+    {
+      "module": "app.cli.build_features",
+      "exit_code": 1,
+      "existing_output_rejected": true
+    },
+    {
+      "module": "app.cli.train_neural_v2",
+      "exit_code": 1,
+      "existing_output_rejected": true
+    }
+  ],
+  "network_requests": 0,
+  "model_requests": 0
+}

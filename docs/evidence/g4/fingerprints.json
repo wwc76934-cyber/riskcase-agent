@@ -1,0 +1,26 @@
+{
+  "sha256": {
+    "dataset": "4c859f5f2bc011c5eea3db71bb3025d7746fb58d80ca9e360e90008012d09c1a",
+    "protocol": "4e1ffe83207b9fb3b68f09aa884eb7b366946ac9411d3036a533308696078aae",
+    "schedule": "6a6d1082ef420f7e6ddbc425329deee2b04b8a89bc4a32aa5dbfb8c6ff6b254d",
+    "qwen_smoke_proposal": "5f574c882e0786f1e1d4b21dfba1a885de13ec89618c54329105ee3446fcc898",
+    "qwen_smoke_summary": "8258c807debaf3374282004d74b0050e188fe3f45cc62e30a280d988e89ea657",
+    "deepseek_smoke_proposal": "a6597ca467b15684a2cacd1ee5469dc4a3c35934bcc9467477f0e2854575c8dd",
+    "deepseek_smoke_summary": "bae2187f4384cffd72abbfc65755f24827ba046625b4e06dc0928c3f3f3e0195",
+    "formal_envelope": "ff2ed2457175adfc13988f953ec6c5885629fe6c2860400c8fdfdc018b72b95f",
+    "formal_initial_proposal": "bbfd8b940f082b9df25ba48a82276ec08f9aedb87c259b094a531118abec9e0b",
+    "formal_initial_partial_summary": "4f6a645944542b11a14d685e2881403a85237b7440471546cd05127090663010",
+    "formal_continuation_proposal": "1de49c00f9e65f06e8f9e82e80abef110f3329a7b9e6ce407e9d0c4895d1bdf3",
+    "formal_continuation_partial_summary": "cf65dadb16aa16c1655408fdb0a8e6fe4aedd93c0035f80fc8c87bcfd97c11f7",
+    "initial-controller.py_decoded": "dfb2432d41c14af04740aed2bbae57d772e3e7e7b6e77b680d708aa75b2d0b0a",
+    "initial-controller.py.b64": "b03c9e4ba45b5142e97e6783312b620039254aef78d5f9b6edc0e89b3931e106",
+    "first-continuation-controller.py_decoded": "809ea44608df3e819e8d2f88e3015fd1f046597141c4778c769e1f1be3d684cf",
+    "first-continuation-controller.py.b64": "f109748f68e1e936fd8919ece7c302f5b76c284a8a2fc98a94d91bbdbcd29f72"
+  },
+  "application_inventory_sha256": {
+    "qwen_smoke_proposal": "cbbc8ce6513f05b40bdb07e6ec7e8f40586914c21e44195e71c721eeb1e70385",
+    "deepseek_smoke_proposal": "cbbc8ce6513f05b40bdb07e6ec7e8f40586914c21e44195e71c721eeb1e70385",
+    "formal_envelope": "9e8d12486c7af1071842eaef9a46811f95132160c50b700e6cf82071bf19048c",
+    "formal_continuation_proposal": "8fdbf28e689d192b632598f2a088dbf85f308d958248a63dd05968bc61a7ae89"
+  }
+}

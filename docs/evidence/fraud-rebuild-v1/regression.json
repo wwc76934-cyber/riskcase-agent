@@ -1,0 +1,37 @@
+{
+  "suites": [
+    {
+      "local_file": "neural-input-path-first-failure.xml",
+      "sha256": "d18b90313c8a5ad593fb86a55e833eeb4dcbcb47ed2eda836e68b26e317a48b9",
+      "tests": 6,
+      "failures": 6,
+      "errors": 0,
+      "seconds": 11.231
+    },
+    {
+      "local_file": "neural-input-path-regression.xml",
+      "sha256": "512279c5e776194229fc0407d68f78b3ca2b96a631a0bafb6e72e2dde8afd24e",
+      "tests": 61,
+      "failures": 1,
+      "errors": 0,
+      "seconds": 26.24
+    },
+    {
+      "local_file": "neural-input-path-regression-02.xml",
+      "sha256": "10e5f8e3a1fc48492fb76f6738e5dda13c2c09705f913b5ebb93d297d9b315a4",
+      "tests": 61,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 27.611
+    }
+  ],
+  "overlapping_suites_do_not_sum": true,
+  "intermediate_test_failure": "Checksum test wrote invalid JSON; changed mutation to whitespace so the provenance gate is tested",
+  "cli_audit_first_failure": {
+    "status": "audit_harness_failed_before_verdict",
+    "reason": "Windows child stderr used local encoding; parent assumed UTF-8",
+    "change": "Pass -X utf8 to child Python; no product logic change",
+    "original_script": "audit_cli.py"
+  },
+  "business_value_proven": false
+}

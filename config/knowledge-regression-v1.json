@@ -1,0 +1,12 @@
+[
+ {"partition":"regression","query":"频次历史覆盖","expected":"coverage"},
+ {"partition":"transfer","query":"velocity incomplete observation","expected":"coverage"},
+ {"partition":"regression","query":"单笔金额最大值","expected":"amount"},
+ {"partition":"transfer","query":"positive amount maximum","expected":"amount"},
+ {"partition":"regression","query":"新商户历史窗口","expected":"merchant"},
+ {"partition":"transfer","query":"merchant prior history","expected":"merchant"},
+ {"partition":"regression","query":"天气预报","expected":null},
+ {"partition":"transfer","query":"weather tomorrow","expected":null},
+ {"partition":"regression","query":"账户冻结操作","expected":null},
+ {"partition":"transfer","query":"automatic money transfer","expected":null}
+]

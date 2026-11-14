@@ -1,0 +1,8 @@
+{
+  "url": "https://openml.org/data/v1/download/1673544/creditcard.arff",
+  "bytes": 150829308,
+  "md5": "178bcf9bb1f31a3dfe12d0e577884add",
+  "sha256": "fdaf12730dc1fc426f318b71349f24f5c5fd00aa1152940be7e7509ae3d89d2a",
+  "source": "OpenML1597v1 ULB/Worldline described real transactions",
+  "raw_data_redistributed": false
+}

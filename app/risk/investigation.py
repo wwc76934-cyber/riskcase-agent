@@ -169,6 +169,7 @@ def run_investigation(client, tools, *, client_mode, max_iterations=8, allow_for
         status, error = "model_or_protocol_error", "Client/protocol failed; no validated report published"
         if repair["attempted"]: repair["status"] = "client_or_protocol_error"
     return {"status": status, "client_mode": client_mode, "client_requests": bounded.calls,
+        "knowledge_trace": getattr(tools, "retrieval_trace", []),
         "tool_attempts": tools.attempts, "findings": body if status == "completed_validated" else None,
         "report_markdown": report, "error": error, "evidence": tools.evidence,
         "tool_trace": tools.trace, "messages": agent.history+extra_messages, "format_repair":repair,

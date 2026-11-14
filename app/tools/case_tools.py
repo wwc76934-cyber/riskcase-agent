@@ -38,13 +38,30 @@ class CaseTools:
         path = manifest_path.parent / "facts.sqlite"
         if manifest["status"] != "case_ready" or sha256_file(path) != manifest["projection_sha256"]:
             raise ValueError("Case projection not ready or changed")
-        self.manifest, self.max_calls, self.trace, self._evidence = manifest, max_calls, [], {}
-        self.attempts = 0
-        self.cutoff, self.start = local_time(manifest["cutoff"]), local_time(manifest["history_start"])
         with closing(sqlite3.connect(path.resolve().as_uri() + "?mode=ro", uri=True)) as db:
             db.execute("PRAGMA query_only=ON")
             db.row_factory = sqlite3.Row
             rows = [dict(row) for row in db.execute(f"SELECT {','.join(COLUMNS)} FROM transactions ORDER BY event_time,source_row LIMIT 100002")]
+        self._bind(manifest, rows, max_calls)
+
+    @classmethod
+    def from_snapshot(cls, manifest, rows, *, max_calls=12):
+        """Host-frozen projection only; retain the same scope/temporal validation."""
+        if type(max_calls) is not int or not 1 <= max_calls <= 12:
+            raise ValueError("Tool attempt budget must be 1..12")
+        instance = cls.__new__(cls)
+        instance.allow_merchant_distribution = False
+        instance._bind(deepcopy(manifest), deepcopy(rows), max_calls)
+        return instance
+
+    def _bind(self, manifest, rows, max_calls):
+        self.manifest, self.max_calls, self.trace, self._evidence = manifest, max_calls, [], {}
+        self.attempts = 0
+        self.cutoff, self.start = local_time(manifest["cutoff"]), local_time(manifest["history_start"])
+        if not rows or any(set(row) != set(COLUMNS) for row in rows):
+            raise ValueError("Only label-free projection columns allowed")
+        if len({row["transaction_id"] for row in rows}) != len(rows):
+            raise ValueError("Duplicate transaction identity")
         targets = [row for row in rows if row["transaction_id"] == manifest["target_transaction_id"]]
         if len(targets) != 1 or len(rows) != manifest["prior_rows"]+1 or len(rows) > 100001:
             raise ValueError("Case row identities/counts disagree")

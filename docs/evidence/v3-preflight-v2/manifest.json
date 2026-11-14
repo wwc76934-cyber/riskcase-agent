@@ -1,0 +1,13 @@
+{
+  "schema": "v3-free-preflight-evidence-v2",
+  "files": {
+    "authorization-context.json": "64b7b4549b5b3a70d16926b12d411b500828e1ece8db5e5f886e3bfe78cad7ae",
+    "authorization.json": "57685b6e2f9334ce65b43d096ce858fd6ee4f9ddd1d602e8728010e0ec15cae1",
+    "freeze-summary.json": "73d686a9109bb1f80cf007075b80690d6cc61d80029fd2ed4a9eb6529e7f37d9",
+    "offline-probe.json": "10a574ad2e7431b8e62a7dd3c5e7475ac21467a3c15d123b337d65613c78ef07",
+    "pre_execution_fix.json": "427eafaed3f103b7a43ac9f6e6cb394fd2470d8feddd61ed8d2f0df878c1cecc",
+    "validation.json": "d864c3787f0371fcef1ecc87bd87893f4a73461924f2aa8cb7c3cb8ec17934c0"
+  },
+  "old_receipts_retained": true,
+  "formal_agent_value_claim": false
+}

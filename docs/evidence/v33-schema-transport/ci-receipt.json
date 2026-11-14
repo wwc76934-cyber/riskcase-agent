@@ -1,0 +1,27 @@
+{
+  "commit_sha": "5ba39b3508b5acd28136b74b43f2775207244b05",
+  "run_id": 41794538524,
+  "url": "https://github.com/wwc76934-cyber/riskcase-agent/actions/runs/41794538524",
+  "jobs": [
+    {
+      "platform": "ubuntu-latest",
+      "conclusion": "success",
+      "seconds": 241.12,
+      "id": 126455395252,
+      "passed": 1187
+    },
+    {
+      "platform": "windows-latest",
+      "conclusion": "success",
+      "id": 126455395551,
+      "passed": 1187
+    }
+  ],
+  "focused": {
+    "passed": 48,
+    "seconds": 152.51
+  },
+  "scope": "New schema transport and 24KB proposal profile; offline and mock HTTP only; actual provider support remains unverified",
+  "proposal_sha256": "651f671c3a43d043a00376cf3ade797879da783db04c0929fe59567409a91d9f",
+  "paid_authorized": false
+}
