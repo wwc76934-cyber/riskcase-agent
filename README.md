@@ -39,7 +39,8 @@ flowchart LR
 | `app/investigation/v3/guard_audit.py` | 三态审计写入 SQLite |
 | `app/investigation/v3/gate4_stream.py` | 流式传输，解决响应头前读超时 |
 | `app/investigation/v3/tier_gate.py` | 付费来源按档位顺序放行（默认关闭） |
-| `app/investigation/v3/untrusted_text.py`, `pii.py` | 来源文本的指令式内容筛查，个人信息脱敏。尚未接入线上请求路径 |
+| `app/investigation/v3/untrusted_text.py`, `pii.py`, `gate4_screened.py` | 来源文本的指令式内容筛查，个人信息脱敏，以及可选的脱敏客户端（默认不启用） |
+| `app/investigation/v3/alert_trigger.py` | 把检测解释转成 T0 触发载荷 |
 | `app/evaluation/v4_heldout.py` | 12 个冻结后新写的案例 |
 | `app/evaluation/v4_runner.py`, `scripts/run_v4_study.py` | 带授权文件、批次上限、遇未知请求即停的付费运行器 |
 
@@ -59,8 +60,8 @@ python -m scripts.analyze_embedding_anisotropy name=path.npy   # Track A 分析
 ## 当前缺口
 
 * 没有真实机构数据，也没有独立人工审核的标签。
-* 检测层与调查层尚未用 SHAP 原因连接。
-* 提示词注入筛查和脱敏模块已有单元测试，但没有接入请求路径。
+* 检测层的触发原因：已有把检测解释转成 T0 触发载荷的适配器（`alert_trigger.py`），方法是单输入敏感度，不是 SHAP，也不是因果。它还没有写进案件的封闭数据契约，没有用真实模型跑过。
+* 提示词注入筛查和脱敏：有可选的 `gate4_screened.py` 客户端，只有单元测试，没有用它做过付费运行，默认客户端不启用。
 * 没有服务接口、界面、可观测性和权限模型。
 * 动态 Agent 的成本门控只有少量触发，真实作用没有证明。
 * 完整测试：1153 通过，5 跳过，7 个模块因未装深度学习依赖无法收集。
