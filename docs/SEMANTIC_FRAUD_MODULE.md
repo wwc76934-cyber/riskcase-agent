@@ -95,3 +95,36 @@ New model calls need a local credential and are written to a ledger with a hard 
 ## Spend
 
 About 5.7 CNY of provider estimates for everything above after the 10 CNY top-up, and about 4.2 CNY before it. Refused calls (HTTP 402) cost nothing. Provider billing is authoritative.
+
+## 6. Cross-source verification: a statement against structured facts
+
+Some cases cannot be decided from the statement alone. The same sentence, "I was at home and my phone was by the bed", comes from a genuine card theft victim and from someone filing a false claim; the device log decides. `app/semantic/cross_context.py` gives the model the statement plus a flat dictionary of facts and asks for contradictions with two anchors the host checks (dual grounding): a verbatim `quote` from the statement and a `fact_key` that must exist in the facts, with its value. For `multi_turn_narrative_shift` the second anchor is an earlier quote that the later statement overturns. A signal whose anchor is invented is dropped before the policy sees it.
+
+Four categories, ten pairs each in each set: `alibi_telemetry_conflict`, `coerced_app_scam_vs_genuine`, `pragmatic_scope_and_quoted_denial`, `multi_turn_self_contradiction`. In every pair the decisive element is in the facts, the follow-up statement, or the time line. The pairs are written by DeepSeek-V4-Flash from the written specs in `scripts/semantic_cross_generate.py`.
+
+**Two sets, and why.** The first 40 pairs (`data/semantic/cross_context_pairs.jsonl`) were scored, and the scoring exposed three defects. (1) The model reasoned in the wrong direction on alibis, treating a transaction made on an unknown device elsewhere as a contradiction of "I was at home". (2) The spec for category D asked for facts that already contradicted the first statement in both versions of a pair, so a model that noticed the contradiction was marked wrong. (3) Category C had no fixed time layout. I fixed the prompt (direction rule, two-quote anchor for multi-turn shifts) and the generation specs (fixed time keys for C, background-only facts for D, raw-field style facts with no verdict wording for the whole second set), then generated 40 new pairs (`cross_context_test.jsonl`) and scored them once. The first set is therefore development data. TF-IDF for the test set is trained on the development pairs and not tuned.
+
+**Pairs fully right (the scam text flagged and its sibling not), 40 pairs per set**
+
+| Method | Dev set (prompt revised on it) | Test set (new pairs, scored once) | Test: alibi / coerced / multi-turn / scope |
+|---|---:|---:|---|
+| Keyword rules | 1 | 0 | 0 / 0 / 0 / 0 |
+| TF-IDF + LR on statement and serialised facts | 30 (5-fold by pair) | 17 | 0 / 8 / 8 / 1 |
+| Qwen2.5-7B, zero-shot, dual-grounded policy | 12 | 7 | 0 / 3 / 3 / 1 |
+| Qwen3.8-27B, zero-shot, dual-grounded policy | 25 | **23** | **9** / 9 / 4 / 1 |
+| Qwen3.8-27B, model's own verdict | 16 | 16 | 9 / 2 / 4 / 1 |
+| 7B first, 27B when unsure | 19 | 19 | 7 / 9 / 2 / 1 |
+
+Test set, 27B against TF-IDF pair by pair: right where TF-IDF was wrong in 13 pairs, the reverse in 7, exact sign test p = 0.26. **That is not a significant difference.**
+
+What the table supports and what it does not:
+
+* The expected result, TF-IDF near chance and the LLM above 90 percent, did not happen. On the test set TF-IDF scored 17 of 40 and the 27B model 23 of 40 (57.5 percent).
+* The one clear LLM advantage is the alibi category: 9 of 10 against 0 of 10. After the facts were rewritten in raw-field style, the lexical shortcut that gave TF-IDF 10 of 10 on the development set disappeared. That is the case the module exists for.
+* On the first (development) set TF-IDF beat the model overall (30 against 25). Its alibi score of 10 of 10 came from words in the facts such as "IMEI matches" and "fingerprint", which the generator wrote in the facts and which spell out the verdict.
+* Time-line scope (category C) is near zero for every method, including the 27B model. Pairs where only a timestamp comparison decides the label are not solved here. Multi-turn contradictions are better for TF-IDF (8 of 10) than for the 27B model (4 of 10), which flags the consistent follow-up too often.
+* The 27B model's false positive rate is 0.33 on both sets. The model reports contradictions that the generator's own facts support. Some of those cases are label noise in the generated data; the author has not audited them.
+* Dual grounding on the test set removed no signal from the 27B model (75 kept) and 2 quote-anchor signals from the 7B model (47 kept). On the development set with the first prompt it removed 9 of 95 signals from the 27B model, mostly the multi-turn signal that had no fact to cite.
+* The 7B to 27B cascade here escalates 69 percent of cases (any cross-source signal triggers escalation by design), saves 18 percent of cost (0.33 against 0.40 CNY) and loses accuracy (19 against 23 pairs). It is not a good trade on this task.
+
+Raw outputs: `docs/evidence/semantic-cross-dev.json`, `semantic-crosstest.json`, `semantic-crossv1.json` (first prompt), predictions in `data/semantic/preds/`.

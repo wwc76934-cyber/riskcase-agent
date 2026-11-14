@@ -9,7 +9,9 @@ Protective signals lower the score. The tiers are fixed here and do not depend o
     STEP_UP    score == 2
     RELEASE    otherwise
 """
-CORE = {"offpath_transfer_request", "credential_request", "upfront_fee_for_release", "guaranteed_returns"}
+CORE = {"offpath_transfer_request", "credential_request", "upfront_fee_for_release", "guaranteed_returns",
+        # cross-source contradictions (see cross_context.py); they only exist when facts were supplied
+        "alibi_telemetry_contradiction", "temporal_scope_mismatch", "multi_turn_narrative_shift"}
 SUPPORT = {"authority_claim", "urgency_pressure", "secrecy_or_isolation", "third_party_coaching"}
 PROTECTIVE = {"official_verification_offered", "risk_disclosure"}
 

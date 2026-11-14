@@ -16,8 +16,9 @@ from app.investigation.v3.hybrid_review import HybridReviewContract
 from app.investigation.v3.native_planner import NativePlanner
 from app.investigation.v3.delivery import StagedDelivery
 from app.investigation.v3.composite_delivery import CompositeDelivery
+from app.investigation.v3.b5_workflow import collect_b5
 
-CONDITIONS={'B0','B1','B1_staged','B2','B4'}
+CONDITIONS={'B0','B1','B1_staged','B2','B4','B5'}
 
 
 def collect_full_budgeted(source,stage,client,prior):
@@ -34,16 +35,17 @@ def collect_full_budgeted(source,stage,client,prior):
     return compile_ledger(source,context),plan
 
 
-def run_case(source,condition,client_factory=None,*,evidence_kind='scripted_protocol_probe',report_contract_factory=None,tier_gate=False):
+def run_case(source,condition,client_factory=None,*,evidence_kind='scripted_protocol_probe',report_contract_factory=None,tier_gate=False,probe=None):
     if tier_gate and condition!='B2':raise ValueError('Tier gate applies to the dynamic B2 condition only')
+    if condition=='B5' and probe is None:raise ValueError('B5 needs a semantic probe function')
     if condition=='B3':raise Blocked('memory_gate_not_ready')
     if condition not in CONDITIONS:raise ValueError('Registered condition required')
     if condition!='B0' and client_factory is None:raise ValueError('Caller must supply a separately authorized client factory')
     if evidence_kind not in ('scripted_protocol_probe','separately_authorized_external_client'):raise ValueError('Declared execution evidence kind')
     binding=content_digest([source.snapshot,condition,evidence_kind,'v3-reference-free-trajectory-v1'])
-    if tier_gate:binding=content_digest([binding,'tier-gate-v1'])
+    if tier_gate:binding=content_digest([binding,'tier-gate-v1' if tier_gate is True else 'precondition-gate-v1'])
     if report_contract_factory is not None:
-        study_model=source.snapshot['contract']==QUERY_SIMULATION and condition in ('B1','B2','B4')
+        study_model=source.snapshot['contract']==QUERY_SIMULATION and condition in ('B1','B2','B4','B5')
         if condition!='B1_staged' and not study_model:raise ValueError('Opt-in delivery requires a declared research path')
         binding=content_digest([binding,report_contract_factory.name])
     with source.transaction() as db:
@@ -87,10 +89,12 @@ def run_case(source,condition,client_factory=None,*,evidence_kind='scripted_prot
                 elif condition=='B4' and source.snapshot['contract']==QUERY_SIMULATION:
                     ledger=collect_rule_workflow(source)
                     plan=dict(mode='deterministic_workflow',model_requests=0)
+                elif condition=='B5':ledger,plan=collect_b5(source,probe)
                 else:ledger,plan=collect_full_budgeted(source,stage,client,prior)
-                factory=report_contract_factory or (HybridReviewContract if condition=='B4' else TypedReviewContract)
+                factory=report_contract_factory or (HybridReviewContract if condition in ('B4','B5') else TypedReviewContract)
                 contract=factory(ledger.target_id)
-                if condition=='B1':report=CompositeDelivery(phase,ledger,client,contract).run()
+                if condition=='B5' and plan['route']=='B0':report=rule_report(ledger,study=source.snapshot['contract']==QUERY_SIMULATION)
+                elif condition=='B1':report=CompositeDelivery(phase,ledger,client,contract).run()
                 else:report=StagedDelivery(phase,phase.claim,ledger,client,max_requests=2,report_contract=contract).run()
         except (KeyboardInterrupt,SystemExit):raise
         except Exception as exc:

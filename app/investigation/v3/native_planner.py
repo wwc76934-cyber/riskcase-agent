@@ -17,6 +17,8 @@ from app.investigation.v3.output import OutputFailure
 from app.investigation.v3.rule_workflow import compile_ledger,acquired_ids
 from app.investigation.v3.source_mcp import MODEL_INPUTS
 from app.investigation.v3.tier_gate import split_batch
+from app.investigation.v3.precondition_gate import roles_of,split_precondition
+from app.investigation.v3.rule_workflow import customer_state,originals
 from app.tools.case_tools import strict_json
 
 READ_PARAMETERS=deepcopy(MODEL_INPUTS['v3_read'])
@@ -28,7 +30,7 @@ TOOLS=[dict(type='function',function=dict(name='v3_read',description='Acquire cu
 class NativePlanner:
     def __init__(self,source,stage,client,*,mode='dynamic',prior_assessments=(),hook=lambda *args:None,tier_gate=False):
         if mode not in ('dynamic','single_batch'):raise ValueError('Declared planner mode')
-        if type(tier_gate) is not bool or (tier_gate and mode!='dynamic'):raise ValueError('Tier gate applies to dynamic mode only')
+        if tier_gate not in (False,True,'precondition') or (tier_gate and mode!='dynamic'):raise ValueError('Tier gate applies to dynamic mode only')
         self.source,self.stage,self.mode,self.hook,self.tier_gate=source,stage,mode,hook,tier_gate
         self.turn_limit=1 if mode=='single_batch' else 4
         self.lane=DeliveryPhase(source,stage,lane='planner')
@@ -37,7 +39,7 @@ class NativePlanner:
         self.prior=deepcopy(list(prior_assessments))
         parts=[source.snapshot,stage,mode,TOOLS,self.prior]
         # Appended only when enabled so bindings of existing frozen runs are unchanged.
-        self.binding=content_digest(parts+['tier-gate-v1'] if tier_gate else parts)
+        self.binding=content_digest(parts+[('tier-gate-v1' if tier_gate is True else 'precondition-gate-v1')] if tier_gate else parts)
         with source.transaction() as db:
             self.lane._live(db)
             db.execute('CREATE TABLE IF NOT EXISTS v3_planner_state(job_id TEXT NOT NULL,stage INTEGER NOT NULL,body TEXT NOT NULL,hash TEXT NOT NULL,PRIMARY KEY(job_id,stage))')
@@ -67,11 +69,24 @@ class NativePlanner:
                 'Use only v3_read and catalogued current IDs. State a purpose and hypothesis for each read.',
                 'Return nonempty content without tool calls when ready for delivery. Do not execute financial actions.',
                 'In single_batch mode choose one affordable batch after the host collected free originals and prerequisites; no adaptive second batch.'])
-        if self.tier_gate:task['rules'].append('Paid sources run cheapest tier first. A dearer source requested in the same call is deferred at no cost; read the cheaper result, then request it again only if still needed.')
+        if self.tier_gate=='precondition':task['rules'].append('A fallback or corroborating source opens only after the primary channel has been read and its result needs follow-up (unavailable or unresolved). A clear primary result means stop paid reads. Deferred requests cost nothing.')
+        elif self.tier_gate:task['rules'].append('Paid sources run cheapest tier first. A dearer source requested in the same call is deferred at no cost; read the cheaper result, then request it again only if still needed.')
         context=dict(acquired=ledger.model_context(),catalog=position['catalog'],prior_assessments=self.prior,planning_trace=state['trace'])
         tools=deepcopy(TOOLS)
         tools[0]['function']['parameters']['properties']['source_ids']['items']['enum']=self.feasible_sources()
         return dict(messages=[dict(role='system',content=json.dumps(task,ensure_ascii=False)),dict(role='user',content=json.dumps(context,ensure_ascii=False))],tools=tools)
+
+    def primary_needs_followup(self,roles,queried):
+        """True when the observed primary channel was unavailable or its statement is still unresolved by the rule reader."""
+        position=self.source.position()
+        for identity,role in roles.items():
+            if role!='primary' or identity not in queried:continue
+            if queried[identity].get('status')!='available':return True
+            ledger=compile_ledger(self.source,dict(frame=self.source.evidence()['E1']['result'],catalog=position['catalog']))
+            text='\n'.join(line['text'] for lines in originals(ledger) if lines[0][1]['source_id']==identity for _,line in lines)
+            target=ledger.target_id;others=[x['transaction_id'] for x in self.source.snapshot['transactions'] if x['transaction_id']!=target]
+            return customer_state(text,target,others)=='unresolved'
+        return False
 
     def feasible_sources(self):
         catalog=self.source.position()['catalog'];known=acquired_ids(self.source)
@@ -118,7 +133,13 @@ class NativePlanner:
                     purpose=arguments.pop('purpose');hypothesis=arguments.pop('hypothesis_to_test')
                 except (ValueError,TypeError,KeyError,ValidationError):error='invalid_tool_selection_or_arguments'
                 deferred=[]
-                if error is None and self.tier_gate:
+                if error is None and self.tier_gate=='precondition':
+                    roles=roles_of(self.source.snapshot)
+                    queried=self.source.position()['catalog'].get('source_query_results',{})
+                    allowed,defers=split_precondition(arguments['source_ids'],roles,queried,self.primary_needs_followup(roles,queried))
+                    deferred=[d[0] for d in defers];arguments['source_ids']=allowed
+                    if not allowed:error='deferred_by_host_policy'
+                elif error is None and self.tier_gate:
                     sources=self.source.position()['catalog']['sources']
                     allowed,deferred=split_batch(arguments['source_ids'],sources,self.observed_source_ids())
                     arguments['source_ids']=allowed

@@ -84,7 +84,11 @@ def parse_extraction(raw, text):
                 signals=list(seen.values()), dropped_signals=dropped, reasoning=str(obj.get("reasoning", ""))[:200])
 
 
-def extract(llm, model, text, *, purpose="extract"):
+def extract(llm, model, text, *, purpose="extract", context_facts=None):
+    """With ``context_facts`` the statement is checked against structured facts (dual grounding)."""
+    if context_facts is not None:
+        from app.semantic.cross_context import extract_cross
+        return extract_cross(llm, model, text, context_facts, purpose=purpose)
     raw, meta = llm.chat(model, SYSTEM, build_user(text), purpose=purpose, max_tokens=700, temperature=0.0)
     result = parse_extraction(raw, text)
     result["meta"] = dict(cached=meta["cached"], cny=str(meta["cny"]), elapsed=meta["elapsed"])

@@ -24,12 +24,15 @@ def main(dataset, ledger, grant_path, out):
     if grant.get("state") != "approved" or not grant.get("user_message"):
         raise SystemExit("Explicit approved grant with the user's message is required")
     project_cap, batch_cap = Decimal(grant["project_cap_cny"]), Decimal(grant["batch_cap_cny"])
-    if project_cap > Decimal("55") or not set(grant["labels"]) <= set(LABELS):
-        raise SystemExit("Grant outside the 55 CNY project limit or unknown condition label")
+    if project_cap > Decimal("75") or not set(grant["labels"]) <= set(LABELS):
+        raise SystemExit("Grant outside the 75 CNY project limit or unknown condition label")
     key = load_key()
     if not key:
         raise SystemExit("No local credential")
-    if str(dataset) == "heldout":
+    if str(dataset) == "heldout-cost":
+        from app.evaluation.v5_cost_study import candidates
+        cases = {x["case_id"]: x for x, _ in candidates()}
+    elif str(dataset) == "heldout":
         from app.evaluation.v4_heldout import candidates
         cases = {s["case_id"]: s for s, _ in candidates()}
     else:

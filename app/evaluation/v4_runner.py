@@ -18,7 +18,7 @@ import httpx
 
 from app.evaluation.gate4_candidate import CandidateBudget, MAX_FORMAL_CASE_REQUESTS, UNKNOWN_HOLD
 from app.investigation.v3.gate4_provider import Gate4Policy
-from app.investigation.v3.gate4_stream import Gate4StreamingClient
+from app.investigation.v3.gate4_screened import Gate4ScreenedStreamingClient
 from app.investigation.v3.mcp_trajectory import run_case_mcp
 from app.investigation.v3.study_delivery import StudyHybridReviewContract, StudyReviewContract
 from app.llm.cost_ledger import CostLedger
@@ -27,8 +27,8 @@ from app.service.store import JobStore
 from app.service.v3_sources import SourceAccess
 
 RUN_REQUESTS = 14  # per case run; the ledger needs the run cap to fit in the remaining project headroom
-LABELS = {"B1S": ("B1", False), "B4N": ("B4", False), "B2V4": ("B2", True),
-          "B2S": ("B2", False)}  # B2S: dynamic agent, streaming, no cost-tier gate (ablation of the gate)
+LABELS = {"B1S": ("B1", False), "B4N": ("B4", False), "B2V4": ("B2", True), "B5": ("B5", False),
+          "B2S": ("B2", False), "B2P": ("B2", "precondition")}  # B2S: dynamic agent, streaming, no cost-tier gate (ablation of the gate)
 POLICY = dict(provider="siliconflow-cn", model="Qwen/Qwen3.8-27B", json_mode="json_schema",
               input_rate="3", output_rate="12", price_source="https://www.siliconflow.cn/pricing",
               price_date="2026-11-10", timeout_seconds=90, expand_hypothesis_branches=True,
@@ -48,6 +48,20 @@ def project_committed(ledger_path):
     return Decimal(CostLedger(Path(ledger_path)).summary("none")["project_committed_estimate_cny"])
 
 
+def make_probe(cap="14", model="Qwen/Qwen2.5-7B-Instruct"):
+    """Semantic probe for B5: a free pattern screen, then a small model only when the screen fires."""
+    from app.investigation.v3.semantic_probe import probe
+    from app.semantic.llm import LLM, Budget
+    llm = LLM(Budget("runs/semantic-ledger.sqlite", cap))
+
+    def fn(text):
+        try:
+            return probe(llm, model, text)
+        except Exception:  # an unreadable probe routes to the model report, never to the free path
+            return dict(complex=True, flags=["probe_failed"], used_model=False, cny="0")
+    return fn
+
+
 async def run_one(directory, snapshot, label, key, ledger_path, *, scope, project_cap, baseline):
     condition, gate = LABELS[label]
     pol = policy()
@@ -65,11 +79,12 @@ async def run_one(directory, snapshot, label, key, ledger_path, *, scope, projec
     source = SourceAccess(store.path, claim, snapshot, max_tools=40)
     contract = StudyHybridReviewContract if condition == "B4" else StudyReviewContract
     with httpx.Client(transport=httpx.HTTPTransport(retries=0), follow_redirects=False, trust_env=False) as http:
-        factory = lambda stage: Gate4StreamingClient(pol, key, budget=budget, http=http)
+        factory = lambda stage: Gate4ScreenedStreamingClient(pol, key, budget=budget, http=http)
         with (directory / "mcp.log").open("x", encoding="utf-8") as log:
             result = await run_case_mcp(source, runtime, condition, factory, errlog=log,
                 evidence_kind="separately_authorized_external_client",
-                report_contract_factory=contract, tier_gate=gate)
+                report_contract_factory=contract, tier_gate=gate,
+                probe=make_probe() if condition == "B5" else None)
     store.finish(claim["id"], claim["owner"], claim["generation"], "awaiting_review", result=result)
     result = dict(result, label=label, financial=budget.summary(budget.prefix))
     write_json(directory / "trajectory.json", result)

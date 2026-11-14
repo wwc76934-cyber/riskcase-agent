@@ -1,0 +1,53 @@
+{
+  "B1S": {
+    "strategy": "S1 exhaustive fetch",
+    "runs": 12,
+    "tier1_raw": 8,
+    "tier1_guarded": 29,
+    "credits_per_run": 9.67,
+    "model_cny_per_run": 0.0955,
+    "stages": 36,
+    "opportunities": 14,
+    "feedback_driven": 0,
+    "true_feedback_driven_rate": 0.0,
+    "paid_followup_reads": 12,
+    "premature_followup_reads": 5,
+    "premature_fallback_rate": 0.4166666666666667,
+    "blocked": 0,
+    "credit_saving_vs_exhaustive": 0.0
+  },
+  "B2S": {
+    "strategy": "S2 agent, no gate",
+    "runs": 12,
+    "tier1_raw": 6,
+    "tier1_guarded": 23,
+    "credits_per_run": 9.17,
+    "model_cny_per_run": 0.1831,
+    "stages": 36,
+    "opportunities": 14,
+    "feedback_driven": 4,
+    "true_feedback_driven_rate": 0.2857142857142857,
+    "paid_followup_reads": 13,
+    "premature_followup_reads": 5,
+    "premature_fallback_rate": 0.38461538461538464,
+    "blocked": 0,
+    "credit_saving_vs_exhaustive": 0.052
+  },
+  "B2P": {
+    "strategy": "S3 agent, precondition gate",
+    "runs": 12,
+    "tier1_raw": 4,
+    "tier1_guarded": 17,
+    "credits_per_run": 5.83,
+    "model_cny_per_run": 0.1987,
+    "stages": 36,
+    "opportunities": 14,
+    "feedback_driven": 7,
+    "true_feedback_driven_rate": 0.5,
+    "paid_followup_reads": 7,
+    "premature_followup_reads": 0,
+    "premature_fallback_rate": 0.0,
+    "blocked": 17,
+    "credit_saving_vs_exhaustive": 0.397
+  }
+}

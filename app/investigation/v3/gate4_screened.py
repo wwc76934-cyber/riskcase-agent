@@ -30,3 +30,6 @@ class Gate4ScreenedStreamingClient(Gate4StreamingClient):
                     findings.update(screen(content))
         self.privacy_audit.append(dict(masked=masked, injection_findings=sorted(findings)))
         return super().request_payload(cleaned, tools)
+
+    def snapshot(self):
+        return dict(super().snapshot(), privacy_audit=self.privacy_audit)

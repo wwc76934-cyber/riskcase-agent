@@ -98,6 +98,11 @@ def apply_policy_guard(report, ledger, *, exhausted=None):
         interventions.append(dict(field="stop_reason", from_=raw["stop_reason"], to=decision["stop_reason"]))
     guarded["proposed_disposition"] = decision["proposed_disposition"]
     guarded["stop_reason"] = decision["stop_reason"]
+    # Host safety invariants, never taken from the model: nothing is executed, a person reviews every report.
+    for field, required in (("disposition_executed", False), ("human_review_required", True)):
+        if report.get(field) is not required:
+            interventions.append(dict(field=field, from_=report.get(field), to=required))
+        guarded[field] = required
     by_action = {}
     for item in report.get("recommendations", []):
         by_action.setdefault(item.get("action"), item)

@@ -74,3 +74,37 @@ Details: `docs/V4_GATE_STUDY.md`.
 * Expected question: "Why not just fine-tune a classifier?" Answer: on in-distribution generated text it wins (0.995). It loses on pairs that differ only in meaning, and it gives no quotes. The LLM costs more per call, which is why the routing result matters: a 7B model first and the 27B model on 32% of cases matched the 27B model's F1 at 59% of the cost.
 * Expected question: "Prompt injection?" Answer: an appended instruction cut the 7B model's own verdict from 0.986 to 0.683; the host policy over checked signals stayed at 0.915; the 27B model did not move. The policy does not read the model's verdict.
 * Mistakes worth telling: the first spend ledger counted refused calls (HTTP 402, balance exhausted) at worst-case cost and showed 6.3 CNY that was never billed; fixed by treating a non-200 answer as unbilled. Running generation and extraction in parallel hit provider rate limits only after the balance ran out, which first looked like rate limiting.
+
+## 12. Two projects, one story each: RiskCase Agent and FinResearch Agent
+
+Use this section when the interviewer has seen both projects. The two are different problems and the answers should not overlap.
+
+| Dimension | FinResearch Agent (investment research) | RiskCase Agent (fraud and risk control) |
+|---|---|---|
+| Business seat | Front office: produce a research report on a company | Back office: decide whether a payment or claim needs intervention |
+| Cost of an error | A weak report or a missed number | Money moved to a scammer, or a customer wrongly blocked |
+| Orchestration | A bull and a bear role argue, a judge compares (debate over parallel analyses) | A cheap model reads first, a larger model reads when unsure, and a fixed policy decides (neuro-symbolic cascade) |
+| Data discipline | Point-in-time facts, so no future data enters a report (measured: 0 percent future-data use) | Evidence gated by cost tier, with the payment's source records read through a controlled tool server |
+| What the model reads | Filings and tables, retrieved by date | Conversations and structured logs, checked against each other |
+| Guard against model error | Numbers checked against the source (citation validity gate) | Every signal needs a verbatim quote; the host drops any quote not in the text and sets the action itself |
+| Main number to quote | Numeric accuracy and the pairwise judge result | Pairs where only the meaning differs (94 of 99 for the 27B model against 80 for TF-IDF) and the cost of routing |
+| Honest negative result | The debate step was not better by an automatic score, only by the pairwise judge | A supervised classifier is as good on easy generated text; the dynamic agent did not beat the fixed flow |
+
+How to tell it in one breath each:
+
+* FinResearch: "The model writes, the facts are locked to a date, and I measured whether it used the future."
+* RiskCase: "The model only reads and quotes; a fixed policy acts. I measured where meaning decides the answer, and where it does not."
+
+Where the two meet: both put the model behind a checker that does not trust it (a number check there, a quote check here), and both report the cases where the added model did not help. Do not claim one framework runs both; they share an idea, not code.
+
+## 13. V5 findings and the questions they invite
+
+Every number below is in `README.md` and has a file in `docs/evidence/`.
+
+* **Cross-source check (statement against structured facts).** On 40 unseen pairs the 27B model got 23 pairs fully right, TF-IDF 17, the 7B model 7, rules 0, the 7B-then-27B cascade 19. 27B against TF-IDF is +13 / -7, p = 0.26, so it is not significant. The 27B model is clearly better only on alibi against telemetry (9 of 10 against 0 of 10) and weak on scope and quoted denial (1 of 10). The plan expected TF-IDF near 50 percent and the LLM above 90 percent. Neither happened. Say it first, before the interviewer finds it.
+* *"Why is TF-IDF so strong here?"* The pairs are model-written and a TF-IDF model trained on 40 dev pairs picks up generator wording. This is the same author-bias limit as section 11. The fix would be human-written pairs and a human-checked label set; both are listed as missing.
+* **B5 (semantic-guided workflow).** Tier 1 after guard was 30 of 36 against a target of 34. It sent 26 of 36 stages down the free rule path and cost 0.036 CNY per run. B4N reached 32 at 2.7 times the model cost. I did not change B5 after seeing the held-out result. An idea I did not test: read the corroborating record first for every case.
+* **Guard lift.** Raw Tier 1 for the one-shot synthesis was 7 of 36 and 26 after the guard; for the fixed flow, 5 and 32. The model's own disposition fields are unreliable. The guard sets the safety fields. If asked "is the Agent doing the work?", the honest answer is that the host does most of the safety work.
+* **Precondition gate.** It removed all premature fallback reads (5 of 13 to 0) and saved 40 percent of evidence credits (5.83 against 9.67 per run). It also lowered Tier 1 from 29 to 17 of 36 because the agent stopped after the cheap primary record in five cases and missed later stages. Report it as a cost-control mechanism that needs stage-aware rules, not as a win. The records are simulated and "unresolved" is defined by a rule reader.
+* **Track A holdout.** 18 positive cases only. Ordinary features 0.435 AP, Qwen vectors 0.262, with intervals that overlap heavily. The prefix ablation showed the instruction prefix is a minor cause of the narrow cone (mean cosine 0.690 with the prefix, 0.608 without). Do not repeat the earlier claim that the prefix explains the anisotropy.
+* **Spend and process.** Total semantic ledger about 12 CNY; V5 investigation runs cost per-run estimates of 0.04 to 0.2 CNY. Parallel paid runs need separate ledger copies because the shared-ledger baseline check fails otherwise. A non-200 answer is treated as unbilled after the earlier 402 incident.

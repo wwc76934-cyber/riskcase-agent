@@ -12,7 +12,7 @@ def report(**over):
         proposed_disposition="source_question_resolved", stop_reason="sufficient_for_human_review",
         source_statement=dict(value="denied", fact_ids=["F1"], transaction_id="t"),
         facts=[dict(id="F1", predicate="customer_retraction", value="denied", citations=[dict(handle="h1")])],
-        missing=["confirmed_case_outcome"],
+        missing=["confirmed_case_outcome"], human_review_required=True, disposition_executed=False,
         recommendations=[dict(action="analyst_review", fact_ids=[], reason="r")])
     base.update(over)
     return base
@@ -49,6 +49,16 @@ def test_unverified_material_adds_followups_and_extras_become_advisory():
     assert [a["action"] for a in guarded["analyst_advisory_notes"]] == ["check_device_history"]
     assert {"field": "recommendations", "removed_unsafe": "freeze_account"} in audit["guard_interventions"]
     assert audit["raw_llm_decision"]["actions"] == ["analyst_review", "check_device_history", "freeze_account"]
+
+
+def test_safety_flags_are_forced_even_when_the_model_omits_or_flips_them():
+    hijacked = report(human_review_required=False, disposition_executed=True)
+    guarded, audit = apply_policy_guard(hijacked, Ledger)
+    assert guarded["human_review_required"] is True and guarded["disposition_executed"] is False
+    fields = {i["field"] for i in audit["guard_interventions"]}
+    assert {"human_review_required", "disposition_executed"} <= fields
+    missing, _ = apply_policy_guard(report(), Ledger)
+    assert missing["human_review_required"] is True and missing["disposition_executed"] is False
 
 
 def test_input_report_is_not_modified():

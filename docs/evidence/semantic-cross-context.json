@@ -1,0 +1,151 @@
+{
+  "pairs": 40,
+  "methods": {
+    "rules": {
+      "recall": 0.025,
+      "false_positive_rate": 0.0,
+      "f1": 0.04878048780487806,
+      "pairs_right": 1,
+      "pairs": 40,
+      "vs_tfidf": {
+        "method_only": 0,
+        "tfidf_only": 29,
+        "sign_test_p": 0.0
+      }
+    },
+    "tfidf_lr_5fold": {
+      "recall": 0.9,
+      "false_positive_rate": 0.15,
+      "f1": 0.8780487804878048,
+      "pairs_right": 30,
+      "pairs": 40
+    },
+    "q7_model": {
+      "recall": 0.725,
+      "false_positive_rate": 0.65,
+      "f1": 0.6105263157894736,
+      "pairs_right": 3,
+      "pairs": 40,
+      "vs_tfidf": {
+        "method_only": 1,
+        "tfidf_only": 28,
+        "sign_test_p": 0.0
+      }
+    },
+    "q7_dual_policy": {
+      "recall": 0.875,
+      "false_positive_rate": 0.65,
+      "f1": 0.693069306930693,
+      "pairs_right": 9,
+      "pairs": 40,
+      "vs_tfidf": {
+        "method_only": 1,
+        "tfidf_only": 22,
+        "sign_test_p": 0.0
+      }
+    },
+    "q27_model": {
+      "recall": 0.8,
+      "false_positive_rate": 0.475,
+      "f1": 0.7032967032967032,
+      "pairs_right": 14,
+      "pairs": 40,
+      "vs_tfidf": {
+        "method_only": 1,
+        "tfidf_only": 17,
+        "sign_test_p": 0.0001
+      }
+    },
+    "q27_dual_policy": {
+      "recall": 0.875,
+      "false_positive_rate": 0.475,
+      "f1": 0.7446808510638299,
+      "pairs_right": 19,
+      "pairs": 40,
+      "vs_tfidf": {
+        "method_only": 2,
+        "tfidf_only": 13,
+        "sign_test_p": 0.0074
+      }
+    },
+    "cascade_7b_to_27b": {
+      "recall": 0.875,
+      "false_positive_rate": 0.475,
+      "f1": 0.7446808510638299,
+      "pairs_right": 19,
+      "pairs": 40,
+      "vs_tfidf": {
+        "method_only": 2,
+        "tfidf_only": 13,
+        "sign_test_p": 0.0074
+      }
+    }
+  },
+  "by_category": {
+    "rules": {
+      "alibi_telemetry_conflict": "0/10",
+      "coerced_app_scam_vs_genuine": "1/10",
+      "multi_turn_self_contradiction": "0/10",
+      "pragmatic_scope_and_quoted_denial": "0/10"
+    },
+    "tfidf_lr_5fold": {
+      "alibi_telemetry_conflict": "10/10",
+      "coerced_app_scam_vs_genuine": "10/10",
+      "multi_turn_self_contradiction": "9/10",
+      "pragmatic_scope_and_quoted_denial": "1/10"
+    },
+    "q7_model": {
+      "alibi_telemetry_conflict": "1/10",
+      "coerced_app_scam_vs_genuine": "1/10",
+      "multi_turn_self_contradiction": "1/10",
+      "pragmatic_scope_and_quoted_denial": "0/10"
+    },
+    "q7_dual_policy": {
+      "alibi_telemetry_conflict": "0/10",
+      "coerced_app_scam_vs_genuine": "7/10",
+      "multi_turn_self_contradiction": "2/10",
+      "pragmatic_scope_and_quoted_denial": "0/10"
+    },
+    "q27_model": {
+      "alibi_telemetry_conflict": "8/10",
+      "coerced_app_scam_vs_genuine": "5/10",
+      "multi_turn_self_contradiction": "1/10",
+      "pragmatic_scope_and_quoted_denial": "0/10"
+    },
+    "q27_dual_policy": {
+      "alibi_telemetry_conflict": "8/10",
+      "coerced_app_scam_vs_genuine": "9/10",
+      "multi_turn_self_contradiction": "1/10",
+      "pragmatic_scope_and_quoted_denial": "1/10"
+    },
+    "cascade_7b_to_27b": {
+      "alibi_telemetry_conflict": "8/10",
+      "coerced_app_scam_vs_genuine": "9/10",
+      "multi_turn_self_contradiction": "1/10",
+      "pragmatic_scope_and_quoted_denial": "1/10"
+    }
+  },
+  "grounding": {
+    "q7": {
+      "kept": 74,
+      "dropped_by_fact_anchor": 3,
+      "dropped_by_quote_anchor": 13,
+      "parse_failures": 0,
+      "fact_anchor_drop_rate": 0.039
+    },
+    "q27": {
+      "kept": 86,
+      "dropped_by_fact_anchor": 9,
+      "dropped_by_quote_anchor": 0,
+      "parse_failures": 0,
+      "fact_anchor_drop_rate": 0.095
+    }
+  },
+  "cascade": {
+    "escalated": 72,
+    "of": 80,
+    "cost_small_only": 0.0395,
+    "cost_large_only": 0.2776,
+    "cost_cascade": 0.3104
+  }
+}
