@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "source_release_sha256": "47b2b347f955dfb31e54dad76120cf34deb1b3ffc40e9351151e5fdbdac62698",
+  "queue_sha256": "9df6210872b5012f933173165c948903b4bd86e0ba7105fcf2c1d627cdffb334",
+  "contract": "navigation_only_per_transaction_evidence_and_approval",
+  "alerts_preserved": 3650,
+  "groups_count": 3342,
+  "daily_transaction_budget": 10,
+  "analyst_minutes_saved": null,
+  "labels_read": false,
+  "real_model_requests": 0,
+  "all_member_fields_preserved": true
+}

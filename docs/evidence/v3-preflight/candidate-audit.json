@@ -1,0 +1,803 @@
+{
+  "schema": "v3-candidate-mechanical-audit-v1",
+  "dataset_sha256": "1c447cdaa3b49a4e57f2c610ab78f3d71996ad6b3ff9e1ce9d40eda51eb67ec3",
+  "counts": {
+    "development": 30,
+    "evaluation": 40
+  },
+  "families": {
+    "development": 6,
+    "evaluation": 8
+  },
+  "subjects": {
+    "development": 30,
+    "evaluation": 40
+  },
+  "cross_split_exact_normalized_narrative_overlap": 0,
+  "cost_limited_cases": {
+    "development": 5,
+    "evaluation": 10
+  },
+  "independent_person_reviewed": false,
+  "external_expert_reviewed": false,
+  "formal_frozen": false,
+  "external_model_requests": 0,
+  "cases": [
+    {
+      "case_id": "v3-10476d72a749a8ba01",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-f14bce0f83d7b21839",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-166c45b5aee5f13dc7",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-f9e837b3549687e05b",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-c957e1a897de17b754",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-4095bca60f79290cae",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-c15feba1070cc89e56",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-69f9558b38d04c97b6",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-feef7f4543b76e81d7",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-42da940a01bb711715",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-0f8ad5c54ab33e3b99",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-2c095bc907f5d5d270",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-f46fa6f3b537287b3c",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-6d8294485212f4e1e1",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-fffc984f7a0e98414d",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-0996e2e3733092caed",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-f2b9a3f4785878d2e7",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-087ad4539383d297e1",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-cb0c7a742c4ff5b88a",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-6d35eb9f74124bfa57",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-afe507e201a7ec02f1",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        1,
+        17
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-ae7720c54467904e69",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        1,
+        17
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-52c031dc14e6b59395",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        1,
+        17
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-1dbbcba02e65481690",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        1,
+        17
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-621a13214ef642a678",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        1,
+        17
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-696b84e092d689a014",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-5bf7a322c6498bb794",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-fdcbdeca1625905310",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-146c394fb75feae469",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-d3c07ac49bf030ab06",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-61c06cfcef6c73f22e",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-b473928d7dd85a4d8f",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-39ae0ea3ef12148ecd",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-9045fcd69c5c137c78",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-58912cc05d2792d75c",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-7df9b4d85f6fb7f61b",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-39d4af0437081ca5b0",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-b252f17106b9b63fe5",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-0e6aab090a87425986",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-023ca38e8b08f60250",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-5d29d3b661bb569ac8",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-df9b00b82e131b2cc7",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-60351d6d3546f97875",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-a85e2f5e15076dd246",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-f0e1787548bd6ee2f9",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-0afefd9c1c71afc110",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-a700d899f1ab9d656e",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-bf691ca56f563edd8b",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-3c73425df22b592e20",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-f4447e4789b5170e97",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-ea4c8b52bd49787028",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-4854f2b8c38cae789b",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-87d509fb46fd1ed12e",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-e2a872757c1759bd8d",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-615f6d22b90d5b7782",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-479a1d62e7e78047a1",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-79725b04e3d2e9b932",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-cecf3a4c8998f425a0",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-034d236183951e07e1",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-9aac62012879762319",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        0,
+        0
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-0173c8d6808713331b",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        1,
+        17
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-803d61d5461e4af9ab",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        1,
+        17
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-782dba26df862fa162",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        1,
+        17
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-2d68d8485ed25b375a",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        1,
+        17
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-c61d4f4e7f9f2b6e5e",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        1,
+        17
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-bd5cc1cab3bbf9358b",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        1,
+        17
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-b8df136acae8324e13",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        1,
+        17
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-c3f4a95e5b4b859067",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        1,
+        17
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-9cce774fda2d518f24",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        1,
+        17
+      ],
+      "case_budget_units": 15
+    },
+    {
+      "case_id": "v3-7a52b8e56145d293c4",
+      "all_stage_access_checked": true,
+      "oracle_required_sources_feasible": true,
+      "full_material_cost_units": [
+        0,
+        1,
+        17
+      ],
+      "case_budget_units": 15
+    }
+  ],
+  "limits": [
+    "Oracle feasibility uses hidden reference ONLY in audit, never a baseline or runtime",
+    "Exact normalized overlap check does not certify semantic/template independence",
+    "Author candidate references are not expert-reviewed or confirmed bank outcomes",
+    "No model performance, planning necessity or analyst benefit has been demonstrated"
+  ]
+}

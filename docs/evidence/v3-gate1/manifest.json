@@ -1,0 +1,11 @@
+{
+  "schema": "v3-gate1-evidence-v1",
+  "files_sha256": {
+    "case-classification.json": "c733212807bc5b84d9a7793ff10c760f4ff5dc3b2f330793a67c7c71f7dae329",
+    "failure-audit.json": "b5749053936c5e32500222c20f30fff0573a4d897e86782530460e6252d29a19",
+    "offline-replay.json": "60cb0bc8e81de62a597f84f5cf04c45e3122149176837043eaf970a2f9dbdca2",
+    "recovery.json": "7bf1f790f80224451ecf426d244833842d37baef7c9d536925cfddffbb7d1fe7",
+    "validation.json": "514fa7be133f037e0e2ad81a4613a199ef9e633672670f3021305562e6a9c2cf"
+  },
+  "scope": "Author-exported read-only audit, observed-case replay and offline engineering evidence; not new model or business-value validation"
+}

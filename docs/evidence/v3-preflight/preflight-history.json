@@ -1,0 +1,106 @@
+{
+  "checks": [
+    {
+      "file": "v3-delivery-pilot-preflight-tests-v1.xml",
+      "sha256": "09079dcceab1b9049fe8221484d65481eee8dca56b332ca157094b724564392b",
+      "counts": {
+        "tests": 12,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "file": "v3-delivery-pilot-preflight-tests-v2.xml",
+      "sha256": "8dd8936d45c8aaa085c165efaf936c396c928cfec86f0b1aace412e5b93ed53d",
+      "counts": {
+        "tests": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "file": "v3-gate1-tests-first.xml",
+      "sha256": "869d7f3c15dc2468724b42b7fa0420bf1b09c00ab8f005590056a132f2cadf37",
+      "counts": {
+        "tests": 21,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "file": "v3-gate1-tests-v2.xml",
+      "sha256": "a8560ce61087248b410796f80e30bdabc45b608852ff281793268a4fbeed7e62",
+      "counts": {
+        "tests": 21,
+        "failures": 3,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "file": "v3-gate1-tests-v3.xml",
+      "sha256": "ae251bed761a821f414dba5e3f3172f561f0191b0bcb56b47e2710cb9bb02714",
+      "counts": {
+        "tests": 22,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "file": "v3-gate1-tests-v4.xml",
+      "sha256": "13c80c6a333e7b11f6bf2829b17dc183770ef3376061764b2bff9646d2258e8e",
+      "counts": {
+        "tests": 24,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "file": "v3-gate1-tests-v5.xml",
+      "sha256": "9c611c13ffc8947b8b3d6dc872dc16feaf6edb0dd4caa92b22476641cfd9cf93",
+      "counts": {
+        "tests": 25,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "file": "v3-pilot-ledger-tests-v1.xml",
+      "sha256": "095bca0889f212a4266439fa8d8089b4815811bab5889bd0f3e6acda13d62288",
+      "counts": {
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "file": "v3-preflight-tests-v3.xml",
+      "sha256": "1da475e7de329b26cec28336e1c1087412446eec57107ccd6fefa40921961772",
+      "counts": {
+        "tests": 51,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "file": "v3-task-tests-v1.xml",
+      "sha256": "ed57f3e21ffbe9dfb937aa16fbaae62f1211f9a196a6e53f9133c8562c6a6a8b",
+      "counts": {
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    }
+  ],
+  "all_transports": "offline or MockTransport, not external model evidence",
+  "earlier_failures_retained": true
+}

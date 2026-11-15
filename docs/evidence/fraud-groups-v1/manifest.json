@@ -1,0 +1,10 @@
+{
+  "artifact_sha256": {
+    "browser.json": "832e2b70961e469c73a08de77f06c8fe0dfb69c8b71dec3da43749a638e5838c",
+    "first-browser-failure.json": "8d1bd7c9be3a15d4a22be25678ec98c40b3c0630bd0305b3dd258a799524ebac",
+    "queue-summary.json": "63ab7d6c240a413a1e5d833b5e7c98079e82e638ac2a6df40a12a6c688baecd8",
+    "tests.json": "f9fa23add650281b157e16d9313d03e1be94aa20de657cd09a77f5151c48593c"
+  },
+  "raw_transactions_included": false,
+  "paid_model_calls": 0
+}

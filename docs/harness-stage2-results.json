@@ -1,0 +1,96 @@
+{
+  "date": "2026-10-29",
+  "roadmap_stage": 2,
+  "real_model_calls": 0,
+  "additional_estimated_cost_cny": "0",
+  "skill_format_validation": [
+    "alert-investigation",
+    "merchant-change",
+    "evidence-conflict"
+  ],
+  "tests": {
+    "full_suite": {
+      "passed": 811,
+      "warnings": 1,
+      "seconds": 328.45,
+      "receipt": "runs/harness-stage2-tests.xml"
+    },
+    "later_targeted": {
+      "passed": 13,
+      "warnings": 1,
+      "seconds": 132.89,
+      "receipt": "runs/harness-stage2-followup-tests.xml"
+    }
+  },
+  "recovery": {
+    "actual_process_exit": 23,
+    "lease_expiry_simulated": true,
+    "state": "awaiting_review",
+    "generation": 2,
+    "replayed_responses": 1,
+    "remaining_offline_client_requests": 4,
+    "original_failure_retained": "runs/harness-stage2-recovery/recovery-receipt.json"
+  },
+  "demo": {
+    "active_skills": {
+      "evidence-conflict": "cf6260fa738f6176742e0e5fc284225d675c01b593b7a24ad0e28f81d4b10929"
+    },
+    "turns": 6,
+    "attempts": 10,
+    "context_bytes": [
+      3584,
+      4572,
+      5251,
+      6584,
+      7495,
+      7556
+    ],
+    "duplicate_submit_same_id": true,
+    "human_approval_simulated": true
+  },
+  "browser": {
+    "status": "passed",
+    "page_errors": [],
+    "external_requests": [],
+    "checks": [
+      "workbench_to_real_mcp_investigation_and_loaded_skill",
+      "editing_and_saving_invalidates_old_approval",
+      "approved_content_submitted_once_to_local_mock",
+      "no_external_requests_errors_or_mobile_overflow"
+    ],
+    "ticket_id": "ticket-c0601c06eda040eaa53faad66b05e26b"
+  },
+  "source_sha256": {
+    "app/investigation/budget.py": "a7a044a33b5a10ce6cc3fac7899783821efb114dbc81d6b3ca9292bf658ab42f",
+    "app/investigation/context.py": "e824efcab9da42f08d4d4ca31b693e8c3d37b53c3702e618a3ddd91d1c5b0472",
+    "app/investigation/contracts.py": "59febd145fcaf3fdd812590facdd7ae6dc0e45fa86c228ae0451dcdcc784d095",
+    "app/investigation/fixtures.py": "5555c1052e65692f081ec3695398788fd5e238fb816c03f413ef7e602d959538",
+    "app/investigation/gateway.py": "aa62b33e340ed17eb1828bd08efc79edea68c89e5a2b4a20383f9fa5b466d67e",
+    "app/investigation/harness.py": "2533a3ee1aeb2fed5696347bfa23aa8848483c82ac9f394a8e86d560463ed655",
+    "app/investigation/harness_store.py": "46b8307f3e0ee3ddaa8dac7320390f976f5ecbc838e80c3610861eabcbc02483",
+    "app/investigation/mcp_server.py": "6e4821d2d27b8a68777e61d25dfadcfdb5481d74383bb053ae7f344b063ad831",
+    "app/investigation/runner.py": "271df5feefdcbe9cb1837670d115fe2179831e73746014552bc03ed6e7b46ead",
+    "app/investigation/skills.py": "59c32b1dc735b3e6c449511af1fbc080e1fa74248fea7ac64d3495faa7644038",
+    "app/investigation/tickets.py": "6914b3fb447f97b68264a4f8b1904c0aa04cadc73dd91824c30807bbcafcf2f6",
+    "app/investigation/verifier.py": "13bc44a876ade685276f093058c969eaadb8d0065d94b2afdd0eca5b16a1f0c4",
+    "app/investigation/__init__.py": "6f2bd161f7ee7608f427a164025c320134365a62df13b3eaf0fe3c020177eeb7",
+    "investigation_skills/alert-investigation/SKILL.md": "62c258efd60529ef51ab3dc3ae3988428d50a155191937f0c8718ec3202c6e42",
+    "investigation_skills/evidence-conflict/SKILL.md": "95eb51df327034c2e73b65585ea5ee2f9f54d967a0f6c60a97ff85d756596918",
+    "investigation_skills/merchant-change/SKILL.md": "36a8888ca9815e3aed200d41c15d2807ed9375e77664868a1424a1a75eb05dfe",
+    "investigation_skills/alert-investigation/references/precedence.md": "92827610bb0c02c43c5d89260e029f722f7f51f14b1619e2639ad03283689813",
+    "app/cli/harness_demo.py": "833a155272ffe4a19b1a60b9413b51a393c57e080b7ca31225e5a70427d683a6",
+    "app/service/investigations.py": "8efb7c0555807c7dc8754938e3c019a36778ac10df26b6c6e6a71b6117aaf08d",
+    "app/service/investigation_page.py": "cbeb8a30529fd8ae530f601bad6282d6f36d9c18e28261ec565204702be3785a",
+    "app/service/runtime.py": "4c58f8c5656e06845bd8cbc08ab7e8c35a2823df074ea0f1f928cbc87543a95f",
+    "app/service/store.py": "daa6a7b5b1d6456c1e386c98d92359db454ef5245a1521c6b7827b9868e8577e",
+    "app/service/api.py": "9cafce02a6584892e059941f788b280f552ec984ace0d33ffd2204a40c7bd181",
+    "tests/test_harness_stage2.py": "55bb7a1b113002d1d36a5cb6731c058c358ec2b258d9f8f647703a6942c2d41e",
+    "scripts/verify_harness_browser.cjs": "a68b586c360b1476ac17010b0d4661904742060f6afb544e168ad26efa4d8ff9"
+  },
+  "limits": [
+    "Offline scripted control; no measured LLM skill improvement.",
+    "Bounded six-turn/180-second tasks, not hour-scale production validation.",
+    "Local token, trusted skills, mock destination; no enterprise IAM or generic skill sandbox.",
+    "Structured state/prose views are not long-term memory or RAG."
+  ]
+}

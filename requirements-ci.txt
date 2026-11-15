@@ -1,0 +1,4 @@
+# Offline full-suite dependencies, including V3 investigation/MCP.
+# Optional RAG model downloads are not required by fixture tests.
+-r requirements-dl.txt
+-r requirements-investigation.txt

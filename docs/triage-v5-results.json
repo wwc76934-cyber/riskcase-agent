@@ -1,0 +1,3163 @@
+{
+  "stage": "triage-v5",
+  "pilot_summary": {
+    "fixed_all": {
+      "cases": 6,
+      "answer_correct": 6,
+      "policy_compliant": 2,
+      "fact_tool_attempts": 24,
+      "llm_requests": 0,
+      "estimated_cny": "0",
+      "error_types": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "adaptive_code": {
+      "cases": 6,
+      "answer_correct": 6,
+      "policy_compliant": 6,
+      "fact_tool_attempts": 18,
+      "llm_requests": 0,
+      "estimated_cny": "0",
+      "error_types": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "react": {
+      "cases": 6,
+      "answer_correct": 0,
+      "policy_compliant": 0,
+      "fact_tool_attempts": 20,
+      "llm_requests": 24,
+      "estimated_cny": "0.271804",
+      "error_types": [
+        "ValueError",
+        "ValueError",
+        "ValueError",
+        "ValueError",
+        "ValueError",
+        "ValueError"
+      ]
+    },
+    "react_memory": {
+      "cases": 6,
+      "answer_correct": 0,
+      "policy_compliant": 0,
+      "fact_tool_attempts": 18,
+      "llm_requests": 21,
+      "estimated_cny": "0.201384",
+      "error_types": [
+        "ValueError",
+        "BudgetExceeded",
+        "ValueError",
+        "ValueError",
+        "BudgetExceeded",
+        "BudgetExceeded"
+      ]
+    }
+  },
+  "pilot_valid_for_model_quality_comparison": false,
+  "pilot_failure_note": "Missing exact output schema in initial prompt; raw failures preserved. Current schema/repair fix has not been retested live.",
+  "full_suite_passed": 760,
+  "subsequent_targeted_passed": 19,
+  "browser": {
+    "status": "passed",
+    "external_requests": [],
+    "page_errors": [],
+    "checks": [
+      "offline_ordered_triage_report_and_mode_boundaries",
+      "rejected_report_to_reviewed_gated_promotion",
+      "promoted_memory_retrievable_in_workbench",
+      "no_page_errors_external_requests_or_mobile_overflow"
+    ]
+  },
+  "final_code_controls": [
+    {
+      "arm": "fixed_all",
+      "case": "normal_seen",
+      "result": {
+        "client_requests": 0,
+        "evidence": {
+          "ev-55e45f801ec4de48dc4e4db0": {
+            "alert": {
+              "detector": "fixture-not-a-detector",
+              "score": 0.8,
+              "transaction_id": "target"
+            },
+            "currency": "unspecified",
+            "evidence_id": "ev-55e45f801ec4de48dc4e4db0",
+            "projection_sha256": "fbd58c1abc22da672fa698f12c9b232752610c9e1052e82da639d96c8a7aff2b",
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "get_alert_transaction",
+            "transaction": {
+              "amount_cents": 1000,
+              "card_id": "fixture-card",
+              "channel": "Chip",
+              "event_time": "2018-02-01T12:00:00",
+              "mcc": "fixture-mcc",
+              "merchant_id": "old",
+              "source_row": 1,
+              "transaction_id": "target",
+              "user_id": "fixture-user"
+            }
+          },
+          "ev-ac0f6af9334fd2af49a44905": {
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-ac0f6af9334fd2af49a44905",
+            "incomplete_reasons": [],
+            "lookback_hours": 720,
+            "merchant_id": "old",
+            "merchant_prior_count": 1,
+            "preview": [
+              {
+                "amount_cents": 2000,
+                "card_id": "fixture-card",
+                "channel": "Chip",
+                "event_time": "2018-02-01T10:00:00",
+                "mcc": "fixture-mcc",
+                "merchant_id": "old",
+                "source_row": 2,
+                "transaction_id": "past-0",
+                "user_id": "fixture-user"
+              }
+            ],
+            "preview_truncated": false,
+            "prior_count": 1,
+            "projection_sha256": "fbd58c1abc22da672fa698f12c9b232752610c9e1052e82da639d96c8a7aff2b",
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "query_target_merchant",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-01-02T12:00:00"
+          },
+          "ev-afa6d8d9b092d4c8287ac1ff": {
+            "amount_sum_cents": 2000,
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-afa6d8d9b092d4c8287ac1ff",
+            "incomplete_reasons": [],
+            "lookback_hours": 720,
+            "positive_amount_max_cents": 2000,
+            "preview": [
+              {
+                "amount_cents": 2000,
+                "card_id": "fixture-card",
+                "channel": "Chip",
+                "event_time": "2018-02-01T10:00:00",
+                "mcc": "fixture-mcc",
+                "merchant_id": "old",
+                "source_row": 2,
+                "transaction_id": "past-0",
+                "user_id": "fixture-user"
+              }
+            ],
+            "preview_truncated": false,
+            "prior_count": 1,
+            "projection_sha256": "fbd58c1abc22da672fa698f12c9b232752610c9e1052e82da639d96c8a7aff2b",
+            "target_amount_cents": 1000,
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "summarize_history",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-01-02T12:00:00"
+          },
+          "ev-b544cbc2732411531aca017b": {
+            "amount_sum_cents": 0,
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-b544cbc2732411531aca017b",
+            "incomplete_reasons": [],
+            "lookback_hours": 1,
+            "positive_amount_max_cents": null,
+            "preview": [],
+            "preview_truncated": false,
+            "prior_count": 0,
+            "projection_sha256": "fbd58c1abc22da672fa698f12c9b232752610c9e1052e82da639d96c8a7aff2b",
+            "target_amount_cents": 1000,
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "summarize_history",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-02-01T11:00:00"
+          }
+        },
+        "findings": {
+          "findings": [
+            {
+              "assessment": "not_supported",
+              "check": "high_prior_frequency_1h",
+              "evidence_ids": [
+                "ev-b544cbc2732411531aca017b"
+              ]
+            },
+            {
+              "assessment": "not_supported",
+              "check": "amount_above_prior_positive_max_30d",
+              "evidence_ids": [
+                "ev-afa6d8d9b092d4c8287ac1ff"
+              ]
+            },
+            {
+              "assessment": "not_supported",
+              "check": "merchant_id_unseen_30d",
+              "evidence_ids": [
+                "ev-ac0f6af9334fd2af49a44905"
+              ]
+            }
+          ]
+        },
+        "output_mode": "code",
+        "raw_answer": null,
+        "status": "completed",
+        "tool_attempts": 4,
+        "trace": [
+          {
+            "arguments": {},
+            "attempt": 1,
+            "result": {
+              "data": {
+                "alert": {
+                  "detector": "fixture-not-a-detector",
+                  "score": 0.8,
+                  "transaction_id": "target"
+                },
+                "currency": "unspecified",
+                "evidence_id": "ev-55e45f801ec4de48dc4e4db0",
+                "projection_sha256": "fbd58c1abc22da672fa698f12c9b232752610c9e1052e82da639d96c8a7aff2b",
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "get_alert_transaction",
+                "transaction": {
+                  "amount_cents": 1000,
+                  "card_id": "fixture-card",
+                  "channel": "Chip",
+                  "event_time": "2018-02-01T12:00:00",
+                  "mcc": "fixture-mcc",
+                  "merchant_id": "old",
+                  "source_row": 1,
+                  "transaction_id": "target",
+                  "user_id": "fixture-user"
+                }
+              },
+              "ok": true
+            },
+            "tool": "get_alert_transaction"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 1
+            },
+            "attempt": 2,
+            "result": {
+              "data": {
+                "amount_sum_cents": 0,
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-b544cbc2732411531aca017b",
+                "incomplete_reasons": [],
+                "lookback_hours": 1,
+                "positive_amount_max_cents": null,
+                "preview": [],
+                "preview_truncated": false,
+                "prior_count": 0,
+                "projection_sha256": "fbd58c1abc22da672fa698f12c9b232752610c9e1052e82da639d96c8a7aff2b",
+                "target_amount_cents": 1000,
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "summarize_history",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-02-01T11:00:00"
+              },
+              "ok": true
+            },
+            "tool": "summarize_history"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 720
+            },
+            "attempt": 3,
+            "result": {
+              "data": {
+                "amount_sum_cents": 2000,
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-afa6d8d9b092d4c8287ac1ff",
+                "incomplete_reasons": [],
+                "lookback_hours": 720,
+                "positive_amount_max_cents": 2000,
+                "preview": [
+                  {
+                    "amount_cents": 2000,
+                    "card_id": "fixture-card",
+                    "channel": "Chip",
+                    "event_time": "2018-02-01T10:00:00",
+                    "mcc": "fixture-mcc",
+                    "merchant_id": "old",
+                    "source_row": 2,
+                    "transaction_id": "past-0",
+                    "user_id": "fixture-user"
+                  }
+                ],
+                "preview_truncated": false,
+                "prior_count": 1,
+                "projection_sha256": "fbd58c1abc22da672fa698f12c9b232752610c9e1052e82da639d96c8a7aff2b",
+                "target_amount_cents": 1000,
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "summarize_history",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-01-02T12:00:00"
+              },
+              "ok": true
+            },
+            "tool": "summarize_history"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 720
+            },
+            "attempt": 4,
+            "result": {
+              "data": {
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-ac0f6af9334fd2af49a44905",
+                "incomplete_reasons": [],
+                "lookback_hours": 720,
+                "merchant_id": "old",
+                "merchant_prior_count": 1,
+                "preview": [
+                  {
+                    "amount_cents": 2000,
+                    "card_id": "fixture-card",
+                    "channel": "Chip",
+                    "event_time": "2018-02-01T10:00:00",
+                    "mcc": "fixture-mcc",
+                    "merchant_id": "old",
+                    "source_row": 2,
+                    "transaction_id": "past-0",
+                    "user_id": "fixture-user"
+                  }
+                ],
+                "preview_truncated": false,
+                "prior_count": 1,
+                "projection_sha256": "fbd58c1abc22da672fa698f12c9b232752610c9e1052e82da639d96c8a7aff2b",
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "query_target_merchant",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-01-02T12:00:00"
+              },
+              "ok": true
+            },
+            "tool": "query_target_merchant"
+          }
+        ]
+      },
+      "score": {
+        "answer_correct": true,
+        "fully_efficient": true,
+        "minimal_path": true,
+        "required_checks": 3,
+        "task_passed": true,
+        "tool_attempts": 4
+      }
+    },
+    {
+      "arm": "adaptive_code",
+      "case": "normal_seen",
+      "result": {
+        "client_requests": 0,
+        "evidence": {
+          "ev-55e45f801ec4de48dc4e4db0": {
+            "alert": {
+              "detector": "fixture-not-a-detector",
+              "score": 0.8,
+              "transaction_id": "target"
+            },
+            "currency": "unspecified",
+            "evidence_id": "ev-55e45f801ec4de48dc4e4db0",
+            "projection_sha256": "fbd58c1abc22da672fa698f12c9b232752610c9e1052e82da639d96c8a7aff2b",
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "get_alert_transaction",
+            "transaction": {
+              "amount_cents": 1000,
+              "card_id": "fixture-card",
+              "channel": "Chip",
+              "event_time": "2018-02-01T12:00:00",
+              "mcc": "fixture-mcc",
+              "merchant_id": "old",
+              "source_row": 1,
+              "transaction_id": "target",
+              "user_id": "fixture-user"
+            }
+          },
+          "ev-ac0f6af9334fd2af49a44905": {
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-ac0f6af9334fd2af49a44905",
+            "incomplete_reasons": [],
+            "lookback_hours": 720,
+            "merchant_id": "old",
+            "merchant_prior_count": 1,
+            "preview": [
+              {
+                "amount_cents": 2000,
+                "card_id": "fixture-card",
+                "channel": "Chip",
+                "event_time": "2018-02-01T10:00:00",
+                "mcc": "fixture-mcc",
+                "merchant_id": "old",
+                "source_row": 2,
+                "transaction_id": "past-0",
+                "user_id": "fixture-user"
+              }
+            ],
+            "preview_truncated": false,
+            "prior_count": 1,
+            "projection_sha256": "fbd58c1abc22da672fa698f12c9b232752610c9e1052e82da639d96c8a7aff2b",
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "query_target_merchant",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-01-02T12:00:00"
+          },
+          "ev-afa6d8d9b092d4c8287ac1ff": {
+            "amount_sum_cents": 2000,
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-afa6d8d9b092d4c8287ac1ff",
+            "incomplete_reasons": [],
+            "lookback_hours": 720,
+            "positive_amount_max_cents": 2000,
+            "preview": [
+              {
+                "amount_cents": 2000,
+                "card_id": "fixture-card",
+                "channel": "Chip",
+                "event_time": "2018-02-01T10:00:00",
+                "mcc": "fixture-mcc",
+                "merchant_id": "old",
+                "source_row": 2,
+                "transaction_id": "past-0",
+                "user_id": "fixture-user"
+              }
+            ],
+            "preview_truncated": false,
+            "prior_count": 1,
+            "projection_sha256": "fbd58c1abc22da672fa698f12c9b232752610c9e1052e82da639d96c8a7aff2b",
+            "target_amount_cents": 1000,
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "summarize_history",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-01-02T12:00:00"
+          },
+          "ev-b544cbc2732411531aca017b": {
+            "amount_sum_cents": 0,
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-b544cbc2732411531aca017b",
+            "incomplete_reasons": [],
+            "lookback_hours": 1,
+            "positive_amount_max_cents": null,
+            "preview": [],
+            "preview_truncated": false,
+            "prior_count": 0,
+            "projection_sha256": "fbd58c1abc22da672fa698f12c9b232752610c9e1052e82da639d96c8a7aff2b",
+            "target_amount_cents": 1000,
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "summarize_history",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-02-01T11:00:00"
+          }
+        },
+        "findings": {
+          "findings": [
+            {
+              "assessment": "not_supported",
+              "check": "high_prior_frequency_1h",
+              "evidence_ids": [
+                "ev-b544cbc2732411531aca017b"
+              ]
+            },
+            {
+              "assessment": "not_supported",
+              "check": "amount_above_prior_positive_max_30d",
+              "evidence_ids": [
+                "ev-afa6d8d9b092d4c8287ac1ff"
+              ]
+            },
+            {
+              "assessment": "not_supported",
+              "check": "merchant_id_unseen_30d",
+              "evidence_ids": [
+                "ev-ac0f6af9334fd2af49a44905"
+              ]
+            }
+          ]
+        },
+        "output_mode": "code",
+        "raw_answer": null,
+        "status": "completed",
+        "tool_attempts": 4,
+        "trace": [
+          {
+            "arguments": {},
+            "attempt": 1,
+            "result": {
+              "data": {
+                "alert": {
+                  "detector": "fixture-not-a-detector",
+                  "score": 0.8,
+                  "transaction_id": "target"
+                },
+                "currency": "unspecified",
+                "evidence_id": "ev-55e45f801ec4de48dc4e4db0",
+                "projection_sha256": "fbd58c1abc22da672fa698f12c9b232752610c9e1052e82da639d96c8a7aff2b",
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "get_alert_transaction",
+                "transaction": {
+                  "amount_cents": 1000,
+                  "card_id": "fixture-card",
+                  "channel": "Chip",
+                  "event_time": "2018-02-01T12:00:00",
+                  "mcc": "fixture-mcc",
+                  "merchant_id": "old",
+                  "source_row": 1,
+                  "transaction_id": "target",
+                  "user_id": "fixture-user"
+                }
+              },
+              "ok": true
+            },
+            "tool": "get_alert_transaction"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 1
+            },
+            "attempt": 2,
+            "result": {
+              "data": {
+                "amount_sum_cents": 0,
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-b544cbc2732411531aca017b",
+                "incomplete_reasons": [],
+                "lookback_hours": 1,
+                "positive_amount_max_cents": null,
+                "preview": [],
+                "preview_truncated": false,
+                "prior_count": 0,
+                "projection_sha256": "fbd58c1abc22da672fa698f12c9b232752610c9e1052e82da639d96c8a7aff2b",
+                "target_amount_cents": 1000,
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "summarize_history",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-02-01T11:00:00"
+              },
+              "ok": true
+            },
+            "tool": "summarize_history"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 720
+            },
+            "attempt": 3,
+            "result": {
+              "data": {
+                "amount_sum_cents": 2000,
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-afa6d8d9b092d4c8287ac1ff",
+                "incomplete_reasons": [],
+                "lookback_hours": 720,
+                "positive_amount_max_cents": 2000,
+                "preview": [
+                  {
+                    "amount_cents": 2000,
+                    "card_id": "fixture-card",
+                    "channel": "Chip",
+                    "event_time": "2018-02-01T10:00:00",
+                    "mcc": "fixture-mcc",
+                    "merchant_id": "old",
+                    "source_row": 2,
+                    "transaction_id": "past-0",
+                    "user_id": "fixture-user"
+                  }
+                ],
+                "preview_truncated": false,
+                "prior_count": 1,
+                "projection_sha256": "fbd58c1abc22da672fa698f12c9b232752610c9e1052e82da639d96c8a7aff2b",
+                "target_amount_cents": 1000,
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "summarize_history",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-01-02T12:00:00"
+              },
+              "ok": true
+            },
+            "tool": "summarize_history"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 720
+            },
+            "attempt": 4,
+            "result": {
+              "data": {
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-ac0f6af9334fd2af49a44905",
+                "incomplete_reasons": [],
+                "lookback_hours": 720,
+                "merchant_id": "old",
+                "merchant_prior_count": 1,
+                "preview": [
+                  {
+                    "amount_cents": 2000,
+                    "card_id": "fixture-card",
+                    "channel": "Chip",
+                    "event_time": "2018-02-01T10:00:00",
+                    "mcc": "fixture-mcc",
+                    "merchant_id": "old",
+                    "source_row": 2,
+                    "transaction_id": "past-0",
+                    "user_id": "fixture-user"
+                  }
+                ],
+                "preview_truncated": false,
+                "prior_count": 1,
+                "projection_sha256": "fbd58c1abc22da672fa698f12c9b232752610c9e1052e82da639d96c8a7aff2b",
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "query_target_merchant",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-01-02T12:00:00"
+              },
+              "ok": true
+            },
+            "tool": "query_target_merchant"
+          }
+        ]
+      },
+      "score": {
+        "answer_correct": true,
+        "fully_efficient": true,
+        "minimal_path": true,
+        "required_checks": 3,
+        "task_passed": true,
+        "tool_attempts": 4
+      }
+    },
+    {
+      "arm": "fixed_all",
+      "case": "large_new",
+      "result": {
+        "client_requests": 0,
+        "evidence": {
+          "ev-07da756c493f0b495ba79587": {
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-07da756c493f0b495ba79587",
+            "incomplete_reasons": [],
+            "lookback_hours": 720,
+            "merchant_id": "new",
+            "merchant_prior_count": 0,
+            "preview": [],
+            "preview_truncated": false,
+            "prior_count": 1,
+            "projection_sha256": "a2bf89f8780fe9f64f3cf68ad2241dc213be59fe90eaabb95fc472ca3f3d8c25",
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "query_target_merchant",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-01-02T12:00:00"
+          },
+          "ev-3aa3f1c059eea10fa7b7d0a7": {
+            "amount_sum_cents": 2000,
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-3aa3f1c059eea10fa7b7d0a7",
+            "incomplete_reasons": [],
+            "lookback_hours": 720,
+            "positive_amount_max_cents": 2000,
+            "preview": [
+              {
+                "amount_cents": 2000,
+                "card_id": "fixture-card",
+                "channel": "Chip",
+                "event_time": "2018-02-01T10:00:00",
+                "mcc": "fixture-mcc",
+                "merchant_id": "old",
+                "source_row": 2,
+                "transaction_id": "past-0",
+                "user_id": "fixture-user"
+              }
+            ],
+            "preview_truncated": false,
+            "prior_count": 1,
+            "projection_sha256": "a2bf89f8780fe9f64f3cf68ad2241dc213be59fe90eaabb95fc472ca3f3d8c25",
+            "target_amount_cents": 3000,
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "summarize_history",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-01-02T12:00:00"
+          },
+          "ev-4c025e4aa1506edec929f78e": {
+            "alert": {
+              "detector": "fixture-not-a-detector",
+              "score": 0.8,
+              "transaction_id": "target"
+            },
+            "currency": "unspecified",
+            "evidence_id": "ev-4c025e4aa1506edec929f78e",
+            "projection_sha256": "a2bf89f8780fe9f64f3cf68ad2241dc213be59fe90eaabb95fc472ca3f3d8c25",
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "get_alert_transaction",
+            "transaction": {
+              "amount_cents": 3000,
+              "card_id": "fixture-card",
+              "channel": "Chip",
+              "event_time": "2018-02-01T12:00:00",
+              "mcc": "fixture-mcc",
+              "merchant_id": "new",
+              "source_row": 1,
+              "transaction_id": "target",
+              "user_id": "fixture-user"
+            }
+          },
+          "ev-a769b2bcfab2d77237d7603e": {
+            "amount_sum_cents": 0,
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-a769b2bcfab2d77237d7603e",
+            "incomplete_reasons": [],
+            "lookback_hours": 1,
+            "positive_amount_max_cents": null,
+            "preview": [],
+            "preview_truncated": false,
+            "prior_count": 0,
+            "projection_sha256": "a2bf89f8780fe9f64f3cf68ad2241dc213be59fe90eaabb95fc472ca3f3d8c25",
+            "target_amount_cents": 3000,
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "summarize_history",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-02-01T11:00:00"
+          }
+        },
+        "findings": {
+          "findings": [
+            {
+              "assessment": "not_supported",
+              "check": "high_prior_frequency_1h",
+              "evidence_ids": [
+                "ev-a769b2bcfab2d77237d7603e"
+              ]
+            },
+            {
+              "assessment": "supported",
+              "check": "amount_above_prior_positive_max_30d",
+              "evidence_ids": [
+                "ev-3aa3f1c059eea10fa7b7d0a7"
+              ]
+            }
+          ]
+        },
+        "output_mode": "code",
+        "raw_answer": null,
+        "status": "completed",
+        "tool_attempts": 4,
+        "trace": [
+          {
+            "arguments": {},
+            "attempt": 1,
+            "result": {
+              "data": {
+                "alert": {
+                  "detector": "fixture-not-a-detector",
+                  "score": 0.8,
+                  "transaction_id": "target"
+                },
+                "currency": "unspecified",
+                "evidence_id": "ev-4c025e4aa1506edec929f78e",
+                "projection_sha256": "a2bf89f8780fe9f64f3cf68ad2241dc213be59fe90eaabb95fc472ca3f3d8c25",
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "get_alert_transaction",
+                "transaction": {
+                  "amount_cents": 3000,
+                  "card_id": "fixture-card",
+                  "channel": "Chip",
+                  "event_time": "2018-02-01T12:00:00",
+                  "mcc": "fixture-mcc",
+                  "merchant_id": "new",
+                  "source_row": 1,
+                  "transaction_id": "target",
+                  "user_id": "fixture-user"
+                }
+              },
+              "ok": true
+            },
+            "tool": "get_alert_transaction"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 1
+            },
+            "attempt": 2,
+            "result": {
+              "data": {
+                "amount_sum_cents": 0,
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-a769b2bcfab2d77237d7603e",
+                "incomplete_reasons": [],
+                "lookback_hours": 1,
+                "positive_amount_max_cents": null,
+                "preview": [],
+                "preview_truncated": false,
+                "prior_count": 0,
+                "projection_sha256": "a2bf89f8780fe9f64f3cf68ad2241dc213be59fe90eaabb95fc472ca3f3d8c25",
+                "target_amount_cents": 3000,
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "summarize_history",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-02-01T11:00:00"
+              },
+              "ok": true
+            },
+            "tool": "summarize_history"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 720
+            },
+            "attempt": 3,
+            "result": {
+              "data": {
+                "amount_sum_cents": 2000,
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-3aa3f1c059eea10fa7b7d0a7",
+                "incomplete_reasons": [],
+                "lookback_hours": 720,
+                "positive_amount_max_cents": 2000,
+                "preview": [
+                  {
+                    "amount_cents": 2000,
+                    "card_id": "fixture-card",
+                    "channel": "Chip",
+                    "event_time": "2018-02-01T10:00:00",
+                    "mcc": "fixture-mcc",
+                    "merchant_id": "old",
+                    "source_row": 2,
+                    "transaction_id": "past-0",
+                    "user_id": "fixture-user"
+                  }
+                ],
+                "preview_truncated": false,
+                "prior_count": 1,
+                "projection_sha256": "a2bf89f8780fe9f64f3cf68ad2241dc213be59fe90eaabb95fc472ca3f3d8c25",
+                "target_amount_cents": 3000,
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "summarize_history",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-01-02T12:00:00"
+              },
+              "ok": true
+            },
+            "tool": "summarize_history"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 720
+            },
+            "attempt": 4,
+            "result": {
+              "data": {
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-07da756c493f0b495ba79587",
+                "incomplete_reasons": [],
+                "lookback_hours": 720,
+                "merchant_id": "new",
+                "merchant_prior_count": 0,
+                "preview": [],
+                "preview_truncated": false,
+                "prior_count": 1,
+                "projection_sha256": "a2bf89f8780fe9f64f3cf68ad2241dc213be59fe90eaabb95fc472ca3f3d8c25",
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "query_target_merchant",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-01-02T12:00:00"
+              },
+              "ok": true
+            },
+            "tool": "query_target_merchant"
+          }
+        ]
+      },
+      "score": {
+        "answer_correct": true,
+        "fully_efficient": false,
+        "minimal_path": false,
+        "required_checks": 2,
+        "task_passed": false,
+        "tool_attempts": 4
+      }
+    },
+    {
+      "arm": "adaptive_code",
+      "case": "large_new",
+      "result": {
+        "client_requests": 0,
+        "evidence": {
+          "ev-3aa3f1c059eea10fa7b7d0a7": {
+            "amount_sum_cents": 2000,
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-3aa3f1c059eea10fa7b7d0a7",
+            "incomplete_reasons": [],
+            "lookback_hours": 720,
+            "positive_amount_max_cents": 2000,
+            "preview": [
+              {
+                "amount_cents": 2000,
+                "card_id": "fixture-card",
+                "channel": "Chip",
+                "event_time": "2018-02-01T10:00:00",
+                "mcc": "fixture-mcc",
+                "merchant_id": "old",
+                "source_row": 2,
+                "transaction_id": "past-0",
+                "user_id": "fixture-user"
+              }
+            ],
+            "preview_truncated": false,
+            "prior_count": 1,
+            "projection_sha256": "a2bf89f8780fe9f64f3cf68ad2241dc213be59fe90eaabb95fc472ca3f3d8c25",
+            "target_amount_cents": 3000,
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "summarize_history",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-01-02T12:00:00"
+          },
+          "ev-4c025e4aa1506edec929f78e": {
+            "alert": {
+              "detector": "fixture-not-a-detector",
+              "score": 0.8,
+              "transaction_id": "target"
+            },
+            "currency": "unspecified",
+            "evidence_id": "ev-4c025e4aa1506edec929f78e",
+            "projection_sha256": "a2bf89f8780fe9f64f3cf68ad2241dc213be59fe90eaabb95fc472ca3f3d8c25",
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "get_alert_transaction",
+            "transaction": {
+              "amount_cents": 3000,
+              "card_id": "fixture-card",
+              "channel": "Chip",
+              "event_time": "2018-02-01T12:00:00",
+              "mcc": "fixture-mcc",
+              "merchant_id": "new",
+              "source_row": 1,
+              "transaction_id": "target",
+              "user_id": "fixture-user"
+            }
+          },
+          "ev-a769b2bcfab2d77237d7603e": {
+            "amount_sum_cents": 0,
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-a769b2bcfab2d77237d7603e",
+            "incomplete_reasons": [],
+            "lookback_hours": 1,
+            "positive_amount_max_cents": null,
+            "preview": [],
+            "preview_truncated": false,
+            "prior_count": 0,
+            "projection_sha256": "a2bf89f8780fe9f64f3cf68ad2241dc213be59fe90eaabb95fc472ca3f3d8c25",
+            "target_amount_cents": 3000,
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "summarize_history",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-02-01T11:00:00"
+          }
+        },
+        "findings": {
+          "findings": [
+            {
+              "assessment": "not_supported",
+              "check": "high_prior_frequency_1h",
+              "evidence_ids": [
+                "ev-a769b2bcfab2d77237d7603e"
+              ]
+            },
+            {
+              "assessment": "supported",
+              "check": "amount_above_prior_positive_max_30d",
+              "evidence_ids": [
+                "ev-3aa3f1c059eea10fa7b7d0a7"
+              ]
+            }
+          ]
+        },
+        "output_mode": "code",
+        "raw_answer": null,
+        "status": "completed",
+        "tool_attempts": 3,
+        "trace": [
+          {
+            "arguments": {},
+            "attempt": 1,
+            "result": {
+              "data": {
+                "alert": {
+                  "detector": "fixture-not-a-detector",
+                  "score": 0.8,
+                  "transaction_id": "target"
+                },
+                "currency": "unspecified",
+                "evidence_id": "ev-4c025e4aa1506edec929f78e",
+                "projection_sha256": "a2bf89f8780fe9f64f3cf68ad2241dc213be59fe90eaabb95fc472ca3f3d8c25",
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "get_alert_transaction",
+                "transaction": {
+                  "amount_cents": 3000,
+                  "card_id": "fixture-card",
+                  "channel": "Chip",
+                  "event_time": "2018-02-01T12:00:00",
+                  "mcc": "fixture-mcc",
+                  "merchant_id": "new",
+                  "source_row": 1,
+                  "transaction_id": "target",
+                  "user_id": "fixture-user"
+                }
+              },
+              "ok": true
+            },
+            "tool": "get_alert_transaction"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 1
+            },
+            "attempt": 2,
+            "result": {
+              "data": {
+                "amount_sum_cents": 0,
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-a769b2bcfab2d77237d7603e",
+                "incomplete_reasons": [],
+                "lookback_hours": 1,
+                "positive_amount_max_cents": null,
+                "preview": [],
+                "preview_truncated": false,
+                "prior_count": 0,
+                "projection_sha256": "a2bf89f8780fe9f64f3cf68ad2241dc213be59fe90eaabb95fc472ca3f3d8c25",
+                "target_amount_cents": 3000,
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "summarize_history",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-02-01T11:00:00"
+              },
+              "ok": true
+            },
+            "tool": "summarize_history"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 720
+            },
+            "attempt": 3,
+            "result": {
+              "data": {
+                "amount_sum_cents": 2000,
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-3aa3f1c059eea10fa7b7d0a7",
+                "incomplete_reasons": [],
+                "lookback_hours": 720,
+                "positive_amount_max_cents": 2000,
+                "preview": [
+                  {
+                    "amount_cents": 2000,
+                    "card_id": "fixture-card",
+                    "channel": "Chip",
+                    "event_time": "2018-02-01T10:00:00",
+                    "mcc": "fixture-mcc",
+                    "merchant_id": "old",
+                    "source_row": 2,
+                    "transaction_id": "past-0",
+                    "user_id": "fixture-user"
+                  }
+                ],
+                "preview_truncated": false,
+                "prior_count": 1,
+                "projection_sha256": "a2bf89f8780fe9f64f3cf68ad2241dc213be59fe90eaabb95fc472ca3f3d8c25",
+                "target_amount_cents": 3000,
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "summarize_history",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-01-02T12:00:00"
+              },
+              "ok": true
+            },
+            "tool": "summarize_history"
+          }
+        ]
+      },
+      "score": {
+        "answer_correct": true,
+        "fully_efficient": true,
+        "minimal_path": true,
+        "required_checks": 2,
+        "task_passed": true,
+        "tool_attempts": 3
+      }
+    },
+    {
+      "arm": "fixed_all",
+      "case": "burst",
+      "result": {
+        "client_requests": 0,
+        "evidence": {
+          "ev-041f204ff74591bd27bc30b1": {
+            "amount_sum_cents": 5000,
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-041f204ff74591bd27bc30b1",
+            "incomplete_reasons": [],
+            "lookback_hours": 1,
+            "positive_amount_max_cents": 2000,
+            "preview": [
+              {
+                "amount_cents": 1000,
+                "card_id": "fixture-card",
+                "channel": "Chip",
+                "event_time": "2018-02-01T11:40:00",
+                "mcc": "fixture-mcc",
+                "merchant_id": "old",
+                "source_row": 5,
+                "transaction_id": "past-3",
+                "user_id": "fixture-user"
+              },
+              {
+                "amount_cents": 1000,
+                "card_id": "fixture-card",
+                "channel": "Chip",
+                "event_time": "2018-02-01T11:45:00",
+                "mcc": "fixture-mcc",
+                "merchant_id": "old",
+                "source_row": 4,
+                "transaction_id": "past-2",
+                "user_id": "fixture-user"
+              },
+              {
+                "amount_cents": 1000,
+                "card_id": "fixture-card",
+                "channel": "Chip",
+                "event_time": "2018-02-01T11:50:00",
+                "mcc": "fixture-mcc",
+                "merchant_id": "old",
+                "source_row": 3,
+                "transaction_id": "past-1",
+                "user_id": "fixture-user"
+              }
+            ],
+            "preview_truncated": true,
+            "prior_count": 4,
+            "projection_sha256": "1a10126a6bd992d12910f0a2bad23518a86a5d7db27a38c5f90b970e4804cc51",
+            "target_amount_cents": 3000,
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "summarize_history",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-02-01T11:00:00"
+          },
+          "ev-28228f40ff48e8ceddb2ab25": {
+            "alert": {
+              "detector": "fixture-not-a-detector",
+              "score": 0.8,
+              "transaction_id": "target"
+            },
+            "currency": "unspecified",
+            "evidence_id": "ev-28228f40ff48e8ceddb2ab25",
+            "projection_sha256": "1a10126a6bd992d12910f0a2bad23518a86a5d7db27a38c5f90b970e4804cc51",
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "get_alert_transaction",
+            "transaction": {
+              "amount_cents": 3000,
+              "card_id": "fixture-card",
+              "channel": "Chip",
+              "event_time": "2018-02-01T12:00:00",
+              "mcc": "fixture-mcc",
+              "merchant_id": "new",
+              "source_row": 1,
+              "transaction_id": "target",
+              "user_id": "fixture-user"
+            }
+          },
+          "ev-aa63243320901464f59d2878": {
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-aa63243320901464f59d2878",
+            "incomplete_reasons": [],
+            "lookback_hours": 720,
+            "merchant_id": "new",
+            "merchant_prior_count": 0,
+            "preview": [],
+            "preview_truncated": false,
+            "prior_count": 4,
+            "projection_sha256": "1a10126a6bd992d12910f0a2bad23518a86a5d7db27a38c5f90b970e4804cc51",
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "query_target_merchant",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-01-02T12:00:00"
+          },
+          "ev-e5ef6b2f4a06f77d602f795b": {
+            "amount_sum_cents": 5000,
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-e5ef6b2f4a06f77d602f795b",
+            "incomplete_reasons": [],
+            "lookback_hours": 720,
+            "positive_amount_max_cents": 2000,
+            "preview": [
+              {
+                "amount_cents": 1000,
+                "card_id": "fixture-card",
+                "channel": "Chip",
+                "event_time": "2018-02-01T11:40:00",
+                "mcc": "fixture-mcc",
+                "merchant_id": "old",
+                "source_row": 5,
+                "transaction_id": "past-3",
+                "user_id": "fixture-user"
+              },
+              {
+                "amount_cents": 1000,
+                "card_id": "fixture-card",
+                "channel": "Chip",
+                "event_time": "2018-02-01T11:45:00",
+                "mcc": "fixture-mcc",
+                "merchant_id": "old",
+                "source_row": 4,
+                "transaction_id": "past-2",
+                "user_id": "fixture-user"
+              },
+              {
+                "amount_cents": 1000,
+                "card_id": "fixture-card",
+                "channel": "Chip",
+                "event_time": "2018-02-01T11:50:00",
+                "mcc": "fixture-mcc",
+                "merchant_id": "old",
+                "source_row": 3,
+                "transaction_id": "past-1",
+                "user_id": "fixture-user"
+              }
+            ],
+            "preview_truncated": true,
+            "prior_count": 4,
+            "projection_sha256": "1a10126a6bd992d12910f0a2bad23518a86a5d7db27a38c5f90b970e4804cc51",
+            "target_amount_cents": 3000,
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "summarize_history",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-01-02T12:00:00"
+          }
+        },
+        "findings": {
+          "findings": [
+            {
+              "assessment": "supported",
+              "check": "high_prior_frequency_1h",
+              "evidence_ids": [
+                "ev-041f204ff74591bd27bc30b1"
+              ]
+            }
+          ]
+        },
+        "output_mode": "code",
+        "raw_answer": null,
+        "status": "completed",
+        "tool_attempts": 4,
+        "trace": [
+          {
+            "arguments": {},
+            "attempt": 1,
+            "result": {
+              "data": {
+                "alert": {
+                  "detector": "fixture-not-a-detector",
+                  "score": 0.8,
+                  "transaction_id": "target"
+                },
+                "currency": "unspecified",
+                "evidence_id": "ev-28228f40ff48e8ceddb2ab25",
+                "projection_sha256": "1a10126a6bd992d12910f0a2bad23518a86a5d7db27a38c5f90b970e4804cc51",
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "get_alert_transaction",
+                "transaction": {
+                  "amount_cents": 3000,
+                  "card_id": "fixture-card",
+                  "channel": "Chip",
+                  "event_time": "2018-02-01T12:00:00",
+                  "mcc": "fixture-mcc",
+                  "merchant_id": "new",
+                  "source_row": 1,
+                  "transaction_id": "target",
+                  "user_id": "fixture-user"
+                }
+              },
+              "ok": true
+            },
+            "tool": "get_alert_transaction"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 1
+            },
+            "attempt": 2,
+            "result": {
+              "data": {
+                "amount_sum_cents": 5000,
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-041f204ff74591bd27bc30b1",
+                "incomplete_reasons": [],
+                "lookback_hours": 1,
+                "positive_amount_max_cents": 2000,
+                "preview": [
+                  {
+                    "amount_cents": 1000,
+                    "card_id": "fixture-card",
+                    "channel": "Chip",
+                    "event_time": "2018-02-01T11:40:00",
+                    "mcc": "fixture-mcc",
+                    "merchant_id": "old",
+                    "source_row": 5,
+                    "transaction_id": "past-3",
+                    "user_id": "fixture-user"
+                  },
+                  {
+                    "amount_cents": 1000,
+                    "card_id": "fixture-card",
+                    "channel": "Chip",
+                    "event_time": "2018-02-01T11:45:00",
+                    "mcc": "fixture-mcc",
+                    "merchant_id": "old",
+                    "source_row": 4,
+                    "transaction_id": "past-2",
+                    "user_id": "fixture-user"
+                  },
+                  {
+                    "amount_cents": 1000,
+                    "card_id": "fixture-card",
+                    "channel": "Chip",
+                    "event_time": "2018-02-01T11:50:00",
+                    "mcc": "fixture-mcc",
+                    "merchant_id": "old",
+                    "source_row": 3,
+                    "transaction_id": "past-1",
+                    "user_id": "fixture-user"
+                  }
+                ],
+                "preview_truncated": true,
+                "prior_count": 4,
+                "projection_sha256": "1a10126a6bd992d12910f0a2bad23518a86a5d7db27a38c5f90b970e4804cc51",
+                "target_amount_cents": 3000,
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "summarize_history",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-02-01T11:00:00"
+              },
+              "ok": true
+            },
+            "tool": "summarize_history"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 720
+            },
+            "attempt": 3,
+            "result": {
+              "data": {
+                "amount_sum_cents": 5000,
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-e5ef6b2f4a06f77d602f795b",
+                "incomplete_reasons": [],
+                "lookback_hours": 720,
+                "positive_amount_max_cents": 2000,
+                "preview": [
+                  {
+                    "amount_cents": 1000,
+                    "card_id": "fixture-card",
+                    "channel": "Chip",
+                    "event_time": "2018-02-01T11:40:00",
+                    "mcc": "fixture-mcc",
+                    "merchant_id": "old",
+                    "source_row": 5,
+                    "transaction_id": "past-3",
+                    "user_id": "fixture-user"
+                  },
+                  {
+                    "amount_cents": 1000,
+                    "card_id": "fixture-card",
+                    "channel": "Chip",
+                    "event_time": "2018-02-01T11:45:00",
+                    "mcc": "fixture-mcc",
+                    "merchant_id": "old",
+                    "source_row": 4,
+                    "transaction_id": "past-2",
+                    "user_id": "fixture-user"
+                  },
+                  {
+                    "amount_cents": 1000,
+                    "card_id": "fixture-card",
+                    "channel": "Chip",
+                    "event_time": "2018-02-01T11:50:00",
+                    "mcc": "fixture-mcc",
+                    "merchant_id": "old",
+                    "source_row": 3,
+                    "transaction_id": "past-1",
+                    "user_id": "fixture-user"
+                  }
+                ],
+                "preview_truncated": true,
+                "prior_count": 4,
+                "projection_sha256": "1a10126a6bd992d12910f0a2bad23518a86a5d7db27a38c5f90b970e4804cc51",
+                "target_amount_cents": 3000,
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "summarize_history",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-01-02T12:00:00"
+              },
+              "ok": true
+            },
+            "tool": "summarize_history"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 720
+            },
+            "attempt": 4,
+            "result": {
+              "data": {
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-aa63243320901464f59d2878",
+                "incomplete_reasons": [],
+                "lookback_hours": 720,
+                "merchant_id": "new",
+                "merchant_prior_count": 0,
+                "preview": [],
+                "preview_truncated": false,
+                "prior_count": 4,
+                "projection_sha256": "1a10126a6bd992d12910f0a2bad23518a86a5d7db27a38c5f90b970e4804cc51",
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "query_target_merchant",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-01-02T12:00:00"
+              },
+              "ok": true
+            },
+            "tool": "query_target_merchant"
+          }
+        ]
+      },
+      "score": {
+        "answer_correct": true,
+        "fully_efficient": false,
+        "minimal_path": false,
+        "required_checks": 1,
+        "task_passed": false,
+        "tool_attempts": 4
+      }
+    },
+    {
+      "arm": "adaptive_code",
+      "case": "burst",
+      "result": {
+        "client_requests": 0,
+        "evidence": {
+          "ev-041f204ff74591bd27bc30b1": {
+            "amount_sum_cents": 5000,
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-041f204ff74591bd27bc30b1",
+            "incomplete_reasons": [],
+            "lookback_hours": 1,
+            "positive_amount_max_cents": 2000,
+            "preview": [
+              {
+                "amount_cents": 1000,
+                "card_id": "fixture-card",
+                "channel": "Chip",
+                "event_time": "2018-02-01T11:40:00",
+                "mcc": "fixture-mcc",
+                "merchant_id": "old",
+                "source_row": 5,
+                "transaction_id": "past-3",
+                "user_id": "fixture-user"
+              },
+              {
+                "amount_cents": 1000,
+                "card_id": "fixture-card",
+                "channel": "Chip",
+                "event_time": "2018-02-01T11:45:00",
+                "mcc": "fixture-mcc",
+                "merchant_id": "old",
+                "source_row": 4,
+                "transaction_id": "past-2",
+                "user_id": "fixture-user"
+              },
+              {
+                "amount_cents": 1000,
+                "card_id": "fixture-card",
+                "channel": "Chip",
+                "event_time": "2018-02-01T11:50:00",
+                "mcc": "fixture-mcc",
+                "merchant_id": "old",
+                "source_row": 3,
+                "transaction_id": "past-1",
+                "user_id": "fixture-user"
+              }
+            ],
+            "preview_truncated": true,
+            "prior_count": 4,
+            "projection_sha256": "1a10126a6bd992d12910f0a2bad23518a86a5d7db27a38c5f90b970e4804cc51",
+            "target_amount_cents": 3000,
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "summarize_history",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-02-01T11:00:00"
+          },
+          "ev-28228f40ff48e8ceddb2ab25": {
+            "alert": {
+              "detector": "fixture-not-a-detector",
+              "score": 0.8,
+              "transaction_id": "target"
+            },
+            "currency": "unspecified",
+            "evidence_id": "ev-28228f40ff48e8ceddb2ab25",
+            "projection_sha256": "1a10126a6bd992d12910f0a2bad23518a86a5d7db27a38c5f90b970e4804cc51",
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "get_alert_transaction",
+            "transaction": {
+              "amount_cents": 3000,
+              "card_id": "fixture-card",
+              "channel": "Chip",
+              "event_time": "2018-02-01T12:00:00",
+              "mcc": "fixture-mcc",
+              "merchant_id": "new",
+              "source_row": 1,
+              "transaction_id": "target",
+              "user_id": "fixture-user"
+            }
+          }
+        },
+        "findings": {
+          "findings": [
+            {
+              "assessment": "supported",
+              "check": "high_prior_frequency_1h",
+              "evidence_ids": [
+                "ev-041f204ff74591bd27bc30b1"
+              ]
+            }
+          ]
+        },
+        "output_mode": "code",
+        "raw_answer": null,
+        "status": "completed",
+        "tool_attempts": 2,
+        "trace": [
+          {
+            "arguments": {},
+            "attempt": 1,
+            "result": {
+              "data": {
+                "alert": {
+                  "detector": "fixture-not-a-detector",
+                  "score": 0.8,
+                  "transaction_id": "target"
+                },
+                "currency": "unspecified",
+                "evidence_id": "ev-28228f40ff48e8ceddb2ab25",
+                "projection_sha256": "1a10126a6bd992d12910f0a2bad23518a86a5d7db27a38c5f90b970e4804cc51",
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "get_alert_transaction",
+                "transaction": {
+                  "amount_cents": 3000,
+                  "card_id": "fixture-card",
+                  "channel": "Chip",
+                  "event_time": "2018-02-01T12:00:00",
+                  "mcc": "fixture-mcc",
+                  "merchant_id": "new",
+                  "source_row": 1,
+                  "transaction_id": "target",
+                  "user_id": "fixture-user"
+                }
+              },
+              "ok": true
+            },
+            "tool": "get_alert_transaction"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 1
+            },
+            "attempt": 2,
+            "result": {
+              "data": {
+                "amount_sum_cents": 5000,
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-041f204ff74591bd27bc30b1",
+                "incomplete_reasons": [],
+                "lookback_hours": 1,
+                "positive_amount_max_cents": 2000,
+                "preview": [
+                  {
+                    "amount_cents": 1000,
+                    "card_id": "fixture-card",
+                    "channel": "Chip",
+                    "event_time": "2018-02-01T11:40:00",
+                    "mcc": "fixture-mcc",
+                    "merchant_id": "old",
+                    "source_row": 5,
+                    "transaction_id": "past-3",
+                    "user_id": "fixture-user"
+                  },
+                  {
+                    "amount_cents": 1000,
+                    "card_id": "fixture-card",
+                    "channel": "Chip",
+                    "event_time": "2018-02-01T11:45:00",
+                    "mcc": "fixture-mcc",
+                    "merchant_id": "old",
+                    "source_row": 4,
+                    "transaction_id": "past-2",
+                    "user_id": "fixture-user"
+                  },
+                  {
+                    "amount_cents": 1000,
+                    "card_id": "fixture-card",
+                    "channel": "Chip",
+                    "event_time": "2018-02-01T11:50:00",
+                    "mcc": "fixture-mcc",
+                    "merchant_id": "old",
+                    "source_row": 3,
+                    "transaction_id": "past-1",
+                    "user_id": "fixture-user"
+                  }
+                ],
+                "preview_truncated": true,
+                "prior_count": 4,
+                "projection_sha256": "1a10126a6bd992d12910f0a2bad23518a86a5d7db27a38c5f90b970e4804cc51",
+                "target_amount_cents": 3000,
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "summarize_history",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-02-01T11:00:00"
+              },
+              "ok": true
+            },
+            "tool": "summarize_history"
+          }
+        ]
+      },
+      "score": {
+        "answer_correct": true,
+        "fully_efficient": true,
+        "minimal_path": true,
+        "required_checks": 1,
+        "task_passed": true,
+        "tool_attempts": 2
+      }
+    },
+    {
+      "arm": "fixed_all",
+      "case": "short_coverage",
+      "result": {
+        "client_requests": 0,
+        "evidence": {
+          "ev-502c2de262d8d029be6ea5c3": {
+            "complete_within_source": false,
+            "currency": "unspecified",
+            "evidence_id": "ev-502c2de262d8d029be6ea5c3",
+            "incomplete_reasons": [
+              "history_coverage_not_proven"
+            ],
+            "lookback_hours": 720,
+            "merchant_id": "new",
+            "merchant_prior_count": 0,
+            "preview": [],
+            "preview_truncated": false,
+            "prior_count": 1,
+            "projection_sha256": "3c467040a7774c78006c26bc8e963ee1f74fa5eac3f20d5599290e3a6ce3b6b7",
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "query_target_merchant",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-01-02T12:00:00"
+          },
+          "ev-acd5f5fa2407a2aa26fca0aa": {
+            "alert": {
+              "detector": "fixture-not-a-detector",
+              "score": 0.8,
+              "transaction_id": "target"
+            },
+            "currency": "unspecified",
+            "evidence_id": "ev-acd5f5fa2407a2aa26fca0aa",
+            "projection_sha256": "3c467040a7774c78006c26bc8e963ee1f74fa5eac3f20d5599290e3a6ce3b6b7",
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "get_alert_transaction",
+            "transaction": {
+              "amount_cents": 3000,
+              "card_id": "fixture-card",
+              "channel": "Chip",
+              "event_time": "2018-02-01T12:00:00",
+              "mcc": "fixture-mcc",
+              "merchant_id": "new",
+              "source_row": 1,
+              "transaction_id": "target",
+              "user_id": "fixture-user"
+            }
+          },
+          "ev-b980a6bd876921bcea681711": {
+            "amount_sum_cents": 2000,
+            "complete_within_source": false,
+            "currency": "unspecified",
+            "evidence_id": "ev-b980a6bd876921bcea681711",
+            "incomplete_reasons": [
+              "history_coverage_not_proven"
+            ],
+            "lookback_hours": 1,
+            "positive_amount_max_cents": 2000,
+            "preview": [
+              {
+                "amount_cents": 2000,
+                "card_id": "fixture-card",
+                "channel": "Chip",
+                "event_time": "2018-02-01T11:50:00",
+                "mcc": "fixture-mcc",
+                "merchant_id": "old",
+                "source_row": 2,
+                "transaction_id": "past-0",
+                "user_id": "fixture-user"
+              }
+            ],
+            "preview_truncated": false,
+            "prior_count": 1,
+            "projection_sha256": "3c467040a7774c78006c26bc8e963ee1f74fa5eac3f20d5599290e3a6ce3b6b7",
+            "target_amount_cents": 3000,
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "summarize_history",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-02-01T11:00:00"
+          },
+          "ev-c881c2df3ce65660af5aed98": {
+            "amount_sum_cents": 2000,
+            "complete_within_source": false,
+            "currency": "unspecified",
+            "evidence_id": "ev-c881c2df3ce65660af5aed98",
+            "incomplete_reasons": [
+              "history_coverage_not_proven"
+            ],
+            "lookback_hours": 720,
+            "positive_amount_max_cents": 2000,
+            "preview": [
+              {
+                "amount_cents": 2000,
+                "card_id": "fixture-card",
+                "channel": "Chip",
+                "event_time": "2018-02-01T11:50:00",
+                "mcc": "fixture-mcc",
+                "merchant_id": "old",
+                "source_row": 2,
+                "transaction_id": "past-0",
+                "user_id": "fixture-user"
+              }
+            ],
+            "preview_truncated": false,
+            "prior_count": 1,
+            "projection_sha256": "3c467040a7774c78006c26bc8e963ee1f74fa5eac3f20d5599290e3a6ce3b6b7",
+            "target_amount_cents": 3000,
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "summarize_history",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-01-02T12:00:00"
+          }
+        },
+        "findings": {
+          "findings": [
+            {
+              "assessment": "insufficient_evidence",
+              "check": "high_prior_frequency_1h",
+              "evidence_ids": [
+                "ev-b980a6bd876921bcea681711"
+              ]
+            }
+          ]
+        },
+        "output_mode": "code",
+        "raw_answer": null,
+        "status": "completed",
+        "tool_attempts": 4,
+        "trace": [
+          {
+            "arguments": {},
+            "attempt": 1,
+            "result": {
+              "data": {
+                "alert": {
+                  "detector": "fixture-not-a-detector",
+                  "score": 0.8,
+                  "transaction_id": "target"
+                },
+                "currency": "unspecified",
+                "evidence_id": "ev-acd5f5fa2407a2aa26fca0aa",
+                "projection_sha256": "3c467040a7774c78006c26bc8e963ee1f74fa5eac3f20d5599290e3a6ce3b6b7",
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "get_alert_transaction",
+                "transaction": {
+                  "amount_cents": 3000,
+                  "card_id": "fixture-card",
+                  "channel": "Chip",
+                  "event_time": "2018-02-01T12:00:00",
+                  "mcc": "fixture-mcc",
+                  "merchant_id": "new",
+                  "source_row": 1,
+                  "transaction_id": "target",
+                  "user_id": "fixture-user"
+                }
+              },
+              "ok": true
+            },
+            "tool": "get_alert_transaction"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 1
+            },
+            "attempt": 2,
+            "result": {
+              "data": {
+                "amount_sum_cents": 2000,
+                "complete_within_source": false,
+                "currency": "unspecified",
+                "evidence_id": "ev-b980a6bd876921bcea681711",
+                "incomplete_reasons": [
+                  "history_coverage_not_proven"
+                ],
+                "lookback_hours": 1,
+                "positive_amount_max_cents": 2000,
+                "preview": [
+                  {
+                    "amount_cents": 2000,
+                    "card_id": "fixture-card",
+                    "channel": "Chip",
+                    "event_time": "2018-02-01T11:50:00",
+                    "mcc": "fixture-mcc",
+                    "merchant_id": "old",
+                    "source_row": 2,
+                    "transaction_id": "past-0",
+                    "user_id": "fixture-user"
+                  }
+                ],
+                "preview_truncated": false,
+                "prior_count": 1,
+                "projection_sha256": "3c467040a7774c78006c26bc8e963ee1f74fa5eac3f20d5599290e3a6ce3b6b7",
+                "target_amount_cents": 3000,
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "summarize_history",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-02-01T11:00:00"
+              },
+              "ok": true
+            },
+            "tool": "summarize_history"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 720
+            },
+            "attempt": 3,
+            "result": {
+              "data": {
+                "amount_sum_cents": 2000,
+                "complete_within_source": false,
+                "currency": "unspecified",
+                "evidence_id": "ev-c881c2df3ce65660af5aed98",
+                "incomplete_reasons": [
+                  "history_coverage_not_proven"
+                ],
+                "lookback_hours": 720,
+                "positive_amount_max_cents": 2000,
+                "preview": [
+                  {
+                    "amount_cents": 2000,
+                    "card_id": "fixture-card",
+                    "channel": "Chip",
+                    "event_time": "2018-02-01T11:50:00",
+                    "mcc": "fixture-mcc",
+                    "merchant_id": "old",
+                    "source_row": 2,
+                    "transaction_id": "past-0",
+                    "user_id": "fixture-user"
+                  }
+                ],
+                "preview_truncated": false,
+                "prior_count": 1,
+                "projection_sha256": "3c467040a7774c78006c26bc8e963ee1f74fa5eac3f20d5599290e3a6ce3b6b7",
+                "target_amount_cents": 3000,
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "summarize_history",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-01-02T12:00:00"
+              },
+              "ok": true
+            },
+            "tool": "summarize_history"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 720
+            },
+            "attempt": 4,
+            "result": {
+              "data": {
+                "complete_within_source": false,
+                "currency": "unspecified",
+                "evidence_id": "ev-502c2de262d8d029be6ea5c3",
+                "incomplete_reasons": [
+                  "history_coverage_not_proven"
+                ],
+                "lookback_hours": 720,
+                "merchant_id": "new",
+                "merchant_prior_count": 0,
+                "preview": [],
+                "preview_truncated": false,
+                "prior_count": 1,
+                "projection_sha256": "3c467040a7774c78006c26bc8e963ee1f74fa5eac3f20d5599290e3a6ce3b6b7",
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "query_target_merchant",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-01-02T12:00:00"
+              },
+              "ok": true
+            },
+            "tool": "query_target_merchant"
+          }
+        ]
+      },
+      "score": {
+        "answer_correct": true,
+        "fully_efficient": false,
+        "minimal_path": false,
+        "required_checks": 1,
+        "task_passed": false,
+        "tool_attempts": 4
+      }
+    },
+    {
+      "arm": "adaptive_code",
+      "case": "short_coverage",
+      "result": {
+        "client_requests": 0,
+        "evidence": {
+          "ev-acd5f5fa2407a2aa26fca0aa": {
+            "alert": {
+              "detector": "fixture-not-a-detector",
+              "score": 0.8,
+              "transaction_id": "target"
+            },
+            "currency": "unspecified",
+            "evidence_id": "ev-acd5f5fa2407a2aa26fca0aa",
+            "projection_sha256": "3c467040a7774c78006c26bc8e963ee1f74fa5eac3f20d5599290e3a6ce3b6b7",
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "get_alert_transaction",
+            "transaction": {
+              "amount_cents": 3000,
+              "card_id": "fixture-card",
+              "channel": "Chip",
+              "event_time": "2018-02-01T12:00:00",
+              "mcc": "fixture-mcc",
+              "merchant_id": "new",
+              "source_row": 1,
+              "transaction_id": "target",
+              "user_id": "fixture-user"
+            }
+          },
+          "ev-b980a6bd876921bcea681711": {
+            "amount_sum_cents": 2000,
+            "complete_within_source": false,
+            "currency": "unspecified",
+            "evidence_id": "ev-b980a6bd876921bcea681711",
+            "incomplete_reasons": [
+              "history_coverage_not_proven"
+            ],
+            "lookback_hours": 1,
+            "positive_amount_max_cents": 2000,
+            "preview": [
+              {
+                "amount_cents": 2000,
+                "card_id": "fixture-card",
+                "channel": "Chip",
+                "event_time": "2018-02-01T11:50:00",
+                "mcc": "fixture-mcc",
+                "merchant_id": "old",
+                "source_row": 2,
+                "transaction_id": "past-0",
+                "user_id": "fixture-user"
+              }
+            ],
+            "preview_truncated": false,
+            "prior_count": 1,
+            "projection_sha256": "3c467040a7774c78006c26bc8e963ee1f74fa5eac3f20d5599290e3a6ce3b6b7",
+            "target_amount_cents": 3000,
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "summarize_history",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-02-01T11:00:00"
+          }
+        },
+        "findings": {
+          "findings": [
+            {
+              "assessment": "insufficient_evidence",
+              "check": "high_prior_frequency_1h",
+              "evidence_ids": [
+                "ev-b980a6bd876921bcea681711"
+              ]
+            }
+          ]
+        },
+        "output_mode": "code",
+        "raw_answer": null,
+        "status": "completed",
+        "tool_attempts": 2,
+        "trace": [
+          {
+            "arguments": {},
+            "attempt": 1,
+            "result": {
+              "data": {
+                "alert": {
+                  "detector": "fixture-not-a-detector",
+                  "score": 0.8,
+                  "transaction_id": "target"
+                },
+                "currency": "unspecified",
+                "evidence_id": "ev-acd5f5fa2407a2aa26fca0aa",
+                "projection_sha256": "3c467040a7774c78006c26bc8e963ee1f74fa5eac3f20d5599290e3a6ce3b6b7",
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "get_alert_transaction",
+                "transaction": {
+                  "amount_cents": 3000,
+                  "card_id": "fixture-card",
+                  "channel": "Chip",
+                  "event_time": "2018-02-01T12:00:00",
+                  "mcc": "fixture-mcc",
+                  "merchant_id": "new",
+                  "source_row": 1,
+                  "transaction_id": "target",
+                  "user_id": "fixture-user"
+                }
+              },
+              "ok": true
+            },
+            "tool": "get_alert_transaction"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 1
+            },
+            "attempt": 2,
+            "result": {
+              "data": {
+                "amount_sum_cents": 2000,
+                "complete_within_source": false,
+                "currency": "unspecified",
+                "evidence_id": "ev-b980a6bd876921bcea681711",
+                "incomplete_reasons": [
+                  "history_coverage_not_proven"
+                ],
+                "lookback_hours": 1,
+                "positive_amount_max_cents": 2000,
+                "preview": [
+                  {
+                    "amount_cents": 2000,
+                    "card_id": "fixture-card",
+                    "channel": "Chip",
+                    "event_time": "2018-02-01T11:50:00",
+                    "mcc": "fixture-mcc",
+                    "merchant_id": "old",
+                    "source_row": 2,
+                    "transaction_id": "past-0",
+                    "user_id": "fixture-user"
+                  }
+                ],
+                "preview_truncated": false,
+                "prior_count": 1,
+                "projection_sha256": "3c467040a7774c78006c26bc8e963ee1f74fa5eac3f20d5599290e3a6ce3b6b7",
+                "target_amount_cents": 3000,
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "summarize_history",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-02-01T11:00:00"
+              },
+              "ok": true
+            },
+            "tool": "summarize_history"
+          }
+        ]
+      },
+      "score": {
+        "answer_correct": true,
+        "fully_efficient": true,
+        "minimal_path": true,
+        "required_checks": 1,
+        "task_passed": true,
+        "tool_attempts": 2
+      }
+    },
+    {
+      "arm": "fixed_all",
+      "case": "negative_current",
+      "result": {
+        "client_requests": 0,
+        "evidence": {
+          "ev-1fd17981cc9b5a7feec50f2f": {
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-1fd17981cc9b5a7feec50f2f",
+            "incomplete_reasons": [],
+            "lookback_hours": 720,
+            "merchant_id": "old",
+            "merchant_prior_count": 1,
+            "preview": [
+              {
+                "amount_cents": 2000,
+                "card_id": "fixture-card",
+                "channel": "Chip",
+                "event_time": "2018-02-01T10:00:00",
+                "mcc": "fixture-mcc",
+                "merchant_id": "old",
+                "source_row": 2,
+                "transaction_id": "past-0",
+                "user_id": "fixture-user"
+              }
+            ],
+            "preview_truncated": false,
+            "prior_count": 1,
+            "projection_sha256": "2eed9a683e891b9ddb9e61bc38d42189a7fd9985336a9928960c66fdd8417a43",
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "query_target_merchant",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-01-02T12:00:00"
+          },
+          "ev-27c178d2d97b68f4ed6fcb73": {
+            "alert": {
+              "detector": "fixture-not-a-detector",
+              "score": 0.8,
+              "transaction_id": "target"
+            },
+            "currency": "unspecified",
+            "evidence_id": "ev-27c178d2d97b68f4ed6fcb73",
+            "projection_sha256": "2eed9a683e891b9ddb9e61bc38d42189a7fd9985336a9928960c66fdd8417a43",
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "get_alert_transaction",
+            "transaction": {
+              "amount_cents": -100,
+              "card_id": "fixture-card",
+              "channel": "Chip",
+              "event_time": "2018-02-01T12:00:00",
+              "mcc": "fixture-mcc",
+              "merchant_id": "old",
+              "source_row": 1,
+              "transaction_id": "target",
+              "user_id": "fixture-user"
+            }
+          },
+          "ev-5c71e9dcbddab61d03d3191f": {
+            "amount_sum_cents": 0,
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-5c71e9dcbddab61d03d3191f",
+            "incomplete_reasons": [],
+            "lookback_hours": 1,
+            "positive_amount_max_cents": null,
+            "preview": [],
+            "preview_truncated": false,
+            "prior_count": 0,
+            "projection_sha256": "2eed9a683e891b9ddb9e61bc38d42189a7fd9985336a9928960c66fdd8417a43",
+            "target_amount_cents": -100,
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "summarize_history",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-02-01T11:00:00"
+          },
+          "ev-894bbd6587e6e450328b7b08": {
+            "amount_sum_cents": 2000,
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-894bbd6587e6e450328b7b08",
+            "incomplete_reasons": [],
+            "lookback_hours": 720,
+            "positive_amount_max_cents": 2000,
+            "preview": [
+              {
+                "amount_cents": 2000,
+                "card_id": "fixture-card",
+                "channel": "Chip",
+                "event_time": "2018-02-01T10:00:00",
+                "mcc": "fixture-mcc",
+                "merchant_id": "old",
+                "source_row": 2,
+                "transaction_id": "past-0",
+                "user_id": "fixture-user"
+              }
+            ],
+            "preview_truncated": false,
+            "prior_count": 1,
+            "projection_sha256": "2eed9a683e891b9ddb9e61bc38d42189a7fd9985336a9928960c66fdd8417a43",
+            "target_amount_cents": -100,
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "summarize_history",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-01-02T12:00:00"
+          }
+        },
+        "findings": {
+          "findings": [
+            {
+              "assessment": "not_supported",
+              "check": "high_prior_frequency_1h",
+              "evidence_ids": [
+                "ev-5c71e9dcbddab61d03d3191f"
+              ]
+            },
+            {
+              "assessment": "insufficient_evidence",
+              "check": "amount_above_prior_positive_max_30d",
+              "evidence_ids": [
+                "ev-894bbd6587e6e450328b7b08"
+              ]
+            }
+          ]
+        },
+        "output_mode": "code",
+        "raw_answer": null,
+        "status": "completed",
+        "tool_attempts": 4,
+        "trace": [
+          {
+            "arguments": {},
+            "attempt": 1,
+            "result": {
+              "data": {
+                "alert": {
+                  "detector": "fixture-not-a-detector",
+                  "score": 0.8,
+                  "transaction_id": "target"
+                },
+                "currency": "unspecified",
+                "evidence_id": "ev-27c178d2d97b68f4ed6fcb73",
+                "projection_sha256": "2eed9a683e891b9ddb9e61bc38d42189a7fd9985336a9928960c66fdd8417a43",
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "get_alert_transaction",
+                "transaction": {
+                  "amount_cents": -100,
+                  "card_id": "fixture-card",
+                  "channel": "Chip",
+                  "event_time": "2018-02-01T12:00:00",
+                  "mcc": "fixture-mcc",
+                  "merchant_id": "old",
+                  "source_row": 1,
+                  "transaction_id": "target",
+                  "user_id": "fixture-user"
+                }
+              },
+              "ok": true
+            },
+            "tool": "get_alert_transaction"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 1
+            },
+            "attempt": 2,
+            "result": {
+              "data": {
+                "amount_sum_cents": 0,
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-5c71e9dcbddab61d03d3191f",
+                "incomplete_reasons": [],
+                "lookback_hours": 1,
+                "positive_amount_max_cents": null,
+                "preview": [],
+                "preview_truncated": false,
+                "prior_count": 0,
+                "projection_sha256": "2eed9a683e891b9ddb9e61bc38d42189a7fd9985336a9928960c66fdd8417a43",
+                "target_amount_cents": -100,
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "summarize_history",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-02-01T11:00:00"
+              },
+              "ok": true
+            },
+            "tool": "summarize_history"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 720
+            },
+            "attempt": 3,
+            "result": {
+              "data": {
+                "amount_sum_cents": 2000,
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-894bbd6587e6e450328b7b08",
+                "incomplete_reasons": [],
+                "lookback_hours": 720,
+                "positive_amount_max_cents": 2000,
+                "preview": [
+                  {
+                    "amount_cents": 2000,
+                    "card_id": "fixture-card",
+                    "channel": "Chip",
+                    "event_time": "2018-02-01T10:00:00",
+                    "mcc": "fixture-mcc",
+                    "merchant_id": "old",
+                    "source_row": 2,
+                    "transaction_id": "past-0",
+                    "user_id": "fixture-user"
+                  }
+                ],
+                "preview_truncated": false,
+                "prior_count": 1,
+                "projection_sha256": "2eed9a683e891b9ddb9e61bc38d42189a7fd9985336a9928960c66fdd8417a43",
+                "target_amount_cents": -100,
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "summarize_history",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-01-02T12:00:00"
+              },
+              "ok": true
+            },
+            "tool": "summarize_history"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 720
+            },
+            "attempt": 4,
+            "result": {
+              "data": {
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-1fd17981cc9b5a7feec50f2f",
+                "incomplete_reasons": [],
+                "lookback_hours": 720,
+                "merchant_id": "old",
+                "merchant_prior_count": 1,
+                "preview": [
+                  {
+                    "amount_cents": 2000,
+                    "card_id": "fixture-card",
+                    "channel": "Chip",
+                    "event_time": "2018-02-01T10:00:00",
+                    "mcc": "fixture-mcc",
+                    "merchant_id": "old",
+                    "source_row": 2,
+                    "transaction_id": "past-0",
+                    "user_id": "fixture-user"
+                  }
+                ],
+                "preview_truncated": false,
+                "prior_count": 1,
+                "projection_sha256": "2eed9a683e891b9ddb9e61bc38d42189a7fd9985336a9928960c66fdd8417a43",
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "query_target_merchant",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-01-02T12:00:00"
+              },
+              "ok": true
+            },
+            "tool": "query_target_merchant"
+          }
+        ]
+      },
+      "score": {
+        "answer_correct": true,
+        "fully_efficient": false,
+        "minimal_path": false,
+        "required_checks": 2,
+        "task_passed": false,
+        "tool_attempts": 4
+      }
+    },
+    {
+      "arm": "adaptive_code",
+      "case": "negative_current",
+      "result": {
+        "client_requests": 0,
+        "evidence": {
+          "ev-27c178d2d97b68f4ed6fcb73": {
+            "alert": {
+              "detector": "fixture-not-a-detector",
+              "score": 0.8,
+              "transaction_id": "target"
+            },
+            "currency": "unspecified",
+            "evidence_id": "ev-27c178d2d97b68f4ed6fcb73",
+            "projection_sha256": "2eed9a683e891b9ddb9e61bc38d42189a7fd9985336a9928960c66fdd8417a43",
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "get_alert_transaction",
+            "transaction": {
+              "amount_cents": -100,
+              "card_id": "fixture-card",
+              "channel": "Chip",
+              "event_time": "2018-02-01T12:00:00",
+              "mcc": "fixture-mcc",
+              "merchant_id": "old",
+              "source_row": 1,
+              "transaction_id": "target",
+              "user_id": "fixture-user"
+            }
+          },
+          "ev-5c71e9dcbddab61d03d3191f": {
+            "amount_sum_cents": 0,
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-5c71e9dcbddab61d03d3191f",
+            "incomplete_reasons": [],
+            "lookback_hours": 1,
+            "positive_amount_max_cents": null,
+            "preview": [],
+            "preview_truncated": false,
+            "prior_count": 0,
+            "projection_sha256": "2eed9a683e891b9ddb9e61bc38d42189a7fd9985336a9928960c66fdd8417a43",
+            "target_amount_cents": -100,
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "summarize_history",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-02-01T11:00:00"
+          },
+          "ev-894bbd6587e6e450328b7b08": {
+            "amount_sum_cents": 2000,
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-894bbd6587e6e450328b7b08",
+            "incomplete_reasons": [],
+            "lookback_hours": 720,
+            "positive_amount_max_cents": 2000,
+            "preview": [
+              {
+                "amount_cents": 2000,
+                "card_id": "fixture-card",
+                "channel": "Chip",
+                "event_time": "2018-02-01T10:00:00",
+                "mcc": "fixture-mcc",
+                "merchant_id": "old",
+                "source_row": 2,
+                "transaction_id": "past-0",
+                "user_id": "fixture-user"
+              }
+            ],
+            "preview_truncated": false,
+            "prior_count": 1,
+            "projection_sha256": "2eed9a683e891b9ddb9e61bc38d42189a7fd9985336a9928960c66fdd8417a43",
+            "target_amount_cents": -100,
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "summarize_history",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-01-02T12:00:00"
+          }
+        },
+        "findings": {
+          "findings": [
+            {
+              "assessment": "not_supported",
+              "check": "high_prior_frequency_1h",
+              "evidence_ids": [
+                "ev-5c71e9dcbddab61d03d3191f"
+              ]
+            },
+            {
+              "assessment": "insufficient_evidence",
+              "check": "amount_above_prior_positive_max_30d",
+              "evidence_ids": [
+                "ev-894bbd6587e6e450328b7b08"
+              ]
+            }
+          ]
+        },
+        "output_mode": "code",
+        "raw_answer": null,
+        "status": "completed",
+        "tool_attempts": 3,
+        "trace": [
+          {
+            "arguments": {},
+            "attempt": 1,
+            "result": {
+              "data": {
+                "alert": {
+                  "detector": "fixture-not-a-detector",
+                  "score": 0.8,
+                  "transaction_id": "target"
+                },
+                "currency": "unspecified",
+                "evidence_id": "ev-27c178d2d97b68f4ed6fcb73",
+                "projection_sha256": "2eed9a683e891b9ddb9e61bc38d42189a7fd9985336a9928960c66fdd8417a43",
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "get_alert_transaction",
+                "transaction": {
+                  "amount_cents": -100,
+                  "card_id": "fixture-card",
+                  "channel": "Chip",
+                  "event_time": "2018-02-01T12:00:00",
+                  "mcc": "fixture-mcc",
+                  "merchant_id": "old",
+                  "source_row": 1,
+                  "transaction_id": "target",
+                  "user_id": "fixture-user"
+                }
+              },
+              "ok": true
+            },
+            "tool": "get_alert_transaction"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 1
+            },
+            "attempt": 2,
+            "result": {
+              "data": {
+                "amount_sum_cents": 0,
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-5c71e9dcbddab61d03d3191f",
+                "incomplete_reasons": [],
+                "lookback_hours": 1,
+                "positive_amount_max_cents": null,
+                "preview": [],
+                "preview_truncated": false,
+                "prior_count": 0,
+                "projection_sha256": "2eed9a683e891b9ddb9e61bc38d42189a7fd9985336a9928960c66fdd8417a43",
+                "target_amount_cents": -100,
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "summarize_history",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-02-01T11:00:00"
+              },
+              "ok": true
+            },
+            "tool": "summarize_history"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 720
+            },
+            "attempt": 3,
+            "result": {
+              "data": {
+                "amount_sum_cents": 2000,
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-894bbd6587e6e450328b7b08",
+                "incomplete_reasons": [],
+                "lookback_hours": 720,
+                "positive_amount_max_cents": 2000,
+                "preview": [
+                  {
+                    "amount_cents": 2000,
+                    "card_id": "fixture-card",
+                    "channel": "Chip",
+                    "event_time": "2018-02-01T10:00:00",
+                    "mcc": "fixture-mcc",
+                    "merchant_id": "old",
+                    "source_row": 2,
+                    "transaction_id": "past-0",
+                    "user_id": "fixture-user"
+                  }
+                ],
+                "preview_truncated": false,
+                "prior_count": 1,
+                "projection_sha256": "2eed9a683e891b9ddb9e61bc38d42189a7fd9985336a9928960c66fdd8417a43",
+                "target_amount_cents": -100,
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "summarize_history",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-01-02T12:00:00"
+              },
+              "ok": true
+            },
+            "tool": "summarize_history"
+          }
+        ]
+      },
+      "score": {
+        "answer_correct": true,
+        "fully_efficient": true,
+        "minimal_path": true,
+        "required_checks": 2,
+        "task_passed": true,
+        "tool_attempts": 3
+      }
+    },
+    {
+      "arm": "fixed_all",
+      "case": "merchant_only",
+      "result": {
+        "client_requests": 0,
+        "evidence": {
+          "ev-173c16e08148c44e3d8b1412": {
+            "alert": {
+              "detector": "fixture-not-a-detector",
+              "score": 0.8,
+              "transaction_id": "target"
+            },
+            "currency": "unspecified",
+            "evidence_id": "ev-173c16e08148c44e3d8b1412",
+            "projection_sha256": "8a12b7d08ab66a314b21073d91eca377278c435e4da4e5e20e19e4ca03d24c7b",
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "get_alert_transaction",
+            "transaction": {
+              "amount_cents": 1000,
+              "card_id": "fixture-card",
+              "channel": "Chip",
+              "event_time": "2018-02-01T12:00:00",
+              "mcc": "fixture-mcc",
+              "merchant_id": "new",
+              "source_row": 1,
+              "transaction_id": "target",
+              "user_id": "fixture-user"
+            }
+          },
+          "ev-6351e2061f7e6ea494c4d915": {
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-6351e2061f7e6ea494c4d915",
+            "incomplete_reasons": [],
+            "lookback_hours": 720,
+            "merchant_id": "new",
+            "merchant_prior_count": 0,
+            "preview": [],
+            "preview_truncated": false,
+            "prior_count": 1,
+            "projection_sha256": "8a12b7d08ab66a314b21073d91eca377278c435e4da4e5e20e19e4ca03d24c7b",
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "query_target_merchant",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-01-02T12:00:00"
+          },
+          "ev-906e39d8b1827eee311c96ee": {
+            "amount_sum_cents": 2000,
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-906e39d8b1827eee311c96ee",
+            "incomplete_reasons": [],
+            "lookback_hours": 720,
+            "positive_amount_max_cents": 2000,
+            "preview": [
+              {
+                "amount_cents": 2000,
+                "card_id": "fixture-card",
+                "channel": "Chip",
+                "event_time": "2018-02-01T10:00:00",
+                "mcc": "fixture-mcc",
+                "merchant_id": "old",
+                "source_row": 2,
+                "transaction_id": "past-0",
+                "user_id": "fixture-user"
+              }
+            ],
+            "preview_truncated": false,
+            "prior_count": 1,
+            "projection_sha256": "8a12b7d08ab66a314b21073d91eca377278c435e4da4e5e20e19e4ca03d24c7b",
+            "target_amount_cents": 1000,
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "summarize_history",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-01-02T12:00:00"
+          },
+          "ev-ea18b559d53c3bbd890ec24c": {
+            "amount_sum_cents": 0,
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-ea18b559d53c3bbd890ec24c",
+            "incomplete_reasons": [],
+            "lookback_hours": 1,
+            "positive_amount_max_cents": null,
+            "preview": [],
+            "preview_truncated": false,
+            "prior_count": 0,
+            "projection_sha256": "8a12b7d08ab66a314b21073d91eca377278c435e4da4e5e20e19e4ca03d24c7b",
+            "target_amount_cents": 1000,
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "summarize_history",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-02-01T11:00:00"
+          }
+        },
+        "findings": {
+          "findings": [
+            {
+              "assessment": "not_supported",
+              "check": "high_prior_frequency_1h",
+              "evidence_ids": [
+                "ev-ea18b559d53c3bbd890ec24c"
+              ]
+            },
+            {
+              "assessment": "not_supported",
+              "check": "amount_above_prior_positive_max_30d",
+              "evidence_ids": [
+                "ev-906e39d8b1827eee311c96ee"
+              ]
+            },
+            {
+              "assessment": "supported",
+              "check": "merchant_id_unseen_30d",
+              "evidence_ids": [
+                "ev-6351e2061f7e6ea494c4d915"
+              ]
+            }
+          ]
+        },
+        "output_mode": "code",
+        "raw_answer": null,
+        "status": "completed",
+        "tool_attempts": 4,
+        "trace": [
+          {
+            "arguments": {},
+            "attempt": 1,
+            "result": {
+              "data": {
+                "alert": {
+                  "detector": "fixture-not-a-detector",
+                  "score": 0.8,
+                  "transaction_id": "target"
+                },
+                "currency": "unspecified",
+                "evidence_id": "ev-173c16e08148c44e3d8b1412",
+                "projection_sha256": "8a12b7d08ab66a314b21073d91eca377278c435e4da4e5e20e19e4ca03d24c7b",
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "get_alert_transaction",
+                "transaction": {
+                  "amount_cents": 1000,
+                  "card_id": "fixture-card",
+                  "channel": "Chip",
+                  "event_time": "2018-02-01T12:00:00",
+                  "mcc": "fixture-mcc",
+                  "merchant_id": "new",
+                  "source_row": 1,
+                  "transaction_id": "target",
+                  "user_id": "fixture-user"
+                }
+              },
+              "ok": true
+            },
+            "tool": "get_alert_transaction"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 1
+            },
+            "attempt": 2,
+            "result": {
+              "data": {
+                "amount_sum_cents": 0,
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-ea18b559d53c3bbd890ec24c",
+                "incomplete_reasons": [],
+                "lookback_hours": 1,
+                "positive_amount_max_cents": null,
+                "preview": [],
+                "preview_truncated": false,
+                "prior_count": 0,
+                "projection_sha256": "8a12b7d08ab66a314b21073d91eca377278c435e4da4e5e20e19e4ca03d24c7b",
+                "target_amount_cents": 1000,
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "summarize_history",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-02-01T11:00:00"
+              },
+              "ok": true
+            },
+            "tool": "summarize_history"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 720
+            },
+            "attempt": 3,
+            "result": {
+              "data": {
+                "amount_sum_cents": 2000,
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-906e39d8b1827eee311c96ee",
+                "incomplete_reasons": [],
+                "lookback_hours": 720,
+                "positive_amount_max_cents": 2000,
+                "preview": [
+                  {
+                    "amount_cents": 2000,
+                    "card_id": "fixture-card",
+                    "channel": "Chip",
+                    "event_time": "2018-02-01T10:00:00",
+                    "mcc": "fixture-mcc",
+                    "merchant_id": "old",
+                    "source_row": 2,
+                    "transaction_id": "past-0",
+                    "user_id": "fixture-user"
+                  }
+                ],
+                "preview_truncated": false,
+                "prior_count": 1,
+                "projection_sha256": "8a12b7d08ab66a314b21073d91eca377278c435e4da4e5e20e19e4ca03d24c7b",
+                "target_amount_cents": 1000,
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "summarize_history",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-01-02T12:00:00"
+              },
+              "ok": true
+            },
+            "tool": "summarize_history"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 720
+            },
+            "attempt": 4,
+            "result": {
+              "data": {
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-6351e2061f7e6ea494c4d915",
+                "incomplete_reasons": [],
+                "lookback_hours": 720,
+                "merchant_id": "new",
+                "merchant_prior_count": 0,
+                "preview": [],
+                "preview_truncated": false,
+                "prior_count": 1,
+                "projection_sha256": "8a12b7d08ab66a314b21073d91eca377278c435e4da4e5e20e19e4ca03d24c7b",
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "query_target_merchant",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-01-02T12:00:00"
+              },
+              "ok": true
+            },
+            "tool": "query_target_merchant"
+          }
+        ]
+      },
+      "score": {
+        "answer_correct": true,
+        "fully_efficient": true,
+        "minimal_path": true,
+        "required_checks": 3,
+        "task_passed": true,
+        "tool_attempts": 4
+      }
+    },
+    {
+      "arm": "adaptive_code",
+      "case": "merchant_only",
+      "result": {
+        "client_requests": 0,
+        "evidence": {
+          "ev-173c16e08148c44e3d8b1412": {
+            "alert": {
+              "detector": "fixture-not-a-detector",
+              "score": 0.8,
+              "transaction_id": "target"
+            },
+            "currency": "unspecified",
+            "evidence_id": "ev-173c16e08148c44e3d8b1412",
+            "projection_sha256": "8a12b7d08ab66a314b21073d91eca377278c435e4da4e5e20e19e4ca03d24c7b",
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "get_alert_transaction",
+            "transaction": {
+              "amount_cents": 1000,
+              "card_id": "fixture-card",
+              "channel": "Chip",
+              "event_time": "2018-02-01T12:00:00",
+              "mcc": "fixture-mcc",
+              "merchant_id": "new",
+              "source_row": 1,
+              "transaction_id": "target",
+              "user_id": "fixture-user"
+            }
+          },
+          "ev-6351e2061f7e6ea494c4d915": {
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-6351e2061f7e6ea494c4d915",
+            "incomplete_reasons": [],
+            "lookback_hours": 720,
+            "merchant_id": "new",
+            "merchant_prior_count": 0,
+            "preview": [],
+            "preview_truncated": false,
+            "prior_count": 1,
+            "projection_sha256": "8a12b7d08ab66a314b21073d91eca377278c435e4da4e5e20e19e4ca03d24c7b",
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "query_target_merchant",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-01-02T12:00:00"
+          },
+          "ev-906e39d8b1827eee311c96ee": {
+            "amount_sum_cents": 2000,
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-906e39d8b1827eee311c96ee",
+            "incomplete_reasons": [],
+            "lookback_hours": 720,
+            "positive_amount_max_cents": 2000,
+            "preview": [
+              {
+                "amount_cents": 2000,
+                "card_id": "fixture-card",
+                "channel": "Chip",
+                "event_time": "2018-02-01T10:00:00",
+                "mcc": "fixture-mcc",
+                "merchant_id": "old",
+                "source_row": 2,
+                "transaction_id": "past-0",
+                "user_id": "fixture-user"
+              }
+            ],
+            "preview_truncated": false,
+            "prior_count": 1,
+            "projection_sha256": "8a12b7d08ab66a314b21073d91eca377278c435e4da4e5e20e19e4ca03d24c7b",
+            "target_amount_cents": 1000,
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "summarize_history",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-01-02T12:00:00"
+          },
+          "ev-ea18b559d53c3bbd890ec24c": {
+            "amount_sum_cents": 0,
+            "complete_within_source": true,
+            "currency": "unspecified",
+            "evidence_id": "ev-ea18b559d53c3bbd890ec24c",
+            "incomplete_reasons": [],
+            "lookback_hours": 1,
+            "positive_amount_max_cents": null,
+            "preview": [],
+            "preview_truncated": false,
+            "prior_count": 0,
+            "projection_sha256": "8a12b7d08ab66a314b21073d91eca377278c435e4da4e5e20e19e4ca03d24c7b",
+            "target_amount_cents": 1000,
+            "time_basis": "source_local_timezone_unknown",
+            "tool": "summarize_history",
+            "window_end_exclusive": "2018-02-01T12:00:00",
+            "window_start_inclusive": "2018-02-01T11:00:00"
+          }
+        },
+        "findings": {
+          "findings": [
+            {
+              "assessment": "not_supported",
+              "check": "high_prior_frequency_1h",
+              "evidence_ids": [
+                "ev-ea18b559d53c3bbd890ec24c"
+              ]
+            },
+            {
+              "assessment": "not_supported",
+              "check": "amount_above_prior_positive_max_30d",
+              "evidence_ids": [
+                "ev-906e39d8b1827eee311c96ee"
+              ]
+            },
+            {
+              "assessment": "supported",
+              "check": "merchant_id_unseen_30d",
+              "evidence_ids": [
+                "ev-6351e2061f7e6ea494c4d915"
+              ]
+            }
+          ]
+        },
+        "output_mode": "code",
+        "raw_answer": null,
+        "status": "completed",
+        "tool_attempts": 4,
+        "trace": [
+          {
+            "arguments": {},
+            "attempt": 1,
+            "result": {
+              "data": {
+                "alert": {
+                  "detector": "fixture-not-a-detector",
+                  "score": 0.8,
+                  "transaction_id": "target"
+                },
+                "currency": "unspecified",
+                "evidence_id": "ev-173c16e08148c44e3d8b1412",
+                "projection_sha256": "8a12b7d08ab66a314b21073d91eca377278c435e4da4e5e20e19e4ca03d24c7b",
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "get_alert_transaction",
+                "transaction": {
+                  "amount_cents": 1000,
+                  "card_id": "fixture-card",
+                  "channel": "Chip",
+                  "event_time": "2018-02-01T12:00:00",
+                  "mcc": "fixture-mcc",
+                  "merchant_id": "new",
+                  "source_row": 1,
+                  "transaction_id": "target",
+                  "user_id": "fixture-user"
+                }
+              },
+              "ok": true
+            },
+            "tool": "get_alert_transaction"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 1
+            },
+            "attempt": 2,
+            "result": {
+              "data": {
+                "amount_sum_cents": 0,
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-ea18b559d53c3bbd890ec24c",
+                "incomplete_reasons": [],
+                "lookback_hours": 1,
+                "positive_amount_max_cents": null,
+                "preview": [],
+                "preview_truncated": false,
+                "prior_count": 0,
+                "projection_sha256": "8a12b7d08ab66a314b21073d91eca377278c435e4da4e5e20e19e4ca03d24c7b",
+                "target_amount_cents": 1000,
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "summarize_history",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-02-01T11:00:00"
+              },
+              "ok": true
+            },
+            "tool": "summarize_history"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 720
+            },
+            "attempt": 3,
+            "result": {
+              "data": {
+                "amount_sum_cents": 2000,
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-906e39d8b1827eee311c96ee",
+                "incomplete_reasons": [],
+                "lookback_hours": 720,
+                "positive_amount_max_cents": 2000,
+                "preview": [
+                  {
+                    "amount_cents": 2000,
+                    "card_id": "fixture-card",
+                    "channel": "Chip",
+                    "event_time": "2018-02-01T10:00:00",
+                    "mcc": "fixture-mcc",
+                    "merchant_id": "old",
+                    "source_row": 2,
+                    "transaction_id": "past-0",
+                    "user_id": "fixture-user"
+                  }
+                ],
+                "preview_truncated": false,
+                "prior_count": 1,
+                "projection_sha256": "8a12b7d08ab66a314b21073d91eca377278c435e4da4e5e20e19e4ca03d24c7b",
+                "target_amount_cents": 1000,
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "summarize_history",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-01-02T12:00:00"
+              },
+              "ok": true
+            },
+            "tool": "summarize_history"
+          },
+          {
+            "arguments": {
+              "lookback_hours": 720
+            },
+            "attempt": 4,
+            "result": {
+              "data": {
+                "complete_within_source": true,
+                "currency": "unspecified",
+                "evidence_id": "ev-6351e2061f7e6ea494c4d915",
+                "incomplete_reasons": [],
+                "lookback_hours": 720,
+                "merchant_id": "new",
+                "merchant_prior_count": 0,
+                "preview": [],
+                "preview_truncated": false,
+                "prior_count": 1,
+                "projection_sha256": "8a12b7d08ab66a314b21073d91eca377278c435e4da4e5e20e19e4ca03d24c7b",
+                "time_basis": "source_local_timezone_unknown",
+                "tool": "query_target_merchant",
+                "window_end_exclusive": "2018-02-01T12:00:00",
+                "window_start_inclusive": "2018-01-02T12:00:00"
+              },
+              "ok": true
+            },
+            "tool": "query_target_merchant"
+          }
+        ]
+      },
+      "score": {
+        "answer_correct": true,
+        "fully_efficient": true,
+        "minimal_path": true,
+        "required_checks": 3,
+        "task_passed": true,
+        "tool_attempts": 4
+      }
+    }
+  ],
+  "sha256": {
+    "app/risk/adaptive_triage.py": "0c66ce2b3283b12868d15ec5959aa5e5984e21ccd09f3dc563f091eab0b59ad6",
+    "app/service/triage.py": "975f85af74ebc2dfe186a14480f92048822ab0da6fdc8231f6c2bde28ef6525e",
+    "app/agent/structured_output.py": "a95abff3a374ad31ee4f717bf62e08ddf0cbe22e009c08510f621e28f8ae1905",
+    "app/cli/triage_benchmark.py": "82c1914c3aca86dd03fde0f47c5614ac02022b4038c6a8f4be884b89b73bae29",
+    "app/cli/experience_demo.py": "34df0940cf2154ae75e76634e9862d03a7c659415ec8f7914aecc6046c382aba",
+    "app/service/api.py": "4d5d16dfbb9db97aabb89c7c54f8212254225f55a6d0369499996b454b88e0ef",
+    "app/service/runtime.py": "416181cc07a177ea767ed969d5502e70d4646b53801ba79304a4ff5775e10087",
+    "app/service/store.py": "daa6a7b5b1d6456c1e386c98d92359db454ef5245a1521c6b7827b9868e8577e",
+    "app/service/workbench.py": "c386cdf9a278508723ba430c5cc6c7f9e249ea3e5e287f9837c21f51c461eb22",
+    "scripts/verify_triage_browser.cjs": "f15e250bb27fca47189c06d02a433c80bade3bbe1b6ed6638286e3a165f09f8b",
+    "runs/triage-v5-stage-01/results.json": "b18dc1e1817bf8b0fa6188e1f231ee53679a417d99e6cd54b4cdbf59d9e739f8",
+    "runs/triage-v5-stage-01/audited-results.json": "0aff23658d50b47d53cdbbf8ee979ce3746c974678317ffecfa23bcb73085460",
+    "runs/triage-v5-stage-01/protocol.json": "b89a3ddfd8a76dce396c414fddf690d35305ee0ce19e434c2f8e2d3f02b130e8",
+    "runs/triage-v5-offline-final-01/protocol.json": "70b08a0d6a6f47d9a56df1fdb79f5a45ae2f5add3434da8315a152d7808dfda9",
+    "runs/triage-browser-v5-01/receipt.json": "f0e87a5070e4f8cda40ea18b8763a61eb91ead9ab20ee7e648e3a0f4c095d55a"
+  }
+}

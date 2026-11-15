@@ -1,0 +1,80 @@
+{
+  "pairs": 99,
+  "methods": {
+    "rules": {
+      "pairs_right": 32,
+      "accuracy": 0.323,
+      "wilson95": [
+        0.239,
+        0.42
+      ]
+    },
+    "tfidf_lr": {
+      "pairs_right": 80,
+      "accuracy": 0.808,
+      "wilson95": [
+        0.72,
+        0.874
+      ]
+    },
+    "llm_qw_model": {
+      "pairs_right": 94,
+      "accuracy": 0.949,
+      "wilson95": [
+        0.887,
+        0.978
+      ]
+    },
+    "llm_qw_policy": {
+      "pairs_right": 94,
+      "accuracy": 0.949,
+      "wilson95": [
+        0.887,
+        0.978
+      ]
+    },
+    "llm_q7_model": {
+      "pairs_right": 81,
+      "accuracy": 0.818,
+      "wilson95": [
+        0.731,
+        0.882
+      ]
+    },
+    "llm_q7_policy": {
+      "pairs_right": 73,
+      "accuracy": 0.737,
+      "wilson95": [
+        0.643,
+        0.814
+      ]
+    }
+  },
+  "vs_tfidf": {
+    "rules": {
+      "method_only": 4,
+      "tfidf_only": 52,
+      "sign_test_p": 0.0
+    },
+    "llm_qw_model": {
+      "method_only": 15,
+      "tfidf_only": 1,
+      "sign_test_p": 0.0005
+    },
+    "llm_qw_policy": {
+      "method_only": 15,
+      "tfidf_only": 1,
+      "sign_test_p": 0.0005
+    },
+    "llm_q7_model": {
+      "method_only": 13,
+      "tfidf_only": 12,
+      "sign_test_p": 1.0
+    },
+    "llm_q7_policy": {
+      "method_only": 10,
+      "tfidf_only": 17,
+      "sign_test_p": 0.2478
+    }
+  }
+}

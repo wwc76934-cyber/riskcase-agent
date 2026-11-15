@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "page_errors": [],
+  "external_requests": [],
+  "checks": [
+    "all_group_members_individually_run_with_real_mcp",
+    "each_target_and_cutoff_preserved",
+    "approval_is_per_transaction_not_group",
+    "new_review_does_not_overwrite_or_inherit_old_approval"
+  ],
+  "model_calls": 0,
+  "controller": "browser_test_NOT_independent_human",
+  "group_members": 6,
+  "current_fact_evidence": 30,
+  "distinct_fact_cutoffs": 6,
+  "task_runs": 7
+}

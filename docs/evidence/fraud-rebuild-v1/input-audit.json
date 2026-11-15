@@ -1,0 +1,73 @@
+{
+  "status": "rebuilt_features_and_explicit_training_input_verified",
+  "feature_rows": 1687169,
+  "rebuilt_feature_sha256": "520a6b525c7eee6a4304dfa4592ee2799088d6526d7a2d0cf7776c8efe993282",
+  "matches_prior_feature_bytes": true,
+  "feature_build_seconds": 79.172,
+  "loaded": [
+    {
+      "split": [
+        "train"
+      ],
+      "rows": 841892,
+      "positives": 967,
+      "start": "2016-01-01T00:03:00",
+      "end": "2017-12-31T23:59:00",
+      "columns": [
+        "amount_cents",
+        "count_1h",
+        "count_24h",
+        "count_7d",
+        "count_30d",
+        "sum_signed_cents_24h",
+        "sum_signed_cents_30d",
+        "seconds_since_previous_in_snapshot",
+        "hour",
+        "weekday",
+        "merchant_seen_30d",
+        "has_history_30d",
+        "channel",
+        "mcc"
+      ]
+    },
+    {
+      "split": [
+        "validation"
+      ],
+      "rows": 422088,
+      "positives": 683,
+      "start": "2018-01-01T00:09:00",
+      "end": "2018-12-31T23:58:00",
+      "columns": [
+        "amount_cents",
+        "count_1h",
+        "count_24h",
+        "count_7d",
+        "count_30d",
+        "sum_signed_cents_24h",
+        "sum_signed_cents_30d",
+        "seconds_since_previous_in_snapshot",
+        "hour",
+        "weekday",
+        "merchant_seen_30d",
+        "has_history_30d",
+        "channel",
+        "mcc"
+      ]
+    }
+  ],
+  "load_seconds": 18.157,
+  "source_code_sha256": {
+    "app/cli/build_features.py": "05b41f8391d9dc9788a760b844bd29278e289fd3dcd155d4baa5775731f4721f",
+    "app/cli/train_neural_v2.py": "203741111db31e9d01dca2c04f8bc5d8a1585694431a2943a7412566835c7aa4"
+  },
+  "manifest_sha256": "1dbec0e1ad50188c0ffe8c9dd19d0733529589102b6f3109347e7ddc045cd967",
+  "training_performed": false,
+  "model_calls": 0,
+  "source": "existing verified IBM synthetic cohort",
+  "limits": [
+    "Not a new source download or complete fresh-environment training run",
+    "Previously observed source; not new holdout evidence",
+    "No independent business value validation"
+  ]
+}

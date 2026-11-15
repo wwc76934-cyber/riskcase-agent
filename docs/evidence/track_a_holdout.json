@@ -1,0 +1,82 @@
+{
+  "note": "single evaluation of locked models on the sealed test split",
+  "results": {
+    "ordinary": {
+      "development_AP_replay": 0.4983339093610509,
+      "development_replay_matches_saved": true,
+      "test_AP": 0.4352691841607105,
+      "test_AP_cluster95": [
+        0.21203411890517193,
+        0.6497917312414601
+      ],
+      "test_positives": 18,
+      "test_rows": 20673,
+      "seeds": [
+        42,
+        43,
+        44
+      ]
+    },
+    "domain": {
+      "development_AP_replay": 0.4716861538804712,
+      "development_replay_matches_saved": true,
+      "test_AP": 0.3993493898122908,
+      "test_AP_cluster95": [
+        0.17589067988294155,
+        0.633650971320175
+      ],
+      "test_positives": 18,
+      "test_rows": 20673,
+      "seeds": [
+        42,
+        43,
+        44
+      ]
+    },
+    "qwen128": {
+      "development_AP_replay": 0.2176634980343768,
+      "development_replay_matches_saved": true,
+      "test_AP": 0.2624057810726501,
+      "test_AP_cluster95": [
+        0.1010467101597858,
+        0.5053901379121537
+      ],
+      "test_positives": 18,
+      "test_rows": 20673,
+      "seeds": [
+        42,
+        43,
+        44
+      ]
+    },
+    "random128": {
+      "development_AP_replay": 0.4140296157844692,
+      "development_replay_matches_saved": true,
+      "test_AP": 0.391144324134604,
+      "test_AP_cluster95": [
+        0.17280307273691384,
+        0.6016193703135629
+      ],
+      "test_positives": 18,
+      "test_rows": 20673,
+      "seeds": [
+        42,
+        43,
+        44
+      ]
+    },
+    "tfidf_lr": {
+      "development_AP_replay": 0.2690287668392368,
+      "test_AP": 0.199568183110163,
+      "test_AP_cluster95": [
+        0.05584821479482139,
+        0.44396547438914036
+      ],
+      "test_positives": 18,
+      "test_rows": 20673,
+      "seeds": [
+        42
+      ]
+    }
+  }
+}

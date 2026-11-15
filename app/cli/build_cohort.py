@@ -24,6 +24,7 @@ from scripts.probe_tabformer import ARCHIVE_SHA256_DECLARED, SOURCE_COMMIT
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--inventory", type=Path, help="Equivalent regenerated full-source profile; identity catalog must match")
+    parser.add_argument("--output", type=Path, help="New output directory; existing directories are never overwritten")
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[2]
     plan = CohortPlan()
@@ -46,7 +47,7 @@ def main():
     archive_path = root / "data/raw/tabformer" / f"{ARCHIVE_SHA256_DECLARED}.tgz"
     if archive_path.stat().st_size != ARCHIVE_BYTES or file_sha256(archive_path) != ARCHIVE_SHA256_DECLARED:
         raise ValueError("Local archive mismatch")
-    output = root / "data/cohorts" / f"cohort-{uuid4().hex[:12]}"
+    output = args.output.resolve() if args.output is not None else root / "data/cohorts" / f"cohort-{uuid4().hex[:12]}"
     output.mkdir(parents=True, exist_ok=False)
     code_files = ("app/risk/cohort.py", "app/risk/cohort_build.py", "app/cli/build_cohort.py", "app/risk/data_contract.py")
     frozen = {"contract": contract, "selected_users": users, "source_commit": SOURCE_COMMIT,

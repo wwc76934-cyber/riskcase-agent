@@ -1,0 +1,9 @@
+{
+  "kind": "input_path_reproducibility_not_model_or_business_evaluation",
+  "raw_transactions_included": false,
+  "artifact_sha256": {
+    "cli-output-guards.json": "a663f9e4c907c86c9c639058ea5204a109d9a042e92db5004c9e68d599c11065",
+    "input-audit.json": "2c90e4cfd2b1ed78436f84f5b14fe8536402f44ad1545051108d607e192d82d7",
+    "regression.json": "53047f25da8ca0a7722f947d4ede1eda1a8a212add22a2ad2a7980dc8e2f119c"
+  }
+}

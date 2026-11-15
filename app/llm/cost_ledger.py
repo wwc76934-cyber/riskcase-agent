@@ -22,6 +22,13 @@ class CostLedger:
             db.execute("""CREATE TABLE IF NOT EXISTS reservations (
                 id TEXT PRIMARY KEY,run_id TEXT NOT NULL,reserved_cny TEXT NOT NULL,
                 estimated_cny TEXT,status TEXT NOT NULL,usage_json TEXT)""")
+            db.execute('CREATE TABLE IF NOT EXISTS budget_holds(id TEXT PRIMARY KEY,run_id TEXT NOT NULL,amount_cny TEXT NOT NULL,reason TEXT NOT NULL)')
+
+    @staticmethod
+    def holds(db,*,run_id=None,prefix=None):
+        rows=db.execute('SELECT amount_cny FROM budget_holds WHERE (? IS NULL OR run_id=?) AND (? IS NULL OR run_id LIKE ?)',
+                        (run_id,run_id,prefix,None if prefix is None else prefix+'%')).fetchall()
+        return sum((Decimal(row[0]) for row in rows),Decimal(0))
 
     @staticmethod
     def committed(rows):
@@ -38,7 +45,7 @@ class CostLedger:
             all_rows = db.execute("SELECT reserved_cny,estimated_cny FROM reservations").fetchall()
             if len(own) >= max_requests:
                 raise BudgetExceeded("request_limit")
-            if self.committed(own)+amount > run_budget or self.committed(all_rows)+amount > project_budget:
+            if self.committed(own)+self.holds(db,run_id=run_id)+amount > run_budget or self.committed(all_rows)+self.holds(db)+amount > project_budget:
                 raise BudgetExceeded("estimated_spend_limit")
             db.execute("INSERT INTO reservations VALUES (?,?,?,NULL,'reserved',NULL)", (identity,run_id,str(amount)))
         return identity
@@ -61,10 +68,12 @@ class CostLedger:
         with closing(sqlite3.connect(self.path)) as db:
             rows = db.execute("SELECT id,reserved_cny,estimated_cny,status,usage_json FROM reservations WHERE run_id=? ORDER BY rowid", (run_id,)).fetchall()
             total = db.execute("SELECT reserved_cny,estimated_cny FROM reservations").fetchall()
+            own_hold,total_hold=self.holds(db,run_id=run_id),self.holds(db)
         entries = [{"reservation_id": identity,"reserved_cny": reserve,"estimated_cny": estimate,
             "status":status,"usage":json.loads(usage) if usage else None} for identity,reserve,estimate,status,usage in rows]
         return {"currency":"CNY", "entries":entries,
-            "run_committed_estimate_cny":str(self.committed([(row[1],row[2]) for row in rows])),
-            "project_committed_estimate_cny":str(self.committed(total)),
+            "run_committed_estimate_cny":str(self.committed([(row[1],row[2]) for row in rows])+own_hold),
+            "project_committed_estimate_cny":str(self.committed(total)+total_hold),
+            "additional_risk_hold_cny":str(own_hold),"project_additional_risk_hold_cny":str(total_hold),
             "unknown_cost_requests":sum(row[3]!="estimated_from_usage" for row in rows),
             "limits":"Local estimated spend; uncertain requests keep reservations. Provider billing is authoritative."}

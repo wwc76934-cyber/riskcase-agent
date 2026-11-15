@@ -28,10 +28,15 @@ class NeuralConfig:
     include_channel: bool = False
     engineered: bool = True
     threads: int = 4
+    attention_heads: int = 4
 
     def __post_init__(self):
-        if self.architecture not in ("residual", "mlp") or self.width < 4 or not 1 <= self.blocks <= 4:
+        if self.architecture not in ("residual", "mlp", "feature_transformer") or not 4 <= self.width <= 512 or not 1 <= self.blocks <= 4:
             raise ValueError("Bounded supported architecture required")
+        if type(self.attention_heads) is not int or not 1 <= self.attention_heads <= 8:
+            raise ValueError("Bounded attention head count required")
+        if self.architecture == "feature_transformer" and self.width % self.attention_heads:
+            raise ValueError("Token width must be divisible by attention heads")
         if not 0 <= self.dropout < 1 or not 0 < self.learning_rate <= 0.1 or not 0 <= self.weight_decay <= 1:
             raise ValueError("Finite bounded optimizer settings required")
         if not 0 < self.positive_weight <= 1000 or not 1 <= self.batch_size <= 65536 or not 1 <= self.threads <= 4:
@@ -100,6 +105,28 @@ class TabularRiskNetwork(nn.Module):
     def __init__(self, numeric_width, categorical_sizes, config):
         super().__init__()
         self.config = config
+        if config.architecture == "feature_transformer":
+            # One trainable affine token per numerical feature (including missing
+            # indicators); categorical fields have separate, unknown-safe tables.
+            # FT-Transformer inspired baseline, not an official reproduction.
+            self.token_weight = nn.Parameter(torch.empty(numeric_width, config.width))
+            self.token_bias = nn.Parameter(torch.zeros(numeric_width, config.width))
+            nn.init.normal_(self.token_weight, std=0.02)
+            self.embeddings = nn.ModuleList([nn.Embedding(size, config.width, padding_idx=0) for size in categorical_sizes])
+            self.cls = nn.Parameter(torch.zeros(1, 1, config.width))
+            layer = nn.TransformerEncoderLayer(config.width, config.attention_heads,
+                dim_feedforward=config.width * 2, dropout=config.dropout,
+                activation="gelu", batch_first=True, norm_first=True)
+            self.encoder = nn.TransformerEncoder(layer, config.blocks, enable_nested_tensor=False)
+            # TransformerEncoder clones initial weights; independently initialize
+            # each attention/FFN block rather than leaving layers identical.
+            for block in self.encoder.layers:
+                nn.init.xavier_uniform_(block.self_attn.in_proj_weight)
+                nn.init.xavier_uniform_(block.self_attn.out_proj.weight)
+                nn.init.xavier_uniform_(block.linear1.weight)
+                nn.init.xavier_uniform_(block.linear2.weight)
+            self.head = nn.Sequential(nn.LayerNorm(config.width), nn.Linear(config.width, 1))
+            return
         dimensions = [min(12, max(2, int(math.ceil(math.sqrt(size))))) for size in categorical_sizes]
         self.embeddings = nn.ModuleList([nn.Embedding(size, dimension, padding_idx=0) for size, dimension in zip(categorical_sizes, dimensions)])
         self.input = nn.Sequential(nn.Linear(numeric_width + sum(dimensions), config.width), nn.GELU())
@@ -107,6 +134,11 @@ class TabularRiskNetwork(nn.Module):
         self.head = nn.Sequential(nn.LayerNorm(config.width), nn.Linear(config.width, 1))
 
     def forward(self, numeric, categories):
+        if self.config.architecture == "feature_transformer":
+            tokens = numeric.unsqueeze(-1) * self.token_weight + self.token_bias
+            categorical = [table(categories[:, i]).unsqueeze(1) for i, table in enumerate(self.embeddings)]
+            tokens = torch.cat([self.cls.expand(len(numeric), -1, -1), tokens, *categorical], dim=1)
+            return self.head(self.encoder(tokens)[:, 0]).squeeze(-1)
         embedded = [embedding(categories[:, i]) for i, embedding in enumerate(self.embeddings)]
         hidden = self.input(torch.cat([numeric, *embedded], dim=1))
         for block in self.blocks:
@@ -116,6 +148,8 @@ class TabularRiskNetwork(nn.Module):
 
 
 def predict_tensors(model, tensors, batch_size=16384):
+    if model.config.architecture == "feature_transformer":
+        batch_size = min(batch_size, 256)
     model.eval()
     scores = []
     with torch.no_grad():

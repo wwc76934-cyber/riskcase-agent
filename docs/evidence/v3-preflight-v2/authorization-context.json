@@ -1,0 +1,17 @@
+{
+  "source": "Explicit user reply in this Codex conversation",
+  "question_item": "call_762e45a4c5f94e2da6abe50984be77be",
+  "answer_verbatim": "授权本轮最多6元，项目总上限34元",
+  "original_proposal_sha256": "df44cf370080753542f945d3854a8b483f17fa11d9d6d3cb56136938210ea4cf",
+  "execution_proposal_sha256": "6c47df3b95a57fe0c3f362bd45d9c5bedc2c1e53e25cdf66befd883a24fe45ea",
+  "pre_execution_amendment": "Declare and validate canonical source states; isolate source-handle versus payment-ID schema nodes; publish host output rules. No model calls occurred before this correction.",
+  "unchanged_scope": {
+    "cases": 6,
+    "case_runs": 12,
+    "stages": 36,
+    "max_requests": 72,
+    "batch_cny": "6",
+    "project_cny": "34",
+    "all_materials_same": true
+  }
+}

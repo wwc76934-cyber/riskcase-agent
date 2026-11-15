@@ -1,0 +1,1 @@
+{"content":"","role":"assistant","tool_calls":[{"function":{"arguments":"{\"name\": \"raw-payment-investigation\"}","name":"load_skill"},"id":"01a18bf4f64c73bb4c7d5ac415457baa","index":0,"type":"function"},{"function":{"arguments":"{\"query\": \"ORD-740\", \"role\": \"all\"}","name":"case_search"},"id":"01a18bf4f64c73bb4c7d5ac415457bab","index":1,"type":"function"}]}

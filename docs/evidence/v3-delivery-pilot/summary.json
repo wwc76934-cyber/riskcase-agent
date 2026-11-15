@@ -1,0 +1,28 @@
+{
+  "complete": true,
+  "complete_delivered_case_runs": 1,
+  "delivered": 19,
+  "delivery_rate_planned": 0.5277777777777778,
+  "development_gate_only": {
+    "complete_cases_at_least_10_of_12": false,
+    "current_statement_at_least_20_of_24": false,
+    "delivery_at_least_33_of_36": false
+  },
+  "execution_kind": "configured_external_client",
+  "external_model_requests": 56,
+  "financial_snapshot": {
+    "batch_committed_estimate_cny": "0.2044844",
+    "batch_limit_cny": "6",
+    "project_additional_risk_hold_cny": "1.3609240",
+    "project_committed_estimate_cny": "27.8535624",
+    "validated_project_limit_cny": "34"
+  },
+  "formal_agent_value_claim": false,
+  "model_selected_tool_calls": 0,
+  "planned_T1_T2_denominator": 24,
+  "planned_phase_jobs": 36,
+  "recorded_phase_jobs": 36,
+  "source_correct_given_delivery_T1_T2": 1.0,
+  "source_statement_correct_T1_T2": 10,
+  "stop_reason": null
+}

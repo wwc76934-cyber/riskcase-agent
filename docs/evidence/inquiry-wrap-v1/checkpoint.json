@@ -1,0 +1,74 @@
+{
+  "status": "auxiliary_query_capability_checkpoint_NOT_value_benchmark",
+  "suites": [
+    {
+      "path": "stage6e-inquiry-regression-v2.xml",
+      "sha256": "1eac1e1b3b7b468fcfec295c76dcca8b8490058d4c6fe7774231fe0154ad90de",
+      "tests": 46,
+      "failures": 2,
+      "errors": 0,
+      "seconds": 110.323
+    },
+    {
+      "path": "stage6e-inquiry-wrap-v3.xml",
+      "sha256": "c3be6a3522bbc712611f9a181b1540b82ca93c43d9ad982668b49fe4f6030f66",
+      "tests": 46,
+      "failures": 2,
+      "errors": 0,
+      "seconds": 117.862
+    },
+    {
+      "path": "stage6e-inquiry-wrap-v4.xml",
+      "sha256": "d7a8564fb3bfe49d4bbf0abc418e3b73f258886e7677067fd909a5681c5d96c5",
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 10.423
+    }
+  ],
+  "overlapping_suites_do_not_sum": true,
+  "real_model_calls": 0,
+  "source_cases": [
+    {
+      "case_id": "inquiry-1",
+      "prior_rows": 831,
+      "profile_bytes": 7092
+    },
+    {
+      "case_id": "inquiry-2",
+      "prior_rows": 1455,
+      "profile_bytes": 8185
+    },
+    {
+      "case_id": "inquiry-3",
+      "prior_rows": 565,
+      "profile_bytes": 6829
+    },
+    {
+      "case_id": "inquiry-4",
+      "prior_rows": 758,
+      "profile_bytes": 6845
+    },
+    {
+      "case_id": "inquiry-5",
+      "prior_rows": 2298,
+      "profile_bytes": 6528
+    },
+    {
+      "case_id": "inquiry-6",
+      "prior_rows": 567,
+      "profile_bytes": 6866
+    }
+  ],
+  "js_syntax_check": "node --check passed",
+  "browser_visual_check": false,
+  "unused_sql_prototype_archived_locally": true,
+  "prototype_not_used_as_formal_B0_B3_grader": true,
+  "failures_preserved": [
+    "source-v1 missing snapshots directory",
+    "profile size 13382 exceeded 12000; compacted redundant samples",
+    "ticket draft expected legacy verdict; now supports inquiry status",
+    "test passed keyword-only reviewer positionally; corrected test"
+  ],
+  "superseded_by": "AGENT_VALUE_EXECUTION_PLAN.md"
+}

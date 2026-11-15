@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "seed": "riskcase-fraud-world-20261101-v1",
+  "counts": {"development": 30, "frozen": 40, "challenge": 20},
+  "pairing": "Same A facts for adjacent variants within each scenario family; B evidence differs",
+  "split_unit": "scenario family and subject; no cross-fold identity sharing",
+  "source_a": "Existing frozen 2018 IBM synthetic detector queue; no new training or outcome selection",
+  "source_b": "Independent simulated originals, never represented as IBM or bank records",
+  "source_c": "Author-defined reference facts and workflow expectations; controller-only, not external expert review",
+  "history_hours": 720,
+  "investigation_delay_hours": 24,
+  "access_budget_units": 30,
+  "baseline_access": "All available authorized originals and A rows; bulk access permitted to every condition",
+  "external_model_requests": "Requires separately authorized batch and project ledger limits",
+  "raw_data_redistribution": false
+}

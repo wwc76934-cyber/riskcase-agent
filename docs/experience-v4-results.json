@@ -1,0 +1,532 @@
+{
+  "stage": "experience-v4",
+  "lifecycle": {
+    "after": {
+      "advisory_only": true,
+      "as_of": 1792740099.965878,
+      "corpus_hash": "d38ad14da8ba783b1341f9191fe8ed7013f50b7112cef6642375220a6f7efda4",
+      "hits": [
+        {
+          "citation": "K:coverage:v1",
+          "kind": "lesson",
+          "reviewer": "local-token-reviewer",
+          "score": 0.06953669236520457,
+          "sha256": "64b79fe8780b6ebac3f1fa6ded9e01ff696116eee0bec35f7e20ff46c65b0b26",
+          "source": "rejected-job:job-276c6581b1e24d2488c4bffe80b8a067",
+          "text": "频次检查需核对历史覆盖。frequency velocity incomplete observation：历史覆盖不完整且频次不足时，应报告资料不足；经验不是欺诈认定。",
+          "version": 1
+        }
+      ],
+      "query": "frequency",
+      "role": "procedure_context_not_transaction_evidence"
+    },
+    "after_state": "awaiting_review",
+    "before": {
+      "advisory_only": true,
+      "as_of": 0,
+      "corpus_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "hits": [],
+      "query": "frequency",
+      "role": "procedure_context_not_transaction_evidence"
+    },
+    "before_state": "rejected",
+    "candidate": {
+      "candidate": {
+        "body": "频次检查需核对历史覆盖。frequency velocity incomplete observation：历史覆盖不完整且频次不足时，应报告资料不足；经验不是欺诈认定。",
+        "created": "2026-10-23T07:21:39.920579+00:00",
+        "feedback": "模拟分析师反馈，验证经验迭代机制；不是实际发现模型判断错误。",
+        "identity": "coverage",
+        "result_hash": "606609ac3c537ec238db4b8afaab93de1c1226fbb5612c20f9daf25404e3b940",
+        "source_job": "job-276c6581b1e24d2488c4bffe80b8a067",
+        "suite_hash": "272315c0d46e612d94e7afcd1c85f39e5cace0b9cd38a882f7a80c6fe806a75f"
+      },
+      "evaluation": {
+        "baseline_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "candidate_hash": "ca982ba3ee302f3478f8b59e34c27eb341f585e004b637f692b6a6f5638adc31",
+        "evaluated": "2026-10-23T07:21:39.946691+00:00",
+        "independent_holdout": false,
+        "metric": "top1_procedure_retrieval_only",
+        "outcomes": [
+          {
+            "after": true,
+            "before": false,
+            "expected": "coverage",
+            "partition": "regression",
+            "query": "频次历史覆盖"
+          },
+          {
+            "after": true,
+            "before": false,
+            "expected": "coverage",
+            "partition": "transfer",
+            "query": "velocity incomplete observation"
+          },
+          {
+            "after": false,
+            "before": false,
+            "expected": "amount",
+            "partition": "regression",
+            "query": "单笔金额最大值"
+          },
+          {
+            "after": false,
+            "before": false,
+            "expected": "amount",
+            "partition": "transfer",
+            "query": "positive amount maximum"
+          },
+          {
+            "after": false,
+            "before": false,
+            "expected": "merchant",
+            "partition": "regression",
+            "query": "新商户历史窗口"
+          },
+          {
+            "after": false,
+            "before": false,
+            "expected": "merchant",
+            "partition": "transfer",
+            "query": "merchant prior history"
+          },
+          {
+            "after": true,
+            "before": true,
+            "expected": null,
+            "partition": "regression",
+            "query": "天气预报"
+          },
+          {
+            "after": true,
+            "before": true,
+            "expected": null,
+            "partition": "transfer",
+            "query": "weather tomorrow"
+          },
+          {
+            "after": true,
+            "before": true,
+            "expected": null,
+            "partition": "regression",
+            "query": "账户冻结操作"
+          },
+          {
+            "after": true,
+            "before": true,
+            "expected": null,
+            "partition": "transfer",
+            "query": "automatic money transfer"
+          }
+        ],
+        "passed": true,
+        "suite_hash": "272315c0d46e612d94e7afcd1c85f39e5cace0b9cd38a882f7a80c6fe806a75f",
+        "version": 1
+      },
+      "evaluation_hash": "eac06ba29d68e2365d206a92ed1d53e0be6dbd0a758f7d374e21c289a1957451",
+      "id": "lesson-8a807e1e6e7d40a7bdfcccb856b1aec9",
+      "promoted": "2026-10-23T07:21:39.965878+00:00"
+    },
+    "data_kind": "hand_authored_mechanism_fixture",
+    "real_llm_used": false,
+    "semantic_truth_verified": false,
+    "status": "completed"
+  },
+  "browser": {
+    "status": "passed",
+    "external_requests": [],
+    "page_errors": [],
+    "checks": [
+      "rejected_report_to_reviewed_gated_promotion",
+      "promoted_memory_retrievable_in_workbench",
+      "no_page_errors_external_requests_or_mobile_overflow"
+    ]
+  },
+  "live": {
+    "groups": 8,
+    "passed": 0,
+    "requests": 16,
+    "estimated_cny": "0.049384",
+    "errors": [
+      {
+        "arm": "empty",
+        "question": "频次较低但历史记录不完整该参考什么处理口径？",
+        "error_type": "JSONDecodeError",
+        "request_audit": [
+          {
+            "elapsed_seconds": 2.75,
+            "http_status": 200,
+            "input_bytes": 1186,
+            "request_number": 1,
+            "request_trace_id": "7e660b44f106410daef21f055d9c12b7",
+            "reservation_id": "c445b63ff4a54b948731973c6c7f60fa",
+            "reserved_estimate_cny": "0.074512",
+            "response_id": "01a167a4913905f1e5ecfee397ccfda3",
+            "returned_model": "Pro/zai-org/GLM-5.1",
+            "status": "response_received",
+            "usage": {
+              "completion_tokens": 26,
+              "prompt_tokens": 285,
+              "reasoning_tokens": 0,
+              "total_tokens": 311
+            },
+            "usage_cost_upper_estimate_cny": "0.003008"
+          },
+          {
+            "elapsed_seconds": 1.969,
+            "http_status": 200,
+            "input_bytes": 1649,
+            "request_number": 2,
+            "request_trace_id": "d59542dc3cea4bbb92682c561e79307b",
+            "reservation_id": "1d0c49cab32a492da96693e85588dc8c",
+            "reserved_estimate_cny": "0.078216",
+            "response_id": "01a167a49aedf3be5ab76baec0731dbc",
+            "returned_model": "Pro/zai-org/GLM-5.1",
+            "status": "response_received",
+            "usage": {
+              "completion_tokens": 15,
+              "prompt_tokens": 338,
+              "reasoning_tokens": 0,
+              "total_tokens": 353
+            },
+            "usage_cost_upper_estimate_cny": "0.003124"
+          }
+        ]
+      },
+      {
+        "arm": "empty",
+        "question": "velocity incomplete observation guidance",
+        "error_type": "JSONDecodeError",
+        "request_audit": [
+          {
+            "elapsed_seconds": 2.343,
+            "http_status": 200,
+            "input_bytes": 1160,
+            "request_number": 1,
+            "request_trace_id": "cf326eb9b0884eb3a49265614cb33e98",
+            "reservation_id": "ec474e0133ac48f0ba09a3967fb39b03",
+            "reserved_estimate_cny": "0.074304",
+            "response_id": "01a167a4a64e489f282e6a5524f54041",
+            "returned_model": "Pro/zai-org/GLM-5.1",
+            "status": "response_received",
+            "usage": {
+              "completion_tokens": 16,
+              "prompt_tokens": 275,
+              "reasoning_tokens": 0,
+              "total_tokens": 291
+            },
+            "usage_cost_upper_estimate_cny": "0.002648"
+          },
+          {
+            "elapsed_seconds": 2.359,
+            "http_status": 200,
+            "input_bytes": 1616,
+            "request_number": 2,
+            "request_trace_id": "53281fe1456a4b10998b90061d6ddcb3",
+            "reservation_id": "1522049725ec4e7e9b360463e87b4a60",
+            "reserved_estimate_cny": "0.077952",
+            "response_id": "01a167a4aef9760c5ea53066cc991b55",
+            "returned_model": "Pro/zai-org/GLM-5.1",
+            "status": "response_received",
+            "usage": {
+              "completion_tokens": 15,
+              "prompt_tokens": 318,
+              "reasoning_tokens": 0,
+              "total_tokens": 333
+            },
+            "usage_cost_upper_estimate_cny": "0.002964"
+          }
+        ]
+      },
+      {
+        "arm": "empty",
+        "question": "明天天气如何？",
+        "error_type": "JSONDecodeError",
+        "request_audit": [
+          {
+            "elapsed_seconds": 2.063,
+            "http_status": 200,
+            "input_bytes": 1141,
+            "request_number": 1,
+            "request_trace_id": "f3a871d7bd5c4ef393888819e2f42fc9",
+            "reservation_id": "175b7664cc204775975278453be78487",
+            "reserved_estimate_cny": "0.074152",
+            "response_id": "01a167a4bb7f934946220a67b3b788ee",
+            "returned_model": "Pro/zai-org/GLM-5.1",
+            "status": "response_received",
+            "usage": {
+              "completion_tokens": 14,
+              "prompt_tokens": 275,
+              "reasoning_tokens": 0,
+              "total_tokens": 289
+            },
+            "usage_cost_upper_estimate_cny": "0.002592"
+          },
+          {
+            "elapsed_seconds": 2.141,
+            "http_status": 200,
+            "input_bytes": 1569,
+            "request_number": 2,
+            "request_trace_id": "5757fa5d7eb84593b7883757a606c0a0",
+            "reservation_id": "7f723801062b490b85885fd7d55bc300",
+            "reserved_estimate_cny": "0.077576",
+            "response_id": "01a167a4c353789935dbe6bc62562dd8",
+            "returned_model": "Pro/zai-org/GLM-5.1",
+            "status": "response_received",
+            "usage": {
+              "completion_tokens": 15,
+              "prompt_tokens": 316,
+              "reasoning_tokens": 0,
+              "total_tokens": 331
+            },
+            "usage_cost_upper_estimate_cny": "0.002948"
+          }
+        ]
+      },
+      {
+        "arm": "empty",
+        "question": "自动冻结账户的方法是什么？",
+        "error_type": "JSONDecodeError",
+        "request_audit": [
+          {
+            "elapsed_seconds": 2.656,
+            "http_status": 200,
+            "input_bytes": 1159,
+            "request_number": 1,
+            "request_trace_id": "580e8753657e468bb225af660871f98b",
+            "reservation_id": "ae4308c3b3e7457087c06fffe80ec13e",
+            "reserved_estimate_cny": "0.074296",
+            "response_id": "01a167a4cef8f6829156136a849c84b6",
+            "returned_model": "Pro/zai-org/GLM-5.1",
+            "status": "response_received",
+            "usage": {
+              "completion_tokens": 16,
+              "prompt_tokens": 277,
+              "reasoning_tokens": 0,
+              "total_tokens": 293
+            },
+            "usage_cost_upper_estimate_cny": "0.002664"
+          },
+          {
+            "elapsed_seconds": 2.344,
+            "http_status": 200,
+            "input_bytes": 1602,
+            "request_number": 2,
+            "request_trace_id": "110e71b281264cff882be330c39a92b7",
+            "reservation_id": "24fac48399cd4497b0aebdcc020638b5",
+            "reserved_estimate_cny": "0.07784",
+            "response_id": "01a167a4d90aed327f78b3bc6334a2bf",
+            "returned_model": "Pro/zai-org/GLM-5.1",
+            "status": "response_received",
+            "usage": {
+              "completion_tokens": 15,
+              "prompt_tokens": 320,
+              "reasoning_tokens": 0,
+              "total_tokens": 335
+            },
+            "usage_cost_upper_estimate_cny": "0.00298"
+          }
+        ]
+      },
+      {
+        "arm": "promoted",
+        "question": "频次较低但历史记录不完整该参考什么处理口径？",
+        "error_type": "JSONDecodeError",
+        "request_audit": [
+          {
+            "elapsed_seconds": 2.781,
+            "http_status": 200,
+            "input_bytes": 1186,
+            "request_number": 1,
+            "request_trace_id": "43a1d0bd510b43079c4613330356e554",
+            "reservation_id": "01ffca46043f45a8b8a1e035b6287429",
+            "reserved_estimate_cny": "0.074512",
+            "response_id": "01a167a4e5a7f13f214f2f11b8f96714",
+            "returned_model": "Pro/zai-org/GLM-5.1",
+            "status": "response_received",
+            "usage": {
+              "completion_tokens": 26,
+              "prompt_tokens": 285,
+              "reasoning_tokens": 0,
+              "total_tokens": 311
+            },
+            "usage_cost_upper_estimate_cny": "0.003008"
+          },
+          {
+            "elapsed_seconds": 3.25,
+            "http_status": 200,
+            "input_bytes": 2116,
+            "request_number": 2,
+            "request_trace_id": "4ccbe51087d04acfb4d01e3eaa514b0b",
+            "reservation_id": "3b5986ac0f4048139f1029a40f63604b",
+            "reserved_estimate_cny": "0.081952",
+            "response_id": "01a167a4f03f706cd651525ab97ddec1",
+            "returned_model": "Pro/zai-org/GLM-5.1",
+            "status": "response_received",
+            "usage": {
+              "completion_tokens": 47,
+              "prompt_tokens": 495,
+              "reasoning_tokens": 0,
+              "total_tokens": 542
+            },
+            "usage_cost_upper_estimate_cny": "0.005276"
+          }
+        ]
+      },
+      {
+        "arm": "promoted",
+        "question": "velocity incomplete observation guidance",
+        "error_type": "JSONDecodeError",
+        "request_audit": [
+          {
+            "elapsed_seconds": 2.313,
+            "http_status": 200,
+            "input_bytes": 1160,
+            "request_number": 1,
+            "request_trace_id": "bc6ce3a2397f45bdad6fd4309625a90f",
+            "reservation_id": "db7791575a1d4e88b7207719559216b7",
+            "reserved_estimate_cny": "0.074304",
+            "response_id": "01a167a5005435f2c58b8398c19dc677",
+            "returned_model": "Pro/zai-org/GLM-5.1",
+            "status": "response_received",
+            "usage": {
+              "completion_tokens": 16,
+              "prompt_tokens": 275,
+              "reasoning_tokens": 0,
+              "total_tokens": 291
+            },
+            "usage_cost_upper_estimate_cny": "0.002648"
+          },
+          {
+            "elapsed_seconds": 2.171,
+            "http_status": 200,
+            "input_bytes": 2084,
+            "request_number": 2,
+            "request_trace_id": "6288f4d684bb4e949c65808549735648",
+            "reservation_id": "e7d003349a904af1a6ccd5a7f3c4c8ba",
+            "reserved_estimate_cny": "0.081696",
+            "response_id": "01a167a508f25e60225ec92ecbe741ae",
+            "returned_model": "Pro/zai-org/GLM-5.1",
+            "status": "response_received",
+            "usage": {
+              "completion_tokens": 18,
+              "prompt_tokens": 475,
+              "reasoning_tokens": 0,
+              "total_tokens": 493
+            },
+            "usage_cost_upper_estimate_cny": "0.004304"
+          }
+        ]
+      },
+      {
+        "arm": "promoted",
+        "question": "明天天气如何？",
+        "error_type": "JSONDecodeError",
+        "request_audit": [
+          {
+            "elapsed_seconds": 2.078,
+            "http_status": 200,
+            "input_bytes": 1141,
+            "request_number": 1,
+            "request_trace_id": "c96a9c3f057c41838a75eb1a54eda36e",
+            "reservation_id": "6f08e6571e1a44959c0459eb51f63f13",
+            "reserved_estimate_cny": "0.074152",
+            "response_id": "01a167a514e01f8b034a1502a2357550",
+            "returned_model": "Pro/zai-org/GLM-5.1",
+            "status": "response_received",
+            "usage": {
+              "completion_tokens": 15,
+              "prompt_tokens": 275,
+              "reasoning_tokens": 0,
+              "total_tokens": 290
+            },
+            "usage_cost_upper_estimate_cny": "0.00262"
+          },
+          {
+            "elapsed_seconds": 2.719,
+            "http_status": 200,
+            "input_bytes": 1575,
+            "request_number": 2,
+            "request_trace_id": "1974960d0019447db7da12d39f29366f",
+            "reservation_id": "d055a90fe86647228ad1057a36bb3848",
+            "reserved_estimate_cny": "0.077624",
+            "response_id": "01a167a51cb3715e2e107c51cb6c5d8c",
+            "returned_model": "Pro/zai-org/GLM-5.1",
+            "status": "response_received",
+            "usage": {
+              "completion_tokens": 15,
+              "prompt_tokens": 317,
+              "reasoning_tokens": 0,
+              "total_tokens": 332
+            },
+            "usage_cost_upper_estimate_cny": "0.002956"
+          }
+        ]
+      },
+      {
+        "arm": "promoted",
+        "question": "自动冻结账户的方法是什么？",
+        "error_type": "JSONDecodeError",
+        "request_audit": [
+          {
+            "elapsed_seconds": 2.235,
+            "http_status": 200,
+            "input_bytes": 1159,
+            "request_number": 1,
+            "request_trace_id": "98cbcde2d1a44adeaa20146a806e6beb",
+            "reservation_id": "7933d219bc66459290eaa6e1d231e358",
+            "reserved_estimate_cny": "0.074296",
+            "response_id": "01a167a52ac53450caf2bb89f312878d",
+            "returned_model": "Pro/zai-org/GLM-5.1",
+            "status": "response_received",
+            "usage": {
+              "completion_tokens": 16,
+              "prompt_tokens": 277,
+              "reasoning_tokens": 0,
+              "total_tokens": 293
+            },
+            "usage_cost_upper_estimate_cny": "0.002664"
+          },
+          {
+            "elapsed_seconds": 2.609,
+            "http_status": 200,
+            "input_bytes": 1602,
+            "request_number": 2,
+            "request_trace_id": "045360486c2e454db9036e68cd8eb257",
+            "reservation_id": "7a724e5ba8d148f39bb8f828c37b8ef2",
+            "reserved_estimate_cny": "0.07784",
+            "response_id": "01a167a533185d2c7ead6120385e688a",
+            "returned_model": "Pro/zai-org/GLM-5.1",
+            "status": "response_received",
+            "usage": {
+              "completion_tokens": 15,
+              "prompt_tokens": 320,
+              "reasoning_tokens": 0,
+              "total_tokens": 335
+            },
+            "usage_cost_upper_estimate_cny": "0.00298"
+          }
+        ]
+      }
+    ],
+    "failed_raw_outputs_preserved_in_original_run": false,
+    "independent_benchmark": false
+  },
+  "verification": {
+    "full_suite_passed": 741,
+    "subsequent_targeted_passed": 17,
+    "browser_status": "passed"
+  },
+  "sha256": {
+    "app/service/experience.py": "e53797285ba3cacdecafcd981e706d2df0138da4ba3a843a5eaa10610c46c472",
+    "app/tools/knowledge_tools.py": "f9272b875d3c3c98f4a0b860df3fc9359ceb24cd94a458eb87520ade4f3848fc",
+    "app/cli/experience_demo.py": "9fff7ee7e9c903eaf76a9bb019b4c04e1f747a6388aaff6b2ba2e639cdf8f236",
+    "app/service/api.py": "10fba2a9ad3edee76230852e5d93ea1eea185ee548632fb5aad63b87fdedfa69",
+    "app/service/runtime.py": "6985687af97c0f5c8ad69af17e922923b9161d225fe7ef0cb4e0143bf6e24414",
+    "app/service/workbench.py": "353b189fa80ec7d6e34dfd5f95ca292c0890ae21c80c2208d11c4b032eb97119",
+    "config/knowledge-regression-v1.json": "a009f70b87977398f9f17a6fa8678fa433e9fe01c5970193f6f69e3b79e83e2d",
+    "scripts/verify_experience_browser.cjs": "614355bf47154f371c471124750319818d7950dd3dda430b9b59429ad5071fcb",
+    "runs/experience-v4-stage-01/lifecycle.json": "a5aee11cb89fd5f6b33c4f790117a25f6b6765dec2111b32b6efafa88c0c064b",
+    "runs/experience-v4-live-01/live-results.json": "909c8c741ba8c92abf9a4df37b0e27f42cdf89362ef83b76bcb90e2e468c6626",
+    "runs/experience-browser-v4-02/receipt.json": "b2a3ebfa2e483d7ae8173bd25aa1a8a9ff3b3853d3434c74851e79777ac448f4"
+  }
+}

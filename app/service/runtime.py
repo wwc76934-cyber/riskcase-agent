@@ -18,12 +18,18 @@ from app.tools.case_tools import CaseTools
 
 def write_json(path, value):
     path = Path(path)
-    temp = path.with_name(path.name + "." + uuid4().hex + ".tmp")
-    with temp.open("w", encoding="utf-8") as stream:
-        stream.write(encoded(value) + "\n")
-        stream.flush()
-        os.fsync(stream.fileno())
-    os.replace(temp, path)
+    # Keep the temporary basename bounded even for a valid long destination.
+    temp = path.with_name("." + uuid4().hex + ".tmp")
+    try:
+        with temp.open("w", encoding="utf-8") as stream:
+            stream.write(encoded(value) + "\n")
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(temp, path)
+    except BaseException:
+        try:temp.unlink(missing_ok=True)
+        except OSError:pass  # Preserve the original write/replace exception.
+        raise
 
 
 @dataclass(frozen=True)
@@ -50,6 +56,8 @@ def fingerprint(repo):
              repo / "app/risk/mixed_investigation.py",
              repo / "app/risk/intent_router.py",
              repo / "app/risk/planner_v2.py",
+             repo / "app/risk/adaptive_triage.py", repo / "app/agent/structured_output.py",
+             repo / "app/tools/knowledge_tools.py", repo / "config/knowledge-regression-v1.json",
              repo / "config/siliconflow-live-v1.json", repo / "requirements-service.txt"]
     return digest({str(path.relative_to(repo)).replace("\\", "/"): sha256_file(path) for path in paths})
 
@@ -58,12 +66,17 @@ class ResearchService:
     def __init__(self, settings, store=None):
         self.settings = settings
         self.store = store or JobStore(settings.directory / "jobs.sqlite")
+        from app.service.experience import Experience
+        self.experience = Experience(settings.directory / 'knowledge.sqlite', json.loads((settings.repo / 'config/knowledge-regression-v1.json').read_text(encoding='utf-8')))
 
     def submit(self, request_key, *, case_id, question, mode="offline", task_type="merchant"):
         if mode not in ("offline", "live") or (mode == "live" and not self.settings.allow_live):
             raise ValueError("live_mode_not_enabled")
-        if task_type not in ("merchant", "mixed", "natural", "natural_v2"): raise ValueError("unsupported_task_type")
-        question = {"mixed": MixedQuestion, "merchant": MerchantQuestion, "natural": NaturalQuestion, "natural_v2": NaturalQuestion}[task_type](**question)
+        if task_type == 'triage':
+            if mode != 'offline' or question != {'policy_version':'first-lead-v1'}:
+                raise ValueError('Bound first-lead policy and offline mode required')
+        elif task_type not in ("merchant", "mixed", "natural", "natural_v2"): raise ValueError("unsupported_task_type")
+        question = {"mixed": MixedQuestion, "merchant": MerchantQuestion, "natural": NaturalQuestion, "natural_v2": NaturalQuestion}[task_type](**question) if task_type!='triage' else question
         if case_id not in self.settings.catalog: raise ValueError("unknown_case_id")
         original = Path(self.settings.catalog[case_id])
         files = {name: sha256_file(original.parent / name) for name in ("manifest.json", "facts.sqlite")}
@@ -98,12 +111,15 @@ class ResearchService:
         if any(sha256_file(frozen / name) != expected for name, expected in files.items()):
             raise ValueError("frozen_case_changed")
         spec = {"case_id": case_id, "input_key": key, "files": files, "mode": mode,
-                "question": asdict(question), "runtime_fingerprint": fingerprint(self.settings.repo)}
+                "question": asdict(question) if task_type!='triage' else question, "runtime_fingerprint": fingerprint(self.settings.repo)}
         if task_type != "merchant": spec["task_type"] = task_type
+        rows = self.experience.corpus()
+        spec['knowledge'] = {'rows': rows, 'hash': digest(rows),
+                             'as_of': max([r[7] for r in rows] or [0])}
         return self.store.submit(request_key, spec)
 
     def artifact(self, identity, name):
-        if name not in ("report.md", "trace.json", "summary.json", "usage.json", "plan.json", "route.json"): raise KeyError("artifact_not_allowed")
+        if name not in ("report.md", "trace.json", "summary.json", "usage.json", "plan.json", "route.json", "knowledge.json"): raise KeyError("artifact_not_allowed")
         job = self.store.get(identity)
         if job["result"] is None: raise Conflict("result_not_published")
         result = job["result"]
@@ -182,6 +198,9 @@ class Worker:
         self.client_factory, self.after_saved = client_factory, after_saved
 
     def step(self):
+        from app.service.investigations import step as investigation_step
+        investigation = investigation_step(self.service)
+        if investigation is not None: return investigation
         claim = self.store.claim(self.owner, lease_seconds=self.lease_seconds)
         if claim is None: return None
         identity, generation = claim["id"], claim["generation"]
@@ -199,6 +218,12 @@ class Worker:
             (directory / "case").mkdir(parents=True, exist_ok=False)
             for name in spec["files"]: shutil.copyfile(inputs / name, directory / "case" / name)
             if any(sha256_file(directory / "case" / name) != value for name, value in spec["files"].items()): raise Blocked("case_copy_changed")
+            from app.service.experience import attach
+            attach(spec, directory)
+            if spec.get('task_type')=='triage':
+                from app.service.triage import process
+                process(self,claim,spec,directory,checkpoint)
+                return self.store.get(identity)
             if spec.get("task_type") in ("natural", "natural_v2"):
                 from app.service.natural import process
                 process(self, claim, spec, directory, checkpoint)
@@ -206,6 +231,9 @@ class Worker:
             mixed = spec.get("task_type", "merchant") == "mixed"
             question = (MixedQuestion if mixed else MerchantQuestion)(**spec["question"])
             tools = GuardedTools((MixedTools if mixed else MemoizedMerchantTools)(directory / "case/manifest.json"), checkpoint)
+            from app.tools.knowledge_tools import FrozenKnowledge, KnowledgeTools
+            tools = KnowledgeTools(tools, FrozenKnowledge(spec['knowledge']['rows']),
+                scope='local-research', as_of='1970-01-01T00:00:00+00:00')
             policy = json.loads((self.service.settings.repo / "config/siliconflow-live-v1.json").read_text(encoding="utf-8"))
             mode = "siliconflow_live" if spec["mode"] == "live" else "SCRIPTED_NOT_REAL_LLM"
             if self.client_factory:
@@ -227,6 +255,7 @@ class Worker:
             result = (run_mixed(client, tools, question, client_mode=mode, max_requests=6) if mixed else
                       run_merchant_research(client, tools, question, client_mode=mode, max_requests=6, allow_format_repair=True))
             checkpoint()
+            result['knowledge_trace'] = tools.retrieval_trace
             if hasattr(base, "scrub"): result = base.scrub(result)
             report = result.pop("report_markdown")
             write_json(directory / "trace.json", result)

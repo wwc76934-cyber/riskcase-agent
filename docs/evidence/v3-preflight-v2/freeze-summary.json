@@ -1,0 +1,7 @@
+{
+  "proposal_sha256": "6c47df3b95a57fe0c3f362bd45d9c5bedc2c1e53e25cdf66befd883a24fe45ea",
+  "freeze_sha256": "58c509dc0f82652285ec837c1848d1abfdc405681a7c19f0df6af75e576646a7",
+  "source_files": 46,
+  "state": "authorized_before_first_request",
+  "data_case_request_cost_scope_changed": false
+}

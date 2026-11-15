@@ -1,0 +1,238 @@
+{
+  "approval_performed": false,
+  "cases": [
+    {
+      "case_id": "neural-2018-user-00",
+      "findings": [
+        {
+          "assessment": "not_supported",
+          "check": "amount_above_prior_positive_max_30d",
+          "evidence_ids": [
+            "E4"
+          ]
+        },
+        {
+          "assessment": "not_supported",
+          "check": "high_prior_frequency_1h",
+          "evidence_ids": [
+            "E3"
+          ]
+        },
+        {
+          "assessment": "supported",
+          "check": "merchant_id_unseen_30d",
+          "evidence_ids": [
+            "E5"
+          ]
+        }
+      ],
+      "fraud_determination": null,
+      "job_id": "job-abb91879846840529bd5ba8f8d89a009",
+      "mcp_servers": [
+        "documents",
+        "transactions"
+      ],
+      "model_report_sha256": "5c0c6ffd28d09db82b32dc5da023bd3bb71ed08ea36a3cb0b2ac892ca763488d",
+      "snapshot_sha256": "51b9399f96cc118603a5efcd5691af80f76ead8512e02b49727983a0a447dc00",
+      "state": "awaiting_review",
+      "tool_calls": 5,
+      "verdict": "analyst_review"
+    },
+    {
+      "case_id": "neural-2018-user-01",
+      "findings": [
+        {
+          "assessment": "not_supported",
+          "check": "amount_above_prior_positive_max_30d",
+          "evidence_ids": [
+            "E4"
+          ]
+        },
+        {
+          "assessment": "not_supported",
+          "check": "high_prior_frequency_1h",
+          "evidence_ids": [
+            "E3"
+          ]
+        },
+        {
+          "assessment": "supported",
+          "check": "merchant_id_unseen_30d",
+          "evidence_ids": [
+            "E5"
+          ]
+        }
+      ],
+      "fraud_determination": null,
+      "job_id": "job-f6dc9ecc31754c2884f6b356ed5ba106",
+      "mcp_servers": [
+        "documents",
+        "transactions"
+      ],
+      "model_report_sha256": "5c0c6ffd28d09db82b32dc5da023bd3bb71ed08ea36a3cb0b2ac892ca763488d",
+      "snapshot_sha256": "630a848f659c8e98c50c98e8c6e66092a56a422eda5463e67be74044d562f9da",
+      "state": "awaiting_review",
+      "tool_calls": 5,
+      "verdict": "analyst_review"
+    },
+    {
+      "case_id": "neural-2018-user-02",
+      "findings": [
+        {
+          "assessment": "supported",
+          "check": "amount_above_prior_positive_max_30d",
+          "evidence_ids": [
+            "E4"
+          ]
+        },
+        {
+          "assessment": "not_supported",
+          "check": "high_prior_frequency_1h",
+          "evidence_ids": [
+            "E3"
+          ]
+        },
+        {
+          "assessment": "supported",
+          "check": "merchant_id_unseen_30d",
+          "evidence_ids": [
+            "E5"
+          ]
+        }
+      ],
+      "fraud_determination": null,
+      "job_id": "job-705b546d340d454cbd389232362c24a7",
+      "mcp_servers": [
+        "documents",
+        "transactions"
+      ],
+      "model_report_sha256": "5c0c6ffd28d09db82b32dc5da023bd3bb71ed08ea36a3cb0b2ac892ca763488d",
+      "snapshot_sha256": "e74a9e82fd4870eaaa24a83deb1f1f7a894606f04ec2a11ff42e80159fefcfa4",
+      "state": "awaiting_review",
+      "tool_calls": 5,
+      "verdict": "analyst_review"
+    },
+    {
+      "case_id": "neural-2018-user-03",
+      "findings": [
+        {
+          "assessment": "not_supported",
+          "check": "amount_above_prior_positive_max_30d",
+          "evidence_ids": [
+            "E4"
+          ]
+        },
+        {
+          "assessment": "not_supported",
+          "check": "high_prior_frequency_1h",
+          "evidence_ids": [
+            "E3"
+          ]
+        },
+        {
+          "assessment": "supported",
+          "check": "merchant_id_unseen_30d",
+          "evidence_ids": [
+            "E5"
+          ]
+        }
+      ],
+      "fraud_determination": null,
+      "job_id": "job-bf4cb51787f34e5984c7e73e31e31e4c",
+      "mcp_servers": [
+        "documents",
+        "transactions"
+      ],
+      "model_report_sha256": "5c0c6ffd28d09db82b32dc5da023bd3bb71ed08ea36a3cb0b2ac892ca763488d",
+      "snapshot_sha256": "c570b3a0065c58cf34ebf1c903453e7e7e41cb5fc73ebb9860c689fb988a9914",
+      "state": "awaiting_review",
+      "tool_calls": 5,
+      "verdict": "analyst_review"
+    }
+  ],
+  "client": "deterministic_fact_baseline_NOT_LLM",
+  "elapsed_seconds": 18.016,
+  "external_real_data_validated": false,
+  "production_throughput_measured": false,
+  "queue": {
+    "alert_transactions": 3650,
+    "daily_transaction_budget": 10,
+    "days": 365,
+    "grouping_applied": false,
+    "human_minutes_saved": null,
+    "labels_read": false,
+    "max_alerts_one_user_day": 6,
+    "repeated_user_day_slots": 308,
+    "selection": "completed-day ranking; not realtime",
+    "unique_users": 377,
+    "user_day_groups": 3342
+  },
+  "real_model_requests": 0,
+  "source_kind": "IBM_TabFormer_synthetic",
+  "source_model_rows": 422088,
+  "source_receipt": {
+    "artifacts": 103,
+    "labels_read": false,
+    "runtime_snapshot_checked": false,
+    "status": "prepared_material_hashes_verified"
+  },
+  "source_release_sha256": "47b2b347f955dfb31e54dad76120cf34deb1b3ffc40e9351151e5fdbdac62698",
+  "status": "source_linkage_and_offline_mcp_verified_NOT_agent_effectiveness",
+  "tests": {
+    "shared_regression": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "141",
+      "time": "129.765",
+      "timestamp": "2026-10-31T13:35:42.280415+08:00",
+      "hostname": "ccm"
+    },
+    "fraud_boundaries": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "15",
+      "time": "14.629",
+      "timestamp": "2026-10-31T13:43:02.469373+08:00",
+      "hostname": "ccm"
+    }
+  },
+  "browser": {
+    "fraud": {
+      "status": "passed",
+      "page_errors": [],
+      "external_requests": [],
+      "checks": [
+        "registered_neural_alert_to_live_mcp_to_review_without_llm",
+        "source_identity_cutoff_score_missing_evidence_visible",
+        "server_rejects_approval_without_explicit_semantic_review",
+        "content_bound_review_and_simulated_ticket_complete"
+      ],
+      "model_calls": 0
+    },
+    "legacy": {
+      "status": "passed",
+      "page_errors": [],
+      "external_requests": [],
+      "checks": [
+        "original_failures_visible_in_real_model_report",
+        "supported_answer_and_open_plan_visible_pending_review_not_auto_approved"
+      ],
+      "model_calls": 0
+    },
+    "disputes": {
+      "status": "passed",
+      "page_errors": [],
+      "external_requests": [],
+      "checks": [
+        "claim_values_next_to_original_lines_and_policy_with_semantic_warning",
+        "server_rejects_approval_without_explicit_semantic_review",
+        "content_bound_review_and_simulated_ticket_complete"
+      ],
+      "model_calls": 0
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-29",
+  "roadmap_stage": 1,
+  "data_kind": "synthetic_development",
+  "independent_evaluation": false,
+  "protocol_changed_after_first_case": true,
+  "controls": {
+    "fixed_all": {
+      "cases": 12,
+      "structured_passed": 12,
+      "tool_attempts": 94
+    },
+    "adaptive_code": {
+      "cases": 12,
+      "structured_passed": 12,
+      "tool_attempts": 62
+    }
+  },
+  "live": {
+    "attempted_cases": 12,
+    "structured_passed": 9,
+    "requests": 61,
+    "estimated_cny": "0.885740",
+    "tool_attempts": 86,
+    "format_repairs": 11,
+    "unknown_cost_requests": 0,
+    "project_total_estimate_cny": "8.838696"
+  },
+  "replay": {
+    "real_model_calls": 0,
+    "rejected_existing_structured_answers": [
+      "case-02",
+      "case-08"
+    ],
+    "original_files_preserved": true
+  },
+  "developer_text_review": {
+    "independent_human_evaluation": false,
+    "case-01": "Failed format; invented currency and settlement scope overstatement.",
+    "case-02": "Incorrect policy precedence.",
+    "case-07": "Narrative overstates repeated-authorization group size.",
+    "case-08": "Incorrect policy precedence.",
+    "case-10": "Treats untrusted attachment instruction as a reason to discredit the merchant claim; not supported by declared policy."
+  },
+  "tests": {
+    "full_suite": {
+      "passed": 797,
+      "warnings": 1,
+      "seconds": 220.14
+    },
+    "later_targeted": {
+      "passed": 34,
+      "scope": "tests/test_multisource.py; includes audit/render/teardown retention additions"
+    }
+  },
+  "browser": {
+    "status": "passed",
+    "checks": [
+      "case_reports_tool_traces_and_expandable_source_evidence",
+      "mobile_layout_no_page_errors_or_external_requests"
+    ],
+    "page_errors": [],
+    "external_requests": []
+  },
+  "limits": [
+    "Local trusted stdio services, no enterprise authentication or OS isolation.",
+    "Six scenario families with two variants each; can be solved by code.",
+    "No demonstrated LLM advantage over deterministic controls.",
+    "Structured rule verifier does not certify all free-text claims.",
+    "Skills, resumable harness, RAG and memory upgrades remain later stages."
+  ],
+  "current_file_sha256": {
+    "app\\investigation\\budget.py": "a7a044a33b5a10ce6cc3fac7899783821efb114dbc81d6b3ca9292bf658ab42f",
+    "app\\investigation\\contracts.py": "59febd145fcaf3fdd812590facdd7ae6dc0e45fa86c228ae0451dcdcc784d095",
+    "app\\investigation\\fixtures.py": "5555c1052e65692f081ec3695398788fd5e238fb816c03f413ef7e602d959538",
+    "app\\investigation\\gateway.py": "aa62b33e340ed17eb1828bd08efc79edea68c89e5a2b4a20383f9fa5b466d67e",
+    "app\\investigation\\mcp_server.py": "6e4821d2d27b8a68777e61d25dfadcfdb5481d74383bb053ae7f344b063ad831",
+    "app\\investigation\\runner.py": "271df5feefdcbe9cb1837670d115fe2179831e73746014552bc03ed6e7b46ead",
+    "app\\investigation\\verifier.py": "13bc44a876ade685276f093058c969eaadb8d0065d94b2afdd0eca5b16a1f0c4",
+    "app\\investigation\\__init__.py": "6f2bd161f7ee7608f427a164025c320134365a62df13b3eaf0fe3c020177eeb7",
+    "app\\cli\\multisource_investigation.py": "443edda8949fc3df11a930cf1d006214d9071321fa33150294a6288bafa2796d",
+    "app\\cli\\audit_multisource.py": "866eabaf1fd6b714073767e86321679ab17aecf40199ebf91faf486e044be0c8",
+    "requirements-investigation.txt": "1d04938a4c26e84636815bbe2305e4923e0dd090c0b6c77e09a73b906a8b908f",
+    "tests\\test_multisource.py": "cf089e60f517bda75b321dd24bc66e74935bdffdca7efe84251b9b9fcea4b7ac"
+  }
+}

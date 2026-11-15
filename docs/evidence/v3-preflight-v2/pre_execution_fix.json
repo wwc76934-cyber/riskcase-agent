@@ -1,0 +1,20 @@
+{
+  "before_first_model_request": true,
+  "failures_retained": [
+    "runs/v3-delivery-pilot-preflight-tests-v1.xml",
+    "runs/v3-preflight-tests-v4.xml"
+  ],
+  "defects": [
+    "Content versus stored-result digest namespace in terminal export recovery",
+    "Task deadline after transport returns even when lease remains valid",
+    "Shared JSON schema TEXT alias polluted payment-ID enum with source handles",
+    "Canonical customer states needed by report not declared to extraction"
+  ],
+  "fixes": [
+    "Use the store digest for stored results",
+    "Recheck deadline after heartbeat shutdown",
+    "Replace mutable schema nodes independently and bind actual payment IDs",
+    "Publish and validate task-specific canonical extraction schema and host report rules"
+  ],
+  "no_old_case_resent": true
+}

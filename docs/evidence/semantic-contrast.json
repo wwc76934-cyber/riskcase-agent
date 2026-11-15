@@ -1,0 +1,44 @@
+{
+  "rules": {
+    "recall": 0.45,
+    "fpr": 0.2,
+    "f1": 0.5454545454545455,
+    "pairs_right": 5,
+    "pairs": 20
+  },
+  "tfidf_lr": {
+    "recall": 0.75,
+    "fpr": 0.05,
+    "f1": 0.8333333333333334,
+    "pairs_right": 14,
+    "pairs": 20
+  },
+  "llm_qw_model": {
+    "recall": 1.0,
+    "fpr": 0.0,
+    "f1": 1.0,
+    "pairs_right": 20,
+    "pairs": 20
+  },
+  "llm_qw_policy": {
+    "recall": 1.0,
+    "fpr": 0.0,
+    "f1": 1.0,
+    "pairs_right": 20,
+    "pairs": 20
+  },
+  "llm_q7_model": {
+    "recall": 0.75,
+    "fpr": 0.0,
+    "f1": 0.8571428571428571,
+    "pairs_right": 15,
+    "pairs": 20
+  },
+  "llm_q7_policy": {
+    "recall": 0.95,
+    "fpr": 0.1,
+    "f1": 0.9268292682926829,
+    "pairs_right": 17,
+    "pairs": 20
+  }
+}

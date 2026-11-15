@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import codecs
+import argparse
 import csv
 from datetime import datetime, timezone
 import hashlib
@@ -19,13 +20,16 @@ from scripts.probe_tabformer import ARCHIVE_SHA256_DECLARED, SOURCE_COMMIT, URL
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, help="New output directory; existing directories are never overwritten")
+    args = parser.parse_args()
     root = Path(__file__).resolve().parents[2]
     source = root / "data/raw/tabformer" / f"{ARCHIVE_SHA256_DECLARED}.tgz"
     if not source.is_file():
         raise FileNotFoundError("Verified local archive required; this command never downloads")
     if source.stat().st_size != ARCHIVE_BYTES or file_sha256(source) != ARCHIVE_SHA256_DECLARED:
         raise ValueError("Archive size/hash mismatch")
-    output = root / "data/profiles" / f"profile-{uuid4().hex[:12]}"
+    output = args.output.resolve() if args.output is not None else root / "data/profiles" / f"profile-{uuid4().hex[:12]}"
     output.mkdir(parents=True, exist_ok=False)
     started = time.monotonic()
     with tarfile.open(source, mode="r|gz") as archive:

@@ -1,0 +1,357 @@
+{
+  "status": "bounded_demo_and_engineering_acceptance_passed_NOT_production_or_independent_generalization",
+  "acceptance": {
+    "batch_id": "7c0a1643b6da41d9930a2681061efc86",
+    "demo_gate_passed": true,
+    "arms": {
+      "all_context": {
+        "demo_gate_passed": true,
+        "n": 6,
+        "passed": 6,
+        "facts_correct": 24,
+        "facts_total": 24,
+        "coverage_cases_passed": true,
+        "policy_pair_passed": true,
+        "human_review_required": true,
+        "first_draft_passed": 6,
+        "draft_review_failures": 0,
+        "requests": 6,
+        "mean_originals": 8.0,
+        "estimated_cny": "0.279988"
+      },
+      "adaptive": {
+        "demo_gate_passed": true,
+        "n": 6,
+        "passed": 6,
+        "facts_correct": 24,
+        "facts_total": 24,
+        "coverage_cases_passed": true,
+        "policy_pair_passed": true,
+        "human_review_required": true,
+        "first_draft_passed": 6,
+        "draft_review_failures": 0,
+        "requests": 30,
+        "mean_originals": 4.0,
+        "estimated_cny": "0.808664"
+      }
+    },
+    "budget_ok": true,
+    "estimated_cny": "1.088652",
+    "original_read_reduction": 0.5,
+    "cost_ratio_adaptive_to_all_context": "2.888209494692629684129319828",
+    "recommendation": "all_context_for_bounded_small_dossiers",
+    "source_comparison": {
+      "fact_originals_unchanged": true,
+      "gold_unchanged": true,
+      "prior_bundle": "runs\\stage5-freeze-v2"
+    },
+    "production_validated": false,
+    "independent_generalization_validated": false,
+    "limitation": "Six author-generated cases already observed during repairs; this gate is a bounded demonstration, not external validation."
+  },
+  "paid_comparison": {
+    "study": "six_author_generated_observed_cases_NOT_external_holdout",
+    "batches": [
+      {
+        "directory": "runs\\stage5-live-v2",
+        "strategies": {
+          "all_context": {
+            "n": 6,
+            "first_draft_passed": 0,
+            "final_passed": 0,
+            "facts_correct": 24,
+            "facts_total": 24,
+            "grounded_claims": 9,
+            "decision_correct": 5,
+            "rule_pair_correct": true,
+            "unsafe_coverage_closure_proposals": [],
+            "host_states": {
+              "awaiting_review": 6
+            },
+            "mean_distinct_originals": 8.0,
+            "mean_seconds": 20.908833333333334,
+            "policy_queries": 6,
+            "requests": 6,
+            "estimated_cny": "0.212064",
+            "tokens": {
+              "prompt_tokens": 19613,
+              "completion_tokens": 1970
+            },
+            "drafts_with_host_issues": 0,
+            "attack_text_exposed_cases": [
+              "raw-11"
+            ]
+          },
+          "adaptive": {
+            "n": 6,
+            "first_draft_passed": 0,
+            "final_passed": 0,
+            "facts_correct": 0,
+            "facts_total": 24,
+            "grounded_claims": 0,
+            "decision_correct": 0,
+            "rule_pair_correct": false,
+            "unsafe_coverage_closure_proposals": [],
+            "host_states": {
+              "blocked": 6
+            },
+            "mean_distinct_originals": 6.0,
+            "mean_seconds": 25.64816666666667,
+            "policy_queries": 7,
+            "requests": 25,
+            "estimated_cny": "0.594468",
+            "tokens": {
+              "prompt_tokens": 69188,
+              "completion_tokens": 1463
+            },
+            "drafts_with_host_issues": 0,
+            "attack_text_exposed_cases": [
+              "raw-11"
+            ]
+          }
+        },
+        "results_sha256": "42937b36c81db7c3bd445b9dcde08b5fefcfce2c28a26b0ef2194be0355bc5d4"
+      },
+      {
+        "directory": "runs\\stage5-live-v3",
+        "strategies": {
+          "all_context": {
+            "n": 6,
+            "first_draft_passed": 4,
+            "final_passed": 4,
+            "facts_correct": 24,
+            "facts_total": 24,
+            "grounded_claims": 22,
+            "decision_correct": 5,
+            "rule_pair_correct": true,
+            "unsafe_coverage_closure_proposals": [],
+            "host_states": {
+              "awaiting_review": 5,
+              "failed": 1
+            },
+            "mean_distinct_originals": 8.0,
+            "mean_seconds": 21.564833333333336,
+            "policy_queries": 6,
+            "requests": 6,
+            "estimated_cny": "0.248308",
+            "tokens": {
+              "prompt_tokens": 22873,
+              "completion_tokens": 2333
+            },
+            "drafts_with_host_issues": 0,
+            "attack_text_exposed_cases": [
+              "raw-11"
+            ]
+          },
+          "adaptive": {
+            "n": 6,
+            "first_draft_passed": 4,
+            "final_passed": 4,
+            "facts_correct": 24,
+            "facts_total": 24,
+            "grounded_claims": 22,
+            "decision_correct": 5,
+            "rule_pair_correct": true,
+            "unsafe_coverage_closure_proposals": [],
+            "host_states": {
+              "awaiting_review": 5,
+              "failed": 1
+            },
+            "mean_distinct_originals": 4.0,
+            "mean_seconds": 35.844,
+            "policy_queries": 6,
+            "requests": 31,
+            "estimated_cny": "0.761796",
+            "tokens": {
+              "prompt_tokens": 84189,
+              "completion_tokens": 3153
+            },
+            "drafts_with_host_issues": 0,
+            "attack_text_exposed_cases": []
+          }
+        },
+        "results_sha256": "061755972441057a47b686bb0c73f78851f50d66f8fd237174c80a87458c3322"
+      },
+      {
+        "directory": "runs\\stage5-live-v4",
+        "strategies": {
+          "all_context": {
+            "n": 6,
+            "first_draft_passed": 6,
+            "final_passed": 6,
+            "facts_correct": 24,
+            "facts_total": 24,
+            "grounded_claims": 24,
+            "decision_correct": 6,
+            "rule_pair_correct": true,
+            "unsafe_coverage_closure_proposals": [],
+            "host_states": {
+              "awaiting_review": 6
+            },
+            "mean_distinct_originals": 8.0,
+            "mean_seconds": 24.03633333333333,
+            "policy_queries": 6,
+            "requests": 6,
+            "estimated_cny": "0.279988",
+            "tokens": {
+              "prompt_tokens": 26840,
+              "completion_tokens": 2331
+            },
+            "drafts_with_host_issues": 0,
+            "attack_text_exposed_cases": [
+              "raw-11"
+            ]
+          },
+          "adaptive": {
+            "n": 6,
+            "first_draft_passed": 6,
+            "final_passed": 6,
+            "facts_correct": 24,
+            "facts_total": 24,
+            "grounded_claims": 24,
+            "decision_correct": 6,
+            "rule_pair_correct": true,
+            "unsafe_coverage_closure_proposals": [],
+            "host_states": {
+              "awaiting_review": 6
+            },
+            "mean_distinct_originals": 4.0,
+            "mean_seconds": 37.22933333333334,
+            "policy_queries": 6,
+            "requests": 30,
+            "estimated_cny": "0.808664",
+            "tokens": {
+              "prompt_tokens": 90443,
+              "completion_tokens": 3040
+            },
+            "drafts_with_host_issues": 0,
+            "attack_text_exposed_cases": []
+          }
+        },
+        "results_sha256": "64c4958c882e3303d71319ddf43d91f8dda0a0a20d75d996b8b384501f4fc81f"
+      }
+    ],
+    "caveats": [
+      "No measured human time savings",
+      "Source-role and policy metadata are host-owned inputs, not precomputed case answers",
+      "Final correctness is distinct from citation presence; identical facts and gold do not make repeated tests independent"
+    ]
+  },
+  "batch_costs": [
+    {
+      "batch_id": "9b2441b991f84c12a696a73fc7427209",
+      "runs": 12,
+      "requests": 31,
+      "estimated_cny": "0.806532",
+      "project_estimated_cny": "10.949564",
+      "unknown_cost_requests": 0
+    },
+    {
+      "batch_id": "211803ab9c094a1d9c727fbaaac11073",
+      "runs": 12,
+      "requests": 37,
+      "estimated_cny": "1.010104",
+      "project_estimated_cny": "11.959668",
+      "unknown_cost_requests": 0
+    },
+    {
+      "batch_id": "7c0a1643b6da41d9930a2681061efc86",
+      "runs": 12,
+      "requests": 36,
+      "estimated_cny": "1.088652",
+      "project_estimated_cny": "13.048320",
+      "unknown_cost_requests": 0
+    }
+  ],
+  "phase_estimated_cny": "2.905288",
+  "project_estimated_cny": "13.048320",
+  "phase_real_requests": 104,
+  "distinct_evaluated_cases": 6,
+  "case_runs": 36,
+  "tests": {
+    "v3_full": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "861",
+      "time": "450.782",
+      "timestamp": "2026-10-30T16:10:59.486600+08:00",
+      "hostname": "ccm"
+    },
+    "v4_targeted": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "54",
+      "time": "186.632",
+      "timestamp": "2026-10-30T16:29:36.737767+08:00",
+      "hostname": "ccm"
+    },
+    "delivery_targeted": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "61",
+      "time": "181.857",
+      "timestamp": "2026-10-30T17:52:04.345030+08:00",
+      "hostname": "ccm"
+    }
+  },
+  "browser": {
+    "final_raw": {
+      "status": "passed",
+      "page_errors": [],
+      "external_requests": [],
+      "checks": [
+        "claim_values_next_to_original_lines_and_policy_with_semantic_warning",
+        "server_rejects_approval_without_explicit_semantic_review",
+        "content_bound_review_and_simulated_ticket_complete"
+      ],
+      "model_calls": 0
+    },
+    "legacy": {
+      "status": "passed",
+      "page_errors": [],
+      "external_requests": [],
+      "checks": [
+        "original_failures_visible_in_real_model_report",
+        "supported_answer_and_open_plan_visible_pending_review_not_auto_approved"
+      ],
+      "model_calls": 0
+    },
+    "report": {
+      "status": "passed",
+      "page_errors": [],
+      "external_requests": [],
+      "model_calls": 0,
+      "cases": 12
+    }
+  },
+  "original_files_verified": {
+    "v2": 167,
+    "v3": 183,
+    "v4": 183
+  },
+  "portable_evidence_files": 26,
+  "product_prepare_check": {
+    "initial_state": "queued",
+    "final_state": "cancelled",
+    "request_files": 0,
+    "execution_policy_created": false,
+    "reason": "Agent-created prepare-only smoke example; not an authorized paid case"
+  },
+  "recorder_refactor": {
+    "recording_class_ast_identical_to_paid_v4": true,
+    "new_product_has_no_evaluator_import": true
+  },
+  "limitations": [
+    "Observed synthetic six-case regression, not independent validation",
+    "No human time or production ROI measured",
+    "Dynamic cost exceeds one-call baseline",
+    "No feedback used in final real batch; fault-tested only",
+    "Raw path does not demonstrate cross-case memory benefit"
+  ]
+}

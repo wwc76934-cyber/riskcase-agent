@@ -1,0 +1,262 @@
+{
+  "probe_phase_jobs": 36,
+  "probe_requests": 72,
+  "external_model_requests": 0,
+  "model_phase_jobs": 0,
+  "business_quality_scored": false,
+  "trial_authorized": false,
+  "runs": [
+    {
+      "case_id": "v3-10476d72a749a8ba01",
+      "repeat": 1,
+      "stage": 0,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-10476d72a749a8ba01",
+      "repeat": 1,
+      "stage": 1,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-10476d72a749a8ba01",
+      "repeat": 1,
+      "stage": 2,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-10476d72a749a8ba01",
+      "repeat": 2,
+      "stage": 0,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-10476d72a749a8ba01",
+      "repeat": 2,
+      "stage": 1,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-10476d72a749a8ba01",
+      "repeat": 2,
+      "stage": 2,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-4095bca60f79290cae",
+      "repeat": 1,
+      "stage": 0,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-4095bca60f79290cae",
+      "repeat": 1,
+      "stage": 1,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-4095bca60f79290cae",
+      "repeat": 1,
+      "stage": 2,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-4095bca60f79290cae",
+      "repeat": 2,
+      "stage": 0,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-4095bca60f79290cae",
+      "repeat": 2,
+      "stage": 1,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-4095bca60f79290cae",
+      "repeat": 2,
+      "stage": 2,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-0f8ad5c54ab33e3b99",
+      "repeat": 1,
+      "stage": 0,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-0f8ad5c54ab33e3b99",
+      "repeat": 1,
+      "stage": 1,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-0f8ad5c54ab33e3b99",
+      "repeat": 1,
+      "stage": 2,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-0f8ad5c54ab33e3b99",
+      "repeat": 2,
+      "stage": 0,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-0f8ad5c54ab33e3b99",
+      "repeat": 2,
+      "stage": 1,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-0f8ad5c54ab33e3b99",
+      "repeat": 2,
+      "stage": 2,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-0996e2e3733092caed",
+      "repeat": 1,
+      "stage": 0,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-0996e2e3733092caed",
+      "repeat": 1,
+      "stage": 1,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-0996e2e3733092caed",
+      "repeat": 1,
+      "stage": 2,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-0996e2e3733092caed",
+      "repeat": 2,
+      "stage": 0,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-0996e2e3733092caed",
+      "repeat": 2,
+      "stage": 1,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-0996e2e3733092caed",
+      "repeat": 2,
+      "stage": 2,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-6d35eb9f74124bfa57",
+      "repeat": 1,
+      "stage": 0,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-6d35eb9f74124bfa57",
+      "repeat": 1,
+      "stage": 1,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-6d35eb9f74124bfa57",
+      "repeat": 1,
+      "stage": 2,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-6d35eb9f74124bfa57",
+      "repeat": 2,
+      "stage": 0,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-6d35eb9f74124bfa57",
+      "repeat": 2,
+      "stage": 1,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-6d35eb9f74124bfa57",
+      "repeat": 2,
+      "stage": 2,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-696b84e092d689a014",
+      "repeat": 1,
+      "stage": 0,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-696b84e092d689a014",
+      "repeat": 1,
+      "stage": 1,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-696b84e092d689a014",
+      "repeat": 1,
+      "stage": 2,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-696b84e092d689a014",
+      "repeat": 2,
+      "stage": 0,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-696b84e092d689a014",
+      "repeat": 2,
+      "stage": 1,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    },
+    {
+      "case_id": "v3-696b84e092d689a014",
+      "repeat": 2,
+      "stage": 2,
+      "execution_kind": "offline_protocol_probe",
+      "probe_requests": 2
+    }
+  ]
+}

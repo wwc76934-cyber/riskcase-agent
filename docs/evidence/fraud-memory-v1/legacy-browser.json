@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "page_errors": [],
+  "external_requests": [],
+  "checks": [
+    "unsafe_precedence_candidate_rejected_by_task_decisions",
+    "reviewed_revision_published_existing_task_still_release_0",
+    "new_task_consumes_frozen_D_and_M_advisory_context_with_E_fact_conclusion",
+    "rollback_removes_future_memory_preserves_old_task_snapshot"
+  ]
+}

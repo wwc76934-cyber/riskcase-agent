@@ -1,0 +1,21 @@
+{
+  "memory": {
+    "lesson": {
+      "content_hash": "c53a90723426e9c68cf16adb31191bd0598c662064556c93a6174207b58d0473",
+      "expires_at": 1795871652.4500792,
+      "order": [
+        "coverage",
+        "settlement",
+        "merchant"
+      ],
+      "text": "合成研究规程的调查优先级；按顺序选择首个适用分支：\n1. 先检查历史覆盖；历史不完整即 insufficient_evidence，不能被其他解释覆盖。\n2. 若重复授权，独立对账不完整即 insufficient_evidence；完整且一笔扣款为 duplicate_record，多笔为 needs_review。\n3. 若商户提出业务变化，独立处置 confirmed 为 normal_change，denied 为 needs_review，缺失为 insufficient_evidence。\n仅提供调查方法，不提供本案事实；结论仍须引用本案 E 证据。"
+    },
+    "release": 3,
+    "release_hash": "0cb55229cda546a494ce9b2abd04fa3990f3852aac59c22d392dbdfed3218c4c"
+  },
+  "provenance": {
+    "source": "runs\\rag-stage3-live-01\\frozen-inputs.json",
+    "sha256": "2693ef85628cc311e7a68468710c869c5722d17824c67a973c5e9d0e2f706e3c",
+    "review": "stage3 automated demonstration of review, not independent human approval"
+  }
+}

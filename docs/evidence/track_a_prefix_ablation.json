@@ -1,0 +1,68 @@
+{
+  "model": "Qwen/Qwen3-Embedding-0.6B",
+  "rows": 1916,
+  "api_vs_saved_mean_row_cosine": 0.999959409236908,
+  "tables": [
+    {
+      "name": "prefixed",
+      "rows": 1916,
+      "dims": 1024,
+      "mean_pairwise_cosine": 0.6895431794976081,
+      "std_pairwise_cosine": 0.0643350060996289,
+      "mean_pairwise_cosine_after_centering": -0.0003238749145386065,
+      "std_pairwise_cosine_after_centering": 0.16343509551585167,
+      "mean_vector_norm_share": 0.6897052133395709,
+      "top1_share": 0.09914009412530964,
+      "top5_share": 0.28935188488061525,
+      "effective_rank": 95.23810914465345,
+      "participation_ratio": 37.92540594791513
+    },
+    {
+      "name": "ops_only",
+      "rows": 1916,
+      "dims": 1024,
+      "mean_pairwise_cosine": 0.6083068187124141,
+      "std_pairwise_cosine": 0.08499260404369023,
+      "mean_pairwise_cosine_after_centering": -0.00015437681451523533,
+      "std_pairwise_cosine_after_centering": 0.14926885736073872,
+      "mean_vector_norm_share": 0.608511251523406,
+      "top1_share": 0.08724342561625958,
+      "top5_share": 0.25348857950813974,
+      "effective_rank": 119.05654558831426,
+      "participation_ratio": 46.85794500664699
+    },
+    {
+      "name": "path_only",
+      "rows": 1916,
+      "dims": 1024,
+      "mean_pairwise_cosine": 0.5952721142463467,
+      "std_pairwise_cosine": 0.07546078768724422,
+      "mean_pairwise_cosine_after_centering": -0.00034740891594853637,
+      "std_pairwise_cosine_after_centering": 0.14609853125714684,
+      "mean_vector_norm_share": 0.5954833501393538,
+      "top1_share": 0.08630591183858402,
+      "top5_share": 0.25186830667618487,
+      "effective_rank": 120.5897039204091,
+      "participation_ratio": 47.225945512417304
+    },
+    {
+      "name": "saved_local_table",
+      "rows": 1916,
+      "dims": 1024,
+      "mean_pairwise_cosine": 0.6891606693306288,
+      "std_pairwise_cosine": 0.06437212619114482,
+      "mean_pairwise_cosine_after_centering": -0.0003961903754365608,
+      "std_pairwise_cosine_after_centering": 0.1645762796964237,
+      "mean_vector_norm_share": 0.6881852689949888,
+      "top1_share": 0.1067809464291801,
+      "top5_share": 0.3017175000535872,
+      "effective_rank": 91.88047491329046,
+      "participation_ratio": 35.457007173501765
+    }
+  ],
+  "example_texts": {
+    "prefixed": "Banking API operation. Namespace: ACCOUNTS. Operation: ACCOUNTS_FULL_EXCHANGE. Original endpoint: /ACCOUNTS/ACCOUNTS_FULL_EXCHANGE.",
+    "ops_only": "ACCOUNTS ACCOUNTS_FULL_EXCHANGE",
+    "path_only": "/ACCOUNTS/ACCOUNTS_FULL_EXCHANGE"
+  }
+}

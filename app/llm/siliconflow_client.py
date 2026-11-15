@@ -1,6 +1,6 @@
 """Bounded SiliconFlow HTTP client with sanitized usage audit and no retries."""
 
-from decimal import Decimal
+from decimal import Decimal,InvalidOperation
 import json
 import time
 from uuid import uuid4
@@ -13,25 +13,36 @@ from app.llm.glm_client import GLMClient, LLMError, ProtocolError
 
 ENDPOINT = "https://api.siliconflow.cn/v1/chat/completions"
 MODEL = "Pro/zai-org/GLM-5.1"
+WORLD_MODEL = "zai-org/GLM-5.3-Flash"
 
 
-def validate_policy(policy):
-    if policy["endpoint"] != ENDPOINT or policy["model"] != MODEL:
-        raise ValueError("First live experiment is bound to the declared SiliconFlow endpoint/model")
-    for key, lower, upper in (("max_requests",1,6),("max_tokens",1,1024),("thinking_budget",128,128),
-        ("max_input_bytes",1000,40000),("max_response_bytes",1000,524288),
-        ("request_timeout_seconds",1,45),("run_deadline_seconds",1,180),("token_overhead_reserve",4096,4096)):
+def validate_policy(policy,*,authorized_project_limit=None):
+    if type(policy.get('version')) is not int or policy['version'] not in (1,2):raise ValueError('Unknown experiment policy version')
+    world=policy.get('version')==2
+    if policy["endpoint"] != ENDPOINT or policy["model"] != (WORLD_MODEL if world else MODEL):
+        raise ValueError("Experiment is bound to the declared SiliconFlow endpoint/model")
+    for key, lower, upper in (("max_requests",1,6),("max_tokens",1,4096 if world else 1024),("thinking_budget",128,128),
+        ("max_input_bytes",1000,180000 if world else 40000),("max_response_bytes",1000,524288),
+        ("request_timeout_seconds",1,90 if world else 45),("run_deadline_seconds",1,480 if world else 180),("token_overhead_reserve",4096,4096)):
         if type(policy[key]) is not int or not lower <= policy[key] <= upper:
             raise ValueError(f"Invalid bounded policy: {key}")
     if policy["enable_thinking"] is not False or policy["automatic_retries"] != 0:
         raise ValueError("First experiment disables thinking and automatic retries")
     run, project = Decimal(policy["run_budget_cny"]), Decimal(policy["project_budget_cny"])
-    if not run.is_finite() or not project.is_finite() or not 0 < run <= 1 or not run <= project <= 20:
+    ceiling=Decimal(28 if world else 20)
+    if authorized_project_limit is not None:
+        if not world:raise ValueError('Legacy version-one limits cannot be overridden')
+        try:ceiling=Decimal(str(authorized_project_limit))
+        except (InvalidOperation,ValueError,TypeError):raise ValueError('Numeric ledger-validated project authority required') from None
+        if not ceiling.is_finite() or ceiling<=0:raise ValueError('Finite ledger-validated project authority required')
+    if not run.is_finite() or not project.is_finite() or not 0 < run <= 1 or not run <= project <= ceiling:
         raise ValueError("Budget exceeds current authorization")
     for key in ("input_rate_cny_per_million", "output_rate_cny_per_million"):
         rate = Decimal(policy[key])
         if not rate.is_finite() or rate <= 0:
             raise ValueError("Positive finite pricing snapshot required")
+        if world and rate<Decimal('0.80' if key=='input_rate_cny_per_million' else '2.80'):
+            raise ValueError('World pricing cannot undercut the frozen official snapshot')
 
 
 def usage_counts(data):
@@ -56,12 +67,19 @@ def usage_counts(data):
 
 class SiliconFlowClient(GLMClient):
     def __init__(self, api_key, *, policy, ledger, run_id, http_client=None, clock=time.monotonic):
-        validate_policy(policy)
+        # Only a host-supplied ledger can attest a separately validated grant.
+        # Transport still reserves every request atomically through that ledger;
+        # model messages and tool results cannot select a ceiling or grant.
+        authority=getattr(ledger,'validated_project_limit',None) if policy.get('version')==2 else None
+        limit=authority(run_id) if callable(authority) else None
+        if callable(authority) and limit is None:raise ValueError('Explicit ledger authority was not validated')
+        validate_policy(policy,authorized_project_limit=limit)
         if not isinstance(api_key,str) or len(api_key.strip()) < 8 or any(char.isspace() for char in api_key):
             raise ValueError("Valid local API credential required; never print it")
         super().__init__(api_key, policy["model"], base_url=policy["endpoint"])
         self.policy, self.ledger, self.run_id, self.clock = dict(policy), ledger, run_id, clock
         self.started, self.sent_requests, self.audit, self.last_error_code = clock(), 0, [], None
+        self.last_response_capture = None
         self._owned_http = http_client is None
         self.http = http_client or httpx.Client(transport=httpx.HTTPTransport(retries=0),follow_redirects=False)
 
@@ -82,14 +100,24 @@ class SiliconFlowClient(GLMClient):
         return (Decimal(prompt)*Decimal(self.policy["input_rate_cny_per_million"])
             +Decimal(completion)*Decimal(self.policy["output_rate_cny_per_million"]))/Decimal(1000000)
 
+    def request_payload(self, messages, tools=None):
+        """Host extension point; chat meters the complete returned wire payload."""
+        payload = {"model":self.model,"messages":messages,"tools":tools or [],"stream":False,
+            "max_tokens":self.policy["max_tokens"],"enable_thinking":False,
+            "thinking_budget":self.policy["thinking_budget"],"temperature":self.policy["temperature"],"n":1}
+        if self.policy.get('version')==2 and not tools:payload['response_format']={'type':'json_object'}
+        return payload
+
+    def _capture_rejection(self, response, entry):
+        """Optional provider diagnostics. The default leaves error bodies unread."""
+
     def chat(self, messages, tools=None):
+        self.last_response_capture = None
         remaining = self.policy["run_deadline_seconds"]-(self.clock()-self.started)
         if remaining <= 0:
             self.last_error_code = "run_deadline"
             raise BudgetExceeded(self.last_error_code)
-        payload = {"model":self.model,"messages":messages,"tools":tools or [],"stream":False,
-            "max_tokens":self.policy["max_tokens"],"enable_thinking":False,
-            "thinking_budget":self.policy["thinking_budget"],"temperature":self.policy["temperature"],"n":1}
+        payload = self.request_payload(messages, tools)
         encoded = json.dumps(payload,ensure_ascii=False,allow_nan=False).encode("utf-8")
         if self.api_key in encoded.decode("utf-8"):
             self.last_error_code = "credential_in_payload"
@@ -117,6 +145,7 @@ class SiliconFlowClient(GLMClient):
                 timeout=timeout,follow_redirects=False) as response:
                 entry["http_status"] = response.status_code
                 if response.status_code != 200:
+                    self._capture_rejection(response, entry)
                     raise LLMError(f"http_{response.status_code}")
                 for chunk in response.iter_bytes():
                     size += len(chunk)
@@ -128,6 +157,14 @@ class SiliconFlowClient(GLMClient):
             data = json.loads(b"".join(chunks))
             if not isinstance(data,dict):
                 raise ProtocolError("response_object_required")
+            choices=data.get('choices',[])
+            choice=choices[0] if isinstance(choices,list) and choices and isinstance(choices[0],dict) else {}
+            outward=choice.get('message',{})
+            self.last_response_capture=self.scrub(dict(id=data.get('id'),model=data.get('model'),usage=data.get('usage'),
+                message={k:outward[k] for k in ('role','content','tool_calls') if isinstance(outward,dict) and k in outward},
+                finish_reason=choice.get('finish_reason'),reasoning_text_omitted=True))
+            if self.policy.get('version')==2 and data.get('model')!=self.model:
+                raise ProtocolError('returned_model_changed_unknown_pricing')
             counts = usage_counts(data)
             estimate = self.estimated_cost(counts["prompt_tokens"],counts["completion_tokens"])
             self.ledger.settle(identity,estimate=estimate,usage=counts)
@@ -137,8 +174,13 @@ class SiliconFlowClient(GLMClient):
                 returned_model=self.scrub(str(data.get("model","unknown")))[:128])
             if counts["completion_tokens"] > self.policy["max_tokens"]+self.policy["thinking_budget"]:
                 raise ProtocolError("reported_output_exceeds_requested_budget")
-            if counts.get("reasoning_tokens",0) > self.policy["thinking_budget"]:
+            if self.policy.get('version')!=2 and counts.get("reasoning_tokens",0) > self.policy["thinking_budget"]:
                 raise ProtocolError("unexpected_reasoning_usage")
+            if self.policy.get('version')==2 and counts.get('reasoning_tokens',0):
+                # Advisory thinking controls are not a provider-enforced cap.
+                # usage_counts already verifies reasoning is INCLUDED in completion.
+                # The total output/reservation/financial guards above still apply.
+                entry['provider_reported_reasoning_despite_disable']=True
             if estimate > reservation:
                 raise BudgetExceeded("usage_exceeded_heuristic_reservation")
             message = super()._extract_message(data)

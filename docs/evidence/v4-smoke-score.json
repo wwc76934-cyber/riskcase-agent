@@ -1,0 +1,2665 @@
+{
+  "runs": [
+    {
+      "blocked": false,
+      "case_id": "v3-61c06cfcef6c73f22e",
+      "label": "B1S",
+      "run_cny": "0.087270",
+      "stages": [
+        {
+          "credits_full_sweep": 0,
+          "credits_used": 0,
+          "delivered": true,
+          "elapsed_seconds": 16.020616,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "added": "request_customer_evidence",
+                "field": "recommendations"
+              },
+              {
+                "added": "verify_contact_channel",
+                "field": "recommendations"
+              },
+              {
+                "added": "request_missing_window",
+                "field": "recommendations"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review",
+                "request_customer_evidence",
+                "verify_contact_channel",
+                "request_missing_window"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "state_used": "unresolved"
+          },
+          "guarded": {
+            "benign_extra_actions": [
+              "request_customer_evidence",
+              "request_missing_window",
+              "verify_contact_channel"
+            ],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 0.4,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 58.0,
+            "unsafe_actions": []
+          },
+          "planning": null,
+          "raw": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": true,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 70.0,
+            "unsafe_actions": []
+          },
+          "stage": 0
+        },
+        {
+          "credits_full_sweep": 0,
+          "credits_used": 0,
+          "delivered": true,
+          "elapsed_seconds": 26.11204,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "stop_reason",
+                "from_": "sufficient_for_human_review",
+                "to": "unavailable_evidence"
+              },
+              {
+                "field": "recommendations",
+                "moved_to_advisory": "request_customer_evidence"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "request_customer_evidence"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "state_used": "unresolved"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": false,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 0.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 40.0,
+            "unsafe_actions": []
+          },
+          "planning": null,
+          "raw": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": false,
+              "stop_reason_accepted": false,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 0.0
+            },
+            "quality_score": 50.0,
+            "unsafe_actions": []
+          },
+          "stage": 1
+        },
+        {
+          "credits_full_sweep": 0,
+          "credits_used": 0,
+          "delivered": true,
+          "elapsed_seconds": 30.647632,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "proposed_disposition",
+                "from_": "escalate_for_review",
+                "to": "source_question_resolved"
+              },
+              {
+                "field": "recommendations",
+                "moved_to_advisory": "request_customer_evidence"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "source_question_resolved",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "request_customer_evidence"
+              ],
+              "proposed_disposition": "escalate_for_review",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "state_used": "denied"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": true,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 70.0,
+            "unsafe_actions": []
+          },
+          "planning": null,
+          "raw": {
+            "benign_extra_actions": [
+              "request_customer_evidence"
+            ],
+            "business_safe_pass": false,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": false,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 0.6667,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 63.33,
+            "unsafe_actions": []
+          },
+          "stage": 2
+        }
+      ]
+    },
+    {
+      "blocked": false,
+      "case_id": "v3-61c06cfcef6c73f22e",
+      "label": "B2V4",
+      "run_cny": "0.143928",
+      "stages": [
+        {
+          "credits_full_sweep": 0,
+          "credits_used": 0,
+          "delivered": true,
+          "elapsed_seconds": 47.824661,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "recommendations",
+                "moved_to_advisory": "request_customer_evidence"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "request_customer_evidence"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "state_used": "unresolved"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": true,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 70.0,
+            "unsafe_actions": []
+          },
+          "planning": {
+            "credits": 0,
+            "feedback_driven_turns": 0,
+            "premature_blocked": 0,
+            "sources_read": 2
+          },
+          "raw": {
+            "benign_extra_actions": [
+              "request_customer_evidence"
+            ],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 0.6667,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 63.33,
+            "unsafe_actions": []
+          },
+          "stage": 0
+        },
+        {
+          "credits_full_sweep": 0,
+          "credits_used": 0,
+          "delivered": true,
+          "elapsed_seconds": 40.619207,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "proposed_disposition",
+                "from_": "escalate_for_review",
+                "to": "continue_collection"
+              },
+              {
+                "field": "stop_reason",
+                "from_": "sufficient_for_human_review",
+                "to": "unavailable_evidence"
+              },
+              {
+                "field": "recommendations",
+                "moved_to_advisory": "request_customer_evidence"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "request_customer_evidence"
+              ],
+              "proposed_disposition": "escalate_for_review",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "state_used": "unresolved"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": false,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 0.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 40.0,
+            "unsafe_actions": []
+          },
+          "planning": {
+            "credits": 0,
+            "feedback_driven_turns": 0,
+            "premature_blocked": 0,
+            "sources_read": 1
+          },
+          "raw": {
+            "benign_extra_actions": [],
+            "business_safe_pass": false,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": false,
+              "stop_reason_accepted": false,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": false,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 0.0
+            },
+            "quality_score": 50.0,
+            "unsafe_actions": []
+          },
+          "stage": 1
+        },
+        {
+          "credits_full_sweep": 0,
+          "credits_used": 0,
+          "delivered": true,
+          "elapsed_seconds": 52.974651,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "proposed_disposition",
+                "from_": "escalate_for_review",
+                "to": "source_question_resolved"
+              },
+              {
+                "added": "verify_contact_channel",
+                "field": "recommendations"
+              },
+              {
+                "added": "request_missing_window",
+                "field": "recommendations"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review",
+                "request_customer_evidence",
+                "verify_contact_channel",
+                "request_missing_window"
+              ],
+              "proposed_disposition": "source_question_resolved",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "request_customer_evidence"
+              ],
+              "proposed_disposition": "escalate_for_review",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "state_used": "denied"
+          },
+          "guarded": {
+            "benign_extra_actions": [
+              "request_customer_evidence",
+              "request_missing_window",
+              "verify_contact_channel"
+            ],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 0.4,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 58.0,
+            "unsafe_actions": []
+          },
+          "planning": {
+            "credits": 0,
+            "feedback_driven_turns": 0,
+            "premature_blocked": 0,
+            "sources_read": 1
+          },
+          "raw": {
+            "benign_extra_actions": [
+              "request_customer_evidence"
+            ],
+            "business_safe_pass": false,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": false,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 0.6667,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 63.33,
+            "unsafe_actions": []
+          },
+          "stage": 2
+        }
+      ]
+    },
+    {
+      "blocked": false,
+      "case_id": "v3-61c06cfcef6c73f22e",
+      "label": "B4N",
+      "run_cny": "0.104985",
+      "stages": [
+        {
+          "credits_full_sweep": 0,
+          "credits_used": 0,
+          "delivered": true,
+          "elapsed_seconds": 31.705688,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "added": "verify_contact_channel",
+                "field": "recommendations"
+              },
+              {
+                "added": "request_missing_window",
+                "field": "recommendations"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review",
+                "request_customer_evidence",
+                "verify_contact_channel",
+                "request_missing_window"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "request_customer_evidence"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "state_used": "unresolved"
+          },
+          "guarded": {
+            "benign_extra_actions": [
+              "request_customer_evidence",
+              "request_missing_window",
+              "verify_contact_channel"
+            ],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 0.4,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 58.0,
+            "unsafe_actions": []
+          },
+          "planning": null,
+          "raw": {
+            "benign_extra_actions": [
+              "request_customer_evidence"
+            ],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 0.6667,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 63.33,
+            "unsafe_actions": []
+          },
+          "stage": 0
+        },
+        {
+          "credits_full_sweep": 0,
+          "credits_used": 0,
+          "delivered": true,
+          "elapsed_seconds": 16.856617,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "added": "verify_contact_channel",
+                "field": "recommendations"
+              },
+              {
+                "added": "request_missing_window",
+                "field": "recommendations"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review",
+                "request_customer_evidence",
+                "verify_contact_channel",
+                "request_missing_window"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "request_customer_evidence"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "state_used": "unresolved"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": true,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 70.0,
+            "unsafe_actions": []
+          },
+          "planning": null,
+          "raw": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": true,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 70.0,
+            "unsafe_actions": []
+          },
+          "stage": 1
+        },
+        {
+          "credits_full_sweep": 0,
+          "credits_used": 0,
+          "delivered": true,
+          "elapsed_seconds": 27.347382,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "proposed_disposition",
+                "from_": "escalate_for_review",
+                "to": "source_question_resolved"
+              },
+              {
+                "field": "recommendations",
+                "moved_to_advisory": "request_customer_evidence"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "source_question_resolved",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "request_customer_evidence"
+              ],
+              "proposed_disposition": "escalate_for_review",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "state_used": "denied"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": false,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": false,
+              "gate_mandatory_evidence_covered": false,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 70.0,
+            "unsafe_actions": []
+          },
+          "planning": null,
+          "raw": {
+            "benign_extra_actions": [
+              "request_customer_evidence"
+            ],
+            "business_safe_pass": false,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": false,
+              "gate_mandatory_evidence_covered": false,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 0.6667,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 63.33,
+            "unsafe_actions": []
+          },
+          "stage": 2
+        }
+      ]
+    },
+    {
+      "blocked": false,
+      "case_id": "v3-7df9b4d85f6fb7f61b",
+      "label": "B1S",
+      "run_cny": "0.091296",
+      "stages": [
+        {
+          "credits_full_sweep": 0,
+          "credits_used": 0,
+          "delivered": true,
+          "elapsed_seconds": 27.767184,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "recommendations",
+                "moved_to_advisory": "request_customer_evidence"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "request_customer_evidence"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "state_used": "unresolved"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": true,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 70.0,
+            "unsafe_actions": []
+          },
+          "planning": null,
+          "raw": {
+            "benign_extra_actions": [
+              "request_customer_evidence"
+            ],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 0.6667,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 63.33,
+            "unsafe_actions": []
+          },
+          "stage": 0
+        },
+        {
+          "credits_full_sweep": 0,
+          "credits_used": 0,
+          "delivered": true,
+          "elapsed_seconds": 39.387505,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "stop_reason",
+                "from_": "sufficient_for_human_review",
+                "to": "unavailable_evidence"
+              },
+              {
+                "field": "recommendations",
+                "moved_to_advisory": "request_customer_evidence"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "request_customer_evidence"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "state_used": "unresolved"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": false,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 0.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 40.0,
+            "unsafe_actions": []
+          },
+          "planning": null,
+          "raw": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": false,
+              "stop_reason_accepted": false,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 0.0
+            },
+            "quality_score": 50.0,
+            "unsafe_actions": []
+          },
+          "stage": 1
+        },
+        {
+          "credits_full_sweep": 0,
+          "credits_used": 0,
+          "delivered": true,
+          "elapsed_seconds": 34.093639,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "proposed_disposition",
+                "from_": "escalate_for_review",
+                "to": "source_question_resolved"
+              },
+              {
+                "field": "recommendations",
+                "moved_to_advisory": "verify_contact_channel"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "source_question_resolved",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "verify_contact_channel"
+              ],
+              "proposed_disposition": "escalate_for_review",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "state_used": "denied"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": true,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 70.0,
+            "unsafe_actions": []
+          },
+          "planning": null,
+          "raw": {
+            "benign_extra_actions": [
+              "verify_contact_channel"
+            ],
+            "business_safe_pass": false,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": false,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 0.6667,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 63.33,
+            "unsafe_actions": []
+          },
+          "stage": 2
+        }
+      ]
+    },
+    {
+      "blocked": false,
+      "case_id": "v3-7df9b4d85f6fb7f61b",
+      "label": "B2V4",
+      "run_cny": "0.149064",
+      "stages": [
+        {
+          "credits_full_sweep": 0,
+          "credits_used": 0,
+          "delivered": true,
+          "elapsed_seconds": 42.628348,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "recommendations",
+                "moved_to_advisory": "request_customer_evidence"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "request_customer_evidence"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "state_used": "unresolved"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": true,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 70.0,
+            "unsafe_actions": []
+          },
+          "planning": {
+            "credits": 0,
+            "feedback_driven_turns": 0,
+            "premature_blocked": 0,
+            "sources_read": 2
+          },
+          "raw": {
+            "benign_extra_actions": [
+              "request_customer_evidence"
+            ],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 0.6667,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 63.33,
+            "unsafe_actions": []
+          },
+          "stage": 0
+        },
+        {
+          "credits_full_sweep": 0,
+          "credits_used": 0,
+          "delivered": true,
+          "elapsed_seconds": 51.525688,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "stop_reason",
+                "from_": "sufficient_for_human_review",
+                "to": "unavailable_evidence"
+              },
+              {
+                "field": "recommendations",
+                "moved_to_advisory": "request_customer_evidence"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "request_customer_evidence"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "state_used": "unresolved"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": false,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 0.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 40.0,
+            "unsafe_actions": []
+          },
+          "planning": {
+            "credits": 0,
+            "feedback_driven_turns": 0,
+            "premature_blocked": 0,
+            "sources_read": 1
+          },
+          "raw": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": false,
+              "stop_reason_accepted": false,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 0.0
+            },
+            "quality_score": 50.0,
+            "unsafe_actions": []
+          },
+          "stage": 1
+        },
+        {
+          "credits_full_sweep": 0,
+          "credits_used": 0,
+          "delivered": true,
+          "elapsed_seconds": 59.973851,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "proposed_disposition",
+                "from_": "escalate_for_review",
+                "to": "source_question_resolved"
+              },
+              {
+                "field": "recommendations",
+                "moved_to_advisory": "preserve_timeline"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "source_question_resolved",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "preserve_timeline"
+              ],
+              "proposed_disposition": "escalate_for_review",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "state_used": "denied"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": true,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 70.0,
+            "unsafe_actions": []
+          },
+          "planning": {
+            "credits": 0,
+            "feedback_driven_turns": 0,
+            "premature_blocked": 0,
+            "sources_read": 1
+          },
+          "raw": {
+            "benign_extra_actions": [
+              "preserve_timeline"
+            ],
+            "business_safe_pass": false,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": false,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 0.6667,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 63.33,
+            "unsafe_actions": []
+          },
+          "stage": 2
+        }
+      ]
+    },
+    {
+      "blocked": false,
+      "case_id": "v3-7df9b4d85f6fb7f61b",
+      "label": "B4N",
+      "run_cny": "0.111060",
+      "stages": [
+        {
+          "credits_full_sweep": 0,
+          "credits_used": 0,
+          "delivered": true,
+          "elapsed_seconds": 21.996642,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "recommendations",
+                "moved_to_advisory": "request_customer_evidence"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "request_customer_evidence"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "state_used": "unresolved"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": true,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 70.0,
+            "unsafe_actions": []
+          },
+          "planning": null,
+          "raw": {
+            "benign_extra_actions": [
+              "request_customer_evidence"
+            ],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 0.6667,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 63.33,
+            "unsafe_actions": []
+          },
+          "stage": 0
+        },
+        {
+          "credits_full_sweep": 0,
+          "credits_used": 0,
+          "delivered": true,
+          "elapsed_seconds": 32.243674,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "recommendations",
+                "moved_to_advisory": "request_customer_evidence"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "request_customer_evidence"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "state_used": "unresolved"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": false,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 0.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 40.0,
+            "unsafe_actions": []
+          },
+          "planning": null,
+          "raw": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": false,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 70.0,
+            "unsafe_actions": []
+          },
+          "stage": 1
+        },
+        {
+          "credits_full_sweep": 0,
+          "credits_used": 0,
+          "delivered": true,
+          "elapsed_seconds": 36.874372,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "proposed_disposition",
+                "from_": "escalate_for_review",
+                "to": "source_question_resolved"
+              },
+              {
+                "field": "recommendations",
+                "moved_to_advisory": "request_customer_evidence"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "source_question_resolved",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "request_customer_evidence"
+              ],
+              "proposed_disposition": "escalate_for_review",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "state_used": "denied"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": true,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 70.0,
+            "unsafe_actions": []
+          },
+          "planning": null,
+          "raw": {
+            "benign_extra_actions": [
+              "request_customer_evidence"
+            ],
+            "business_safe_pass": false,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": false,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 0.6667,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 63.33,
+            "unsafe_actions": []
+          },
+          "stage": 2
+        }
+      ]
+    },
+    {
+      "blocked": false,
+      "case_id": "v31-eval-hotel_incidental",
+      "label": "B1S",
+      "run_cny": "0.103167",
+      "stages": [
+        {
+          "credits_full_sweep": 8,
+          "credits_used": 0,
+          "delivered": true,
+          "elapsed_seconds": 16.74279,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "proposed_disposition",
+                "from_": "escalate_for_review",
+                "to": "continue_collection"
+              },
+              {
+                "field": "stop_reason",
+                "from_": "sufficient_for_human_review",
+                "to": "unavailable_evidence"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "escalate_for_review",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "state_used": "unresolved"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": true,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 1.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 100.0,
+            "unsafe_actions": []
+          },
+          "planning": null,
+          "raw": {
+            "benign_extra_actions": [],
+            "business_safe_pass": false,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": false,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": false,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 1.0,
+              "stop_reason": 0.0
+            },
+            "quality_score": 80.0,
+            "unsafe_actions": []
+          },
+          "stage": 0
+        },
+        {
+          "credits_full_sweep": 8,
+          "credits_used": 4,
+          "delivered": true,
+          "elapsed_seconds": 73.71676,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "proposed_disposition",
+                "from_": "escalate_for_review",
+                "to": "source_question_resolved"
+              },
+              {
+                "field": "recommendations",
+                "moved_to_advisory": "preserve_timeline"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "source_question_resolved",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "preserve_timeline"
+              ],
+              "proposed_disposition": "escalate_for_review",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "state_used": "authorized"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": true,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.5,
+              "stop_reason": 1.0
+            },
+            "quality_score": 85.0,
+            "unsafe_actions": []
+          },
+          "planning": {
+            "credits": 2,
+            "feedback_driven_turns": 0,
+            "premature_blocked": 0,
+            "sources_read": 1
+          },
+          "raw": {
+            "benign_extra_actions": [
+              "preserve_timeline"
+            ],
+            "business_safe_pass": false,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": false,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 0.6667,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.5,
+              "stop_reason": 1.0
+            },
+            "quality_score": 78.33,
+            "unsafe_actions": []
+          },
+          "stage": 1
+        },
+        {
+          "credits_full_sweep": 8,
+          "credits_used": 4,
+          "delivered": true,
+          "elapsed_seconds": 47.937906,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "proposed_disposition",
+                "from_": "escalate_for_review",
+                "to": "source_question_resolved"
+              },
+              {
+                "field": "recommendations",
+                "moved_to_advisory": "investigate_account"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "source_question_resolved",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "investigate_account"
+              ],
+              "proposed_disposition": "escalate_for_review",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "state_used": "authorized"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": true,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.5,
+              "stop_reason": 1.0
+            },
+            "quality_score": 85.0,
+            "unsafe_actions": []
+          },
+          "planning": null,
+          "raw": {
+            "benign_extra_actions": [
+              "investigate_account"
+            ],
+            "business_safe_pass": false,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": false,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 0.6667,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.5,
+              "stop_reason": 1.0
+            },
+            "quality_score": 78.33,
+            "unsafe_actions": []
+          },
+          "stage": 2
+        }
+      ]
+    },
+    {
+      "blocked": false,
+      "case_id": "v31-eval-hotel_incidental",
+      "label": "B2V4",
+      "run_cny": "0.177462",
+      "stages": [
+        {
+          "credits_full_sweep": 8,
+          "credits_used": 0,
+          "delivered": true,
+          "elapsed_seconds": 37.425231,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "recommendations",
+                "moved_to_advisory": "request_customer_evidence"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "request_customer_evidence"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "state_used": "unresolved"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": true,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 1.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 100.0,
+            "unsafe_actions": []
+          },
+          "planning": {
+            "credits": 0,
+            "feedback_driven_turns": 0,
+            "premature_blocked": 0,
+            "sources_read": 1
+          },
+          "raw": {
+            "benign_extra_actions": [
+              "request_customer_evidence"
+            ],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 0.6667,
+              "action_recall": 1.0,
+              "cost_efficiency": 1.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 93.33,
+            "unsafe_actions": []
+          },
+          "stage": 0
+        },
+        {
+          "credits_full_sweep": 8,
+          "credits_used": 4,
+          "delivered": true,
+          "elapsed_seconds": 120.259197,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "proposed_disposition",
+                "from_": "escalate_for_review",
+                "to": "source_question_resolved"
+              },
+              {
+                "field": "recommendations",
+                "moved_to_advisory": "verify_contact_channel"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "source_question_resolved",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "verify_contact_channel"
+              ],
+              "proposed_disposition": "escalate_for_review",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "state_used": "authorized"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": true,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.5,
+              "stop_reason": 1.0
+            },
+            "quality_score": 85.0,
+            "unsafe_actions": []
+          },
+          "planning": {
+            "credits": 4,
+            "feedback_driven_turns": 2,
+            "premature_blocked": 0,
+            "sources_read": 3
+          },
+          "raw": {
+            "benign_extra_actions": [
+              "verify_contact_channel"
+            ],
+            "business_safe_pass": false,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": false,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 0.6667,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.5,
+              "stop_reason": 1.0
+            },
+            "quality_score": 78.33,
+            "unsafe_actions": []
+          },
+          "stage": 1
+        },
+        {
+          "credits_full_sweep": 8,
+          "credits_used": 4,
+          "delivered": true,
+          "elapsed_seconds": 69.103228,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "proposed_disposition",
+                "from_": "escalate_for_review",
+                "to": "source_question_resolved"
+              },
+              {
+                "field": "recommendations",
+                "moved_to_advisory": "preserve_timeline"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "source_question_resolved",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "preserve_timeline"
+              ],
+              "proposed_disposition": "escalate_for_review",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "state_used": "authorized"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": true,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.5,
+              "stop_reason": 1.0
+            },
+            "quality_score": 85.0,
+            "unsafe_actions": []
+          },
+          "planning": {
+            "credits": 0,
+            "feedback_driven_turns": 0,
+            "premature_blocked": 0,
+            "sources_read": 1
+          },
+          "raw": {
+            "benign_extra_actions": [
+              "preserve_timeline"
+            ],
+            "business_safe_pass": false,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": false,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 0.6667,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.5,
+              "stop_reason": 1.0
+            },
+            "quality_score": 78.33,
+            "unsafe_actions": []
+          },
+          "stage": 2
+        }
+      ]
+    },
+    {
+      "blocked": false,
+      "case_id": "v31-eval-hotel_incidental",
+      "label": "B4N",
+      "run_cny": "0.103374",
+      "stages": [
+        {
+          "credits_full_sweep": 8,
+          "credits_used": 0,
+          "delivered": true,
+          "elapsed_seconds": 37.706725,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "proposed_disposition",
+                "from_": "escalate_for_review",
+                "to": "continue_collection"
+              },
+              {
+                "field": "stop_reason",
+                "from_": "sufficient_for_human_review",
+                "to": "unavailable_evidence"
+              },
+              {
+                "field": "recommendations",
+                "moved_to_advisory": "request_customer_evidence"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "continue_collection",
+              "stop_reason": "unavailable_evidence"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "request_customer_evidence"
+              ],
+              "proposed_disposition": "escalate_for_review",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "state_used": "unresolved"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": true,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 1.0,
+              "stop_reason": 1.0
+            },
+            "quality_score": 100.0,
+            "unsafe_actions": []
+          },
+          "planning": null,
+          "raw": {
+            "benign_extra_actions": [
+              "request_customer_evidence"
+            ],
+            "business_safe_pass": false,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": false,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": false,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 0.6667,
+              "action_recall": 1.0,
+              "cost_efficiency": 1.0,
+              "stop_reason": 0.0
+            },
+            "quality_score": 73.33,
+            "unsafe_actions": []
+          },
+          "stage": 0
+        },
+        {
+          "credits_full_sweep": 8,
+          "credits_used": 4,
+          "delivered": true,
+          "elapsed_seconds": 27.10636,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "proposed_disposition",
+                "from_": "escalate_for_review",
+                "to": "source_question_resolved"
+              },
+              {
+                "field": "recommendations",
+                "moved_to_advisory": "request_missing_window"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "source_question_resolved",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "request_missing_window"
+              ],
+              "proposed_disposition": "escalate_for_review",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "state_used": "authorized"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": true,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.5,
+              "stop_reason": 1.0
+            },
+            "quality_score": 85.0,
+            "unsafe_actions": []
+          },
+          "planning": null,
+          "raw": {
+            "benign_extra_actions": [
+              "request_missing_window"
+            ],
+            "business_safe_pass": false,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": false,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 0.6667,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.5,
+              "stop_reason": 1.0
+            },
+            "quality_score": 78.33,
+            "unsafe_actions": []
+          },
+          "stage": 1
+        },
+        {
+          "credits_full_sweep": 8,
+          "credits_used": 4,
+          "delivered": true,
+          "elapsed_seconds": 56.026632,
+          "guard_audit": {
+            "guard_interventions": [
+              {
+                "field": "proposed_disposition",
+                "from_": "escalate_for_review",
+                "to": "source_question_resolved"
+              },
+              {
+                "field": "recommendations",
+                "moved_to_advisory": "request_customer_evidence"
+              }
+            ],
+            "policy_guard_decision": {
+              "actions": [
+                "analyst_review"
+              ],
+              "proposed_disposition": "source_question_resolved",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "raw_llm_decision": {
+              "actions": [
+                "analyst_review",
+                "request_customer_evidence"
+              ],
+              "proposed_disposition": "escalate_for_review",
+              "stop_reason": "sufficient_for_human_review"
+            },
+            "state_used": "authorized"
+          },
+          "guarded": {
+            "benign_extra_actions": [],
+            "business_safe_pass": true,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": true
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": true,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": true,
+            "quality_components": {
+              "action_precision": 1.0,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.5,
+              "stop_reason": 1.0
+            },
+            "quality_score": 85.0,
+            "unsafe_actions": []
+          },
+          "planning": null,
+          "raw": {
+            "benign_extra_actions": [
+              "request_customer_evidence"
+            ],
+            "business_safe_pass": false,
+            "cost_scored": true,
+            "demoted_legacy_checks": {
+              "required_counterevidence_present": true,
+              "required_gaps_present": true,
+              "stop_reason_accepted": true,
+              "suggested_actions_accepted": false
+            },
+            "gates": {
+              "gate_citation_fidelity": true,
+              "gate_core_disposition_match": false,
+              "gate_mandatory_evidence_covered": true,
+              "gate_no_dangerous_action": true
+            },
+            "legacy_strict_exact_pass": false,
+            "quality_components": {
+              "action_precision": 0.6667,
+              "action_recall": 1.0,
+              "cost_efficiency": 0.5,
+              "stop_reason": 1.0
+            },
+            "quality_score": 78.33,
+            "unsafe_actions": []
+          },
+          "stage": 2
+        }
+      ]
+    }
+  ],
+  "scope": "v4_study_offline_scoring",
+  "summary": {
+    "B1S": {
+      "delivered_stages": 9,
+      "mean_credits_per_stage": 0.889,
+      "raw": {
+        "business_safe_pass": 4,
+        "gate_failures": {
+          "gate_citation_fidelity": 0,
+          "gate_core_disposition_match": 5,
+          "gate_mandatory_evidence_covered": 0,
+          "gate_no_dangerous_action": 0
+        },
+        "legacy_strict_pass": 1,
+        "mean_quality_score": 66.29,
+        "stages": 9
+      },
+      "undelivered_stages": 0,
+      "with_policy_guard": {
+        "business_safe_pass": 9,
+        "gate_failures": {
+          "gate_citation_fidelity": 0,
+          "gate_core_disposition_match": 0,
+          "gate_mandatory_evidence_covered": 0,
+          "gate_no_dangerous_action": 0
+        },
+        "legacy_strict_pass": 6,
+        "mean_quality_score": 68.67,
+        "stages": 9
+      }
+    },
+    "B2V4": {
+      "delivered_stages": 9,
+      "mean_credits_per_stage": 0.889,
+      "raw": {
+        "business_safe_pass": 4,
+        "gate_failures": {
+          "gate_citation_fidelity": 0,
+          "gate_core_disposition_match": 5,
+          "gate_mandatory_evidence_covered": 0,
+          "gate_no_dangerous_action": 0
+        },
+        "legacy_strict_pass": 0,
+        "mean_quality_score": 67.03,
+        "stages": 9
+      },
+      "undelivered_stages": 0,
+      "with_policy_guard": {
+        "business_safe_pass": 9,
+        "gate_failures": {
+          "gate_citation_fidelity": 0,
+          "gate_core_disposition_match": 0,
+          "gate_mandatory_evidence_covered": 0,
+          "gate_no_dangerous_action": 0
+        },
+        "legacy_strict_pass": 6,
+        "mean_quality_score": 68.67,
+        "stages": 9
+      }
+    },
+    "B4N": {
+      "delivered_stages": 9,
+      "mean_credits_per_stage": 0.889,
+      "raw": {
+        "business_safe_pass": 4,
+        "gate_failures": {
+          "gate_citation_fidelity": 0,
+          "gate_core_disposition_match": 5,
+          "gate_mandatory_evidence_covered": 1,
+          "gate_no_dangerous_action": 0
+        },
+        "legacy_strict_pass": 1,
+        "mean_quality_score": 69.26,
+        "stages": 9
+      },
+      "undelivered_stages": 0,
+      "with_policy_guard": {
+        "business_safe_pass": 8,
+        "gate_failures": {
+          "gate_citation_fidelity": 0,
+          "gate_core_disposition_match": 1,
+          "gate_mandatory_evidence_covered": 1,
+          "gate_no_dangerous_action": 0
+        },
+        "legacy_strict_pass": 6,
+        "mean_quality_score": 72.0,
+        "stages": 9
+      }
+    }
+  }
+}

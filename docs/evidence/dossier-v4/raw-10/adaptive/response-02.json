@@ -1,0 +1,1 @@
+{"content":"","role":"assistant","tool_calls":[{"function":{"arguments":"{\"document_id\": \"mapping\"}","name":"case_read"},"id":"01a18bf502aa58dfeb8bc7236bd92373","index":0,"type":"function"},{"function":{"arguments":"{\"query\": \"channel-A payment dispute refund reversal 2026-10\"}","name":"policy_search"},"id":"01a18bf502aa58dfeb8bc7236bd92374","index":1,"type":"function"}]}

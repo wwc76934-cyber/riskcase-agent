@@ -1,0 +1,11 @@
+{
+  "files": {
+    "original-file-hashes.json": "92d6490fc96da117014de714756d4822c5f388372483e0e1ce5df1777ecef7ef",
+    "phase-diagnostics.json": "832d29e82cc45a5739c97bedeb2ca643c577abc905f16b4201292d9f2dd57173",
+    "summary.json": "cf056a46030e012bd00594de6519984d6a6bbc7f29444feb9353a0f54d72c877",
+    "transmission-audit.json": "16062012dc3dbd70f3db62382d64d33b1476f08109cd337b2b0dada0269f9d85"
+  },
+  "old_records_retained": true,
+  "development_gates_passed": false,
+  "agent_value_proven": false
+}

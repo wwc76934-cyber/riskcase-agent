@@ -1,0 +1,10 @@
+{
+  "artifact_sha256": {
+    "audited-summary.json": "77157a7ba32066045b26af310dba1bca2920e1978b52e77a4799c8e4e0f6c2bd",
+    "failed-activation-traces.json": "5de51173514fa6b7941f035f674aeae17ee4eb8ecc47b4cf07dd9cb2f5b21ea7",
+    "original-summary.json": "1cf0a5aebce3ed137db5cb94d2ae97f81ddf8e1559a1c8099ba24b210ed1345d",
+    "provenance.json": "2d5b79a687f71feaf5dd0a26e6261065a1bc5fc2b81d23164560faace075fc57"
+  },
+  "raw_transactions_included": false,
+  "kind": "first_provider_batch_before_skill_lifecycle_fix"
+}

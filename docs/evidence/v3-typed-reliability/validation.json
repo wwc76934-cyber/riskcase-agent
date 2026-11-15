@@ -1,0 +1,20 @@
+{
+  "full_regression": [
+    {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "1130",
+      "time": "477.777",
+      "timestamp": "2026-11-02T20:32:40.352934+08:00",
+      "hostname": "ccm"
+    }
+  ],
+  "external_model_requests_added": 0,
+  "proposal_sha256": "55dfe48acc5baaaefe468ffae5879087fb6fdd389ba3977256e1596d940901bf",
+  "freeze_sha256": "8e4e83f804b527543fc238781c642e0dee552a837fa80a0d6cf63ab8a63a3e8f",
+  "authorization_present": false,
+  "model_repair_not_run": true,
+  "original_failed_pilot_unchanged": true
+}
